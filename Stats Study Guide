@@ -1,0 +1,204 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Statistics Study Guide}
+\author{Jian Park}
+\maketitle
+
+\section{Test Topic 1: Optimal Stopping}
+
+\begin{itemize}
+  \item Given some game, the criterion for optimality is to adopt the strategy that maximizes the expected payoff, and such maximal expected payoff is called the value of the game.
+  \item $S$ is the states of the game, $f : S \rightarrow \mathbb{R}$ represents the payoff function associated with stopping at $i \in S$, and $\mu = (\mu_i)_{i \in S}$ denotes the initial distribution. $P$ denotes the $S \times S$ matrix of transition probabilities
+  \item If $v(i)$ is the value of the strategy at $i \in S$, 
+  $$
+  v(i) = \max\left(f(i), \sum_{j \in S} p_{ij}v(j) \right).
+  $$
+  \item Given $v(i)$, the value of the game $X$ is
+  $$
+  X =  \sum_{i \in S}v(i)\mu_i
+  $$
+\end{itemize}
+
+\subsection{Sample Problems}
+
+  \textbf{Example 4.1} You are allowed to roll a die until a 6 occurs, but you can stop before then to receive the amount in dollars shown on the die. What is the optimal stopping rule?
+ \begin{proof}
+\begin{itemize}
+  \item Note $v(5) = 5 = f(5)$ and $v(6) = 0 = f(6)$ because these are the highest payoff and termination conditions respectively.
+  \item For the sake of contradiction, assume the optimal move at 4 is to stop. Then the game would be played until either $5$ or $6$ is rolled, in which case the expected payout is 2.5. However, This is worse than stopping, so $v(4) = 4$.
+  \item A lower bound to $v(i)$ is to assume that in the next move, we immediately stop ($v(i) \geq f(i)$ by definition). We can see thus that $v(1), v(2) \geq 2.5$, which means that the optimal move for $1, 2$ is to continue.
+  \item If we assume we can continue at $3$, observe that
+  $$
+  v(3) \geq \sum_{j \in S}p_{ij}v(j) = (1/2)(v(3)) + (4/6) + (5/6) + (0/6), v(3) \geq 3.
+  $$
+  This shows that continuing at $3$ is optimal.
+ \end{itemize}
+ \end{proof}
+ 
+   \textbf{Example 4.2} Suppose $S = \{0, ..., 6\}$, the payoff is determined by the array $f = [0, 2, 4, 5, 9, 3, 0]$, the transition probabilities are $p_{ij} = 1/2$ if $|i = j| = 1$, and $p_{0, 0} = p_{6, 6} = 1$.
+ \begin{proof}
+\begin{itemize}
+  \item We know $v(0) = v(6) = 0$ given the chain is absorbed in these states, and $v(4) = 9$ given it is the state with the maximum reward.
+\item Using the summation formula, we see that $v(5) = 4.5$, which means it is optimal to continue at $5$.
+\item Using the summation formula, we see that $v(1) \geq 2$, which means it is at least optimal to continue at $2$. Similarly, we get $v(3) \geq 6.5$, meaning it is optimal to continue. Lastly, using these two values we just derived, we conclude that $v(2) \geq 4.25$, which shows it is optimal to continue at $2$.
+\item Using one step analysis for states $1, 2, 3$, we can compute explicit values of $v$ for all states.
+ \end{itemize}
+  \end{proof}
+
+ 
+\textbf{Example 4.3} I will roll a die exactly 3 times. You can stop me at any point to accept the current amount shown. What is the optimal stopping rule?
+ \begin{proof}
+\begin{itemize}
+\item On roll 3, the only option is to take the outcome given, which has an expected reward of $3.5$.
+\item On roll 2, it is only worth taking the result if it is greater than $3.5$. Thus, there is a $1/2$ chance of getting an average reward of $5$, or $1/2$ chance of getting an average reward of $3.5$. Thus the expected reward is $4.25$.
+\item On roll 1, it is only worth taking the result if it is greater than $4.25$. Thus, there is a $1/3$ chance of getting an average reward of $5.5$, or $2/3$ chance of getting an average reward of $4.25$. Thus the expected reward is $4.875$.
+ \end{itemize}
+ \end{proof}
+ 
+  
+\textbf{Example 4.4} I turn over cards from a standard deck of 52 cards. You get a dollar if red, lose a dollar if black, but you can stop me at any point and leave with your current net winnings. What is the optimal stopping rule?
+ \begin{proof}
+\begin{itemize}
+\item For the simpler case when there are four cards, for the case of card no. 3, it is optimal to stop when the card is $1$ and continue when the card is $-1$.
+\item For the case of card no. 2, it is optimal to stop when the card is $2$ and continue when the card is $0, 2$. The expected reward for $v(0, 2) = 0.5$ and $v(-2, 2) = 0$. 
+\item For the case of card no. 1, it is optimal to do either at $1$ because the expected reward is $(1/3)2 + (2/3)0.5 = 1$ for continuing, and the expected reward for $-1$ is $(2/3)(0.5) + (1/3)(0)$. Thus the value of the game is $(2/3)$.
+ \end{itemize}
+ \end{proof}
+ 
+ \textbf{Problem 4.5.1} You roll a fair die until the game stops. The game stops when you get a $4$, $5$, or $6$. For every number $1, 2, 3$, your score increases by $1$. If the game stops with a $4$ or $5,$ you get paid the accumulated score. If the game stops with $6$ you get nothing.
+ \begin{proof}
+\begin{itemize}
+\item The probability of being stopped for the first time at $i$ is equal to $1/2^i$. The probability of being stopped by $4, 5$ for the first time at $i$ is equal to $(2/3)(1/2^i)$. Thus, the expected reward $X$ is
+$$
+\mathbb{E}(X) = \sum_{i = 1}^{\infty} (2/3)(i - 1)(1/2^i) = 2/3.
+$$
+\item Alternatively, let $(D_n)_{n \geq 1}$ represent the outcome of the individual dice rolls. Let $\tau = \min\{n \geq 1 : D_n \in \{4, 5, 6\}\}$. Note that $\tau - 1$ is the amount of money generated.
+\item Given $\tau \sim Geom(1/2)$, $\mathbb{E}(\tau) = 2$. It follows that $1 * (2/3)$ is the amount of money generated.
+ \end{itemize}
+ \end{proof}
+ 
+  \textbf{Problem 4.5.2} Suppose you have an 8 sided die. You roll the die once and observe the number $X \in \{1, ..., 8\}$ showing on the first roll. The you have the option of rolling a second time. If you decline the option to roll again, you win $X$ dollars. If instead you exercise the option to roll a second time, and if $Y$ shows on the second roll, you will $X + Y$ dollar if $X + Y < 10$, 0 else. What is the best strategy?
+ \begin{proof}
+\begin{itemize}
+\item Note that after the first roll $k$, the expected payout for rolling again is
+$$
+\sum_{i = k + 1}^9 \frac{i}{8}.
+$$
+Using this formula, we can deduce that it is optimal to keep rolling if the first roll is 4 or less, but stop in any other case.
+ \end{itemize}
+ \end{proof}
+ 
+  \textbf{Problem 4.5.3} A fair $30$-sided die is rolled. Two player voice distinct numbers. The player that chose the number closest to the value of the roll takes that value from the other player. You have the choice to voice your number first or second. What is the optimal strategy.
+ \begin{proof}
+\begin{itemize}
+\item Note as the second player, it is always optimal to choose a number that is adjacent to the first person's number. Additionally, the adjacent number is chosen on the side that maximizes expected returns.
+\item When the first player choses 22, the second player has an expected return that is less than the average no matter what direction he choses. Thus, it is optimal to go first.
+ \end{itemize}
+ \end{proof}
+
+\section{Test Topic 2: Standard Martingale Argument}
+
+\begin{itemize}
+\item A pair $(M_t, F_t)_{t \in T}$ is a martingale if for each $t \geq 0$ in $T$, $M_t$ is an $F_t$-random variable satisfying $\mathbb{E}|M_t| < \infty$ and for all $0 \leq s \leq t$ in $T$, $\mathbb{E}(M_t | F_s) = M_s$.
+\item A sequence $H_n$ is predictable in relation to martingale $M_t$ if $\sigma(H_n) \subset F_{n - 1}$. In other words, it must be possible to determine using historical information.
+\item \textbf{Proposition 1.1:} Given a predictable sequence $H_n$, and (sub/super)martingale $(X_n, F_n)$, then $((HX)_n, F_n)_{n \geq 0}$ (interperted as total earnings at time $n$), is a (sub/super) martingale. Additionally, for the martingale case,
+$$
+Var((HX)_n) = \mathbb{E}(HX)_n^2 = \mathbb{E}(H^2*[H])_n = \sum_{k = 1}^nH_k^2([X]_k - [X]_{k - 1}),
+$$
+$$
+[X]_n = \sum_{k = 1}^n\mathbb{E}(X_k^2 - X_{k - 1}^2 | F_{k - 1}) = \sum_{k = 1}^n\mathbb{E}((X_k - X_{k - 1})^2 | F_{k - 1}).
+$$
+\item A martingale is uniformly integrable if 
+$$
+\lim_{K \rightarrow \infty}\sup_{t \in T}\mathbb{E}[|M_t|1_{(X_t > K)}] = 0.
+$$
+\item \textbf{Fundamental Convergence Theorem for Submartingales:} Let $(M_t, F_t)_{t \in T}$ be a submaringale satisfying $\sup_{t \in T} \mathbb{E}|M_t| < \infty$. Let $F_{\infty} = \sigma(\cup_{t \in T}F_t).$ Then there exists an $F_{\infty}$ random variable $X$ such that $M_t \rightarrow X$ almost surely as $t \rightarrow \infty$; furthermore, $M_t \rightarrow X$ as $t \rightarrow \infty$ in a $L^1$ manner iff the collection $\{|M_t|\}_{t \in T}$ is uniformly integrable.
+
+\item A nonnegative $F$-random variable $\tau : \Omega \rightarrow T \cup \{+\infty\}$ is called a stopping time if for all $t \in T$, $\{\tau \leq t\} \in F_t$; by closure under complements property of $\sigma$-algebras, we have $\{\tau > t\} \in F_t$. Hence, in words, by any time $t$, we know whether or not random time $\tau$ has occurred.
+
+\item \textbf{Doob's Optional Stopping (Doob's Optional Sampling):} Let $(M_t, F_t)_{t \in T}$ be a (sub/super)maringale on $T$. Consider $F$-stopping times $0 \leq \sigma \leq \tau$ in $T$ such that $\tau$ is bounded by a deterministic constant. Then $\mathbb{E}|M_{\tau}|, \mathbb{E}|M_{\sigma}| < \infty$, and $\mathbb{E}(M_{\tau} | F_{\sigma}) = (\geq / \leq) M_{\sigma}$. Equivalently, $\mathbb{E}(M_{\tau}) = \mathbb{E}(M_{\sigma})$. Additionally, for uniformly integrable $\{|M_t|\}_{t \in T}$, the stopping times can be unbounded.
+
+\item \textbf{$L^p$-boundedness:} A martingale is $L^p$ bounded if for $p > 1$, $\sup_{t \in T}\mathbb{E}|M_t|^p < \infty$. $L^p$ boundedness implies uniform integrability.
+
+\item \textbf{$L^1$-domination:} If $\sup_{t \in T}|M_t| \leq X$ for some $X$ satisfying $\mathbb{E}X < \infty$, then the martingale is $L^1$-dominated. $L^1$ domination implies uniform integrability.
+
+\item \textbf{Corollary 1.1:} If $(M_t, F_t)_{t \in T}$ is a (sub/super)martingale, then for any $F$-stopping time $\tau$, the stopped process $(M_t^{\tau}, F_t)_{t \geq 0}$ with is also a (sub/super)martingale.
+
+\item \textbf{Standard Martingale Argument:} Note that due to Doob's stopping theorem and given $\tau$ is a stopping time where $\tau < \infty$ almost surely,
+$$
+x = \mathbb{E}M_0 = \mathbb{E}M_t^{\tau} = \lim_{t \rightarrow \infty}\mathbb{E}M_t^{\tau} = \mathbb{E}\left( \lim_{t \rightarrow \infty} M_t^{\tau}\right) = \mathbb{E}(M_{\tau})
+$$
+\item \textbf{Doob's Decomposition:} For a general stochastic process satisfying $\mathbb{E}|Z_n| < \infty$, let $A_n = \sum_{k = 0}^n \mathbb{E}(Z_k - Z_{k - 1}|F_{k - 1})$. $M_n = Z_n - A_n$ is a martingale, and $A_n$ is an $F$-predictable variable. Additionally, this decomposition is unique.
+\end{itemize}
+
+ \textbf{Example} Prove Gambler's ruin using the structure of Martingales.
+ \begin{proof}
+\begin{itemize}
+\item Consider the simple random walk $X_n = X_0 + \sum_{i = 1}^n X_i$ with $X_0 = x$. Let $T_{a, b} = \inf\{n \geq 0 : X_n = a \ or \ b\}$ be a hitting time.
+\item The stopped process $X_n^{T_{a, b}}$ is a martingale due to Corollary 1.1, and it is $L^1$-dominated by the deterministic constant $X = \max(|a|, |b|)$. This shows $(X_n^{T_{a, b}})_{n \geq 0}$ is a uniformly integrable martingale.
+\item Now we check that $T_{a, b} < \infty$ almost surely. If $\omega \in \{T_{a, b} = \infty\}$, then $X_n^{T_{a, b}}(\omega) = X_n(\omega)$. This is really unlikely to happen due to martingale convergence theorem.
+\item Doob's optional sampling theorem shows that $\mathbb{E}(X_n^{T_{a, b}}) = \mathbb{E}(X_0) = x$. Given $T_{a, b}$ is almost surely finite and that $X_n^{T_{a, b}}$ is bounded, $\lim_{n \rightarrow \infty} X_n^{T_{a, b}} = X_{T_{a, b}}$.
+\item $x = \mathbb{E}[X_{T_{a, b}}] = bt + a(1 - t)$ where $t = \mathbb{P}(X_{T_{a, b}} = b)$. This yields Gambler's ruin formula.
+\item Let $X_n^2 - n$ be a martingale, note that $\sup_{n \geq 0}|M_n^{T_{a, b}}| \leq \max\{|a^2|, |b^2|\} + T_{a, b}$. 
+\item The martingale property shows that $\mathbb{E}(M_n^{T_{a, b}}) = \mathbb{E}(M_0) = x^2$.
+\item It follows that 
+$$
+x^2 = \mathbb{E}(M_{T_{a, b}}) = \mathbb{E}(X_{T_{a, b}}^2) - \mathbb{E}(T_{a, b}) = b^2\frac{x - a}{b - a} + a^2\frac{x - a}{b - a} - \frac{x - a}{b - a} = (x - a)(b - a).
+$$
+\end{itemize}
+\end{proof}
+
+ \textbf{5.7} Consider a biased walk. Show $M_n = ((1 - p)/p)^{S_n}$ is a martingale, and if $T = \min(n : S_n = 0 \ or \ S_n = N)$, compute $P(S(T) = 0)$.
+ \begin{proof}
+\begin{itemize}
+\item Note given $S_n$ (which is equivalent to $F_n$ because this is a markov chain), 
+$$
+\mathbb{E}(M_{n + 1} | S_n) = p\left(\frac{(1 - p)}{p}\right)^{S_n + 1} + (1 - p)\left(\frac{(1 - p)}{p}\right)^{S_n - 1} = M_{n}.
+$$
+\item This can be recursively applied to show $M_n$ is a martingale. 
+\item Note that $M_n^T$ is $L^1$ dominated because $|M_n^T| < N$, and Doob's convergence theorem for supermartingales shows that this martingale converges to some random variable $X$ as $n \rightarrow \infty$. This is not the case for the unbounded case. This shows $T_{a, b}<\infty$ almost surely.
+\item We get that
+$$
+a = \mathbb{E}(M_0) = \mathbb{E}(M_n^{T}) = \lim_{n \rightarrow \infty} \mathbb{E}(M_n^{T}) = \mathbb{E}(\lim_{n \rightarrow \infty} M_n^{T}) = \mathbb{E}(M_T) = N(1 - \mathbb{P}(S(T) = 0)).
+$$
+\item Thus, $\mathbb{P}(S(T) = 0) = 1 - (N/a)$
+\end{itemize}
+ \end{proof}
+ 
+  \textbf{5.8} Let $S_n$ be as in 5.7. Show that $M_n = S_n + (1 - 2p)n$ is a martingale. Let $T_n = \min(n, T)$ and let $Z_n$ be the martingale $Z_n = M_{T_n}$; show that $\mathbb{E}(Z_n^2) < C$ for all $n$. Find $\mathbb{E}(T)$.
+ \begin{proof}
+\begin{itemize}
+\item Note $M_n$ is a martingale because $\mathbb{E}(S_n) = (1 - 2p)n$. Doob's decomposition.
+\item $Z_n = M_{T_n} < N$, and thus $\mathbb{E}(Z_n^{2}) < N^2 + 1$ for all $n$.
+\item It is clear $Z_n$ is a supermartingale, $Z_n$ is $L^1$ dominated, and $T_n < \infty$ almost surely. We get
+$$
+x = \mathbb{E}(M_0) = \mathbb{E}(M_n^{T}) = \mathbb{E}(S_n^T + (1 - 2p)n) = \mathbb{E}(S_n^T) + (1 - 2p)\mathbb{E}(T_n) = N(1 - \mathbb{P}(S(T) = 0)) + (1 - 2p)\mathbb{E}(T_n)
+$$
+\item Thus we get
+\end{itemize}
+ \end{proof}
+
+\section{Test Topic 3: Markov Chains; One-Step Analysis}
+
+\section{Test Topic 4: Markov Chains; Stationary Distribution, Ergodicity}
+
+\section{Test Topic 5: Superposition-Thinning}
+
+\section{Test Topic 6: Branching Processes}
+
+\end{document}

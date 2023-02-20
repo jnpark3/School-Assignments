@@ -1,0 +1,189 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 8}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+The null hypothesis would be that urban traffic enforcement workers do not have a higher blood lead concentration compared to individuals from a nearby suburb. The alternative hypothesis would be that urban traffic enforcement workers have a higher blood lead concentration compared to individuals from a nearby suburb.
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}
+We first assume that the individuals in the officers sample is a representative, randomly selected portion of the total population. We also assume that the sample of officers is independent, meaning the blood lead level of one officer does not affect the blood lead level of other officers. Lastly, we assume the blood lead level distribution approximately forms a normal distribution (not skewed).
+\end{proof}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{proof}
+We use $\alpha = 0.01$. Using a $T$-value calculator, we determine that the one-tailed $T$-value is $T_{df = 51, \alpha = 0.01} = 2.4017$. We use the one-tailed test instead of the two tailed test because we are only concerned with showing whether or not the control population's blood lead level is less than the blood lead level of officers. This $T$-value shows that some population will have a lower blood lead level compared to the officers in a statistically significant manner if the population average is less than $2.4017$ standard deviations below the officer sample mean of $124.32 \mu g/l$. The standard deviation is $37.74 \mu g/l$, thus $2.4017$ standard deviations below the officer sample mean of $124.32 \mu g/l$ is equivalent to the value $33.678 \mu g/l$. Given that the suburban population has an average blood lead level of $35 \mu g/l$, we fail to reject the null hypothesis because the suburban population average is greater than the threshold necessary to show statistical significance at $\alpha = 0.01$, which was $33.678 \mu g/l$. This means that at $\alpha = 0.01$, there is a reasonable probability that the difference in the means between the two groups is a result of random chance.
+\end{proof}
+
+\begin{problem}{1.d}
+\end{problem}
+\begin{proof}
+We can conclude that a 99 percent confidence interval for the average blood concentration level of a police officer would contain $35 \mu g/l$. First, note that if one were to make an interval by including all values which are within $2.4017$ standard deviations of the mean, this interval would be the 98 percent confidence interval because values the one-tailed $t$-value at significance level $\alpha$ is equal to the two-tailed $t$-value at significance level $\alpha$. Given $35 \mu g/l$ is between the mean and the mean minus $2.4017$ standard deviations, it is clear $35 \mu g/l$ is within the 98 percent confidence interval. Then, it is clear that $35 \mu g/l$ is also in the 99 percent confidence interval because the 99 percent confidence interval contains the 98 percent confidence interval (because greater confidence levels require larger $t$-values, which yield larger intervals).
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}
+The null hypothesis states that 38 percent of American adult cell phone users do their browsing on their phone rather than a computer or other device. The alternative hypothesis states that the percentage of American adult cell phone users who do their browsing on their phone rather than a computer or other device is not 38 percent.
+
+Under the null hypothesis,
+$$
+Z = \frac{p^* - .38}{\sqrt{\frac{.38(1-.38)}{n}}} ~ N(0, 1)
+$$
+where $n$ is the size of a sample and $p^*$ is the mean of that sample. Thus, given $n = 2254$ and $p = 0.17$, we get that $Z = -20.54$. The $p$-value corresponding to this $Z$ value is equivalent to the area under the standard normal curve where $x > 20.54$ and $x < -20.54$ (given we are using the two-tailed test). This area is a value which is less than $10^{-10}$. Thus, p-value is less than $10^{-10}$ (calculator cannot show digits). Given $\alpha = 0.01$, we are able to reject the null hypothesis because the $p$-value is less than the $\alpha$ value. This means that there is strong enough evidence that the proportion of Americans who use only their cell phones to access the internet is different than the Chinese proportion of 38 percent.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}
+In the context of the problem, the $p$-value represents the probability of obtaining a sample whose proportion is as extreme as the given sample assuming the true population has a proportion of $38$ percent. In other words, in a population whose members have a 38 percent likelihood of answering yes on the survey, what is the likelihood of generating a sample of $2254$ individuals that yields a proportion that is as extreme or more extreme than 17 percent. Given that the $p$-value is extremely low as shown previously ($< 10^{-10}$), that means it is highly that the population (with 38 percent support) will yield a sample that is as extreme as the given sample. 
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}
+The distribution of the sample mean $\bar{X}$ is equal to the distribution $Normal(\mu = 25, \sigma^2 = \frac{4}{3})$, given each element in the sample is chosen from the distribution $Normal(\mu = 25, \sigma^2 = 16)$. Thus, given the distribution of the sample mean is normal, it is appropriate to use the normal distribution to model $\bar{X}$.
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}
+The mean of the dataset xbar is 24.96 and the median is 24.99, thus they are quite similar. This shows that the sample is not skewed as predicted. In addition, the first quartile is 24.18 and the 3rd quartile is 25.72. These both represent deviations from the mean by 0.68 and 0.76 respectively. We assumed that xbar is distributed according to $Normal(\mu = 25, \sigma^2 = \frac{4}{3})$, and the $Z$-value chart shows that the first and third quartiles should both be approximately 0.67 standard deviations away from the mean. This means that the quartiles should deviate from the mean by $\frac{4}{3}*0.67 = 0.893$, which is close to the observed deviation from the mean.
+\end{proof}
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{proof}
+The histogram is strongly bell shaped, with a mean and mode at 25 and no obvious skew. The box plot is also not skewed, the inter-quartile range is relatively small compared to the range between the min and max values (showing the data is clustered), and there are a few outliers on both sides close to the minimum and maximum values. Both histogram and box plot support the idea that the sample is normally distributed.
+\end{proof}
+
+\begin{problem}{3.d}
+\end{problem}
+\begin{proof}
+According to the results, 25 confidence intervals had an upper bound that is lower than 25 and 31 confidence intervals had a lower bound that is greater than 25. This is close to what was expected because the total number of bounds that did not contain 25 is 56, which represents 5.6 percent of the 1000 total tests. Given $\alpha = 0.05$, we should have expected that approximately 5 percent of the confidence intervals contained 25. Given 5 percent is close to 5.6 percent, this result is quite similar to what was theoretically predicted. In addition, the number of intervals above and below are approximately similar, which is also predicted.
+\end{proof}
+
+\begin{problem}{3.e}
+\end{problem}
+\begin{proof}
+By not containing the true value of the population parameter, this is a type 1 error because we falsely reject the true null hypothesis that $\mu = 25$. As stated before, the number of times this occurs is 56 times, and this is similar to what was expected ($1000 * 0.05 = 50 \approx 56$).
+\end{proof}
+
+\begin{problem}{3.f}
+\end{problem}
+\begin{proof}
+In the experiment, the null hypothesis was rejected 427 of the 1000 times. Given that $\mu = 25 \neq 27$ in reality, the type of error that can be made here is type two, when a false null hypothesis is rejected. The likelihood that the 95 percent confidence interval contains the value 27 is approximately 0.48, given $27$ is $1.5$ standard deviations greater than 25.
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+To answer this question, we can use the process to analyze two samples of unpaired data. This can be done by assuming 
+$$
+\bar{X_1} - \bar{X_2} ~ T_k\left(\mu_1 - \mu_2, s_1^2/n_1 - s_2^2/n_2\right).
+$$
+In order to use this procedure, we must assume the two samples are independent, and each sample is large and independent and non-skewed responses (in order to approximate the distribution of the means of each sample as a normal distribution).
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+We get that the $t$ value is
+$$
+t = \frac{(16.12 - 19.85)}{\sqrt{3.58^2/26 + 4.51^2/26}} = -3.303
+$$
+We let $k = min(n_1 - 1, n_2 - 1) = 25$, and thus using the two-tailed t-value chart we get that the p-value for this data is $0.00135$. Using $\alpha = 0.01$, we reject the null hypothesis, which means that automatic and manual cars have statistically different mpg's. This is due to the fact that $\alpha > p$.
+\end{proof}
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}
+If $\sigma_1 = \sigma_2 = \sigma$, then the $t$ statistic becomes
+$$
+T = \frac{\bar{X_1} - \bar{X_2}}{S_p\sqrt{1/n_1 + 1/n_2}} = \frac{16.12 - 19.85}{4.045\sqrt{1/13}} = -3.3247.
+$$
+Note that $S_p$, the pooled standard deviation, is equal to the average of the two sample deviations given the two samples have the same sample size. Using $df = n_1 + n_2 - 2 = 50$, the two-tailed t-value chart shows that the p-value for this data is $0.0021$.  Using $\alpha = 0.01$, we reject the null hypothesis, which means that automatic and manual cars have statistically different mpg's. This is due to the fact that $\alpha > p$. This shows that the conclusion does not change when we assume the variances are equal.
+\end{proof}
+
+\begin{problem}{4.d}
+\end{problem}
+\begin{proof}
+The numerators of both statistics are $\bar{X_1} - \bar{X_2} $, but the denominators are different as assuming the variance is different/same leads to different measures of standard deviation. The degrees of freedom for the test in $(c)$ was double that of the degrees of freedom from the test in $(b)$, and the $t$-statistic for $c$ deviated more from the mean compared to the $t$-statistics for $b$. Both $p$-values were similarly low, and both experiments rejected the null hypothesis. The standard deviation derived in part c was smaller than the one generated in b by a small amount, and thus any confidence interval generated using the standard deviation from part c would be smaller than the same interval generated using the standard deviation from part b.
+\end{proof}
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{proof}
+The box plots for both data sets are highly skewed, with both datasets having outliers that are significantly greater than the minimum and maximum values. This skewedeness means that it would be inappropriate to use the two-sample t test.
+\end{proof}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{proof}
+The box plots for the log of the datasets show no obvious skew, and they seem approximately normally distributed with few outliers and an inter-quartile range that approximates that of a normal distribution's inter-quartile range. Thus, it would be appropriate to use the two-sample t test.
+\end{proof}
+
+\begin{problem}{5.c}
+\end{problem}
+\begin{proof}
+Without assuming the equality of the two standard deviations, we get that
+$$
+t = \frac{(5.134 - 3.990)}{\sqrt{1.599^2/26 + 1.641^2/26}} = 2.545.
+$$
+The degrees of freedom is $min(n_1 - 1, n_2 - 1) = 25$. The $t$-value calculator states that at $df = 25$ and $\alpha = 0.05$, the $t$-statistic must be between $-2.06$ and $2.06$. Given this is not true with the observed sample, we are able to reject the null hypothesis and conclude that the seeded and unseeded clouds yield different quantities of rainfall.
+\end{proof}
+
+\begin{problem}{5.d}
+\end{problem}
+\begin{proof}
+We are aware that the mean change in log rain volume is $5.134 - 3.990 = 1.144$. In addition, the standard deviation should be $\sqrt{1.599^2/26 + 1.641^2/26} = 0.449.$ The $t$-value chart as shown in the previous part shows that for a test that is two-tailed, $\alpha = 0.05$ and $df = 25$, the resultant t-value is $2.06$. This shows that the confidence interval is $(\mu - 2.06\sigma, \mu + 2.06\sigma) = (0.218, 2.070)$.
+\end{proof}
+
+\begin{problem}{5.e}
+\end{problem}
+\begin{proof}
+When assuming the equality of the two standard deviations, we get that
+$$
+t = \frac{(5.134 - 3.990)}{1.62\sqrt{1/13}} = 2.546.
+$$
+The degrees of freedom is $n_1 + n_2 - 2 = 50$. The $t$-value calculator states that at $df = 50$ and $\alpha = 0.05$, the $t$-statistic must be between $-2$ and $2$. Given this is not true with the observed sample, we are able to reject the null hypothesis and conclude that the seeded and unseeded clouds yield different quantities of rainfall.
+\end{proof}
+
+\begin{problem}{5.f}
+\end{problem}
+\begin{proof}
+We are aware that the mean change in log rain volume is $5.134 - 3.990 = 1.144$. In addition, the standard deviation should be $1.62\sqrt{1/13} = 0.449.$ The $t$-value chart as shown in the previous part shows that for a test that is two-tailed, $\alpha = 0.05$ and $df = 50$, the resultant t-value is $2$. This shows that the confidence interval is $(\mu - 2\sigma, \mu + 2\sigma) = (0.245, 2.04)$.
+\end{proof}
+
+\begin{problem}{5.g}
+\end{problem}
+\begin{proof}
+The results from $R$ show us that
+$$
+t = 2.5444, df = 50, p-value = 0.01408
+$$
+and the 95 percent confidence interval is $(0.240865, 2.046697)$. This matches with the results from 5.e and 5.f.
+\end{proof}
+\end{document}

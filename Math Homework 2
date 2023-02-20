@@ -1,0 +1,240 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 2}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{proof}
+For the sake of contradiction, assume $n \mu({f \geq n}) \rightarrow 0$ is not true. That implies that there exists some $\epsilon > 0$ such that $n \mu({f \geq n}) > \epsilon$ for infinitely many values $n \in \mathbb{N}$. Let $a_1, a_2, ...$ denote the values $n$ where $n \mu({f \geq n}) > \epsilon$. Next, let $A_n$ denote the subset of $X$ such that $f(x) \geq a_n$ for all $x \in A_n$. Next, let $b_1, b_2, ...$ denote a sequence such that $b_1 = a_1$, $b_k$ is equal to the smallest natural number $i$ such that $\mu(A_i) \leq \frac{1}{2}\mu(A_{b_{k-1}})$. Such a value must exist because if it didn't, that implies $\mu(A_i) > \frac{1}{2}\mu(A_{b_{k-1}})$ for all $i > b_{k-1}$, which would then imply that $f$ is infinite within a set of measure at least $\frac{1}{2}\mu(A_{b_{k-1}})$. This violates Proposition 9 of section 18.2 of Royden. Next, given $b_1 > b_2 > ...$, it follows that ${f \geq b_1} \supset {f \geq b_2} \supset ...$ and $A_1 \supset A_2 \supset ...$ . Let $B_i = A_{b_i} - A_{b_{i + 1}} = A_{b_i} \cap A_{b_{i + 1}}^c$. Given that $\sigma$-algebras are closed under intersection and compliment, $B_1, B_2, ...$ are all measurable sets. In addition, it is clear that $B_1, B_2, ...$ are disjoint from each other. Then, note that in $B_i$, $f$ is between $b_i$ and $b_{i+1}$ given $B_i = A_{b_i} - A_{b_{i + 1}} = {f(x) \geq b_i} - {f(x) \geq b_{i + 1}}$. Thus, consider a new function $\phi$ such that $\phi(x) = b_i$ for any $x \in B_i$ for all $i \in 0, 1, ...$. It is clear that $\phi \leq f$ at every point in $X$, thus
+$$
+\int_X f d\mu \geq \int_X \phi d\mu
+$$
+Then, consider the function $\phi_n$, which follows the property that $\phi_n(x) = b_i$ for any $x \in B_i$ for all $i \in 0, 1, ..., n$, and $\phi_n(x) = 0$ everywhere else. It is clear that $\phi(x) = \lim_{n \rightarrow \infty} \phi_n$. In addition, it is clear that each $\phi_n$ is a simple function. Thus, by using the monotone convergence theorem and the definition of the integral for simple functions, we see that
+$$
+\int_X \phi d\mu = \lim_{n \rightarrow \infty} \int_X \phi_n d\mu = \lim_{n \rightarrow \infty} \sum_{i = 0}^n (b_i)\mu(B_i) = \sum_{i = 0}^{\infty} (b_i)\mu(B_i).
+$$
+Given that $\mu(A_{b_k}) \geq 2\mu(A_{b_{k+1}})$ for any $k \in \mathbb{N}$, it follows that $\mu(B_i) = \mu(A_{b_i}) - \mu(A_{b_{i+1}}) \geq \mu(A_{b_i}) - \frac{1}{2}\mu(A_{b_i}) = \frac{1}{2}\mu(A_{b_i})$. Thus,
+$$
+\sum_{i = 0}^{\infty} (b_i)\mu(B_i) \geq \sum_{i = 0}^{\infty} \frac{(b_i)\mu(A_{b_i})}{2}.
+$$
+For any $i \in \mathbb{N}$, $b_i \in {a_1, a_2, ...}$ and thus by definition $b_i \mu(A_{b_i}) > \epsilon$. This shows that
+$$
+\sum_{i = 0}^{\infty} \frac{(b_i)\mu(A_{b_i})}{2} \geq \sum_{i = 0}^{\infty} \frac{\epsilon}{2},
+$$
+and the summation on the right clearly diverges given $\epsilon > 0$. This shows that $\int_X f d\mu$ is not finite, which contradicts the fact that $\int_X f d\mu < \infty$. This contradiction proves that $n \mu({f \geq n}) \rightarrow 0$.
+\end{proof}
+
+\begin{problem}{2}
+\end{problem}
+\begin{proof}
+First, let $g$ denote a bounded non-negative function defined on $X$. Let $\{\phi\}$ denote the set of all simple functions less than $g$, and let $\{\psi\}$ denote the set of all simple functions greater than $g$. If $\{-\psi\}$ denotes the set $\{\psi\}$ where every function is multiplied by -1, it is easy to see that $\{-\psi\}$ is the set of all simple functions less than $-f$. Given $g$ is bounded, let $|g(x)| \leq M$. Then, let $\{-\psi + M\}$ denote the set $\{-\psi\}$ where $M$ every function. $\{-\psi + M\}$ denotes the set of all simple functions less than $-g + M$. $-g + M$ is a positive, measurable function, and thus 
+$$
+-\int_X g d\mu + M\mu(X) = \int_{X} -g + M d\mu = \sup_{\psi \in \{-\psi + M\}}{\int_X \psi d\mu} = \sup_{\psi \in \{\psi\}}{\int_X -\psi + M d\mu} 
+$$
+$$
+= \sup_{\psi \in \{\psi\}}{\left(-\int_X \psi d\mu + M\mu(X)\right)} = \sup_{\psi \in \{\psi\}}{\left(-\int_X \psi d\mu\right)}  + M\mu(X) = -\inf_{\psi \in \{\psi\}}{\left(\int_X \psi d\mu\right)}  + M\mu(X).
+$$
+By subtracting $M\mu(X)$ from the first and last expressions in this equation, we can see that $\int_X g d\mu = \inf_{\psi \in \{\psi\}}{\left(\int_X \psi d\mu\right)}$. By definition $\int_X g d\mu = \sup_{\phi \in \{\phi\}}{\left(\int_X \phi d\mu\right)}$, and thus
+$$
+\sup_{\phi \in \{\phi\}}{\left(\int_X \phi d\mu\right)} = \int_X g d\mu = \inf_{\psi \in \{\psi\}}{\left(\int_X \psi d\mu\right)}
+$$
+
+Now we solve the first half of the problem. We are given in Section 18.2 that when $f > 0$, the integral of $f$ is the supremum of the integral of all simple functions less than $f$. In addition, for the general function $f$, 18.3 notes that $\int_X f d\mu = \int_X f^+ d\mu - \int_X f^- d\mu$, where $f^+ = max(0, f)$ and $f^- = max(-f, 0)$. Let $A^+$ denote all $x \in X$ where $f(x) > 0$ and let $A^-$ denote all $x \in X$ where $f(x) < 0$. Let $\{\phi^+\}$ denote the set of all simple functions that are less than $f$ in $A^+$ (and vanishing elsewhere), and let ${\phi^-}$ denote the set of all simple functions less than $f$ on $A^-$ (and vanishing elsewhere). Note that every simple function such that $\phi \leq f$ and $\phi(x) = 0$ for any $x \in X$ where $f(x) = 0$, $\phi$ can be represented as $\phi_1 + \phi_2$, where $\phi_1 \in \{\phi^+\}$ and $\phi_2 \in \{\phi^-\}$. Note that by definition, $\int_X f^+ d\mu = \sup_{\phi \in \{\phi^+\}}{\int_X \phi d\mu}$. Next, as shown previously, 
+$$\sup_{\phi \in \{\phi^-\}}{\int_X \phi d\mu} = \inf_{\psi \in \{\psi^-\}}{\int_X \psi d\mu}$$
+if $\{\psi^-\}$ is the set of all simple functions greater than $f$ on $A^-$ (and vanishing elsewhere). It then follows that 
+$$
+\inf_{\psi \in \{\psi^-\}}{\int_X \psi d\mu} = \sup_{\psi \in \{\psi^-\}}{\int_X -\psi d\mu}.
+$$
+By definition $\sup_{\psi \in \{\psi^-\}}{\int_X -\psi d\mu} = \int_{A^-} -f d\mu = \int_X -f^- d\mu$, and thus
+$$
+\sup_{\phi \in \{\phi^+\}}{\int_X \phi d\mu} + \sup_{\phi \in \{\phi^-\}}{\int_X \phi d\mu} = \int_X f^+ d\mu +  \int_X -f^- d\mu = \int_X f d\mu.
+$$
+Lastly, note that 
+$$
+\sup_{\phi \in \{\phi^+\}}{\int_X \phi d\mu} + \sup_{\phi \in \{\phi^-\}}{\int_X \phi d\mu} = \sup_{\phi \in \{\phi'\}}{\int_X \phi d\mu} = \sup_{\phi \in \{\phi\}}{\int_X \phi d\mu},
+$$
+due to the property on adding supremums. This shows that
+$$
+\sup_{\phi \in \{\phi\}}{\int_X \phi d\mu} =  \int_X f d\mu.
+$$
+
+For the other half of the problem regarding the infimum, repeat the entire proof above but for $-f$ instead of $f$. It would follow that
+$$
+\sup_{\phi \in \{\phi\}}{\int_X -\phi d\mu} = -\inf_{\phi \in \{\phi\}}{\int_X \phi d\mu} =  \int_X -f d\mu,
+$$
+and the desired result will follow by multiplying both sides of the last equality with $-1$.
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}
+In order for a function to be a measure, it must follow the properties of non-negattivity, null empty set, and countable additivity. 
+
+For non-negativity, given $g$ is non-negative, $g \geq 0$, and it follows that $v(E) = \int_E g d\mu \geq \int_E 0 d\mu = 0$. For null empty set, note that $\int_{\emptyset} g d \mu = 0$, and thus $v(\emptyset) = 0$. Lastly, for countable additivity, Theorem 12 of Section 18.3 notes that $v(A \cup B) = \int_{A \cup B} g d\mu = \int_{A} g d\mu + \int_B g d\mu = v(A) + v(B)$. Applying this property repeatedly shows that $v\left(\bigcup_{n \in 1, 2, ...} E_n \right) = \sum_{n \in 1, 2, ...} v(E_n)$. This shows that $ \int_E g d\mu $ is a valid measure.
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}
+Given $f$ is a non-negative function that is measurable, the simple approximation theorem notes that there exists a sequence increasing of simple functions $\{\phi_n\}$ such that $0 \leq \phi_n < f$ for all $n$, and $\{\phi_n\}$ converges pointwise to $f$ on $X$. Then, given $f(x) = \lim_{n \rightarrow \infty} \phi_n(x)$, the monotone convergence theorem then notes that 
+$$
+\lim_{n \rightarrow \infty} \int_X \phi_n dv = \int_X f dv.
+$$
+For any $n$, let $\phi_n$ take the values $c_1, c_2, ..., c_m$, and let $E_i$ denote the subset of $X$ where $\phi_n$ is equal to $c_i$. Then, 
+$$
+\int_X \phi_n dv = \sum_{i = 1}^m c_i(v(E_i)) = \sum_{i = 1}^m \left(c_i\int_{x \in E_i} g(x) d\mu\right) = \sum_{i = 1}^m \left(\int_{x \in E_i} c_i g(x) d\mu\right) = \sum_{i = 1}^m \left(\int_{x \in E_i} \phi_n(x) g(x) d\mu\right).
+$$
+Then, given $E_1, E_2, ...$ are all disjoint, additivity over domains shows that
+$$
+\sum_{i = 1}^m \left(\int_{x \in E_i} \phi_n(x) g(x) d\mu\right) = \int_{x \in E_1 \cup E_2 \cup ...} \phi_n(x) g(x) d\mu = \int_{X} \phi_n g d\mu.
+$$
+Substituting into this $\int_X \phi_n dv = \int_{X} \phi_n g d\mu$ into the previous inequality shows that
+$$
+\lim_{n \rightarrow \infty} \int_X \phi_n dv = \lim_{n \rightarrow \infty} \int_{X} \phi_n g d\mu = \int_X f dv.
+$$
+Given $\phi_ng$ is non-negative (given $g$ is non-negative), increasing (given $\phi_n$ increases as $n$ increases), and $\lim_{n \rightarrow \infty} (\phi_ng)(x) = (fg)(x)$ (given $\lim_{n \rightarrow \infty} \phi_n(x) = f(x)$), it follows from the monotone convergence theorem that
+$$
+\lim_{n \rightarrow \infty} \int_{X} \phi_n g d\mu = \int_{X} f g d\mu,
+$$
+which then shows that
+$$
+\int_{X} f g d\mu = \int_X f dv,
+$$
+finishing the proof.
+\end{proof}
+
+\begin{problem}{4}
+\end{problem}
+\begin{proof}
+Given $f \in L^1(\mu)$, it follows that $\int_X |f| d\mu < \infty$ by definition. Proposition 9 of Section 18.2 notes that $f$ is finite almost everywhere on $X$. For any finite $x > 0$, observe that $x^{1/n} = \sqrt[n]{x}$, and as $n \rightarrow \infty,$ $ \sqrt[n]{x} \rightarrow 1$. Thus, $f^{1/n} \rightarrow 1$ pointwise almost everywhere on $X$. Given that $f$ is clearly measurable, we fulfilled two of the three requirements to apply the Lebesgue Dominated Convergence Theorem. The last requirement is to find an integrable function that dominates the sequence $f^{1/n}$. We claim that $max(1, f)$ satisfies this requirement. First, note that for any $x \in X$ such that $f(x) < 1$, note that $f^{1/n}(x) \leq 1$ for any $n \in \mathbb{N}$. For any $x \in X$ such that $f(x) \geq 1$, note that $f^{1/n}(x) \leq f$ for any $n \in \mathbb{N}$. Thus, $f^{1/n} \leq max(1, f)$. In addition, Theorem 4 of section 18.1 notes that the maximum of two measurable functions is measurable $f$ is given to be measurable and $1$ is clearly measurable, and thus $max(1, f)$ is a measurable function. It is then easy to note that $max(1, f)$ is integrable. Therefore, $f^{1/n}$ satisfies the requirements for the Lebesgue Dominated Convergence Theorem. Applying this theorem shows that
+$$
+\lim_{n \rightarrow \infty} \int_X f^{1/n} d\mu = \int_X 1 d\mu.
+$$
+Given $1$ is a simple function, applying the definition of an integral for a simple functions hows that 
+$$
+\lim_{n \rightarrow \infty} \int_X f^{1/n} d\mu = \int_X 1 d\mu = \mu(X),
+$$
+which completes the proof.
+\end{proof}
+
+
+\begin{problem}{5}
+\end{problem}
+\begin{proof}
+We are given that $\{f_n\} \rightarrow f$ pointwise almost everywhere on $X$, $f$ is measurable, and there exists a non-negative integrable function $g$ that dominates $\{f_n\}$. First, note that $\{|f_n - f|\} \rightarrow 0$ pointwise almost everywhere because $\{f_n\} \rightarrow f$ pointwise almost everywhere on $X$, which means that for any $\epsilon > 0$, $|f(x) - f_n(x)| < \epsilon$ for any sufficiently large $n$. This is true for almost every $x \in X$. Now, we will show that $\{|f_n - f|\}$ follows all the requirements for the Lebesgue Dominated Convergence Theorem. First, Theorem 4 of section 18.1 proves that $f_n - f$ and $-(f_n - f)$ are both measurable. Then, note that $|g| = max(g, -g)$ for any function $g$. Thus, $|f_n - f| = max(-(f_n - f), f_n - f)$, which is also measurable due to Theorem 4. This is true for every $n \in \mathbb{N}$. This proves that $\{|f_n - f|\}$ is a sequence of measurable on $X$. In addition, we have already shown that $\{|f_n - f|\} \rightarrow 0$ pointwise almost everywhere, and $0$ is clearly a measurable functions since $X$ and $\emptyset$ are both measurable. Lastly, we must show that there is an integrable function that dominates the sequence $\{|f_n - f|\}$. We claim that $g + |f|$ dominates this set; this can be seen given $|f_n - f| \leq |f_n| + |f| \leq g + |f|$ for any $n \in \mathbb{N}$. Given $g$ and $f$ are both measurable, we satisfy the last condition to apply the Lebesgue Domainated Convergence Theorem. Applying this theorem shows that
+$$
+\lim_{n \rightarrow \infty} \int_X |f_n - f| d\mu = \int_X 0 d\mu.
+$$
+Given $0$ is a simple function, applying the definition of an integral for a simple functions hows that 
+$$
+\lim_{n \rightarrow \infty} \int_X |f_n - f| d\mu = \int_X 0 d\mu = 0\mu(X) = 0,
+$$
+which completes the proof.
+
+\end{proof}
+
+\begin{problem}{6}
+\end{problem}
+\begin{proof}
+
+We will apply Lebesgue Dominated Convergence Theorem to solve this problem. First, we are given that $\{f_n\} \rightarrow f$ almost everywhere, and $\{f_n\}$ are all measurable given $\{f_n\} \subset L^1(\mu)$. Next, given $f_n \leq |f_n| \leq g_n$, it follows that $\lim_{n \rightarrow \infty} f_n(x) \leq \lim_{n \rightarrow \infty}  |f_n(x)| \leq \lim_{n \rightarrow \infty}  g_n(x)$ for almost any $x \in X$, and thus $f(x) \leq g(x)$ almost everyhwere. Given $f$ dominates $g$, the integral comparison test shows that $f$ is integrable and therefore measurable. Lastly, to show the existence of a function that dominates $\{f_n\}$, apply Corollary 7 (Section 18.1) to show that $\limsup\{f_n\}$ is also measurable. This function clearly dominates $\{f_n\}$, and thus the last requirement for the theorem is satisfied.
+
+Given that $\{f_n\}$ follows all requirements necessary for the Lebesgue Dominated Convergence Theorem, applying the Lebesgue Dominated Convergence Theorem, we see that
+$$
+\lim_{n \rightarrow \infty} \int_X f_n d\mu = \int_X f d\mu.
+$$
+This shows that $f$ is integrable over $X$. Given $f_n \leq |f_n| \leq g_n$, it follows that $\lim_{n \rightarrow \infty} f_n(x) \leq \lim_{n \rightarrow \infty}  |f_n(x)| \leq \lim_{n \rightarrow \infty}  g_n(x)$ for almost any $x \in X$, and thus $f(x) \leq g(x)$ almost everyhwere. We are given that $\int_X g d\mu < \infty$, and therefore $\int_X f d\mu < \infty$ as well. This completes the proof by showing that
+$$
+\lim_{n \rightarrow \infty} \int_X f_n d\mu = \int_X f d\mu < \infty
+$$
+and $f \in L^1(\mu)$.
+\end{proof}
+
+\begin{problem}{7}
+\end{problem}
+\begin{proof}
+First, consider the set $\cap_{n \in \mathbb{N}} \cup_{i \geq n} E_n$. We note that every element in this set is a member of infinitely many sets of the form $E_n$. For the sake of contradiction, assume $x \in \cap_{n \in \mathbb{N}} \cup_{i \geq n} E_n$ and $x$ was a member of finitely many sets. Let the sets that contain $x$ be $E_{a_1}, E_{a_2}, ..., E_{a_m}$. $x \notin E_i$ for any $i > a_m$, and thus $i \notin \cup_{i \geq a_m + 1}$. This then shows that $x \notin \cap_{n \in \mathbb{N}} \cup_{i \geq n} E_n$ because $x$ is not contained within at least one set in the intersection. This contradiction shows that every element in the set $\cap_{n \in \mathbb{N}} \cup_{i \geq n} E_n$ is a member of infinitely many sets. Problem 2.ii from the first homework set shows that 
+$$
+\mu(\cap_{n \in \mathbb{N}} \cup_{i \geq n} E_n) \geq \limsup \mu(E_n),
+$$
+given $\mu(X) < \infty$. Then, given $\mu(E_n) \geq c$ for every $n \in \mathbb{N}$, it follows that $\limsup \mu(E_n) \geq c$, and thus $\mu(\cap_{n \in \mathbb{N}} \cup_{i \geq n} E_n) \geq c > 0$. This proves the existence of a set $\Omega \subset X$ where every $x \in \Omega$ is an element of infinitely many sets $E_n$ and $\mu(\Omega) \geq c > 0$.
+\end{proof}
+
+\begin{problem}{8}
+\end{problem}
+\begin{proof}
+Let $I_{n, k} = [\frac{n}{2^k}, \frac{n + 1}{2^k})$. Let $A_{n, m, k}$ denote the subset of $X$ containing every element $x \in X$ where $f(x) \in I_{n, k}$ and $g(x) \in I_{m, k}$. Consider the function $h_{k}$ such that $h_{k}(x) = \frac{nm}{2^{2k}}$ for any $x \in A_{n, m, k}$. We will show that $h_{k} \leq fg$, $\{h_{k}\}$ is an increasing sequence of functions, and $h_{k} \rightarrow fg$ as $k$ approaches infinity. 
+
+For any arbitrary $x \in X$, assume $x$ is an element of $A_{k, n, m}$. It follows that $f(x) \in I_{n, k} = [\frac{n}{2^k}, \frac{n + 1}{2^k})$ and  $g(x) \in I_{m, k} = [\frac{m}{2^k}, \frac{m + 1}{2^k})$, and thus $f(x) \geq \frac{n}{2^k}$ and $g(x) \geq \frac{m}{2^k}$. It follows that $h_{k}(x) = \frac{nm}{2^{2k}} \leq f(x)g(x)$. This is true for any $x \in X$, and thus $h_{k} \leq fg$. 
+
+Next, we will show that $h_{k} \leq h_{k + 1}$ for any $k$ in order to show that $\{h_{k}\}$ is increasing. If some arbitrary $x \in X$ is in $A_{n, m, k}$, then it is clearly also in one of the following: $A_{2n, 2m, k+1}, A_{2n + 1, 2m, k+1}, A_{2n, 2m + 1, k+1}, $ or $A_{2n + 1, 2m + 1, k+1}$ (given these four sets partition $A_{n, m ,k}$). If $x \in A_{2n, 2m, k+1}$, then $h_{k + 1}(x) = \frac{(2n)(2m)}{2^{2k+2}} = \frac{nm}{2^{2k}}$. If $x \in A_{2n + 1, 2m, k+1}$, then $h_{k + 1}(x) = \frac{(2n + 1)(2m)}{2^{2k+2}} = \frac{(n + 1/2)m}{2^{2k}}$. If $x \in A_{2n, 2m + 1, k+1}$, then $h_{k + 1}(x) = \frac{(2n)(2m + 1)}{2^{2k+2}} = \frac{n(m + 1/2)}{2^{2k}}$. Lastly, if $x \in A_{2n + 1, 2m + 1, k+1}$, then $h_{k + 1}(x) = \frac{(2n + 1)(2m + 1)}{2^{2k+2}} = \frac{(n + 1/2)(m + 1/2)}{2^{2k}}$. In all four cases, $h_{k + 1}(x) \geq h_k(x)$. This is true for any $x \in X$, and thus $h_{k + 1} \geq h_k$. 
+
+Lastly, we prove that $h_{k} \rightarrow fg$ as $k$ approaches infinity. For some arbitrary $x \in X$, assume $x \in A_{n, m, k}$. Note $f(x) \in [\frac{n}{2^k}, \frac{n + 1}{2^k}$ and $g(x) \in [\frac{m}{2^k}, \frac{m + 1}{2^k}$. It is clear that the maximum possible value of $f(x)g(x)$ is $\frac{(m + 1)(n + 1)}{2^{2k}}$, and the minimum is $\frac{mn}{2^{2k}}$. $h(x)$ is by definition $\frac{mn}{2^{2k}}$, thus $|f(x)g(x) - h_{k}(x)|$ is at most $\frac{(m + 1)(n + 1)}{2^{2k}} - \frac{mn}{2^{2k}} = \frac{m + n + 1}{2^{2k}}$. For $h_{k + 1}$, this equivalent $|f(x)g(x) - h_{k + 1}(x)|$ value is $\frac{2m + 2n + 1}{2^{2k +2}}$, $\frac{(2m + 1) + 2n + 1}{2^{2k + 2}}$, $\frac{2m + (2n + 1) + 1}{2^{2k + 2}}$, or $\frac{(2m + 1) + (2n + 1) + 1}{2^{2k + 2}}$. Given $k$ is sufficiently large, the constant factors don't matter, and it is easy to see that the the numerator increases by a factor of just over 2 while the denominator increases by a factor of 4. This shows that as $k$ approaches infinity, this difference approaches 0. Therefore, $\{h_k\}$ approaches $fg$ for any point $x \in X$.
+
+Thus, given $0 \leq h_{k} \leq fg$, $\{h_{k}\}$ is an increasing sequence of functions, and $h_{k} \rightarrow fg$ as $k$ approaches infinity, apply the monotone convergence theorem to show that
+$$
+\lim_{n \rightarrow \infty} \int_X h_{n} d\mu = \int_X fg d\mu.
+$$
+
+Next, we find the integral of $h_{n} $ using the summation definition as follows
+$$
+ \int_X h_{n} d\mu = \lim_{n, m \rightarrow \infty} \sum_{n \in 0, 1, ...} \sum_{m \in 0, 1, ...} \frac{nm}{2^{2k}} \mu(f^{-1}(I_n) \cap g^{-1}(I_m)) = \lim_{n, m \rightarrow \infty}  \sum_{n \in 0, 1, ...} \sum_{m \in 0, 1, ...} \frac{n}{2^k}\frac{m}{2^k} \mu(f^{-1}(I_n))\mu(g^{-1}(I_m))
+$$
+with the last equality being true due to the definition of independence. Next, note that
+$$
+\lim_{n, m \rightarrow \infty}  \sum_{n \in 0, 1, ...} \sum_{m \in 0, 1, ...} \frac{n}{2^k}\frac{m}{2^k} \mu(f^{-1}(I_n))\mu(g^{-1}(I_m)) = \lim_{n, m \rightarrow \infty}  \sum_{n \in 0, 1, ...} \frac{n}{2^k}\mu(f^{-1}(I_n))\sum_{m \in 0, 1, ...} \frac{m}{2^k}\mu(g^{-1}(I_m))
+$$
+It is easy to see that $\sum_{m \in 0, 1, ...} \frac{m}{2^k}\mu(g^{-1}(I_m)) = \int_X g d\mu$ as $m \rightarrow \infty$ because let $g_k$ be the function where $g_k = \frac{m}{2^k}$ for all $x \in X$ where $x \in I_m$. This can be verified by using the same processes used to verify that $\{h_k\}$ adheres to the requirements to the monotone convergence theorem, and then apply the monotone convergence theorem to $\{g_k\}$ to get the desired results. Applying this knowledge to the equation above shows that
+$$
+\lim_{n, m \rightarrow \infty}  \sum_{n \in 0, 1, ...} \frac{n}{2^k}\mu(f^{-1}(I_n))\sum_{m \in 0, 1, ...} \frac{m}{2^k}\mu(f^{-1}(I_m)) = \lim_{n \rightarrow \infty}  \sum_{n \in 0, 1, ...} \frac{n}{2^k}\mu(f^{-1}(I_n))\int_X g d\mu
+$$
+$$
+= \left(\int_X g d\mu\right)\lim_{n \rightarrow \infty}  \sum_{n \in 0, 1, ...} \frac{n}{2^k}\mu(f^{-1}(I_n)).
+$$
+For similar reasons as above, $\sum_{n \in 0, 1, ...} \frac{n}{2^k}\mu(f^{-1}(I_n)) = \int_X f d\mu$, and we can see that
+$$
+\left(\int_X g d\mu\right)\lim_{n \rightarrow \infty}  \sum_{n \in 0, 1, ...} \frac{n}{2^k}\mu(f^{-1}(I_n)) = \left(\int_X g d\mu\right)\left(\int_X f d\mu\right),
+$$
+which completes the proof.
+\end{proof}
+
+
+\begin{problem}{9a}
+\end{problem}
+\begin{proof}
+True. This follows from Proposition 17 of section 18.3. Proposition 17 states that if $f$ is a function integrable over $X$, then for each $\epsilon > 0$, there exists a $\delta > 0$ such that $\mu(E) < \delta$ implies $\inf_{E} |f| < \epsilon$. For the sake of contradiction, assume $\mu(E_n) \rightarrow 0$ but $\int_{E_n} f d \mu$ does not approach 0. This implies that there are infinitely many values of $n$ such that $\int_{E_n} f d \mu > \epsilon'$ for some $\epsilon'$. Then, given Proposition 17, there must exist a $\delta > 0$ such that $\inf_{E_n} |f| < \epsilon'$. First, note from integral comparison test (section 18.3) that
+$$
+\inf_{E_n} f d\mu \leq \left|\inf_{E_n} f d\mu\right| \leq \inf_{E_n} |f| < \epsilon'
+$$
+Thus, $\inf_{E_n} f < \epsilon'$ for all $E_n$ where $\mu(E_n) < \delta$. Given $\mu(E_n)$ converges to 0, there are only finitely many values of $n$ such that $\mu(E_n) > \delta'$, which means that there are only finitely many values of $n$ such that $\inf_{E_n} f > \epsilon'$. This conradicts the fact that there are infinitely many values of $n$ such that $\int_{E_n} f d \mu > \epsilon'$. This contradiction proves that if $\mu(E_n) \rightarrow 0$, then $\int_{E_n} f d \mu \rightarrow 0$.
+\end{proof}
+
+\begin{problem}{9b}
+\end{problem}
+\begin{proof}
+False. Consider the function $f(x) = 0$ for all $x \in X$. $f \in L^1(\mu)$ because $f$ is a simple function, and using the definition of the integral for simple function shows that the integral of $f$ over $X$ is 0. Consider any arbitrary sequence $\{E_n\}_n \subset M$ such that $\mu(E_n)$ does not converge to 0. Then, note that
+$$
+\lim_{n \rightarrow \infty} \int_{E_n} f d\mu = \lim_{n \rightarrow \infty} (0)(\mu(E_n)) = 0,
+$$
+with the first equality being true by applying the definition of the integral for simple functions. However, by definition $\mu(E_n)$ does not converge to zero. Thus, this presents a counter example that proves that $\int_{E_n} f d\mu \rightarrow 0$ does not imply $\mu(E_n) \rightarrow 0$.
+
+\end{proof}
+
+\end{document}

@@ -1,0 +1,179 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 4}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}[Solution]
+According to the standard normal table, the value for $P(Z < 1.13) = 0.87076$. Given the standard normal random variable is symmetric about $x = 0$, it follows that $P(Z < 1.13) = P(Z > -1.13)$, and thus $P(Z > -1.13) = 0.87076$.
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}[Solution]
+The condition that $|Z| < 0.5$ occurs if and only if none of the following are true: $Z \leq -0.5, Z \geq 0.5$. Thus, these events are the compliments to the event that $|Z| < 0.5$, and by the rule of compliments, $P(|Z| < 0.5) = 1 - (P(Z \leq -0.5) + P(Z \geq 0.5)))$ (given the two events are clearly disjoint). Then, using the standard normal random variable chart, note that $P(Z < 0.50) = 0.69146$, and by the compliment rule, $1 - P(Z < 0.50) = 0.30854 = P(Z \geq 0.50)$. In addition, given the standard normal random variable is symmetric about $x = 0$, it follows that $ P(Z \leq -0.50) = P(Z \geq 0.50)$, and thus $P(|Z| < 0.5) = 1 - (P(Z \leq -0.5) + P(Z \geq 0.5))) = 1 - 2(0.30854) = 0.38292$.
+\end{proof}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{proof}[Solution]
+First, using the standard normal table, we will determine the value of $Z$ that is the 94-th percentile. This is done by finding the value of $Z$ where the resulting area to the left of the $Z$ score is as close to $0.94$ as possible. This value turns out to be $Z = 1.55$. This means that $P(Z < 1.55) = 0.94$. By using the compliment property, we can see that $1 - P(Z < 1.55) = P(Z \geq 1.55) = 0.6$. Then, given the standard normal random variable is symmetric about $x = 0$, it follows that $P(Z \geq 1.55) = P(Z \leq -1.55) = 0.6$, which shows that the 6th percentile of the normal distribution is $Z = -1.55$ (the case where $Z = -1.55$ is ignored given the standard normal random variable has a probability of zero of equalling any specific value.).
+\end{proof}
+
+\begin{problem}{1.d}
+\end{problem}
+\begin{proof}[Solution]
+First, using the standard normal table, we will determine the value of $Z$ such that $P(Z < c) = 0.92$. This is done by finding the value of $Z$ such that the resulting area under the curve to the left of this $Z$ is close to 0.92. The desired value of $Z$ turns out to be $1.41$. Then, using the compliment property, $P(Z > 1.41) = 1 - P(Z < 1.41) = 0.08$ (we ignore the case where $Z = 1.41$ as noted in part 1.c). This shows that $P(Z > 1.41) = 0.08$.
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}[Solution]
+48 inches is $\frac{55 - 48}{6} = 1.167$ standard deviations below the mean. The probability that a 10 year old is less than 48 inches is equal to the probability that they are less than $1.167$ standard deviations below the mean. Using the standard normal table, we can see that $P(Z < -1.17) = 1 - P(Z \leq 1.17) = 0.121$, with the first equality holding given $P(Z < -1.17) = P(Z > 1.17)$ given symmetry about $x = 0$ and $P(Z \leq 1.17)$ is its compliment. Thus, $P(Z < -1.17) = 0.121$.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}[Solution]
+60 inches is $\frac{60 - 55}{6} = 0.833$ standard deviations above the mean. 65 inches is $\frac{65 - 55}{6} = 1.667$ standard deviations above the mean. The probability that a 10 year old is between 60 and 65 inches is equal to the probability that they are more than 0.833 standard deviations above the mean but not 1.667 above the mean. In other words, $P(60 \leq height \leq 65) = P(Z > 0.833) - P(Z > 1.667)$. Using the standard normal table, we can see that $P(Z \geq 0.833) = 1 - P(Z < .833) = 0.20327$, with the first equality holding due to the compliment rule. We can also see that $P(Z \geq 1.667) = 1 - P(Z < 1.667) = 0.04746$, with the first equality holding due to the compliment rule. Thus, $P(60 \leq height \leq 65) = P(Z > 0.833) - P(Z > 1.667) = 0.20327 - 0.04746 = 0.15581$.
+\end{proof}
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{proof}[Solution]
+We first find on the standard normal table the value $c$ of $Z$ such that $P(Z < c) = 0.9$. This value turns out to be $c = 1.28$. This then means that $P(Z \geq 1.28) = 1 - P(Z < 1.28) = 0.1$ due to the compliment rule. A height that is 1.28 standard deviations above the mean represents a height of $55 + 1.28(6) = 62.82$. Thus, the cutoff for very tall is $62.82$ inches.
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}[Solution]
+The probability that all four horses in use is equal to the probability that two hoses are used in the full service pumps and two hoses are used in the self service pumps. This corresponds to a probability of 0.3 on the table.
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}[Solution]
+The probability that only one hose is in use is equal to the probability that the only hose being used is in the full service pump plus the probability that the only hose being used is in the self service pump. $P(X = 1, Y = 0) = 0.08, P(X = 0, Y = 1) = 0.04$ on the table, and thus $P(X + Y = 1) = 0.08 + 0.04 = 0.12$.
+\end{proof}
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{proof}[Solution]
+Using the values on the table,
+
+$P(X = 0) = P(X = 0, Y = 0) + P(X = 0, Y = 1) + P(X = 0, Y = 2) = 0.10 + 0.04 + 0.02 = 0.16$.
+
+$P(X = 1) = P(X = 1, Y = 0) + P(X = 1, Y = 1) + P(X = 1, Y = 2) = 0.08 + 0.20 + 0.06 = 0.34$.
+
+$P(X = 2) = P(X = 2, Y = 0) + P(X = 2, Y = 1) + P(X = 2, Y = 2) = 0.06 + 0.14 + 0.30 = 0.50$.
+
+Thus, the marginal pmf $P_X$ is a function that is $0$ with probability 0.16, $1$ with probability 0.34, and $2$ with probability $0.5$.
+\end{proof}
+
+\begin{problem}{3.d}
+\end{problem}
+\begin{proof}[Solution]
+Using the values on the table,
+
+$P(Y = 0) = P(Y = 0, X = 0) + P(Y = 0, X = 1) + P(Y = 0, X = 2) = 0.10 + 0.08 + 0.06 = 0.24$.
+
+$P(Y = 1) = P(Y = 1, X = 0) + P(Y = 1, X = 1) + P(Y = 1, X = 2) = 0.04 + 0.20 + 0.14 = 0.38$.
+
+$P(Y = 2) = P(Y = 2, X = 0) + P(Y = 2, X = 1) + P(Y = 2, X = 2) = 0.02 + 0.06 + 0.30 = 0.38$.
+
+Thus, the marginal pmf $P_Y$ is a function that is $0$ with probability 0.24, $1$ with probability $0.38$, and $2$ with probability $0.38$.
+\end{proof}
+
+\begin{problem}{3.e}
+\end{problem}
+\begin{proof}[Solution]
+The probability that both hoses in the self-service pumps are being used is equal to $P_X(2)$, which we calculated to be $0.50$.
+\end{proof}
+
+\begin{problem}{3.f}
+\end{problem}
+\begin{proof}[Solution]
+By the definition of the conditional probability,
+$$P_{Y | X = 2}(y|2) = \frac{P(Y = y, X = 2)}{P(X = 2)}$$
+We are aware that $P(X = 2) = 0.50$ as shown in the previous part. Thus, using values in the chart,
+$$P_{Y | X = 2}(0|2) = \frac{P(Y = 0, X = 2)}{P(X = 2)} = \frac{0.06}{0.50} = 0.12.$$
+$$P_{Y | X = 2}(1|2) = \frac{P(Y = 1, X = 2)}{P(X = 2)} = \frac{0.14}{0.50} = 0.24.$$
+$$P_{Y | X = 2}(2|2) = \frac{P(Y = 2, X = 2)}{P(X = 2)} = \frac{0.30}{0.50} = 0.60.$$
+Thus, the conditional pmf $P_{Y | X = 2}(y|2)$ has a probability of $0.12$ assigned to 0, $0.24$ assigned to 1, and $0.60$ assigned to 2.
+\end{proof}
+
+\begin{problem}{3.g}
+\end{problem}
+\begin{proof}[Solution]
+By the definition of the conditional probability,
+$$P_{X | Y = 0}(x|0) = \frac{P(X = x, Y = 0)}{P(Y = 0)}$$
+We are aware that $P(Y = 0) = P_Y(0) = 0.24$ as shown in part d. Thus, using values in the chart,
+$$P_{X | Y = 0}(0|0) = \frac{P(X = 0, Y = 0)}{P(Y = 0)} = \frac{0.06}{0.24} = 0.25.$$
+$$P_{X | Y = 0}(1|0) = \frac{P(X = 1, Y = 0)}{P(Y = 0)} = \frac{0.08}{0.24} = 0.333.$$
+$$P_{X | Y = 0}(2|0) = \frac{P(X = 2, Y = 0)}{P(Y = 0)} = \frac{0.10}{0.24} = 0.417.$$
+Thus, the conditional pmf $P_{X | Y = 0}(x|0)$ has a probability of $0.25$ assigned to 0, $0.333$ assigned to 1, and $0.4167$ assigned to 2.
+\end{proof}
+
+\begin{problem}{3.h}
+\end{problem}
+\begin{proof}[Solution]
+$X$ and $Y$ are not independent. If $X$ and $Y$ are independent, then the choice of $Y$ should not affect $X$. However, looking at the chart, when $Y = 0$, it is most likely that $X = 0$ compared to $X = 1, 2$. However, if $Y = 2$, it is far more likely that $X = 2$ compared to $X = 0, 1$. This shows that the choice of $Y$ affects the outcome of $X$, and thus they are not independent variables.
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}[Solution]
+In order for the pmf to be valid, the area under the curve must be equal to 1. Given that the curve is only non-zero for $-1 \leq x, y \leq 1$, we will only take the integral over this area as such:
+$$
+1 = \int_{-1}^1 \int_{-1}^1 c(x + y)^2 \ dy \ dx
+$$
+$$
+= c \int_{-1}^1 \frac{(1 + x)^3}{3} -  \frac{(-1 + x)^3}{3} \ dx = c \int_{-1}^1 \frac{2}{3} + 2x^2 \ dx = c \left( \frac{8}{3} \right).
+$$
+This shows that $c = \frac{3}{8}= 0.375$.
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}[Solution]
+The probability can be determined by finding the area under the region where $0 < x < 1$, $0 < y < 1$. This means the probability is
+$$
+\int_{0}^1 \int_{0}^1 c(x + y)^2 \ dy \ dx = \int_{0}^1 \int_{0}^1 c(x + y)^2 \ dy \ dx = \int_0^1 \frac{3}{8}\frac{(x + 1)^3 - x^3}{3} dx = \frac{7}{16}.
+$$
+Thus, $P(0 \leq X \leq 1, 0 \leq Y \leq 1) = \frac{7}{16}$.
+\end{proof}
+
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}[Solution]
+The marginal pmf can be derived by taking the integral of the function over $Y$. In other words, using the integral work done in part a,
+$$
+p(x) = \frac{3}{8} \frac{(1 + x)^3}{3} -  \frac{(-1 + x)^3}{3}
+$$
+\end{proof}
+
+\begin{problem}{4.d}
+\end{problem}
+\begin{proof}[Solution]
+No, the variables are not independent. If the variables were independent, then the marginal pmf of the function would not change based on the value of $Y$. However, when $Y = 0$ the value of the pmf at $X = 1$ is double that of $X = 0$, but when $Y = 1$, the value of the pmf at $X = 1$ is quadruple that of $X = 0$. This shows the variables are not independent.
+\end{proof}
+
+\end{document}

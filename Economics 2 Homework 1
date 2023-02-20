@@ -1,0 +1,374 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Economics Homework 1}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+Anna's utility maximization problem is as follows:
+$$
+\max_{x_1, x_2} x_1^{\alpha}x_2^{1 - \alpha},
+$$
+$$
+p_1x_1 + p_2x_2 = m,
+$$
+$$
+x_1, x_2 \geq 0.
+$$
+The first expression maximizes the utility, the second ensures the bundle remains within Anna's budget, and the last inequality ensures the bundle does not contain negative quantities.
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}
+Using the above utility maximization problem, the Lagrangian can be written as follows:
+$$
+L(x_1, x_2) = x_1^{\alpha}x_2^{1 - \alpha} + \lambda(p_1x_1 + p_2x_2 - m).
+$$
+The first order conditions by taking the derivatives for $x_1, x_2, \lambda$ are as follows respectively:
+$$
+-\lambda p_1 = \alpha x_1^{\alpha - 1}x_2^{1 - \alpha}
+$$
+$$
+-\lambda p_2 = (1 - \alpha) x_1^{\alpha}x_2^{-\alpha}
+$$
+$$
+m = p_1x_1 + p_2x_2
+$$
+\end{proof}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{proof}
+Using the above first order conditions, we get that
+$$
+p_2(\alpha x_1^{\alpha - 1}x_2^{1 - \alpha}) = p_1((1 - \alpha) x_1^{\alpha}x_2^{-\alpha})
+$$
+$$
+p_2 \alpha (x_2) = p_1(1 - \alpha) (x_1).
+$$
+Then, given 
+$$
+m = p_1x_1 + p_2x_2,
+$$
+$$
+x_1  = \frac{m - p_2x_2}{p_1}.
+$$
+Substitution shows that
+$$
+p_2 \alpha (x_2) = p_1(1 - \alpha) \frac{m - p_2x_2}{p_1}.
+$$
+$$
+\alpha (p_2x_2) = m - p_2x_2 - \alpha m + \alpha p_2x_2
+$$
+$$
+x_2(p_1, p_2, m) = \frac{(1 - \alpha)m}{p_2}.
+$$
+Substituting the above equation into the first-order conditions show that
+$$
+x_1(p_1, p_2, m) = \frac{\alpha m}{p_1}.
+$$
+\end{proof}
+
+\begin{problem}{1.d}
+\end{problem}
+\begin{proof}
+Using the demand functions derived above, we get that the optimal expenditures for goods 1, 2 are $\alpha m$, $(1 - \alpha)m$ respectively. This shows that as $p_1$ increases, there is no change in the optimal expenditures for either good.
+\end{proof}
+
+\begin{problem}{1.e}
+\end{problem}
+\begin{proof}
+Given the demand functions
+$$
+x_1(p_1, p_2, m) = \frac{\alpha m}{p_1},
+$$
+$$
+x_2(p_1, p_2, m) = \frac{(1 - \alpha)m}{p_2},
+$$
+the indirect utility function is
+$$
+V(p_1, p_2, m) = U(x_1(p_1, p_2, m), x_2(p_1, p_2, m)) = \left(\frac{\alpha m}{p_1}\right)^{\alpha}\left(\frac{(1 - \alpha) m}{p_2}\right)^{1 - \alpha} = m\left(\frac{\alpha}{p_1}\right)^{\alpha}\left(\frac{(1 - \alpha)}{p_2}\right)^{1 - \alpha}.
+$$
+\end{proof}
+
+\begin{problem}{1.f}
+\end{problem}
+\begin{proof}
+Using the demand function derived in part c, we see that the 
+$$
+x_1(kp_1, kp_2, km) = \frac{\alpha km}{kp_1} = \frac{\alpha m}{p_1} = x_1(p_1, p_2, m),
+$$
+$$
+x_2(kp_1, kp_2, km) = \frac{(1 - \alpha) km}{p_2} = \frac{(1 - \alpha) m}{p_2} = x_2(p_1, p_2, m).
+$$
+This concludes that both demand functions are homogenous of degree zero.
+\end{proof}
+
+\begin{problem}{1.g}
+\end{problem}
+\begin{proof}
+Using the indirect utility function derived in part e, we see that
+$$
+V(kp_1, kp_2, km)= km\left(\frac{\alpha}{kp_1}\right)^{\alpha}\left(\frac{(1 - \alpha)}{kp_2}\right)^{1 - \alpha} = \frac{km}{k}\left(\frac{\alpha}{p_1}\right)^{\alpha}\left(\frac{(1 - \alpha)}{p_2}\right)^{1 - \alpha} = V(p_1, p_2, m).
+$$
+This proves that the indirect utility function is homogenous of degree zero.
+\end{proof}
+
+\begin{problem}{1.h}
+\end{problem}
+\begin{proof}
+The economic intuition behind the demand functions being homogeneous of degree zero is the fact that when both prices and income increase by the same constant, the purchasing power of an individual stays the same and thus the optimal bundle should not change for either goods. Given this, we can additionally see that the indirect utility function is homogenous of degree zero because changing the prices/income by a factor doesn't change the optimal bundle, meaning the maximum utility does not change either.
+\end{proof}
+
+\begin{problem}{1.i}
+\end{problem}
+\begin{proof}
+We calculate Anna's Marginal utility of income by taking the partial derivative of the indirect utility function by income $m$. We see that
+$$
+\frac{\partial V}{\partial m} = \left(\frac{\alpha}{p_1}\right)^{\alpha}\left(\frac{(1 - \alpha)}{p_2}\right)^{1 - \alpha}.
+$$.
+\end{proof}
+
+\begin{problem}{1.j}
+\end{problem}
+\begin{proof}
+Observe that
+$$
+\frac{\partial V}{\partial p_1} = -\frac{\alpha m}{p_1} \left(\frac{\alpha}{p_1}\right)^{\alpha}\left(\frac{(1 - \alpha)}{p_2}\right)^{1 - \alpha}.
+$$
+$$
+\frac{\partial V}{\partial p_2} = -\frac{(1 - \alpha) m}{p_2} \left(\frac{\alpha}{p_1}\right)^{\alpha}\left(\frac{(1 - \alpha)}{p_2}\right)^{1 - \alpha}.
+$$
+\end{proof}
+
+\begin{problem}{1.k}
+\end{problem}
+\begin{proof}
+Observe that $\frac{\partial V}{\partial m}$, $\frac{\partial V}{\partial p_1}$, $\frac{\partial V}{\partial p_2}$ are related as follows:
+$$
+\frac{\partial V}{\partial m} = -\left(\frac{\alpha}{p_1}\right)^{\alpha}\left(\frac{(1 - \alpha)}{p_2}\right)^{1 - \alpha} = -x_1(p_1, p_2, m)\frac{\partial V}{\partial p_1}
+$$
+$$
+\frac{\partial V}{\partial m} = -\left(\frac{(1 - \alpha)}{p_2}\right)^{\alpha}\left(\frac{(1 - \alpha)}{p_2}\right)^{1 - \alpha} = -x_2(p_1, p_2, m)\frac{\partial V}{\partial p_2}
+$$
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}
+Observe that
+$$
+u(x_1, x_2) = \alpha ln(x_1) + (1 - \alpha)ln(x_2) = ln(x_1^{\alpha}) + \ln(x_2^{1 - \alpha}) = ln(x_1^{\alpha}x_2^{1 - \alpha}).
+$$
+We can observe from this that the new utility function is merely a monotonic transformation of the original utility function, given $ln$ is a monotonic function. We are aware that applying monotonic transformations to a utility function does not change the optimal bundle given every other variable remains constant. This additionally means that the demands are homogeneous of degree 0. The new indirect utility function is merely the natural log of the old indirect utility function, given the optimal bundle remains identical. This does not change the fact that the new indirect utility function is still homogenous of degree zero. Marginal utility of income and marginal utility as price changes also change as a result of this change in utility function. Given the indirect utility function is
+$$
+ln\left(m\left(\frac{\alpha}{p_1}\right)^{\alpha}\left(\frac{(1 - \alpha)}{p_2}\right)^{1 - \alpha}\right) = ln\left(\left(\frac{\alpha}{p_1}\right)^{\alpha}\left(\frac{(1 - \alpha)}{p_2}\right)^{1 - \alpha}\right) + ln(m).
+$$
+This suggests that the marginal utility of income is $\frac{1}{m}$. Similarly, $\partial V/\partial p_1$ is equal to the partial derivative of $ln(p_1^{-\alpha})$, which is $-\alpha/p_1$. $\partial V/\partial p_2$ is equal to the partial derivative of $ln(p_2^{- 1 + \alpha})$, which is equal to $(\alpha - 1)/p_2$.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}
+Observe that
+$$
+u(x_1, x_2) = (x_1^{\frac{\alpha}{\alpha + \beta}}x_2^{\frac{\beta}{\alpha + \beta}})^{\alpha + \beta}.
+$$
+Observe that $x_1^{\frac{\alpha}{\alpha + \beta}}x_2^{\frac{\beta}{\alpha + \beta}}$ is the Cobb-Douglas utility function as shown in part 1, and raising this to the power of $\alpha + \beta$ is a monotonic transformation. We are aware that applying monotonic transformations to a utility function does not change the optimal bundle given every other variable remains constant. This additionally means that the demands are homogeneous of degree 0. The new indirect utility function is merely the the old indirect utility function raised to the power of $\beta + \alpha$, given the optimal bundle remains identical. This does not change the fact that the new indirect utility function is still homogenous of degree zero. Marginal utility of income and marginal utility as price changes also change as a result of this change in utility function. Given the indirect utility function is
+$$
+\left(m\left(\frac{r}{p_1}\right)^{r}\left(\frac{(1 - r)}{p_2}\right)^{1 - r}\right)^{\alpha + \beta} = m^{\alpha + \beta}\left(\left(\frac{r}{p_1}\right)^{r}\left(\frac{(1 - r)}{p_2}\right)^{1 - r}\right)^{\alpha + \beta},
+$$
+where $r = \alpha(\alpha + \beta)$, this suggests that the marginal utility of income is
+$$
+(\alpha + \beta)m^{\alpha + \beta - 1}\left(\left(\frac{r}{p_1}\right)^{r}\left(\frac{(1 - r)}{p_2}\right)^{1 - r}\right)^{\alpha + \beta}.
+$$
+Similarly, 
+$$
+\frac{\partial V}{\partial p_1} = (-r(\alpha + \beta))(p_1)^{-r(\alpha + \beta) - 1}\left(m\left(r\right)^{r}\left(\frac{(1 - r)}{p_2}\right)^{1 - r}\right)^{\alpha + \beta}
+$$ 
+and
+$$
+\frac{\partial V}{\partial p_2} = (-(1 - r)(\alpha + \beta))(p_2)^{-r(\alpha + \beta) - 1}\left(m\left(\frac{r}{p_1}\right)^{r}\left(1 - r\right)^{1 - r}\right)^{\alpha + \beta}.
+$$
+\end{proof}
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{proof}
+In this case, the answer to problem $f$ should not change because as noted in 1.f, the demand function for a good should always be homogenous of degree 0 because when both prices and income increase by a factor of $k$, the purchasing power remains constant and thus the optimal bundle remains the same.\
+
+Additionally, it should still be true that
+$$
+\frac{\partial V}{\partial m} = -x_1^*\frac{\partial V}{\partial p_1} = -x_2^*\frac{\partial V}{\partial p_2}
+$$
+because intuitively a decrease in the prices is associated with an increase in the purchasing power of a fixed income, and thus the marginal utility of income increases.
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}
+First, observe that given this utility function, the Lagrangian is
+$$
+L(x_1, x_2) = \left(\alpha x_1^{\frac{\sigma - 1}{\sigma}} + (1 - \alpha)x_2^{\frac{\sigma - 1}{\sigma}}\right)^{\frac{\sigma}{\sigma - 1}} + \lambda (m - p_1x_1 - p_2x_2).
+$$
+The first order conditions are
+$$
+p_1\lambda = \frac{\sigma}{\sigma - 1}\left(\alpha x_1^{\frac{\sigma - 1}{\sigma}} + (1 - \alpha)x_2^{\frac{\sigma - 1}{\sigma}}\right)^{\frac{1}{\sigma - 1}}(\alpha)\frac{\sigma - 1}{\sigma}x_1^{\frac{-1}{\sigma}}
+$$
+$$
+p_2\lambda = \frac{\sigma}{\sigma - 1}\left(\alpha x_1^{\frac{\sigma - 1}{\sigma}} + (1 - \alpha)x_2^{\frac{\sigma - 1}{\sigma}}\right)^{\frac{1}{\sigma - 1}}(1 - \alpha)\frac{\sigma - 1}{\sigma}x_2^{\frac{-1}{\sigma}}
+$$
+$$
+m = p_1x_1 + p_2x_2.
+$$
+We can see that
+$$
+\frac{p_2}{p_1} = \frac{1 - \alpha}{\alpha}\left(\frac{x_1}{x_2}\right)^{1/\sigma}.
+$$
+Applying the equation for the elasticity of substitution, we see that
+$$
+\frac{\partial ln \left(x_1/x_2\right)}{\partial ln \left(p_2/p_1\right)} = \frac{(p_2/p_1)\partial (x_1/x_2)}{(x_1/x_2)\partial(p_2/p_1)} = \frac{\alpha}{1 - \alpha}\frac{1 - \alpha}{\alpha}\left(\frac{p_2}{p_1}\frac{\alpha}{1 - \alpha}\right)^{- \sigma}\left(x_1/x_2\right)^{-1}(\sigma) = \sigma.
+$$
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}
+First, note that
+$$
+x_1^{\alpha}x_2^{1 - \alpha} = x_2(x_1/x_2)^{\alpha}.
+$$
+Note that
+$$
+\left(\alpha x_1^{(\sigma - 1)/\sigma} + (1 - \alpha) x_2^{(\sigma - 1)/\sigma}\right)^{\sigma/(\sigma - 1)} = exp\left(\left(\sigma/(\sigma - 1)\right)ln\left(\alpha x_1^{(\sigma - 1)/\sigma} + (1 - \alpha) x_2^{(\sigma - 1)/\sigma}\right)\right)
+$$
+thus, if
+$$
+\lim_{\sigma \rightarrow 1} \left(\alpha x_1^{(\sigma - 1)/\sigma} + (1 - \alpha) x_2^{(\sigma - 1)/\sigma}\right)^{\sigma/(\sigma - 1)} = L,
+$$
+$$
+L = exp \left(\lim_{\sigma \rightarrow 1} \left(\sigma/(\sigma - 1)\right)ln\left(\alpha x_1^{(\sigma - 1)/\sigma} + (1 - \alpha) x_2^{(\sigma - 1)/\sigma}\right)\right).
+$$
+We now apply L'hopital's rule to the expression limit in the above equation. The denominator is $\sigma - 1$, for which the derivative is 1. On the other hand, the derivative of the numerator is
+$$
+\frac{\sigma \left((1 - \alpha)x_2^{\frac{\sigma - 1}{\sigma}}ln(x_2)\left(\frac{1}{\sigma} - \frac{\sigma - 1}{\sigma^2}\right) + \alpha(x_1)^{\frac{\sigma - 1}{\sigma}} ln(x_1)\left(\frac{1}{\sigma} - \frac{\sigma - 1}{\sigma^2}\right)\right)}{(1 - \alpha)x_2^{\frac{\sigma - 1}{\sigma}} + \alpha x_1^{\frac{\sigma - 1}{\sigma}}} + ln((1 - \alpha)x_2^{\frac{\sigma - 1}{\sigma}} + \alpha x_1^{\frac{\sigma - 1}{\sigma}}).
+$$
+As $\sigma \rightarrow 1$, this expression is equal to
+$$
+(1 - \alpha)ln(x_2) + \alpha ln(x_1) = ln(x_1^{\alpha}x_2^{1 - \alpha}).
+$$
+Thus, substituting this back into the equation, we get that
+$$
+L = exp \left(ln(x_1^{\alpha}x_2^{1 - \alpha})\right) = x_1^{\alpha}x_2^{1 - \alpha}.
+$$
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+Note that
+$$
+MP_l = \frac{\partial y}{\partial l} = (1 - \alpha)Ak^{\alpha}l^{- \alpha} = \frac{(1 - \alpha)y}{l}.
+$$
+Given $l, y > 0$ and given $\alpha < 1$ always, $MP_l$ is always positive. 
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+Note that
+$$
+\frac{\partial MP_l}{\partial l} = (- \alpha)(1 - \alpha)Ak^{\alpha}l^{- (\alpha + 1)}.
+$$
+It is always true that $(-\alpha)(1 - \alpha) A k^{\alpha}$ is a negative constant given $\alpha \in (0, 1)$, and $l^{- (\alpha + 1)}$ is a positive number that decreases in quantity as $l$ increases. This shows that as the use of labor increases, $MP_l$ always decreases. In other words, there is always diminishing returns for increasing the quantity of labor used.
+\end{proof}
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}
+See last page for graphs.
+\end{proof}
+
+\begin{problem}{4.d}
+\end{problem}
+\begin{proof}
+Note that
+$$
+MP_l = (1 - \alpha)Ak^{\alpha}l^{- \alpha},
+$$
+and thus if $k$ increases, from $k$ to $k^*$, $MP_l$ increase by a factor of $(k^*/k)^{\alpha}$ for every level of production. Similarly, 
+$$
+\frac{\partial MP_l}{\partial l} = (- \alpha)(1 - \alpha)Ak^{\alpha}l^{- (\alpha + 1)},
+$$
+thus when $k$ changes to $k^*$, the rate at which $MP_l$ changes as labor increases increases by a factor of $(k^*/k)^{\alpha}$ as well.
+\end{proof}
+
+\begin{problem}{4.e}
+\end{problem}
+\begin{proof}
+First, observe that
+$$
+\frac{\partial MP_l}{\partial k} = (\alpha)(1 - \alpha)Ak^{\alpha - 1}l^{- (\alpha + 1)}.
+$$
+This value is strictly positive as $(\alpha)(1 - \alpha)A$ are positive, and $k^{\alpha - 1}l^{- (\alpha + 1)}$ is also positive. This shows that labor and capital are indeed Edgeworth complements, as increasing capital or increasing labor will increase the marginal product of the other.
+\end{proof}
+
+\begin{problem}{4.f}
+\end{problem}
+\begin{proof}
+See last page for graphs.
+\end{proof}
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{proof}
+See last page for graphs.
+\end{proof}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{proof}
+See last page for graphs.
+\end{proof}
+
+\begin{problem}{5.c}
+\end{problem}
+\begin{proof}
+See last page for graphs.
+\end{proof}
+
+\begin{problem}{5.d}
+\end{problem}
+\begin{proof}
+Observe that if both labor and capital increase by a factor of $\alpha$,
+$$
+A(\alpha k)^{1/2}(\alpha l)^{1/2} = A\alpha k^{1/2}l^{1/2} = \alpha y.
+$$
+This shows that there is a constant returns to scale as the production increases by the same factor by which the inputs increase.
+\end{proof}
+
+\begin{problem}{5.e}
+\end{problem}
+\begin{proof}
+The results from the graph support the mathematical proof from part d. On the graph, we identified three different points on the isoquant when the output is equal to $1$. By doubling the capital and labor associated with each of these points, the resulting production bundle lies on the isoquant when the output is equal to 2. This suggests that when the inputs increase by a factor of two, the resulting production also doubles. This is the behavior predicted from the mathematical proof from part d, and it shows that there is a constant returns to scale for the given production function.
+\end{proof}
+
+\end{document}

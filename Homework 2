@@ -1,0 +1,503 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 2}
+\author{Jian Park\\
+20700: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+ 
+\begin{problem}{1.1a}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the matrix $I_n$. This matrix represents a linear operator in $n$-dimensional vector space, but all the eigenvalues are 1 because the diagonal entires of a diagonal matrix are its eigenvalues.
+\end{proof}
+
+\begin{problem}{1.1b}
+\end{problem}
+\begin{proof}[Solution]
+True. By definition, an eigenvector must be non-zero. Thus, if $v$ is given to be an eigenvector for some matrix $A$, $\alpha v$ is also an eigenvector for any non-zero $\alpha$ because $(A- \lambda I)(\alpha v) = \alpha (A-\lambda I)v = \alpha(0) = 0$.
+\end{proof}
+
+\begin{problem}{1.1c}
+\end{problem}
+\begin{proof}[Solution]
+True. Consider the $2 \times 2$ matrix 
+$$
+A = \begin{bmatrix}
+0 & -1 \\
+1 & 0 
+\end{bmatrix}.
+$$
+Using the function for the determinant of a $2 \times 2$ matrix, we can see that $det(A - \lambda I) = \lambda^2 - (1)(-1) = \lambda^2 + 1$. Thus, we observe there are no real zeros to the characteristic polynomial $det(A - \lambda I)$, thus there is no real eigenvalue for $A$.
+\end{proof}
+
+\begin{problem}{1.1d}
+\end{problem}
+\begin{proof}[Solution]
+False. If $A$ is an $n \times n$ matrix, the value $det(A - \lambda I)$ is a polynomial of degree $n$. Given that $n \geq 1$, we know from the characteristic polynomial has at least 1 complex zero due to the fundamental theorem of algebra. Thus, $det(A - \lambda I) = 0$ has at least one solution, thus there is at least one eigenvalue $\lambda$.
+\end{proof}
+
+\begin{problem}{1.1e}
+\end{problem}
+\begin{proof}[Solution]
+True. For any similar square matrices $A, B$, we know that $A = SBS^{-1}$ for some invertible matrix $S$. Thus, $A - \lambda I = S(B - \lambda I)S^{-1}$, and thus $det(A - \lambda I) = det(S)det(B - \lambda I)det(S^{-1}) = det(B - \lambda I) = det(B - \lambda I)$. We observe that for any eigenvalue $\lambda$ of A, $det(B - \lambda I) = 0$, thus $\lambda$ is also an eigenvalue of $B$. Similarly, any eigenvalue of $B$ is an eigenvalue of $A$. Thus, the eigenvalues of any two similar matrices are identical.
+\end{proof}
+
+\begin{problem}{1.1f}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the $2 \times 2$ matrix
+$$
+A = \begin{bmatrix}
+0 & 1 \\
+1 & 0 
+\end{bmatrix}.
+$$
+It is easy to observe that $A(1, 1)^T = (1, 1)^T$, thus $(1, 1)^T$ is an eigenvector of $A$. Then, consider the the matrix 
+$$
+S = \begin{bmatrix}
+1 & 1 \\
+1 & 0 
+\end{bmatrix}.
+$$
+We can calculate that its inverse is
+$$
+S^{-1} = (-1)\begin{bmatrix}
+0 & -1 \\
+-1 & 1 
+\end{bmatrix} = \begin{bmatrix}
+0 & 1 \\
+1 & -1 
+\end{bmatrix}.
+$$
+Then, we can then see that 
+$$SAS^{-1} = B = \begin{bmatrix}
+1 & 0 \\
+1 & -1 
+\end{bmatrix}.$$
+However, $B(1, 1)^T = (1, 0)^T$, which shows that $(1, 0)^T$ is not an eigenvector of $B$. Thus, similar matrices do not necessarily share eigenvectors.
+\end{proof}
+
+\begin{problem}{1.1g}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the $2 \times 2$ matrix
+$$
+A = \begin{bmatrix}
+1 & 0 \\
+0 & 0 
+\end{bmatrix}.
+$$
+We observe that $Ae_1 = (1)e_1$ and $Ae_2 = (0)e_2$. Thus, $e_1$ and $e_2$ are eigenvectors. However, $e_1 + e_2 = (1, 1)^T$, and $A(1, 1)^T = (1, 0)^T$, thus $(1, 1)^T$ is not an eigenvector.
+\end{proof}
+
+\begin{problem}{1.1h}
+\end{problem}
+\begin{proof}[Solution]
+True. Given two nonzero vectors $v_1, v_2$ where $Av_2 = \lambda v_2$ and $Av_1 = \lambda v_1$ for some matrix $A$ and value $\lambda$, $A(\alpha v_1 + \beta v_2) = \alpha A v_1 + \beta A v_2 = \alpha (\lambda v_1) + \beta (\lambda v_2) = \lambda (\alpha v_1 + \beta v_2)$. Thus, as long as $\alpha v_1 + \beta v_2 \neq 0$, the linear combination of any two eigenvectors corresponding to the same eigenvalue is always an eigenvector as well.
+\end{proof}
+
+\begin{problem}{1.3}
+\end{problem}
+\begin{proof}[Solution]
+For the given matrix $A$, we observe that the character polynomial of $A$ can be defined as
+\begin{equation}
+\begin{split}
+det(A - \lambda I) = & (cos(\alpha ) - \lambda)(cos(\alpha ) - \lambda) - (- sin(\alpha))(sin(\alpha)) \\
+& = cos^2(\alpha) + sin^2(\alpha) - 2\lambda cos(\alpha) + \lambda^2 \\
+& = \lambda^2 -2cos(\alpha) \lambda + 1.
+\end{split}
+\end{equation}
+Using the quadratic equation, we observe that the zeros of this polynomial occurs when 
+$$
+\lambda = cos(\alpha) \pm \sqrt{cos^2(\alpha) - 1}.
+$$
+Then, given that $cos^2(\alpha) - 1 = sin^2(\alpha)$, we observe that the eigenvalues are $cos(\alpha) + i|sin(\alpha)|$ and $cos(\alpha) - i|sin(\alpha)|$. Then, let $v$ denote some eigenvector of $A$. Then, $Av = \lambda v$ for some $\lambda$, and $(A-\lambda I)v = 0$. Thus, substituting this equation with the two possible values of $\lambda$, we observe that
+$$
+\begin{bmatrix}
+i|sin(\alpha)| & -sin(\alpha) \\
+sin(\alpha) & i|sin(\alpha)| 
+\end{bmatrix}v = 0
+$$
+or
+$$
+\begin{bmatrix}
+-i|sin(\alpha)| & -sin(\alpha) \\
+sin(\alpha) & -i|sin(\alpha)| 
+\end{bmatrix}v = 0.
+$$
+For the top matrix, observe that $v = (a_1+ib_1, a_2 + ib_2)^T$ must be a vector where $(a_1 + ib_1)i|sin(\alpha)| = -(a_2 + ib_2)sin(\alpha)$ and $(a_2 + ib_2)i|sin(\alpha)| = (a_1 + ib_1)sin(\alpha)$. By solving this system of linear equations, we observe that $b_1 = a_2$ and $b_2 = -a_1$ when $sin(\alpha) \geq 0$, and $b_1 = -a_2$ and $b_2 = a_1$ otherwise. Similarly, for the second matrix, we observe that $v$ must be a vector where $b_1 = -a_2$ and $b_2 = a_1$ when $sin(\alpha) \geq 0$, and $b_1 = a_2$ and $b_2 = -a_1$ otherwise. Thus, if $cos(\alpha) \neq 0$, then a vector $v$ is an eigenvector iff $v = (a + ib, -b + ia)$ or $v = (a + ib, b -ia)$ for any $a, b \in \mathbb{R}$. If $cos(\alpha) = 0$, then any vector can be an eigenvector.
+\end{proof}
+
+\begin{problem}{1.5}
+\end{problem}
+\begin{proof}[Solution]
+As shown in section 3 of Chapter 3, the determinant of a triangular matrix is equal to the product of the diagonal entries. This can be shown by doing row replacement operations using the diagonal values such that the resulting matrix is a diagonal matrix (this process does not alter the elements on the diagonal). Given that row replacement does not change the determinant of a matrix, the determinant of the original matrix is equal to the determinant of this diagonal matrix, and the determinant of the diagonal matrix is the product of its diagonal elements (this can be seen by factoring out all the scalar values such that the diagonal matrix becomes the identity matrix).
+
+Given this, for some triangular matrix $A$, observe that $det(A) = a_{1, 1}a_{2, 2} ... a_{n, n}$, thus $det(A - \lambda I) = (a_{1, 1} - \lambda)(a_{2, 2} - \lambda) ... (a_{n, n} - \lambda)$. This shows quite clearly that the diagonal elements of $A$ coincide to the eigenvalues of $A$, given that setting $\lambda$ to equal $a_{i, i}$ will make $det(A - \lambda I) = 0$. This also shows that the multiplicities coincide.
+\end{proof}
+
+\begin{problem}{1.6}
+\end{problem}
+\begin{proof}[Solution]
+For the sake of contradiction, assume that some non-zero value $\alpha$ is an eigenvalue of a nilpotent $A$. Then, that implies the existence of some non-zero vector $v$ where $Av = \alpha v$. Given that $A^k = 0$ for some $k$, $A^kv = \lambda^kv = 0$. However, for any complex number $\lambda \neq 0$,  we know that $\lambda^k \neq 0$ because $\lambda^{k-1}\lambda = 0$ iff $|\lambda^{k-1}\lambda| = 0$, and this is true iff $|\lambda^{k-1}||\lambda| = 0$, which implies that either $|\lambda^{k-1}| = 0$ or $|\lambda| = 0$ (then via induction, we can show that this last statement is equal to saying that $|\lambda| = 0$). Given that $\lambda^k \neq 0$, $\lambda^kv \neq 0$, which yields a contradiction to the fact that $Av = 0$.
+\end{proof}
+
+\begin{problem}{1.7}
+\end{problem}
+\begin{proof}[Solution]
+Exercise 3.11 from Chapter 3 states that
+$$
+det\left(\begin{bmatrix}
+A & * \\
+0 & B
+\end{bmatrix}\right) = det(A)det(B).
+$$
+Then, if $C$ is the given block matrix,
+$$
+C - \lambda I = \begin{bmatrix}
+A - \lambda I & * \\
+0 & B - \lambda I
+\end{bmatrix},
+$$
+thus using the property from ex. 3.11, $det(C - \lambda I) = det(A - \lambda I)det(B - \lambda I)$.
+\end{proof}
+
+\begin{problem}{1.8}
+\end{problem}
+\begin{proof}[Solution]
+We observe that for any vector $v_i$ in the basis of $V$, $Av_i = \alpha_{1, i}v_1 + ... + \alpha_{n, i}v_n$ for some constants $\alpha_{1, i}, ..., \alpha_{n, i}$, and these constants are the elements of the $i$-th column of matrix $A$.
+
+We know that $Av_i = \lambda v_i$ for any $1 \leq i \leq k$, thus 
+$$
+Av_i = 0v_1 + ... + 0v_{i-1} + \lambda v_i + ... + 0v_n.
+$$
+
+This shows that only the $i$-th element of the $i$-th column is non-zero, and that value is $\lambda$. Therefore, applying this property to all $1 \leq i \leq k$ yields the desired block triangular form where the top left is the identity and the bottom left left is the zero matrix.
+\end{proof}
+
+\begin{problem}{1.10}
+\end{problem}
+\begin{proof}[Solution]
+We are given in section 1.2 that $det(A - \lambda I)$ is a polynomial of degree $n$, and we are given that $det(A - \lambda I) = 0 \iff \lambda$ is an eigenvalue of $A$. In addition, we know from section 1.5 that some eigenvalues have an algebraic multiplicity greater than 1, which means that the characteristic polynomial is divisible by $(\lambda - \lambda_i)^{k}$ where $\lambda_i$ is some eigenvalue and $k$ is the algebraic multiplicity. Thus, $det(A - \lambda I) = c(\lambda_1 - \lambda)^{k_1} + ... + (\lambda_i - \lambda)^{k_i}$ where $k_j$ is the multiplicity for eigenvalue $\lambda_j$, and where $c$ is some constant. 
+
+Using the permutation definition of the determinant then,
+
+$$
+det(A - \lambda I) = \sum_{\sigma \in Perm(n)} D(e_{\sigma (1)}, ..., e_{\sigma (n)}) \prod_{i = 1}^n (A - \lambda I)_{\sigma (i), i}.
+$$
+
+Observe from this equation that the only time when the above summation affects the coefficient of $\lambda^n$ when $\sigma = \{1, 2, ..., n\}$. In this permutation, $D(e_{\sigma (1)}, ..., e_{\sigma (n)}) = 1$, and $\prod_{i = 1}^n (A - \lambda I)_{i, i} = \prod_{i = 1}^n (A_{i, i} - \lambda)$, thus the coefficient in front of $\lambda^n$ is $(-1)^n$. Applying this back to the formula, we observe that $c = (-1)^n$, thus $det(A - \lambda I) = (-1)^n(\lambda_1 - \lambda)^{k_1} + ... + (\lambda_i - \lambda)^{k_i} = (\lambda - \lambda_1)^{k_1} + ... + (\lambda - \lambda_i)^{k_i}$
+
+Then, we observe that $det(A - (0)I) = det(A) = \lambda_1^{k_1}\lambda_2^{k_2} ... \lambda_i^{k_i}$, thus finding the desired result.
+\end{proof}
+
+\begin{problem}{1.11}
+\end{problem}
+\begin{proof}[Solution]
+First, by expanding out the characteristic polynomial, we can easily see that the coefficient of $\lambda^{n-1}$ is $\lambda_1 + \lambda_2 + ... + \lambda_n$.
+
+Next, we will solve the second part by induction. First, observe that if $A$ is a $2 \times 2$ matrix, $det(A - \lambda I)$ can clearly be written in the form $(a_{1, 1} - \lambda)(a_{2, 2} - \lambda) - q(\lambda)$, where $q(\lambda)$ is the constant $(a_{1, 2}a_{2, 1})$. Next, assume that for any $n \times n$ matrix $A$, $det(A - \lambda I) = (a_{1, 1} - \lambda) ... (a_{n, n} - \lambda) + q(\lambda)$ where $q(\lambda)$ has a degree of at most $n - 2$. Then, consider an $n+1 \times n+1$ matrix $A$. Using cofactor expansion of $A - \lambda I$, we observe that
+$$
+det(A - \lambda I) = (a_{1, 1} - \lambda)det(C_{1, 1})+ a_{1, 2}det(C_{1, 2}) + ... + a_{1, n+1}det(C_{1, n+1}).
+$$
+Observe that $C_{1, 1} = M_{1, 1}$, and $M_{1, 1}$ is an $n \times n$ matrix in the form $B - \lambda I$. Therefore, due to the assumption, $det(C_{1, 1}) = (b_{1, 1} - \lambda) ... (b_{n, n} - \lambda) - q(\lambda)= (a_{2, 2} - \lambda) ... (a_{n+1, n+1} - \lambda) - q(\lambda)$, where $q(\lambda)$ has a degree of at most $n-2$. Thus, observe that $(a_{1, 1} - \lambda)det(C_{1, 1}) = (a_{1, 1} - \lambda) ... (a_{n+1, n+1} - \lambda) - z(\lambda)$, where $z(\lambda) = (a_{1, 1} - \lambda)q(\lambda)$ and has a degree of at most $n-1$. For all $a_{1, k}det(C_{1, k})$ where $k \neq 1$, $C_{1, k}$ has at most n-1 elements in the form $c - \lambda$, thus using the permutation definition of determinant shows that $det(C_{1, k})$ and therefore $a_{1, k}det(C_{1, k})$ has a degree of at most $n-1$. Therefore, 
+$$
+det(A - \lambda I) = (a_{1, 1} - \lambda)det(C_{1, 1})+ ... + a_{1, n+1}det(C_{1, n+1}) = (a_{1, 1} - \lambda) ... (a_{n+1, n+1} - \lambda) - p(\lambda),
+$$
+where $p(\lambda) = z(\lambda) + a_{1, 2}det(C_{1, 2}) + ... + a_{1, n+1}det(C_{1, n+1})$, and $p(\lambda)$ has a degree of at most $n - 1$. This completes the recursive step, thus completing the proof by induction for the second portion of the given question.
+
+For the final step, we simply observe that the coefficient for $\lambda^{n-1}$ in $det(A - \lambda I)$ = $\lambda_1 + \lambda_2 + ... + \lambda_n$ due to the first step, and observe from the result of the second step that $det(A - \lambda I) = det(A)$ has $a_{1, 1} + ... + a_{n, n}$ as the coefficient for $\lambda^{n-1}$. Therefore, $\lambda_1 + \lambda_2 + ... + \lambda_n = a_{1, 1} + ... + a_{n, n}$.
+\end{proof}
+
+\begin{problem}{2.1a}
+\end{problem}
+\begin{proof}[Solution]
+True. Theorem 3.4 from chapter 3 states that $det(A) = det(A^T)$ for any square matrix $A$. Thus, $det(A - \lambda I) = det((A - \lambda I)^T) = det(A^T - \lambda I)$. We know that $det(A - \lambda I)$ and $det(A^T - \lambda I)$ denote the characteristic polynomials of $A$ and $A^T$ respectively, and we know that the zeros of the characteristic polynomials represent the eigenvalues of the matrix (including multiplicities). Given that $det(A - \lambda I) = det(A^T - \lambda I)$, these polynomials clearly share zeros, thus the eigenvalues are the same.
+\end{proof}
+
+\begin{problem}{2.1b}
+\end{problem}
+\begin{proof}[Solution]
+False. Given the matrix 
+$$
+A = \begin{bmatrix}
+1 & 0 \\
+1 & 1
+\end{bmatrix},
+$$
+we observe that $det(A - \lambda I) = (1-\lambda)^2$, thus $det(A - \lambda I)$ iff $\lambda = 1$. For $\lambda = 1$, we can see that $(A - (1)I_2)v = 0$ if and only if $v = (0, a)^T$ for any $a \in \mathbb{R}$. Then, note that
+$$
+A^T = \begin{bmatrix}
+1 & 1 \\
+0 & 1
+\end{bmatrix}.
+$$
+We observe that $det(A^T - \lambda I) = (1-\lambda)^2$, thus $det(A^T - \lambda I)$ iff $\lambda = 1$. For $\lambda = 1$, we can see that $(A^T - (1)I_2)v = 0$ if and only if $v = (a, 0)^T$ for any $a \in \mathbb{R}$. Thus, it is clear that $A^T$ and $A$ have different eigenvectors.
+\end{proof}
+
+\begin{problem}{2.1c}
+\end{problem}
+\begin{proof}[Solution]
+True. As shown in problem 2.1a, $A^T$ and $A$ share the same eigenvalues, including their algebraic multiplicities. Then, observe from theorem 7.4 of chapter 2 that $n = Rank(A) + dim(Ker(A))$ and $n = Rank(A^T) + dim(Ker(A^T))$ given that $A$ is a square matrix. Then, given that the rank theorem states that $Rank(A) = Rank(A^T)$, we can observe that $dim(Ker(A)) = dim(Ker(A^T))$ for any square $A$. Therefore, for any eigenvalue $\lambda$, $dim(Ker(A - \lambda I)) = dim(Ker((A - \lambda I)^T)) =dim(Ker(A^T - \lambda I))$, thus the geometric multiplicity of any eigenvalue $\lambda$ in $A$ is equal to the geometric multiplicity of eigenvalue $\lambda$ in $A^T$. Then, given that $A$ is diagonalizable, Theorem 2.8 states that the algebraic multiplicity of any eigenvalue $\lambda$ in $A$ must be equal to the geometric multiplicity of $\lambda$. Then, given that $A$ and $A^T$ have the same algebraic and geometric multiplicities as $A$ for all eigenvalues, Theorem 2.8 shows that $A^T$ also has algebraic and geometric multiplicities coinciding, thus $A^T$ is diagonalizable.
+\end{proof}
+
+\begin{problem}{2.2}
+\end{problem}
+\begin{proof}[Solution]
+Given a complex eigenvector $v = (v_1, ... , v_n)$, observe that $v$ can be represented as $v = \textbf{a} +i\textbf{b} = (a_1, ..., a_n) + i(b_1, ..., b_n)$, where $\textbf{a}$ and $\textbf{b}$ are both real vectors. This can be easily seen by considering the decomposition of $v_1, ..., v_n$ into its real and imaginary parts. Then, given that the eigenvalue $\lambda = c + id$, note that $Av = A(\textbf{a}+i\textbf{b}) = A\textbf{a} + iA\textbf{b}$, and also $\lambda(\textbf{a}+i\textbf{b}) = (c+id)(\textbf{a}+i\textbf{b}) = c\textbf{a} - d\textbf{b} + i(d\textbf{a} - c\textbf{b})$. Given that $A\textbf{a} + iA\textbf{b} = c\textbf{a} - d\textbf{b} + i(d\textbf{a} - c\textbf{b})$, the real and imaginary parts of both the left and the right must equal, thus $A\textbf{a} = c\textbf{a} - d\textbf{b}$ and $A\textbf{b} = -(d\textbf{a} - c\textbf{b}) = c\textbf{b} - d\textbf{a}$.
+
+Now, let $\bar{v} = a - bi$ denote the complex conjugate of $v$, and let $\bar{\lambda} = c - id$ denote the complex conjugate of $\lambda$. Observe that $A\bar{v} = A\textbf{a} - iA\textbf{b}$, and $\bar{\lambda}\bar{v} = (c-id)(\textbf{a}-i\textbf{b}) = c\textbf{a} - d\textbf{b} - i(d\textbf{a} - c\textbf{b})$. Given that $A\textbf{a} = c\textbf{a} - d\textbf{b}$ and $A\textbf{b} = c\textbf{b} - d\textbf{a}$, we can see that $A\textbf{a} - iA\textbf{b} = c\textbf{a} - d\textbf{b} - i(d\textbf{a} - c\textbf{b})$, thus $A\bar{v} = \bar{\lambda}\bar{v}$. This clearly shows that $\bar{\lambda}$ is an eigenvalue of $A$, and $\bar{v}$ is the corresponding eigenvector.
+\end{proof}
+
+\begin{problem}{2.3}
+\end{problem}
+\begin{proof}[Solution]
+We observe that $det(A - \lambda I) = (4 - \lambda)(2 - \lambda) - 3 = (\lambda - 5)(\lambda - 1)$, thus the eigenvalues of $A$ are $5$ and $1$. Then, for $\lambda = 5$, $(A - 5I_2)(3, 1)^T = 0$, thus $(3, 1)^T$ is an eigenvector. Similarly, for $\lambda = 1$, $(A - (1)I_2)(-1, 1)^T = 0$, thus $(-1, 1)^T$ is another eigenvector. In addition, for both $(A - (1)I_2)$ and $(A - 5I_2)$, we can observe that the kernel for both of these matrices has a dimension of 1 because both rows are a constant multiple of the other. Thus, for both eigenvalues, the algebraic and geometric multiplicity of both eigenvectors is 1, thus $A$ is diagonalizable. Then, due to Theorem 2.1, $A = SDS^-1$, where
+$$
+S = \begin{bmatrix}
+3 & -1 \\
+1 & 1
+\end{bmatrix}, D = \begin{bmatrix}
+5 & 0 \\
+0 & 1
+\end{bmatrix}.
+$$
+Then, observe that $A^{2004} = SD^{2004}S^-1$ as noted in section 2.2. Thus,
+\begin{equation}
+\begin{split}
+A^{2004} & = \begin{bmatrix}
+3 & -1 \\
+1 & 1
+\end{bmatrix} \begin{bmatrix}
+5^{2004} & 0 \\
+0 & 1
+\end{bmatrix}
+\left(\frac{1}{4}\begin{bmatrix}
+1 & 1 \\
+-1 & 3
+\end{bmatrix}\right) \\
+& = \begin{bmatrix}
+3 * 5^{2004} & -1 \\
+5^{2004} & 1
+\end{bmatrix}
+\left(\frac{1}{4}\begin{bmatrix}
+-1 & 3 \\
+1 & 1
+\end{bmatrix}\right) \\
+& = \frac{1}{4}\begin{bmatrix}
+3 * 5^{2004} + 1 & 3 * 5^{2004} - 3 \\
+5^{2004} - 1 & 5^{2004} + 3
+\end{bmatrix}.\\
+\end{split}
+\end{equation}
+\end{proof}
+
+\begin{problem}{2.4}
+\end{problem}
+\begin{proof}[Solution]
+First, observe that the given $A$ is diagonalizable because Corollary 2.3 states that if $A$ has 2 distinct eigenvalues, then $A$ must be diagonalizable. Then, given this, $A = SDS^{-1}$ where the columns of $S$ are the eigenvectors, and $D$ is the diagonal matrix where the eigenvalues are in the position corresponding to the order of the eigenvectors in $S$. Thus,
+
+$$
+A = SDS^{-1} = \begin{bmatrix}
+1 & 1 \\
+2 & 1
+\end{bmatrix}\begin{bmatrix}
+1 & 0 \\
+0 & 3
+\end{bmatrix}\begin{bmatrix}
+-1 & 1 \\
+2 & -1
+\end{bmatrix} = \begin{bmatrix}
+5 & -2 \\
+4 & -1
+\end{bmatrix}.
+$$
+
+In addition, we know that this matrix is unique because any matrix with the given eigenvalues and eigenvectors must be equal to $SDS^{-1}$, and $S$ and $D$ are clearly unique due to Theorem 2.8. And given the product of matrices has only one solution, the matrix $A$ defined above is unique.
+\end{proof}
+
+\begin{problem}{2.6a}
+\end{problem}
+\begin{proof}[Solution]
+As noted in Problem 1.5, the eigenvalues of a triangular matrix coincides with its diagonal entries. Given that $A$ is clearly triangular, the eigenvalues of $A$ are 2, 5, and 4.
+\end{proof}
+
+\begin{problem}{2.6b}
+\end{problem}
+\begin{proof}[Solution]
+Corollary 2.3 states that if $A$ has exactly $dim(\mathbb{R}^3) = 3$ distinct eigenvalues, then it is diagonalizable. Problem 2.6a shows that the three eigenvalues are distinct, thus $A$ is diagonalizable.
+\end{proof}
+
+\begin{problem}{2.6c}
+\end{problem}
+\begin{proof}[Solution]
+For eigenvalue 2, observe that $(A - 2I_3)v = 0$ when $v = (1, 0, 0)^T$ because the first column of $(A - 2I_3)$ is all zero. For eigenvalue 5, $(A - 5I_3)v = 0$, solving the homogenous system represented by $A - 5I_3$ shows that $(0, 1, 2)^T$ is a solution. Similarly, for eigenvalue 4, solving the homogenous system with the coefficient matrix $A - 4I_3$ yields a solution $(1, 2, 3)^T$. Therefore, because we have shown that $A$ is diagonalizable, Theorem 2.8 states that $A$ can be diagonalized as such:
+\begin{equation}
+\begin{split}
+A = SDS^{-1} & = \begin{bmatrix}
+1 & 2 & 3\\
+0 & 1 & 2\\
+0 & 0 & 1
+\end{bmatrix}\begin{bmatrix}
+2 & 0 & 0\\
+0 & 5 & 0\\
+0 & 0 & 4
+\end{bmatrix}\begin{bmatrix}
+1 & 2 & 3\\
+0 & 1 & 2\\
+0 & 0 & 1
+\end{bmatrix}^{-1}\\
+& = \begin{bmatrix}
+1 & 2 & 3\\
+0 & 1 & 2\\
+0 & 0 & 1
+\end{bmatrix}\begin{bmatrix}
+2 & 0 & 0\\
+0 & 5 & 0\\
+0 & 0 & 4
+\end{bmatrix}\begin{bmatrix}
+1 & -2 & 1\\
+0 & 0 & 1\\
+0 & 1 & -2
+\end{bmatrix}\\
+\end{split}
+\end{equation}
+
+\end{proof}
+
+\begin{problem}{2.8}
+\end{problem}
+\begin{proof}[Solution]
+Observe that $det(A - \lambda I) = (5 - \lambda)(\lambda) + 6$, thus the eigenvalues of $A$ are 2 and 3. The eigenspace for $\lambda = 2$ is spanned by $(-2, 3)^T$ because $(A - 2I_2)(-2, 3)^T = 0$. Similarly, the eigenspace for $\lambda = 3$ is spanned by $(-1, 1)^T$ because $(A - 3I_2)(-1, 1)^T = 0$. Therefore, 
+\begin{equation}
+\begin{split}
+A = SDS^{-1} & = \begin{bmatrix}
+-1 & -2 \\
+1 & 3
+\end{bmatrix} \begin{bmatrix}
+3 & 0 \\
+0 & 2
+\end{bmatrix}
+\begin{bmatrix}
+-1 & -2 \\
+1 & 3
+\end{bmatrix}^{-1} \\
+& = \begin{bmatrix}
+-1 & -2 \\
+1 & 3
+\end{bmatrix} \begin{bmatrix}
+3 & 0 \\
+0 & 2
+\end{bmatrix}
+\begin{bmatrix}
+-3 & -2 \\
+1 & 1
+\end{bmatrix}
+\end{split}
+\end{equation}
+Then, if $A = B^2$, we will show that $B$ must be diagonalizable. Observe that if $\alpha$ is some eigenvalue of $B$ and $v$ is some eigenvector with $\alpha$ as its corresponding eigenvalue, then $Av = B^2v = B(Bv) = B(\alpha v) = \alpha Bv = \alpha^2 v$. This shows that $\alpha^2$ is an eigenvalue of $A$. Given that $A$ has eigenvalues 3 and 2, the eigenvalues must be one or both of $\sqrt{3}$ and/or $\sqrt{2}$. Assume the two eigenvalues of $B$ are the same. Then problem 1.10 shows that $det(B) = 3$ or $det(B) = 2$. Then, theorem 3.5 of chapter 3 notes that $det(B)det(B) = det(B^2) = det(A)$. We know that $det(A) = 6$, thus $det(B) = \sqrt{6}$. However, this is a contradiction, thus $B$ must have $\sqrt{3}$ and $\sqrt{2}$ both as eigenvalues, and Corollary 2.3 shows that $B$ must be diagonalizable.
+
+Given that $B$ is diagonalizable, $B = S_*D_*S^{-1}_*$, thus $SDS^{-1} = A = B^2 = S_*D^{2}_*S^{-1}_*$. We can clearly see that $S = S_*$ and $D^{2}_* = D$ because theorem 2.1 suggests that the diagonal and the invertible matrix in the similar matrix representation of any diagonalizable matrix is unique. The square root of $D$ is easy to compute: just take the square root of all the diagonal elements. Therefore, $A^{1/2} = B = SD_*S^{-1} = SD^{1/2}S^{-1}$, which can be written out as
+$$
+\begin{bmatrix}
+-1 & -2 \\
+1 & 3
+\end{bmatrix} \begin{bmatrix}
+
+\pm \sqrt{3} & 0 \\
+0 & \pm \sqrt{2}
+\end{bmatrix}
+\begin{bmatrix}
+-3 & -2 \\
+1 & 1
+\end{bmatrix}.
+$$
+This product above represents all four possible matrices for $B$ such that $B^2 = A$.
+\end{proof}
+
+\begin{problem}{2.10}
+\end{problem}
+\begin{proof}[Solution]
+Yes. Let $\lambda_1, \lambda_2, \lambda_3$ denote the three eigenvalues of the given $5 \times 5$ matrix, and let $\lambda_1$ have an eigenspace of dimension 3. Given that the eigenspace of $\lambda_1$ has a dimension 3, the definition of dimension states that there must exist a basis of three vectors in the eigenspace of $\lambda_1$. Let $v_1, v_2, v_3$ denote these three vectors. These vectors are clearly linearly independent, and they are also clearly eigenvectors. In addition, let $v_4$ denote a non-zero eigenvector corresponding to eigenvalue $\lambda_2$, and let $v_5$ denote a non-zero eigenvector corresponding to eigenvalue $\lambda_3$. We know from Remark 2.4 that the eigenspaces of any matrix are linearly independent and given that $\{v_1, v_2, v_3\}$, $v_4$, and $v_5$ come from different eigenspaces, they are all linearly independent from each other. Therefore, we have shown that there exist 5 linearly independent eigenvectors. Proposition 3.1 shows that the matrix $[v_1, ..., v_5]$ has a pivot column in each of the 5 column due to its linear independence, and given that there are 5 rows, there must be a pivot in every row as well because no row can have two pivots. Proposition 3.1 thus shows that the system $v_1, ..., v_5$ is generating in $\mathbb{F}^5$. Given that this set of eigenvectors is both generating and linearly independent, they form a basis in $\mathbb{F}^5$, thus Theorem 2.1 shows that the given matrix must be diagonalizable.
+\end{proof}
+
+\begin{problem}{2.11}
+\end{problem}
+\begin{proof}[Solution]
+We observe that any non-zero matrix with only zero as its eigenvalue is not diagonalizable. We can see this through Theorem 2.1, which states that if such non-zero matrix $A$ were diagonalizable, then $A = SDS^{-1}$, where $D$ is a diagonal matrix with only zeros in the diagonal. $D$ is a zero matrix, thus $A = SDS^{-1} = 0$. This is a contradiction. Thus, the following matrix is an example of a non-diagonalizable matrix:
+$$
+\begin{bmatrix}
+0 & 1 & 3\\
+0 & 0 & 1\\
+0 & 0 & 0\\
+\end{bmatrix}.
+$$
+This matrix is upper triangular, thus section 1.7 of section 1 notes that the eigenvalues of this matrix coincide with the diagonal entries, which are all 0. We have already shown that such matrix cannot be diagonalizable, thus this matrix is not diagonalizable.
+
+For any general $3 \times 3$ matrix $A$, observe from Corollary 2.3 that $A$ is diagonalizable if it has 3 distinct eigenvalues. Thus, if $A$ were to be non-diagonalizable, then $A$ must have 1 eigenvalue or 2 eigenvalues. 
+
+In the case that $A$ only has 1 eigenvalue, then observe that if $A$ were to be diagonalizable, then $A = SDS^{-1} = S(\lambda I)S^{-1} = \lambda I$. Thus, any $3 \times 3$ matrix with one eigenvalue is non-diagonalizable if and only if it is not a multiple of the identity.
+
+In the case that $A$ has 2 eigenvalues $\lambda_1$ and $\lambda_2$, then observe that $A = SDS^{-1} = S(\lambda_1 I + (\lambda_2 - \lambda_1) J)S^{-1}$, where $J$ is matrix with only the top left corner being 1 and all other elements being 0. Then, observe that $S(\lambda_1 I + (\lambda_2 - \lambda_1) J)S^{-1} = (\lambda_1S + (\lambda_2 - \lambda_1) SJ)S^{-1} = \lambda_1I + (\lambda_2 - \lambda_1) SJS^{-1}$. 
+
+(Unfinished)
+\end{proof}
+
+\begin{problem}{2.13a}
+\end{problem}
+\begin{proof}[Solution]
+By searching for matrices whose transpose is a multiple of itself, the following four matrices have been found:
+$$
+\begin{bmatrix}
+1 & 0 \\
+0 & 0
+\end{bmatrix}, \begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}, \begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}, \begin{bmatrix}
+0 & -1 \\
+1 & 0
+\end{bmatrix}.
+$$
+The first three are clearly eigenvectors of $T$ (eigenmatrices) because the transpose of the matrix is equal to itself, thus $T(A) = (1)A$. These three matrices have an eigenvalue of 1. The last matrix has the property that $T(A) = -A$, thus it is an eigenvector of $T$ and its eigenvalue is -1.
+Next, we can observe that the first matrix is linearly independent from all other matrices because all other matrices have a 0 in the upper left space, thus no linear combination of the other three matrices can represent the first matrix. This is the same for matrix two. The third matrix is also linearly independent because the only matrix that impacts the value of the top right or bottom left space is the fourth matrix, and the third matrix is clearly not a multiple of the last matrix. Same goes for the last matrix. Therefore, these four eigenvectors are linearly independent. Proposition 5.4 from chapter 2 states that either these four matrices are a basis in the space ($M_{2 \times 2}$), or there exists another matrix such that the set of five matrices (the four above plus this new matrix) is all linearly independent. However, proposition 5.2 states that any linearly independent system in $M_{2 \times 2}$ cannot have more than $dim(M_{2 \times 2}) = 2*2 = 4$ elements. Therefore, the set of four eigenvalue matrices above are a basis in $M_{2 \times 2}$, and thus Theorem 2.1 guarantees that the operation $T$ is diagonalizable. We have also found that the only eigenvalues are -1, 1 (multiplicity 3), and we have found four eigenvectors (shown above).
+\end{proof}
+
+\begin{problem}{2.13b}
+\end{problem}
+\begin{proof}[Solution]
+Let $1 \leq i, j \leq n$. For each pair $(i, j)$, we will define a matrix $A_{i, j}$ that is an eigenvector of operator $T$.
+
+If $i = j$, let $A_{ij}$ be the matrix where every element is zero except $a_{ij} = 1$. Observe that matrices in the form $A_{ii}$ are clearly eigenvectors for operation $T$ because it is equal to its own transpose, therefore its eigenvalue is 1.
+
+If $i < j$, let $A_{ij}$ be the matrix where every element is zero except $a_{ij} = a_{ji} = 1$. Observe any matrix in this form is clearly an eigenvector of $T$ because it is equal to its own transpose, therefore its eigenvalue is 1.
+
+Lastly, If $i > j$, let $A_{ij}$ be the matrix where every element is zero except $a_{ij} =  1$ and $a_{ji} = -1$. Observe any matrix in this form is clearly an eigenvector of $T$ because its transpose is equal to the negative of itself, therefore its eigenvalue is -1.
+
+Observe that there is one eigenvector for each pair $(i, j)$, thus these three groups define a total of $n^2$ unique eigenvectors. We will now proceed to prove that every one of these eigenvectors are linearly independent. First, observe that all matrices in the form $A_{ii}$ are all linearly independent because the only matrix with a non-zero element in space $a_{jj}$ is $A_{jj}$, thus no linear combination of the other matrices will equal $A_{jj}$. Then, for any matrix $A_{ij}$ where $i \neq j$, $A_{ij}$ has a non-zero element in spaces $a_{ij}$ as well as in $a_{ji}$. The only other matrix that has a non-zero element in either of these spaces is $A_{ji}$, and clearly $A_{ij}$ is not a multiple of $A_{ij}$. Therefore, all $n^2$ matrices in the form $A_{ij}$ are linearly independent from each other. Proposition 5.4 from chapter 2 states that either these $n^2$ matrices are a basis in the space ($M_{n \times n}$), or there exists another matrix such that the set of $n^2+1$ matrices (the $n^2$ above plus this new matrix) is all linearly independent. However, proposition 5.2 states that any linearly independent system in $M_{n \times n}$ cannot have more than $dim(M_{n \times n}) = n^2$ elements. Therefore, the set of $n^2$ eigenvector matrices are basis in $M_{n \times n}$, and thus Theorem 2.1 guarantees that the operation $T$ is diagonalizable. We have also found that the only eigenvalues are -1 (multiplicity $n(n-1)/2$) and 1 (multiplicity $n(n+1)/2$), and we have found $n^2$  linearly independent eigenvectors $A_{1, 1}, A_{1, 2}, ... A_{n, n}$.
+\end{proof}
+
+\begin{problem}{2.14}
+\end{problem}
+\begin{proof}[Solution]
+Assume for the sake of contradiction that $V_1 \cap V_2$ contains a non-zero vector. If this vector is $v$, then $-v \in V_2, V_1$ due to closure under scalar multiplication. Therefore, we see that $v + (-v) = 0$, which shows that it is possible to create the zero vector from a sum of a non-zero vector from $V_1$ and a non-zero vector from $V_2$. This contradicts the definition of linearly independent subspaces given in the section, thus if $V_1$ and $V_2$ are linearly independent, then $V_1 \cap V_2 = \{0\}$ (we know that $0$ must be an element of the intersection because all vector spaces contain $0$).
+
+Then, assume that $V_1 \cap V_2 = \{0\}$. For the sake of contradiction, assume that $V_1$ and $V_2$ are not linearly independent. Then, There must exist non-zero $v_1 \in V_1$ and $v_2 \in V_2$ such that $v_1 + v_2 = 0$, and thus $v_1 = -v_2$. Given that $v_2 \in V_2$, then $-v_2 \in V_2$ due to closure under scalar multiplication. We observe that $-v_2 = v_1 \in V_1$ and $-v_2 \in V_2$, thus $-v_2 \in V_1 \cap V_2$. However, this is a contradiction, thus if $V_1 \cap V_2 = \{0\}$, then $V_1$ and $V_2$ are linearly independent subsets.
+
+We thus see that $V_1$ and $V_2$ are linearly independent if and only if $V_1 \cap V_2 = \{0\}$.
+\end{proof}
+\end{document}

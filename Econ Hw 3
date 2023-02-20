@@ -1,0 +1,459 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 3}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.1}
+\end{problem}
+\begin{proof}
+The constraints of the utility maximization problem are as follows:
+$$
+\max_{b, c} bc
+$$
+such that
+$$
+2b + 10c = 100, b \geq 0, c \geq 0.
+$$
+\end{proof}
+
+\begin{problem}{1.2}
+\end{problem}
+\begin{proof}
+Utility maximization is achieved when 
+$$
+\frac{U_b}{U_c} = \frac{p_b}{p_c}.
+$$
+Note that $U_b = c$ and $U_c = b$. Thus, utility is maximized when 
+$$
+\frac{c}{b} = \frac{2}{10},
+$$
+or $b = 5c$. Substituting this into the budget constraint shows that $10c + 10c = 100$, or $c = 5$. This then means that $2b + 10(5) = 100$, and $b = 25$. In other words, the consumer buys 25 bottles of beer and 5 packs of cigarettes.
+\end{proof}
+
+\begin{problem}{1.3}
+\end{problem}
+\begin{proof}
+Diagrams:
+\vspace{8 cm}
+\end{proof}
+
+\begin{problem}{1.4}
+\end{problem}
+\begin{proof}
+Given that the consumer bought $25$ bottles of beer and $5$ cigarettes, the compensation with the new prices would give $1$ dollar for each bottle of beer and $10$ dollars for each pack of cigarettes. This means that the individual's new budget is \$75, exactly enough to buy the original bundle at the new price.
+
+This compensation is an example of Slutsky compensation because the income has been adjusted such that the consumer can just barely access the old bundle before the price change, as opposed to preserving utility as Hicksian compensation does.
+\end{proof}
+
+\begin{problem}{1.5}
+\end{problem}
+\begin{proof}
+See graph on 1.3
+\end{proof}
+
+\begin{problem}{1.6}
+\end{problem}
+\begin{proof}
+The constraints of the new utility maximization problem are as follows:
+$$
+\max_{b, c} bc
+$$
+such that
+$$
+1b + 10c = 75, b \geq 0, c \geq 0.
+$$
+Utility maximization is achieved when 
+$$
+\frac{U_b}{U_c} = \frac{p_b}{p_c}.
+$$
+Note that $U_b = c$ and $U_c = b$. Thus, utility is maximized when 
+$$
+\frac{c}{b} = \frac{1}{10},
+$$
+or $b = 10c$. Substituting this into the budget constraint shows that $10c + 10c = 75$, or $c = 3.75$. This then means that $1b + 10(3.75) = 75$, and $b = 37.5$. In other words, the consumer buys 37.5 bottles of beer and 3.75 packs of cigarettes.
+\end{proof}
+
+\begin{problem}{1.7}
+\end{problem}
+\begin{proof}
+The substitution effect of the decrease in the price of beer lead the consumer to purchase more bottles of beer. They increased their consumption of beer by 12.5 bottles, from 25 to 37.5. On the other hand, their consumption of cigarettes has decreased by 1.25 packs, going from 5 packs to 3.75.
+\end{proof}
+
+\begin{problem}{1.8}
+\end{problem}
+\begin{proof}
+At the new prices, the relationship 
+$$
+\frac{c}{b} = \frac{1}{10},
+$$
+as derived in part 1.6 still stands. Then, substituting this into the budget equation $1b + 10c = 100$ shows us that $5 = c$, and $b = 50$. In other words, the consumer purchases 5 packs of cigarettes and 50 bottles of beer at the new prices and at the original budget.
+\end{proof}
+
+\begin{problem}{1.9}
+\end{problem}
+\begin{proof}
+See graph on 1.3
+\end{proof}
+
+\begin{problem}{1.10}
+\end{problem}
+\begin{proof}
+Observe that in the original solution (1.2), 25 bottles of beer and 5 packs of cigarettes are purchased, and using the utility function $bc$, the individual achieves a utility of 125. Then, the question is how can expenditure be minimized such that this utility is achieved? The constraints of the expenditure minimization problem are as follows:
+$$
+\min_{b, c} 1b + 10c
+$$
+such that
+$$
+125 = bc.
+$$
+
+Expenditure minimization is achieved when 
+$$
+\frac{U_b}{U_c} = \frac{p_b}{p_c}.
+$$
+Note that $U_b = c$ and $U_c = b$. Thus, utility is maximized when 
+$$
+\frac{c}{b} = \frac{1}{10},
+$$
+or $b = 10c$. Substituting this into the utility constraint shows that $10c^2 = 125$, or $c = 3.5355$. Then, to achieve utility 125, the minimum number of beers required is $125/3.5355 = 35.3556$. Thus, we conclude that the new income level is $3*(3.5355)+35.3556 = 70.7114$ dollars.
+
+This compensation is an example of Hicksian compensation because the income is to be adjusted such that the consumer can barely access the same level of utility as previously, compared to Slutsky compensation which would compensate the user such that they can just barely buy the original bundle.
+\end{proof}
+
+\begin{problem}{1.11}
+\end{problem}
+\begin{proof}
+See graph on 1.3
+\end{proof}
+
+\begin{problem}{1.12}
+\end{problem}
+\begin{proof}
+As noted in 1.10, the consumer purchases $3.5355$ packs of cigarettes and $35.3556$ bottles of beer at the new price and new income.
+\end{proof}
+
+\begin{problem}{1.13}
+\end{problem}
+\begin{proof}
+Compared to the original distribution of $5$ packs and $25$ bottles at the original price and income, the consumer now purchases $3.5355$ packs of cigarettes and $35.3556$ bottles of beer. Cigarette consumption is down $1.465$ packs but beer consumption is up $10.356$ bottles.
+\end{proof}
+
+\begin{problem}{1.14}
+\end{problem}
+\begin{proof}
+Note that the relationship $b = 10c$ still stands from 1.10. Then, substituting this into the budget equation with original budget $1b + 10c = 100$ shows us that $5 = c$, and $b = 50$. In other words, the consumer purchases 5 packs of cigarettes and 50 bottles of beer at the new prices and at the original budget.
+\end{proof}
+
+\begin{problem}{1.15}
+\end{problem}
+\begin{proof}
+See graph on 1.3
+\end{proof}
+
+\begin{problem}{1.16}
+\end{problem}
+\begin{proof}
+See graph on 1.3. In the first case with the Slutsky compensation, the substitution effect is greater than the substitution effect component of the Hicksian compensation graph. On the other hand, the income effect is greater on the Hicksian compensation graph compared to the income effect on the Slutsky compensation.
+\end{proof}
+
+\begin{problem}{1.17}
+\end{problem}
+\begin{proof}
+Slutsky compensation has a greater substitution effect than the Hicksian compensation. As we can see from the previous part, the substitution effect component of the Slutsky compensation is greater than the substitution effect component on the Hicksian compensation graph. This disparity is a result of the fact that Slutsky compensation enables the budget to increase in order to access the original bundle, reducing the income effect. This is critical as, as seen in 1.16, a lower income effect means a greater substitution effect as these two components sum up to each other. Slutsky compensation is often described as overcompensating for changes in price because it provides the consumer with a hightened budget that enables them to find bundles that have a utility that exceeds the utility of the original bundle.
+\end{proof}
+
+\begin{problem}{1.18}
+\end{problem}
+\begin{proof}
+Hicksian compensation has a greater income effect than the Slutsky compensation. As we can see from the previous part, the income effect component of the Hicksian compensation is greater than the income effect component on the Slutsky compensation graph. This disparity is a result of the fact Hicksian compensation affords the user a smaller budget in general, increasing the effect of the change in budget. Thus, in general Hicksian compensation yields a greater income effect compared to Slutsky compensation.
+\end{proof}
+
+\begin{problem}{1.19}
+\end{problem}
+\begin{proof}
+The decomposition of a change in price into an income and a substitution effect is important because it enables us to observe the induced effect of a price change. A greater substitution effect suggests that consumers are more significantly changing their consumption habits as a result of the price change. A greater income effect on the other hand suggests that the change in a consumer's budget is the driving force behind determining which bundle they consume in the end.
+\end{proof}
+
+\begin{problem}{2}
+\end{problem}
+\begin{proof}
+We are given that
+$$
+x_m(p_x, p_y, m) = x_h(p_x, p_y, v(p_x, p_y, m)).
+$$
+Taking the partial derivative of both sides with respect to $p_x$ shows that
+$$
+\frac{\partial x_m}{\partial p_x} = \frac{\partial x_h}{\partial p_x} + \frac{\partial x_h}{\partial v}\frac{\partial v}{\partial p_x},
+$$
+With the right hand side being derived from the fact that the rate of change right hand side as a result of a change in $p_x$ is a combination of its effect on $X$ in addition to its effect on $E$, which then effects $X$. Next, observe that 
+$$
+\frac{\partial v}{\partial p_x} = x,
+$$
+because the expenditure function is linear, and the only component that contains the variable $p_x$ is the component $p_xx$. It is clear that increasing the price $p_x$ will increase expenditure at a rate $x$. Substituting this into the original equation shows that
+$$
+\frac{\partial x_m}{\partial p_x} = \frac{\partial x_h}{\partial p_x} + x\frac{\partial x_h}{\partial v}.
+$$
+Next, observe that a change in $M$ is equivalent to the change in expenditures $E$, because these two are implied to be the same as the consumption is on the budget line. Thus,
+$$
+\frac{\partial x_m}{\partial p_x} = \frac{\partial x_h}{\partial p_x} + x\frac{\partial x_h}{\partial e}.
+$$
+$$
+\frac{\partial x_h}{\partial p_x} =  \frac{\partial x_m}{\partial p_x} - x\frac{\partial x_h}{\partial e}.
+$$
+This is the Slutsky equation because $\frac{\partial x_h}{\partial p_x}$ represents the total effect of the consumption of $x$ as $p_x$ changes, $\frac{\partial x_m}{\partial p_x}$ represents the substitution effect as it represents the change in the consumption bundle independent of the change in expenditure, and lastly $x\frac{\partial x_h}{\partial e}$ represents the income effect because it tracks the change in the consumption of $x$ as a result of the change in expenditure.
+\end{proof}
+
+\begin{problem}{3.1}
+\end{problem}
+\begin{proof}
+The constraints of Peter's utility maximization problem are as follows:
+$$
+\max_{c, r} 3log(c) + r
+$$
+such that
+$$
+5c + 4r = 60.
+$$
+\end{proof}
+
+\begin{problem}{3.2}
+\end{problem}
+\begin{proof}
+Utility maximization is achieved when 
+$$
+\frac{U_c}{U_r} = \frac{p_c}{p_r}.
+$$
+Note that $U_c = \frac{\partial}{\partial c}(3ln(c)) = \frac{3}{c}$ and $U_r = 1$. Thus, utility is maximized when 
+$$
+\frac{3}{c} = \frac{5}{4},
+$$
+or $c = \frac{12}{5}$. Substituting this into the budget constraint shows that $5(12/5) + 4r = 60$, or $r= 12$. In other words, peter consumes $\frac{12}{5}$ pounds of cereal and $12$ pounds of raisins.
+\end{proof}
+
+\begin{problem}{3.3}
+\end{problem}
+\begin{proof}
+Diagram:
+\vspace{8 cm}
+\end{proof}
+
+\begin{problem}{3.4}
+\end{problem}
+\begin{proof}
+Given that the original bundle is $12$ pounds of raisins and $12/5$ pounds of cereal, at the new price where both goods are 4 dollars, the budget required such that he can still barely afford his original consumption bundle is $57.6$ dollars.
+
+Utility maximization is still achieved when 
+$$
+\frac{U_c}{U_r} = \frac{p_c}{p_r}.
+$$
+Note that still, $U_c = \frac{\partial}{\partial c}(3ln(c)) = \frac{3}{c}$ and $U_r = 1$. Thus, utility is maximized when 
+$$
+\frac{3}{c} = 1,
+$$
+or $c = 3$. Substituting this into the budget constraint shows that $4(3) + 4r = 57.6$, or $r= 11.4$. In other words, Peter consumes $3$ pounds of cereal and $11.4$ pounds of raisins. See 3.3 for graph.
+\end{proof}
+
+\begin{problem}{3.5}
+\end{problem}
+\begin{proof}
+Given that the original bundle is $12$ pounds of raisins and $12/5$ pounds of cereal, the original utility was $3ln(12/5) + 12 = 14.6264$. 
+
+Note that expenditure minimization is still achieved when 
+$$
+\frac{U_c}{U_r} = \frac{p_c}{p_r}.
+$$
+Note that still, $U_c = \frac{\partial}{\partial c}(3ln(c)) = \frac{3}{c}$ and $U_r = 1$. Thus, utility is maximized when 
+$$
+\frac{3}{c} = 1,
+$$
+or $c = 3$. Substituting this into the utility constraint $3log(c) + r =14.6264$, we get that $r = 11.3305$. Thus, Peter consumes $3$ pounds of cereal and $11.3305$ pounds of raisins. See 3.3 for graph.
+\end{proof}
+
+\begin{problem}{3.6}
+\end{problem}
+\begin{proof}
+Utility maximization is achieved when 
+$$
+\frac{U_c}{U_r} = \frac{p_c}{p_r}.
+$$
+Note that $U_c = \frac{\partial}{\partial c}(3ln(c)) = \frac{3}{c}$ and $U_r = 1$. Thus, utility is maximized when 
+$$
+\frac{3}{c} = 1,
+$$
+or $c = 3$. Substituting this into the budget constraint shows that $4c + 4r = 60$, or $r= 12$. In other words, peter consumes $3$ pounds of cereal and $12$ pounds of raisins. Compared to the results from 3.4, 3.5, this bundle has more pounds of raisins. However, interestingly, the pounds of cereal is always preserved at 3. It then follows that this bundle yields more utility than those derived in 3.4, 3.5.
+\end{proof}
+
+\begin{problem}{3.7}
+\end{problem}
+\begin{proof}
+See 3.3 for graph.
+\end{proof}
+
+\begin{problem}{3.8}
+\end{problem}
+\begin{proof}
+There is no income effect for this situation because the change in prices, for either compensation, did not lead to a change in consumption of cereal compared to the the bundle with the original budget and new prices. It thus follows that the substitution effects for these two substitutions are the same and equal to the total effect, as shown by the Slutsky's equation derived in problem 2. The general name for Peter's utility representation is quasilinear.
+\end{proof}
+
+\begin{problem}{4.1}
+\end{problem}
+\begin{proof}
+Given this is an expenditure minimization problem, let $U$ denote some fixed utility level. Then, we want to minimize $p_xx + p_yy$ such that $U = log(x) + y$. 
+
+Expenditure minimization is achieved when 
+$$
+\frac{U_x}{U_y} = \frac{p_x}{p_y}.
+$$
+Note that $U_x = \frac{\partial}{\partial x}(ln(x)) = \frac{1}{x}$ and $U_y = 1$. Thus, utility is maximized when 
+$$
+\frac{1}{x} = \frac{p_x}{p_y},
+$$
+thus $x = \frac{p_y}{p_x}$. When $x = \frac{p_y}{p_x}$, $U = log(p_y/p_x) + y$, $y = U - log(p_y/p_x)$. Thus, expenditure minimization occurs when the bundle is $(log(p_y/p_x), U - log(p_y/p_x))$, and the minimum expenditure is thus $p_y + p_y(U - log(p_y/p_x)) = p_y(U - log(p_y/p_x) + 1)$.
+\end{proof}
+
+\begin{problem}{4.2}
+\end{problem}
+\begin{proof}
+Duality results show that
+$$
+x_h(p_x, p_y, U) = x_m(p_x, p_y, e(p_x, p_y, U)),
+$$
+and
+$$
+y_h(p_x, p_y, U) = y_m(p_x, p_y, e(p_x, p_y, U)).
+$$
+Thus, given the income $m$ is equal to $e(p_x, p_y, U)$, $y_h(p_x, p_y, U) = y_m(p_x, p_y, m)$ and $x_h(p_x, p_y, U) = x_m(p_x, p_y, m)$. This shows that the utility maximization bundle for income $p_y(U - log(p_y/p_x) + 1)$ is equal to the expenditure minimization bundle for $U$.
+\end{proof}
+
+\begin{problem}{4.3}
+\end{problem}
+\begin{proof}
+Utility maximization is still achieved when 
+$$
+\frac{U_x}{U_y} = \frac{p_x^o}{p_y}.
+$$
+Note that still, $U_x = \frac{\partial}{\partial x}(ln(x)) = \frac{1}{x}$ and $U_y = 1$. Thus, utility is maximized when 
+$$
+\frac{1}{x} = \frac{p_x^o}{p_y},
+$$
+and $x = p_y/p_x^o$. Given some income $m$, $p_x^ox + p_yy = m$, substitution shows that $y = \frac{m - p_y}{p_y}$. Thus, the total utility the consumer receives is $U(p_y/p_x^p, (m - p_y)/p_y) = \log \left(\frac{p_y}{p_x^o}\right) + \frac{m - p_y}{p_y}$, and the optimal consumption bundle is $(p_y/p_x^o, (m - p_y)/p_y)$.
+\end{proof}
+
+\begin{problem}{4.4}
+\end{problem}
+\begin{proof}
+Using the same results as 4.3 but with $p_x^o$ replaced by $p_x^f$, it follows that the optimal consumption bundle is $(p_y/p_x^o, (m - p_y)/p_y)$, and the total utility received by the consumer is $\log \left(\frac{p_y}{p_x^f}\right) + \frac{m - p_y}{p_y}$.
+\end{proof}
+
+\begin{problem}{4.5}
+\end{problem}
+\begin{proof}
+Slutsky's equation shows that the total demand is equal to the substitution effect plus the income effect. The income effect is equal to
+$$
+x\frac{\partial x_h}{\partial m},
+$$
+and given that the consumption of good $x$ is equal to $p_y/p_x^o$, it follows that $\frac{\partial x_h}{\partial m} = 0$, and thus the income effect is always zero. This then means that the substitution effect is equal to the total effect, which is equal to $\frac{\partial x_m}{\partial p_x^o}$, and given $x_m(p_x^{o}, p_y, m) = p_y/p_x^o$, it follows that the total effect/substitution effect is $-p_y/(p_x^o)^2$.
+\end{proof}
+
+\begin{problem}{4.6}
+\end{problem}
+\begin{proof}
+We have shown in the previous part that good $x$ is one such that it has no income effect. In other words, the level of income does not change the amount of this good that is consumed. One example of a neutral good is toilet paper; no matter how one's income changes, the rate at which one consumes toilet paper is basically constant for any fixed time period. This shows that toilet paper is a good with no income effect.
+\end{proof}
+
+\begin{problem}{4.7}
+\end{problem}
+\begin{proof}
+We are given that 
+$$
+CV = e(p_x^f, p_y, v(p_x^f, p_y, m)) - e(p_x^f, p_y, v(p_x^o, p_y, m)).
+$$
+We have shown in 4.3, 4.4 that
+$$
+v(p_x^o, p_y, m) = \log \left(\frac{p_y}{p_x^o}\right) + \frac{m - p_y}{p_y},
+$$
+$$
+v(p_x^f, p_y, m) = \log \left(\frac{p_y}{p_x^f}\right) + \frac{m - p_y}{p_y}.
+$$
+Next, we have shown that the expenditure minimizing bundle for some utility $U$ is $p_y(U - log(p_y/p_x) + 1)$. It then follows that
+$$
+CV = e(p_x^f, p_y, v(p_x^f, p_y, m)) - e(p_x^f, p_y, v(p_x^o, p_y, m))
+$$
+$$
+= \left(p_y\left(\log \left(\frac{p_y}{p_x^o}\right) + \frac{m - p_y}{p_y} - log(p_y/p_x^f) + 1\right)\right) - \left(p_y\left(\log \left(\frac{p_y}{p_x^f}\right) + \frac{m - p_y}{p_y} - log(p_y/p_x^f) + 1\right)\right)
+$$
+$$
+= p_y\left(\log \left(\frac{p_y}{p_x^o} \right)- \log \left(\frac{p_y}{p_x^f}\right)\right) = p_y\left(\log \left(\frac{p_x^f}{p_x^o} \right)\right).
+$$
+The interpretation of this result is that the amount the customer should be compensated to accept the change in price from $p_x^o$ to $p_x^f$ is $p_y\left(\log \left(\frac{p_x^f}{p_x^o} \right)\right)$. The amount of compensation should be proportional to $p_y$, and proportional to the logarithm of the ratio between the new and original prices. See the graph below:
+\vspace{9 cm}
+\end{proof}
+
+\begin{problem}{4.8}
+\end{problem}
+\begin{proof}
+We are given that 
+$$
+EV = e(p_x^o, p_y, v(p_x^f, p_y, m)) - e(p_x^o, p_y, v(p_x^o, p_y, m)).
+$$
+We have shown in 4.3, 4.4 that
+$$
+v(p_x^o, p_y, m) = \log \left(\frac{p_y}{p_x^o}\right) + \frac{m - p_y}{p_y},
+$$
+$$
+v(p_x^f, p_y, m) = \log \left(\frac{p_y}{p_x^f}\right) + \frac{m - p_y}{p_y}.
+$$
+Next, we have shown that the expenditure minimizing bundle for some utility $U$ is $p_y(U - log(p_y/p_x^o) + 1)$. It then follows that
+$$
+EV = e(p_x^o, p_y, v(p_x^f, p_y, m)) - e(p_x^o, p_y, v(p_x^o, p_y, m))
+$$
+$$
+= \left(p_y\left(\log \left(\frac{p_y}{p_x^o}\right) + \frac{m - p_y}{p_y} - log(p_y/p_x^o) + 1\right)\right) - \left(p_y\left(\log \left(\frac{p_y}{p_x^f}\right) + \frac{m - p_y}{p_y} - log(p_y/p_x^o) + 1\right)\right)
+$$
+$$
+= p_y\left(\log \left(\frac{p_y}{p_x^o} \right)- \log \left(\frac{p_y}{p_x^f}\right)\right) = p_y\left(\log \left(\frac{p_x^f}{p_x^o} \right)\right).
+$$
+The interpretation of this result is that $p_y\left(\log \left(\frac{p_x^f}{p_x^o} \right)\right)$ is the adjustment in income that changes the customer's utility such that it is equal to the utility that would occur if the price change that happened. The amount of change should be proportional to $p_y$, and proportional to the logarithm of the ratio between the new and original prices. See the graph from 4.7.
+\end{proof}
+
+\begin{problem}{4.9}
+\end{problem}
+\begin{proof}
+We are given that 
+$$
+\Delta CS = -\int_{p_x^o}^{p_x^f}x_m(x, p_y, m) \ dx.
+$$
+We have shown in 4.3 that $x_m(p_x^{o}, p_y, m) = p_y/p_x^o$. Thus,
+$$
+\Delta CS = -p_y \int_{p_x^o}^{p_x^f} 1/p_x^o \ dx. = -p_y(log(p_x^f) - log(p_x^o)) = p_y\left(\log \left(\frac{p_x^f}{p_x^o} \right)\right).
+$$
+The interpretation of this result is that $p_y\left(\log \left(\frac{p_x^f}{p_x^o} \right)\right)$ is change in the consumer's welfare as a result of the change in price. The amount of change should be proportional to $p_y$, and proportional to the logarithm of the ratio between the new and original prices. See the graph from 4.7.
+\end{proof}
+
+\begin{problem}{4.10}
+\end{problem}
+\begin{proof}
+From the results in $4.7, 4.8, 4.9$, we can see that
+$$
+|CV|, |EV|, |CS| = \left|p_y\left(\log \left(\frac{p_x^f}{p_x^o} \right)\right)\right|,
+$$
+and thus the absolute values of the compensating variation, equivalent variation, and the customer's surplus are all identical, regardless of what the original and new prices are. This equality likely derives from the fact that the income is independent of the quantity of good $x$ that is consumed; this would mean that $e(p_x^o, p_y, v(p_x^f, p_y, m)) - e(p_x^o, p_y, v(p_x^o, p_y, m)) = e(p_x^f, p_y, v(p_x^f, p_y, m)) - e(p_x^f, p_y, v(p_x^o, p_y, m))$.
+\end{proof}
+
+\end{document}

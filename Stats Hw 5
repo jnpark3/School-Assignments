@@ -1,0 +1,206 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 5}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{proof}
+Note that
+$$
+E[XY] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} xy f(x, y) \ dx \ dy = \frac{3}{8} \int_{-1}^{1} \int_{-1}^{1} xy(x + y)^2 \ dx \ dy
+$$
+$$
+= \frac{3}{8} \int_{-1}^{1} \frac{y(1 + y)^3(3-y)}{12} - \frac{y(-1 + y)^3(-3-y)}{12} \ dy = \frac{3}{8} \int_{-1}^{1} \frac{4y^2}{3} \ dy = \frac{1}{8} \left(\frac{4}{3} + \frac{4}{3}\right) = \frac{1}{3}
+$$
+Then, note that 
+$$
+E[X] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} x f(x, y) \ dx \ dy = \frac{3}{8} \int_{-1}^{1} \int_{-1}^{1} x(x + y)^2 \ dx \ dy
+$$
+$$
+= \frac{3}{8} \int_{-1}^{1} \frac{(1 + y)^3(3-y)}{12} - \frac{(-1 + y)^3(-3-y)}{12} \ dy = \frac{3}{8} \int_{-1}^{1} \frac{4y}{3} \ dy = 0
+$$
+Given the equation is symmetric for values of x and y ($f(x, y) = f(y, x)$), it follows that $E[Y] = 0$ as well. Then, note that $Cov(X, Y) = E[XY] - E[X]E[Y] = \frac{1}{3}$.
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}
+It is easy to show that $X$ and $Y$ are not independent. For example, note that $P(X = 0)$ is $1/2$ by adding the probability masses in the row, and similarly $P(Y = 0)$ is $1/2$. If $X$ and $Y$ were independent, then $P(X = 0 \cap Y = 0) = P(X = 0)P(Y = 0)$. However, while $P(X = 0)P(Y = 0) = 1/4$, the table shows that $P(X = 0 \cap Y = 0) = 0$. This discrepancy proves that the two variables are not independent, and therefore dependent.
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}
+It is easy to show that $X$ and $Y$ are not independent. For example, note that $P(X = 0)$ is $1/2$ by adding the probability masses in the row, and similarly $P(Y = 0)$ is $1/2$. If $X$ and $Y$ were independent, then $P(X = 0 \cap Y = 0) = P(X = 0)P(Y = 0)$. However, while $P(X = 0)P(Y = 0) = 1/4$, the table shows that $P(X = 0 \cap Y = 0) = 0$. This discrepancy proves that the two variables are not independent, and therefore dependent.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}
+First, we calculate covariance between $X$ and $Y$. Note that
+$$
+E[XY] = \sum_{x \in -1, 0, 1} \sum_{y \in -1, 0, 1} xyp(x, y) = \frac{(0)(1)}{4} + \frac{(0)(-1)}{4} + \frac{(1)(0)}{4} + \frac{(-1)(0)}{4} = 0.
+$$
+In addition, note that $E[X] = 0$ because $x = 1$ with probability $1/4$, $x = 0$ with probability $1/2$, and $x = -1$ with probability $-1/4$. The weighted average is therefore $0$. This is true also for $E[Y]$. Thus, the covariance of $X$ and $Y$ is $Cov(X, Y) = E[XY] - E[X]E[Y] = 0$. Then, given correlation is defined as a fraction with covariance as the numerator, it is clear the correlation must be $0$ as well. This shows that uncorrelated variables can be dependent.
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}
+By adding the columns of the given table, we get that $P(Y = 0) = 0.24$, $P(Y = 1) = 0.38$, and $P(Y = 2) = 0.38$. This is the marginal pmf for $Y$. Then, we see that $E[Y] = 0(0.24) + 1(0.38) + 2(0.38) = 1.14$. Next, by adding the rows of the given table, we get that $P(X = 0) = 0.16$, $P(X = 1) = 0.34$, and $P(X = 2) = 0.50$. This is the marginal pmf for $X$. Then, we see that $E[X] = 0(0.16) + 1(0.34) + 2(0.50) = 1.34$.
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}
+Using the joint pmf table, we see that
+$$
+E[X + Y] = \sum_{x \in X} \sum_{y \in Y} (x + y)p(x, y) 
+$$
+$$
+= 0(0.10) + 1(0.04) + 2(0.02) + 1(0.08) + 2(0.20) + 3(0.06) + 2(0.06) + 3(0.14) + 4(0.30) = 2.48.
+$$
+This value does indeed match the value of $E[X] + E[Y] = 1.14 + 1.34 = 2.48$.
+\end{proof}
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{proof}
+$$
+E[XY] = \sum_{x \in X} \sum_{y \in Y} (xy)p(x, y) 
+$$
+$$
+= 0(0.10) + 0(0.04) + 0(0.02) + 0(0.08) + 1(0.20) + 2(0.06) + 0(0.06) + 2(0.14) + 4(0.30) = 1.80.
+$$
+Then, note that $Cov(X, Y) = E[XY] - E[X]E[Y] = 1.80 - (1.34)(1.14) = 0.2724$.
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+The probability mass function of $X_1$ follows the property that $f(X_1 = 25) = 0.20$, $f(X_1 = 40) = 0.50$, and $f(X_1 = 65) = 0.30$. Using the equation for the expected value,
+$$
+E[X_1] = \sum_{x \in X_1} x p(x) = 0.2(25) + 0.5(40) + 0.3(65) = 44.5.
+$$
+In addition,
+$$
+E[X_1^2] = \sum_{x \in X_1} x^2 p(x) = 0.2(25^2) + 0.5(40^2) + 0.3(65^2) = 2192.5.
+$$
+It then follows that $Var(X_1) = E[X_1^2] - E[X_1]^2 = 2192.5 - 44.5^2 = 212.25$.
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+
+\
+
+\begin{tabular}{|l|l|l|l|}
+\hline
+$x_1$ & $x_2$ & $P(X_1 = x_1, X_2 = x_2)$ & $\bar{X} = (x_1 + x_2)/2$ \\ \hline
+25    & 25    & $0.2 \times 0.2 = 0.04$ & (25 + 25)/2 = 25 \\ \hline
+25    & 40    & $0.2 \times 0.5 = 0.10$ & (25 + 40)/2 = 32.5 \\ \hline
+25    & 65    & $0.2 \times 0.3 = 0.06$ & (25 + 65)/2 = 45 \\ \hline
+40    & 25    & $0.5 \times 0.2 = 0.10$ & (40 + 25)/2 = 32.5 \\ \hline
+40    & 40    & $0.5 \times 0.5 = 0.25$ & (40 + 40)/2 = 40  \\ \hline
+40    & 65    & $0.5 \times 0.3 = 0.15$ & (40 + 65)/2 = 52.5 \\ \hline
+65    & 25    & $0.3 \times 0.2 = 0.06$ & (25 + 65)/2 = 45 \\ \hline
+65    & 40    & $0.3 \times 0.5 = 0.15$ & (40 + 65)/2 = 52.5 \\ \hline
+65    & 65    & $0.3 \times 0.3 = 0.09$ & (65 + 65)/2 = 65 \\ \hline
+\end{tabular}
+
+Now, note that the values that $\bar{X}$ can take are 25, 32.5, 40, 45, 52.5, 65. The pmf can be determined by adding the probabilities for each respective value, and the resulting pmf is
+
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+25   & 37.5 & 40   & 45   & 52.5 & 65   \\ \hline
+0.04 & 0.20 & 0.25 & 0.12 & 0.30 & 0.09 \\ \hline
+\end{tabular}
+
+\end{proof}
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}
+Using the pmf determined above,
+$$
+E[\bar{X}] = \sum_{x \in \bar{X}} x p(x) = 25(0.04)+32.5(0.20)+40(0.25)+45(0.12)+52.5(0.30)+65(0.09) = 44.5.
+$$
+Next, note that
+$$
+E[\bar{X}^2] = \sum_{x \in \bar{X}} x p(x) = 25^2(0.04)+32.5^2(0.20)+40^2(0.25)+45^2(0.12)+52.5^2(0.30)+65^2(0.09) = 2086.375.
+$$
+We can now see that $Var(\bar{X}) = E[\bar{X}^2] - E[\bar{X}]^2 = 2156.375 - 45.5^2 = 106.125$. Thus, $E[\bar{X}] = 44.5 = E[X]$ and $Var[\bar{X}] = 106.125 = Var[X]/2$.
+\end{proof}
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{proof}
+The distribution of the sample mean is a normal distribution with mean also equal to $50,000$, and with standard deviation equal to $\frac{3000}{\sqrt{9}} = 1000$.
+\end{proof}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{proof}
+First, the central limit theorem cannot be applied in the first place because $n = 9$, and $np$ is thus clearly less than 10. In addition, the central limit theorem is not necessary to show that the distribution is normal because the sum of identical normal distribution is another normal distribution. In addition, the mean and standard deviation of $\bar{X}$ are determined using the variance properties regarding the mean of i.i.d. random variables.
+\end{proof}
+
+\begin{problem}{5.c}
+\end{problem}
+\begin{proof}
+Given the sample mean is distributed with $\mu = 50,000$ and $\phi = 1,000$, it follows that samples means less than $47,000$ are more than three standard deviations below the mean. The 68-95-99.7 rule states that there is a 0.3 percent chance of the sample mean being more than 3 standard deviations away from the mean, and it follows that there is a $\frac{0.003}{2} = 0.0015$ chance of it being below three standard deviations. Thus, there is a 0.15 percent chance that a sample mean less than 47,000 miles occurs even when it is true that $\mu = 50,000$ and $\phi = 1,000$.
+\end{proof}
+
+\begin{problem}{6.a}
+\end{problem}
+\begin{proof}
+Note that the probability of getting 24 aces or fewer is equal to the sum of the probabilities of getting 0 aces, 1 aces, ..., 24 aces (given these events are all disjoint). Using the binomial formula, the probability of getting $k$ aces can be represented as 
+$$
+\binom{100}{k}p^k(1 - p)^{100 - k}
+$$
+given there are 100 rolls total. Thus, the probability of getting 24 aces or fewer can be expressed as
+$$
+\sum_{k = 0}^{24} \binom{100}{k}p^k(1 - p)^{100 - k}.
+$$
+\end{proof}
+
+\begin{problem}{6.b}
+\end{problem}
+\begin{proof}
+First, we check whether the central limit theorem can be applied. First note that the trials are binary in the sense that anything other than a success (an ace) is a failure. Each trial is also independent as one dice roll would not affect other dice rolls. Lastly, note that $np = 16.66 \geq 10$ and $n(1 - p) = 83.33 \geq 10$. Next, applying the central limit theorem, we see that the mean for the number of aces is $np = 16.666$ and the standard deviation for the number of aces is $\sqrt{np(1 - p)} = 3.726$. $24$ is $\frac{24 - 16.666}{3.726} = 1.967$ standard deviations above the mean. Using the standard normal distribution table, we see that there is a $0.9756$ probability that a randomly chosen variable in a normal distribution is less than the mean plus $1.967$ times the standard deviation. Thus, there is a $0.9756$ probability of getting 24 aces or fewer.
+\end{proof}
+
+\begin{problem}{6.c}
+\end{problem}
+\begin{proof}
+When rolling a pair of dice, there is a $\frac{1}{6}\frac{1}{6} = \frac{1}{36}$ probability of rolling a double-ace. Next, note that the probability of rolling three or fewer double aces is equal to the sum of the probabilities for rolling 0, 1, 2, and 3 double-aces (given these events are clearly disjoint). Using the binomial formula, we can see that 
+$$
+P(X leq 3) = \sum_{k = 0, 1, 2, 3} \binom{100}{k}p^k(1 - p)^{100 - k} = 0.0597 + 0.1707 + 0.2415 + 0.2254 = 0.6975.
+$$
+Thus, there is a $0.6975$ probability of rolling three or fewer double aces.
+\end{proof}
+
+\begin{problem}{6.d}
+\end{problem}
+\begin{proof}
+We cannot apply the normal approximation to the binomial for $c$ because the distribution is too skewed and the sample size of 100 is too small. It fails to pass the $np \geq 10$ test because $np = (100)(1/36) = 2.77$.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,103 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 3}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+In order for $\mu$ to be a premeasure, it must be finitely additive, countably monotone, and $\mu(\emptyset) = 0$. We are already given that $\mu(\emptyset) = 0$. We will start by showing $\mu$ is finitely additive. In order for $\mu$ to be finitely additive, for any finite, disjoint set of subsets $E_1, ..., E_k$, 
+$$
+\mu\left(\bigcup_{i = 1}^k E_i \right) = \sum_{i = 1}^k \mu(E_i)
+$$
+given $\bigcup_{i = 1}^k E_i \subset S$. Consider an arbitrary set of subsets $E_1, ..., E_k$ that are disjoint, measurable, and $\bigcup_{i = 1}^k E_i \subset S$. These sets are of the form $[a, b]$, $(a, b)$, $(a, b]$, or $[a, b)$ given these are the only types of sets that have a defined measure. Next, given $E_1, ..., E_k$ are disjoint, it is clear that there is an ordering to these intervals based on which numbers they contain, and any two adjacent intervals overlap at the endpoints. For example, if $E_i$ is $(a, b)$, then $E_{i + 1}$ must be in the form $[b, c]$ or $[b, c)$ (this is assuming that $E_1, E_2, ..., E_k$ are already arranged in the desired order). Let $E_i$ have the endpoints $a_i$ and $b_i$, and let $E_1, E_2, ..., E_k$ be arranged such that $b_i = a_{i + 1}$, which we have shown is possible. For some $i$, if $E_i$ is an interval such that it is open at endpoint $b_i$, then $E_{i+1}$ must be closed at $a_{i + 1}$ because otherwise no element in the set $E_1, ..., E_k$  would contain the value $b_i$, which then means that $\bigcup_{i = 1}^k E_i \not\subset S$. On the other hand, if $E_i$ is closed at endpoint $b_i$, then $E_{i +1}$ must be open at $a_{k+1}$ or else both $E_i$ and $E_{i + 1}$ will contain $b_i$, which would contradict the fact that they are disjoint. Now, let $g'$ be a function such that $g'(a_i, i) = g(a_i)$ if $E_i$ is open at $a_i$, $g'(a_i, i) = g(a_i-)$ if $E_i$ is closed at $a_i$, $g'(b_i, i) = g(b_i-)$ if $E_i$ is open at $b_i$, and $g'(b_i, i) = g(b_i)$ if $E_i$ is closed at $a_i$. Note that using this definition, $\mu(E_i) = g'(b_i, i) - g'(a_i, i)$. In addition, given $b_i = a_{i + 1}$ and given that if $E_i$ is closed at $b_i$ then $E_{i + 1}$ is open at $a_{i+1}$ and vice versa, it follows that $g'(b_i, i) = g'(a_{i+1}, i)$ for any $i, a_i, b_i$. Then, observe that $\sum_{i = 1}^k \mu(E_i)$ can be represented as
+$$
+\sum_{i = 1}^k \mu(E_i) = \sum_{i = 1}^k g'(b_i, i) - g'(a_i, i) = g'(b_1, 1) - g'(a_1, 1) + g'(b_2, 2) - g'(a_2, 2) + ... - g'(a_k, k) = - g'(a_1, 1) + g'(b_k, k),
+$$
+with the last equality being derived through the telescoping summation method. Note that $- g'(a_1, 1) + g'(b_k, k)$ is equal to the measure of $\left(\bigcup_{i = 1}^k E_i \right)$, and thus it is clear that $\mu$ is finitely additive.
+
+Now, to show countable monotonicity, consider a set of subsets $E_1, E_2, ..., E_k$ that covers some subset $E$. First, let $A$ and $B$ be intervals in $\mathbb{R}$. If $A$ and $B$ are disjoint, then finite additivity shows that $\mu(A \cup B) = \mu(A) + \mu(B)$. If $A$ and $B$ overlap, note that $A \cup B = (A - B) \cup (A \cap B) \cup (B - A)$. $(A - B), (A \cap B), (B - A)$ are by definition disjoint, and they are clearly intervals (not necessarily non-empty) and thus they are measurable. Finite additivity shows that $\mu(A \cap B) = \mu(A - B) + \mu(A \cap B) + \mu(B - A)$. Then, finite additivity also shows that $\mu(A) = \mu(A \cap B) + \mu(A - B)$ and $\mu(B) = \mu(A \cap B) + \mu(B - A)$, and thus $\mu(A) + \mu(B) = \mu(A - B) + 2\mu(A \cap B) + \mu(B - A)$. $\mu$ is never negative given $g$ is an increasing function, and thus $\mu(A \cap B) > 0$, which then shows that $\mu(A \cup B) \geq \mu(A) + \mu(B)$. Thus, under an circumstance $\mu(A \cup B) \geq \mu(A) + \mu(B)$, and applying this relation for any finite set of intervals $A_1, A_2, ..., A_k$ shows that $\mu(A_1 \cup ... \cup A_k) \geq \mu(A_1) + ... + \mu(A_k).$ In addition, this shows that $A_1 \cup ... \cup A_k$ is measurable. Now, let $E' = \bigcup_{i = 1}^k E_i$. By definition $E \subset E'$. We are also aware that $\mu(E') \leq \sum_{i = 1}^k \mu(E_i)$ as shown previously. Then, given $E'$ covers $E$, there must exist some continuous interval inside $E'$ which contains $E$. It is easy to see that this interval has a measure that is greater than the measure of $E$. If there are any other disjoint intervals in $E'$, they would only increase the measure of $E'$ due to finite additivity. This shows that $\mu(E) \leq \mu(E')$, and thus $\mu(E) \leq  \sum_{i = 1}^k \mu(E_i)$. This completes the proof that $\mu$ is a premeasure.
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}
+First, we will show that $g$ is increasing. If $a, b$ are both positive and $a > b$, then $g(a) - g(b) = v[0, a) - v[0, b)$. Given $v[0, b) + v[b, a) = v[0, b)$ by finite additivity, it follows that $g(a) - g(b) = v[a, b) > 0$. If $a, b$ are both negative and $a > b$, then $g(a) - g(b) = -v(a, 0] + v(b, 0]$. Given $v(a, 0] + v(b, a] = v(b, 0]$ by finite additivity, it follows that $g(a) - g(b) = v(b, a] > 0$. Next, if $a$ is positive and $b$ is negative, then $g(a) - g(b) = v[0, a) + v(b, 0] = v(b, a) > 0$ due to finite additivity. Lastly, if $a = 0$, then $g(a) - g(b) = v(b, 0] > 0$ for $b < 0$ and $g(b) - g(a) = v[0, b) > 0$ for $b > 0$. Thus, if $a > b$, then it is always true that $g(a) > g(b)$.
+
+Next, to show that $g$ is continuous from the right, assume for the sake of contradiction that $g$ is not continuous on the right for some $x \in \mathbb{R}$. This means that $v[0, x) \neq \lim_{\epsilon \rightarrow 0+} v[0, \epsilon + x)$. Given $g$ is an increasing function, the series $v[0, \epsilon + x)$ must necessarily converge to some value as $\epsilon \rightarrow 0$. Let this value be $v[0, x) + \epsilon'$. Using finite additivity, it follows that $v[x, x + \epsilon) \geq \epsilon'$ for any $\epsilon > 0$. Then, note that due to finite additivity, $\lim_{\epsilon \rightarrow 0+} v[x, x + \epsilon) = v[x, x] \lim_{\epsilon \rightarrow 0+} v(x, x + \epsilon) = \epsilon'$, and it thus follows that the measure of the singular point at $x$ is equal to $\epsilon'$. This is the case because $\lim_{\epsilon \rightarrow 0+} (x, x + \epsilon)$ represents the empty set. However, this yields a contradiction because if a single point can have a positive premeasure, then it follows that collections of infinitely many points (i.e. intervals), would have the premeasure be undefined. This is clearly not the case, and thus $g$ is continuous from the right.
+\end{proof}
+
+\begin{problem}{2}
+\end{problem}
+\begin{proof}
+The question asks to prove that $M$ contains all sets $E$ which are subsets of some element in $M$ and $\mu(E) = 0$. For the sake of contradiction, assume that $\mu(E) = 0$, $E \subset E'$ for some $E' \subset M$, and $E \notin M$. We are given that $S$ is the set of all rectangles in $\mathbb{R}^n$. 
+\end{proof}
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}
+$<run \ out \ of \ time>$
+\end{proof}
+
+\begin{problem}{4}
+\end{problem}
+\begin{proof}
+If $E \in L$ (i.e. E is Lebesgue measurable), it is easy to see that $E + x \in L$ because Lebesgue measure is translation invariant. We use the fact that the Lebesgue measure is defined using open covers. If $E_k$ is a a set of bounded open subsets of $\mathbb{R}^k$ and they constitute an open cover of $E$, then the set $E_k + x$ is clearly an open cover of $E + x$. This shows that if $\mu(E) = c$, $\mu(E + x) = c$ as well given every open cover of $E$ has an analogous open cover of $E + x$. 
+
+For the other part of the question, if $E + x \in L$, it immediately follows that $E \in L$ because it is equivalent to translating $E + x$ by the vector $-x$. We have already established that the Lebesgue measure is invariant under translations. Thus, this completes the proof.
+\end{proof}
+
+\begin{problem}{5}
+\end{problem}
+\begin{proof}
+$<run \ out \ of \ time>$
+\end{proof}
+
+\begin{problem}{6}
+\end{problem}
+\begin{proof}
+Let $I_k$ denote the interval $[\frac{1}{2^k}, \frac{1}{2^{k-1}})$. Next, divide each segment $I_k$ into $k$ equally spaced segments $I_{k, 1}, I_{k, 2}, ..., I_{k, k}$. Given some $0 < d < 1$, for every segment in the form $I_{j, k}$, divide it into two segments with ratios $d : 1 - d$, and let the segment corresponding to the value of $d$ be an element of $J$. Define $J$ as the union of all such intervals in every interval $I_{j, k}$. First, note that $I_1, I_2, ...$ cover the entirety of the interval $(0, 1)$. In addition, $m(J \cap I_k) = d/2^{k+1}$ for every interval because each interval $I_k$ has a length of $1/2^{k+1}$ and of this length $d$ represents the portion that is in $J$. Thus, $m(J \cap [0, 1/2^k)) = m(J \cap I_k) + m(J \cap I_{k+1}) + ... = d(1/2^{k+1} + 1/2^{k+2} ... ) = d/2^k$. Thus, $m(J \cap (0, r))/r = d$ for every $r$ in the form $2^k$. Then, what is left to show is that for every value not in the form $2^k$, the deviation of the value $m(J \cap (0, r))/r$ away from $d$ approaches 0 as $r$ increases. Let $r$ denote some arbitrary number, and let $1/2^{k - 1} > r > 1/2^{k}$. It then follows that $r \in I_k$. Then, assume $r \in I_{k, j}$ for some $1 \leq j \leq k$. For every segment $I_{k, i}$ where $i < j$, $d$ represents the portion of that segment that is contained inside J. Thus, for in the interval $(0, 1/2^{k} + (j-1)/k2^k)$, $d$ represents the proportion of this interval that is contained in $J$. The remaining part of $(0, r)$ that is not in this interval is $(1/2^{k} + (j-1)/k2^k, r)$, which clearly has a maximum length of $1/k2^k$. As $k$ increases, the effect this segment has on the value of $m(J \cap [0, r))$ diminishes to arbitrarily small points as $r$ decreases given that it decreases at a faster order ($O(1/k2^k)$ compared to $O(2^k)$). Thus, $\lim_{r \rightarrow 0} m(J \cap (0, r))/r = d$. To show that there exists a $J$ where $\lim_{r \rightarrow 0} m(J \cap (-r, r))/2r = d$, merely reflect the $J$ derived in the previous step across the line $x = 0$. By adding $\lim_{r \rightarrow 0} m(J \cap (0, r))/2r$ with $\lim_{r \rightarrow 0} m(J \cap (-r, 0))/2r$, the desired result is shown.
+\end{proof}
+
+\begin{problem}{7}
+\end{problem}
+\begin{proof}
+By definition, given $m(A) > 0$, that implies that $\inf\left\{\sum_{k = 1}^{\infty}l(I_k)\right\} > 0$ where $\{I_k\}_{k \in \mathbb{N}}$ includes every countable set of open intervals that cover $A$. For the sake of contradiction, assume that there exist no points $x, y$ in $A$ such that $|x - y| < \epsilon$ for some positive $\epsilon$. This immediately implies that there are at most countably many points in $A$ given that for every point there exists a neighborhood of radius $\epsilon/2$ which does not overlap with any other neighborhood, every neighborhood contains at least one unique rational number, and there are countably many rational numbers. Let $a_1, a_2, ...$ denote an enumeration of the elements of $A$. Construct an open interval of radius $\alpha/2^k$ around every point $a_k$. 
+
+For any value of $\alpha$, this set of open intervals clearly covers the entirety of $A$. In addition, it is clear that the sum of the lengths of these intervals is equal to $\alpha$. Given that $\alpha$ is an arbitrarily positive number, it can be made arbitrarily small, and thus $\sum_{k = 1}^{\infty}l(I_k)$ arbitrarily small. This contradicts the fact that $\inf\left\{\sum_{k = 1}^{\infty}l(I_k)\right\} > 0$. Therefore, this contradiction shows that there exist $x, y \in A$ such that $|x - y| < \epsilon$ for any arbitrary $\epsilon > 0$.
+\end{proof}
+
+\begin{problem}{8}
+\end{problem}
+\begin{proof}
+$<run \ out \ of \ time>$
+\end{proof}
+
+\begin{problem}{9}
+\end{problem}
+\begin{proof}
+First, note that the interval $I_k = [1/10^{k+1}, 1/10^{k})$ contains every number in the interval $[0, 1]$ where there are $k$ zeros before the first digit, and thus all the points $x$ where $f(x) = k$ (ignoring the edge cases). Then, note that $I_0, I_1, ...$ covers the entirety of the interval $[0, 1]$. Let $A_k$ denote the union $I_k \cup I_{k+1} \cup ... $. It is clear that $A_k = [0, 1/10^{k})$, and it contains all the points $x$ where $f(x) \geq k$. It is clear that $A_k$ is measurable for every $k \in \mathbb{N}$ given it is an interval. Then, note that the set of all points $x$ where $f(x) > h$ for any $h$ is equal to the set $A_{\lfloor{-log(h)\rfloor}}$, which is shown to be measurable for any $h$. This shows that $f$ is a measurable function.
+
+Then, to compute the integral, we utilize the Riemann integral, which is equivalent to the Lebesgue integral given it is defined. Each interval $I_k$ has the length $9/10^{k+1}$, and thus
+$$
+\int_{0}^1 f(x) \ dm = \sum_{i = 0}^{\infty} i(m(I_i)) = \sum_{i = 0}^{\infty} i\frac{9}{10^{i+1}} = \frac{9}{10^{2}} + \frac{9(2)}{10^{3}} + \frac{9(4)}{10^{3}} + ... = \frac{1}{9}
+$$
+with the last equality derived using telescoping series. Thus, the value of the integral is $1/9$.
+\end{proof}
+\end{document}

@@ -1,0 +1,439 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Algebra 2 Midterm Study Guide}
+\author{Jian Park}
+\maketitle
+
+\
+
+\noindent\textbf{Section 7.1}
+
+\
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition:} A ring $R$ is a set together with two binary operations $+$ and $\times$ satisfying the following axioms:
+
+\ \ \ \ (i) $(R, +)$ is an abelian group,
+
+\ \ \ \ (ii) $\times$ is associative: $(a \times b) \times c = a \times (b \times c)$
+
+\ \ \ \ (iii) The distributive laws hold in $R$: for all $a, b, c \in R$, 
+$$
+(a + b) \times c = (a \times c) + (b \times c), a \times (b + c) = (a \times b) + (a \times c)
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition:} A ring $R$ is commutative if multiplication is commutative
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition:} (Note: we will always assume this property of rings is true) A ring $R$ is said to have an identity if there is an element $1 \in R$ with
+$$
+1 \times a = a \times 1 = a.
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition:} A ring with identity, where $1 \neq 0$, is a division ring if every nonzero element $a \in R$ has a multiplicative inverse ($ab = ba = 1$). A commutative division ring is a field.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Proposition 1 (Basic Properties):} Let $R$ be a ring. Then
+
+\ \ \ \ (i) $0a = a0 = 0$ for all $a \in R$
+
+\ \ \ \ (ii) $(-a)b = a(-b) = -(ab)$ for all $a, b \in R$ ($-a$ is the additive inverse of $a$).
+
+\ \ \ \ (iii) $(-a)(-b) = ab$ for all $a, b \in R$
+
+\ \ \ \ (iv) if $R$ has an identity $1$, then the identity is unique and $-a = (-1)a$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+Short proof: \textbf{(i)} $0a + 0a = (0 + 0)a = 0a, 0a = 0$. \textbf{(ii)} $0 = (a + (-a))b = ab + (-a)b, -ab = (-a)b$. \textbf{(iii)} $0 = (a + (-a))(-b) = a(-b) + (-a)(-b), -ab = (-a)(-b)$. \textbf{(iv)} If $x, y$ are identities, $xy = y = x$. $0 = (1 + (-1))a = a + (-1)a$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition:} Let $R$ be a ring. Then
+
+\ \ \ \ (i) A nonzero element $a$ of $R$ is called a zero divisor if there is a nonzero element $b$ in $R$ such that either $ab, ba = 0$.
+
+\ \ \ \ (ii) Assume $R$ has an identity $1 \neq 0$. An element $u \in R$ is called a unit in $R$ if there is some $v \in R$ such that $uv = vu = 1$.
+
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition:} A commutative ring with identity $1 \neq 0$ is called an integral domain if it has no zero divisors.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Proposition 2 (Zero divisor property):} Assume $a, b, c$ are elements of any ring with $a$ no a zero divisor. If $ab = ac$, then either $a = 0$ or $b = c$ (we can cancel out $a$ as long as it is not a zero). In particular, if $a, b, c$ are any elements in an integral domain and $ab = bc$, then either $ab = bc$, then either $a = 0$ or $b = c$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+Short proof: If $ab = ac$, $a(b - c) = 0$, and given $a$ is not a zero divisor, $a = 0$ or $b - c = 0$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Corollary 3:} Any finite integral domain is a field.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition:} A subring of a ring $R$ (i) is a subgroup of $R$ that (ii) is closed under multiplication.
+    }%
+}
+
+\
+
+\noindent\textbf{Section 7.2 (No group rings)}
+
+\
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+Note: Polynomial rings of a given ring $R$, $R[X]$, is the set of polynomials with coefficients in $R$ and closed under polynomial addition and multiplication. It is always a commutative ring with an identity.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Proposition 4 (Basic Properties of Poly. Rings):} Let $R$ be an integral domain and let $p(x), q(x)$ be nonzero elements of $R[x]$. Then
+
+\ \ \ \ (i) degree $p(x)q(x)$  is the sum of the degrees of $p(x), q(x)$.
+
+\ \ \ \ (ii) the units of $R[X]$ are just the units of $R$.
+
+\ \ \ \ (iii) $R[X]$ is an integral domain.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+Note: $M_n(R)$ denote the set of $n \times n$ matrices with entries from $R$. $M_n(R)$ is not commutative.
+    }%
+}
+
+\
+
+\noindent\textbf{Section 7.3}
+
+\
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition:} Let $R, S$ be rings. A ring homomorphism is a map $\phi : R \rightarrow S$ satisfying
+
+\ \ \ \ (i) $\phi(a + b) = \phi(a) + \phi(b)$ for all $a, b \in R$.
+
+\ \ \ \ (ii) $\phi(ab) = \phi(a)\phi(b)$ for all $a, b \in R$.
+
+\ \ \ \ (iii) $\phi(1_R) = 1_S$.
+
+The kernel of the ring homomorphism $\phi$, denoted $ker(\phi)$, is the set of elements in $R$ that maps to $0$ in $S$.
+
+A bijective ring homomorphism is called an isomorphism.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Proposition 5 (Images, Kernels of Homomorphisms):} Let $R$ and $S$ be rings and let $\phi: R \rightarrow S$ be a homomorphism
+
+\ \ \ \ (i) The image of $\phi$ is a subring of $S$
+
+\ \ \ \ (ii) The kernel of $\phi$ is a subring of $R$. Furthermore, if $\alpha \in ker(\phi)$ then $r\alpha$ and $\alpha r \in ker(\phi)$ for every $r \in R$, i.e., $ker(\phi)$ is closed under multiplication by elements from $R$.
+
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition:} Let $R$ be a ring, let $I$ be a subset of $R$ and let $r \in R$. $I$ is an ideal if
+
+\ \ \ \ (i) $rI = \{ra | a \in I\}$ and $Ir = \{ar | a \in I\}$
+
+\ \ \ \ (ii) A subset $I$ of $R$ is a left ideal of $R$ if $I$ is a subring of $R$, $I$ is closed under left multiplication by elements. Additionally, $I$ is a right ideal if $I$ is closed under right multiplication. If it is closed on both sides, it is an ideal.
+
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Proposition 6 (Quotient Ring):} Let $R$ be a ring and let $I$ be an ideal $R$. Then the additive quotient group $R/I$ is a ring under binary operations
+
+$$
+(r + I) + (s + I) = (r + s) + I, (r + I) \times (s + I) = (rs) + I
+$$
+
+for all $r, s \in R$. Conversely, if $I$ is any subgroup such that the above operations are well defined, then $I$ is an ideal of $R$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition:} When $I$ is an ideal of $R$ the ring $R/I$ with operations in the previous proposition is called the quotient ring of $R$ by $I$.
+
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Theorem 7 (First Isomorphism Theorem):} 
+
+\ \ \ \ (i) (First Theorem) If $\phi : R \rightarrow S$ is a homomorphism of rings, then the kernel of $\phi$ is an ideal of $R$, the image of $\phi$ is a subring of $S$ and $R/ker(\phi)$ isomorphic as a ring to $\phi(R)$.
+
+\ \ \ \ (ii) If $I$ is any ideal of $R$, then the map $R \rightarrow R/I$ where $r$ is mapped to $r + I$ is a surjective ring homomorphism with kernel $I$ (this homomorphism is called the natural projection of $R$ onto $R/I$). Thus every ideal is the kernel of a ring homomorphism and vice versa.
+
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Theorem 8 (Second, Third, Fourth Isomorphism Theorem):} 
+
+\ \ \ \ (i) (Second Theorem) Let $A$ be a subring and let $B$ be an ideal of $R$. Then $A + B = \{a + b | a \in A, b \in B\}$ is a subring of $R$, $A \cap B$ is an ideal of $A$ and $(A + B)/B$ is isomorphic to $A/(A \cap B)$.
+
+\ \ \ \ (ii) (Third Theorem) Let $I$ and $J$ be ideals of $R$ with $I \subset J$. Then $J/I$ is an ideal of $R/I$ and $(R/I)/(J/I)$ is isomorphic to $R/J$.
+
+\ \ \ \ (iii) (Fourth Theorem) Let $I$ be an ideal of $R$. The correspondence $A$ to $A/I$ is an inclusion preserving the bijection between the set of subrings $A$ of $R$ that contain $I$ and the set of subrings of $R/I$. Furthermore, $A$ (a subring containing I) is an ideal of $R$ if and only if $A/I$ is an ideal of $R/I$.
+
+    }%
+}
+
+\
+
+\noindent\textbf{Section 7.4}
+
+\
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition:} Let $A$ be any subset of the ring $R$.
+
+\ \ \ \ (i) Let $(A)$ denote the smallest ideal of $R$ containing $A$, called the ideal generated by $A$.
+
+\ \ \ \ (ii) Let $RA$ denote the set of all finite sums of elements of the form $ra$ with $r \in R$ and $a \in A$, i.e., $RA = \{a_1r_1 + ... + a_nr_n | r_i \in R, a_i \in A, n \in \mathbb{N}\}$.
+
+\ \ \ \ (iii) An ideal generated by a single element is called a principal ideal.
+
+\ \ \ \ (iv) An ideal generated by a finite set is called a finitely generated ideal.
+    }%
+}
+
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Proposition 9 (Properties of Ideals):} Let $I$ be an ideal of $R$.
+
+\ \ \ \ (i) $I = R$ if and only if $I$ contains a unit.
+
+\ \ \ \ (ii) Assume $R$ is commutative. Then $R$ is a field if and only if its only ideals are $0$ and $R$.
+
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Corollary 10:} If $R$ is a field then any nonzero ring homomorphism from $R$ into another ring is an injection.
+
+    }%
+}
+
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Definition:} An ideal $M$ in an arbitrary ring $S$ is called a maximal ideal if $M \neq S$ and the only ideals containing $M$ are $M$ and $S$.
+
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Proposition 11 (Ideals in Maximal Ideals):} In a ring with identity every proper ideal is contained in a maximal ideal.
+
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Proposition 12 (Quotient Rings/Maximal Ideals):} Assume $R$ is commutative. The ideal $M$ is a maximal ideal if and only if the quotient ring $R/M$ is a field.
+
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Definition:} Assume $R$ is commutative. An ideal $P$ is called a prime ideal if $P \neq R$ and whenever the product $ab$ of two elements $a, b \in R$ is an element of $P$, then at least one of $a$ and $b$ is an element of $P$.
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Proposition 13 (Prime Ideals/Maximal Ideals):} Assume $R$ is commutative. Then the ideal $P$ is a prime ideal in $R$ if and only if the quotient ring $R/P$ is an integral domain.
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Corollary 14 (Maximal Ideal/Prime Ideal):} Assume $R$ is commutative. Every maximal ideal of $R$ is a prime ideal.
+    }%
+}
+
+\
+
+\noindent\textbf{Section 7.5}
+
+\
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Theorem 15 (Ring of Fractions):} Let $R$ be a commutative ring. Let $D$ be any nonempty subset of $R$ that does not contain $0$, does not contain any zero divisors and is closed under multiplication (i.e., $ab \in D$ for all $a, b \in D$). Then there is a commutative ring $Q$ with $1$ such that $Q$ contains $R$ as a subring and every element of $D$ is a unit in $Q$. Then ring $Q$ has the following additional properties.
+
+\ \ \ \ (i) Every element of $Q$ is of the form $rd^{-1}$ for some $r \in R$ and $d \in D$. In particular, if $D = R - \{0\}$ then $Q$ is a field.
+
+\ \ \ \ (ii) (Uniqueness of $Q$) The ring $Q$ is the smallest ring containing $R$ in which all elements of $D$ become units, in the following sense. Let $S$ be any commutative ring with identity and let $\phi: R \rightarrow S$ be any injective ring homomorphism such that $\phi(d)$ is a unit in $S$ for every $d \in D$. Then there is an injective homomorphism $\psi: Q \rightarrow S$ such that $\psi |_R = \phi$. In other words, any ring containing an isomorphic copy of $R$ in which all the elements of $D$ become units must also contain an isomorphic copy of $Q$
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Definition:} Let $R, D, Q$ be as in Theorem 15.
+
+\ \ \ \ (i) The ring $Q$ is called the ring of fractions of $D$ with respect to $R$ and is denoted $D^{-1}R$.
+
+\ \ \ \ (ii) If $R$ is an integral domain and $D = R - \{0\}$, $Q$ is called the field of fractions or quotient field of $R$.
+
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Corollary 16 (Isomorphism and Field of Fractions):} Let $R$ be an integral domain and let $Q$ be the field of fractions of $R$. If a field $F$ contains a subring $R'$ isomorphic to $R$ then the subring of $F$ generated by $R'$ is isomorphic to $Q$
+
+    }%
+}
+
+\
+
+\noindent\textbf{Section 8.1}
+
+\
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Definition:} Any function $N : R \rightarrow \mathbb{Z} \cup \{0\}$ with $N(0) = 0$ is called a norm on the integral domain $R$. If $N(a) > 0$ for $a \neq 0$ define $N$ to have a positive norm.
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Definition:} The integral domain $R$ is said to be a Euclidean Domain if there is a norm $N$ on $R$ such that for any two elements $a$ and $b$ of $R$ with $b \neq 0$ there exists $q, r \in R$ with
+$$
+a = qb + r
+$$
+with $r = 0$ or $N(r) < N(b)$. $q$ is called the quotient and $r$ is the remainder.
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Definition:} The integral domain $R$ is said to be a Euclidean Domain if there is a norm $N$ on $R$ such that for any two elements $a$ and $b$ of $R$ with $b \neq 0$ there exists $q, r \in R$ with
+$$
+a = qb + r
+$$
+with $r = 0$ or $N(r) < N(b)$. $q$ is called the quotient and $r$ is the remainder.
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Note (Euclidean Algorithm):} Given $a, b \in R$,
+$$
+a = q_0 b + r_0, b = q_1 r_0 + r_1, ..., r_{n - 1} = q_{n + 1}r_{n}.
+$$
+It is not guaranteed that these elements are unique.
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Proposition 1 (Ideals in Euclidean Domains):} Every ideal in a Euclidean Domain is principal. More precisely, if $I$ is any nonzero ideal in the Euclidean Domain $R$ then $I = (d)$, where $d$ is any nonzero element of $I$ of minimum norm.
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Definition:} Let $R$ be a commutative ring and let $a, b \in R$ with $b \neq 0$.
+
+\ \ \ \ (i) $a$ is said to be a multiple of $b$ if there exists an element $x \in R$ with $a = bx$. In this case $b$ is said to divide $a$ or be a divisor of $a$, written $b | a$.
+
+\ \ \ \ (ii) A greatest common divisor of $a$ and $b$ is a nonzero element $d$ such that $d | a$ and $d | b$, and if $d' | a$ and $d' | b$ then $d' | d$
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Proposition 2 (GCD and Ideals):} If $a$ and $b$ are nonzero elements in the commutative ring $R$ such that the ideal generated by $a$ and $b$ is a principal ideal $(d)$, then $d$ is a greatest common divisor of $a$ and $b$.
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Proposition 3 (Ideal Generators):} Let $R$ be an integral domain. If two elements $d, d'$ of $R$ generate the same principal ideal ($(d) = (d')$), then $d' = ud$ for some unit $u$ in $R$. In particular, if $d$ and $d'$ are both greatest common divisors of $a, b$, then $d' = ud$ for some unit $u$.
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Theorem 4 (Euclidean Algorithm):} If $d$ is the last non-zero remainder in the Euclidean Algorithm for $a, b$, then $d$ is a greatest common divisor of $a, b$, and the principal ideal $(d)$ is the ideal generated by $a, b$. In particular, $d$ can be written as an $R$-linear cobination of $a, b$, i.e. $d = ax + by$.
+    }%
+}
+
+\noindent\fbox{%
+\parbox{\textwidth}{%
+\textbf{Definition:} A Principal Ideal Domain (PID) is an integral domain in which every ideal is principal. It immediately follows that every Euclidean domain is a principal ideal domain.
+    }%
+}
+
+
+
+\end{document}

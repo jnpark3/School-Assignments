@@ -1,0 +1,361 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 5}
+\author{Jian Park\\
+20800: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{proof}[Solution]
+Let $Q = [a_1, b_1] \times ... \times [a_n, b_n]$. Let $Q'$ denote a partition of this rectangle formed by a partitioning of each of the intervals $[a_1, b_1], ...$. If $R$ is the set of all rectangles in $Q'$, let $M_r(f)$ denote the supremum value of $f$ for all values in $r \in R$, and let $m_r(f)$ denote the infimum value. These two values exist given $f$ is a bounded function.
+
+For each $r = [a'_1, b'_1] \times ... \times [a'_n, b'_n] \in R$, construct a rectangle $r' = [a'_1, b'_1] \times ... \times [a'_n, b'_n] \times [0, M_r(f)] \subset \mathbb{R}^{n+1}$. This rectangle is clearly equivalent to the set ${(x, t) | x \in r, 0 \leq t \leq M_r(f)}$, and thus contains ${(x, t) | x \in r, 0 \leq t \leq f(x)}$. Similarly, the rectangle $r'' = [a'_1, b'_1] \times ... \times [a'_n, b'_n] \times [0, m_r(f)] \subset \mathbb{R}^{n+1}$ is equivalent to $\{(x, t) | x \in r, 0 \leq t \leq m_r(f)\}$ and thus is a subset of $\{(x, t) | x \in r, 0 \leq t \leq f(x)\}$. Next, if $R = r_1, r_2, ..., r_m$, construct the rectangles $r_1', ...$ and $r_1'', ...$ for each rectangle in $R$. It is clear that every rectangle $r_i'' \subset S$ and thus $r_1'' \cup r_2'' \cup ... \cup r_m'' \subset S$. Thus it is clear that $v(r_1'' \cup r_2'' \cup ... \cup r_m'') \leq v(S)$ due to Corollary 10.5 of Munkers given $S$ is a cover. Next, given that all of the rectangles are disjoint from each other, $v(r_1'' \cup r_2'' \cup ... \cup r_m'') = v(r_1'') + ... + v(r_m'') \leq v(S)$. Next, observe that $S = \{(x, y) | x \in r_1, 0 \leq t \leq f(x)\} \cup ... \cup \{(x, y) | x \in r_m, 0 \leq t \leq f(x)\} \subset \{(x, y) | x \in r_1, 0 \leq t \leq M_{r_1}(f)\} \cup ... \cup \{(x, y) | x \in r_m, 0 \leq t \leq M_{r_m}(f)\} \subset r'_1 \cup ... \cup r_m'$. This shows that $v(S) \leq v(r_1' \cup ... \cup r_m')$. We are already aware that $r_1', ..., r_m'$ are disjoint, and thus $v(r_1' \cup ... \cup r_m') = v(r_1') + ... + v(r_m')$. This shows that
+$$
+v(r_1'') + ... + v(r_m'') \leq v(S) \leq v(r_1') + ... + v(r_m').
+$$
+for any $r_1, ..., r_m$ formed by any arbitrary partition of $Q$. 
+
+Next, for the partition $Q'$ and its rectangles $R$, the upper and lower sum are defined as
+$$
+L(f, Q') = \sum_{r \in R} v(r)m_r(f)
+$$
+$$
+U(f, Q') = \sum_{r \in R} v(r)M_r(f)
+$$
+Observe that for any $r_i' = [0, m_{r_i}(f)] \times [a'_1, b'_1] \times ... \times [a'_m, b'_m] \in r_1', ..., r_m'$, $vol(r_i') = vol(r_i)m_{r_i}(f)$, and thus
+$$
+L(f, Q') = \sum_{r \in R} v(r)m_r(f) = v(r_1') + ... + v(r_m') \geq v(S).
+$$
+Similarly, $vol(r_i'') = vol(r_i)M_{r_i}(f)$
+$$
+U(f, Q') = \sum_{r \in R} v(r)M_r(f) = v(r_1'') + ... + v(r_m'') \leq v(S).
+$$
+Given $f$ is integrable, we know that $sup(L(f, Q')) = inf(U(f, Q')) = \int_Q f$ for all partitions $Q'$ of $Q$. Then, we have shown that $L(f, Q') \leq v(S) \leq U(f, Q')$ for any $Q'$, and thus $sup(L(f, Q')) = inf(U(f, Q')) = \int_Q f = v(S)$. 
+
+Now, to see that $S$ is rectifiable, for any partition $Q'$ construct the rectangles $r_1', ..., r_m'$. We have already shown that there exist partitions $Q'$ such that the area of $S$ not covered by $r_1', ..., r_m'$ has an arbitrarily small volume. It then follows that there exist partitions $Q'$ such that the area of $S$ not covered by $Int(r_1'), ..., Int(r_m')$ has an arbitrarily small volume. Every point in any of $Int(r_1'), ..., Int(r_m')$ are clearly interior points of $S$ as well, and thus we can see that the volume of the set of all non-interior points must be less than any positive number. This means that $Bd(S)$ has measure 0. In addition, $S$ is clearly bounded given $Q$ is bounded and $f$ is bounded. Thus, Theorem 14.1 shows that $S$ is rectifiable.
+\end{proof}
+
+\begin{problem}{2a}
+\end{problem}
+\begin{proof}[Solution]
+Let $Q$ denote some rectangle in $C$. We will use the same process as in problem 1 to show that $\{(x, y) | x \in Q, \phi(x) \leq t \leq \psi(x)\}$ is rectifiable. Then, we will show that $Q$ can be represented as a union of rectangles. If both are true, then it shows that it is possible to divide $C$ into rectangles, for each rectangle construct the set $\{(x, y) | x \in Q, \phi(x) \leq t \leq \psi(x)\}$, and the union of all such sets will equal $S$ and this union will be rectifiable as noted in Theorem 14.2.c.
+
+Let $Q = [a_1, b_1] \times ... \times [a_{n-1}, b_{n-1}]$. Let $Q'$ denote a partition of this rectangle formed by a partitioning of each of the intervals $[a_1, b_1], ...$. If $R$ is the set of all rectangles in $Q'$, let $M_r(f)$ denote the supremum value of $f$ for all values in $r \in R$, and let $m_r(f)$ denote the infimum value.
+
+For each $r = [a'_1, b'_1] \times ... \times [a'_{n-1}, b'_{n-1}] \in R$, construct a rectangle $r' = [a'_1, b'_1] \times ... \times [a'_{n-1}, b'_{n-1}] \times [m_r(\phi), M_r(\psi)] \subset \mathbb{R}^{n+1}$. $[m_r(\phi), M_r(\psi)]$ is defined given $\phi \leq \psi$ everywhere in $C$. $r'$ is clearly equivalent to the set ${(x, t) | x \in r, m_r(\phi) \leq t \leq M_r(\psi)}$, and thus contains ${(x, t) | x \in r, \phi(x) \leq t \leq \psi(x)}$. Similarly, the rectangle $r'' = [a'_1, b'_1] \times ... \times [a'_n, b'_n] \times [min(M_r(\phi), m_r(\psi)), m_r(\psi)] \subset \mathbb{R}^{n+1}$ is equivalent to $\{(x, t) | x \in r, 0 \leq M_r(\phi) \leq m_r(\psi)\}$ and thus is a subset of $\{(x, t) | x \in r, 0 \leq t \leq f(x)\}$ if $M_r(\phi) < m_r(\psi)$. If $M_r(\phi) \geq m_r(\psi)$, then $r''$ may not necessarily be a subset of $\{(x, t) | x \in r, 0 \leq t \leq f(x)\}$, but $r''$ will have a volume of 0, which is less than the volume of $\{(x, t) | x \in r, 0 \leq t \leq f(x)\}$. 
+
+Next, if $R = r_1, r_2, ..., r_m$, construct the rectangles $r_1', ...$ and $r_1'', ...$ for each rectangle in $R$. It is clear that every rectangle $r_i'' \subset S$ where $M_{r_i''}(\phi) < m_{r_i''}(\psi)$, and thus the union of all such rectangles is a subset of $S$. Thus it is clear that $v(U) \leq v(S)$ due to Corollary 10.5 of Munkers given $S$ is a cover, where $U$ is the union of all rectangles where $M_{r_i''}(\phi) < m_{r_i''}(\psi)$. Next, given that all of the rectangles are disjoint from each other, $v(U) = v(r_{i_1}'') + ... + v(r_{i_1}'') \leq v(S)$ where $r_{i_j}''$ are rectangles where $M_{r_i''}(\phi) < m_{r_i''}(\psi)$. Then, given that the volume of all rectangles where $M_{r_i''}(\phi) \geq m_{r_i''}(\psi)$ is zero, note that $v(r_{i_1}'') + ... + v(r_{i_1}'') = v(r_1'') + ... + v(r_m'') \leq v(S)$. Next, observe that $S = \{(x, y) | x \in r_1, \phi(x) \leq t \leq \psi(x)\} \cup ... \cup \{(x, y) | x \in r_m, \phi(x) \leq t \leq \psi(x)\} \subset \{(x, y) | x \in r_1, m_{r_1}(\phi) \leq t \leq M_{r_1}(\psi)\} \cup ... \cup \{(x, y) | x \in r_m, m_{r_m}(\phi) \leq t \leq M_{r_m}(\psi)\} \subset r'_1 \cup ... \cup r_m'$. This shows that $v(S) \leq v(r_1' \cup ... \cup r_m')$. We are already aware that $r_1', ..., r_m'$ are disjoint, and thus $v(r_1' \cup ... \cup r_m') = v(r_1') + ... + v(r_m')$. This shows that
+$$
+v(r_1'') + ... + v(r_m'') \leq v(S) \leq v(r_1') + ... + v(r_m').
+$$
+for any $r_1, ..., r_m$ formed by any arbitrary partition of $Q$. 
+
+Next, for the partition $Q'$ and its rectangles $R$, the upper and lower sum are defined as
+$$
+L(f, Q') = \sum_{r \in R} v(r)m_r(f)
+$$
+$$
+U(f, Q') = \sum_{r \in R} v(r)M_r(f)
+$$
+Observe that for any $r_i' = [0, m_{r_i}(f)] \times [a'_1, b'_1] \times ... \times [a'_m, b'_m] \in r_1', ..., r_m'$, $vol(r_i') = vol(r_i)m_{r_i}(f)$, and thus
+$$
+L(f, Q') = \sum_{r \in R} v(r)m_r(f) = v(r_1') + ... + v(r_m') \geq v(S).
+$$
+Similarly, $vol(r_i'') = vol(r_i)M_{r_i}(f)$
+$$
+U(f, Q') = \sum_{r \in R} v(r)M_r(f) = v(r_1'') + ... + v(r_m'') \leq v(S).
+$$
+Given $f$ is integrable, we know that $sup(L(f, Q')) = inf(U(f, Q')) = \int_Q f$ for all partitions $Q'$ of $Q$. Then, we have shown that $L(f, Q') \leq v(S) \leq U(f, Q')$ for any $Q'$, and thus $sup(L(f, Q')) = inf(U(f, Q')) = \int_Q f = v(S)$. 
+
+Now, to see that $S$ is rectifiable, for any partition $Q'$ construct the rectangles $r_1', ..., r_m'$. We have already shown that there exist partitions $Q'$ such that the area of $S$ not covered by $r_1', ..., r_m'$ has an arbitrarily small volume. It then follows that there exist partitions $Q'$ such that the area of $S$ not covered by $Int(r_1'), ..., Int(r_m')$ has an arbitrarily small volume. Every point in any of $Int(r_1'), ..., Int(r_m')$ are clearly interior points of $S$ as well, and thus we can see that the volume of the set of all non-interior points must be less than any positive number. This means that $Bd(S)$ has measure 0. In addition, $S$ is clearly bounded given $Q$ is bounded and $f$ is bounded. Thus, Theorem 14.1 shows that $S$ is rectifiable.
+
+Lastly, we will show that $C$ can be represented as a union of rectangles. We are aware from Rudin Theorem 2.13 that the set of all $n$-tuples rational numbers is countable. Thus, the set of all rational coordinates in $C$ is countable. Let $c_1, ...$ denote this set. Then, for each $c_i$ starting with $c_1$, construct the largest square centered at $c_1$ such that $c_i$ does not overlap $c_1, ..., c_{i-1}$ or exceed C. Given that $C$ is bounded, it is clear that an upper bound to the size does exist. If no maximum exists, choose some arbitrary size that is close to the supremum of valid sizes. It follows that every interior point of $C$ is covered by at a square, given that the set of rational coordinates is dense. This completes the proof.
+\end{proof}
+
+\begin{problem}{2b}
+\end{problem}
+\begin{proof}[Solution]
+Consider the rectangle $Q \times [M, m]$, where $M$ is an upper bound of $\phi$ and $m$ is a lower bound of $\psi$ in $C$, and where $Q$ is a rectangles that contains $C$ (we know such a rectangle exists given that $C$ is compact). Next, consider the function $f'$ which is equal to $f$ for any point in $S$ and zero elsewhere. Then, it follows from the standard Fubini's theorem that
+$$
+\int_S f' = \int_{x \in Q} \int^{t = M}_{t = m} f'(x, t).
+$$
+Next, note that we are given in Lemma 13.1 that
+$$
+\int_S f' = \int_{x \in Q} \int^{t = M}_{t = m} f'(x, t) = \int_{x \in Q} \int^{t = \phi(x)}_{t = \psi(x)} f'(x, t)
+$$
+and
+$$
+\int_{x \in Q} \int^{t = \phi(x)}_{t = \psi(x)} f'(x, t) = \int_{x \in C} \int^{t = \phi(x)}_{t = \psi(x)} f'(x, t)
+$$
+because $f'(x)$ is vanishing outside of $S$. In addition, observe that
+$$
+\int_S f' = \int_S f
+$$
+given $f' = f$ in $S$, and
+$$
+\int_{x \in C} \int^{t = \phi(x)}_{t = \psi(x)} f'(x, t) = \int_{x \in C} \int^{t = \phi(x)}_{t = \psi(x)} f(x, t)
+$$
+for the same reason. Thus,
+$$
+\int_S f = \int_{x \in C} \int^{t = \phi(x)}_{t = \psi(x)} f(x, t),
+$$
+completing the proof.
+\end{proof}
+
+\begin{problem}{3a}
+\end{problem}
+\begin{proof}[Solution]
+First, observe that $x + 2y - z = n$ defines a plane in $\mathbb{R}^3$. It is also evident that the planes formed as $n$ changes are all parallel to each other, given this equation is linear. Then, observe that $(0, 0, 0), (-1, 1, 1), (0, 1, 2)$ all lie on the same plane where $n = 0$. On the other hand, $(1, 2, 3)$ lies on the plane where $n = 2$. Next, uniformly divide the segment $[0, 2]$ into $k+1$ numbers $c_1, ..., c_{k+1}$ where $c_1 = 0$ and $c_{k+1} = 2$. Let $r_i$ denote the subset of the tetrahedron between the planes $x + 2y - z = c_i$ and $x + 2y - z = c_{i+1}$. We are aware that both of these planes are parallel to the base formed by the points $(0, 0, 0), (-1, 1, 1), (0, 1, 2)$, and thus the cross-section of the tetrahedron on each of these planes is similar to the triangle formed by the points $(0, 0, 0), (-1, 1, 1), (0, 1, 2)$. In addition, the scaling factor for each of the triangles would be $\frac{2 - c_i}{2}$ and $\frac{2 - c_{i + 1}}{2}$ for the triangle cross-sections on $x + 2y - z = c_i$ and $x + 2y - z = c_{i+1}$ respectively. Using Heron's formula, the area of the triangle formed by the points $(0, 0, 0), (-1, 1, 1), (0, 1, 2)$ is $\sqrt{\frac{3}{2}}$. Thus, the are of the cross-section of the tetrahedron on the plane $x + 2y - z = c_i$ is $\frac{2 - c_{i + 1}}{2}\sqrt{\frac{3}{2}}$. Next, note that the distance between the plane of the base formed by $(0, 0, 0), (-1, 1, 1), (0, 1, 2)$ and $(1, 2, 3)$ is $\frac{\sqrt{6}}{3}$ using the formula on the distance between a plane and a point. It thus follows that the distance between any two planes $x + 2y - z = c_i$ and $x + 2y - z = c_{i+1}$ is equal to $\frac{\sqrt{6}}{3k}$ given there are $k$ equally spaced layers formed by the $k+1$ partitions. Thus, $\frac{2 - c_{i + 1}}{2}\sqrt{\frac{3}{2}}\frac{\sqrt{6}}{3k} \leq v(r_i) \leq \frac{2 - c_{i}}{2}\sqrt{\frac{3}{2}}\frac{\sqrt{6}}{3k}$, with the lower bound resulting from the fact that $r_i$ contains the triangular prism between the planes formed by $c_i$ and $c_{i+1}$ and with the base triangle being equal to the smaller cross-section on the $c_{i+1}$ plane. The upper bound results given that $r_i$ is a subset of the triangular prism between the planes formed by $c_i$ and $c_{i+1}$ and with the base triangle being equal to the smaller cross-section on the $c_{i}$ plane. Through some simplification we get that 
+$$
+\frac{2 - c_{i + 1}}{2k} \leq v(r_i) \leq \frac{2 - c_{i}}{2k}
+$$
+Given that $c_1, ..., c_{k+1}$ are numbers evenly spaced from 0 to 2, we see that $c_i = \frac{2(i-1)}{k}$, and thus
+$$
+\frac{2 - \frac{2i}{k}}{2k} = \frac{k - i}{k^2} \leq v(r_i) \leq \frac{k-i+1}{k^2} = \frac{2 - \frac{2(i-1)}{k}}{2k}
+$$
+
+Next, note that the planes formed by $n = c_1, ..., c_{k+1}$ form a partition of the tetrahedron. Using this partition, we will compute the lower and upper sum of the integral of $f$ over the tetrahedron. Each region $r_i$ is located between the planes $x + 2y - z = c_i$ and $x + 2y - z = c_{i+1}$, and thus between these two planes, the value of $x + 2y - z$ ranges from $c_i$ to $c_{i+1}$. This shows that $M_{r_i}(f) = c_{i+1}$ and $m_{r_i}(f) = c_i$. Thus, if $Q$ is the partition of the tetrahedron created by the $k$ planes,
+$$
+L(f, Q) = \sum_{i = 0}^k v(r_i) c_i \geq\sum_{i = 0}^k \frac{k - i}{k^2} c_i = \sum_{i = 0}^k \frac{k - i}{k^2} \frac{2(i-1)}{k} = 2\sum_{i = 0}^k \frac{(k - i)(i-1)}{k^3}
+$$
+and
+$$
+U(f, Q) = \sum_{i = 0}^k v(r_i) c_{i+1} \geq\sum_{i = 0}^k \frac{k - i + 1}{k^2} c_{i+1} = \sum_{i = 0}^k \frac{k - i + 1}{k^2} \frac{2i}{k} = 2\sum_{i = 0}^k \frac{i(k - i + 1)}{k^3}
+$$
+Given that $k$ can be any number, let $k$ be arbitrarily large. Then,
+$$
+L(f, Q) \geq 2\sum_{i = 0}^k \frac{(k - i)(i-1)}{k^3} = 2\sum_{i = 0}^k \frac{i}{k^2} - 2\sum_{i = 0}^k \frac{i^2}{k^3} - 2\sum_{i = 0}^k \frac{1}{k^2} + 2\sum_{i = 0}^k \frac{i}{k^3}
+$$
+As $k \rightarrow \infty$, $\sum_{i = 0}^k \frac{i}{k^2} = \frac{1}{2}$ as this function essentially takes the average of $k$ evenly spaced numbers between $0$ and $1$. $\sum_{i = 0}^k \frac{i^2}{k^3} = \frac{1}{3}$ because the sum of the first $k$ squares is $\frac{k(k+1)(2k+1)}{6}$, and thus $\lim_{k \rightarrow \infty}\sum_{i = 0}^k \frac{i^2}{k^3} = \lim_{k \rightarrow \infty} \frac{k(k+1)(2k+1)}{6k^3} = \frac{1}{6}$. Lastly, $\sum_{i = 0}^k \frac{1}{k^2} = \frac{1}{k}$ and $\sum_{i = 0}^k \frac{i}{k^3} = \frac{1}{k^2}$, and thus both are equal to $0$ as $k \rightarrow \infty$. Thus,
+$$
+L(f, Q) \geq 2\frac{1}{2} - 2\frac{1}{3} - 0 - 0 = \frac{1}{3}.
+$$
+Next, note that 
+$$
+U(f, Q) \leq 2\sum_{i = 0}^k \frac{i(k - i + 1)}{k^3} = 2\sum_{i = 0}^k \frac{i}{k^2} - 2\sum_{i = 0}^k \frac{i^2}{k^3} + 2\sum_{i = 0}^k \frac{1)}{k^3}
+$$
+As $k \rightarrow \infty$, using the already derived summations, note that
+$$
+U(f, Q) \leq 2\frac{1}{2} - 2\frac{1}{3} - 0 = \frac{1}{3}.
+$$
+This proves that $\int_T f = \frac{1}{3}$, where $T$ is the tetrahedron.
+\end{proof}
+
+\begin{problem}{3b}
+\end{problem}
+\begin{proof}[Solution]
+First, by completing the square, we can observe that 
+$$
+x^2 - xy + 2y^2 = \left( \frac{\sqrt{7}}{2} y \right)^2 + \left(x - \frac{y}{2}\right)^2 = 1.
+$$
+Next, consider a transformation $g : \mathbb{R}^2 \rightarrow \mathbb{R}^2$ such that
+$$
+g'(x, y) = \left(x - \frac{y}{2}, \frac{\sqrt{7}}{2}y\right)
+$$
+This transformation would change the unit circle into the region formed by $x^2 - xy + 2y^2 = 1$. On the other hand, the inverse of this transformation would be 
+$$
+g(x, y) = \left(x + \frac{y}{\sqrt{7}}, \frac{2}{\sqrt{7}}y\right).
+$$
+This transformation would map the region formed by $x^2 - xy + 2y^2 = 1$ onto the unit circle. Next, observe that this transformation is a linear transformation defined by the matrix 
+$$ \begin{bmatrix}
+1 & \frac{1}{\sqrt{7}} \\
+0 & \frac{2}{\sqrt{7}}
+\end{bmatrix}\begin{bmatrix}
+x \\
+y 
+\end{bmatrix}.$$
+The derivative of a linear transformation is itself, and thus $det(Dg(x, y)) = \frac{2}{\sqrt{7}}$. Thus, applying the change of variables theorem to $f(x, y) = xy$ and the given transformation $g$, we observe that
+$$
+\int_B xy = \int_A  \left(x + \frac{y}{\sqrt{7}}\right)\left(\frac{2y}{\sqrt{7}}\right)\frac{2}{\sqrt{7}} = \frac{4}{7}\int_A  \left(x + \frac{y}{\sqrt{7}}\right)\left(y\right) 
+$$
+where $B$ is the region formed by $x^2 - xy + 2y^2 = 1$ and $A$ is the unit ball centered at 0. This completes the proof.
+\end{proof}
+
+\begin{problem}{4a}
+\end{problem}
+\begin{proof}[Solution]
+Let $N : \mathbb{R}^3 \rightarrow \mathbb{R}^2$ denote the function such that $N(x)$ is the point on the circle of radius $b$ centered at 0 on the $xy$-plane that minimizes the distance with the given $x \in \mathbb{R}^3$. This function is clearly smooth for every point not on the z-axis or the circle of radius $b$, given that, using cylindrical coordinates, any change in the $z$ coordinate or in $r$ will have no effect on the closest point, and a change in $\theta$ will change the closest point proportionally to the angle that the point on the circle is located. The first order derivative at every point will be a constant for a change in $\theta$ and zero for every other variable, and the second derivative of this function will be 0 in cylindrical coordinates, and thus transforming the derivative into rectangular coordinates shows that this function is smooth.
+
+Let $M : \mathbb{R}^2 \rightarrow \mathbb{R}$ denote the function such that $M(x, y) = d(N(x, y), (x, y)) - b$. Given $N(x, y)$ is smooth, it s obvious that $d(N(x, y), (x, y)) - b$, and thus $M(x, y)$ is smooth as well. Next, observe that $M(x, y) = 0$ if and only if the distance between $x, y$ and the closest point on the circle of radius $b$ is equal to $a$. These two properties show that $(x, y)$ are on the torus. Thus, $M$ follows all properties necessary as noted in the second definition of a smooth manifold as noted in problem 4 of homework 2. $M$ is a smooth function for any neighborhood not containing the circle of radius $b$ or the z-axis (such a neighborhood exists for every point on the torus). In addition, if $M$ is restricted such that $M$ is smooth on its domain, $M^{-1}(0) = A \cap U$, where $A$ is the torus and $U$ is the restriction. Lastly, $DM(y)$ is clearly surjective for every point on the neighborhood. Thus, the torus is a smooth manifold.
+\end{proof}
+
+\begin{problem}{4b}
+\end{problem}
+\begin{proof}[Solution]
+We will use cylindrical coordinates to determine the volume of the torus.
+
+Consider a filled circle with radius $a$ placed on the $xz$-plane, centered at $(b, 0, 0)$. When this circle is rotated about the $z$ axis, the resulting shape is the torus $A$. Thus, by using cylindrical coordinates, note that
+$$
+vol(A) = \int_0^{2\pi} \int_{b - a}^{b + a} \int_{-\sqrt{a^2 - (r - b)^2}}^{\sqrt{a^2 - (r - b)^2}} (det(Dg(x))) dz dr d\theta = \int_0^{2\pi} \int_{b - a}^{b + a} \int_{-\sqrt{a^2 - (r - b)^2}}^{\sqrt{a^2 - (r - b)^2}} (r) dz dr d\theta.
+$$
+Solving this equation we see that
+$$
+vol(A) = \int_0^{2\pi} \int_{b - a}^{b + a} (2r)\sqrt{a^2 - (r - b)^2} dr d\theta
+$$
+$$
+= 2 \int_0^{2\pi}  \frac{a^2b(arcsin((x-b)/a))}{2} + \frac{ab(x - b)\sqrt{1 - \frac{(x-b)^2}{a^2}}}{2} - \frac{(a^2 - (x-b)^2)^{3/2}}{3} \big|_{b-a}^{b+a} d\theta
+$$
+$$
+= 2 \int_0^{2\pi}  \frac{a^2b(arcsin(1/a))}{2} - \frac{a^2b(arcsin(-1/a))}{2} d\theta = 2 \int_0^{2\pi}  \frac{a^2b\pi}{2} d\theta = 2 \frac{a^2b\pi}{2} \big|_0^{2\pi} = 2a^2b\pi^2
+$$
+Thus, the volume of a torus is $2a^2b\pi^2$.
+\end{proof}
+
+
+\begin{problem}{5a}
+\end{problem}
+\begin{proof}[Solution]
+Consider the set $A$ of all multiples of $2^k$ for some whole number $k$, and then consider the set of all cubes of width $2^k$ centered at a $2^k$-tuple of elements from $A$. This set of squares would fill all of $\mathbb{R}^n$. Next, consider the set $A'$ of these squares which are contained entirely inside $B_n(1)$. Let $A''$ denote the set of squares which are at least partially contained inside $\lambda_n$. It is clear that $vol(B_n(1))$ is less than $\sum_{a \in A''} vol(a)$ but greater than $\sum_{a \in A'} vol(a)$. Next, observe that any point that is at least $\sqrt{n}k$ distance away from the edge of the circle will be contained inside a square. This is the case because the $\sqrt{n}k$ is the length of the diagonal of one of the squares in $A'$. Similarly, any point more than $\sqrt{n}2^k$ away from the boundary of the circle will not be contained inside any square in $A''$. Thus, we can see that as $k$ decreases, the volume of the points in $B_n(1)$ but not in $A'$ decreases to arbitrarily small positive numbers. In addition, the volume of the points not in $B_n(1)$ but in $A''$ decreases to arbitrarily small positive numbers. Thus, the volume of $B_n(1)$ can be the sum $\sum_{a \in A'} vol(a)$ as $k$ gets arbitrarily small. Then, consider the set $A'$ where the coordinates of each rectangle is enlarged by a factor of $a$. The distance between each coordinate in $A'$ and $0$ is at most $1$, and thus the distance between each coordinate in this enlarged set has a distance of at most $a^n$ from the origin. Thus, this enlarged set of squares is contained inside $B_n(a)$. In addition, the total volume of the enlarged rectangle set is exactly $a^n$ times greater than the total volume of the original set given the sidelengths are dilated by a factor of $a^n$. It then follows that as $k$ decreases, the volume of the dilated squares inside $B_n(a)$ will have a total volume equal to that of $B_n(a)$ because if this were not the case, that would immediately imply that the total volume of the squares in $A'$ do not equal the volume of $B_n(1)$ as $k$ decreases. In addition, for any given $k$, since the volume of all the dilated squares is exactly $a^n$ times greater than the total volume of the squares in $A'$, the value at which the total volume converges to as $k \rightarrow -\infty$ is exactly $a^n$ times greater than the volume of $B_n(1)$. Given that this value of convergence is equal to the volume of $B_n(a)$, it is clear that $vol(B_n(a)) = a^nvol(B_n(1)) = \lambda_na^n$.
+\end{proof}
+
+\begin{problem}{5b}
+\end{problem}
+\begin{proof}[Solution]
+$\lambda_1 = vol(B_1(1))$ is equal to $2$ given $B_1(1)$ is the interval $[-1, 1]$. $\lambda_2 = vol(B_2(1))$ is equal to $\pi$ given $B_2(1)$ is a circle of radius 1.
+\end{proof}
+
+\begin{problem}{5c}
+\end{problem}
+\begin{proof}[Solution]
+Given some $n$-ball $B_n(a)$, consider the set of all points in this ball which intersects the $xy$-plane. In polar coordinates, the set of all points in this intersection is equal to the set $[0, a] \times [0, 2\pi)$. Next, consider the intersection between the $n$-ball and the set such that every point has the xy coordinate $(r, \theta) \in [0, a] \times [0, 2\pi)$. This intersection represents a ball of dimension $n-2$ with radius $\sqrt{a^2 - r^2}$. Thus, to find the volume of $B_n(a)$, we will integrate the volume of $B_{n-2}(\sqrt{a^2-r^2})$ over the set $[0, a] \times [0, 2\pi)$. This can be represented as
+
+$$
+vol(B_n(a)) = \int_0^{a}\int_0^{2\pi} vol(B_{n-2}(\sqrt{a^2-r^2})) det(Dg) d\theta dr
+$$
+First, we know that the determinant of the polar transformation is equal to $r$ as shown in example 3 of Ch. 3, thus $det(Dg) = r$. In addition, $vol(B_{n-2}(a^2-r^2)) = vol(B_{n-2}(1))(\sqrt{a^2-r^2})^{n-2}$ as shown in part a. Thus,
+$$
+vol(B_n(a)) = vol(B_{n-2}(1)) \int_0^{a}\int_0^{2\pi} (\sqrt{a^2-r^2})^{n-2} r d\theta dr
+$$
+$$
+= vol(B_{n-2}(1)) \int_0^{a} (\sqrt{a^2-r^2})^{n-2} r \theta \Big|_0^{2\pi} dr = 2\pi (vol(B_{n-2}(1))) \int_0^{a} (\sqrt{a^2-r^2})^{n-2} r dr
+$$
+$$
+= \frac{2\pi (vol(B_{n-2}(1)))}{n} ((a^2-r^2)^{\frac{n}{2}}) \big|_0^a = \frac{2\pi (vol(B_{n-2}(1)))}{n}a^n = \frac{2\pi a^2 (vol(B_{n-2}(a)))}{n}
+$$
+This shows that $vol(B_n(a)) = \frac{2\pi a^2}{n} (vol(B_{n-2}(a)))$. Thus, using the results for $\lambda_1$ and $\lambda_2$ from the previous part, when $n$ is even, 
+$$
+vol(B_n(a)) = \pi a^2 \left(\frac{2\pi a^2}{n}\right)^{\frac{n - 2}{2}} 
+$$
+and, when $n$ is odd, 
+$$
+vol(B_n(a)) = 2a\left(\frac{2\pi a^2}{n}\right)^{\frac{n - 1}{2}}
+$$
+\end{proof}
+
+\begin{problem}{6a}
+\end{problem}
+\begin{proof}[Solution]
+Let $S^+$ denote the set of points in $S$ such that $x_k > 0$, let $S^-$ denote the set of points in $S$ such that $x_k < 0$, and let $S^0$ denote the set of points in $S$ such that $x_k = 0$. Note that $S^+$, $S^-$, and $S^0$ partition $S$ with no overlap. Thus, Corollary 13.4 of Munkers shows that
+ $$
+c_k(S) = \frac{1}{vol(S)} \int_S \pi_k = \frac{1}{vol(S)} \left(\int_{S^+} \pi_k + \int_{S^0} \pi_k + \int_{S^-} \pi_k\right) 
+$$
+
+First, we will show that $\int_{S^0} \pi_k = 0$. Observe that the set $S^0$ is isomorphic to some subset $\mathbb{R}^{n-1}$, given the $k$-th variable is fixed as 0. Homework 3 problem 1.c then shows that the set $S^0$ has measure 0 in $\mathbb{R}^n$, and Theorem 11.3 of Munkers shows that $\int_{S^0} f = 0$ given $f$ restricted to $S^0$ is vanishing except for a set of measure 0.
+
+Next, we will show that $\int_{S^+} \pi_k = 0 = -\int_{S^-} \pi_k = 0$. This is simple, given that $S$ is symmetric with respect to the subspace $x_k = 0$. Consider the change of variables function $g$ where $g(x_1, ..., x_n) = (x_1, ..., -x_k, ..., x_n)$. This transformation is linear, thus the derivative of this transformation is itself. $|det(Dg(x))| = 1$ everywhere. Then, note that $S^+$ after undergoing transformation $g$ is equivalent to $S^-$ given for every point $(x_1, ..., x_n) \in S$ there is a corresponding point $(x_1, ..., -x_k, ..., x_n) \in S$. In addition, $\pi_k$ after undergoing this transformation is simply $- \pi_k$ since the sign of the $k$-th element changes. Thus
+$$
+\int_{S^+} \pi_k = 0 = \int_{S^-} (\pi_k \circ g) (det(Dg(x))) = \int_{S^-} - \pi_k.
+$$
+
+Thus, given $\int_{S^0} \pi_k = 0$ and $\int_{S^+} \pi_k = 0 = -\int_{S^-} \pi_k = 0$, we observe that
+ $$
+c_k(S) = \frac{1}{vol(S)} \int_S \pi_k = \frac{1}{vol(S)} \left(\int_{S^+} \pi_k + \int_{S^0} \pi_k + \int_{S^-} \pi_k\right) = 0,
+$$
+which completes the proof that if $S$ is symmetric with respect to $x_k = 0$, then $c_k(S) = 0$.
+\end{proof}
+
+\begin{problem}{6b}
+\end{problem}
+\begin{proof}[Solution]
+First, we will show that $c_i(B_n(a)^+) = 0$ for all $i \neq n$. Consider any point $(x_1, ..., x_n) \in B_n(a)^+$. It follows that $x_n > 0$ and $\sqrt{x_1^2 + ... + x_n^2} \leq a$. Then, for any $i \neq n$, the point $(x_1, ..., - x_i, ..., x_n)$ has the property that $\sqrt{x_1^2 + ... + (-x_i)^2 + ... + x_n^2} = \sqrt{x_1^2 + ... + x_n^2}  \leq a$ and $x_n > 0$, thus $(x_1, ..., - x_i, ..., x_n) \in B_n(a)^+$. This shows that $B_n(a)^+$ is symmetric with respect to the subspace $x_i = 0$ for any $i \neq n$, and applying the results from the previous part shows that $c_i(B_n(a)^+) = 0$ for all $i \neq n$.
+
+Now, we will find the value of $c_n(B_n(a)^+)$. Let $S_r$ denote the set of points in $\mathbb{R}^n$ where the last coordinate is equal to $r$. Then, let if $a_0, ..., a_k$ is a uniformly distributed set of numbers with $a_0 = 0$ and $a_k.= a$, then the set $S_{a_0}, ..., S_{a_k}$ partitions $B_n(a)^+$ into $k$ segments $r_1, ..., r_k$. First, observe that the width of each segment is equal to $\frac{a}{k}$ given there are $k$ segments and all the segment widths totaled equal $a$. Next, observe that the intersection of the n-ball and each set $S_{a_0}, ..., S_{a_k}$ is an $(n-1)$ ball. For the set $S_{a_i}$, the $(n-1)$-ball formed by the intersection has a radius of $\sqrt{a^2 - a_i^2}$ given $a^2 = x_1^2 + ... + x_n^2$ and $\sqrt{x_1^2 + ... + x_{n-1}^2}$ is the radius of this $(n-1)$-ball. Next, observe the region $r_i$ contains the $(n-1)$-ball prism created by the intersection between $B_n(a)^+$ and $S_{a_i}$, stretching perpendicularly from $S_{a_i}$ to $S_{a_{i-1}}$. The width as shown previously is $\frac{a}{k}$, and thus the volume of this prism is $\frac{a}{k}vol(B_{n-1}(\sqrt{a^2 - a_i^2}))$. On the other hand, the region $r_i$ is contained by the $(n-1)$-ball prism created by the intersection between $B_n(a)^+$ and $S_{a_{i-1}}$, stretching perpendicularly from $S_{a_i}$ to $S_{a_{i-1}}$. The width as shown previously is $\frac{a}{k}$, and thus the volume of this prism is $\frac{a}{k}vol(B_{n-1}(\sqrt{a^2 - a_{i-1}^2}))$. We thus observe that 
+$$
+\frac{a}{k}vol(B_{n-1}(\sqrt{a^2 - a_{i-1}^2})) \geq vol(r_i) \geq \frac{a}{k}vol(B_{n-1}(\sqrt{a^2 - a_i^2})).
+$$
+Next, we will try to calculate the upper and lower sums corresponding to $\int_{B_n(a)^+} \pi_n$ with the partition formed by $R = r_1, ..., r_k$. First, note that inside $r_i$, the value of the last coordinate ranges between $a_i$ and $a_{i-1}$. This shows that $M_{r_i}(\pi_n) = a_i$ and $m_{r_i}(\pi_n) = a_{i - 1}$. In addition, note that $a_i = \frac{ai}{k}$ given $a_0, ..., a_k$ are evenly distributed between 0 and a. Thus,
+$$
+L(\pi_n, R) = \sum_{i = 0}^k vol(r_i) m_{r_i}(\pi_n) = \sum_{i = 0}^k vol(r_i) a_{i-1} \geq \sum_{i = 0}^k (a_{i-1})\frac{a}{k}vol(B_{n-1}(\sqrt{a^2 - a_i^2})) 
+$$
+$$
+= \sum_{i = 0}^k \frac{a(i-1)}{k}\frac{a}{k}vol(B_{n-1}(\sqrt{a^2 - \frac{(ai)^2}{k^2}})) = B_{n-1}(a)\sum_{i = 0}^k \frac{a^2(i-1)}{k^2}\left(1 - \frac{i^2}{k^2}\right)^{\frac{n-1}{2}}
+$$
+With the last inequality being true due to the results from problem 5a. Similarly,
+$$
+U(\pi_n, R) = \sum_{i = 0}^k vol(r_i) m_{r_i}(\pi_n) = \sum_{i = 0}^k vol(r_i) a_i \leq \sum_{i = 0}^k (a_i)\frac{a}{k}vol(B_{n-1}(\sqrt{a^2 - a_{i-1}^2})) 
+$$
+$$
+= \sum_{i = 0}^k \frac{ai}{k}\frac{a}{k}vol(B_{n-1}(\sqrt{a^2 - \frac{(a{i-1})^2}{k^2}})) = B_{n-1}(a)\sum_{i = 0}^k \frac{a^2i}{k^2}\left(1 - \frac{(i-1)^2}{k^2}\right)^{\frac{n-1}{2}}
+$$
+
+It is possible to see that as $k$ increases, the difference between the summations for the lower and upper sums approaches 0. Next, note that
+$$
+B_{n-1}(a)\sum_{i = 0}^k \frac{a^2(i-1)}{k^2}\left(1 - \frac{i^2}{k^2}\right)^{\frac{n-1}{2}} \leq B_{n-1}(a)\sum_{i = 0}^k \frac{a^2i}{k^2}\left(1 - \frac{i^2}{k^2}\right)^{\frac{n-1}{2}} \leq B_{n-1}(a)\sum_{i = 0}^k \frac{a^2i}{k^2}\left(1 - \frac{(i-1)^2}{k^2}\right)^{\frac{n-1}{2}}
+$$
+for any $k$. Thus, we can compute this middle summation to get the value of the desired integral $\int_{B_{n-1}(a)^+}$. The value of this middle summation through brute force algebra shows that 
+$$
+B_{n-1}(a)\sum_{i = 0}^k \frac{a^2i}{k^2}\left(1 - \frac{i^2}{k^2}\right)^{\frac{n-1}{2}} = B_{n-1}(a)\frac{a}{n+1}
+$$
+Then, by dividing the value $B_n(a)$ as derived in the previous part, it is possible to get the desired value $1/(vol(B_n(a))) \int_S \pi_k$. If this value is $a$, the centroid of the half-ball is equal to $(0, ..., 0, a)$
+\end{proof}
+
+\begin{problem}{7}
+\end{problem}
+\begin{proof}[Solution]
+We will use cylindrical coordinates to determine the volume of all three shapes.
+
+First, consider a cone $A$ with radius $R$ and height $R$. Consider an isosceles right triangle with sidelength $R$ placed on the $xz$-plane, with the legs each parallel to the x and z axis respectively and with the right angle vertex at the origin. When this triangle is rotated about the $z$ axis, the resulting shape is the inscribed cone. Thus, by using cylindrical coordinates, note that
+$$
+vol(A) = \int_0^{2\pi} \int_0^R \int_0^{R - r} (det(Dg(x))) dz dr d\theta = \int_0^{2\pi} \int_0^R \int_0^{R - r} (r) dz dr d\theta.
+$$
+Solving this equation we see that
+$$
+vol(A) = \int_0^{2\pi} \int_0^R (R-r)r dr d\theta = \int_0^{2\pi} (\frac{Rr^2}{2}-\frac{r^3}{3}) \big|_0^{R} d\theta = \int_0^{2\pi} (\frac{R^3}{2}-\frac{R^3}{3}) d\theta
+$$
+$$
+= \frac{R^3}{2}-\frac{R^3}{3} \big|_0^{2 \pi} = \frac{R^3}{6}(2 \pi) = \frac{\pi R^3}{3}.
+$$
+
+Next, consider a quarter of a circle with radius $R$ that is placed on the $xz$ plane such that the right angle on the quarter circle is placed at the origin and the sides are oriented towards the x and z axis. Rotating this shape around the z-axis creates a half circle $B$ of radius $R$. Thus, using cylindrical coordinates, note that
+$$
+vol(B) = \int_0^{2\pi} \int_0^R \int_0^{\sqrt{R^2 - r^2}} (det(Dg(x))) dz dr d\theta = \int_0^{2\pi} \int_0^R \int_0^{\sqrt{R^2 - r^2}} (r) dz dr d\theta.
+$$
+Solving this equation we see that
+$$
+vol(B) = \int_0^{2\pi} \int_0^R (\sqrt{R^2 - r^2})r dr d\theta = \int_0^{2\pi} \left(\frac{(\sqrt{R^2 - r^2})^3}{3}\right) \big|_0^{R} d\theta = \int_0^{2\pi} \left(\frac{R^3}{3}\right) d\theta
+$$
+$$
+= \frac{R^3}{3} \big|_0^{2 \pi} = \frac{R^3}{3}(2 \pi) = \frac{2 \pi R^3}{3}.
+$$
+
+Lastly, consider a square of sidelength $R$ that is placed on the $xz$ plane such that one of the corners is on the origin and such that the sides are oriented towards the x and z axis. Rotating this shape around the z-axis creates a cylinder $C$ of radius $R$ and height $R$ inscribing the half circle. Thus, using cylindrical coordinates, note that
+$$
+vol(C) = \int_0^{2\pi} \int_0^R \int_0^R (det(Dg(x))) dz dr d\theta = \int_0^{2\pi} \int_0^R \int_0^R (r) dz dr d\theta.
+$$
+Solving this equation we see that
+$$
+vol(C) = \int_0^{2\pi} \int_0^R (Rr) dr d\theta = \int_0^{2\pi} \left(\frac{(\sqrt{Rr^2})}{2}\right) \big|_0^{R} d\theta = \int_0^{2\pi} \left(\frac{R^3}{2}\right) d\theta
+$$
+$$
+= \frac{R^3}{2} \big|_0^{2 \pi} = \frac{R^3}{2}(2 \pi) = R^3.
+$$
+We observe that the volumes of $A, B, C$ are $\frac{\pi R^3}{3}$, $\frac{\pi R^3}{2}$, and $\pi R^3$ respectively. Thus, the ratio for $vol(A) : vol(B) : vol(C)$ is $1 : 2 : 3$, completing the proof.
+\end{proof}
+
+
+\end{document}

@@ -1,0 +1,215 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 8}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{proof}
+We are given that $\mu \perp m$. This means there exists $K \subset \mathbb{R}^n$ such that $m(K) = 0$ and $\mu(K^c) = 0$. Given $K^c \cup K = \mathbb{R}^n$, we know that $\mu(K) = \mu(\mathbb{R}^n)$. Now, let $\bar{B_r}$ be closed the ball centered at $0$ and with radius $r$. We know that $\bar{B_r} \cap \bar{K}$ is compact given it is both closed and bounded. Then, note that for any $r$, $(\bar{B_r} \cap \bar{K}) \subset \bar{K}$, and given $m(K) = 0$, it is easy to see $m(\bar{K}) = 0$ given the boundary points of a set is far smaller than the set itself. Thus, $m(\bar{B_r} \cap \bar{K}) = 0$ for all $r \geq 0$. Then, for the sake of contradiction, assume that $\lim_{r \rightarrow \infty} \mu((\bar{B_r} \cap \bar{K})^c) \neq 0$. Given $\mu((\bar{B_r} \cap \bar{K})^c)$ is non-increasing as $r \rightarrow \infty$, this would imply $\lim_{r \rightarrow \infty} \mu((\bar{B_r} \cap \bar{K})^c) = \epsilon$ for some $\epsilon > 0$. The continuity of measure states that
+$$
+0 = \lim_{r \rightarrow \infty} \mu((\bar{B_r} \cap \bar{K})^c) = \mu\left(\bigcup_{k = 1}^{\infty} \mu((\bar{B_r} \cap \bar{K})^c) \right) = \epsilon,
+$$
+which yields a contradiction. Thus, $\lim_{r \rightarrow \infty} \mu((\bar{B_r} \cap \bar{K})^c) = 0$. This means that for any $\epsilon > 0$, there exists $r$ such that $\mu((\bar{B_r} \cap \bar{K})^c) < \epsilon$, and we also know that $m(\bar{B_r} \cap \bar{K}) = 0$ and $\bar{B_r} \cap \bar{K}$ is compact.
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}
+Young's inequality states that
+$$
+ab \leq \frac{a^p}{p} + \frac{b^q}{q}.
+$$
+for any $\frac{1}{p} + \frac{1}{q} = 1$. To show this, note that for any $a, b$ and conjugates $p, q$,
+$$
+ln(ab) = ln(a) + ln(b) = \frac{ln(a^p)}{p} + \frac{ln(b^q)}{q}.
+$$
+Then, given $ln$ is concave, for any $0 \leq c \leq 1$, it Jensen's inequality shows that
+$$
+(c)ln(a^p) + (1-c)ln(b^q) \leq ln(c \ ln(a^p) + (1 - c) \ ln(b^q))).
+$$
+By letting $c = frac{1}{p}$ and $(1 - c) = \frac{1}{q}$, Young's inequality is proven.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}
+Given the equality condition in Holder's inequality holds, that means
+$$
+\int_{E}|fg| = ||f||_p ||g||_q = \left(\int_E |f|^p\right)^{\frac{1}{p}}  \left(\int_E |g|^q\right)^{\frac{1}{q}}.
+$$
+First, if $||f||_p||g||_q = 0$, then it is clear that $||fg||_1$ is 0 as well and thus we assume $||f||_p||g||_q \neq 0$. Next, Young's inequality states that
+$$
+\frac{|f|}{||f||_p}\frac{|g|}{||g||_q} \leq \frac{1}{p}\left(\frac{|f|}{||f||_p}\right)^p + \frac{1}{q}\left(\frac{|g|}{||g||_q}\right)^q.
+$$
+Then, note that Young's inequality achieves its equality condition if and only if
+$$
+\left(\frac{|f|}{||f||_p}\right)^p = \left(\frac{|g|}{||g||_q}\right)^q.
+$$
+Thus,
+$$
+||f||_p||g||_q\int |fg| = \int \frac{1}{p}\left(\frac{|f|}{||f||_p}\right)^p + \frac{1}{q}\left(\frac{|g|}{||g||_q}\right)^q
+$$
+if and only if $|f|^p = (||f||_p^p/||g||_q^q)|g|^q$. Note that 
+$$
+\int \frac{1}{p}\left(\frac{|f|}{||f||_p}\right)^p + \frac{1}{q}\left(\frac{|g|}{||g||_q}\right)^q = 1
+$$
+given $p, q$ are conjugates, and thus
+$$
+\int |fg| = ||f||_p||g||_q
+$$
+if and only if $|f|^p = (||f||_p^p/||g||_q^q)|g|^q$.
+\end{proof}
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}
+Let $\{f^1, f^2, ...\}$ be a Cauchy sequence in $L^{\infty}$. Note that for each $x^n, x^n = (x_1^n, x_2^n, ... )$ This means for any $\epsilon > 0$, there is some $N \in \mathbb{N}$ such that
+$$
+|| f^m - f^n || < \epsilon
+$$
+for every $n, m \geq N$. It then follows that
+$$
+\sup_{k \in \mathbb{N}} |f_k^n - f_k^m| < \epsilon
+$$
+for all $n, m \geq N$ as well. We are thus aware that $f_k^1, f_k^2, ...$ is a Cauchy sequence in $\mathbb{R}$, and because we know $\mathbb{R}$ is complete, $f_k^1, f_k^2, ...$ converges. Let the value which this sequence converges to be $f_k$, and let $f = (x_1, x_2, ...)$. Next, to show that the sequence $f^1, f^2, ...$ converges to $f$, first note that here must exist $N$ such that
+$$
+|f_k^n - f_k^m| < \epsilon/2
+$$
+for all $n, m > N$. It then follows that
+$$
+\lim_{m \rightarrow \infty }|f_k^n - f_k^m| = |f_k^n - f_k| < \epsilon/2,
+$$
+and thus
+$$
+\sup_{k \in \mathbb{N}} |f_k^n - f_k| \leq \epsilon/2,
+$$
+which directly shows that $||f^n - f|| \leq \epsilon/2 < \epsilon$, which shows that $f_1, f_2, ...$ converges, which completes the proof.
+\end{proof}
+
+\begin{problem}{4}
+\end{problem}
+\begin{proof}
+Let $\chi_M$ denote the characteristic function of some measurable region $M$. Given $\mu$ is a radon measure it is inner and outer regular, which means for any $\epsilon > 0$ it is possible to find compact $K \subset M$ such that $\mu(M - K) < \epsilon/2$. In addition, it is also possible to find an open set $O$ containing $M$ such that $\mu(O - M) < \epsilon/2$. Let $g$ denote a function that is $1$ on $K$ and $0$ on $O^c$ and defined on $(K \cup O^c)^c$ by extending the function using Lusin's theorem. This yields a continuous function that is between $0$ and $1$ everywhere, and the support is compact. Then, note that
+$$
+||f - \chi_m||^p = \int_{\mathbb{R}^n}|f - \chi_M|^p \ d\mu \leq \mu(O - K)^p \leq \epsilon^p.
+$$
+Given $\epsilon^p$ can be chosen to be arbitrarily small, this shows that every characteristic function is $\epsilon$-close to a function in $C_c(\mathbb{R}^n)$.
+
+Next, we are given in Proposition 9 of chapter 7.4 that the subspace of simple functions in $L^p(\mathbb{R}^n, \mu)$ is dense in $L^p(\mathbb{R}^n, \mu)$. Simple functions are a finite sum of characteristic functions, and given the sum of functions in $C^c(\mathbb{R}^n)$ are also in $C^c(\mathbb{R}^n)$, it follows that there is a function in $C^c(\mathbb{R}^n)$ that is $\epsilon$-close to any simple function, and given simple functions are dense in $L^p(\mathbb{R}^n, \mu)$, it follows that continuous functions with compact support are also dense in $L^p(\mathbb{R}^n, \mu)$ .
+\end{proof}
+
+\begin{problem}{5}
+\end{problem}
+\begin{proof}
+Given $f$ is continuous at the origin, it follows that for any $\epsilon > 0$, there exists $\delta > 0$ such that for any $||x|| < \delta$, $|f(x) - f(0)| < \epsilon$. Given $f$ is linear, it follows that $f(0) = 0$, and thus $|f(x) - f(0)| < \epsilon$ is equivalent to $|f(x)| < \epsilon$. Now, for the sake of contradiction, assume there is no $\delta > 0$ where, for some $x \in V$, $||x - y|| < \delta$ implies $|f(x) - f(y)| < \epsilon$. Given $f$ is linear, it follows that $|f(x) - f(y)| = |f(x - y)|$. Thus, this implies that there is no such $\delta$ such that $||x - y|| < \delta$ implies $|f(x - y)| < \epsilon$. However, this directly implies that $f$ is not continuous at 0 because there exist elements in the form $x - y$ which are arbitrarily close to $0$, but $|f(x - y)| \geq \epsilon$. This contradiction shows that $f$ is continuous at every $x \in V$.
+\end{proof}
+
+\begin{problem}{6.a}
+\end{problem}
+\begin{proof}
+For the sake of contradiction, assume there exists $\epsilon > 0$ such that for any $\delta$, there exist $A \subset X$ where $\mu(A) \geq \epsilon$ and $\int_A f \ d\mu \leq \delta$. First, use the simple approximation lemma to create a sequence of increasing nonnegative simple functions $f_1, f_2, ...$ that are less than or equal to $f$. Given $f > 0$ almost everywhere, it follows that for sufficiently large $n$, $\mu(\{x : f_n(x) = 0\}) < \epsilon / 2$ for any $\epsilon$. Then, let $c$ denote the smallest positive value taken on by $f_n$. If $A$ is a region such that $\mu(A) > \epsilon$, it follows that
+$$
+0 < c (\mu(A)/2) \leq \int_A f_n \ d\mu \leq \int_A f \ d\mu,
+$$
+with the second inequality being true because at most half of the region $A$ takes on $0$ when put through $f$, the rest takes on a value that is at least $c$. This shows that there is a positive lower bound to $\int_A f \ d\mu$ for any $A$ where $\mu(A) > \epsilon$. This contradicts the initial claim that no such lower bound exists. Thus, this contradiction proves that for all $\epsilon$ there is $\delta$ so that if $\mu(A) \geq \epsilon$ then $\int_A f \ d\mu > \delta$.
+\end{proof}
+
+\begin{problem}{6.b}
+\end{problem}
+\begin{proof}
+To show that $T$ is well defined, first define $\psi(x, y) = f(x)\phi(x)$. Assume $\psi \in L^q$. Given $p, q$ are conjugates, Holder's Inequality states that
+$$
+\int_E |fg| \leq ||f||_p||g||_q < \infty.
+$$
+Thus, to show that $T$ is well defined, it is sufficient to show that $\psi \in L^q$. 
+\end{proof}
+
+\begin{problem}{6.c}
+\end{problem}
+\begin{proof}
+For the sake of contradiction, assume that $K \neq 0$ and $T(f) = 0$ for all $f$. This means that for any $f \in L^q[0, 1]$ and $\phi \in L^q[0, 1]$, 
+$$
+\int_{[0, 1] \times [0, 1]} K(x, y)f(x)\phi(y) \ dm = 0.
+$$
+Let $f$ be a function that is $1$ for some interval $I$ and $-1$ outside of that interval, and let $\phi$ be a function that is 1 everywhere. It is clear $f, \phi \in L^q$. Then, note that
+$$
+\int_{[0, 1] \times [0, 1]} K(x, y)f(x)\phi(y) \ dm = \int_{I \times [0, 1]} K(x, y) \ dm - \int_{I^c \times [0, 1]} K(x, y) \ dm = 0
+$$
+for any interval $I$. It follows from this that
+$$
+\int_{I \times [0, 1]} K(x, y) \ dm = 0
+$$
+for any interval $I$.
+\end{proof}
+
+\begin{problem}{7.a}
+\end{problem}
+\begin{proof}
+We know that
+$$
+\lim_{n \rightarrow \infty} n \ ln(1 + f/n) = \lim_{n \rightarrow \infty}  ln((1 + f/n)^n) = f.
+$$
+In addition, note that $ln((1+f/n)^n) \leq x$ for any $n \geq 0$. Thus, the sequence of functions $ln(1 + f), 2ln(1 + f/2), ...$ is an increasing sequence of non-negative measurable functions on $X$, and this sequence converges to $f$. The Monotone convergence theorem thus shows that
+$$
+\lim_{n \rightarrow \infty} n \int_X ln(1 + f/n) \ d\mu = \int_X f \ d\mu.
+$$
+\end{proof}
+
+\begin{problem}{7.c}
+\end{problem}
+\begin{proof}
+Skipped
+\end{proof}
+
+\begin{problem}{8.a}
+\end{problem}
+\begin{proof}
+For the sake of contradiction, assume that $m(X) = \infty$ and $L^q(X, m) \subset L^p(X, m)$. This means that for any $f$, if
+$$
+\int_X |f|^q \ dm \leq \infty,
+$$
+then
+$$
+\int_X |f|^p \ dm \leq \infty,
+$$
+where $q > p$. Let $f(x) = (2-1/d(0, x))^{1/q}$. It then follows that
+$$
+\int_X |f|^q \ dm = \int_X (2-1/d(0, x)) \leq 2m(X).
+$$
+...
+\end{proof}
+
+\begin{problem}{8.c}
+\end{problem}
+\begin{proof}
+For the sake of contradiction, assume there is a function $f_{\epsilon}$ such that
+$$
+\int_{-L}^L |f_{\epsilon}(x)|^2 dx > \epsilon\int_{-L}^L |f_{\epsilon}'(x)|^2 dx
+$$
+for any $\epsilon > 0$. It is implied that $f_{\epsilon}'(x)$ is arbitrarily close to $0$ as $\epsilon$ gets smaller. 
+\end{proof}
+
+\begin{problem}{10.c}
+\end{problem}
+\begin{proof}
+Let $a_1, ...$ be an enumeration of the rationals. Construct a ball of radius $1/3^n$ around $a_n$, and subtract from [0, 1].
+\end{proof}
+
+\end{document}

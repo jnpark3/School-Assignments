@@ -1,0 +1,159 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 1}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+Let $a_1 + a_2 + ... + a_n = 52$ where $a_1, ..., a_n$ are all positive integers. Then, we are given that there exists a conjugacy class in $S_{52}$ where every element has a cycle decomposition into disjoint cycles of length $a_1, ..., a_n$. To count the number of elements in this conjugacy class, note that there are $\frac{52!}{(a_1)(52 - a_1)!}$ ways to create a $a_1$-cycle inside a set of 52 elements ($a_1$ is divided because there are $a_1$ ways to choose the first element in the cycle, and the identity of the first element does not change the cycle itself). Similarly, from the remaining $52 - a_1$ elements, note that there are $\frac{(52 - a_1)!}{(a_2)(52 - a_1 - a_2)!}$ ways to create a $a_2$-cycle. The product of the number of cycles for $a_1, a_2, ..., a_n$ is
+$$
+\frac{52!}{(a_1)(52 - a_1)!}\frac{(52 - a_1)!}{(a_2)(52 - a_1 - a_2)!}\frac{(52 - a_1 - a_2)!}{(a_2)(52 - a_1 - a_2 - a_3)!}... = \frac{52!}{\prod_{i = 1}^n a_i}
+$$
+However, this value would be over-counting the number of elements in the conjugacy class because if a conjugacy class contained two loops of the same length, this sum would consider the order of these two loops as significant when in reality it is not. Thus, if $j_i$ is the number of values in $a_1, ..., a_n$ equal to $i$, the total size of the conjugacy group formed by cycles of length $a_1, ..., a_n$ is
+$$
+\frac{52!}{\prod_{i = 1}^n a_i\prod_{i = 1}^n j_i!}.
+$$
+Note that numerator is a constant, and thus finding the conjugacy class with the largest size is equivalent to finding the conjugacy class that minimizes the value $\prod_{i = 1}^n a_i\prod_{i = 1}^n (j_i!)$. We will now show that the conjugacy class where every element has one 51-cycle and one 1-cycle is the largest conjugacy class. 
+
+To prove this, first, we will show that for a set of integers $b_1, ..., b_k$ where $b_1, ..., b_k > 1$ and $k > 1$, $\prod_{i = 1}^n b_i \geq \sum_{i = 1}^n b_i$ with equality achieved ony when $b_1, ..., b_n = 2, 2$. We prove this by induction. Let the base case be the instance where $k = 2$; note that except when $b_1, b_2 = 2, 2$, $(b_1 - 1)(b_2 - 1) > 1$, and thus $b_1b_2 - b_1 - b_2 + 1 > 1$ and $b_1b_2 > b_1 + b_2$. Next, assume $\prod_{i = 1}^n b_i \geq \sum_{i = 1}^n b_i$. Then, 
+$$
+\left(\prod_{i = 1}^n b_i \right)b_{n + 1} = \prod_{i = 1}^n b_i + \left(\prod_{i = 1}^n b_i \right)(b_{n + 1} - 1) \geq \sum_{i = 1}^n b_i + \left(\prod_{i = 1}^n b_i \right)(b_{n + 1} - 1) \geq \sum_{i = 1}^n b_i + 4(b_{n + 1} - 1)
+$$
+with the last inequality being true because the smallest possible value for $\prod_{i = 1}^n b_i $ is $4$. We know that $4(b_{n + 1} - 1) = 4b_{n + 1} - 4 > b_{n + 1}$ because $b_{n + 1} > 4/3$. Thus, 
+$$
+\sum_{i = 1}^n b_i + 4(b_{n + 1} - 1) > \sum_{i = 1}^n b_i + b_{n + 1} = \sum_{i = 1}^{n + 1} b_i.
+$$
+This proves that $\prod_{i = 1}^n b_i \geq \sum_{i = 1}^n b_i$, with equality only achieved when $b_1, b_2 = 2$.
+
+Next, we wish to find a sequence $a_1, ..., a_n$ such that $\prod_{i = 1}^n a_i\prod_{i = 1}^n (j_i!)$ is minimized. Note that 
+$$
+\prod_{i = 1}^n a_i\prod_{i = 1}^n (j_i!) \geq (j_1)\prod_{i = 1}^n a_i.
+$$
+Assume $j_1 = k$. Then, $a_1, ..., a_k$ are all 1, $a_{k + 1}, ..., a_n > 1$, and $a_{k + 1} + ... + a_{n} = 52 - a$. In this case, $\prod_{i = 1}^n a_i = \prod_{i = k+1}^n a_i$. We have shown that $\prod_{i = k+1}^n a_i \geq \sum_{i = k+1}^n a_i = 52-a$ for the case when $n > k+1$, and when $n = k + 1$, $\prod_{i = k+1}^n a_i = \sum_{i = k+1}^n a_i = 52-a$. Thus, for any fixed $j_1 = k$, the minimum value for $\prod_{i = 1}^n a_i$ is achieved when there is exactly one non-1-cycle. This means given $j_1$, the minimum value for $(j_1)\prod_{i = 1}^n a_i$ is $(j_1)(52 - j_1)$. This value is clearly minimized when $j_1 = 1$ or $j_1 = 51$. Then, for the case where there is one 1-cycle and 1 51-cycle, 
+$$
+\prod_{i = 1}^n a_i\prod_{i = 1}^n (j_i!) = (j_1)\prod_{i = 1}^n a_i = 51.
+$$
+We can discard the case when $j_1 = 51$, for that yields a value of $51!$. Now, for the sake of contradiction, assume there is another sequence $a_1, ..., a_k$ such that $\prod_{i = 1}^n a_i\prod_{i = 1}^n (j_i!) < 51$. This immediately implies $(j_1)\prod_{i = 1}^n a_i < 51$, but we have already shown that this value has a minimum of $51$, which is only achieved when $j_1 = 1$ or $j_1 = 51$. Thus, this concludes the proof that the minimum value of $\prod_{i = 1}^n a_i\prod_{i = 1}^n (j_i!)$ is 51, and this shows that the conjugacy class with one 51-cycle and one 1-cycle has the largest size (size of $52!/51$).
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}
+We will first prove that if $o$ is the largest order of an element of $S_{52}$, there is an element of $S_{52}$ with order $k$ whose cycle decomposition lengths $a_1, a_2, ..., a_k$ are all mutually prime and for every $i$, $a_i$ takes on the form $p^n$ where $p$ is a prime. First, let $b_1, b_2, ..., b_k$ be the cycle decomposition lengths of some element in $S_{52}$ that maximizes the order. If $b_i, b_j$ are not mutually prime, and they share a greatest common factor $c > 1$. Now, consider an element of $S_{52}$ with cycle decomposition lengths $b_1, ..., b_i/c ..., b_k$. Note that a both cycles of length $b_i, b_j$ are finished when the iteration count is both a multiple of $b_i, b_j$. Thus, both cycles of length $b_i/c, b_j$ are finished when the iteration count is both a multiple of $b_i, b_j$, and thus both cycles of length $b_i/c, b_j$ are finished if and only if both cycles of length $b_i, b_j$ are finished. This means that the orders of the $b_1, b_2, ..., b_k$ and $b_1, ..., b_i/c ..., b_k$ permutations are the same. Given $b_1 + ... + b_i/c + ... + b_k < 52$, simply add 1-cycles until the sum is equal to 52. Repeat this process for every non-1-cycle pair of elements in this set, and the resulting permutation will have the order $o$ and every cycle length will be mutually prime with every other cycle length. This proves that there must exist an element of $S_{52}$ with order $k$ whose cycle decomposition lengths $a_1, a_2, ..., a_k$ are all mutually prime. Next, take this set $a_1, a_2, ..., a_k$ and assume $a_i$ has a prime factorization in the form $p^t*a$ where $a$ is not divisible by prime $p$. Consider a permutation with cycle decomposition lengths $a_1, ...,  a_i/p^k, p^t, a_{i + 1} ..., a_k$. Note that similar to the previous case, the order of this permutation is the same as the order of the permutation with cycle lengths $a_1, a_2, ..., a_k$ because the cycles of length $a_i/p^k, p^t$ are both finished iff the cycle of length $a_i$ is finished. Given $a_i/p^k+ p^t < a_i$ as proven in 1.a, add one cycles to $a_1, ...,  a_i/p^k, p^t, a_{i + 1} ..., a_k$ in order to again achieve a total sum of $52$. Repeat this continuously for every non-1-cycle element until every element has only one prime in its prime factorization. Note that this process does not affect the mutually prime property because since the beginning, no two elements in $a_1, a_2, ..., a_k$ shared a prime factor. The resulting set cycle decomposition lengths $a_1', a_2', ..., a_{k'}'$ will be mutually prime, each element will be in the form $p^k$, and the order of the permutation will remain at $o$. This completes the proof.
+
+We note that if we can find the maximal order permutation whose cycle decomposition lengths are in the form $1, ..., 1, 2^{k_2}, 3^{k_3}, 5^{k_5}, ..., 47^{k_{47}}$, the order of this permutation would indeed be the maximum order of all elements in $S_{52}$. We will compute this maximum order via a recursive algorithm. Note that the array $[k_2, ..., k_{47}]$ uniquely defines $1, ..., 1, 2^{k_2}, 3^{k_3}, 5^{k_5}, ..., p_{47}^{k_{47}}$ (we can compute the number of 1-cycles by subtracting the sum of $[k_2, ..., k_{47}]$ from 52). Also note that the order of a permutation with cycle lengths  $1, ..., 1, 2^{k_2}, 3^{k_3}, 5^{k_5}, ..., 47^{k_{47}}$ is $2^{k_2}3^{k_3}...47^{k_{47}}$ given this is the least common multiple of all of the elements (the order must be a multiple of the cycle lengths because that is when all the cycles are complete at the same time). Thus, consider a recursive function $cycle$ that takes in an input array $[k_2, ..., k_{47}]$ and returns $0$ if $2^{k_2} + 3^{k_3} + 5^{k_5} + ... + 47^{k_{47}} > 52$ and otherwise,
+$$
+cycle([k_2, ..., k_{47}]) = max(2^{k_2}...47^{k_{47}}, cycle([k_2 + 1, ..., k_{47}]), cycle([k_2, k_3 + 1, ..., k_{47}]), ..., cycle([k_2, ..., k_{47} + 1])).
+$$
+The output of $cycle([0, ..., 0])$ should yield the maximum order of all permutations whose cycle decompositions are in the form $1, ..., 1, 2^{k_2}, 3^{k_3}, 5^{k_5}, ..., 47^{k_{47}}$, which we have shown must equal the maximum order of all elements in $S_{52}$. Running this program output the value $180180$. Thus, the conjugacy class of elements whose cycle decomposition lengths are $1, 1, 1, 4, 9, 5, 7, 11, 13$ (the prime factorization of $180180$ plus required 1-cycles) contains elements of the maximum order in $S_{52}$.
+\end{proof}
+
+\begin{problem}{2}
+\end{problem}
+\begin{proof}
+First, we will prove that any 2-cycle between two adjacent elements can be written as a product of even $k$-cycles. First consider the $k$-cycle $\sigma_1$ that maps $(1, 2, ..., k)$ to $(k, 1, 2, ..., k-1)$. $\sigma_1^2$ maps $(1, 2, ..., k)$ to $(k-1, k, 1, 2, ..., k - 2)$. Now, consider the permutation that maps $(k-1, k, 1, 2, ..., k - 2)$ to $(2, 1, 3, 4, ..., k)$. This permutation is indeed a $k$-cycle because position 1 maps to $k-1$, position $k-1$ maps to $k-3$, ... (all the odd positions) , position $5$ maps to $3$, position $3$ maps to $2$, position $2$ maps to $k$, position $k-2$ maps to $k - 4$, ... (all the even positions), position $4$ maps to position $2$, which goes back to position 1. Given the starting position $(1, 2)$ can be changed with any two adjacent elements, this shows that any 2-cycle between two adjacent elements can be written as the product of three $k$-cycles.
+
+Next, we will show that any 2-cycle can be written as a product of 2-cycles between two adjacent elements. Let $1 \leq i <  j \leq n$ be two positions that are to be swapped. First, consider the composition of $2$-cycles $(i, i+1), (i+1, i+2), ..., (j - 1, j)$. The element in position $i$ is now in position $j$, and all elements $i+1, ..., j$ are shifted down one position. Then, consider the composition of $2$-cycles $(j - 1, j - 2), ..., (i+ 1, i)$. Now the element what was originally in position $j$ is now in position $i$, and all the elements in between that were displaced by one unit are back where they were originally. This shows that any 2-cycle can be written as the product of 2-cycles between two adjacent elements, which then shows that any 2-cycle can be written as the product of $k$-cycles.
+
+Now, we will prove that every element in $S_n$ can be written as a composition of 2-cycles. Let $(a_1, ..., a_n) \in S_n$. Consider the composition of $2$-cycles $(a_1, a_2)(a_1, a_3), ..., (a_1, a_n)$. For any $i \neq n$, this composition will first map $a_i$ to $a_1$ and then to $a_{i+1}$, which is to be expected. Then, for $i = n$, $a_i$ is mapped to $a_1$ via the last 2-cycle, which is also correct. Thus, any arbitrary $(a_1, ..., a_n) \in S_n$ can be expressed as a product of $2$-cycles. Given that the $2-cycles$ themselves can be expressed as a product of $k$-cycles, it is clear that any $(a_1, ..., a_n) \in S_n$ can be expressed as a product of some number of $k$-cycles.
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}
+No Question
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}
+Assuming the cube starts off at $C_{(1, 3)}$, note that spinning the plane by $2\pi/5$ will map the internal line from vertices $(1, 3)$ to $(3, 5)$. Applying this operation repeatedly, $(3, 5)$ maps to $(2, 5)$, which maps to $(2, 4)$, which maps to $(1, 4)$, which finally maps back to $(1, 3)$. Each of these five cubes are distinct because for each pair of $C_{(a, b)}, C_{(c, d)}$ where (without loss to generality) $d \neq b$, we can clearly see that there is no vertex on $C_{(a, b)}$ such that that vertex maps onto vertex $d$. This is true for any pair of cubes of the five cubes, and thus all five cubes are distinct.
+\end{proof}
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{proof}
+We will first prove that if two squares share the same internal line on a given face $F$ of $D$, then they are indeed the same square. Given that a square has vertices $v$ and $w$ on face $F$, and given that the center of the cube is the origin, $-w$ and $-v$ are also vertices on the square. Note that the vertices $v, w, -v, -w$ forms a plane in $\mathbb{R}^3$. Let $u$ be the vector that is orthogonal to this plane originating at the origin, and with a length that is $2/3$ of $u, v$. In this case, $u*v = u*w = 0$. It is possible to see that the vector $u$ correlates to the midpoint of an edge on the cube that is parallel to $uw$ and $-u(-w)$. The component necessary to make this vector touch the vertex on this edge is $\pm \frac{v - w}{2}$. Thus, we can see that the vectors $\pm v, \pm w, \pm u \pm \frac{v - w}{2}$ represent the vertices of the cube.
+
+Now, consider some symmetry of $D$ such that the axis of rotation goes through face $F, -F$. In the resulting figure, it is necessarily true that one of the edges of $C$ is an interior line on $F$ (or else that would imply the cube has less than 12 edges). Given this interior line is defined, our proof from just now shows that it is well defined and is one of the five cubes as defined in part $3.b$. This completes the proof.
+\end{proof}
+
+\begin{problem}{3.d}
+\end{problem}
+\begin{proof}
+Assume the vertices of $F$ are labeled in order as 1, 2, 3, 4, 5. For each vertex $i$, there are three that share the given vertex; two of these edges are edges of $F$, and the last one is not. For the edge that is not in $F$, label that one as $a_i$. The vertices $a_1, a_2, a_3, a_4, a_5$ are all unique. Then, let the vertices of $-F$ be labeled as $-1, -2, -3, -4, -5$, where $-i$ is the projection of vertex $i$ across the origin. For each vertex $-i$, there are three that share the given vertex; two of these edges are edges of $-F$, and the last one is not. For the edge that is not in $F$, label that one as $a_i$. The vertices $-a_1, -a_2, -a_3, -a_4, -a_5$ are all unique. The labels $1, 2, 3, 4, 5, -1, -2, -3, -4, -5, a_1, a_2, a_3, a_4, a_5, a_{-1}, a_{-2}, a_{-3}, a_{-4}, a_{-5}$ represent unique vertices, and they represent all 20 vertices on the dodecahedron.
+
+We will now prove that in general, $C_{a, b}, C_{b, c}$ share no vertices other than $b/-b$. Assume without loss to generality $a + 1 = d, d + 1 = b, b + 1 = e, e + 1 = c$ (in mod 5). The vertices of cube $C_{a, b}$ are $a, b, a_e, a_c, -a, -b, a_{-e}, a_{-c}$. The vertices of cube $C_{b, c}$ are $b, c, a_a, a_d, -b, -c, a_{-a}, a_{-d}$. As we can see, $b/-b$ are the only vertices shared by these two cubes. This completes the proof.
+\end{proof}
+
+\begin{problem}{3.e}
+\end{problem}
+\begin{proof}
+Let $F$ be a fixed face and let $(a, b)$ be the internal line on $F$. Given some rigid motion, this internal line will be mapped onto $(a', b')$ on $F'$. We can use the vector equation from $3.c$ to show that given the dodecahedron is preserved, the cube remains a cube after the rigid motion. In addition, Let $(a", b")$ be the new internal line in the position of the original face $F$. Such an internal line must exist as noted in $3.c$. Then, note from $3.c$ that this uniquely defines one of the five cubes. This proves that any rigid motion of $D$ permutes the five cubes.
+\end{proof}
+
+\begin{problem}{3.f}
+\end{problem}
+\begin{proof}
+Note we have shown that every rigid motion permutes the cube. This means there is a one-to-one relationship between the number of unique inscribed squares and the number of elements in the symmetry group of $D$. There are 12 ways to choose a face to represent the top of the cube, and there are 5 possible rotations as shown previously. Thus, the symmetry group of the dodecahedron is a subgroup of $S_5$ of order $5*12 = 60$.
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+This matrix would map $A = (1, 0, 0)$ to $C = (0, 1, 0)$, which implies that the first column of the matrix is $(0, 1, 0)^T$. $C = (0, 1, 0)$ is mapped to $E = (0, 0, 1)$, which implies the second column is $(0, 0, 1)^T$. Lastly, $E = (0, 0, 1)$ maps to $A = (1, 0, 0)$, and thus the third column is $(1, 0, 0)^T$. This means that the matrix of $SO(3)$ corresponding to $\sigma = (A, C, E)(B, D, F)$ is
+$$
+\begin{bmatrix}
+0 & 0 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0\\
+\end{bmatrix}
+$$
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+This matrix would map $C = (0, 1, 0)$ to $E = (0, 0, 1)$, which implies that the second column of the matrix is $(0, 0, 1)^T$. $E = (0, 0, 1)$ is mapped to $D = (0, -1, 0)$, which implies the third column is $(0, -1, 0)^T$. Lastly, $A = (1, 0, 0)$ maps to itself given it is in a 1-cycle, and thus the first column is $(1, 0, 0)^T$. This means that the matrix of $SO(3)$ corresponding to $\tau = (C, E, D, F)$ is
+$$
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0 & -1\\
+0 & 1 & 0\\
+\end{bmatrix}
+$$
+\end{proof}
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}
+This matrix would map $A = (1, 0, 0)$ to $C = (0, 1, 0)$, which implies that the first column of the matrix is $(0, 1, 0)^T$. $C. =(0, 1, 0)$ is mapped to $A = (1, 0, 0)$, which implies the second column is $(1, 0, 0)^T$. Lastly, $E = (0, 0, 1)$ maps to $F = (0, 0, -1)$, and thus the third column is $(0, 0, -1)^T$. This means that the matrix of $SO(3)$ corresponding to $\sigma\tau = (A, C)(B, D)(E, F)$ is
+$$
+\begin{bmatrix}
+0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & -1\\
+\end{bmatrix}.
+$$
+This is equivalent to the product of the two matrices derived in parts a, b.
+\end{proof}
+
+
+\end{document}

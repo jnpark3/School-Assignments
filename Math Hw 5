@@ -1,0 +1,217 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 5}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+Let $x \in [0, 1]$ be arbitrary number. Proposition 20 of Chapter 2 notes that the Cantor-Lebesgue function ($D$) is continuous in the interval $[0, 1]$. In addition, note that $D(0) = 0$ and $D(1) = 1$. The intermediate value theorem states that there must exist a value $y \in [0, 1]$ such that $D(y) = x$. This is true for any $x \in [0, 1]$, thus the function $D$ maps $[0, 1]$ onto $[0, 1]$ surjectively.
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}
+First, note that $1/3, 2/3 \in C$. This is true because the base three representations of $1/3$ is $0.022...$ and the base three representation of $2/3$ is $0.200$, both of which do not contain the digit 1. Next, it is easy to see that every number between $0.0222_3$ and $0.200..._3$ must necessarily contain a $1$ in the tenths digit, and therefore it is not contained in the cantor set. Given $D$ is defined on $C$, let $D(1/3) = a$. Given $D$ is non-decreasing, $D(2/3) = b \geq a$. However if $D(2/3) > a$, that would imply that $D$ has a jump discontinuity because for all $x \leq 1/3$, $D(x) \leq a$, for all $x \geq 2/3$, $D(x) \geq b$, and $D$ is not defined for $1/3 < x < 2/3$. This would contradict the fact, as shown in 1.a, that $D$ is surjective. Thus, it must be the case that $D(1/3) = D(2/3)$. This thus shows that $D$ is not injective, as it maps two different values in the domain to the same value in the range.
+\end{proof}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{proof}
+Again, note that $1/3, 2/3 \in C$. This is true because the base three representations of $1/3$ is $0.022...$ and the base three representation of $2/3$ is $0.200$, both of which do not contain the digit 1. Next, it is easy to see that every number between $0.0222_3$ and $0.200..._3$ must necessarily contain a $1$ in the tenths digit, and therefore it is not contained in the Cantor set. Given $f$ is a function defined on $C$, let $D(1/3) = a$. Given $f$ is strictly increasing, $f(2/3) > a$. Now, note that $f$ must have a jump discontinuity because for all $x \leq 1/3$, $f(x) \leq a$, for all $x \geq 2/3$, $f(x) > a$, and $f$ is not defined for $1/3 < x < 2/3$. For example, no value in the domain would map to the value $(f(2/3) + f(1/3))/2$. This contradicts the fact that $f$ is surjective. Thus, it is impossible for a continuous, surjective, strictly increasing function from $C$ to $[0, 1]$.
+\end{proof}
+
+\begin{problem}{1.d}
+\end{problem}
+\begin{proof}
+Note that $D$ does not fail to be surjective for values $x$ where $D(x)$ is irrational. This is easy to see because the function $D$, when defined using the recursive process, takes on constant values in the form $\frac{m}{2^n}$ for all points outside of the Cantor set, and within the cantor set the function is defined in terms of the supremum of the values of the function that come before. Any two irrational values will never take the same values because the larger irrational number $x$ in the Cantor set will always have more of these intervals in the range $[0, x)$, and thus the supremum of $\phi$ will be greater for this irrational number.
+
+Let $C'$ denote the cantor set excluding the rational values.Given the rationals are countable, There are countably many values in $C$ which are excluded from $C$. Now, $D$ is injective. Define the function $D^{-1} : C'' \rightarrow C'$ such that $D^{-1}(D(x)) = x$where $C''$ is the region $D(C')$. This function fulfills the desired requirements of the problem.
+\end{proof}
+
+\begin{problem}{2.f}
+\end{problem}
+\begin{proof}
+Note that $C$ can be defined as the compliment of a countable set of open intervals in $[0, 1]$. Let $I_1, ...$ denote these open intervals. For each open interval, $\mu(I_n) = 0$ because $D$ is a constant in all of these intervals outside of $C$. Thus, countable additivity shows that $\mu_g(\mathbb{R} - C) = 0$. On the other hand, it is easy to see that $\mu_g(C) = 1$ because $D$ is continuous between $[0, 1]$, $\mu([0, 1])$ is clearly 1, and thus excision shows that $\mu([0, 1] - C) = 1$.
+\end{proof}
+
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}
+Let $\mu$ denote a signed measure. It follows that 
+$$
+\mu \left(\bigcup_{k = 1}^{\infty} E_k \right) = \sum_{k = 1}^{\infty} \mu(E_k)
+$$
+for any countable disjoint collection $E_1, E_2, ...$. Let $A_1, A_2, ...$ denote a set of increasing subsets of $X$, and let $E'_i = A_i - A_{i - 1}$ except for $E'_1$, which is equal to $A_1$. It is clear that $E'_1, E'_2, ...$ is a set of disjoint subsets of $X$, and thus
+$$
+\mu \left(\bigcup_{k = 1}^{\infty} E'_k \right) = \lim_{n \rightarrow \infty} \sum_{k = 1}^{n} \mu(E'_k).
+$$
+The Jordan decomposition theorem states that $\mu = \mu_1 - \mu_2$. Then, the property of excision (Ch. 17, Prop 1) shows that 
+$$
+\mu(E'_i) = \mu_1(E'_i) - \mu_2(E'_i) = \mu_1(A_i - A_{i - 1}) - \mu_2(A_i - A_{i - 1}) 
+$$
+$$
+= \mu_1(A_i) - \mu_1(A_{i - 1}) - (\mu_2(A_i) - \mu_2(A_{i - 1})) = \mu(A_i) - \mu(A_{i - 1})
+$$
+except for $i = 1$ in which case $\mu(E'_i) = \mu(A_i)$. Substituting this expansion onto the right side of the previous equation enables the application of telescoping sum cancellation, and we can see that 
+$$
+\mu \left(\bigcup_{k = 1}^{\infty} E'_k \right) = \lim_{n \rightarrow \infty} \sum_{k = 1}^{n} \mu(E'_k) = \lim_{n \rightarrow \infty} \mu(A_n).
+$$
+Next, note that $\bigcup_{k = 1}^{\infty} E'_k = \bigcup_{k = 1}^{\infty} A_k$ because if $x \in \bigcup_{k = 1}^{\infty} A_k$, there must exist a smallest index $i$ such that $x \in A_i$, which then means $x \in E'_i$ and thus $\bigcup_{k = 1}^{\infty} E'_k = \bigcup_{k = 1}^{\infty} A_k$. On the other hand if $x \in \bigcup_{k = 1}^{\infty} E'_k = \bigcup_{k = 1}^{\infty} A_k$, it follows that $x \in E'_i$ and thus $x \in A_i$ and $x \in \bigcup_{k = 1}^{\infty} A_k$. Substituting the fact that $\bigcup_{k = 1}^{\infty} E'_k = \bigcup_{k = 1}^{\infty} A_k$ into the above equation shows that 
+$$
+\bigcup_{k = 1}^{\infty} A_k = \lim_{n \rightarrow \infty} \mu(A_n),
+$$
+which completes the proof.
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}
+Let $\mu$ denote a signed measure. It follows from the Jordan decomposition theorem that $\mu = \mu^+ - \mu^-$ where $\mu^+, \mu^-$ are measures. By definition signed measures can take on at most one of the values $\infty$, $-\infty$, either $\mu^+$ or $\mu^-$ must be finite (stated in pg. 345 of Royden). Assume without loss to generality that $\mu^-$ is finite. Then, $|\mu(B)| = \infty$ if and only if $\mu^+(B) = \infty$. Given $|\mu(E)| < +\infty$, it follows that $|\mu^+(E)| < \infty$. In addition, for any $B \subset E$ where $B \in M$, it follows from the excision property that $\mu(B) = \mu^+(B) - \mu^-(B) \leq \mu^+(B) + \mu^-(B) \leq \mu^-(E) + \mu^+(E)$, and we are given that both $\mu^-(E), \mu^+(E)$ are finite. Thus, $\mu^-(E) + \mu^+(E)$ acts as an upper bound to $\mu(B)$ for any $B \subset E, B \in M$, and thus $\sup\{\mu(B) : B \subset E, B \in M\} < +\infty$.
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+First, note that $f'' \geq 0$ implies that $f$ is a convex function. Let $\alpha = \int_X \phi \ d\mu$. Let $m$ be any number that lies between the left and right hand derivative of $f$ at $\alpha$. Then, by the property of convexity, 
+$$
+f(t) \geq m(t - \alpha) + f(\alpha)
+$$
+for every $t \in X$. Since $\phi$ is integrable over $X$, it is finite almost everywhere on $[0, 1]$. Therefore, substituting $\phi(x)$ for $t$ in this inequality shows that
+$$
+f(\phi(x)) \geq m(\phi(x) - \alpha) + f(\alpha)
+$$
+for almost every $x \in X$. Using the monotonicity of the Lebesgue integral and given that both $f$ and $\phi \circ f$ are integrable over $X$, see that
+$$
+\int_X f(\phi(x)) \ dx \geq \int_X m(\phi(x) - \alpha) + f(\alpha) \ dx = m\left(\int_X \phi(x) dx - \alpha\right) + f(\alpha)m(X) = f(\alpha)
+$$
+This shows that
+$$
+f\left(\int_X \phi \ d\mu \right) \leq \int_X f(\phi) \ d\mu.
+$$
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+Let $f(x) = e^{x - 1} - x$. $f''(x) = e^{x - 1}$ and thus $f$ is a convex function that satisfies the condition that $f'' \geq 0$. In addition, note that the line $x$ is tangent to $f$ at $1$, and by the property of convexity it follows that $x \leq f(x)$ everywhere. Let $a$ denote $\frac{a_1 + a_2 + ... + a_n}{n}$. Then,
+$$
+\prod_{i = 1}^n \frac{x_i}{a} \leq \prod_{i = 1}^n e^{\frac{x_i}{a} - 1} = \exp\left(\frac{x_1 + ... + x_n}{a} - n \right) = \exp(n - n) = 1.
+$$
+Thus, 
+$$
+\frac{x_1...x_n}{a^n} = \prod_{i = 1}^n \frac{x_i}{a} \leq 1,
+$$
+and thus
+$$
+x_1...x_n \leq a^n
+$$
+and
+$$
+\sqrt[n]{x_1...x_n} \leq a
+$$
+This completes the proof that the geometric mean is less than the arithemtic mean.
+\end{proof}
+
+\begin{problem}{5}
+\end{problem}
+\begin{proof}
+First, note that the continuity of measure shows that
+$$
+f'(x) = g(0) \int_0^x f \ dm.
+$$
+is continuous. We will now prove the problem for the case where $g$ is a non-increasing simple function. This means that the interval $I$ can be partitioned into intervals $I_1, ..., I_n$ such that $g$ is a constant value in each interval and each $g$ takes on a lower value for each subsequent interval. In other words, $g$ can be defined as
+$$
+\sum_{i \in 1, ..., n} c_i \chi_{I_i}
+$$
+where $c_i$ is the value taken by $g$ in $I_i$. Let $m_1 = \sup_{x \in [0, 1]} f'(x)$ and $m_2 = \inf_{x \in [0, 1]} f'(x)$. Both of these values are clearly finite given $g(0)$ is a finite value and $f$ is Lebesgue integrable. Next, through substitution of the definition of $g$, we get that
+$$
+\int_0^1 fg \ dm = \sum_{i \in 1, ..., n} c_i \int_{I_i} f \ dm.
+$$
+Next, we use induction to show that this value is less than $m_1$. First, the base case can be shown by observing that given $I_1 = [0, a]$,
+$$
+c_1 \int_0^{a}f = \frac{c_1}{g(0)} h(a) = h(a) \leq m_1.
+$$
+Next, given $\sum_{i = 1}^k c_i \int_{I_i} f \ dm \leq M$, it follows that if $\int_{I_{k+1}} f \ dm \leq 0$, then $c_{k + 1} \int_{I_{k+1}} f \ dm \leq 0$, and $\sum_{i = 1}^{k + 1} c_i \int_{I_i} f \ dm \leq m_1$ still. On the other hand if $\int_{I_{k+1}} f \ dm > 0$, then
+$$
+\sum_{i = 1}^{k + 1} c_i \int_{I_i} f \ dm \leq c_1 \int_{I_1} f \ dm + ... + c_k \left(\int_{I_k \cup I_{k + 1}} f \ dm\right) \leq m_1,
+$$
+with the second inequality being true given $c_{k+1} \leq c_k$, and given the fact that $g(0) \int_{I_{k + 1}} f \ dm = c_1 \int_{I_{k + 1}} f \ dm \leq c_{k + 1} \int_{I_{k + 1}} f \ dm$. This finishes the inductive step, which shows that
+$$
+\int_0^1 fg \ dm \leq m_1.
+$$
+Without loss to generality, a similar proof can be found to show
+$$
+\int_0^1 fg \ dm \geq m_2.
+$$
+This proves that $\int_0^1 fg \ dm$ is between two values that $f'$ takes in $[0, 1]$, and given $f'$ is continuous on $f'$, the intermediate value theorem shows that there must exist $x$ such that 
+$$
+f'(x) = g(0) \int_0^x f \ dm = \int_0^1 fg \ dm.
+$$
+This completes the proof of the problem for the case where $g$ is simple. Next, for any non-negative, non-increasing $g$, the Simple Approximation Lemma states that there exists simple functions $g_1, g_2, ...$ such that $|g_i - g| < \frac{1}{2^i}$ on $[0, 1]$. In addition, for each of these $g_1, g_2, ...$, just assign $g_i(0) = g(0)$ without disturbing the approximation, non-increasing, or non-negative properties. Then, we see that
+$$
+\int_0^1 f\left(g_i - \frac{1}{2^n}\right) \ dm \leq \int_0^1 fg \ dm \leq \int_0^1 f\left(g_i + \frac{1}{2^n}\right) \ dm.
+$$
+Note that
+$$
+\int_0^1 f\left(g_i - \frac{1}{2^n}\right) \ dm = \int_0^1 fg_i \ dm - \int_0^1 f\left(\frac{1}{2^n}\right) \ dm = g_i(0)\int_0^x f \ dm - \left(\frac{1}{2^n}\right)\int_0^1 f \ dm
+$$
+and
+$$
+\int_0^1 f\left(g_i + \frac{1}{2^n}\right) \ dm = \int_0^1 fg_i \ dm + \int_0^1 f\left(\frac{1}{2^n}\right) \ dm = g_i(0)\int_0^x f \ dm + \left(\frac{1}{2^n}\right)\int_0^1 f \ dm
+$$
+for some $x$, where $g_i(0) = g(0)$ in both cases. Then as $n \rightarrow \infty$, it is clear that the value
+$$
+\left(\frac{1}{2^n}\right)\int_0^1 f \ dm
+$$
+approaches 0, and thus
+$$
+g(0) \int_0^x f \ dm = \int_0^1 fg \ dm
+$$
+for some $x \in [0, 1]$, given any non-decreasing, non-negative function $g$.
+\end{proof}
+
+\begin{problem}{6}
+\end{problem}
+\begin{proof}
+Lusin's theorem states that if $X$ is a locally Hausdorff space, $\mu : B(X) \rightarrow [0, \infty)$ is a Radon measure, and $f:X \rightarrow \mathbb{R}$ is a Borel measurable function that vanishes outside of a set of finite measure, then for each $\epsilon > 0$, there is a Borel subset $X_0$ of $X$ and a function $g \in C_c(X)$ for which 
+$$
+f = g
+$$
+on $X_0$ and $\mu(X - X_0) < \epsilon$. First, note $\mathbb{R}^n$ is a locally Hausdorff space. Next, let $f_i$ denote the function that is generated when $\epsilon$ is set to be less than $\frac{1}{2^i}$. Then, it is clear that $f_i = f$ outside of a region with measure less than $\frac{1}{2^i}$. Then, given $f_i \in C_c^0$, it is continuous and vanishing outside of a compact support, and thus it must be bounded. if $|f_i| \leq M$, then it is clear that
+$$
+\left|\int_{\mathbb{R}^n} |f - f_i| d\mu\right| \leq M m(X - X_0) \leq M \frac{1}{2^i}
+$$
+where $X - X_0$ represents the region where $f \neq f_i$. It is clear that as $i \rightarrow \infty$, the values $\frac{1}{2^i}$ converges, and thus 
+$$
+\left|\int_{\mathbb{R}^n} |f - f_i| d\mu\right| \rightarrow 0
+$$
+which completes the proof.
+\end{proof}
+
+\begin{problem}{7}
+\end{problem}
+\begin{proof}
+First, note that at least one of $s, t$ must be irrational given $s/t$ is irrational. Next, note that for any $\epsilon > 0$, there exist integers $a, b$ such that $0 < |as - bt| < \epsilon$. Next, note that $f(x) = f(x - t)$. In addition, $f(x) = f(x - t - t - ... - t + s + ... + s) = f(x - bt + as)$ for any $a, b \in \mathbb{N}$. It then follows that it is possible to find periods for $f$ that are arbitrarily small. 
+
+We showed in Rudin that $\{as - bt\}$ is dense (Ch. 4, p. 25, Rudin). Thus, we are aware that $f$ is continuous on a dense set of $\mathbb{R}$. In addition, note that $\{as - bt\}$ is countable given each value is associated with a 2-tuple of whole numbers $(a, b)$, and the set of all such 2-tuples is clearly countable. Countable sets of singletons are measurable, and thus $\{as - bt\}$ is measurable as well. Now, Lusin's theorem states that there exists a continuous function $g$ that is defined over all $\mathbb{R}$ such that $f = g$ almost everywhere. We have showed in a previous homework that there is a unique continuous extension of a function that is continuous on a dense subset of $\mathbb{R}$. This unique continuous extension is clearly a constant function given $f$ is a constant everywhere it is defined. Thus, $g$ is a constant except everywhere where Lusin's theorem fails, which is a set which has a measure $\epsilon$. Setting $\epsilon \rightarrow 0$ yields the desired result.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,685 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 5}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.1}
+\end{problem}
+\begin{proof}
+The full, descriptive, utility maximization problem of the consumer is denoted as follows:
+$$
+\max_{C, L, R} U(C, R)
+$$
+$$
+L + R = T
+$$
+$$
+pC = wL + V
+$$
+$$
+0 \leq R \leq T, 0 \leq L \leq T, C \geq 0.
+$$
+The first function maximizes the consumer utility, while the third equation limits the total time used to $T$ and the third equation limits the consumption expenses to all available income. The final inequalities prevents the consumer from working, consuming, or leisuring for a negative quantity of time.
+\end{proof}
+
+\begin{problem}{1.2}
+\end{problem}
+\begin{proof}
+To get the canonical utility maximization function, observe that the only two goods over which the consumer expresses a preference for are consumption and recreation. Thus, in the set of equations defined above, substituting for $L$ between the second and third equations shows that the utility maximization function is equivalent to the following set of equations:
+$$
+\max_{C, R} U(C, R)
+$$
+$$
+pC + wR = wT + V
+$$
+$$
+C \geq 0, T \geq R \geq 0.
+$$
+\end{proof}
+
+\begin{problem}{1.3}
+\end{problem}
+\begin{proof}
+Observe that in order to solve for the labor supply function, we must use the following Lagrangian:
+$$
+L = U(C, R) + \lambda(wT + V - wP - pC) = \alpha \log(C) + (1 - \alpha)\log(R) + \lambda(wT + V - wP - pC).
+$$
+The first order conditions show us that
+$$
+U_R(C^*, R^*) = \frac{1 - \alpha}{R} = -\lambda^*w
+$$
+$$
+U_C(C^*, R^*) = \frac{\alpha}{C} = -\lambda^*p
+$$
+$$
+pC^* + wR^* = wT + V.
+$$
+From the first two equations, we get that
+$$
+\frac{1 - \alpha}{wR^*} =  \frac{\alpha}{pC^*},
+$$
+$$
+\frac{wR^*}{1 - \alpha} =  \frac{pC^*}{\alpha},
+$$
+$$
+R^* =  \frac{pC^*(1 - \alpha)}{w\alpha}.
+$$
+Then, substituting this into the third first-order condition shows us that
+$$
+pC^* + w\left(\frac{pC^*(1 - \alpha)}{w\alpha}\right) = \frac{pC^*}{\alpha} = wT + V,
+$$
+$$
+C^* = \frac{\alpha(wT + V)}{p}
+$$
+$$
+R^* =  \frac{p\left(\frac{\alpha(wT + V)}{p}\right)(1 - \alpha)}{w\alpha} = \frac{(wT + V)(1 - \alpha)}{w}.
+$$
+Then, to get the labor supply function, we use the second constraint $L^* + R^* = T$ from the utility maximization problem (problem 1.1). Substituting in $R^*$ into this equation shows that
+$$
+L^* = T - \frac{(wT + V)(1 - \alpha)}{w} = \frac{\alpha wT - (1 - \alpha)V}{w} = \alpha T - \frac{(1 - \alpha)V}{w}.
+$$
+\end{proof}
+
+\begin{problem}{1.4}
+\end{problem}
+\begin{proof}
+From the previous problem, we get that the labor supply function is
+$$
+L^* = \alpha T - \frac{(1 - \alpha)V}{w}.
+$$
+If two workers have non labor income $V_1$, $V_2$ respectively, then the difference in labor hours is
+$$
+L_1^* - L_2^* = \alpha T - \frac{(1 - \alpha)V_1}{w} - \alpha T + \frac{(1 - \alpha)V_2}{w} = \frac{(1 - \alpha)(V_2 - V_1)}{w}.
+$$
+Thus, we get that the amount of labor hours skipped is a product of the negative change in non-labor income and $(1 - \alpha)/w$.
+\end{proof}
+
+\begin{problem}{1.5}
+\end{problem}
+\begin{proof}
+From the equation derived in 1.4, given $1 - \alpha$ and $w$ are positive, the change in labor hours is inverse to the change in non-labor income. This suggests that the lazy consumer is the one with greater non-labor income while the diligent consumer is the one with less non-labor income. In general relatively wealthy consumers skip work.
+\end{proof}
+
+\begin{problem}{1.6}
+\end{problem}
+\begin{proof}
+From problem 1.3, we get that the labor supply function is
+$$
+L^* = \alpha T - \frac{(1 - \alpha)V}{w}.
+$$
+If the lazy worker has a non-labor income of $V_1$ and the diligent worker has a non-labor income of $V_2$ where $V_1 > V_2$, then
+$$
+L_1^* = \alpha T - \frac{(1 - \alpha)V_1}{w}
+$$
+$$
+L_2^* = \alpha T - \frac{(1 - \alpha)V_2}{w}.
+$$
+\end{proof}
+
+\begin{problem}{1.7}
+\end{problem}
+\begin{proof}
+The question is asking for the minimum increase in wage $t$ such that the lazy worker's working hours goes from $L_1^*$ to $H$. Using the labor supply function, we get that
+$$
+H = \alpha T - \frac{(1 - \alpha)V_1}{w + t}
+$$
+$$
+\frac{(1 - \alpha)V_1}{\alpha T - H} = w + t
+$$
+$$
+t = \frac{(1 - \alpha)V_1}{\alpha T - H} - w.
+$$
+The company has to offer $\frac{(1 - \alpha)V_1}{\alpha T - H} - w$ additional dollars to the lazy worker to induce him to work exactly $H$ hours. If the firm has to pay both workers the same wage, the cost of this policy is
+$$
+\left(\frac{(1 - \alpha)V_1}{\alpha T - H} - w\right)
+$$
+per every hour of work done by either consumer. The total amount of labor amongst both people is $L_1^* + L_2^* = H+L_2^*$, and thus the total cost of implementing this strategy is
+$$
+(L_2^* + H)\left(\frac{(1 - \alpha)V_1}{\alpha T - H} - w\right).
+$$
+\vspace{8 cm}
+\end{proof}
+
+\begin{problem}{1.8}
+\end{problem}
+\begin{proof}
+Assume the consumer is skipping $\beta$ hours of work. The question is asking for the minimum bonus $B$ such that the lazy worker's working hours goes from $L_1^*$ to $L_1^* + \beta = H$. First, the first-order budget constraint now gives us that $H + R^* = T$ and $pC^* + wR^* = wT + V + B$. Substitution gives us that $R^* = T - H$, and thus
+$$
+pC^* + w(T - H) = wT + V + B
+$$
+$$
+pC^* = wH + V + B
+$$
+$$
+C^* = \frac{wH + V + B}{p}.
+$$
+The consumer will only accept the bonus if the original utility is equal to the utility of this new bundle. Thus,
+$$
+U(C', R') = U(C^*, R^*)
+$$
+where
+$$
+C' = \frac{\alpha(wT + V)}{p}
+$$
+$$
+R' =  \frac{(wT + V)(1 - \alpha)}{w}.
+$$
+as denoted in previous problems. Substitution shows that
+$$
+\alpha\log\left(\frac{\alpha(wT + V)}{p}\right) + (1 - \alpha)\log\left(\frac{(wT + V)(1 - \alpha)}{w}\right) = \alpha\log\left( \frac{wH + V + B}{p}\right) + (1 - \alpha)\log\left(T - H\right)
+$$
+$$
+\log\left(\frac{wH + V + B}{\alpha(wT + V)}\right) = \frac{(1 - \alpha)}{\alpha}\log\left(\frac{(wT + V)(1 - \alpha)}{w(T - H)}\right)
+$$
+$$
+\frac{wH + V + B}{\alpha(wT + V)} = \left(\frac{(wT + V)(1 - \alpha)}{w(T - H)}\right)^{\frac{(1 - \alpha)}{\alpha}}
+$$
+$$
+wH + V + B = \alpha(wT + V)^{1/\alpha}\left(\frac{(1 - \alpha)}{w(T - H)}\right)^{\frac{(1 - \alpha)}{\alpha}}
+$$
+$$
+B = \alpha(wT + V)^{1/\alpha}\left(\frac{(1 - \alpha)}{w(T - H)}\right)^{\frac{(1 - \alpha)}{\alpha}} - (wH + V).
+$$
+This defines the minimum value of $B$ needed to incentivize the user to work $H$ hours. Assuming that $B$ is chosen properly such that the lazy worker works $H$ hours, the total cost of this program would be two times $B$ as defined above, as the bonus will be paid to both workers.
+\vspace{8 cm}
+\end{proof}
+
+\begin{problem}{1.9}
+\end{problem}
+\begin{proof}
+We treat the fine as a mechanism that decreases the non-labor income by $(H - L^*)f$, given the non-labor income and the fees are both just lump sums. In this case, we wish to find $f$ such that $L^* = H$ for the lazy worker. First, the first-order budget constraint now gives us that $L^* + R^* = T$ and 
+$$pC^* = wL^* + V - (H - L^*)f.$$
+$$pC^* = (w + f)L^* + V - Hf.$$
+ Substitution gives us that
+$$pC^* = (w + f)(T - R^*) + V - Hf.$$
+$$
+C^* = \frac{(w + f)(T - R^*) + V - Hf}{p}.
+$$
+We have also shown in 1.3 that
+$$
+R^* = \frac{pC^*(1 - \alpha)}{\omega \alpha}
+$$
+so substitution gives us that
+$$
+R^* = \frac{((w + f)(T - R^*) + V - Hf)(1 - \alpha)}{\omega \alpha}
+$$
+$$
+\omega \alpha R^* + (1 - \alpha)(w + f)R^* = ((w + f)T + V - Hf)(1 - \alpha)
+$$
+$$
+(1 + (1 - \alpha)f)R^* = ((w + f)T + V - Hf)(1 - \alpha)
+$$
+$$
+R^* = \frac{((w + f)T + V - Hf)(1 - \alpha)}{(1 + (1 - \alpha)f)}.
+$$
+Then, Given $L^* = T - R^*$,
+$$
+L^* = T - \frac{((w + f)T + V - Hf)(1 - \alpha)}{(1 + (1 - \alpha)f)}.
+$$
+To get the worker to work at least $H$ hours, $L^* = H$, and thus we are interested in finding the value of $f$ such that the above equation is equal to $H$.
+$$
+H = T - \frac{((w + f)T + V - Hf)(1 - \alpha)}{(1 + (1 - \alpha)f)}.
+$$
+$$
+H(1 + (1 - \alpha)f) = T(1 + (1 - \alpha)f) - ((w + f)T + V - Hf)(1 - \alpha).
+$$
+$$
+H + (1 - \alpha)fH = T + (1 - \alpha)fT - (1 - \alpha)wT + (1 - \alpha)fT + (1 - \alpha)V - (1 - \alpha)fH.
+$$
+$$
+2(1 - \alpha)f(H - T)= (T - H) - (1 - \alpha)wT + (1 - \alpha)V
+$$
+$$
+f = \frac{wT + V}{2(T - H)} - \frac{1}{2(1 - \alpha)}
+$$
+This is the value $f$ for which the lazy worker will choose to work for $H$ hours at the company. In regards to the cost, as long as the company chose the correct price for $f$, everybody will work $H$ hours and thus nobody will pay the fine. The company does not have to pay any money.
+\vspace{8 cm}
+\end{proof}
+
+\begin{problem}{1.10}
+\end{problem}
+\begin{proof}
+Of the three policies, the cost appears to be least for the third policy given no payment is necessary. The second policy appears to be most inefficient because the act of increasing one's non-labor wages tends to decrease the amount of labor (as shown in 1.5). However, a true cost comparison between the first and second policies cannot be done without greater knowledge on the parameters.
+
+In regards to what would be the best policy, the third policy would be the most effective method by which the company will be able to induce its workers to work for $H$ hours while minimizing cost.
+\end{proof}
+
+\begin{problem}{2.1}
+\end{problem}
+\begin{proof}
+$y > h_{t + 1}$ because first of all, if $y < h_{t + 1}$, that implies that each child consumes more units of the consumption good than is available in their entire endowment, which is impossible. Secondly, we can assume that $y \neq h_{t + 1}$ because if $y = h_{t + 1}$, that would mean each child provides the parent $y - h_{t + 1} = 0$ consumption goods in period $t + 1$. This would make the utility function undefined, as $log(c_{t + 1}) = log(0)$ is undefined. Thus, it must be true that $y > h_{t + 1}$.
+\end{proof}
+
+\begin{problem}{2.2}
+\end{problem}
+\begin{proof}
+The parent's descriptive utility maximization problem is 
+$$
+\max_{c_t, c_{t + 1}} \log(c_t) + \beta \log(c_{t + 1})
+$$
+$$
+c_t + n_{t+1}h_t = \omega_t
+$$
+$$
+c_{t + 1} = n_{t + 1}(y - h_{t + 1})
+$$
+$$
+c_t, c_{t + 1} > 0, n_{t + 1} \geq 0.
+$$
+The first equation maximizes utility, the second function equates the endowment to the expenses in period $t$, and the third function equates the consumption to income in period $t + 1$.
+\end{proof}
+
+\begin{problem}{2.3}
+\end{problem}
+\begin{proof}
+Using utility maximization problem above, note that
+$$
+\frac{c_{t + 1}}{(y - h_{t + 1})} = n_{t + 1},
+$$
+and substituting this into
+$$
+c_t + n_{t+1}h_t = \omega_t
+$$
+shows that
+$$
+c_t + \frac{h_t}{(y - h_{t + 1})}c_{t + 1} = \omega_t.
+$$
+Thus, the canonical utility maximization problem is
+$$
+\max_{c_t, c_{t + 1}} \log(c_t) + \beta \log(c_{t + 1})
+$$
+$$
+c_t + \frac{h_t}{(y - h_{t + 1})}c_{t + 1} = \omega_t.
+$$
+$$
+c_t, c_{t + 1} > 0.
+$$
+\end{proof}
+
+\begin{problem}{2.4}
+\end{problem}
+\begin{proof}
+The equation
+$$
+c_t + \frac{h_t}{(y - h_{t + 1})}c_{t + 1} = \omega_t.
+$$
+suggests that there is an effective exchange rate of $\frac{h_t}{(y - h_{t + 1})}$ between consumption in the two periods. This makes sense because this rate is proportional to the cost of having a child and inverse to the benefit of each child. In addition, this equation suggests that the initial endowment $\omega_t$ is the limit for the sum of $c_t$ and $c_{t + 1}$ (after it is multiplied to the exchange rate).
+\end{proof}
+
+\begin{problem}{2.5}
+\end{problem}
+\begin{proof}
+Observe that in order to solve for the labor supply function, we must use the following Lagrangian:
+$$
+L = U(c_t^*, c_{t + 1}^*) + \lambda(\omega_t - c_t - \frac{h_t}{(y - h_{t + 1})}c_{t + 1}) = \log(c_t^*) + \beta\log(c_{t + 1}^*) + \lambda(\omega_t - c_t - \frac{h_t}{(y - h_{t + 1})}c_{t + 1}).
+$$
+From this Lagrangian, we get the first order conditions
+$$
+\frac{1}{c_t^*} = -\lambda^*
+$$
+$$
+\frac{\beta}{c_{t + 1}^*} = -\lambda^*\frac{h_t}{(y - h_{t + 1})}
+$$
+$$
+c_t^* + \frac{h_t}{(y - h_{t + 1})}c_{t + 1}^* = \omega_t.
+$$
+Using the first two equations, we get that
+$$
+\frac{\beta}{c_{t + 1}^*} = \frac{h_t}{c_t^*(y - h_{t + 1})}
+$$
+$$
+c_{t + 1}^* = \frac{\beta c_t^*(y - h_{t + 1})}{h_t}.
+$$
+Then, substituting this into the canonical constraint,
+$$
+c_t^* + \frac{h_t}{(y - h_{t + 1})}\frac{\beta c_t^*(y - h_{t + 1})}{h_t} = \omega_t.
+$$
+$$
+c_t^* = \frac{\omega_t}{1 + \beta}
+$$
+$$
+c_{t + 1}^* = \frac{\beta \omega_t(y - h_{t + 1})}{(1 + \beta)h_t}.
+$$
+\end{proof}
+
+\begin{problem}{2.6}
+\end{problem}
+\begin{proof}
+Graph:
+\vspace{8 cm}
+\end{proof}
+
+\begin{problem}{2.7}
+\end{problem}
+\begin{proof}
+We have shown in 2.3 that
+$$
+\frac{c_{t + 1}}{(y - h_{t + 1})} = n_{t + 1},
+$$
+and from the previous part
+$$
+c_{t + 1}^* = \frac{\beta \omega_t(y - h_{t + 1})}{(1 + \beta)h_t}.
+$$
+Substitution gives us that
+$$
+\frac{\beta \omega_t}{(1 + \beta)h_t} = n_{t + 1}
+$$
+\end{proof}
+
+\begin{problem}{2.8}
+\end{problem}
+\begin{proof}
+When $h_t$, the cost per child increases, $n^*$ decreases. This makes logical sense, as if the cost of raising a child gets more expensive, one is disincentivized to raise more children.
+\end{proof}
+
+\begin{problem}{2.9}
+\end{problem}
+\begin{proof}
+As $y - h_{t + 1}$ changes, $n^*$ does not change at all. The intuition behind this result is that we have shown in 2.6 that the optimal consumption bundle for the consumer is proportional to the benefit derived from each child $(y - h_{t + 1})$. However, given $n^*$ is $c^*$ divided by the benefit from each child, the term gets cancelled out.
+\end{proof}
+
+\begin{problem}{2.10}
+\end{problem}
+\begin{proof}
+The implication that $y - h_{t + 1}$ does not affect the number of children one choses to have does not make sense to me, as intuitively when the benefit of raising a child increases, one should have more children. However, this does not occur as shown above. 
+
+The economic intuition of this problem is that children and consumption goods can be traded between and children come with a fixed cost and a fixed benefit. Combining these assumptions with the cobb-douglas function yields the desired utility maximization problem.
+\end{proof}
+
+\begin{problem}{2.11}
+\end{problem}
+\begin{proof}
+Given the individual can only have children in the first time period and given they have an endowment of 0, they cannot afford to have children. This means that $c_t^* = 0$. Additionally, with the endowment $\omega_{t + 1}$, the only possible action is for them to consume all of it. This shows that the utility achieved by this individual is $\beta \log(\omega_{t + 1})$, and they have no children.
+\end{proof}
+
+\begin{problem}{2.12}
+\end{problem}
+\begin{proof}
+As noted in 2.9, the number of children is 
+$$
+\frac{\beta \omega_t}{(1 + \beta)h_t} = n_{t + 1}.
+$$
+For people with little income, $h_t$ is likely to be very small because raising a child usually had a very small net cost in the past (usually they were involved in some work). As a result, when $h_t$ is arbitrarily small, it is clear that $n_{t + 1}$ becomes arbitrarily large. This explains why "Children are the poor man's capital."
+\end{proof}
+
+\begin{problem}{3.1}
+\end{problem}
+\begin{proof}
+Housing $H$ is a stock, it describes a quantity of housing owned by the individual. On the other hand, $h$ describes a flow of money into increasing or decreasing the total quantity of housing stock owned by the individual. Fundamentally these are different because they are measured in different units, $H$ is measured in quantity of housing while $h$ is measured in quantity of housing per period of time, as it is a rate of change in housing. Given that they have a different unit, it is not possible to compare $H$ to $h$.
+\end{proof}
+
+\begin{problem}{3.2}
+\end{problem}
+\begin{proof}
+For each period $t$, John starts with an endowment of $A_{t - 1}$ dollars and $H_{t - 1}$ housing. He also receives $y_t$ dollars throughout the period. However, the original housing endowment depreciates over the period to to $(1 - \delta)H_{t - 1}$ by the end of the period, while bank interest changes his original endowment to $(1 + r)A_{t - 1}$. Thus, at the end of the period, John's endowment is $(1 + r)A_{t - 1} + y_t$ dollars and $(1 - \delta)H_{t - 1}$ units of housing. Given the housing price of $v_t$, the total dollar value John has access to is $(1 + r)A_{t - 1} + y_t + v_t(1 - \delta)H_{t - 1}$ given he can freely invest and divest in housing.
+
+Given $p_t$ is the price of non-durable goods, John's budget constraint is
+$$
+v_tH_t + p_tc_t + A_t = (1 + r)A_{t - 1} + y_t + v_t(1 - \delta)H_{t - 1}
+$$
+because the value of John's consumption bundle plus the amount he saves should be equal to his endowment going into the end of period $t$.
+\end{proof}
+
+\begin{problem}{3.3}
+\end{problem}
+\begin{proof}
+John's lifetime budget constraint is as follows:
+$$
+\max_{c_1, c_2, H_1, H_2} u(c_1, H_1) + \beta u(c_2, H_2)
+$$
+$$
+v_1H_1 + p_1c_1 + A_1 = (1 + r)A_0 + y_1 + v_1(1 - \delta)H_0
+$$
+$$
+v_2H_2 + p_2c_2 = (1 + r)A_{1} + y_2 + v_2(1 - \delta)H_{1}
+$$
+$$
+H_1, H_2, c_1, c_2, A_1 \geq 0.
+$$
+The first equation maximizes utility, and the second and third equations are budget constraints for periods 1 and 2 respectively. The last inequality prevents negative consumption or negative saving from occurring.
+\end{proof}
+
+\begin{problem}{3.4}
+\end{problem}
+\begin{proof}
+From the above part, the second equation is
+$$
+A_1 = (1 + r)A_0 + y_1 + v_1(1 - \delta)H_0 - v_1H_1 - p_1c_1,
+$$
+and thus substituting into the third equation gives that
+$$
+v_2H_2 + p_2c_2 = (1 + r)\left((1 + r)A_0 + y_1 + v_1(1 - \delta)H_0 - v_1H_1 - p_1c_1\right) + y_2 + v_2(1 - \delta)H_{1}
+$$
+$$
+v_2H_2 + (1 - \delta)(v_1(1 + r) - v_2)H_1 + p_2c_2 + (1 + r)p_1c_1 = (1 + r)\left((1 + r)A_0 + y_1 + v_1(1 - \delta)H_0\right) + y_2 .
+$$
+This shows that $\pi_1 = (1 + r)p_1, \pi_2 = p_2, \bar{\pi_1} = (1 - \delta)(v_1(1 + r) - v_2), \bar{\pi_2} = v_2$.
+\end{proof}
+
+\begin{problem}{3.5}
+\end{problem}
+\begin{proof}
+We get from the previous part that 
+$$
+S = (1 + r)\left((1 + r)A_0 + y_1 + v_1(1 - \delta)H_0\right) + y_2.
+$$
+This can be deconstructed into
+$$
+S = (1 + r)^2A_0 + (1 + r)y_1 + v_1(1 + r)(1 - \delta)H_0 + y_2.
+$$
+The $(1 + r)^2A_0$ represents the value of the initial endowment received by John from his parents after it experiences $r$ dollar growth every year in the savings account. Similarly, $(1 + r)y_1$ represents the value of period 1 income after it stays in the savings account for a year, and $y_2$ represents the value of period 2 income. $v_1(1 + r)(1 - \delta)H_0$ represents the value of the housing endowment after it undergoes one year of depreciation and one year of interest accumulation in a savings account. $S$ is the total lifetime income considering both explicit and opportunity costs.
+\end{proof}
+
+\begin{problem}{3.6}
+\end{problem}
+\begin{proof}
+As shown in 3.4, $\pi_1 = (1 + r)p_1, \pi_2 = p_2$. $\pi_2$ is merely the price of a unit of consumable goods in period 2. On the other hand, $\pi_1$ is the price of consumable goods in period 1 in terms of period 2 dollars. The value of a period 2 dollar is different from that of period 1 because any money not used in period 1 gets multiplied by $(1 + r)$ moving into period 2. Thus, the value of a dollar in period 1 is a factor of $(1 + r)$ greater than the value of a dollar in period 2.
+\end{proof}
+
+\begin{problem}{3.7}
+\end{problem}
+\begin{proof}
+As shown in 3.4, $\bar{\pi_1} = (1 - \delta)(v_1(1 + r) - v_2), \bar{\pi_2} = v_2$. $\bar{\pi_2}$ is merely the price of a unit of housing in period 2. On the other hand, $\pi_1$ is the amortized difference between the price of housing in period 1 and period 2, both in terms of period 2 dollars. This is the case because if $H_1$ is increased, $H_2$ will also increase lest John divests money. Thus, $\bar{\pi_2}$ accounts for the price of $H_2$, while $\bar{\pi_1}$ accounts for the difference in price between how much money John needed to get housing in period 1 compared to getting the same housing in period 2.
+
+Note that it is possible for $\bar{\pi_1}$ to be negative because $v_1(1 + r) - v_2$ can be negative if $v_2$ is sufficiently large. This intuitively makes sense: assume the cost of housing is absurdly large in period 2. Then, purchasing housing in period 1 is a significantly better idea than buying housing in period 2. Even when considering depreciation or other factors, buying a set amount of housing in period 1 will be more beneficial than buying that same amount in period 2, and thus the user should be "subsidized" when buying a house in period 1 instead of period 2. This is why $\bar{\pi_1}$ can be negative.
+
+$\bar{\pi_2}$ cannot be negative, as that would imply $v_2$ is negative. Given housing is a good, negative pricing would mean John can get infinite quantities of housing as well as consumable goods. This eliminates any bounds that make the utility maximization problem solvable.
+\end{proof}
+
+\begin{problem}{3.8}
+\end{problem}
+\begin{proof}
+As shown in 3.4, $\bar{\pi_1} = (1 - \delta)(v_1(1 + r) - v_2)$. If $\delta' < \delta$, $(1 - \delta')(v_1(1 + r) - v_2) > (1 - \delta)(v_1(1 + r) - v_2)$, which shows that $\bar{\pi_1}$ moves inversely to depreciation. This makes sense as, if depreciation was trivially large, it would decrease the overall buying power of John in the second period, as in general he is faced with a smaller endowment. This pushes up the effective price on housing in period 1.
+
+As shown in 3.4, $\bar{\pi_1} = (1 - \delta)(v_1(1 + r) - v_2)$. If $r' > r$, $(1 - \delta)(v_1(1 + r') - v_2) > (1 - \delta)(v_1(1 + r) - v_2)$, which shows that $\bar{\pi_1}$ moves directly with interest. when the interest rate is high, there would be a greater propensity to save given its rewards, and greater savings means that there is less housing bought in period 1, effectively increasing the value of a dollar in that period.
+\end{proof}
+
+\begin{problem}{3.9}
+\end{problem}
+\begin{proof}
+First, we solve the utility maximization for period 1. Note that the utility maximization problem for period 1 is
+$$
+\max_{c_1, H_1} u(c_1, H_1) = \max_{c_1, H_1} \alpha\log(c_1) + (1 - \alpha)\log(H_1)
+$$
+$$
+v_1H_1 + p_1c_1 = (1 + r)A_0 + y_1 + v_1(1 - \delta)H_0 - A_1.
+$$
+Observe from the first order conditions that
+$$
+\frac{\alpha}{c_1^*} = -\lambda^*p_1
+$$
+$$
+\frac{1 - \alpha}{H_1^*} = -\lambda^*v_1
+$$
+$$
+v_1H_1 + p_1c_1 = (1 + r)A_0 + y_1 + v_1(1 - \delta)H_0 - A_1.
+$$
+From the first two equations, we get that 
+$$
+\frac{\alpha}{c_1^*} = -\lambda^*p_1
+$$
+$$
+\frac{\alpha}{c_1^*} = p_1\frac{1 - \alpha}{v_1H_1^*}
+$$
+$$
+c_1^* = \frac{\alpha v_1H_1^*}{p_1(1 - \alpha)}.
+$$
+Substituting this into the budget constraint gives us that
+$$
+v_1H_1 +\frac{\alpha v_1H_1^*}{1 - \alpha}. = (1 + r)A_0 + y_1 + v_1(1 - \delta)H_0 - A_1.
+$$
+$$
+\frac{v_1H_1^*}{1 - \alpha} = (1 + r)A_0 + y_1 + v_1(1 - \delta)H_0 - A_1.
+$$
+$$
+H_1^* = \frac{(1 - \alpha)((1 + r)A_0 + y_1 + v_1(1 - \delta)H_0 - A_1)}{v_1}
+$$
+$$
+c_1^* = \frac{\alpha((1 + r)A_0 + y_1 + v_1(1 - \delta)H_0 - A_1)}{p_1}
+$$
+We can see that given some fixed $A_1$, 
+$$
+u(c_1^*, H_1^*) 
+$$
+$$
+= \alpha\log\left(\frac{\alpha(S' - A_1)}{p_1}\right) + (1 - \alpha)\log\left( \frac{(1 - \alpha)(S' - A_1)}{v_1}\right)
+$$
+where $S' = (1 + r)A_0 + y_1 + v_1(1 - \delta)H_0$. Next, we solve the utility maximization for period 2. Note that the utility maximization problem for period 2 is
+$$
+\max_{c_2, H_2} u(c_2, H_2) = \max_{c_2, H_2} \alpha\log(c_2) + (1 - \alpha)\log(H_2)
+$$
+$$
+v_2H_2 + p_2c_2 = (1 + r)A_1 + y_2 + v_2(1 - \delta)H_1 + A_1.
+$$
+Observe from the first order conditions that
+$$
+\frac{\alpha}{c_2^*} = -\lambda^*p_2
+$$
+$$
+\frac{1 - \alpha}{H_2^*} = -\lambda^*v_2
+$$
+$$
+v_2H_2 + p_2c_2 = (1 + r)A_1 + y_2 + v_2(1 - \delta)H_1 + A_1.
+$$
+From the first two equations, we get that 
+$$
+\frac{\alpha}{c_2^*} = -\lambda^*p_2
+$$
+$$
+\frac{\alpha}{c_2^*} = p_1\frac{1 - \alpha}{v_2H_2^*}
+$$
+$$
+c_2^* = \frac{\alpha v_2H_2^*}{p_2(1 - \alpha)}.
+$$
+Substituting this into the budget constraint gives us that
+$$
+v_2H_2 +\frac{\alpha v_2H_2^*}{1 - \alpha}. = (1 + r)A_1 + y_2 + v_2(1 - \delta)H_1 + A_1.
+$$
+$$
+\frac{v_2H_2^*}{1 - \alpha} = (1 + r)A_1 + y_2 + v_2(1 - \delta)H_1 + A_1.
+$$
+$$
+H_2^* = \frac{(1 - \alpha)((1 + r)A_1 + y_2 + v_2(1 - \delta)H_1 + A_1)}{v_2}
+$$
+$$
+c_2^* = \frac{\alpha((1 + r)A_1 + y_2 + v_2(1 - \delta)H_1 + A_1)}{p_2}
+$$
+We can see from substitution that
+$$
+(1 + r)A_1 + y_2 + v_2(1 - \delta)H_1 = (1 + r)A_1 + y_2 + v_2(1 - \delta)\frac{(1 - \alpha)(S' - A_1)}{v_1}
+$$
+$$
+= ((1 + r) - (1 - \alpha)(1 - \delta)(v_2/v_1))A_1 + y_2 + v_2(1 - \delta)(1 - \alpha)(S'/v_1)
+$$
+Thus, if we let $S^* = y_2 + v_2(1 - \delta)(1 - \alpha)(S'/v_1)$ and $\theta = ((1 + r) - (1 - \alpha)(1 - \delta)(v_2/v_1))$, 
+$$
+u(c_2^*, H_2^*) = \alpha\log\left(\frac{\alpha(S^* + \theta A_1)}{p_2}\right) + (1 - \alpha)\log\left( \frac{(1 - \alpha)(S^* + \theta A_1)}{v_2}\right).
+$$
+We are now interested in finding $A_1$ such that utility is maximized globally:
+$$
+\alpha\log\left(\frac{\alpha(S' - A_1)}{p_1}\right) + (1 - \alpha)\log\left( \frac{(1 - \alpha)(S' - A_1)}{v_1}\right) + \beta\alpha\log\left(\frac{\alpha(S^* + \theta A_1)}{p_2}\right) + \beta(1 - \alpha)\log\left( \frac{(1 - \alpha)(S^* + \theta A_1)}{v_2}\right)
+$$
+$$
+ = \alpha\log\left(S' - A_1\right) + \alpha\log(\alpha/p_1) + (1 - \alpha)\log\left(S' - A_1\right) + (1 - \alpha)\log((1 - \alpha)/v_1) 
+$$
+$$
++ \beta\alpha\log\left(S^* + \theta A_1\right) + \beta\alpha\log(\alpha/p_2) + \beta(1 - \alpha)\log\left(S^* + \theta A_1\right) + \beta(1 - \alpha)\log(\alpha/v_2).
+$$
+Note that every other term $\alpha\log(\alpha/p_1), (1 - \alpha)\log((1 - \alpha)/v_1), ...$ is a constant and irrelevant when trying to maximize the function. Thus, the function is maximized when
+$$
+\alpha\log\left(S' - A_1\right) + (1 - \alpha)\log\left(S' - A_1\right) + \beta\alpha\log\left(S^* + \theta A_1\right) \beta(1 - \alpha)\log\left(S^* + \theta A_1\right)
+$$
+$$
+= \log\left(S' - A_1\right) + \beta\log\left(S^* + \theta A_1\right) = \log((S' - A_1)(S^* + \theta A_1)^{\beta})
+$$
+is maximized. Using the derivative test, we see that the derivative of $(S' - A_1)(S^* + \theta A_1)^{\beta}$ is $0$ when $A_1^* = \frac{-(S^* - \beta\theta S')}{\theta(\beta + 1)}$. Substituting in $S', S^*, \theta$ would make the equation too long, so we leave it as is.
+
+Then, taking the equations
+$$
+H_2^* = \frac{(1 - \alpha)((1 + r)A_1 + y_2 + v_2(1 - \delta)H_1 + A_1)}{v_2}
+$$
+$$
+c_2^* = \frac{\alpha((1 + r)A_1 + y_2 + v_2(1 - \delta)H_1 + A_1)}{p_2}
+$$
+$$
+H_1^* = \frac{(1 - \alpha)((1 + r)A_0 + y_1 + v_1(1 - \delta)H_0 - A_1)}{v_1}
+$$
+$$
+c_1^* = \frac{\alpha((1 + r)A_0 + y_1 + v_1(1 - \delta)H_0 - A_1)}{p_1}
+$$
+and substituting in $A_1^*$ yields the optimal solution. Lastly, 
+$$
+h_1^* = H_1 - (1 - \delta)H_0
+$$
+$$
+h_1^* = H_2 - (1 - \delta)H_1
+$$
+where $H_1, H_2$ are as defined above.
+\end{proof}
+
+\begin{problem}{3.10}
+\end{problem}
+\begin{proof}
+First, note that if $v_1$ increases, $S^*$ decreases, $\theta$ increases, and $S'$ increases, given the definitions of these values from the previous part. It then follows that $A_1^* = \frac{-(S^* - \beta\theta S')}{\theta(\beta + 1)}$ increases. Then, note that when $A_1$ increases and $v_1$ increases, 
+$$
+H_1^* = \frac{(1 - \alpha)((1 + r)A_0 + y_1 + v_1(1 - \delta)H_0 - A_1)}{v_1}
+$$
+will always decrease. This shows that when the price of housing in period 1 increases, the quantity of housing bought in period 1 decreases. This additionally leads to increased savings during period 1. Next, note that the income effect is the negative change resulting from the decreased buying power he has in period 1, the substitution effect is a result of the change in consumption independent of income, and endowment effect is a result of the fact that he starts with an endowment of housing and money from his parents.
+\end{proof}
+
+\begin{problem}{3.11}
+\end{problem}
+\begin{proof}
+If John could not divest in housing, the utility maximization problem would be defined in terms of $h_1, h_2$ as follows:
+$$
+\max_{c_1, c_2, h_1, h_2} u(c_1, h_1 + (1 - \delta)H_0) + \beta u(c_2, h_2 + (1 - \delta)H_1)
+$$
+$$
+v_1(h_1 + (1 - \delta)H_0) + p_1c_1 + A_1 = (1 + r)A_0 + y_1 + v_1(1 - \delta)H_0
+$$
+$$
+v_2(h_2 + (1 - \delta)(h_1 + (1 - \delta)H_0)) + p_2c_2 = (1 + r)A_{1} + y_2 + v_2(1 - \delta)(h_1 + (1 - \delta)H_0)
+$$
+$$
+h_1, h_2, c_1, c_2, A_1 \geq 0.
+$$
+In general, if $A_0$ is small, John would normally not have divested housing anyways, making this new question identical to the old one. However, if $A_0$ is very large, and John does divest in the normal problem, John would no longer divest and instead put more money towards consumption and savings.
+\end{proof}
+
+\end{document}

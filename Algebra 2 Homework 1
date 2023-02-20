@@ -1,0 +1,185 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Algebra Homework 1}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{proof}
+If $0_R \neq 1_R$, then by definition $R$ cannot be a singleton because it contains at least two elements.
+
+Next, for the sake of contradiction, assume $0_R = 1_R$ and $R$ is not a singleton. Assume $a$ is some element that is not $0_R/1_R$. Then, it follows that $a + a = (1_R + 1_R) * a = (1_R + 0_R) * a = 1_R * a = a$, and by adding the additive inverse of $a$ on both sides of this equation, we get that $a = 0_R$. This contradicts the initial assumption, which completes the proof that $R$ is a singleton if and only if $0_R = 1_R$.
+\end{proof}
+
+\begin{problem}{2}
+\end{problem}
+\begin{proof}
+To prove that $f^*$ is a ring homomorphism, will prove that $f^*(a + b) = f^*(a) + f^*(b)$, $f^*(ab) = f^*(a)f^*(b)$, and $f^*(1_{R^Y}) = 1_{R^X}$ for all $a, b \in R^{Y}$.
+
+First, note that
+$$
+f^*(a + b) = (a + b) \circ f = a \circ f + b \circ f = f^*(a) + f^*(b)
+$$
+because $f$ maps an element of $X$ to $Y$, and applying $a + b$ to this element of $Y$ is equivalent to the sum of the application of $a$ and the application of $b$ to this element of $Y$. Next, for any $x \in X$
+$$
+(f^*(ab))(x) = ((ab) \circ f)(x) = ((ab)(f(x))) = a(f(x))b(f(x)) = (a \circ f)(x) * (b \circ f)(x) = (f^*(a)f^*(b)))(x).
+$$
+Lastly, note that for any $x \in X$
+$$
+f^*(1_{R^Y})(x) = (1_{R^Y} \circ f)(x) = 1_R,
+$$
+with the last equality being true given $1_{R^Y}$ maps every element of $Y$ to the identity of $R$. This suggests that $f^*(1_{R^Y}) = 1_{R^X}$, which completes the proof that $f^*$ is a ring homomorphism.
+\end{proof}
+
+\begin{problem}{3.i}
+\end{problem}
+\begin{proof}
+False.
+
+When $x \in Y$, it is by definition true that $\phi(g + f)(x) = (g + f)(x)$, $\phi(gf)(x) = (gf)(x)$, and $\phi(1_{R_Y}) = 1_{R_X}$. However, if $x \in X$ but not in $Y$, $\phi(1_{R^Y})(x) = 0_R$ by the definition of $\phi$, but it is necessarily true that $1_{R^Y}(x) = 1_R \neq 0_R$. 
+\end{proof}
+
+\begin{problem}{3.ii}
+\end{problem}
+\begin{proof}
+True.
+
+For any $g \in R^Y$, $\phi(g) \in R^X$ because when $x \in Y$ $\phi(g)(x) = g(x) \in R$, while when $x \notin Y$, $\phi(g)(x) = 0_R \in R$. Additionally, if $f, g \in R^Y$, it is necessarily true that $\phi(f + g)(x) = 0_R$ and $\phi(fg)(x) = 0$ when $x \notin Y$, and this shows that $f + g, fg$ are contained within the subring formed by $R^Y$ inside $R^X$.
+\end{proof}
+
+\begin{problem}{4}
+\end{problem}
+\begin{proof}
+Assume $B$ is not $\mathbb{Q} \times \mathbb{Q}$ nor $\Delta(\mathbb{Q})$. This implies that there exists $(a, b) \in B$ where $a \neq b$. Without loss to generality, assume $b > a$. Then, consider the addition of $(a, b)$ with $(-a, -a)$, which must be inside $B$ given it contains $\Delta(\mathbb{Q})$. This means that $B$ necessarily contains $(0, b - a)$. Then, consider the element $(1/(b - a), 1/(b - a))$, which must also be inside $\Delta(\mathbb{Q}) \subset B$. The product between this and $(0, b - a)$ is $(0, 1)$. We conclude that $(0, 1) \in B$.
+
+Let $(c, d)$ be any arbitrary element of $\mathbb{Q} \times \mathbb{Q}$. We are aware $(c, c) \in \Delta(\mathbb{Q}) \subset B$. Similarly, $(d - c, d - c) \in \Delta(\mathbb{Q}) \subset B$ and we have already shown that $(0, 1) \in B$. It then follows that
+$$
+(c, c) + (d - c, d - c) * (0, 1) = (c, c) + (0, d - c) = (c, d) \in B.
+$$
+This shows that any arbitrary element $(c, d)$ of $\mathbb{Q} \times \mathbb{Q}$ is in $B$, which contradicts the fact that $B$ is not $\mathbb{Q} \times \mathbb{Q}$. This contradiction proves that if $B$ contains $\Delta(\mathbb{Q})$, $B$ is either $\Delta(\mathbb{Q})$ or $\mathbb{Q} \times \mathbb{Q}$.
+\end{proof}
+
+\begin{problem}{7}
+\end{problem}
+\begin{proof}
+Let $a, b \in f^{-1}R_3 = R_4$. This implies that $f(a), f(b)$ are elements of $R_3$. Given $R_3$ is a subring, it is clear that $f(a) + f(b) \in R_3$ and $f(a) * f(b) \in R_3$. Given $f$ is a ring homomorphism, $f(a + b) \in R_3$ and $f(ab) \in R_3$ as well. Then, note that $a + b = f^{-1}(f(a + b)) \in R_4$, $ab = f^{-1}(f(ab)) \in R_4$. Lastly, given $f$ is a ring homomorphism $1_{R_4} = 1_{R_1} = f^{-1}(1_{R_2})$. This completes the proof that $R_4 = f^{-1}(R_3)$ constitutes a subring in $R_1$.
+\end{proof}
+
+\begin{problem}{9}
+\end{problem}
+\begin{proof}
+If $x, y \in A \cap B$, $x + y \in A$ and $x + y \in B$ given $A$ and $B$ are both subrings. Similarly, $xy \in A$, and $xy \in B$. This shows that $x + y \in A \cap B$ and $xy \in A \cap B$ for any $x, y \in A \cap B$, and thus $A \cap B$ is a subring of $R$.
+\end{proof}
+
+\begin{problem}{10}
+\end{problem}
+\begin{proof}
+We are given that there exists a unique homomorphism $f$ such that $f(1) = 1_R$ and $f(n) = n(1_R) = n_R = 1_R + ... + 1_R$. Note that thus $n_R*a = (1_R + ... + 1_R) * a = a + ... + a = na$. This completes the proof that $n_R*a = na$ for every $a \in R$ and every $n \in \mathbb{Z}$.
+\end{proof}
+
+\begin{problem}{11}
+\end{problem}
+\begin{proof}
+We will prove that $f$ is a ring homomorphism by showing that $f(a) + f(b) = f(a + b), f(a)f(b) = f(ab), f(1) = 1_R$ for every $a, b \in \mathbb{Z}$.
+
+First, note that given $f$ is an additive group homomorphism, $f(a) + f(b) = f(a + b)$ by definition. Next, note that $f(ab) = f(b + ... + b) = f(b) + ... + f(b)$ $a$ times. As noted in the previous problem, $f(b) + ... + f(b)$ $a$ times is equal to $f(a)f(b)$. Thus $f(ab) = f(a)f(b)$. Lastly, $f(1) = 1(1_R) = 1_R$. This completes the proof that $f$ is a ring homomorphism.
+\end{proof}
+
+\begin{problem}{12}
+\end{problem}
+\begin{proof}
+If $R$ is a commutative ring, $a * b = b * a$. Then, note that $(a + b)(a - b) = a*a + a*b - b*a - b*b = a^2 - b^2$. On the other hand, if $a^2 - b^2 = (a + b)(a - b)$, $a^2 - b^2 = a*a + b*a - a*b - b^2$, and thus $0 = b*a - a*b$, which means $a*b = b*a$. Thus, $i$ is true if and only if $ii$ is true.
+
+If $R$ is a commutative ring, $a * b = b * a$. Then, note that $(a + b)(a + b) = a*a + a*b + b*a + b*b = a^2 + 2ab + b^2$. On the other hand, if $a^2 + 2ab + b^2 = (a + b)(a + b)$, $a^2 + b^2 = a*a + b*a + a*b + b^2$, and thus $2ab = ba + ab$, which means $ab = ba$. Thus, $i$ is true if and only if $iii$ is true. This completes the proof that $i$, $ii$, $iii$ are equivalent statements.
+\end{proof}
+
+\begin{problem}{14.a}
+\end{problem}
+\begin{proof}
+True.
+
+If $f : Y \rightarrow A$, $g : Y \rightarrow A$, then $g(x) + f(x) = f(x) + g(x)$ given the elements of $A$ are Abelian.
+\end{proof}
+
+\begin{problem}{14.b}
+\end{problem}
+\begin{proof}
+True.
+
+$(f + g)(x) = f(x) + g(x)$ by definition, and thus $(f + g)(h(x)) = f(h(x)) + g(h(x))$.
+\end{proof}
+
+\begin{problem}{14.c}
+\end{problem}
+\begin{proof}
+False.
+
+This would only be true if we are guaranteed that $f(g(x) + h(x)) = f(g(x)) + f(h(x))$. This is only true when $f(a + b) = f(a) + f(b)$ for all $a, b \in A$. However, this is at no point guaranteed.
+\end{proof}
+
+\begin{problem}{14.d}
+\end{problem}
+\begin{proof}
+True.
+
+For any $x \in A$, if $f(x) = y$, $id_A(f(x)) = id_A(y) = y$, $f(id_A(x)) = f(x) = y$. Thus $id_A \circ f = f = f \circ id_A$.
+\end{proof}
+
+\begin{problem}{14.e}
+\end{problem}
+\begin{proof}
+True.
+
+If $f, g$ are group homomorphisms, $(f + g)(x + y) = f(x + y) + g(x + y) = f(x) + f(y) + g(x) + g(y) = (f + g)(x) + (f + g)(y)$. Similarly $(f \circ g)(x + y) = f(g(x+y)) = f(g(x) + g(y)) = f(g(x)) + f(g(y))$. This completes the proof that $f + g$ and $f \circ g$ are in $End(A)$.
+\end{proof}
+
+\begin{problem}{14.f}
+\end{problem}
+\begin{proof}
+True.
+
+We have already shown in part b that the right distributive law holds for every $End(A) \subset A^A$. Additionally, note that $f \circ (g + h)(x) = f(g(x) + h(x)) = f(g(x)) + f(h(x))$ for any $f, g, h \in End(A)$ and $x \in A$. This completes the proof that both distributive laws hold.
+\end{proof}
+
+\begin{problem}{14.g}
+\end{problem}
+\begin{proof}
+True.
+
+This result follows from the closure as proven in $e$, the distributive law as proven in $f$, and given that $A$ is abelian (it ensures the addition operation is commutative).
+\end{proof}
+
+\begin{problem}{14.h}
+\end{problem}
+\begin{proof}
+False.
+
+$(End(A), +, \circ)$ is a commutative ring when $f \circ g = g \circ f$ for any $f, g \in End(A)$. However, no existing conditions on the group would guarantee that this is true.
+\end{proof}
+
+\begin{problem}{14.i}
+\end{problem}
+\begin{proof}
+True.
+
+If $f \in (End(A), +, \circ)$, note that $f((0, 0)) = (0, 0)$ because $f$ is a group homomorphism so $2f((0, 0)) = f((0, 0) + (0, 0)) = f((0, 0))$, which is only possible when $f((0, 0)) = (0, 0)$. If $f((1, 0)) = a$ and $f((0, 1)) = b$, $f((c, d)) = f(c(1, 0) + d(0, 1)) = ca + bd$. This shows that $f$ is uniquely defined by how it maps $(1, 0)$ and $(0, 1)$. Similarly, a linear operation defined by a $2 \times 2$ matrix is uniquely defined by how it maps $(1, 0)$ and $(0, 1)$. There is an isomorphism between these two sets as follows: if $f \in End(A)$ and $f(0, 1) = (a, b)$ and $f(1, 0) = (c, d)$, map $f$ to the matrix $((c, d)^T, (a, b)^T)$.
+\end{proof}
+
+
+\end{document}

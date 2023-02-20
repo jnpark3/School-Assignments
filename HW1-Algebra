@@ -1,0 +1,364 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 1}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{proof}
+Let $a_1, a_2, ..., a_52$ be an arrangement of cards 52 numbered from 1 to 52 with the property that $a_i + a_{53 - i} = 53$ for all $i \in {1, ..., 26}$. We will show that applying either shuffle $A$ or $B$ will yield an arrangement with the property that $a_i + a_{53 - i} = 53$ for all $i \in {1, ..., 26}$ if and only if this property is true for the original arrangement before the shuffle.
+
+Let's start with shuffle $A$. First assume the deck starts out such that $a_i + a_{53 - i} = 53$ for all $i \in {1, ..., 26}$. For any card with position $i$ ($i \leq 26$) and value $a_i$, applying shuffle $A$ will relocate this card to position $2i$. Then, for the card at position ${53 - i}$ and value $53 - a_i$, this card will be relocated to position $53 - 2i$. This shows that in the shuffled deck, $a_{2i} + a_{53 - 2i} = 53 - 2i + 2i = 53$. This is true for all $i \in {1, ..., 26}$, and thus it is possible to see that $a_i + a_{53 - i} = 53$ for all $i \in {1, ..., 26}$ in this new shuffled deck. Now, assume that there exists a pair $a_i, a_{53 - i}$ such that $a_i + a_{53 - i} \neq 53$. Applying the shuffle shows that $a_(2i) + a_{53 - 2i} \neq 53$. Thus, shuffle $A$ will yield an arrangement with the property that $a_i + a_{53 - i} = 53$ for all $i \in {1, ..., 26}$ if and only if this property is true for the original arrangement before the shuffle.
+
+For shuffle $B$, again assume the deck starts out such that $a_i + a_{53 - i} = 53$ for all $i \in {1, ..., 26}$. For any card with position $i$ ($i \leq 26$) and value $a_i$, applying shuffle $A$ will relocate this card to position $2i - 1$. Then, for the card at position ${53 - i}$ and value $53 - a_i$, this card will be relocated to position $53 - 2i + 1$. This shows that in the shuffled deck, $a_{2i - 1} + a_{53 - (2i - 1)} = 53 - 2i + 1 + 2i - 1 = 53$. This is true for all $i \in {1, ..., 26}$, and thus it is possible to see that $a_i + a_{53 - i} = 53$ for all $i \in {1, ..., 26}$ in this new shuffled deck. Now, assume that there exists a pair $a_i, a_{53 - i}$ such that $a_i + a_{53 - i} \neq 53$. Applying the shuffle shows that $a_(2i - 1) + a_{53 - (2i - 1)} \neq 53$. Thus, shuffle $B$ will yield an arrangement with the property that $a_i + a_{53 - i} = 53$ for all $i \in {1, ..., 26}$ if and only if this property is true for the original arrangement before the shuffle.
+
+It is easy to see that for the specific arrangement $X$ where the values of the cards correspond with their positions, $a_i + a_{53 - i} = 53$ for all $i \in {1, ..., 26}$. In addition, it is easy to see that for the specific arrangement $Y$, where the order is identical to $X$ except the first two cards are swapped, the property does not hold. To proves that it is impossible to obtain every permutation of 52 cards, we consider the two cases where the shuffle begins from an arrangement that follows the property and an arrangement that does not follow the property. If the addition property holds for arrangement $Z$, applying any quantity of shuffles $A$ or $B$ will yield another arrangement of cards where the property holds given each individual shuffle will preserve the property. Thus, it is impossible to reach arrangement $Y$. Similarly, if the addition property does not holds for arrangement $Z$, applying any quantity of shuffles $A$ or $B$ will yield another arrangement of cards where the property does not holds given because individual shuffles will preserve the property only if the original arrangement had the property. Thus, it is impossible to reach arrangement $X$. This shows that it is impossible for every permutation of 52 to be obtained by some combination of riffle shuffles no matter what the starting deck is.
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}
+We prove the properties of identity, closure, and inverses in order to show that $(O(n), *)$ is a group. We assume associativity is true due to the associative property of general matrix multiplication.
+
+The identity property holds given $I^T = I$, and $I(I^T) = I(I) = I$. This shows that $I \in O(n)$, and for any $X \in O(n)$, $XI = IX = X$.
+
+To prove the closure property, observe that for any matrix $M$ where $MM^T = I$, $M^T = M^{-1}$. Thus, given that $(AB)(AB)^{-1} = ABB^{-1}A^{-1} = I$ for any invertible matrices $A, B$, it follows that $(AB)(AB)^{T} = (AB)B^{T}A^{T} = I$ for any matrices $A, B \in O(n)$. This shows that if $A, B \in O(n)$, $AB \in O(n)$ given its transpose $(AB)^T = B^{T}A^{T}$, is its inverse.
+
+Lastly to prove the existence of an inverse, for any $X \in O(n)$, $X^T \in O(n)$ because $(X^T)(X^T)^T = X^TX = I$. Given $X^T = X^{-1}$ as shown previously, $X^{-1} \in O(n)$ for every $X \in O(n)$ and thus the inverse property is satisfied.
+
+This completes the proof that $O(n)$ is a group under the product operation.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}
+We assume the properties that if $A, B$ are matrices, $det(AB) = det(A) * det(B)$ and $det(A^T) = det(A)$. Given $MM^{T} = I$, and given $det(I) = 1$ by definition, it is evident that $1 = det(MM^T) = det(M)det(M^T) = (det(M))^2$. This shows that the only two possible real values for $det(M)$ are $1$ and $-1$.
+
+We will prove that $SO(n) \subset O(n)$ is a group by proving the properties on the identity, closure, and inverses. We assume associativity is true due to the associative property of general matrix multiplication.
+
+The identity property holds given $I^T = I$, and $I(I^T) = I(I) = I$. Also, $det(I) = 1$ by definition. This shows that $I \in SO(n)$, and for any $X \in S(n)$, $XI = IX = X$.
+
+To prove the closure property, for any $A, B \in SO(n) \subset O(n)$, we are already aware that $AB \in O(n)$ given the closure proof from $2.a$. Thus, all we need to prove is that $det(AB) = 1$ in order to show the closure property for $SO(n)$. $det(AB) = det(A)det(B) = 1*1 = 1$, and thus we finish the proof.
+
+Lastly to prove the existence of an inverse, for any $X \in SO(n)$, $X^T \in SO(n)$ because $(X^T)(X^T)^T = X^TX = I$ and $1 = det(I) = det(XX^T) = det(X)det(X^T) = det(X^T)$. Given $X^T = X^{-1}$ because $(X)(X^T) = I$, $X^{-1} \in SO(n)$ for every $X \in SO(n)$ and thus the inverse property is satisfied.
+
+This completes the proof that $SO(n)$ is a group under the product operation.
+\end{proof}
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{proof}
+Let $X \in SO(2)$ be a matrix such that
+
+$$
+X = \begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix}
+$$
+
+It then follows that
+
+$$X^T = \begin{pmatrix}
+a & c\\
+b & d
+\end{pmatrix} 
+$$
+
+In addition, applying the formula for the inverse of a $2 \times 2$ matrix shows that
+
+$$X^{-1} = \begin{pmatrix}
+d & -b\\
+-c & a
+\end{pmatrix} 
+$$
+
+Given $XX^T = 1$, $X^T = X^{-1}$ and we can see that
+
+$$
+\begin{pmatrix}
+d & -b\\
+-c & a
+\end{pmatrix}  = \begin{pmatrix}
+a & c\\
+b & d
+\end{pmatrix}
+$$
+
+and thus $a = d$ and $b = -c$. This mandates that $X$ take the form 
+
+$$
+X = \begin{pmatrix}
+a & b\\
+-b & a
+\end{pmatrix}
+$$
+
+for some $a, b$. Then, applying the formula for the determinant of a $2 \times 2$ matrix shows that $det(X) = a^2 + b^2 = 1$.
+
+Due to the trivial inequality, it follows that $a^2 \leq 1$, $-1 \leq a \leq 1$, and thus there must exist two values $\theta_1, \theta_2 \in [0, 2\pi)$ such that $a = cos(\theta)$. These two values take the form $\pi - a, \pi + a$ given $cos$ is symmetric about $x = \pi$. Next, note the trigonometric identity $cos^2(\theta) + sin^2(\theta) = 1$. It follows that $sin^2(\pi + a) = sin^2(\pi - a)$, but $sin(\pi + a), sin(\pi - a)$ have different signs. Thus, assign $\theta$ by choosing between $\pi + a, \pi - a$ such that the signs between $sin(\theta)$ and $cos(\theta)$ match. Thus, there exists $\theta$ such that
+
+$$
+X = \begin{pmatrix}
+cos(\theta) & sin(\theta)\\
+-sin(\theta) & cos(\theta)
+\end{pmatrix}
+$$
+
+for any $X \in SO(n)$.
+
+To show that $X$ is a rotation around the origin by $\theta$, consider an arbitrary vector $v$, and write it in the form $(a(sin(\theta')), a(cos(\theta')))^T$. Then,
+
+$$
+Xv = \begin{pmatrix}
+cos(\theta) & sin(\theta)\\
+-sin(\theta) & cos(\theta)
+\end{pmatrix}\begin{pmatrix}
+a * sin(\theta')\\
+a * cos(\theta')
+\end{pmatrix} = \begin{pmatrix}
+a * (cos(\theta)sin(\theta') + sin(\theta)cos(\theta'))\\
+a * (-sin(\theta)sin(\theta) + cos(\theta)cos(\theta'))
+\end{pmatrix} = \begin{pmatrix}
+a * (cos(\theta + \theta'))\\
+a * (sin(\theta + \theta')),
+\end{pmatrix}
+$$
+
+with the last equality being true due to the trig properties of degree addition. This shows that vector $v$ is rotated by $\theta$ for any arbitrary $v$, and thus $X$ is a rotation by $\theta$.
+\end{proof}
+
+\begin{problem}{2.d}
+\end{problem}
+\begin{proof}
+Let $X \in O(2)$ be a matrix such that
+
+$$
+X = \begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix}
+$$
+
+It then follows that
+
+$$X^T = \begin{pmatrix}
+a & c\\
+b & d
+\end{pmatrix} 
+$$
+
+In addition, applying the formula for the inverse of a $2 \times 2$ matrix shows that
+
+$$X^{-1} = -\begin{pmatrix}
+d & -b\\
+-c & a
+\end{pmatrix} 
+$$
+
+We know that the determinant is $-1$ because we have shown earlier in $2.b$ that $det(X)$ for $X \in O(n)$ is $-1$ or $1$ and we are given that $det(X) \neq 1$. Next, given $XX^T = 1$, $X^T = X^{-1}$ and we can see that
+
+$$
+\begin{pmatrix}
+-d & b\\
+c & -a
+\end{pmatrix}  = \begin{pmatrix}
+a & c\\
+b & d
+\end{pmatrix}
+$$
+
+and thus $b = c$ and $a = -d$. This mandates that $X$ take the form 
+
+$$
+X = \begin{pmatrix}
+-b & a\\
+a & b
+\end{pmatrix}
+$$
+
+for some $a, b$. Next, to show that $M^2 = I$ for any $M \in O(2)$ and $M \notin SO(2)$, for any matrix in the form above, note that $M = M^{T}$, and it is clear that $M^{T} = M^{-1}$ for any $M \in O(n)$. Thus,  $MM^{-1} = M^2 = I$. 
+
+To show that $M \in O(2), M \notin SO(2)$ is a reflection, let
+
+$$
+M = \begin{pmatrix}
+-sin(\theta) & cos(\theta)\\
+cos(\theta) & sin(\theta)
+\end{pmatrix}
+$$
+
+for some $\theta.$ For some arbitrary vector $x = (a * sin(\theta'), a * cos(\theta'))$, 
+
+$$
+Mx = \begin{pmatrix}
+-sin(\theta) & cos(\theta)\\
+cos(\theta) & sin(\theta)
+\end{pmatrix}\begin{pmatrix}
+a * cos(\theta')\\
+a * sin(\theta')
+\end{pmatrix} = \begin{pmatrix}
+a * (-sin(\theta)cos(\theta') + cos(\theta)sin(\theta'))\\
+a * (cos(\theta)cos(\theta) + sin(\theta)sin(\theta'))
+\end{pmatrix} = \begin{pmatrix}
+a * (sin(\theta - \theta'))\\
+a * (cos(\theta - \theta')),
+\end{pmatrix}
+$$
+
+with the last equality being true due to the addition/subtraction trigonometric properties. This shows that $M$ reflects $x$ about the line that goes through the origin with angle $\theta/2$.
+
+Lastly, we will show that if $M, N$ are elements of $O(2)$ not in $SO(2)$, then $MN \in SO(2)$ is a rotation. Given $2.a$, $O(2)$ is a group and thus $MN \in O(2)$. In addition, as noted in 2.a, $det(M)det(N) = det(MN)$, and given $M, N \in SO(2)$, by definition from $2.b$, $det(M) = det(N) = -1$. This shows that $det(MN) = 1$, and thus $MN \in SO(2)$. We have shown in $2.c$ that all matrices in $SO(2)$ is a rotation, completing the proof.
+\end{proof}
+
+\begin{problem}{2.e}
+\end{problem}
+\begin{proof}
+First, given $u_1$ is in $\mathbb{R}^3$, there must exist another vector $v$ that is linearly independent from $u_1$ because if no such vector existed then $u_1$ must span all of $\mathbb{R}^3$, implying the dimension of $\mathbb{R}^3$ is 1. Next, consider the function 
+
+$$
+f(x) = \langle v + xu_1, u_1 \rangle = \sum (v_i + xu_{1, i})(u_{1, i}) = \langle v, u_1 \rangle + x \sum (u_{1, i})^2
+$$
+
+where $x$ is some scalar. Given $u_1$ is not the zero vector, the above equation is a linear equation with a non-zero slope, and thus there must exist an $x$ such that $f(x) = 0$. We know $v + xu_1 \neq 0$ because that would imply $v$ is linearly dependent to $u_1$. Thus, $v + xu_1$ is a non-zero vector that is orthogonal to $u_1$, and let $u_2$ denote the normalized version of $v + xu_1$. It is clear that $\langle u_2, u_2 \rangle = 1$ and $\langle u_1, u_2 \rangle = 0$.
+
+Next, given $u_1, u_2$ is in $\mathbb{R}^3$, there must exist another vector $w$ that is linearly independent from both $u_1, u_2$ because if no such vector existed then $u_1$ and $u_2$ must span all of $\mathbb{R}^3$, implying the dimension of $\mathbb{R}^3$ is 2. Next, consider the function 
+
+$$
+f(x) = \langle w + xu_1, u_1 \rangle = \langle w, u_1 \rangle + x \sum (u_{1, i})^2
+$$
+
+as done previously with $v$, let $w + xu_1$ denote a non-zero vector that is orthogonal to $u_1$. Next, consider the similar function
+
+$$
+g(y) = \langle w + xu_1 + yu_2, u_2 \rangle = \langle w, u_2 + xu_1 \rangle + y \sum (u_{2, i})^2.
+$$
+
+Again, this $g$ is a linear function with a non-zero slope given $u_2$ is not the zero vector, and thus there exists $y$ such that $g(y) = 0$. First, note that $w + xu_1 + yu_2 \neq 0$ because if it were $0$, that would imply $w$ is a linear combination of $u_1, u_2$, contradicting the fact that it is linearly independent from the two. We already know that $\langle w + xu_1 + yu_2, u_2 \rangle = 0$. Then, to show that $\langle w + xu_1 + yu_2, u_1 \rangle = 0$, note that
+
+$$
+\langle w + xu_1 + yu_2, u_1 \rangle = \sum (u_{1, i})(w_i + xu_{1, i} + yu_{2, i}) = \langle w + xu_1, u_1 \rangle + \langle yu_2, u_1 \rangle.
+$$
+
+We know that $\langle w + xu_1, u_1 \rangle = 0$ given $f(x) = 0$, and $\langle yu_2, u_1 \rangle = 0$ given $u_2$ is orthogonal to $u_1$. Thus, if $u_3$ is the normalized version of $w + xu_1 + yu_2$, $\langle u_3, u_1 \rangle = 0$, $\langle u_3, u_2 \rangle = 0$, and $\langle u_3, u_3 \rangle = 1$. This proves that $u_3, u_2, u_1$ are orthonormal and mutually orthogonal.
+
+Next, to show that $Mu_1 = u_1, Mu_2 = au_2 + bu_3, Mu_3 = -bu_2 + au_3$, we will show that $M$ preserves orthogonality. Let $v_1, v_2$ denote two orthogonal vectors such that $\langle v_1, v_2 \rangle = v_1^Tv_2 = 0$. Next, note that 
+
+$$
+\langle M(v_1), M(v_2) \rangle = (Mv_1)^T(Mv_2) = (v_1^TM^T)(Mv_2) = v_1^T(M^TM)v_2 = v_1^Tv_2 = 0,
+$$
+
+with the second equality being true given $(ab)^T = b^Ta^T$ as shown in 2.a. This shows that any pair of orthogonal vectors remain orthogonal after undergoing linear transformation $M$. This then shows that $M(v_1), M(v_2), M(v_3)$ remain mutually orthogonal because each pair remains orthogonal. Given $M(v_1) = v_1$, neither $M(v_2)$ nor $M(v_3)$ can have a $v_1$ component because that would imply that $M(v_1), M(v_2), M(v_3)$ are not pairwise orthogonal. This shows that $Mu_2 = au_2 + bu_3$ and $Mu_3 = a'u_2 + b'u_3$ for some $a, a', b, b'$.
+
+Now, given $Mu_2 = au_2 + bu_3$ and $Mu_3 = a'u_2 + b'u_3$, it follows that $M(iu_2 + ju_3) = aiu_2 + biu_3 + a'ju_2 + b'ju_3 = (ai + a'j)u_2 + (bi + b'j)u_3$. This can be modeled in matrix multiplication as
+
+$$
+Ax = \begin{pmatrix}
+a & a'\\
+b & b'
+\end{pmatrix}\begin{pmatrix}
+i\\
+j
+\end{pmatrix} =\begin{pmatrix}
+(ai + a'j)\\
+(bi + b'j)
+\end{pmatrix}.
+$$
+
+In this case, we will show that $A$ is a rotation matrix. First, note that the inverse map is
+
+$$
+A^{-1}y = \begin{pmatrix}
+b' & -a'\\
+-b & a
+\end{pmatrix}\begin{pmatrix}
+(ai + a'j)\\
+(bi + b'j)
+\end{pmatrix} =\begin{pmatrix}
+i\\
+j
+\end{pmatrix}.
+$$
+
+Next, applying the property that $M^{-1} = M^T$ as derived previously, 
+
+$$
+A^{T}y = \begin{pmatrix}
+a & b\\
+a' & b'
+\end{pmatrix}\begin{pmatrix}
+(ai + a'j)\\
+(bi + b'j)
+\end{pmatrix} =\begin{pmatrix}
+i\\
+j
+\end{pmatrix}.
+$$
+
+This shows that $b' = a$, and $b = -a'$. This shows that 
+
+$$
+A = \begin{pmatrix}
+a & b\\
+-b & a
+\end{pmatrix},
+$$
+
+and given $det(A) = 1$, it follows that $a^2 + b^2 = 1$. Another easier way to show that $A$ is a rotation is first due to the fact that $M$ preserves orthogonality between $u_2, u_3$, which means that $Ae_1$ and $Ae_2$ will remain orthogonal. Combined with the fact that $det(A) = 1$, it is clear that the only possible identity of $A$ is that of a rotation matrix.
+
+Given $b' = a$, and $b = -a'$, this proves that $Mu_2 = au_2 + bu_3$ and $Mu_3 = -bu_2 + au_3$, where $a^2 + b^2. = 1$, and as done in part c, given the property $a^2 + b^2. = 1$, there exists $\theta \in [0, 2\pi)$ such that $sin(\theta) = b$ and $cos(\theta) = a$.
+\end{proof}
+
+\begin{problem}{2.f}
+\end{problem}
+\begin{proof}
+Part $2.e$ states that $g \in SO(3)$ must be a some rotation about $v_1$ and also a rotation about $v_2$, both of which are linearly independent. Consider the operation $g(v_1)$. Given $g$ fixes $v_1$, it is clear that $g(v_1) = v_1$. However, given $g$ is also a rotation about the axis $v_2$ by some angle $\theta$, if $\theta$ were not a multiple of $2\pi$, then $g(v_1) \neq v_1$ yielding a contradiction. Thus, $g$ is a rotation about the axis $v_2$ by a multiple of $2\pi$, which is equivalent to the identity. Thus, $g$ is the identity operation.
+\end{proof}
+
+\begin{problem}{2.g}
+\end{problem}
+\begin{proof}
+Given $h \in SO(3)$, $h^T = h^{-1} = \in SO(3)$ as shown in $2.b$, and $h^{-1}g(v_1) = h^{-1}h(v_1) = v_1$. Similarly, $h^{-1}g(v_2) = h^{-1}h(v_2) = v_2$. Given $h^{-1}, g \in SO(3)$, part $2.b$ proved that $h^{-1}g \in SO(3)$ as well. Given $h^{-1}g$ fixes $v_1$ and $v_2$ which are linearly independent vectors, part $2.f$ shows that $h^{-1}g = I$, which directly shows that $g = h$.
+\end{proof}
+
+\begin{problem}{2.h}
+\end{problem}
+\begin{proof}
+Note that the characteristic function for $A$ is $det(A - \lambda I)$, and the eigenvalues of $A$ are the values of $\lambda$ such that the function is 0. First, note that $(A - \lambda I)^T = (A^T - (\lambda I)^T)$ because if $A = [a_{ij}]$ and $\lambda I = [b_{ij}]$, $([a_{ij}] + [b_ij])^T = ([a_{ji}] + [b_ji])$. Then, $(A^T - (\lambda I)^T) = (A^T - \lambda I)$ given the transpose of the identity is itself. Thus, $det(A - \lambda I) = det(A - \lambda I)^T = det(A^T - \lambda I)$, with the first equality being true as noted in 2.a. This shows that the characteristic functions of $A$ and $A^T$ are identical, and thus they share the same eigenvalues.
+
+Next, given $M$ is an invertible matrix, let $v_1, ..., v_n$ be the eigenvectors for $M$ and let $\sigma_1, ..., \sigma_n$ denote the corresponding eigenvalues. It follows that $Mv_i = \sigma_iv_i$ for any $i \in {1, ..., n}$. Then, note that $v_i = M^{-1}Mv_i = \sigma_iM^{-1}v_i$, and thus $(1/\sigma_i)v_i = v_i$. This is true for all $i$, and thus $M^{-1}$ shares the same eigenvectors as $M$, and for each eigenvector the corresponding eigenvalue is the inverse of the original eigenvalue. This shows that $M^{-1}$ has eigenvalues which are the inverses of the eigenvalues of M.
+\end{proof}
+
+
+\begin{problem}{2.i}
+\end{problem}
+\begin{proof}
+Given $M \in SO(3)$, we are aware $M^T = M^{-1}$ because by definition $M(M^T) = I$. Assume $\sigma_1, \sigma_2, \sigma_3$ are the eigenvalues for $M$. Then, part $h$ shows that $\sigma_1, \sigma_2, \sigma_3$ are the eigenvalues for $M^T$ and $1/\sigma_1, 1/\sigma_2, 1/\sigma_3$ are the eigenvalues of $M^{-1}$. Because $M^T = M^{-1}$, the set of eigenvalues for both $M^T$ and $M^{-1}$ must be the same. For the sake of contradiction, assume that $1$ is not an eigenvalue. Then, $\sigma_n \neq 1/\sigma_n$ for all $n$. Note that if $\sigma_a = 1/\sigma_b$ for any $a \neq b$, then $\sigma_c$ for $c \neq a, b$ has the property that $\sigma_c \neq 1/\sigma_b$ (because otherwise it would imply $\sigma_c = \sigma_a = 1/\sigma_a = 1/\sigma_c$) and $\sigma_c \neq 1/\sigma_a$ (because otherwise it would imply $\sigma_c = \sigma_b = 1/\sigma_b = 1/\sigma_c$). This shows that the sets $\{\sigma_a, \sigma_b, \sigma_c\}$ is not equal to $\{1/sigma_a, 1/sigma_b, 1/sigma_c\}$ because nothing in the second set correlates with $\sigma_c$. This contradicts the fact that $M^T$ and $M^{-1}$ have the same eigenvalues, and thus we prove that $1$ must be an eigenvalue of $M$.
+\end{proof}
+
+\begin{problem}{2.j}
+\end{problem}
+\begin{proof}
+Given $1$ is an eigenvalue of any $M \in SO(3)$, it follows that there exists some vector $u$ such that $Mu = 1(u) = u$. This shows that $M$ fixes $u$, and applying part $e$ shows us that $M$ is a rotation about the line $u$ (which crosses the origin) with some angle $\theta$.
+
+Consider the set of all rotations in $\mathbb{R}^3$, $R(3)$. Let $X \in R(3)$. The set of all matrices in $R(3)$ are uniquely defined by the ordered pair $(\theta, u)$, where $\theta$ is the degrees of rotation and $u$ is the axis of rotation. The proof from part $e$ shows that for any $u$ and $\theta$, the resulting rotation matrix is in $SO(3)$. Thus, $R(3) \subset SO(3)$, and given all elements in $SO(3)$ are rotations due to part $E$, $R(3) = SO(3)$. Thus, due to the closure property of $SO(n)$ as shown in part $b$, the composition of two rotations in $\mathbb{R}^3$ must also be a rotation in $\mathbb{R}^3$.
+\end{proof}
+
+
+\end{document}

@@ -1,0 +1,751 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 1}
+\author{Jian Park\\
+20700: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+ 
+\begin{problem}{1.2a}
+\end{problem}
+\begin{proof}[Solution]
+We show that the set of all continuous functions on the interval $[0, 1]$ is a vector space by proving the eight axioms.
+
+First, for continuous functions $a$ and $b$, $a+b=b+a$ because $a(x)+b(x)=b(x)+a(x)$ for all $x \in [0, 1]$, thus we show addition is commutative. We then observe the addition of continuous functions is associative because for any continuous functions $a, b, c$ and for any $x \in [0, 1]$, $(a(x)+b(x))+c(x)=a(x)+(b(x)+c(x))$. We observe the zero vector $z$ is the function $z(x)=0$ for all $x \in [0, 1]$, because $f(x)+z(x)=f(x)$ for any $x \in [0, 1]$, thus $f+z=f$ for any $f$. Then, observe that the additive inverse exists because $f(x) + (-f(x)) = z(x) = 0$, and $-f(x)$ is in the set of continuous functions because scalar multiplication does not change whether a function is continuous or not. On multiplicative identity, observe that $1(f(x)) = f(x)$ for any $f(x)$. Similarly, for any scalars $\alpha$ and $\beta$, $(\alpha\beta)f(x) = \alpha(\beta f(x))$ for all $f(x)$. Lastly, for scalars $\alpha, \beta$ and continuous functions $f(x), g(x)$, $\alpha(f(x)+g(x)) = \alpha f(x) + \alpha g(x)$, and $(\alpha + \beta)f(x) = \alpha f(x) + \beta g(x)$.
+\end{proof}
+
+\begin{problem}{1.2b}
+\end{problem}
+\begin{proof}[Solution]
+If the given set is a vector space, we observe that the zero vector is $z(x)=0$ for all $x \in [0, 1]$ because for any non-negative function $f$, $f(x)+z(x)=f(x)+0=f(x)$, thus $f+z=f$. We observe that the function $f$ defined as $f(x)=1$ is an element of the given set because it is non-negative. For any $x \in [0, 1]$, if the given set is a vector space, there must exist an inverse function $f'(x)$ such that $f(x)+f'(x)=z(x)$. It must be true that $f'(x)$ is $-1$ because $f(x)=1$ and $z(x)=0$, but this is a contradiction given $f'(x)$ must be non-negative. Thus, the given set is not a vector space.
+\end{proof}
+
+\begin{problem}{1.2c}
+\end{problem}
+\begin{proof}[Solution]
+For any $n$, we observe that the zero vector $z$ must be the function defined as $f(x)=0$ for all $x \in \mathbb{R}$. Let $\mathbb{P}_n$ denote the set of all polynomials of degree $n$. If $n$ is positive, we observe $z \notin \mathbb{P}_n$, because $z$ has a degree of 0. Thus, $\mathbb{P}_n$ is not a vector space.
+\end{proof}
+
+\begin{problem}{1.2d}
+\end{problem}
+\begin{proof}[Solution]
+This set is a vector space.
+\end{proof}
+
+\begin{problem}{1.3a}
+\end{problem}
+\begin{proof}[Solution]
+This statement is true due to the third axiom on the existence of a zero vector.
+\end{proof}
+
+\begin{problem}{1.3b}
+\end{problem}
+\begin{proof}[Solution]
+This statement is false because if $z_1$ and $z_2$ are assumed to be two zero vectors where $z_1 \neq z_2$, $z_1+z_2=z_1$ and $z_1+z_2=z_2$, which shows that $z_1=z_2$. This is a contradiction.
+\end{proof}
+
+\begin{problem}{1.3c}
+\end{problem}
+\begin{proof}[Solution]
+This statement is true due to the definition of an $m \ x \ n$ matrix.
+\end{proof}
+
+\begin{problem}{1.3d}
+\end{problem}
+\begin{proof}[Solution]
+This statement is false because for any positive $n$, we observe that $x^n$ and $-x^n$ are both polynomials of degree $n$, but $x^n+(-x^n)=0$, which is not degree $n$.
+\end{proof}
+
+\begin{problem}{1.3e}
+\end{problem}
+\begin{proof}[Solution]
+Given polynomials $f(x)=a_1x^n+a_2x^{n-1} + ... + a_n$ and $g(x) = b_1x^n+b_2x^{n-1} + ... + b_n$, $f(x)+g(x)=(a_1+b_1)x^n+(a_2+b_2)x^{n-1} + ... + (a_n+b_n)$, which is clearly a polynomial with a degree of at most $n$.
+\end{proof}
+
+\begin{problem}{2.2a}
+\end{problem}
+\begin{proof}[Solution]
+We observe this statement is true because given a set containing some arbitrary elements as well as the zero vector, we yield the zero vector for any linear combination where the coefficient to all non-zero elements is 0 while the coefficient to the zero vector is non-zero. This shows that the set is not linearly independent, thus the set is linearly dependent.
+\end{proof}
+
+\begin{problem}{2.2b}
+\end{problem}
+\begin{proof}[Solution]
+We observe this statement is false because a basis of a vector space is by definition linearly independent, but we have just shown that any set containing the zero vector is linearly dependent.
+\end{proof}
+
+\begin{problem}{2.2c}
+\end{problem}
+\begin{proof}[Solution]
+We observe that this statement is false. For any set $A=\{v_1, v_2, v_3\}$ where $v_1$ is the zero vector and $v_2, v_3$ are linearly independent non-zero vectors, we observe from the result of problem 2.2a that $A$ is linearly dependent. Then, we observe that $\{v_2, v_3\}$ is a subset of $A$, but it is linearly independent by definition.
+\end{proof}
+
+\begin{problem}{2.2d}
+\end{problem}
+\begin{proof}[Solution]
+This statement is true. Given a linearly independent set $A = \{v_1, ... v_n\}$, let $A'=\{v_1, ... v_m\}$ denote some subset of $A$ where $m < n$. For the sake of contradiction, assume $A'$ is linearly dependent. That implies there exists non-zero $a_1 ... a_m$ where $\sum_{i=0}^m a_iv_i=0$. Then, we observe that $\sum_{i=0}^n b_iv_i=0$ where $b_i = a_i$ for $i \leq m$ and $b_i = 0$ for $i > m$. This shows that $A$ is not linearly independent, which is a contradiction.
+\end{proof}
+
+\begin{problem}{2.2e}
+\end{problem}
+\begin{proof}[Solution]
+This statement is false. Given two vectors $v_1, v_2$ where $v_2 = av_1$, we observe that $(-a)v_1 + v_2 = 0$, thus showing that the scalars are not necessarily zero if the linear combination of vectors is zero.
+\end{proof}
+
+\begin{problem}{2.5}
+\end{problem}
+\begin{proof}[Solution]
+Given that the system of vectors $v_1, v_2, ... , v_r$ is not generating, there must exists some vector $v_{r+1}$ in the vector space such that $v_{r+1}$ cannot be represented as a linear combination of $v_1, v_2, ... , v_r$. It then follows that $av_{r+1}$ cannot be represented as a linear combination of $v_1, v_2, ... , v_r$ for any non-zero constant $a$ because if $\sum_{i=0}^ra_iv_i = av_{r+1}$ for constants $a_1, ... a_r$, then $\sum_{i=0}^r(a_i/a)v_i = v_{r+1}$, which is a contradiction. Then, we observe that the system of vectors $v_1, ... v_r, v_{r+1}$ is linearly independent because if $\sum_{i=0}^{r+1} a_iv_i = 0$, then $\sum_{i=0}^{r} a_iv_i = -a_{r+1}v_{r+1}$, and we know that $a_{r+1}$ must be $0$. This shows that $\sum_{i=0}^{r+1} a_iv_i = 0$ only if $\sum_{i=0}^{r} a_iv_i = 0$, and we know by definition that this only occurs when $a_1, ... , a_r = 0$, thus all $a_1, ... , a_{r+1} = 0$.
+\end{proof}
+
+\begin{problem}{2.6}
+\end{problem}
+\begin{proof}[Solution]
+We will show this is not possible. Observe that $v_1 = (1/2)(v_1+v_2+v_1+v_3-v_2-v_3) = (1/2)(w_1+w_3-w_2)$. A similar equality can be found for $v_2$ and $v_3$. Given that the system $v_1, v_2, v_3$ is linearly dependent, there exists non-zero $a_1, a_2, a_3$ such that $a_1v_1+a_2v_2+a_3v_3 = 0$. Then, $2a_1v_1+2a_2v_2+2a_3v_3 =  (2a_1/2)(w_1+w_3-w_2)+(2a_2/2)(w_1+w_2-w_3)+(2a_3/2)(w_3+w_2-w_1) =  (a_1+a_2-a_3)w_1+(a_2+a_3-a_1)w_2+(a_1+a_3-a_2)w_3 = 0$.
+
+For the sake of contradiction, assume that the system $w_1, w_2, w_3$ is linearly independent. Then, it must be true that $a_1+a_2-a_3 = a_3+a_2-a_1 = a_1+a_3-a_2 = 0$. We observe $(a_1+a_2-a_3) + (a_1+a_3-a_2) = 2a_1 = 0$, $(a_3+a_2-a_1) + (a_1+a_3-a_2) = 2a_3 = 0$, and $(a_1+a_2-a_3) + (a_2+a_3-a_1) = 2a_2 = 0$. This shows that $a_1, a_2, a_3 = 0$, which is a contradiction, showing that $w_1, w_2, w_3$ must be linearly dependent vectors.
+\end{proof}
+
+\begin{problem}{3.3a}
+\end{problem}
+\begin{proof}[Solution]
+$ \begin{bmatrix}
+1 & 2 \\
+2 & -5 \\
+0 & 7 
+\end{bmatrix}  \begin{bmatrix}
+x \\
+y
+\end{bmatrix} =  \begin{bmatrix}
+x+2y \\
+2x-5y \\
+7y
+\end{bmatrix}$
+\end{proof}
+
+\begin{problem}{3.3b}
+\end{problem}
+\begin{proof}[Solution]
+$ \begin{bmatrix}
+1 & 1 & 1 & 1 \\
+0 & 1 & 0 & -1 \\
+1 & 3 & 0 & 6 
+\end{bmatrix}  \begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3 \\
+x_4
+\end{bmatrix} =  \begin{bmatrix}
+x_1+x_2+x_3+x_4 \\
+x_2-x_4 \\
+x_1+3x_2+6x_4
+\end{bmatrix}$
+\end{proof}
+
+\begin{problem}{3.3c}
+\end{problem}
+\begin{proof}[Solution]
+$T(e_1) = \begin{bmatrix}
+0 \\
+\vdots \\
+0
+\end{bmatrix}, 
+T(e_2) = \begin{bmatrix}
+1 \\
+\vdots \\
+0
+\end{bmatrix}, 
+, 
+T(e_3) = \begin{bmatrix}
+0 \\
+2 \\
+\vdots \\
+0
+\end{bmatrix}$
+
+In general,
+
+$T(e_n) = \begin{bmatrix}
+0 \\
+\vdots \\
+n-1 \\
+\vdots \\
+0
+\end{bmatrix}$
+
+where there are $n-2$ zeros above the non-zero entry.
+
+\end{proof}
+
+\begin{problem}{3.3d}
+\end{problem}
+\begin{proof}[Solution]
+$T(e_1) = \begin{bmatrix}
+2 \\
+\vdots \\
+0
+\end{bmatrix}, 
+T(e_2) = \begin{bmatrix}
+3 \\
+2 \\
+\vdots \\
+0
+\end{bmatrix}
+, 
+T(e_3) = \begin{bmatrix}
+-8 \\
+6 \\
+2 \\
+\vdots \\
+0
+\end{bmatrix}$
+
+In general,
+
+$T(e_n) = \begin{bmatrix}
+0 \\
+\vdots \\
+-4(n-1)(n-2) \\
+3(n-1) \\
+2 \\
+\vdots \\
+0
+\end{bmatrix}$
+
+where there are $n-3$ zeros above the non-zero entry.
+\end{proof}
+
+\begin{problem}{3.6a}
+\end{problem}
+\begin{proof}[Solution]
+Given that $\alpha(\beta_1+\beta_2) = \alpha\beta_1+\alpha\beta_2$ and $\alpha(c\beta_1)=c\alpha(\beta_1)$ for any $\alpha, \beta_1, \beta_2 \in \mathbb{C},$ we observe that multiplication by $\alpha$ is a linear transformation. The matrix for the transformation is simply the 1x1 matrix containing $\alpha$ as its only element.
+\end{proof}
+
+\begin{problem}{3.6b}
+\end{problem}
+\begin{proof}[Solution]
+Given that $x+iy \in \mathbb{C}$, $\alpha(x_1+iy_1+x_2+iy_2) = \alpha(a_1+ib_1)+\alpha(a_2+ib_2)$ and $\alpha(c(x+iy))=c\alpha(x+iy)$ for any $\alpha \in \mathbb{C},$ we observe that multiplication by $\alpha$ is a linear transformation when treating $\mathbb{C}$ as a real vector space. The matrix for the transformation is the following 2x2 matrix
+
+$$\begin{bmatrix}
+a & -b \\
+b & a
+\end{bmatrix}$$
+\end{proof}
+
+\begin{problem}{3.6c}
+\end{problem}
+\begin{proof}[Solution]
+When considering this transformation in the complex vector space, we observe that $T(1) = 2+i$ and $T(i) = -1-3i$. Given that $i*i=1$, if this transformation is linear, then $T(1) = T(i*i) = iT(i)$, thus $2+i = i(-1-3i)$. However, this is clearly not true, so this transformation is not linear. However, if we treat $\mathbb{C}$ as the real vector space $\mathbb{R}^2$, then the given transformation can be represented as one that maps $(x, y)^T$ to $(2x-y, x-3y)^T$. This transformation is clearly linear because it can be represented using matrix multiplication as follows
+
+$$\begin{bmatrix}
+2 & -1 \\
+1 & -3
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix} = 
+\begin{bmatrix}
+2x-y \\
+x-3y
+\end{bmatrix}.$$
+\end{proof}
+
+\begin{problem}{5.3}
+\end{problem}
+\begin{proof}[Solution]
+We observe that
+
+$$T_{\alpha} = \begin{bmatrix}
+cos(\alpha) & -sin(\alpha) \\
+sin(\alpha) & cos(\alpha)
+\end{bmatrix}, 
+T_{\beta} = \begin{bmatrix}
+cos(\beta) & -sin(\beta) \\
+sin(\beta) & cos(\beta)
+\end{bmatrix}.
+$$
+Thus, $T_{\alpha}T_{\beta}$ is represented by the matrix
+$$\begin{bmatrix}
+cos(\alpha) & -sin(\alpha) \\
+sin(\alpha) & cos(\alpha)
+\end{bmatrix} \begin{bmatrix}
+cos(\beta) & -sin(\beta) \\
+sin(\beta) & cos(\beta)
+\end{bmatrix} = \begin{bmatrix}
+cos(\beta)cos(\alpha)-sin(\beta)sin(\alpha) & -sin(\beta)cos(\alpha)-sin(\alpha)cos(\beta) \\
+cos(\alpha)sin(\beta)+cos(\beta)sin(\alpha) & cos(\beta)cos(\alpha)-sin(\alpha)sin(\beta)
+\end{bmatrix}.
+$$
+Given that $sin(\alpha+\beta) = sin(\alpha)cos(\beta)+sin(\beta)cos(\alpha)$ and $cos(\alpha+\beta) = cos(\alpha)cos(\beta)-sin(\beta)sin(\alpha)$, note that
+
+\begin{equation}
+\begin{split}
+T_{\alpha}T_{\beta}(e_1) = \begin{bmatrix}
+cos(\beta)cos(\alpha)-sin(\beta)sin(\alpha) & -sin(\beta)cos(\alpha)-sin(\alpha)cos(\beta) \\
+cos(\alpha)sin(\beta)+cos(\beta)sin(\alpha) & cos(\beta)cos(\alpha)-sin(\alpha)sin(\beta)
+\end{bmatrix}
+\begin{bmatrix}
+1\\
+0
+\end{bmatrix} & = 
+\begin{bmatrix}
+cos(\beta)cos(\alpha)-sin(\beta)sin(\alpha)\\
+cos(\alpha)sin(\beta)+cos(\beta)sin(\alpha)
+\end{bmatrix} \\
+& = \begin{bmatrix}
+cos(\alpha+\beta) \\
+sin(\alpha+\beta)
+\end{bmatrix}
+\end{split}
+\end{equation}
+\end{proof}
+
+\begin{problem}{5.5}
+\end{problem}
+\begin{proof}[Solution]
+$$A = \begin{bmatrix}
+1 & 0 \\
+0 & 0
+\end{bmatrix}, 
+B = \begin{bmatrix}
+0 & 0 \\
+1 & 0
+\end{bmatrix},$$
+then
+$$AB = \begin{bmatrix}
+0 & 0 \\
+0 & 0
+\end{bmatrix}, BA = \begin{bmatrix}
+0 & 0 \\
+1 & 0
+\end{bmatrix}.$$
+\end{proof}
+
+\begin{problem}{5.8}
+\end{problem}
+\begin{proof}[Solution]
+In order to achieve such a reflection, we must first rotate the matrix such that the line of reflection is equal to the x-axis, and the reverse the rotation to yield the desired results. Given that these transformations are all linear, we know that this entire transformation can be represented as $R_{\gamma}T_0R_{-\gamma}$, where $R_{\gamma}$ is rotation by $\gamma$.
+
+We first observe that the reflection about the x-axis can be represented by the matrix
+
+$$
+T_{0} = \begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}$$
+
+Then, for the rotations, we note that
+
+$$
+R_{\gamma} = \begin{bmatrix}
+cos(\gamma) & -sin(\gamma) \\
+sin(\gamma) & cos(\gamma)
+\end{bmatrix} = \begin{bmatrix}
+\frac{3}{\sqrt{13}} & \frac{2}{\sqrt{13}} \\
+-\frac{2}{\sqrt{13}} & \frac{3}{\sqrt{13}}
+\end{bmatrix}
+$$
+
+And similarly
+
+$$R_{-\gamma} = \begin{bmatrix}
+cos(\gamma) & sin(\gamma) \\
+-sin(\gamma) & cos(\gamma)
+\end{bmatrix} = \begin{bmatrix}
+\frac{3}{\sqrt{13}} & -\frac{2}{\sqrt{13}} \\
+\frac{2}{\sqrt{13}} & \frac{3}{\sqrt{13}}
+\end{bmatrix}
+$$
+
+Thus, the entire transformation can be represented by the matrix
+
+$$R_{\gamma}T_0R_{-\gamma} = \begin{bmatrix}
+\frac{3}{\sqrt{13}} & \frac{2}{\sqrt{13}} \\
+-\frac{2}{\sqrt{13}} & \frac{3}{\sqrt{13}}
+\end{bmatrix}\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}\begin{bmatrix}
+\frac{3}{\sqrt{13}} & -\frac{2}{\sqrt{13}} \\
+\frac{2}{\sqrt{13}} & \frac{3}{\sqrt{13}}
+\end{bmatrix} = \begin{bmatrix}
+\frac{3}{\sqrt{13}} & -\frac{2}{\sqrt{13}} \\
+-\frac{2}{\sqrt{13}} & -\frac{3}{\sqrt{13}}
+\end{bmatrix}\begin{bmatrix}
+\frac{3}{\sqrt{13}} & -\frac{2}{\sqrt{13}} \\
+\frac{2}{\sqrt{13}} & \frac{3}{\sqrt{13}}
+\end{bmatrix}=
+\begin{bmatrix}
+\frac{5}{13} & -\frac{12}{13} \\
+-\frac{12}{13} & -\frac{5}{13}
+\end{bmatrix}
+$$
+\end{proof}
+
+\begin{problem}{6.3}
+\end{problem}
+\begin{proof}[Solution]
+In order for some matrix to be left-invertible, it must follow the following relation
+$$\begin{bmatrix}
+x_1 & x_2 & x_3
+\end{bmatrix}\begin{bmatrix}
+1 \\
+2 \\
+3
+\end{bmatrix} = \begin{bmatrix}
+1\end{bmatrix}
+$$
+
+This occurs if and only if $x_1+2x_2+3x_3=1$.
+\end{proof}
+
+\begin{problem}{6.6}
+\end{problem}
+\begin{proof}[Solution]
+Given that $AB(AB)^{-1} = I$, we observe that $A\left(B(AB)^{-1}\right) = I$, thus $\left(B(AB)^{-1}\right)$ is the right inverse of $A$. Similarly, $(AB)^{-1}AB = I$, thus $\left((AB)^{-1}A\right)B = I$, and $\left((AB)^{-1}A\right)$ is the left inverse of $B$.
+\end{proof}
+
+\begin{problem}{6.8}
+\end{problem}
+\begin{proof}[Solution]
+For the sake of contradiction, assume that $A^2=0$ and $A$ is invertible. Then, multiplying both sides of the equation by $A^{-1} * A^{-1}$ yields $A * A * A^{-1} * A^{-1} = 0 * A^{-1} * A^{-1} = 0$. However, it is easy to observe that $A * A * A^{-1} * A^{-1} = A * I_n * A^{-1} = A * A^{-1} = I_n \neq 0$. This contradiction shows that $A$ cannot be invertible.
+\end{proof}
+
+\begin{problem}{6.10}
+\end{problem}
+\begin{proof}[Solution]
+We observe that
+$$
+T_1 = \begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{bmatrix}, T_2 = \begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & a & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+
+For $T_1$, it is easy to see that $T_1 = T_1^{-1}$ because in the transformation $T_1T_1$, you switch $x_2$ and $x_4$ twice, and the resultant vector is identical to the original. Thus, $T_1T_1 = I_5$.
+
+For any $v \in \mathbb{F}^5$, the only difference between $v$ and $T_2v$ is that the second element of $T_2v$ has $a$ times the fourth element added to it. Thus, a transformation that would turn $T_2v$ into $v$ would be a transformation that subtracts from the second element $a$ times the fourth element. This transformation is the inverse of $T_2$, and it can be represented by the matrix
+
+$$T_2^{-1} = \begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & -a & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+\end{proof}
+
+\begin{problem}{6.13}
+\end{problem}
+\begin{proof}[Solution]
+This is true, and it is an immediate consequence of Theorem 6.5. Given that $A = A^T$, we observe that
+
+$$(A^T)^{-1} = A^{-1} = (A^{-1})^T.$$
+
+This shows that the inverse of $A$ and the transpose of the inverse of $A$ are identical, thus $A^{-1}$ is symmetric.
+\end{proof}
+
+\begin{problem}{7.3}
+\end{problem}
+\begin{proof}[Solution]
+For the sake of contradiction, assume that $x + v \in X$. Given that $x \in X$, we observe that $(-1)x \in X$ due to closure under scalar multiplication, and $x + v + (-1)x = v \in X$ due to closure under addition. This contradiction shows that $x+v \notin X$ given $v \notin X$.
+\end{proof}
+
+\begin{problem}{7.4}
+\end{problem}
+\begin{proof}[Solution]
+For the sake of contradiction, assume $X \not\subset Y$ and $Y \not\subset X$. Given $X \not\subset Y$, there must exist some $x \in X$ such that $x \notin Y$. Similarly, given $Y \not\subset X$, there must exist some $y \in Y$ such that $y \notin X$. Thus, $x, y \in X \cup Y$, and due to closure under addition, $x+y \in X \cup Y$. This implies that $x+y \in X$ or $x+y \in Y$. However, we know that $-x \in X$ (due to closure under scalar multiplication), thus if $x+y \in X$, then $x+y+(-x) = y \in X$, which is a contradiction. Similarly, we can show that $x+y \notin Y$. Thus, we observe that either $X \subset Y$ or $Y \subset X$.
+\end{proof}
+
+\begin{problem}{7.5}
+\end{problem}
+\begin{proof}[Solution]
+It is easy to see that the subspace of all 4x4 matrices contains both the space of all 4x4 upper triangular matrices and the space of 4x4 symmetric matrices. Now, for the sake of contradiction, assume that the space of all 4x4 matrices is not the smallest possible subspace; let $S$ denote this smaller subspace. Then, there must exists a 4x4 matrix $A$ that is not contained in $S$. Consider the 4x4 matrix $B$ where $B_{ij} = B_{ji} = A_{ij}$ where $j \leq i$. It is clear that $B$ is a symmetric matrix, thus $B \in S$. Next, let $C$ denote the matrix where $C_{ij}=0$ for $j \leq i$, and $C_{ij} = A_{ij}-B_{ij}$ for $j > i$. It is clear that $C$ is an upper triangular matrix, thus $C \in S$. Due to closure under addition, $B+C \in S$. However, it is clear that $B+C = A$. This contradiction shows that the smallest subspace containing all 4x4 symmetric matrices and upper triangular matrices is the space of all 4x4 matrices.
+
+Let $A$ be some matrix contained in both the subspace of 4x4 symmetric matrices and the subspace of 4x4 upper triangular matrices. First, given it is upper triangular, $A_{ij} = 0$ for all $j < i$. Then, given $A$ is symmetric, $A_{ij} = A_{ji}$, thus $A_{ij} = 0$ when $j > i$. Thus, $A_{ij}=0$ when $i \neq j$, and thus $A$ is a diagonal matrix. This property is true for all matrices contained in both the subspaces of symmetric and upper triangular matrices, so we note that the set of all 4x4 diagonal matrices is the largest possible subspace contained in both given subspaces. We also know the set of all 4x4 diagonal matrices itself is a subspace because it is closed under addition (adding two diagonal matrices yields another diagonal matrix), and because it is closed under scalar multiplication (multiplying a diagonal matrix by any constant yields another diagonal matrix).
+\end{proof}
+
+\begin{problem}{3.4}
+\end{problem}
+\begin{proof}[Solution]
+We note that each polynomial in $\mathbb{P}_3$ can be represented as a vector $v \in \mathbb{R}^4$, and each vector $v \in \mathbb{R}^4$ represents a polynomial in $\mathbb{P}_3$. Thus, all linear combinations of $x^3+2x$, $x^2+x+1$, and $x^3+5$ can be expressed in the form
+$$\begin{bmatrix}
+1 \\
+0 \\
+2 \\
+0
+\end{bmatrix}x_1 + \begin{bmatrix}
+0 \\
+1 \\
+1 \\
+1
+\end{bmatrix}x_2 + \begin{bmatrix}
+1 \\
+0 \\
+0 \\
+5
+\end{bmatrix}x_3$$
+For any $x_1, x_2, x_3 \in \mathbb{R}^4$. Due to Proposition 3.5, any generating set in $\mathbb{R}^4$ must have at least 4 vectors. Given that there are only 3 vectors in this set, this set cannot generate all of $\mathbb{R}^4$, and as a consequence, $x^3+2x$, $x^2+x+1$, and $x^3+5$ cannot not generate $\mathbb{P}^3$.
+\end{proof}
+
+\begin{problem}{3.5}
+\end{problem}
+\begin{proof}[Solution]
+Proposition 3.2 states that any linearly independent system of vectors in $\mathbb{F}^n$ cannot have more than $n$ vectors in it. Therefore, a set of 5 vectors in $\mathbb{F}^4$ cannot be linearly independent.
+\end{proof}
+
+\begin{problem}{3.7}
+\end{problem}
+\begin{proof}[Solution]
+Proposition 3.1 states that the system $v_1, ... v_n$ is linearly independent iff the echelon form of $A=[v_1, ... v_n]$ has a pivot in every column. Given that $A$ has $n$ rows and $n$ columns, we observe that there must be a pivot in every row as well (because each row and each column can have at most one pivot). Proposition 3.6 states that $A$ must be invertible because the echelon form has a pivot in every column and every row. Then, observe that $AAA(A^{-1})(A^{-1})(A^{-1}) = (A^{-1})(A^{-1})(A^{-1})AAA = I_n$, thus $AAA$ is an invertible matrix with the inverse being $(A^{-1})(A^{-1})(A^{-1})$. Given that $AAA$ is invertible, we know $(AAA)^T$ is invertible, and Proposition 3.6 shows that the echelon form of $(AAA)^T$ has a pivot in every column. Proposition 3.1 shows that the columns of $(AAA)^T$  are linearly independent, thus the rows of $AAA$ are linearly independent.
+\end{proof}
+
+\begin{problem}{5.1a}
+\end{problem}
+\begin{proof}[Solution]
+True. We observe that a vector space that is generated by a finite set is clearly finite-dimensional. Proposition 5.1 states that a vector space $V$ is finite-dimensional only if it has a finite spanning system. Then, Proposition 2.8 states that any finite spanning system in a vector system contains a finite basis (we know the basis is finite because it is a subset of a finite system). Thus, $V$ must have a finite basis if it is generated by a finite set.
+\end{proof}
+
+\begin{problem}{5.1b}
+\end{problem}
+\begin{proof}[Solution]
+False. Proposition 5.1 notes that if a vector space $V$ contains a finite spanning system, then $V$ is finite. Given that a finite basis is a finite spanning system, all vector spaces with a finite basis is finite. However, we know there are infinite vector spaces (i.e. the space of all infinite sequences of real numbers, the space of all polynomials, etc.). Therefore, we observe that not all vector spaces have a finite basis.
+\end{proof}
+
+\begin{problem}{5.1c}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the vector space $\mathbb{R}^2$. It is obvious that $e_1, e_2$ is a basis for the space. We also observe that $e_1, 2e_2$ is a basis for the space; for any $v \in \mathbb{R}^2$, there exists $a, b$ such that $v = ae_1 + be_2$, and $v = ae_1 + (b/2)(2e_2)$. Then, we observe that $e_1$ and $2e_2$ are linearly independent because if $2e_2$ could be represented by a multiple of $e_1$, then $e_2$ must be representable by a multiple of $e_1$, which is clearly impossible. This shows that vector spaces can have multiple basis.
+\end{proof}
+
+\begin{problem}{5.1d}
+\end{problem}
+\begin{proof}[Solution]
+True. First note that Proposition 5.1 shows that any vector space with a finite basis is finite. If $n$ denotes the size of some basis in finite vector space $V$, Proposition 5.3 states that $n \geq dim(V)$, and and Proposition 5.2 states that $n \leq dim(V)$. Thus $n = dim(V)$ for any basis, thus the number of vectors in any basis is equal to $dim(V)$.
+\end{proof}
+
+\begin{problem}{5.1e}
+\end{problem}
+\begin{proof}[Solution]
+False. We observe that any polynomial in $\mathbb{P}_n$ for some $n$ can be represented as $a_nx^n + a_{n-1}x^{n-1} + ... + a_0$. We observe that this polynomial has $n+1$ coefficients, thus, it can be represented uniquely by the vector $(a_n, a_{n-1}, ... a_0)^T$ in $\mathbb{R}^{n+1}$. Similarly, note that all vectors in $\mathbb{R}^{n+1}$ represents a unique polynomial in $\mathbb{P}_n$. Thus, the dimension of $\mathbb{P}_n$ is equal to the dimension of $\mathbb{R}^{n+1}$, which is clearly $n+1$. Thus, $dim(\mathbb{P}_n) = n+1$.
+\end{proof}
+
+\begin{problem}{5.1f}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the transformation $T: M_{m \times n} \rightarrow \mathbb{R}^{mn}$ where for any $A \in M_{m \times n}$, $T(A) = V$ when $M_{ij} = V_{ij + i}$. It is easy to see that $T$ is a function that vertically "stacks" the columns of $M$. Thus, for every element in $\mathbb{R}^{mn}$ there is a unique corresponding matrix in $M_{m \times n}$, and for each matrix in $M_{m \times n}$ there is a corresponding vector in $\mathbb{R}_{mn}$. Thus, $dim(\mathbb{R}_{mn}) = dim(M_{m \times n}).$ It is evident that $dim(\mathbb{R}_{mn}) = mn$, thus $dim(M_{m \times n}) = mn$.
+\end{proof}
+
+\begin{problem}{5.1g}
+\end{problem}
+\begin{proof}[Solution]
+False. We know that $e_1, e_2$ is generating for $\mathbb{R}^2$, thus $e_1, e_2, e_2$ is also generating (if $v = ae_1+be_2$, then $v = ae_1+be_2+0e_2$). Then, observe that for any $v$, if $v = ae_1+be_2$, then $v = ae_1+(b-c)e_2+ce_2$ for any c. Thus, there are multiple ways to represent $v$ as a linear combination of $e_1, e_2, e_2$.
+\end{proof}
+
+\begin{problem}{5.1h}
+\end{problem}
+\begin{proof}[Solution]
+True. Theorem 5.5 states that if $W$ is a finite vector space, then for any subspace $V$ of $W$, $dim(V) \leq dim(W)$. This proves that $V$ is finite, for any subspace $V$ of $W$.
+\end{proof}
+
+\begin{problem}{5.1i}
+\end{problem}
+\begin{proof}[Solution]
+True. Theorem 5.5 states that if $V$ is a subspace of vector space $W$ where $dim(V) = dim(W)$, then $V = W$. This shows that there is only one subspace with dimension $n$. Next, note that $\{0\}$ is the only vector space with a dimension of 0. We know that this is a subspace of $V$ because all vector spaces contain the zero vector. Therefore, there is only one subspace of $V$ where the dimension is 0.
+\end{proof}
+
+\begin{problem}{5.2}
+\end{problem}
+\begin{proof}[Solution]
+Proposition 5.2 states that a system of linearly independent vectors cannot have more than $dim V$ vectors in it. Therefore, if $v_1, ... v_n$ is linearly independent, then there cannot exist another vector $v_{n+1}$ that is linearly independent from the system because $V$ has a dimension of $n$. Therefore, linear independence of the system implies that the system spans $V$. 
+
+Proposition 5.3 notes that a generating system in $V$ must have at least $dim V$ vectors in it. Given that $v_1, ... v_n$ is spanning, removing some vector $v_i$ from this system would make it not spanning because it would have less than $dim V$ elements. This proves that no element in $v_1, ... v_n$ is a linear combination of the other elements because if this were the case, removing the linearly dependent element(s) would not change whether or not the system is generating or not. This shows that the system being spanning implies that the system is linearly independent.
+\end{proof}
+
+\begin{problem}{5.6}
+\end{problem}
+\begin{proof}[Solution]
+To prove that these vectors are linearly independent, first note that there cannot exist $a, b$ such that $av_2 + bv_3 = v_1$ because the fifth element of both $v_2$ and $v_3$ are 0, while the fifth element of $v_1$ is $-3$. Thus, no linear combination of $v_2$ and $v_3$ could ever equal $v_1$. Next, assume $av_1+bv_2 = v_3$. We first observe that $a, b \neq 0$ because it is quite clear that $v_3$ is not a scalar multiple of either $v_1$ or $v_2$. Then, note that if $av_1+bv_2 = v_3$, then $(1/a)v_3+(b/a)v_2 = v_1$, which is a contradiction to the fact that $v_1$ is not a linear combination of $v_2$ and $v_3$. Thus, $v_3$ is not a linear combination of $v_1$ and $v_2$. Using the same procedure, it is possible to see that $v_2$ is not a linear combination of $v_1$ and $v_3$. Thus, the system $v_1, v_2, v_3$ is linearly independent.
+
+Let $v_4 = (0, 1, 0, 0, 0)^T$ and let $v_5 = (0, 0, 1, 0, 0)$. We will now show that $v_1, ... v_5$ is generating in $R^5$. Let $v = (x_1, ... x_5)$ denote any arbitrary vector in $\mathbb{R}^5$. First, let $v_0$ be the zero vector. Then, add $-(x_3/3)v_1$ to $v_0$, let set this new vector to $v_0$. Observe that the fifth element of $v_0$ equals $x_5$. Next, add some multiple of $v_3$ to $v_0$ such that the fourth element in the resultant vector equals $x_4$, and let this new vector be $v_0$. Note that the fifth element of $v_0$ is still equal to $x_5$ because the fifth element of $v_3$ is 0. Next, add some multiple of $v_2$ to $v_0$ such that the first element of $v_0$ is equal to $x_1$, and then let this new vector be $v_0$. Again, observe that the fourth and fifth elements of $v_0$ are still equal to $x_4$ and $x_5$ respectively because the fourth and fifth elements of $x_1$ are 0. Lastly, add some multiples of $v_4$ and $v_5$ to $v_0$ in order to make the second and third elements of $v_0$ equal to $x_2$ and $x_3$. Observe that the first, fourth, and fifth elements are still preserved. The result of the sum is a vector that is equivalent to $v$ because each of the five individual elements in the vector are equal to the five individual elements in $v$. Thus, we observe that any arbitrary vector $v$ in $\mathbb{R}^5$ can be represented as a linear combination of $v_1, ... v_5$. Then, applying the result from problem 5.2, we observe that $v_1, ... v_5$ is also linearly independent because the system is spanning and the size of the system is equal to the dimension of the space ($dim(\mathbb{R}^5) = 5$). Thus, $v_1, ... v_5$ is a basis.\end{proof}
+
+\begin{problem}{6.1a}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the system $Ax=b$ where $A$ is the zero matrix and $b = (1, 1)^T$. It is evident that no matter what $x$ is, $Ax = (0, 0)^T$, thus this system has no solution.
+\end{proof}
+
+\begin{problem}{6.1b}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the system $Ax=b$ where $A$ is the zero matrix and $b = (0, 0)^T$. It is evident that no matter what $x$ is, $Ax = (0, 0)^T$, thus this system has infinitely many solutions.
+\end{proof}
+
+\begin{problem}{6.1c}
+\end{problem}
+\begin{proof}[Solution]
+True. For any matrix $A$, observe that $A\textbf{0} = \textbf{0}$. Thus, all homogenous system has at least one solution (the zero vector).
+\end{proof}
+
+\begin{problem}{6.1d}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the system of equations $x_1 + x_2 = 1$ and $x_1 + x_2 = 2$. This system has two unknowns and two equations, but there are clearly no $x_1, x_2$ such that both of these equations are true.
+\end{proof}
+
+\begin{problem}{6.1e}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the system of equations $x_1 - x_2 = 0$ and $2x_1 - 2x_2 = 0$. This system has two unknowns and two equations, but there are clearly infinitely many solutions (when $x_1 = x_2$).
+\end{proof}
+
+\begin{problem}{6.1f}
+\end{problem}
+\begin{proof}[Solution]
+False. As noted in the solution of problem 6.1c, all homogenous systems have a solution. Thus, even for systems of linear equations without a solution (which exists as shown in problem 6.1d), the homogenous system corresponding to the given system will have a solution.
+\end{proof}
+
+\begin{problem}{6.1g}
+\end{problem}
+\begin{proof}[Solution]
+True. Assume that a non-zero solution exists. If the matrix $A = [v_1, ... v_n]$ denotes the coefficient matrix of the given system, assume there exists a non-zero solution. This suggests that there exists a non-zero set of numbers $x_1, ... x_n$ such that $v_1x_1 + ... + v_nx_n = \textbf{0}$. This shows that $A$ is linearly dependent. However, Proposition 3.6 states that all invertible matrices have a pivot in every column, and Proposition 3.1 states that a system is linearly independent if it has a pivot in every column. This shows that $A$ is linearly independent, which is a contradiction. Thus, there are no non-zero solutions to the system.
+\end{proof}
+
+\begin{problem}{6.1h}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the system of equations $x_1+x_2 = 1$ $x_1+2x_2 = 2$. Observe that $(0, 0)$ is not a solution to this system. Thus, the solution set of this system does not contain the zero vector, and given that all subspaces must contain the zero vector, the solution set is not a subspace. 
+\end{proof}
+
+\begin{problem}{6.1i}
+\end{problem}
+\begin{proof}[Solution]
+True. Consider some vectors $v_1 = (x_1, ... x_n)$, $v_2 = (y_1, ... y_n)$ such that $Av_1 = Av_2 = \textbf{0}$, where $A$ represents a system of $m$ equations in $n$ unknowns. Then, observe that $v_1 + v_2$ is a solution to the system because $A(v_1 + v_2) = Av_1 + Av_2 = \textbf{0}$. Then, observe that $cv_1$ is a solution because $A(cv_1) = c(Av_1) = c\textbf{0}$. Thus, it is clear that the homogeneous system of $m$ equations in $n$ unknowns is a subspace in $\mathbb{R}^2$.
+\end{proof}
+
+\begin{problem}{7.1a}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the 2x2 matrix with columns $e_1$ and $2e_1$. There are two non-zero columns, but clearly the dimension of the range (rank) of the matrix is 1 because all linear combinations of the two columns is just a scalar multiple of $e_1$.
+\end{proof}
+
+\begin{problem}{7.1b}
+\end{problem}
+\begin{proof}[Solution]
+True. The $m \times n$ zero matrix $Z$ clearly has a rank of zero because the range of $Zv$ is just $\textbf{0}$. Then, consider some non-zero matrix $A$. It is clear that at least one column of $A$ has a non-zero element, thus assume that the $n$-th column contains a non-zero element. $Ae_n \neq \textbf{0}$, thus it is clear that $rank(A) > 0$ (the only subspace with a dimension of 0 is the zero subspace). 
+\end{proof}
+
+\begin{problem}{7.1c}
+\end{problem}
+\begin{proof}[Solution]
+True. For some matrix $A$, consider some vector $v$ such that $Av = \textbf{0}$. If $E$ is an invertible matrix representing some arbitrary elementary row operation, observe hat $EAv = E\textbf{0} = \textbf{0}$. Thus, if $Av = \textbf{0}$, then $EAv = \textbf{0}$. Next, assume that $EAv = \textbf{0}$. Then, $E^{-1}EAv = E^{-1}\textbf{0} = \textbf{0}$. Thus, $EAv = \textbf{0}$ implies $EAv = \textbf{0}$. We now observe that $ker(A) = ker(EA)$, thus $dim(ker(A)) = dim(ker(EA))$, and Theorem 7.1 shows that $rank(A) = n - dim(ker(A)) = n - dim(ker(EA)) = rank(EA)$. Thus, elementary row operations preserve rank.
+\end{proof}
+
+\begin{problem}{7.1d}
+\end{problem}
+\begin{proof}[Solution]
+False. Observe that conducting a set of elementary column operations on $A$ is equivalent to 1) transposing $A$ into $A^T$, 2) conducting the same set of elementary row operations on $A^T$, and 3) then transposing the resulting matrix. We know from problem 7.1c that elementary row operations preserve the rank of the matrix, and Theorem 7.1 shows that the transpose of a matrix has the same rank as the matrix itself. Thus, all three steps in the procedure preserve rank, thus elementary column operations always preserve the rank of the matrix.
+\end{proof}
+
+\begin{problem}{7.1e}
+\end{problem}
+\begin{proof}[Solution]
+True. As noted in observation 7.2.2 regarding the column space, the pivot columns of the reduced echelon form of $A$ forms a basis in $Ran(A_{re})$, and it is clear that $rank(A_{re})$ is equal to the number of pivot columns in $A_{re}$. We know from Problem 7.1c that elementary row operations preserve the rank of a matrix, thus $rank(A_{re} = rank(A)$. Thus, $rank(A)$ is equal to the number of pivot columns in $A$. We also know that the number of pivot columns is equal to the maximum number of linearly independent columns in $A$ because every pivot column in the original matrix is linearly independent, and if there were another linearly independent column in the matrix, that column would also be a pivot column.
+\end{proof}
+
+\begin{problem}{7.1f}
+\end{problem}
+\begin{proof}[Solution]
+True. We know that the number of pivot columns is equal to the number of pivot rows, and the number of pivot columns is equal to the rank of $A$. We also know that the number of pivot rows is equal to the maximum number of linearly independent rows because each pivot row is clearly linearly independent from each other, and if there were another row that was linearly independent, it must have a pivot.
+\end{proof}
+
+\begin{problem}{7.1g}
+\end{problem}
+\begin{proof}[Solution]
+True. As stated in the previous two problems, the rank of a matrix is equal to the number of pivot columns in the matrix. An $n \times n$ matrix cannot have more than $n$ pivot columns, thus the rank of the matrix is at most $n$.
+\end{proof}
+
+\begin{problem}{7.1h}
+\end{problem}
+\begin{proof}[Solution]
+True. If an $n \times n$ matrix has a rank of $n$, that implies that its echelon form has $n$ pivot columns and $n$ pivot rows. Proposition 3.6 states that a matrix whose echelon form has a pivot in every column and every row is invertible.
+\end{proof}
+
+\begin{problem}{7.4}
+\end{problem}
+\begin{proof}[Solution]
+First, given that $V \subset X$, we know that $AV \subset AX$ because if $v_1 \in AV$ where $v_1 = Av_0$, then $v_0 \in X$ thus $v_1 \in AX$. Then, note that $AX$ is the range of $A$, thus $AV \subset ran(A)$. Then, applying Theorem 5.5 shows that $dim(AV) \leq dim(ran(A)) = rank(A)$. Then, for any space $B$ where $AB$ is defined, $B \subset X$. Thus, $rank(AB) \leq rank(AX) \leq rank(A)$. 
+\end{proof}
+
+\begin{problem}{7.6}
+\end{problem}
+\begin{proof}[Solution]
+We observe from the result of problem 7.4 that $rank(AB) \leq rank(A)$. Given that $AB$ is invertible, Proposition 3.6 states that it has a pivot in every column and row. Given that the rank of $AB$ is equal to the number of pivot columns in the echelon form, we observe that $rank(AB) = n$. Then, given that $n \leq rank(A)$, we observe that $rank(A) = n$ because $A$ is an $n \times n$ matrix, and $A$ cannot have more than $n$ pivot columns. Then, given that $AB$ and $A$ are both invertible, we observe that $A^{-1}(AB)(AB)^{-1} = B(AB)^{-1} = A^{-1}$. Then we observe that $B(AB)^{-1}A = A^{-1}A = I_n$. Thus, we see that $(AB)^{-1}A$ is the inverse of $B$, and $B$ is also invertible.
+\end{proof}
+
+\begin{problem}{7.9}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the two $2 \times 2$ matrices $A = [e_1, e_2]$ and $B = [e_1, 2e_2]$. It is evident that the column space and row space of both of these matrices span $\mathbb{R}^2$, thus $ran(A) = ran(B) = ran(A^T) = ran(B^T) = \mathbb{R}^2$. Then, it is obvious that $Av_1 = 0$ only if $v_1 = (0, 0)^T$ and $Bv_2 = 0$ only if $v_2 = (0, 0)^T$. Similarly, it is clear that the trivial solution is the only solution where the linear combination of the rows equal $\textbf{0}$. Thus, $ker(A) = ker(B) = ker(A^T) = ker(B^T) = \textbf{0}$. Thus, $A$ and $B$ share the four fundamental subspaces, but $A \neq B$.
+\end{proof}
+
+\begin{problem}{7.14}
+\end{problem}
+\begin{proof}[Solution]
+For real matrices, $Ran(A) = Ker(A^T)$ for no matrix $A$. First, observe that if $Ran(A) = Ker(A^T)$, then for any $v$, $Av \in Ran(A) = Ker(A^T)$, thus $A^TAv = 0$. This shows that $A^TA = 0$. Then, observe that $A_{ij} = A^T_{ji}$, and 
+$$A^TA_{ji} = \sum_{k = 0}^m A_{ik}A_{jk}.$$
+Thus, given that $trace(\mathbf{0}) = trace(A^TA) = 0$,
+$$0 = \sum_{i=0}^n(A^TA)_{ii} = \sum_{i=0}^n\sum_{k=0}^n A_{ik}^2$$.
+We observe that this equality holds only if $A_{ik} = 0$ for all $i, k$, thus $A$ must be the zero matrix if $Ran(A) = Ker(A^T).$ However, if $A$ is the zero matrix, observe that $Ker(A^T)$ clearly has a non-zero dimension while $Ran(A)$ only contains the zero matrix, thus $Ran(A) \neq Ker(A^T)$. Therefore, There does not exist a real matrix $A$ where $Ran(A) = Ker(A^T)$.
+
+For complex matrices, consider the matrix
+$$A = \begin{bmatrix}
+1 & -i \\
+i & 1 
+\end{bmatrix}.$$
+For any complex number $v = a + bi$, $Av = (a+b) + i(a+b)$. Thus, $Ran(A)$ consists of all complex numbers in the form $k + ik$. Then, note that 
+$$A^T = \begin{bmatrix}
+1 & i \\
+-i & 1 
+\end{bmatrix}.$$
+For any complex number $v = a+bi$, $A^Tv = \textbf{0}$ only when $(a-b) + i(a-b) = 0$. It is clear that $Ker(A^T)$ consists of all complex numbers in the form $k + ik$. Thus, $Ker(A^T) = Ran(A)$.
+\end{proof}
+
+\begin{problem}{8.3}
+\end{problem}
+\begin{proof}[Solution]
+Given some $a + bt \in \mathbb{P}_1$, we observe that $(1)b + (t+1)(a-b) = a + bt$, and $(1-t)a + (2t)(b/2+a/2) = a+bt$. Thus, if $A$ is the change of coordinates matrix from the first basis to the second basis, $Ae_1 = (1, 1/2)^T$ because when $[a+bt]_{A} = e_1$, that implies $b = 0$ and $a = 1$, so the equivalent coordinates in the second basis is $(1, 1/2)$. Similarly, $Ae_2 = (1, 1)^T$ because $[a+bt]_{A} = e_2$, that implies $b = 1$ and $a = 1$, so the equivalent coordinates in the second basis is $(1, 1)$. Thus,
+$$A = \begin{bmatrix}
+1 & 1 \\
+1/2 & 1 
+\end{bmatrix}.$$
+\end{proof}
+
+\begin{problem}{8.6}
+\end{problem}
+\begin{proof}[Solution]
+If two matrices $A, B$ are similar, then $B = PAP^{-1}$ for some invertible $P$. Then, note that $trace(B) = trace(PAP^{-1})$. Theorem 5.1 in the first chapter notes that $trace(XY) = trace(YX)$, thus $trace(B) = trace(P(AP^{-1})) = trace((AP^{-1})P) = trace(A)$. Thus, $trace(A) = trace(B)$ for any similar matrices $A$ and $B$. However, the trace of the first matrix given is 3, while the trace of the second matrix is 2. Thus, the two given matrices cannot be similar.
+\end{proof}
+
+\end{document}

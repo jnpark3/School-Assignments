@@ -1,0 +1,292 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 3}
+\author{Jian Park\\
+20800: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+
+\begin{problem}{1a}
+\end{problem}
+\begin{proof}[Solution]
+For any $x \neq y$, we will show that $F(x, y)$ is continuous. We are given that $\phi$ is of class $C^1$, and therefore Theorem 5.2 of Munkers shows it is continuous. $D\phi$ is also continuous because $\phi$ is of class $C^1$, which means that the derivative of $\phi$ is continuous. In addition, Theorem 4.4 of Rudin states that the sum, product, and quotient of two continuous functions is also continuous (as long as the quotient's denominator is not 0). For any $x \neq y$, the function $y - x$ is clearly continuous at the given $x, y$ due to this Theorem. Problem 1c of the first homework shows that $||y - x||$ is continuous, and it is also positive by definition because $y - x \neq 0$. Next, Theorem 4.4 also shows that $D\phi(x)(y - x)$ is continuous, and thus $\phi(y) - \phi(x) - D\phi(x)(y - x)$ is continuous. Finally, we see that
+$$
+\frac{\phi(y) - \phi(x) - D\phi(x)(y-x)}{||y-x||}
+$$
+is continuous at all $y \neq x$. Then for the case when $y = x$, we are given that
+$$
+\lim_{y \rightarrow x} \frac{\phi(y) - \phi(x) - D\phi(x)(y - x)}{||y - x||} = 0.
+$$
+due to the fact that $\phi$ is differentiable for all $x \in U$. This equation is equal to $\lim_{y \rightarrow x} F(x, y) = 0$, and combined with the fact $F(x, x) = 0$ by definition, we can see that $F(x, y)$ is continuous (and equal to $0$) for all $x = y$. This thus shows that $F(x, y)$ is continuous for all $x, y \in U$.
+
+Next, create the function $\lambda_x : \mathbb{R}^+ \rightarrow \mathbb{R}^+$ where $\lambda_x(\delta)$ denotes the minimum $\epsilon$ such that $||F(x, y)|| \leq \epsilon$ for all $y \in \overline{N_{\delta}(y)} \cap K$ ($N_{\delta}(y)$ denotes the neighborhood of $y$ with radius $\delta$ ($K \subset U$ is compact). 
+
+We will now show that $\lambda_x$ is defined for all $\mathbb{R}^+$. Note $\overline{N_{\delta}(y)}$ is closed by definition and $K$ is closed due to Theorem 4.5 of Munkers, which shows that $\overline{N_{\delta}(y)} \cap K$ is also closed in $\mathbb{R}^n$. Similarly, $\overline{N_{\delta}(y)}$ is bounded given it is the closure of a neighborhood, and $K$ is bounded due to Theorem 4.5 of Munkers. $\overline{N_{\delta}(y)} \cap K$ is thus clearly bounded as well. This shows that $\overline{N_{\delta}(y)} \cap K$ is compact due to Theorem 4.5. Given $\frac{\phi(y) - \phi(x) - D\phi(x)(y-x)}{||y-x||}$ is continuous, $||F(x, y)|| = \frac{||\phi(y) - \phi(x) - D\phi(x)(y-x)||}{||y-x||}$ is also continuous due to Problem 1c of the first homework. It then follows from the extreme value theorem that there exists $y_0$ where $||F(x, y_0)|| \leq ||F(x, y)||$ for all $y \in \overline{N_{\delta}(y)} \cap K \subset K$. This shows that there exists a single, clearly defined maximum to $||F(x, y)||$ in $\overline{N_{\delta}(y)} \cap K$ for any $\delta$ or $x$, which then shows that $\lambda_x$ is well-defined for all $\mathbb{R}^+$.
+
+Next, it is easy to see that $\lambda_x$ is monotonically increasing. If $\delta_1 < \delta_2$ and the $\lambda_x(\delta_1)$ is the smallest value such that $||F(x, y)|| \leq \lambda_x(\delta_1)$ for all $y \in \overline{N_{\delta}(y)} \cap K$ , then it is obvious that the minimum value of $||F(x, y)||$ is greater than or equal to $\lambda_x(\delta_1)$ when considering all $y \in \overline{N_{\delta}(y)} \cap K$. This shows that $\lambda_x(\delta_1) \leq \lambda_x(\delta_2)$.
+
+Next, note that $F(x, y)$ where is $x$ is fixed is clearly continuous (given that we have shown the function is continuous when both variables can change), and given that $K$ is compact. Theorem 4.7 in Munkers on Uniform continuity states that for any $\epsilon$, there is a $\delta > 0$ such that whenever $y_0, y_1 \in K$, $||y_1 - y_0|| < \delta$ implies $||F(x, y_0) - F(x, y_1)|| < \epsilon$. Assume for the sake of contradiction that $\sup_{x \in K}(\lambda_x(\delta))$ does not exist for some fixed $\delta > 0$. This would imply that there are $x \in K$ where $\lambda_x(\delta) > \epsilon$ for any arbitrary $\epsilon(\delta)$. This directly means that there exist $y_0, y_1$ where $||y_0 - y_1|| \leq \delta$ and $||F(x, y_0) - F(x, y_1)|| > \epsilon$. This directly violates the uniform continuity condition given $\delta$ can be arbitrarily small, and thus $\sup_{x \in K}(\lambda_x(\delta))$ exists for all $\delta > 0$. 
+
+Consider the function $\lambda: \mathbb{R}^+ \rightarrow \mathbb{R}^+$ where $\lambda(\delta) = \sup_{x \in K}(\lambda_x(\delta))$. We have already shown that this function is well-defined. In addition, it is clear that this function is monotonically increasing because if $\delta_1 < \delta_2$, that means $\lambda_x(\delta_1) \leq \lambda_x(\delta_2)$ for every $x\in K$ as shown previously, and thus $\sup_{x \in K}(\lambda_x(\delta_1)) \leq \sup_{x \in K}(\lambda_x(\delta_1))$. 
+
+Next, assume for the sake of contradiction that $\lim_{\delta \rightarrow 0} \lambda(\delta)$ does not approach $0$. This implies that for some $\epsilon > 0$ and any $\delta > 0$, there exists $x \in U$ where $\lambda_x(t) \geq \epsilon$ and $t < \delta$ (if no such $\epsilon$ existed, then $\sup_{x \in K}(\lambda_x(\delta))$ would clearly converge to $0$ as $\delta \rightarrow 0$). This implies that for any $\delta > 0$, there exist $x, y, y_0 \in K$ where $||y - y_0|| \leq \delta$ and $||F(x, y) - F(x, y_0)|| \geq \epsilon$. We have previously shown that $F(x, y)$ when $x$ is fixed is uniformly continuous over $K$, thus this yields a contradiction. This contradiction shows that $\lim_{\delta \rightarrow 0} \lambda(\delta) = 0$.
+
+Lastly, we know that for any $x, y \in K$, $\lambda(||y - x||) = \sup_{a \in K}(\lambda_a(||y - x||)) \geq \lambda_x(||y - x||)$. Next, by definition $\lambda_x(||y - x||)$ represents the maximum value of $||F(x, y')||$ where $y' \in \overline{N_{||x - y||}(y)} \cap K$. Clearly $y \in \overline{N_{||x - y||}(y)} \cap K$, thus $\lambda_x(||y - x||) \geq ||F(x, y)||$. This shows that
+$$
+||F(x, y)|| = \frac{||\phi(y) - \phi(x) - D\phi(x)(y-x)||}{||y-x||} \leq \lambda(||y - x||),
+$$
+which then shows that
+$$
+||\phi(y) - \phi(x) - D\phi(x)(y-x)|| \leq (||y-x||)\lambda(||y - x||).
+$$
+This completes the proof on the existence of a function $\lambda$ as described in the problem statement for any compact set $K \subset U$.
+\end{proof}
+
+\begin{problem}{1b}
+\end{problem}
+\begin{proof}[Solution]
+Let $\epsilon > 0$ denote some fixed constant, and assume $x, y \in \overline{B_{\epsilon}(x)}$ where $||x - y|| \leq \epsilon$. We are given that $\lambda$ is monotonically increasing, and thus $\lambda(||x - y||) \leq \lambda(\epsilon)$. In addition, $||x - y|| \leq \epsilon$ which shows that$||x - y||\lambda(||x - y||) \leq \epsilon\lambda(\epsilon)$. In addition, given $y, x \in B_{\epsilon}(x)$, the previous problem shows that
+$$
+||\phi(y) - \phi(x) - D\phi(x)(y-x)|| \leq (||y-x||)\lambda(||y - x||) \leq \epsilon \lambda(\epsilon).
+$$
+Next, we define $d(\phi(y), H)$ to be the distance between $\phi(y)$ and the point on $H$ closest to $\phi(y)$. If $a$ is that point on $H$, that means $d(\phi(y), H) = ||\phi(y) - a||$. Observe that $D\phi(x)(y - x) \in Img(D\phi(y-x))$, and thus $\phi(x) + D\phi(x)(y - x) \in H$. This shows that $d(\phi(y), H) = ||\phi(y) - a|| \geq ||\phi(y) - (\phi(x) + Img(D\phi(y-x)))|| = ||\phi(y) - \phi(x) - Img(D\phi(y-x))||$. This thus shows that
+$$
+d(\phi(y), H) \leq ||\phi(y) - \phi(x) - D\phi(x)(y-x)|| \leq \epsilon \lambda(\epsilon),
+$$
+which completes the proof.
+\end{proof}
+
+\begin{problem}{1c}
+\end{problem}
+\begin{proof}[Solution]
+Let ${\mathbb{R}^n}'$ denote the subset of vectors in $\mathbb{R}^m$ whose last $m - n$ elements are $0$. First, we show that $\mathbb{R}^n$ is of measure 0.
+
+For any $\epsilon \geq 0$, let $Q_i$ denote the cube centered at the origin with sides $[i, -i] \times ... \times [i, -i] \times [h_i, -h_i] \times ... \times [h_i, h_-i]$. For each $i$, choose $h_i > 0$ such that the volume of $Q_i$ is at most $\frac{\epsilon}{2^k}$. This value exists for any $i$ due to the Archimedean principle. Next, observe that every number in ${\mathbb{R}^n}'$ is covered by at least one of these rectangles; $(a_1, a_2, ..., a_m, 0, ..., 0)$ is contained inside rectangle $Q_i$ where $i = \lceil{max(a_1, ..., a_m)}\rceil$. Next, observe that the sum of the volumes is $\sum_{i = 1}^{\infty} \frac{\epsilon}{2^i} = \epsilon$. However, $\epsilon > 0$ was chosen arbitrarily, thus ${\mathbb{R}^n}'$ is covered by a collection of cubes whose volumes add up to any $\epsilon > 0$. This concludes the proof that ${\mathbb{R}^n}'$ is of measure $0$ in $\mathbb{R}^m$.
+
+Assume for the sake of contradiction that there exists $\phi(U) \subset \mathbb{R}^m$ does not have measure zero, where $U \subset \mathbb{n}$ is of measure 0. Let $U'$ denote the set $U$ where each element has $m - n$ zeros attached to the end, and let $\phi': U' \rightarrow \mathbb{R}^m$ denote the function where $\phi'(y') = \phi(y)$ where $y'$ is $y$ with $m - n$ zeroes attached to the end. Essentially $\phi'$ and $\phi$ are equivalent functions. Then, the assumption that $\phi(U)$ does not have measure zero directly implies that $\phi'(U')$ does not have measure zero because $\phi(U) = \phi'(U')$. Next, it is clear that $U' \subset {\mathbb{R}^n}' \subset \mathbb{R}^m$, given every element of $U'$ has $m-n$ zeroes at the end. Theorem 11.1 of Munkers shows that $U'$ is of measure $0$ given ${\mathbb{R}^n}'$ is of measure 0. This shows that $U' \subset \mathbb{R}^m$ has measure 0, and $\phi(U') \subset \mathbb{R}^m$ does not have measure 0. However, problem 6 notes that if $U' \subset \mathbb{R}^m$ is of measure $0$, then $\phi(U') \subset \mathbb{R}^m$ is of measure 0 given $\phi$ is $C^1$. We know that $\phi$ is of order $C^1$, so this contradiction proves that $\phi(U) \subset \mathbb{R}^n$ has measure zero.
+\end{proof}
+
+\begin{problem}{2}
+\end{problem}
+\begin{proof}[Solution]
+From Problem 4(iv) of the previous homework, if $x \in M$, we know that there exist a $C^1$ injective function $h : V \rightarrow \mathbb{R}^n$ where $V$ is an open neighborhood of $0$ in $\mathbb{R}^m$ such that $h(0) = x$, $Dh(y)$ is injective for all $y \in V$, and for every $V' \subset V$ there exists an open subset $U \subset \mathbb{R}^n$ such that $h(V') = U \cap M$.
+
+Assume $V'_{\epsilon^*} \subset V$ is an open neighborhood of $0$ in $\mathbb{R}^m$ with radius $\epsilon'$. We know such a neighborhood exists given $V$ contains $0$ and is also open $0$. Next, we know there exists an injective function $h(V'_{\epsilon^*}) = U \cap M$ for some open $U$. We also know that $h(0) = x$, thus $x \in U \cap M \subset U$. In addition, $U$ is open, which means that there exists a neighborhood $N_{\epsilon'}(x) \subset U$. This shows that $N_{\epsilon'}(x) \cap M \subset U \cap M$. In addition, this shows that for $\epsilon < \epsilon'$, $y \in B_{\epsilon}(x) \cap M \subset N_{\epsilon'}(x) \cap M \subset U \cap M$, which means $y = h(y')$ for some $y' \in V'_{\epsilon^*}$ (this element is unique given $h$ is injective).
+
+We note that $d(y, H)$ represents the minimum distance between $y$ and a point on $H$, which can be written in the form $||y - (x + v)||$ for some element $v \in V$. We are given by the definition of the manifold that $Dh(0)$ exists, and thus it is evident that $Dh(0)(y' - 0)$ is an element of the tangent space. We know this because $Im(Dh(0))$ is equal to the tangent space at $x$, and we know this because the image of the derivative matrix denotes all  We have already shown that $h(y') = y$ and $h(0) = x$ by definition, thus observe that $||h(y') - h(0) - D(0)(y' - 0)|| \in \{d(y, H)\}_{y \in B_{\epsilon}(x) \cap M}$.
+
+Observe that
+$$
+\sup_{y' \in V'_{\epsilon^*}} \frac{||h(y') - h(0) - D(0)(y' - 0)||}{||h(y') - h(0)||} \geq \sup_{y \in B_{\epsilon}(x) \cap M} \frac{d(y, H)}{\epsilon}
+$$
+because we know $B_{\epsilon}(x) \cap M \subset h(V'_{\epsilon^*})$, and for any $y \in B_{\epsilon}(x) \cap M$ where $y = h(y')$, $||h(y') - h(0) - D(0)(y' - 0)|| \in \{d(y, H)\}_{y \in B_{\epsilon}(x) \cap M}$ and thus 
+$$\sup_{y' \in V'_{\epsilon^*}} ||h(y') - h(0) - D(0)(y' - 0)|| \geq \sup_{y \in B_{\epsilon}(x) \cap M} d(y, H)$$.
+In addition, $x = h(0)$ and $y = h(y')$ are both in $B_{\epsilon}(x) \cap M$, and thus $\epsilon \geq ||h(y') - h(0)||$. Next, observe that if 
+$$
+\lim_{\epsilon^* \rightarrow 0} \sup_{y' \in V'_{\epsilon^*}} \frac{||h(y') - h(0) - D(0)(y' - 0)||}{||h(y') - h(0)||} = 0,
+$$
+it would imply
+$$\lim_{\epsilon \rightarrow 0} \sup_{y \in B_{\epsilon}(x) \cap M} d(y, H) = 0.$$
+This is true given that $\sup_{y' \in V'_{\epsilon^*}} ||h(y') - h(0) - D(0)(y' - 0)|| \geq \sup_{y \in B_{\epsilon}(x) \cap M} d(y, H)$. Observe that $\epsilon^* \rightarrow 0$ may not necessarily imply that $\epsilon \rightarrow 0$, but this is ultimately irrelevant. We have previously shown that for any $\epsilon^* > 0$, $h(V^*)$ is open on $M$, there exists a neighborhood around $x$ in $M$, and thus $\epsilon > 0$. In addition, observe that if $\epsilon^*_1 < \epsilon^*_2$, then $V'_{\epsilon^*_1} \subset V'_{\epsilon^*_2}$, and $h(V'_{\epsilon^*_1}) \subset h(V'_{\epsilon^*_2})$, and therefore $B_{\epsilon_1}(x) \cap M \subset B_{\epsilon_2}(x) \cap M$ where $\epsilon_1$ and $\epsilon_2$ represent the maximal radius for the neighborhood around $0$ in $h(V'_{\epsilon^*_1}), h(V'_{\epsilon^*_2})$ respectively. This shows that as $\epsilon^*$ decreases, so does $\epsilon$. $\epsilon > 0$, thus it does have a non-negative limit as $\epsilon^* \rightarrow 0$. Thus, there are two possibilities: as $\epsilon^* \rightarrow 0$, $\epsilon \rightarrow 0$, in which case it is obvious that 
+$$
+\lim_{\epsilon^* \rightarrow 0} \sup_{y' \in V'_{\epsilon^*}} \frac{||h(y') - h(0) - D(0)(y' - 0)||}{||h(y') - h(0)||} = 0,
+$$
+it would imply
+$$
+\lim_{\epsilon \rightarrow 0} \sup_{y \in B_{\epsilon}(x) \cap M} d(y, H) = 0.
+$$
+On the other hand, if $\epsilon^* \rightarrow 0$, $\epsilon \rightarrow a$ for some $a > 0$, that means
+$$
+\lim_{\epsilon \rightarrow a} \sup_{y \in B_{\epsilon}(x) \cap M} d(y, H) = 0,
+$$
+$\sup_{y \in B_{\epsilon}(a) \cap M} d(y, H) = 0$, which then implies that $\lim_{\epsilon \rightarrow 0} \sup_{y \in B_{\epsilon}(x) \cap M} d(y, H) = 0.$
+
+Now, observe that $\overline{V'_{||0, y'||}}$ is a closed ball, which means it is closed and bounded. Munkers Theorem 4.9 shows that $\overline{V'_{||0, y'||}}$ is compact. In addition, $0, y' \in V'_{\epsilon'}$, and thus $\overline{V'_{||0, y'||}} \subset V'_{\epsilon'}$, which means $h$ is defined in $\overline{V'_{||0, y'||}}$. $h$ is of class $C^1$, and thus $h$ is lipschitz continuous inside $\overline{V'_{||0, y'||}}$. This means that there exists $\alpha$ such that
+$$
+\frac{||h(y) - h(x)||}{||y - x||} < \alpha 
+$$
+for any $x, y \in \overline{V'_{||0, y'||}}$. This means that 
+$$
+\lim_{\epsilon^* \rightarrow 0} \sup_{y' \in V'_{\epsilon^*}} \frac{||h(y') - h(0) - D(0)(y' - 0)||}{||h(y') - h(0)||} \leq \alpha \lim_{\epsilon^* \rightarrow 0} \sup_{y' \in V'_{\epsilon^*}} \frac{||h(y') - h(0) - D(0)(y' - 0)||}{||y' - 0||}.
+$$
+We know that the fraction on the right converges to 0 as $\epsilon^* \rightarrow 0$ due to the continuity of $h$ at $0$. Thus, we observe that 
+$$
+\lim_{\epsilon^* \rightarrow 0} \sup_{y' \in V'_{\epsilon^*}} \frac{||h(y') - h(0) - D(0)(y' - 0)||}{||h(y') - h(0)||} = 0
+$$
+and therefore
+$$
+\lim_{\epsilon \rightarrow 0} \sup_{y \in B_{\epsilon}(x) \cap M} d(y, H) = 0.
+$$
+This proves the first part of the problem.
+
+Next, we prove that the tangent space defined by $Im(Dh(0))$ is the only space which follows the property outlined in the problem. For the sake of contradiction, let $T \neq Dh(0)$ denote a matrix where $Im(T)$ defines a linear subspace which also follows this property. Given $T \neq Dh(0)$, there must exist $x \in \mathbb{R}^m$ where $Tx \neq Dh(0)(x)$. This implies that for any sufficiently small $\alpha > 0$, $T(\alpha x) \neq Dh(0)(\alpha x)$ and $\alpha(x) \in V'_{\epsilon^*}$. This means that $h(\alpha x)$ is defined and is a point on $M$ for any $\alpha$, and given $h(0 x) = h(0)  = x$ and given $h$ is a smooth, injective function, $h(\alpha x)$ as $\alpha$ decreases to $0$ creates a set of points on $M$ which approach $x$. Let $\beta = d(Tx, Dh(0)(x)) > 0$. observe that $\alpha \beta = d(T(\alpha x), Dh(0)(\alpha x))$. This distance presents a contradiction because $\lim_{\epsilon \rightarrow 0} ||d(h(y'), h(0) - Dh(0)(y'))|| = 0$, which means that $\lim_{\epsilon \rightarrow 0} ||d(h(y'), h(0) - T(y'))|| \neq 0$. This shows that 
+$$
+\lim_{\epsilon \rightarrow 0} \sup_{y \in B_{\epsilon}(x) \cap M} d(y, T + x) \neq 0,
+$$
+thus proving the uniqueness of the tangent space.
+
+It is easy to see that $|x|$ does not satisfy the conditions to be a manifold. Both the functions $x$ and $-x$ satisfy the condition 
+$$
+\lim_{\epsilon \rightarrow 0} \sup_{y \in B_{\epsilon}(0) \cap M} \frac{d(y, H)}{\epsilon} = 0
+$$
+for certain areas of $B_{\epsilon}(0) \cap M$, but not others. Meanwhile, there is no vector field of dimension 1 for which $H$ is satisfied for every point in $B_{\epsilon}(0) \cap M$ given the points to the left of $0$ follow a negative slope of $-1$ and the points to the right of $0$ follow a positive slope of $1$.
+\end{proof}
+
+\begin{problem}{3a}
+\end{problem}
+\begin{proof}[Solution]
+According to Theorem 10.3 of Munkers, 
+$$\underline{\int}_Q f = \overline{\int}_Q f$$
+if and only if there exists a partition $P$ of $Q$ for which 
+$$U(f, P) - L(f, P) < \epsilon$$
+for any arbitrary $\epsilon > 0$. The given condition states that there exists $\delta > 0$ such that $U(f, P) - L(f, P) < \epsilon$ for every partition $P$ of mesh less than $\delta$, thus the proof is complete.
+\end{proof}
+
+\begin{problem}{3b}
+\end{problem}
+\begin{proof}[Solution]
+First, it is easy to see that $P'$ is a refinement of $P$ given a point was added to an interval of $P$ to form $P'$. Thus, Lemma 10.1 shows that $L(f, P) \leq L(f, P')$, which means that $0 \leq L(f, P') - L(f, P)$. Lemma 10.1 also shows that $0 \geq L(f, P') - L(f, P)$
+
+Next, we will try to calculate the total volume of the new partitions that were created as a result of the adjoining of the single point to $P$. If the point was added to interval $[x, y]$ in $[a_i, b_i]$ where $Q = [a_1, b_1] \times ... \times [a_n, b_n]$, all new partitions are contained in the rectangle $[a_1, b_1] \times ... \times x, y] \times ... \times [a_n, b_n]$. By definition the length of $[x, y]$ is at most $mesh(P)$ and the length of every other side is at most $width(Q)$, thus the volume of this area is $mesh(P)(width(Q))^{n-1}$.
+
+Next, if $R$ represents the set of all subrectangles of $Q$ after partition $P$, $R'$ represents the set of all subrectangles of $Q$ after pratition $P'$, and $R^*$ represents the set of all subrectangles that exist only in $R'$,
+$$
+L(f, P') - L(f, P) = \sum_{r \in R} m_r(f)v(r) - \sum_{r \in R'} m_r(f)v(r) \leq \sum_{r \in R^*} (m'_r(f) - m_r(f))v(r)
+$$
+where $m'_r(f)$ represents the value of $m_{r'}(f)$ where $r'$ is the subrectangle in partition $P$ which contains $r$. Observe that $|m_r(f)|,  |m'_r(f)| \leq M$ for any $r \subset Q$ given $|f(x)| \leq M$. This means $-M \leq m_r(f), m'_r(f) \leq M$, and thus
+$$
+\sum_{r \in R^*} (m'_r(f) - m_r(f))v(r) \leq \sum_{r \in R^*} (M - (-M))v(r) = 2M sum_{r \in R^*} v(r) = 2M*mesh(P)(width(Q))^{n-1}.
+$$
+This completes the proof that 
+$$
+0 \leq L(f, P') - L(f, P) \leq 2M*mesh(P)(width(Q))^{n-1}.
+$$
+
+Then, also observe that
+$$
+U(f, P) - U(f, P') = \sum_{r \in R'} M_r(f)v(r) - \sum_{r \in R} M_r(f)v(r) \leq \sum_{r \in R^*} (M_r(f) - M'_r(f))v(r)
+$$
+where $M'_r(f)$ represents the value of $M_{r'}(f)$ where $r'$ is the subrectangle in partition $P$ which contains $r$. Observe that $|M_r(f)|,  |M'_r(f)| \leq M$ for any $r \subset Q$ given $|f(x)| \leq M$. This means $-M \leq M_r(f), M'_r(f) \leq M$, and thus
+$$
+\sum_{r \in R^*} (M_r(f) - M'_r(f))v(r) \leq \sum_{r \in R^*} (M - (-M))v(r) = 2M sum_{r \in R^*} v(r) = 2M*mesh(P)(width(Q))^{n-1}.
+$$
+This completes the proof that 
+$$
+0 \leq U(f, P) - U(f, P') \leq 2M*mesh(P)(width(Q))^{n-1}.
+$$
+\end{proof}
+
+\begin{problem}{3c}
+\end{problem}
+\begin{proof}[Solution]
+Using the same definitions for $P$ and $P'$ as used in the previous question, and let $U(f, P') - L(f, P') < \epsilon/2$. From part $b$ we are given that 
+$$
+0 \leq U(f, P) - U(f, P') \leq 2M*mesh(P)(width(Q))^{n-1},
+$$
+and
+$$
+0 \leq L(f, P') - L(f, P) \leq 2M*mesh(P)(width(Q))^{n-1}.
+$$
+Given $mesh(P) < \frac{\epsilon}{8MN(width(Q))^{n-1}}$, it follows that
+$$
+0 \leq U(f, P) - U(f, P') < 2M\frac{\epsilon}{8MN(width(Q))^{n-1}}(width(Q))^{n-1} = \frac{\epsilon}{4N}
+$$
+and
+$$
+0 \leq L(f, P') - L(f, P) < 2M\frac{\epsilon}{8MN(width(Q))^{n-1}}(width(Q))^{n-1} = \frac{\epsilon}{4N}.
+$$
+Adding these two values together, we observe that
+$$
+0 \leq L(f, P') - L(f, P) + U(f, P) - U(f, P') < \frac{\epsilon}{2N}.
+$$
+Lastly, given $0 \leq U(f, P') - L(f, P') < \epsilon/2$, adding this value to the above inequality shows that
+$$
+0 \leq U(f, P) - L(f, P) < \frac{\epsilon}{2N} + \epsilon/2 \leq \epsilon,
+$$
+with the last inequality being true given $P'$ is given to contain at least one point. This completes the proof.
+\end{proof}
+
+\begin{problem}{4}
+\end{problem}
+\begin{proof}[Solution]
+Let $R_i$ denote the rectangle that is formed when rectangle $Q_i$ is fixed at the center and slightly dilated such that $v(Q_i) < v(P_i) < v(Q_i) + \frac{\epsilon}{2^i}$ for some $\epsilon > 0$. If $Q_i = [a_1, b_1] \times ... \times [a_n, b_n]$ and $P_i = [a'_1, b'_1] \times ... \times [a'_n, b'_n]$, it is clear that $a'_i < a_i < b_i < b'_i$ for any $i \in \mathbb{N}$, which shows that $Q_i$ is contained inside the interior of $P_i$. Then, observe that
+$$
+\sum_{i \in \mathbb{N}} vol(P_i) \leq \sum_{i \in \mathbb{N}}\left(vol(Q_i) + \frac{\epsilon}{2^i}\right) = \epsilon + \sum_{i \in \mathbb{N}}\left(vol(Q_i)\right).
+$$
+Next, we know from Munkers Lemma 4.8 that rectangle $Q$ is compact. In addition, we know $Int(P_1), Int(P_2), ...$ covers the entirety of $Q$ given $Q_i \subset Int(P_i)$ and $Q_1, Q_2, ...$ covers all of $Q$. $Int(P_1), Int(P_2), ...$ is a collection of open sets, thus the compactness of $Q$ dictates that there exists a finite subset of this collection which covers all of $Q$. Assume this collection is $Int(P'_1), Int(P'_2), ..., Int(P'_n)$. Corollary 10.5 of Munkers shows that $vol(Q) \leq \sum_{i = 1}^n vol(P'_i)$. In addition, it is evident that $\sum_{i = 1}^n vol(P'_i) \leq \sum_{i \in \mathbb{N}} vol(P_i)$ given $P'_1, ..., P'_n$ is a subset of $P_1, ...$. Thus, 
+$$
+vol(Q)  \leq \sum_{i = 1}^n vol(P'_i) \leq \sum_{i \in \mathbb{N}} vol(P_i) \leq \epsilon + \sum_{i \in \mathbb{N}}\left(vol(Q_i)\right).
+$$
+Given $\epsilon$ can be chosen to be any value arbitrarily close to $0$, we complete the proof that $vol(Q) \leq \sum_{i \in \mathbb{N}}(vol(Q_i))$.
+\end{proof}
+
+\begin{problem}{5}
+\end{problem}
+\begin{proof}[Solution]
+Let $l(S)$ denote the length of set $S \subset \mathbb{R}$, and if $S$ is a collection of finitely many disjoint intervals, then $l(S)$ is defined to be the sum of the lengths of these intervals. Let $S_i$ denote the set of all numbers which does not contain $3$ up to the $i$-th digit. Let $S$ be the set of all numbers without the digit 3.
+
+First, we will find the relationship for $l(S_i)$ and $l(S_{i+1})$ for any $i \in \mathbb{N}$. Assume $S_i$ is a collection of finitely disjoint intervals. Then, create the set $S'_i$ by adding a $0$ between the decimal point and the tenths digit in each element of $S$. If $[a, b] \in S_i$ is one of the disjoint intervals in $S_i$, this interval is mapped to $[a/10, b/10]$ in $S'_1$. In other words, $S'_1$ is dilation of $S_i$ by a factor of $1/10$, and $10l(S'_i) = l(S_i)$. Next, consider the set that is formed when every element of $S'_i$ is added with $0.1$. This action merely translates the line segments in $S'_i$, and thus the length of this new set is the same as $S'_i$. In addition, the tenths digit of every element in this set is $1$. Repeat this translation process again to this new set to generate a set of numbers that now have $2$ as the tenths digit. Repeat this process seven more times to generate a total of $10$ sets which are merely a translation of $S'_i$ by a multiple of $0.1$. Exactly one of these sets will contain numbers whose tenths digit is three. Discard this set, and take the union of the remaining nine sets to create $S_{i+1}$. Each of the translated sets are contained within an interval of length $0.1$ as shown previously, and given they are all translated by a multiple of 0.1, none of the translated sets overlap each other, and the sum of the lengths of each of the translated sets is equal to $l(S_{i+1})$. We know that $S'_{i}$ has a length of $l(S'_i)/10$, and each of the nine translated sets have the same length, thus $l(S_{i+1}) = \frac{9}{10}l(S_{i})$. It is also important to note that $S_{i+1}$ is just a union of finitely many line segments given $S_{i}$ is a union of finitely many line segments.
+
+Very quickly, we will verify that the set $S_{i+1}$ that is generated by this process is indeed the set of all numbers that don't contain the digit $3$ until position $i+1$. First, assume $a = 0.a_1a_2 ... \in [0, 1]$ contains a $3$ within the first $i+1$ digits. If this $3$ is located between digits $2$ and $i+1$, then that means the number $a' = 0.a_2a_3 ...$ contains the digit $3$ within the first $i$ digits. This $a$ will not be contained inside $S_i$ by definition, and by extension the number $0.0a_2a_3...$ will not be contained in $S'_i$. Given that each of the translated sets only contain numbers in $S'_i$ which are translated by a whole number multiple of $0.1$, we can see that $a = 0.a_1a_2a_3...$ is not contained inside any of the translated sets, and therefore $S_{i+1}$ does not contain $a$. Next, assume that $a = 0.a_1a_2 ... \in [0, 1]$ contains a $3$ in the tenths digit. We discarded the translated set containing numbers whose tenths digit was $3$, and thus no number in $S_{i+1}$ can contain a $3$ in the tenths digit. Thus, we show that no number in $S_{i+1}$ contains a $3$ in the first $i+1$ digits. Then, if $a = 0.a_1a_2 ... \in [0, 1]$ does not contain a $3$ within the first $i+1$ digits, then it is evident that $0.a_2a_3 ... \in S_i$, which means $0.0a_2a_3 ... \in S'_i$. Given $a_1$ is not three, there must exist a translated set which contains numbers whose tenths digits are $a_1$, and it is clear that $0.a_1a_2a_3 ...$ is in that set. This thus shows that $a \in S_{i+1}$.
+
+Now, we know that $l(S_{i+1}) = \frac{9}{10}l(S_{i})$ and we also know that $l(S_0) = 1$ given $S_0 = [0, 1]$. Next, observe that $S \subset S_i$ for $i \in \mathbb{N}$ because the set of all numbers which does not contain $3$ in the first $i$ digits contains the set of all numbers which does not contain $3$ in any digit. Next, observe that 
+$$l(S_{i}) = \frac{9}{10}l(S_{i-1}) = \frac{9^2}{10^2}l(S_{i - 2}) =  ... = \frac{9^i}{10^i}l(S_{0}) = \frac{9^i}{10^i},$$
+and it is known that $\lim_{i \rightarrow \infty} \left(\frac{9}{10}\right)^i = 0$. For any $\epsilon > 0$, it is possible to find $i \in \mathbb{N}$ such that $l(S_i) < \epsilon$. Given $S \subset S_i$, this means that there exists a set of line segments which have a cumulative length of less than $\epsilon$ while also covering $S$. Due to the definition given in Chapter 11 of Munkers, we thus observe that $S$ is of measure zero.
+\end{proof}
+
+\begin{problem}{6}
+\end{problem}
+\begin{proof}[Solution]
+Observe that if $A$ is a is a set of measure zero, there exists a countable set of rectangles that cover $A$ while also having a total volume of $\epsilon$ for any $\epsilon > 0$. We are given that $f$ is of class $C^1$. 
+
+First, we will show that any set $S$ of measure 0 can be covered by squares with sidelength $\delta > 0$ and with a total volume of $\epsilon > 0$. First, there must exist a countable set of rectangles which cover $S$ and have a total volume of $\epsilon/(3^n)$ or less. For each rectangle $R = [a_1, b_1] \times ... \times [a_n, b_n]$ in this set, there exists a rectangle $R^* = [a^*_1, b^*_1] \times ... \times [a^*_n, b^*_n]$ with the same center but with triple each sidelength. Let $N$ denote the number such that $1/N < \min_{i \in 1, ..., n}(a_i-b_i)$, and we know this number exists due to the Archimedean principle. Let $R'$ denote a new rectangle with the same center as $R$ but with sidelengths $[N\lfloor\frac{a_1}{N}\rfloor, N\lceil\frac{b_1}{N}\rceil] \times ... \times [N\lfloor\frac{a_n}{N}\rfloor, N\lceil\frac{b_n}{N}\rceil]$. Observe that $a^*_i \leq N\lfloor\frac{a_i}{N} \leq a_i$ and $b^*_i \geq N\lceil\frac{b_1}{N} \geq b_i$ given $N$ is chosen to be sufficiently large. Thus, $R \subset R^* \subset R'$. In addition, note that the sidelengths of $R^*$ are in the form $\frac{c_1}{N}, ..., \frac{c_n}{N}$ where $c_i$ are whole numbers. On each edge with sidelength $\frac{c_i}{N}$, create a partition of by evenly distributing $(c_i-1)\alpha$ points along this edge. By doing this for each edge, $R$ is divided into cubes, each with sidelength $\frac{1}{N \alpha}$. For sufficiently large $\alpha$, this sidelength will be less than $\delta$. Lastly, observe that the volume of $R'$ is $3^nvol(R)$, which means that $vol(R^*) < 3^nvol(R)$. Repeating this process for every rectangle that covers $S$ will create a countable set of squares which cover $S$, each with a sidelength that is equivalent and at most $\delta$. In addition, the sum of the areas of all these squares will be at most $3^n$ times the volume of the initial set of cubes, which means that the total volume of these cubes is at most $\epsilon$. This completes the proof that $S$ can be covered by squares with sidelength $\delta > 0$ and with a total volume of $\epsilon > 0$.
+
+Next, let $R$ denote a cube contained in $A$ with sidelength $w$. We are given that $Df(x)$ is continuous for all $x \in R$ given $f$ is of class $C^1$, and we thus know from Problem 1 of the first homework that the operator norm $||Df(x)||_{op}$ is continuous for all $x \in R$. The extreme value theorem states that there exists a point $x \in R$ where $||Dg(x)||_{op}$ is maximized. Let that maximum be $M$. Next, observe that if $c$ is the center of $R$ and $||x||$ is the euclidian norm, all points $x$ in $R$ follow the property that $||x - c|| \leq \sqrt{(w/2)^2 + ... + (w/2)^2} = \sqrt{n(w/2)^2}$. Note that $\sqrt{n(w/2)^2} \leq n(w/2)$ given $n \geq 1$. Then, on the straight line between any $x \in C$ and $c$, $g$ is differentiable along these values, and thus $g(x) - g(c) = Dg_i(x')(x - c)$ where $x'$ is a point on the line (and therefore inside $R$) and $g_i$ is the function defined on the line between $c$ and $x$. This means that
+$$||g(x) - g(c)|| = |Dg_i(x')| ||(x - c)|| \leq ||Dg(x')||_{op}(n(w/2)) \leq nM(w/2).$$
+for any $x \in R$. Therefore, this means that $g(C)$ is contained in a circle of radius $nM(w/2)$, which means it is contained in a cube with sidelength $nMw$.
+
+Next, let $C_i$ denote a cube of sidelength $i$, and let $A_i = C_i \cap A$. In order to prove that $g(A)$ is of measure, it is clearly enough to show that $g(A_i)$ is of measure $0$ for any $i > 0$. This is true because if $A$ is not of measure $0$, there must exist some region in $\mathbb{R}^n$ for which rectangles of trivially small volume cannot cover $A$, and in this case there would also exist some $g(A_i)$ which covers this area, and $g(A_i)$ would also have a non-zero measure. Next, we know $C_i$ is compact given it is bounded, closed, and in $\mathbb{R}^n$. For $0 < \delta < 1$, it is easy to see that cubes of width $\delta$ which cover $C_i$ will remain inside $C_{i+1}$. Then, for each $x \in C_{i+1}$, we know due to the extreme value theorem that there exists a maximum to $||Dg(x)||_{op}$ given $g$ and the operator norm are both smooth and $C_{i+1}$ is compact. Let this maximum be $M$. Then, using the previous results on cube covering, cover $A_i$ with cubes of width less than $1$ and having total volume of less than $\frac{\epsilon}{(nM)^n}$. Let $R_1, R_2, ...$ denote all the cubes which cover $E_k$, and let $R'_i$ denote the rectangle which contains $g(R_i)$. Observe that $R'_1, ...$ cover $g(A_i).$ We have previously shown that $R_i$ has width $nMw_i$ where $w_i$ is the width of $R_i$. Observe that
+$$
+\sum_{i \in \mathbb{N}} vol(R'_i) \leq \sum_{i \in \mathbb{N}} (nM)^n(w_i)^n = (nM)^n\sum_{i \in \mathbb{N}} vol(R_i) = (nM)^n\frac{\epsilon}{(nM)^n} = \epsilon,
+$$
+which shows that $g(A_i)$ can be covered by a set of cubes whose cumulative volume is $\epsilon$, for any $i, \epsilon > 0$. This shows that $g(A_i)$ is of measure zero, which completes the proof.
+\end{proof}
+
+\begin{problem}{7}
+\end{problem}
+\begin{proof}[Solution]
+Let $Q_i \subset \mathbb{R}^n$ denote a cube centered inside $U$ with sidelengths $i$. We will first prove that $f(Q \cap \Sigma)$ has measure zero. First, create subcubes of $Q$ by partitioning each edge into $m$ equal regions. It follows that 
+$$
+vol(f(Q_i \cap \Sigma)) \leq (m)^n\max_{c \in C}(vol(c)),
+$$
+where $C$ is the set of subcubes which contain a critical point, and $m^n$ represents the number of subcubes in total. As $m$ is chosen to be arbitrarily large, each of the cubes get arbitrarily small. 
+
+Next, observe that if $rank(Df(a)) < n$, that means that the matrix is non-singular, and $Df(a)$ has a non-trivial kernel. Let $v$ denote one of the basis of $ker(Df(a))$. Next, given $Q_i$ is closed and bounded, it is compact due to Theorem 4.9 of Munkers, and given $f$ is of class $C^1$, $f$ is lipschitz continuous within this range, and $\frac{||f(x) - f(y)||}{||x - y||} < \alpha$ for some fixed $\alpha > 0$ and any $x, y \in Q_i$. Next, observe that for any $c \in C$, if $\epsilon$ is the sidelength of $c$, the sidelength of any minimally small rectangle which contains $f(c)$ is at most $\alpha\epsilon$. Then, consider a minimally small rectangle $R'$ which contains $f(c)$ while one of the sides are parallel to $v$. The result from problem 1b shows that $d(\phi(y), H) \leq \epsilon \lambda(\epsilon)$. If $ker(Df(a))$ were empty this result would be trivial because $H$ would encompass the entirety of $\mathbb{R}^n$. However, in this case where $ker(Df(a))$ is nontrivial, it does provide an interesting result. if $y = y' + v'$ where $v'$ is the component of $y$ parallel to $v$ and $y'$ is the component of $y'$ perpendicular to $v$, it shows that $||f(y) - f(x) - Df(x)(a)|| < \epsilon\lambda(\epsilon)$ for some $a \in c$. This means the distance between $f(y)$ for any $y \in c$ and the space perpendicular to $v$ converge at a rate of $\epsilon\lambda(\epsilon)$, which means the one side of $R'$ rotated parallel to $v$ has a sidelength of at most $2\epsilon\lambda(\epsilon)$. Next, split for each edge that of $R'$ is not parallel to $v$, divide the edge into $k$ equal segments. Then observe that the volume of the entire rectangle is $k^{n-1}$ times the area of each rectangle. We can calculate the euclidian distance between one corner and the opposite corner in each of these subrectangles. Observe that $n-1$ edges have a length of at most $\alpha\epsilon/k$, while one edge has a length of at most $\epsilon\lambda(\epsilon)$. We observe that this distance $d$ is at most 
+$$
+d \leq \sqrt{\frac{(n-1)\alpha\epsilon^2}{k^2} + \epsilon^2\lambda^2(\epsilon)}
+$$
+If $k$ is chosen to be large such that $1/k < \frac{\lambda^2(\epsilon)}{(n-1)\alpha}$,
+$$
+\sqrt{\frac{(n-1)\alpha\epsilon^2}{k^2}  + \epsilon^2\lambda^2(\epsilon)} = (1/k)\epsilon\lambda(\epsilon)
+$$
+and thus the volume of the subrectangle is at most $((1/k)\epsilon \lambda(\epsilon))^n$, and the volume of $R''$ is at most $(\epsilon \lambda(\epsilon))^n$. Now, observe that the sidelengths of each $c$ is $i/m$, which means $\epsilon = i/m$. Thus, observe that
+$$
+vol(f(Q_i \cap \Sigma)) \leq (m)^n\max_{c \in C}(vol(c)) \leq m^n(\epsilon \lambda(\epsilon))^n = i^n\lambda^n(i/m).
+$$
+We know that $i^n$ is a fixed constant, thus for sufficiently large $m$ we see that $vol(f(Q \cap \Sigma))$ can be arbitrarily close to 0. This shows that $f(Q_i \cap \Sigma)$ has measure 0. This is is true for any $i \in \mathbb{N}$, and taking the limit as $i$ increases shows that $f(Q \cap \Sigma)$ has measure 0.
+\end{proof}
+
+\end{document}

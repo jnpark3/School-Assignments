@@ -1,0 +1,545 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 2}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1 (B.P. 6.4)}
+\end{problem}
+\begin{proof}
+The perfect complements utility function for two goods is given by the function
+$$
+U(x, y) = \min\left\{\frac{x}{a}, \frac{y}{b}\right\}.
+$$
+Next, given $p_x, p_y$ are the prices of good $x, y$ respectively, 
+$$
+e(p_x, p_y, U) = p_xx_h^*(p_x, p_y, U) + p_yy_h^*(p_x, p_y, U)
+$$
+where $U$ is some target utility, and $(x_h^*(p_x, p_y, U), y_h^*(p_x, p_y, U))$ is the bundle that minimizes expenditure while obtaining utility $U$.  Note that in order for utility $U$ to be achieved, due to the utility function, either $\frac{x_h^*(p_x, p_y, U)}{a} = U$ (and $\frac{y}{b} \geq \frac{x}{a}$), or $\frac{y_h^*(p_x, p_y, U)}{b} = U$ (and $\frac{x}{a} \geq \frac{y}{b}$). In the case where $\frac{x_h^*(p_x, p_y, U)}{a} = U$ is fixed, the expenditure will be minimized only when the consumption of $y$ is minimized, and it is clear that the smallest quantity of $y$ that can be consumed is when $\frac{y_h^*(p_x, p_y, U)}{b} = \frac{x_h^*(p_x, p_y, U)}{a} = U$. Similarly, in the case where $\frac{y_h^*(p_x, p_y, U)}{b} = U$ is fixed, the expenditure will be minimized only when the consumption of $x$ is minimized, and it is clear that the smallest quantity of $x$ that can be consumed is when $\frac{x_h^*(p_x, p_y, U)}{a} = \frac{y_h^*(p_x, p_y, U)}{b} = U$. Thus, $x_h^*(p_x, p_y, U) = aU$, $y_h^*(p_x, p_y, U) = bU$, and
+$$
+e(p_x, p_y, U) = p_xaU + p_ybU = U(p_xa + p_yb).
+$$
+This function makes sense as when the utility $U$ increases, the minimum expenditure required to achieve utility $U$ should increase proportionally. In addition, this expenditure function increases linearly as either of the prices $p_x, p_y$ increases, which makes sense given the cost of achieving the optimal quantity $\frac{y_h^*(p_x, p_y, U)}{b} = \frac{x_h^*(p_x, p_y, U)}{a} = U$ would increase linearly.
+\end{proof}
+
+\begin{problem}{2 (B.P. 6.5)}
+\end{problem}
+\begin{proof}
+The perfect complements utility function for two goods is given by the function
+$$
+U(x, y) = ax + by
+$$
+Next, given $p_x, p_y$ are the prices of good $x, y$ respectively, 
+$$
+e(p_x, p_y, U) = p_xx_h^*(p_x, p_y, U) + p_yy_h^*(p_x, p_y, U)
+$$
+where $U$ is some target utility, and $(x_h^*(p_x, p_y, U), y_h^*(p_x, p_y, U))$ is the bundle that minimizes expenditure while obtaining utility $U$. Given the target utility $U$, all bundles that achieve this utility are on the line $ax + by = U$, and thus $y = \frac{ax + U}{b}$. In order to minimize the expenditure $m = p_xx + p_yy$, while remaining on this line, observe that through substitution, $m = p_xx + p_y\frac{ax + U}{b} = x\left(p_x + \frac{p_ya}{b}\right) + \frac{p_yU}{b}$. It is clear from this function that if $\left(p_x + \frac{p_ya}{b}\right) < 0$, expenditure is minimized when the consumption of $x$ is maximized (and by extension no $y$ is consumed), and if $\left(p_x + \frac{p_ya}{b}\right) > 0$, expenditure is minimized when there is no consumption of $y$ (and by extension $y$ is consumed maximally). When $\left(p_x + \frac{p_ya}{b}\right) = 0$, it is implied that any possible bundle on the line $U = ax + by$ is an expenditure minimizing bundle.
+
+Thus, in the case where $\left(p_xb - p_ya\right) < 0$, $y_h^*(p_x, p_y, U) = 0$ and $x_h^*(p_x, p_y, U) = U/a$, and thus 
+$$
+e(p_x, p_y, U) = \frac{p_xU}{a}.
+$$
+In the case where $\left(p_xb - p_ya\right) > 0$, $y_h^*(p_x, p_y, U) = U/b$ and $x_h^*(p_x, p_y, U) = 0$, and thus 
+$$
+e(p_x, p_y, U) = \frac{p_yU}{b}.
+$$ 
+Lastly in the case where $\left(p_xb - p_ya\right) = 0$, every single bundle on the budget line is the optimal bundle, and thus
+$$
+e(p_x, p_y, U) = \frac{p_yU}{b} = \frac{p_xU}{a}.
+$$ 
+
+These three cases can be combined into the single equation
+$$
+e(p_x, p_y, U) = \min\left\{\frac{p_yU}{b}, \frac{p_xU}{a}\right\}.
+$$ 
+This solution makes sense because if two goods are perfect substitutes, the optimal solution would be to find the one good that maximizes utility per cost. Maximizing consumption of this one good would be optimal, because it would never be worth trading one dollar worth of this good for one dollar worth of the other good hat has a lower utility per dollar. In each of these cases, the expenditure would be proportional to the cost of the good and the utility, which is seen in the expenditure function above.
+\end{proof}
+
+\begin{problem}{3.1 (B.P. 7.2)}
+\end{problem}
+\begin{proof}
+We have shown in the previous homework (Problem 5) that for the Cobb-Douglas formula, $x_m(p_x, p_y, m) = \frac{\alpha m}{p_x}$ and $y_m(p_x, p_y, m) = \frac{(1 - \alpha) m}{p_y}$, and $v(p_x, p_y, m) = m\left(\frac{(\alpha)}{p_x}\right)^{a}\left(\frac{(1 - \alpha)}{p_y}\right)^{1 - a}$. In addition, 
+$$
+\lambda^* = \frac{U_x}{p_x} = \frac{\alpha}{p_x}\left(\frac{\alpha m}{p_x}\right)^{\alpha - 1}\left(\frac{(1 - \alpha) m}{p_y}\right)^{1 - \alpha} = \left(\frac{\alpha}{p_x}\right)^{\alpha}\left(\frac{1 - \alpha}{p_y}\right)^{1 - \alpha}.
+$$
+Next, we will solve for the Hicksian demand functions for the given expenditure minimization problem. Using the given parameters, we see that $L = p_xx + p_yy + \lambda(U - x^{\alpha}y^{1 - \alpha})$. Using the Lagrangian method, the optimal solution $(x, y)$ is reached when
+$$
+L_x = p_x + \alpha\lambda(x^{\alpha - 1}y^{1 - \alpha}) = 0,
+$$
+$$
+L_y = p_y + (1 - \alpha)\lambda(x^{\alpha}y^{ - \alpha}) = 0,
+$$
+$$
+L_{\lambda} = U - x^{\alpha }y^{1 - \alpha} = 0,
+$$
+Note that using the equation for $L_x$, $\frac{p_x}{\alpha} = \lambda(x^{\alpha - 1}y^{1 - \alpha})$, and thus $\lambda = \frac{p_xx^{1 - \alpha}}{\alpha y^{1 - \alpha}}$. Similarly, using the equation for $L_y$, $\frac{p_y}{1 - \alpha} = \lambda(x^{\alpha}y^{ - \alpha})$, and thus $\lambda = \frac{p_yy^{\alpha}}{(1 - \alpha) x^{\alpha}}$. This shows that $\frac{p_yy^{\alpha}}{(1 - \alpha) x^{\alpha}} = \lambda = \frac{p_xx^{1 - \alpha}}{\alpha y^{1 - \alpha}}$, and thus $\frac{p_y\alpha}{p_x(1 - \alpha)} = \frac{x}{y}$ and $x = y\frac{p_y\alpha}{p_x(1 - \alpha)}$. Plugging this equation back into the given utility constraint shows that
+$$
+U = \left(y\frac{p_y\alpha}{p_x(1 - \alpha)}\right)^{\alpha}y^{1 - \alpha} = \frac{p_y\alpha y}{p_x(1 - \alpha)},
+$$
+and thus the optimal level of consumption of $y$, the Hicksian demand for good $y$, is
+$$
+y_h(p_x, p_y, U) = U\left(\frac{p_x(1 - \alpha)}{p_y\alpha }\right)^{\alpha}.
+$$
+Similarly, 
+$$
+U = \left(x\frac{p_x(1 - \alpha)}{p_y\alpha}\right)^{1 - \alpha}x^{\alpha} = \frac{p_x(1 - \alpha) x}{p_y\alpha},
+$$
+and thus the optimal level of consumption of $x$, is
+$$
+x_h(p_x, p_y, U) = U\left(\frac{p_y\alpha}{p_x(1 - \alpha)}\right)^{1 - a}.
+$$
+The expenditure function is thus
+$$
+e(p_x, p_y, U) = p_xx_h^*(p_x, p_y, U) + p_yy_h^*(p_x, p_y, U) = U\left(p_x^{\alpha}\left(\frac{p_y\alpha}{1 - \alpha}\right)^{1 - a} + p_y^{1 - \alpha}\left(\frac{p_x(1 - \alpha)}{\alpha }\right)^{\alpha}\right)
+$$
+$$
+= \frac{up_x^{\alpha}p_y^{1 - \alpha}}{1 - \alpha}\left(\frac{1 - \alpha}{\alpha}\right)^{\alpha}
+$$
+
+Lastly, to calculate the Lagrangian $\eta^*$, not that $0 = p_x - \eta^*U_x(x_h^*, y_h^*)$. This shows that $\eta^* = \frac{p_x}{U_x(x_h^*, y_h^*)} = \frac{p_x}{a(x_h^*)^{\alpha - 1}(y_h^*)^{1 - \alpha}} = \frac{p_x}{a\left(\frac{(p_x(1 - \alpha)}{p_ya}\right)^{1 - a}} = \frac{p_x^a(p_y)^{1 - a}}{a^a(1 - a)^{1 - a}}$.
+
+Now, to proceed with solving the problem. Given $m = e(p_x, p_y, U)$, we have already shown that $x_h^* = U\left(\frac{p_y\alpha}{p_x(1 - \alpha)}\right)^{1 - a}$ and $y_h^* = U\left(\frac{p_x(1 - \alpha)}{p_y\alpha }\right)^{\alpha}$. In addition, we have shown that $x_m^*(p_x, p_y, m) = \frac{\alpha m}{p_x}$ and $y_m^*(p_x, p_y, m) = \frac{(1 - \alpha) m}{p_y}$. Replacing $m$ with $e(p_x, p_y, U) = \frac{Up_x^{\alpha}p_y^{1 - \alpha}}{1 - \alpha}\left(\frac{1 - \alpha}{\alpha}\right)^{\alpha}$ shows that
+$$
+x_m^*(p_x, p_y, m) = \frac{\alpha m}{p_x} = \frac{\alpha Up_x^{\alpha}p_y^{1 - \alpha}}{(1 - \alpha)p_x}\left(\frac{1 - \alpha}{\alpha}\right)^{\alpha} = U\left(\frac{p_y\alpha}{p_x(1 - \alpha)}\right)^{1 - a} = x_h^*.
+$$
+Similarly,
+$$
+y_m^*(p_x, p_y, m) = \frac{(1 - \alpha) m}{p_y} = \frac{(1 - \alpha) Up_x^{\alpha}p_y^{1 - \alpha}}{(1 - \alpha)p_y}\left(\frac{1 - \alpha}{\alpha}\right)^{\alpha} = U\left(\frac{p_x(1 - \alpha)}{p_y\alpha }\right)^{\alpha} = y_h^*.
+$$
+This shows that when $m = e(p_x, p_y, U)$, the Hicksian demand is equal to the Marshallian demand.
+\end{proof}
+
+\begin{problem}{3.2 (B.P. 7.2)}
+\end{problem}
+\begin{proof}
+Suing the results from part 1, given $U = v(p_x, p_y, m)$, we have already shown that $x_m^*(p_x, p_y, m) = \frac{\alpha m}{p_x}$ and $y_m^*(p_x, p_y, m) = \frac{(1 - \alpha) m}{p_y}$. In addition, we know that $x_h^* = U\left(\frac{p_y\alpha}{p_x(1 - \alpha)}\right)^{1 - a}$ and $y_h^* = U\left(\frac{p_x(1 - \alpha)}{p_y\alpha }\right)^{\alpha}$. Replacing $U$ with $v(p_x, p_y, m) =m\left(\frac{(\alpha)}{p_x}\right)^{a}\left(\frac{(1 - \alpha)}{p_y}\right)^{1 - a}$ shows that
+$$
+x_h^*(p_x, p_y, U) = U\left(\frac{p_y\alpha}{p_x(1 - \alpha)}\right)^{1 - a} = m\left(\frac{(\alpha)}{p_x}\right)^{a}\left(\frac{(1 - \alpha)}{p_y}\right)^{1 - a}\left(\frac{p_y\alpha}{p_x(1 - \alpha)}\right)^{1 - a} = \frac{\alpha m}{p_x} = x_m^*.
+$$
+Similarly,
+$$
+y_h^*(p_x, p_y, U) = U\left(\frac{p_x(1 - \alpha)}{p_y\alpha }\right)^{\alpha} = m\left(\frac{(\alpha)}{p_x}\right)^{a}\left(\frac{(1 - \alpha)}{p_y}\right)^{1 - a}\left(\frac{p_x(1 - \alpha)}{p_y\alpha }\right)^{\alpha} = \frac{(1 - \alpha) m}{p_y} = y_m^*.
+$$
+This shows that when $U = v(p_x, p_y, m)$, the Marshallian demand is equal to the Hicksian demand.
+\end{proof}
+\vspace{5 cm}
+\begin{problem}{3.3 (B.P. 7.2)}
+\end{problem}
+\begin{proof}
+In the graph below, the indifference curve for some specific $U$ and $\alpha$ is drawn, then the minimum budget line (at some budget level $m'$) is drawn such that there is a point of intersection between the budget and the indifference curve. The point of single point of intersection displays the Hicksian demand, given it is the expenditure minimizing bundle that achieve utility $U$. 
+
+Another, completely separate way to interpert the graph is to note that for the budget line at level (at the budget level $m'$ as derived just now), the indifference curve drawn represents the indifference curve with the greatest possible utility (any indifference curve with a higher level will not intersect the budget line). The point of intersection between these two lines is the Marshallian demand because it represents the utility maximizing bundle at the fixed budget level $m'$. This shows that the Hicksian demand (when $m' = e(p_x, p_y, U)$) and the Marshallian demand (when $U = v(p_x, p_y, m')$) map to the same point. This diagram thus explains the equivalence of parts 1 and 2.
+\vspace{8 cm}
+\end{proof}
+
+\begin{problem}{3.4 (B.P. 7.2)}
+\end{problem}
+\begin{proof}
+Given $v(p_x, p_y, m) = m\left(\frac{(\alpha)}{p_x}\right)^{a}\left(\frac{(1 - \alpha)}{p_y}\right)^{1 - a}$ and $ e(p_x, p_y, U) = \frac{up_x^{\alpha}p_y^{1 - \alpha}}{1 - \alpha}\left(\frac{1 - \alpha}{\alpha}\right)^{\alpha} $, replacing $m$ in the indirect utility function with the expenditure function shows that
+$$
+v(p_x, p_y, m = e(p_x, p_y, U)) = \frac{Up_x^{\alpha}p_y^{1 - \alpha}}{1 - \alpha}\left(\frac{1 - \alpha}{\alpha}\right)^{\alpha}\left(\frac{(\alpha)}{p_x}\right)^{a}\left(\frac{(1 - \alpha)}{p_y}\right)^{1 - a} = U.
+$$
+This shows that the indirect utility function and the expenditure functions are inverses because $e^{-1}$ is defined to be the function such that $e^{-1}(p_x, p_y, e(p_x, p_y, U)) = U$. The above equation shows that $v$ is a function such that $v(p_x, p_y, e(p_x, p_y, U))$, and thus by definition $v = e^{-1}$.
+\end{proof}
+
+\begin{problem}{3.5 (B.P. 7.2)}
+\end{problem}
+\begin{proof}
+Given $v(p_x, p_y, m) = m\left(\frac{(\alpha)}{p_x}\right)^{a}\left(\frac{(1 - \alpha)}{p_y}\right)^{1 - a}$ and $ e(p_x, p_y, U) = \frac{Up_x^{\alpha}p_y^{1 - \alpha}}{1 - \alpha}\left(\frac{1 - \alpha}{\alpha}\right)^{\alpha} $, replacing $U$ in the expenditure function with the indirect utility function shows that
+$$
+e(p_x, p_y, U = v(p_x, p_y, m)) = m\left(\frac{(\alpha)}{p_x}\right)^{a}\left(\frac{(1 - \alpha)}{p_y}\right)^{1 - a}\frac{p_x^{\alpha}p_y^{1 - \alpha}}{1 - \alpha}\left(\frac{1 - \alpha}{\alpha}\right)^{\alpha} = m.
+$$
+This shows that the indirect utility function and the expenditure functions are inverses because $v^{-1}$ is defined to be the function such that $v^{-1}(p_x, p_y, v(p_x, p_y, m)) = m$. The above equation shows that $e$ is a function such that $e(p_x, p_y, v(p_x, p_y, m))$, and thus by definition $e = v^{-1}$.
+\end{proof}
+
+\begin{problem}{3.6 (B.P. 7.2)}
+\end{problem}
+\begin{proof}
+Intuitively, let $a$ represent the minimum amount of money needed to obtain some specific utility $U$ given prices $p_x, p_y$ ($e(p_x, p_y, U)$). Then, given budget $a$, the maximum amount of utility that could be obtainable should be equal to $U$. To see this, first note that there must exist a bundle on the budget line (of level $a$) such that utility $U$ can be achieved given $a$ is the minimum possible budget where $U$ is attainable. So given a utility of at least $U$ can be obtained with $a$, assume for the sake of contradiction that it is possible to obtain a utility greater than $U$ with that budget $a$ using some bundle $(x, y)$. Given $U(x, y) > U$ and $U(0, 0) = 0$, the continuity property of utility functions states that there must exist a bundle $(kx, ky)$ such that $U(kx, ky) = U$ and $0 < k < 1$. The bundle $(kx, ky)$ will have a budget of $ka < a$, which contradicts the fact that $a$ is the smallest budget possible where utility $U$ can be achieved. This shows that the maximum attainable utility at budget $a$ ($e(p_x, p_y, U)$) is $U$, and thus $v(p_x, p_y, e(p_x, p_y, U)) = U$. This confirms that $v, e$ are inverses.
+
+Graphically, the following diagram explains how this intuition looks:
+\vspace{8 cm}
+\end{proof}
+
+\begin{problem}{3.7 (B.P. 7.2)}
+\end{problem}
+\begin{proof}
+We have shown in part 1 that 
+$$
+\lambda^* = \frac{U_x}{p_x} = \frac{\alpha}{p_x}\left(\frac{\alpha m}{p_x}\right)^{\alpha - 1}\left(\frac{(1 - \alpha) m}{p_y}\right)^{1 - \alpha} = \left(\frac{\alpha}{p_x}\right)^{\alpha}\left(\frac{1 - \alpha}{p_y}\right)^{1 - \alpha}.
+$$
+and 
+$$
+\eta^* = \frac{p_x^a(p_y)^{1 - a}}{a^a(1 - a)^{1 - a}} = \left(\frac{p_x}{\alpha}\right)^{\alpha}\left(\frac{p_y}{1 - \alpha}\right)^{1 - a}.
+$$
+This shows that $\lambda^* = \frac{1}{\eta^*}$. The intuition behind this solution is that, as shown in the previous three parts, the expenditure function and the indirect utility function are inverses. It follows that constrained optimization problems on involving two functions will yield Lagrange multiplies that are inverses of each other.
+\end{proof}
+
+\begin{problem}{4.1 (Exercise 1)}
+\end{problem}
+\begin{proof}
+Given $U(x_1, x_2) = \left(x_1^{-\rho} + \omega x_2^{-\rho}\right)^{-1/\rho}$ and given $p_1x_1 + p_2x_2 = m$, it follows that $x_1 = \frac{m - p_2x_2}{p_1}$, and substituting this into the utility function shows that the maximum utility is achieved when $x_2$ (Marshallian demand for good 2) is chosen such that the following value is maximized:
+$$
+\left(\left(\frac{m - p_2x_2}{p_1}\right)^{-\rho} + \omega x_2^{-\rho}\right)^{-1/\rho}
+$$
+This value of $x_2$ is equivalent to the value of $x_2$ that minimizes the expression $\left(\left(\frac{m - p_2x_2}{p_1}\right)^{-\rho} + \omega x_2^{-\rho}\right)$ given $\rho > 0$. $\frac{d}{dx_2}\left(\left(\frac{m - p_2x_2}{p_1}\right)^{-\rho} + \omega x_2^{-\rho}\right) = (p_2/p_1)p\left(\frac{m - p_2x_2}{p_1}\right)^{-p} - p\omega x_2^{-p - 1} = 0$, and solving for this equation shows that
+$$
+(p_2/p_1)\left(\frac{m - p_2x_2}{p_1}\right)^{-p} = \omega x_2^{-p - 1}
+$$
+$$
+x_2 = \frac{m}{(p_2/\omega p_1)^{\frac{1}{p + 1}}p_1 + p_2}.
+$$
+Similarly, $x_2 = \frac{m - p_1x_1}{p_2}$, and substituting this into the utility function shows that the maximum utility is achieved when $x_1$ (Marshallian demand for good 1) is chosen such that the following value is maximized:
+$$
+\left(\omega\left(\frac{m - p_1x_1}{p_2}\right)^{-\rho} + x_1^{-\rho}\right)^{-1/\rho}
+$$
+This value of $x_1$ is equivalent to the value of $x_1$ that minimizes the expression $\left(\omega\left(\frac{m - p_1x_1}{p_2}\right)^{-\rho} + x_1^{-\rho}\right)$ given $\rho > 0$. $\frac{d}{dx_1}\left(\omega\left(\frac{m - p_1x_1}{p_2}\right)^{-\rho} + x_1^{-\rho}\right) = \omega(p_1/p_2)p\left(\frac{m - p_1x_1}{p_2}\right)^{-p} - px_1^{-p - 1} = 0$, and solving for this equation shows that
+$$
+\omega(p_1/p_2)\left(\frac{m - p_1x_1}{p_2}\right)^{-p} = x_1^{-p - 1}
+$$
+$$
+x_1 = \frac{m}{(\omega p_1/p_2)^{\frac{1}{p + 1}}p_2 + p_1}.
+$$
+Thus, 
+$$
+\kappa = \frac{x_2}{x_1} = \frac{(p_2/\omega p_1)^{\frac{1}{p + 1}}p_1 + p_2}{(\omega p_1/p_2)^{\frac{1}{p + 1}}p_2 + p_1} = \frac{\omega^{-\frac{1}{p + 1}}p_1^{\frac{p}{p + 1}} + p_2^{\frac{p}{p + 1}}}{\omega^{\frac{1}{p + 1}}p_1^{\frac{p}{p + 1}} + p_2^{\frac{p}{p + 1}}},
+$$
+which is a constant.
+\end{proof}
+
+\begin{problem}{4.2 (Exercise 1)}
+\end{problem}
+\begin{proof}
+We have shown in the calculations of the previous part that 
+$$
+x_2^M = \frac{m}{(p_2/\omega p_1)^{\frac{1}{p + 1}}p_1 + p_2}.
+$$
+This value is proportional to income $m$, and it shows that the income elasticity of the Marshallian demand (for both goods) is always a fixed constant.
+\end{proof}
+
+\begin{problem}{4.3 (Exercise 1)}
+\end{problem}
+\begin{proof}
+To calculate the marginal utility of income, note that $\lambda^* = \frac{U_x(x_1^*, y_1^*)}{p_x}$. $U_x(x, y) = x_1^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1}$, thus, by substituting in the Marshallian demand,
+$$
+\lambda^* = \frac{U_x(x_1^*, x_2^*)}{p_x} = \frac{1}{p_x}x_1^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1} 
+$$
+$$
+= \frac{1}{p_x}m^{-p - 1}\left((\omega p_1/p_2)^{\frac{1}{p + 1}}p_2 + p_1\right)^{p + 1}\left(m^{-p}\left((\omega p_1/p_2)^{\frac{1}{p + 1}}p_2 + p_1\right)^{p} + \omega m^{-p}\left((p_2/\omega p_1)^{\frac{1}{p + 1}}p_1 + p_2\right)^{p}\right)^{-(1/p) - 1}
+$$
+$$
+= \left(\left(\frac{(p_y/w)^{1/(1+p)}p_x + p_x^{1/(1 + p)}p_y}{(p_y/(wp_x))^{1/(1+p)}p_x + p_y}\right)^p+w^{1/(1 + p)p_y^{p/(1 + p)}}\right)^{-(1/p) - 1} = \left(p_x^{\frac{p}{p + 1}} + (wp_y^p)^{\frac{1}{p + 1}}\right)^{\frac{-1}{p} -1}
+$$
+
+Next, to calculate the indirect utility function, note that $v(p_1, p_2, m) = U(x_1^*, x_2^*)$, and through substitution this is equal to
+$$
+v(p_1, p_2, m) = \left(x_1^{-p} + wx_2^{-p}\right)^{-1/p} = \left(\left(\frac{m}{(\omega p_1/p_2)^{\frac{1}{p + 1}}p_2 + p_1}\right)^{-p} + w\left(\frac{m}{(p_2/\omega p_1)^{\frac{1}{p + 1}}p_1 + p_2}\right)^{-p}\right)^{-1/p}
+$$
+$$
+= m\left(\left((\omega p_1/p_2)^{\frac{1}{p + 1}}p_2 + p_1\right)^{p} + w\left((p_2/\omega p_1)^{\frac{1}{p + 1}}p_1 + p_2\right)^{p}\right)^{-1/p} = m\left(p_x^{\frac{p}{p + 1}} + (wp_y^p)^{\frac{1}{p + 1}}\right)^{\frac{-1}{p} -1} = m\lambda^*.
+$$
+This shows that $\lambda^*$ and $v(p_1, p_2, m)$ are proportional, and the ratio between them $m$.
+\end{proof}
+
+\begin{problem}{4.4 (Exercise 1)}
+\end{problem}
+\begin{proof}
+Next, to calculate the elasticity of substitution for $U(x_1, x_2)$, note that
+$$
+U_{x_1}(x_1, x_2) = x_1^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1},
+$$
+$$
+U_{x_2}(x_1, x_2) = \omega x_2^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1},
+$$
+thus
+$$
+\frac{U_{x_1}}{U_{x_2}} = \frac{x_1^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1}}{\omega x_2^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1}} = \frac{x_1^{- p - 1}}{\omega x_2^{- p - 1}} = \frac{x_2^{p + 1}}{\omega x_1^{p + 1}}
+$$
+It then follows that
+$$
+ln\left(\frac{x_2}{x_1}\right) = \frac{1}{-(p+1)}ln\left(\frac{U_1}{U_2}\omega\right) = \frac{1}{-(p+1)}ln\left(\frac{U_1}{U_2}\right) - \frac{1}{-(p+1)}ln\left(\omega\right).
+$$
+Then, the elasticity of substitution is
+$$
+\frac{d\left(ln(x_2/x_1)\right)}{d\left(ln(U_{x_1}/U_{x_2})\right)} = \frac{1}{-(p+1)}.
+$$
+The interesting observation is that the elasticity of substitution is a constant.
+\end{proof}
+
+\begin{problem}{4.5 (Exercise 1)}
+\end{problem}
+\begin{proof}
+Let $U$ denote the target utility. Then, in order to calculate the Hicksian demands $x_1^*, x_2^*$, the Lagrangian methods states that
+$$
+L_x = p_1 + \lambda(U_1) = p_1 + \lambda x_1^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1}= 0,
+$$
+$$
+L_y = p_2 + \lambda(U_2) = p_2 + \lambda \omega x_2^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1} = 0,
+$$
+$$
+L_{\lambda} = U - U(x_1^*, x_2^*) = 0,
+$$
+The equation for $L_x$ shows that $ -p_1 = \lambda x_1^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1}$, and thus 
+$$
+\lambda = \frac{-p_1}{x_1^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1}}
+$$
+Similarly, the equation for $L_y$ shows that $ -p_2 = \lambda \omega x_2^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1}$, and thus 
+$$
+\lambda = \frac{-p_2}{\omega x_2^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1}}.
+$$
+It follows that
+$$
+\frac{-p_2}{\omega x_2^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1}} = \lambda = \frac{-p_1}{x_1^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1}}
+$$
+$$
+\frac{-p_2}{\omega x_2^{- p - 1}} = \frac{-p_1}{x_1^{- p - 1}}, \left(\frac{p_2}{p_1\omega}\right)^{-1/(p + 1)}x_1 = x_2.
+$$
+Substituting this relationship into the utility function shows that
+$$
+U = \left(x_1^{-p} + \omega x_2^{-p}\right)^{-1/p} = \left(x_1^{-p} + \omega \left(\left(\frac{p_2}{p_1\omega}\right)^{-1/(p + 1)}x_1\right)^{-p}\right)^{-1/p} = x_1\left(1 + \omega \left(\frac{p_2}{p_1\omega}\right)^{p/(p + 1)}\right)^{-1/p}
+$$
+and thus $x_1 = U\left(1 + \omega \left(\frac{p_2}{p_1\omega}\right)^{p/(p + 1)}\right)^{1/p}$. It follows from the relationship $\left(\frac{p_2}{p_1\omega}\right)^{-1/(p + 1)}x_1 = x_2$ that 
+$$
+x_2 = U\left(\frac{p_2}{p_1\omega}\right)^{-1/(p + 1)}\left(1 + \omega \left(\frac{p_2}{p_1\omega}\right)^{p/(p + 1)}\right)^{1/p} = U\left(\omega + \left(\frac{p_2}{p_1\omega}\right)^{-p/(p + 1)}\right)^{1/p}.
+$$
+It is possible to see that both $x_1, x_2$ are proportional to $U$. Lastly, to compute the expenditure function,
+$$
+e(p_1, p_2, U) = p_1\left(U\left(1 + \omega \left(\frac{p_2}{p_1\omega}\right)^{p/(p + 1)}\right)^{1/p}\right) + p_2\left(U\left(\omega + \left(\frac{p_2}{p_1\omega}\right)^{-p/(p + 1)}\right)^{1/p}\right)
+$$
+$$
+= U\left(p_1\left(1 + \omega \left(\frac{p_2}{p_1\omega}\right)^{p/(p + 1)}\right)^{1/p} + p_2\left(\omega + \left(\frac{p_2}{p_1\omega}\right)^{-p/(p + 1)}\right)^{1/p}\right).
+$$
+\end{proof}
+
+\begin{problem}{4.6 (Exercise 1)}
+\end{problem}
+\begin{proof}
+Note that 
+$$
+x_2 = U\left(\omega + \left(\frac{p_2}{p_1\omega}\right)^{-p/(p + 1)}\right)^{1/p},
+$$
+and thus any proportional increase in $p_1, p_2$ would cancel each other out. This shows that the Hicksian demand for good 2 is homogeneous of degree 0. Similarly,
+$$
+x_1 = U\left(1 + \omega \left(\frac{p_2}{p_1\omega}\right)^{p/(p + 1)}\right)^{1/p}
+$$
+and thus any proportional increase in $p_1, p_2$ would cancel each other out. This shows that the Hicksian demand for good 1 is homogeneous of degree 0. Lastly, note that
+$$
+e(tp_1, tp_2, U) = U\left(tp_1\left(1 + \omega \left(\frac{tp_2}{tp_1\omega}\right)^{p/(p + 1)}\right)^{1/p} + tp_2\left(\omega + \left(\frac{tp_2}{tp_1\omega}\right)^{-p/(p + 1)}\right)^{1/p}\right)
+$$
+$$
+ = Ut\left(p_1\left(1 + \omega \left(\frac{p_2}{p_1\omega}\right)^{p/(p + 1)}\right)^{1/p} + p_2\left(\omega + \left(\frac{p_2}{p_1\omega}\right)^{-p/(p + 1)}\right)^{1/p}\right) = te(p_1, p_2, U).
+$$
+This shows that the expenditure function is homogeneous of degree 1 in $(p_1, p_2)$.
+
+\end{proof}
+
+\begin{problem}{4.7 (Exercise 1)}
+\end{problem}
+\begin{proof}
+One of the constraints of the cost minimization problem states that $p_x = \eta^*U_x(x_h^*, y_h^*)$. In other words,
+$$
+\eta^* = \frac{U_1(x_1^*, x_2^*)}{p_1} = \frac{x_1^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p) - 1}}{p_1} = \frac{x_1^{- p - 1}\left(x_1^{-p} + \omega x_2^{-p}\right)^{-(1/p)}}{p_1\left(x_1^{-p} + \omega x_2^{-p}\right)} = \frac{U(x^*, y^*)}{p_1x_1\left(1 + \omega x_2^{-p}x_1^p\right)} 
+$$
+
+$$
+= \frac{U}{p_1\left(U\left(1 + \omega \left(\frac{p_2}{p_1\omega}\right)^{p/(p + 1)}\right)^{1/p}\right)\left(1 + \omega\left(U\left(1 + \omega \left(\frac{p_2}{p_1\omega}\right)^{p/(p + 1)}\right)^{1/p}\right)^{-p}\left(U\left(\omega + \left(\frac{p_2}{p_1\omega}\right)^{-p/(p + 1)}\right)^{1/p}\right)^{p}\right)}
+$$
+$$
+= \frac{1}{p_1\left(\left(1 + \omega \left(\frac{p_2}{p_1\omega}\right)^{p/(p + 1)}\right)^{1/p}\right)\left(1 + \omega\left(1 + \omega \left(\frac{p_2}{p_1\omega}\right)^{p/(p + 1)}\right)^{-1}\left(\omega + \left(\frac{p_2}{p_1\omega}\right)^{-p/(p + 1)}\right)\right)}
+$$
+$$
+= \frac{1}{p_x\left(\left(1 + \omega\left(\frac{p_y}{p_x\omega}\right)^{\frac{p}{p + 1}}\right)^{\frac{1 + p}{p}}\right)} = \frac{1}{\left(\left(p_x^{\frac{p}{p + 1}} + \omega^{\frac{1}{p + 1}}\left(p_y\right)^{\frac{p}{p + 1}}\right)^{\frac{1 + p}{p}}\right)} = \left(p_x^{\frac{p}{p + 1}} + \left(\omega p_y^p\right)^{\frac{1}{p + 1}}\right)^{-\frac{1}{p} - 1}.
+$$
+This shows that $\eta^* = \lambda^*$.
+\end{proof}
+
+\begin{problem}{5.1 (Exercise 2)}
+\end{problem}
+\begin{proof}
+Given the budget constraint 
+$$
+m = p_1x_1 + p_2x_2 + p_3x_3,
+$$
+observe that
+$$
+1 = \frac{d}{dm}(m) = \frac{d}{dm}(p_1x_1 + p_2x_2 + p_3x_3) = \frac{dx_1}{dm}\frac{p_1x_1m}{x_1m} + \frac{dx_2}{dm}\frac{p_2x_2m}{x_2m} + \frac{dx_3}{dm}\frac{p_3x_3m}{x_3m}
+$$
+$$
+ = s_1 \frac{dx_1}{dm}\frac{m}{x_1} + s_2 \frac{dx_2}{dm}\frac{m}{x_2} + s_3 \frac{dx_3}{dm}\frac{m}{x_3} = s_1\eta_1 + s_2\eta_2 + s_3\eta_3.
+$$
+This shows that the average of the elasticities weighted by shares is 1.
+\end{proof}
+
+\begin{problem}{5.2 (Exercise 2)}
+\end{problem}
+\begin{proof}
+Given the constraint from the previous part, it is impossible for all goods to be inferior. If $\eta_i$ was negative for all $i$, it is clear that $s_1\eta_1 + s_2\eta_2 + s_3\eta_3 < 0$, which contradicts the fact that $s_1\eta_1 + s_2\eta_2 + s_3\eta_3 = 1$. On the other hand, it is possible for all goods to be normal. For example, if all elasticities were 1, then the weighted average $s_1\eta_1 + s_2\eta_2 + s_3\eta_3$ would also be equal to 1. On the other hand, if $\eta_i > 1$ for all $i$, it is clear that the weighted average of all $\eta_i$ must be greater than 1, which contradicts the fact that $s_1\eta_1 + s_2\eta_2 + s_3\eta_3 = 1$. This shows that not all goods can be luxuries. Similarly, not all goods can be necessities because if $\eta_i < 1$ for all $i$, $s_1\eta_1 + s_2\eta_2 + s_3\eta_3 < 1$.
+\end{proof}
+
+\begin{problem}{5.3 (Exercise 2)}
+\end{problem}
+\begin{proof}
+Given the budget constraint
+$$
+m = p_1x_1 + p_2x_2 + p_3x_3,
+$$
+observe that
+$$
+0 = \frac{d}{dp_1}(m) = \frac{d}{dp_1}\left(p_1x_1 + p_2x_2 + p_3x_3\right) = x_1 + p_1\frac{dx_1}{dp_1} + p_2\frac{dx_2}{dp_1} + p_3\frac{dx_3}{dp_1} 
+$$
+$$
+= \frac{p_1}{m}x_1 + \frac{p_1x_1}{mx_1}p_1\frac{dx_1}{dp_1} + \frac{p_1x_2}{mx_2}p_2\frac{dx_2}{dp_1} + \frac{p_1x_3}{mx_3}p_3\frac{dx_3}{dp_1} = s_1 + s_1\frac{p_1}{x_1}\frac{dx_1}{dp_1} + s_2\frac{p_2}{x_2}\frac{dx_2}{dp_1} + s_3\frac{p_3}{x_3}\frac{dx_3}{dp_1}
+$$
+$$
+ = s_1 + s_1\epsilon_{1, 1}^M + s_2\epsilon_{2, 1}^M + s_3\epsilon_{3, 1}^M.
+$$
+\end{proof}
+
+\begin{problem}{5.4 (Exercise 2)}
+\end{problem}
+\begin{proof}
+Given good 1 is price elastic, that means that increasing the price of that good would decrease the quantity of good 1 demanded. However, in the case that good 1 and the other goods are complements, increasing the price of good 1 would in effect decrease the demand for the other goods. On the other hand, in the case that good 1 and the other goods are substitutes, increasing the price of good 1 would in effect increase the demand for the other goods by decreasing the demand for good 1. So, in order to draw a conclusion, it is necessary to know whether good 1 is complements or substitutes with the other goods.
+\end{proof}
+
+\begin{problem}{5.5 (Exercise 2)}
+\end{problem}
+\begin{proof}
+First, observe that
+$$
+\frac{dx_1^m(tp_1, tp_2, tp_3, tm)}{dt} = \lim_{\delta \rightarrow 0} \frac{x_1^m((t + \delta)p_1, (t + \delta)p_2, (t + \delta)p_3, (t + \delta)m) - x_1^m(tp_1, tp_2, tp_3, tm)}{\delta}.
+$$
+$$
+ = \lim_{\delta \rightarrow 0} \frac{x_1^m(tp_1, tp_2, tp_3, (t + \delta)m) - x_1^m(tp_1, tp_2, tp_3, tm)}{\delta} + \frac{x_1^m(tp_1, tp_2, (t + \delta)p_3, (t + \delta)m) - x_1^m(tp_1, tp_2, tp_3, (t + \delta)m)}{\delta}
+$$
+$$
++ \frac{x_1^m(tp_1, (t + \delta)p_2, (t + \delta)p_3, (t + \delta)m) - x_1^m(tp_1, tp_2, (t + \delta)p_3, (t + \delta)m)}{\delta}
+$$
+$$
++ \frac{x_1^m((t + \delta)p_1, (t + \delta)p_2, (t + \delta)p_3, (t + \delta)m) - x_1^m(tp_1, (t + \delta)p_2, (t + \delta)p_3, (t + \delta)m)}{\delta}
+$$
+$$
+= m\frac{\partial x_1^m}{\partial m} + p_1\frac{\partial x_1^m}{\partial p_1} + p_2\frac{\partial x_1^m}{\partial p_2} + p_3\frac{\partial x_1^m}{\partial p_3} 
+$$
+Next, note that
+$$
+0 = \frac{dx_1^m(p_1, p_2, p_3, m)}{dt} = \frac{dx_1^m(tp_1, tp_2, tp_3, tm)}{dt} = m\frac{\partial x_1^m}{\partial m} + p_1\frac{\partial x_1^m}{\partial p_1} + p_2\frac{\partial x_1^m}{\partial p_2} + p_3\frac{\partial x_1^m}{\partial p_3},
+$$
+and thus divide everything in the equation by $x_1^m$ to show that
+$$
+0 = \frac{m}{x_1^m}\frac{\partial x_1^m}{\partial m} + \frac{p_1}{x_1^m}\frac{\partial x_1^m}{\partial p_1} + \frac{p_2}{x_1^m}\frac{\partial x_1^m}{\partial p_2} + \frac{p_3}{x_1^m}\frac{\partial x_1^m}{\partial p_3} = \eta_1 + \epsilon_{1, 1} + \epsilon_{1, 2} + \epsilon_{1, 3}.
+$$
+\end{proof}
+
+\begin{problem}{5.6 (Exercise 2)}
+\end{problem}
+\begin{proof}
+Given $\epsilon_{x_i, p_i} > 0$, and given $\eta_1 + \epsilon_{1, 1} + \epsilon_{1, 2} + ...  = 0$ from the previous part, if $\eta_1 < \epsilon_{x_i, p_i}$ (i.e. good $i$ is a reasonably inferior product), then it follows that the sum of all of the cross-price elasticities is positive. This means that it is possible for every cross-price elasticity to be positive, meaning that it is possible for every good to be substitutes to good 1. Thus, the claim is not necessarily true in every case.
+\end{proof}
+
+\begin{problem}{5.7 (Exercise 2)}
+\end{problem}
+\begin{proof}
+If good $1$ is inferior, the $\eta_1 < 0$. If good $1$ is not a Giffen good, then $\epsilon_{1, 1} < 0$. Given that $\eta_1 + \epsilon_{1, 1} + \epsilon_{1, 2} + \epsilon_{1, 3} = 0$, the sum of the cross-price elasticities must be positive. This suggests that the other goods are gross substitutes to good 1.
+\end{proof}
+
+\begin{problem}{6.1 (Exercise 3)}
+\end{problem}
+\begin{proof}
+Note that
+$$
+\frac{\partial v(p_x, p_y, m)}{\partial m} = \lim_{\delta \rightarrow 0} \frac{U(x^M(p_x, p_y, m + \delta), y^M(p_x, p_y, m + \delta))}{\delta} 
+$$
+$$
+= \lim_{\delta \rightarrow 0} \frac{U\left(x^M(p_x, p_y, m) + \delta\left(\frac{\partial x^M}{\partial m}\right), y^M(p_x, p_y, m) + \delta\left(\frac{\partial y^M}{\partial m}\right)\right) - U(x^M, y^M)}{\delta}
+$$
+$$
+= \lim_{\delta \rightarrow 0} \frac{U\left(x^M + \delta\left(\frac{\partial x^M}{\partial m}\right), y^M + \delta\left(\frac{\partial y^M}{\partial m}\right)\right) - U\left(x^M + \delta\left(\frac{\partial x^M}{\partial m}\right), y^M\right)}{\delta}
+$$
+$$
++ \frac{U\left(x^M, y^M + \delta\left(\frac{\partial y^M}{\partial m}\right)\right) - U\left(x^M, y^M\right)}{\delta} = \frac{\partial x^M}{\partial m}\frac{\partial U^*}{\partial x^M} + \frac{\partial y^M}{\partial m}\frac{\partial U^*}{\partial y^M}
+$$
+Then, note that given $L(p_x, p_y, m) = U(x, y) - \lambda(p_xx + p_yy - m)$, the first order conditions state that $\frac{\partial L}{\partial y} = 0, \frac{\partial L}{\partial x} = 0$. This directly shows that $\frac{\partial U}{\partial y} = \lambda p_y$, $\frac{\partial U}{\partial x} = \lambda p_x$. Substituting these relations into the above equation shows that
+$$
+\frac{\partial v(p_x, p_y, m)}{\partial m} = \frac{\partial x^M}{\partial m}\frac{\partial U^*}{\partial x^M} + \frac{\partial y^M}{\partial m}\frac{\partial U^*}{\partial y^M} = \frac{\partial x^M}{\partial m}(\lambda p_x) + \frac{\partial y^M}{\partial m}(\lambda p_y)
+$$
+$$
+= \lambda\left(\frac{\partial x^M}{\partial m}(p_x)\frac{mx^M}{mx^M} + \frac{\partial y^M}{\partial m}( p_y)\frac{my^M}{my^M}\right) = \lambda\left(s_1\eta_1 + s_2\eta_2\right) = \lambda^*(p_x, p_y, m),
+$$
+with the last equality being true due to the Engel aggregation property. This completes the proof.
+
+Intuitively, the beginning of the first step equates the change in maximum utility as a result of income change to the change in maximum utility as a result of income change. Then, the change in maximum utility as a function of income change is transformed into the products of the rate of utility change as the demand changes and the rate of demand change as income changes. The second stage then observes that the rate of utility change as the demand changes is proportional to the price of the good due to the utility maximization condition. Finally, the lambda can be factored out, and the remaining elements represent the share-weighted sum of income elasticities, which is always 1.
+\end{proof}
+
+\begin{problem}{6.2 (Exercise 3)}
+\end{problem}
+\begin{proof}
+Note that
+$$
+\frac{\partial e(p_x, p_y, U')}{\partial U} = \lim_{\delta \rightarrow 0} \frac{p_x\left(x^H(p_x, p_y, U' + \delta)\right) + p_y\left( y^H(p_x, p_y, U' + \delta)\right) - p_xx^H - p_yy^H}{\delta} 
+$$
+$$
+= \lim_{\delta \rightarrow 0} \frac{p_x\left(x^H\right) + p_x\delta\frac{\partial x^H}{\partial U'}+ p_y\left( y^H\right) + p_y\delta\frac{\partial y^H}{\partial U'} - p_xx^H - p_yy^H}{\delta} = p_x\left(\frac{\partial x^H}{\partial U'}\right) + p_y\left(\frac{\partial y^H}{\partial U'}\right)
+$$
+Again applying the first order conditions, we get that $p_x = \eta^*\frac{\partial U}{\partial x^H}$, $p_y = \eta^*\frac{\partial U}{\partial y^H}$. Substitution shows that
+$$
+\frac{\partial e(p_x, p_y, U')}{\partial U} = \eta^*\frac{\partial U}{\partial x^H}\left(\frac{\partial x^H}{\partial U'}\right) + \eta^*\frac{\partial U}{\partial y^H}\left(\frac{\partial y^H}{\partial U'}\right) = \eta^*\left(\frac{\partial U}{\partial x^H}\left(\frac{\partial x^H}{\partial U'}\right) + \frac{\partial U}{\partial y^H}\left(\frac{\partial y^H}{\partial U'}\right)\right)
+$$
+The chain rule states that $\left(\frac{\partial U}{\partial x^H}\left(\frac{\partial x^H}{\partial U'}\right) + \frac{\partial U}{\partial y^H}\left(\frac{\partial y^H}{\partial U'}\right)\right) = \frac{\partial U}{\partial U'}$, which is clearly $1$. Thus, we see that
+$$
+\frac{\partial e(p_x, p_y, U')}{\partial U} = \eta^*(p_x, p_y, U').
+$$
+This completes the proof.
+
+Intuitively, the beginning of the first step equates the change in minimum income as a result of utility change to the change in minimum income as a result of utility change. Then, the change in minimum income as a function of utility change is transformed into the price-weighted sum of the rates of demand change as a result of utility changed. The price is swapped out for a product of $\eta^*$ and a change in utility as a function of demand. Applying the chain rule cancels everything except $\eta$ out, completing the proof.
+\end{proof}
+
+\begin{problem}{6.3 (Exercise 3)}
+\end{problem}
+\begin{proof}
+Note that
+$$
+\frac{\partial v(p_x, p_y, m)}{\partial p_x} = \lim_{\delta \rightarrow 0} \frac{U(x^M(p_x + \delta, p_y, m), y^M(p_x + \delta, p_y, m))}{\delta} 
+$$
+$$
+= \lim_{\delta \rightarrow 0} \frac{U\left(x^M(p_x, p_y, m) + \delta\left(\frac{\partial x^M}{\partial p_x}\right), y^M(p_x, p_y, m) + \delta\left(\frac{\partial y^M}{\partial p_x}\right)\right) - U(x^M, y^M)}{\delta}
+$$
+$$
+= \lim_{\delta \rightarrow 0} \frac{U\left(x^M + \delta\left(\frac{\partial x^M}{\partial p_x}\right), y^M + \delta\left(\frac{\partial y^M}{\partial p_x}\right)\right) - U\left(x^M + \delta\left(\frac{\partial x^M}{\partial p_x}\right), y^M\right)}{\delta}
+$$
+$$
++ \frac{U\left(x^M, y^M + \delta\left(\frac{\partial y^M}{\partial p_x}\right)\right) - U\left(x^M, y^M\right)}{\delta} = \frac{\partial x^M}{\partial p_x}\frac{\partial U^*}{\partial x^M} + \frac{\partial y^M}{\partial p_x}\frac{\partial U^*}{\partial y^M}
+$$
+Then, note that given $L(p_x, p_y, m) = U(x, y) - \lambda(p_xx + p_yy - m)$, the first order conditions state that $\frac{\partial L}{\partial y} = 0, \frac{\partial L}{\partial x} = 0$. This directly shows that $\frac{\partial U}{\partial y} = \lambda p_y$, $\frac{\partial U}{\partial x} = \lambda p_x$. Substituting these relations into the above equation shows that
+$$
+\frac{\partial v(p_x, p_y, m)}{\partial p_x} = \frac{\partial x^M}{\partial p_x}\frac{\partial U^*}{\partial x^M} + \frac{\partial y^M}{\partial p_x}\frac{\partial U^*}{\partial y^M} = \frac{\partial x^M}{\partial p_x}(\lambda p_x) + \frac{\partial y^M}{\partial p_x}(\lambda p_y)
+$$
+$$
+= \lambda\left(\frac{\partial x^M}{\partial p_x}(p_x)\frac{x^M}{x^M} + \frac{\partial y^M}{\partial p_x}( p_y)\frac{p_xy^M}{p_xy^M}\right) = \lambda\left(\epsilon_{x, x}x^M + \epsilon_{x, y}\frac{p_yy^M}{p_x}\right) = \lambda x^M.
+$$
+Rearranging this equation shows that 
+$$
+\frac{\frac{\partial v(p_x, p_y, m)}{\partial p_x}}{\lambda} = \frac{\frac{\partial v(p_x, p_y, m)}{\partial p_x}}{\frac{\partial v(p_x, p_y, m)}{\partial m}} = x^M(p_x, p_y, m)
+$$
+
+This completes the proof.
+
+Intuitively, the beginning of the first step equates the change in maximum utility as a result of price change to the change in maximum utility as a result of price change. Then, the change in maximum utility as a function of price change is transformed into the products of the rate of utility change as the demand changes and the rate of demand change as price changes. The second stage then observes that the rate of utility change as the demand changes is proportional to the price of the good due to the utility maximization condition. Finally, the lambda can be factored out, and the remaining elements represent $x^M$ plus the sum of price elasticities and income elasticity, which is zero. This completes the proof.
+\end{proof}
+
+
+\end{document}

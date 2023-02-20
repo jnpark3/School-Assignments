@@ -1,0 +1,266 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 6}
+\author{Jian Park\\
+20700: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+
+ \begin{problem}{1}
+\end{problem}
+\begin{proof}[Solution]
+Let $B$ be some arbitrary set and let $A$ be the empty set. Definition 1.3 states that $A \subset B$ if every element in $A$ is an element of $B$. We observe $x \in B$ is true for all elements $x \in A$ given that there are no elements in $A$. Thus, $A \subset B$, showing that the empty set is a subset of any arbitrary set $B$.
+\end{proof}
+
+ \begin{problem}{2}
+\end{problem}
+\begin{proof}[Solution]
+Let $A$ denote the set of all algebraic numbers, and let $E_k$ denote the set of all algebraic numbers $z$ that can be represented in the form $a_nz^n + ... + a_0z^0 = 0$, where $n + |a_n| + ... + |a_0| = k$. Given that all algebraic numbers $z \in A$ can be represented as a polynomial in a form $a_nz^n + ... + a_0z^0 = 0$, $z \in E_k$ for some $k \in 1, 2, ...$. In addition, if $z \in E_k$ for some $k$, by definition $z$ is an algebraic number. Thus, we can see that $A = E_1 \cup E_2 \cup ...$.
+
+First, we will show that $E_k$ is finite for any $k \in 1, 2, ...$. Observe that it is impossible for any polynomial satisfying $n + |a_n| + ... + |a_0| = k$ to have a degree of greater than $k$ because if $n > k$, then the left side of the equation must be greater than $k$ given that all elements in the form $|a_k|$ are non-negative. In addition, observe that $|a_i| \leq k$ for all $i \in 1, ..., k$ because if $|a_i| > k$, that would also immediately imply that the left side of the equation is greater than the right side. Then, given that the degree of the polynomial is at most $k$, observe that there are at most $k+1$ coefficients. In addition, given that there are only $2k+1$ integers satisfying the property $a_i \leq k$, observe there are at most $(2k+1)^{k+1}$ polynomials satisfying $n + |a_n| + ... + |a_0| = k$. Lastly, the fundamental theorem of algebra states that any polynomial with a degree of $k$ has at most $k$ roots. Thus, there are at most $k(2k+1)^{k+1}$ algebraic numbers in $E_k$, and thus $E_k$ is finite for all $k$.
+
+The corollary of Theorem 2.12 states that $\bigcup_{a \in B} E_k$ is at most countable given that $B$ and $E_k$ are at most countable. If we let $B = \mathbb{N}$, we know that $\mathbb{N}$ is by definition countable and we already know that $E_k$ is at most countable (finite) for all $k$. Thus, 
+$$A = \bigcup_{a \in \mathbb{N}} E_k$$
+ is at most countable. We know $A$ is not finite given that all natural numbers are algebraic numbers, and the set of all natural numbers is not finite. It is easy to see that all natural numbers are algebraic given that for any $n \in \mathbb{N}$, $f(n) = 0$ where $f$ is the polynomial $f(x) = nx^2-n^2x$. Thus, $A$ must be countably infinite.
+\end{proof}
+
+ \begin{problem}{3}
+\end{problem}
+\begin{proof}[Solution]
+First, we will show that the set of all real numbers is uncountably infinite. Consider some countably infinite subset $E$ composed of real numbers $a_1, a_2, ...$ between $0$ and $1$. Construct a new real number $a \in (0, 1)$ such that the $n$-th digit of $a$ after the decimal point is some arbitrary integer from 0 to 9 excluding the $n$-th digit of $a_n \in E$. It is clear that $a \notin A$ because $a$ has at least one different digit from any $a_k \in E$. Thus, any countable subset of all real numbers between 0 and 1 is a proper subset of $(0, 1)$. This shows that the set of all real numbers between 0 and 1 is uncountably infinite because if this set were to be countable, then that means that this set is a proper subset of itself. Lastly, assume for the sake of contradiction that $\mathbb{R}$ is countably infinite. Theorem 2.8 states that every infinite subset of a countable set is countable, and it is easy to see that the set of all real numbers between 0 and 1 is a subset of $\mathbb{R}$. However, this set of numbers was shown to be uncountably infinite, thus $\mathbb{R}$ is uncountably infinite.
+
+Lastly, assume all real numbers are algebraic. We have shown in the previous question that the set of all algebraic numbers is countably infinite, and Theorem 2.8 states that the subset of all algebraic real numbers must also be countably infinite. However, the set of all algebraic real numbers cannot equal the set of all real numbers because the set of all real numbers is uncountably infinite. Thus, there must exist non-algebraic real numbers.
+\end{proof}
+
+ \begin{problem}{4}
+\end{problem}
+\begin{proof}[Solution]
+For the sake of contradiction, assume that the set of all irrational numbers $I$ is countable. By definition any real number $a \in \mathbb{R}$ is either irrational or rational, thus $a \in \mathbb{Q}$ or $a \in I$. This shows that $\mathbb{R} = \mathbb{Q} \cup I$. The corollary to Theorem 2.13 notes that the set of all rational numbers is countable. Then, observe from the corollary of Theorem 2.12 that the union of at most countably many sets that are at most countably infinite is also countably infinite, which implies that $\mathbb{Q} \cup I$ is at most countably infinite given that both $\mathbb{Q}$ and $I$ are countably infinite. However, this implies that $\mathbb{R}$ is at most countably infinite, which is a contradiction to the previous problem which shows that $\mathbb{R}$ is uncountably infinite. Thus, the assumption that the set of all irrational numbers is countable is incorrect.
+\end{proof}
+
+ \begin{problem}{5}
+\end{problem}
+\begin{proof}[Solution]
+Let $E_1$ denote the set of all real numbers in the form $1/n$ for all $n \in \mathbb{N}$, let $E_2$ denote the set of all real numbers in the form $1/n + 1$ for $n \in \mathbb{N}$, and let $E_3$ denote the set of all real numbers in the form $1/n + 2$. Let $E = E_1 \cup E_2 \cup E_3$, and we will prove that $E$ is a bounded set with exactly 3 limit points at $0, 1, $ and $2$. First, observe that $0 < n \leq 1$ for any $n \in E_1$. It then follows that, $1< n \leq 2$ for $n \in E_2$ and $2 < n \leq 3$ for $E_3$. Thus, $0 < n \leq 3$ for any $n \in E$, thus $E$ is bounded. 
+
+Next, let $N(o)$ denote some neighborhood centered at $0$ with radius $r$. It is clear that $(0, r)$ is a subset of this neighborhood. Then, observe that
+$$
+0 < \frac{1}{\ceil*{\frac{2}{r}}} \leq \frac{1}{\frac{2}{r}} = \frac{r}{2} < r.
+$$
+This shows that there exists a number in the form $1/n$ in $(0, r)$ where $n = \ceil*{\frac{1}{r}}$. This number $1/n$ is clearly an element of $E_1$, and it is also in $N(0)$ given it is in $(0, r)$. Thus, all neighborhoods $N(0)$ contain an element of $E$, and therefore $0$ is a limit point of $E$. Using a similar process, it is possible to show that $1$ and $2$ are also limit points of $E$. For any $N(1)$ with radius $r$, observe that
+$$
+1 < \frac{1}{\ceil*{\frac{2}{r}}} + 1 \leq \frac{1}{\frac{2}{r}}+ 1 = \frac{r}{2} + 1< r + 1,
+$$
+thus there exists an element in the form $1/n + 1$ inside $(1, 1+r)$ (and therefore $N(1)$) given that $n = \ceil*{\frac{2}{r}}$. This shows that all neighborhoods of $E$ contains an element of $E_2$ and therefore $E$. For any $N(2)$ with radius $r$, observe that
+$$
+2 < \frac{1}{\ceil*{\frac{2}{r}}} + 2 \leq \frac{1}{\frac{2}{r}}+ 2 = \frac{r}{2} + 2< r + 2,
+$$
+thus there exists an element in the form $1/n + 2$ inside $(2, 2+r)$ (and therefore $N(2)$) given that $n = \ceil*{\frac{2}{r}}$. This shows that all neighborhoods of $E$ contains an element of $E_3$ and therefore $E$. 
+
+To show that all other numbers are not limit points, first observe that there are no points in $E$ outside of the interval $[0, 3]$. If $p < 0$ or $p > 3$, setting the radius of $N(p)$ to be $(|p - 1.5| - 1.5)/2$ would enable $N(p)$ to be a neighborhood not containing any point within $[0, 3]$. Thus, all $p < 0$ and $p > 3$ are not limit points. Next, note that there are three intervals $(0, 1)$, $(1, 2)$, and $(2, 3)$. We will prove that $(0, 1)$ doesn't contain limit points of $E_1$, and without loss to generality this proof can be applied to the other two intervals for $E_2$ and $E_3$ respectively. Assume $p \in (0, 1)$ is a limit point. If $p$ is in the form $1/n$ for any natural number $n$, it is clear that setting the radius of $N(p)$ to be $1/2(n^2+n)$ will prevent $N(p)$ from containing any element of $E_1$ except for $p$ itself. This is true because $1/n - 1/(n+1) = 1/(n^2+n) > 1/2(n^2+n)$ and $1/(n-1) - 1/n = 1/(n^2-n) > 1/2(n^2+n)$. Next, if $p$ is not in the form $1/n$, it is evident that it lies in-between two elements of $E_1$. If the elements that $p$ is in between are in the form $1/n$ and $1/(n+1)$, then it is evident that setting the radius of $N(p)$ to be $(1/2)min(|1/n - p|, |1/(n+1) - p|)$ will enable the creation of an interval containing $p$ that does not contain any other element in $E$. Thus, there are no limit points of $E$ in the interval $(0, 1)$, and the same follows for the intervals $(1, 2)$ and $(2, 3)$. Thus, 0, 1, and 2 are the only limit points of $E$.
+\end{proof}
+
+ \begin{problem}{6}
+\end{problem}
+\begin{proof}[Solution]
+Let $p$ be some point in $E$ but not $E'$. Then, by definition $p$ is an isolated point in $E$, and there must exist a neighborhood $N(p)$ centered at $p$ with a sufficiently small radius such that it contains no element of $E$ except for $p$. In addition, this neighborhood would also not contain any limit points of $E$ due to Theorem 2.30, which states that all neighborhoods containing a limit point of $E$ should contain infinitely many points in $E$. Let $N'(p)$ denote a neighborhood of $p$ such that $N'(p)$ doesn't contain any points in $E'$ or $E$ (except for $p$ itself). $N'(p)$ is open for all $p$ as shown in Theorem 2.19, and Theorem 2.24 shows that the union of neighborhoods $N'(p)$ for all $p \in P$ is an open set where $P$ is the set of all points in $E$ but not in $E'$. Let this union be $A$.
+
+Next, let $p$ be some point that is neither in $E$ nor $E'$. Given $p$ is not in $E'$, it is not a limit point, and by definition there must exist a neighborhood $N(p)$ with a sufficiently small radius such that it contains no element of $E$. In addition, this neighborhood would also not contain any limit points of $E$ due to Theorem 2.30, which states that all neighborhoods containing a limit point of $E$ also contain infinitely many points in $E$. Let $N'(p)$ denote a neighborhood of $p$ such that $N'(p)$ doesn't contain any points in $E'$ or $E$. $N'(p)$ is open as shown in Theorem 2.19 for all $p$, and Theorem 2.24 shows that the union of neighborhoods $N'(p)$ for all $p \in Q$ is an open set where $Q$ is the set of all points in neither $E$ nor $E'$. Let this union be $B$.
+
+Then, observe that for any point $p$ in the compliment of $E'$, if $p \in E$ then $p \in A$ and if $p \notin E$ then $p \in B$. In addition, no points in $A$ nor $B$ contain any point in $E'$ by definition. Thus, the compliment of $E'$ is equal to $A \cup B$, which Theorem 2.24 shows is an open set given both $A$ and $B$ are open. Then, given that the compliment of $E'$ is open, the corollary to Theorem 2.23 shows that $E'$ is closed.
+
+Next, we will prove that $E$ and $\overline{E}$ have the same limit points. Let $p$ be a limit point of $E$ but not $\overline{E}$. This implies that there exists a neighborhood $N$ containing $p$ such that $N$ contains no element of $\overline{E}$ except for maybe $p$ itself. However, given that $E \subset E \cup E' = \overline{E}$, we observe that $N$ also contains no element of $E$ except for maybe $p$ itself, thus, $p$ is not a limit point of $E$. This is a contradiction, thus all limit points of $E$ are also limit points of $\overline{E}$. Then, assume that $p$ is a limit point of $\overline{E}$ but not $E$. This implies that there exists a neighborhood $N$ containing $p$ such that $N$ contains no elements in $E$. Thus, given that $E \subset E \cup E' = \overline{E}$, either $N$ contains no elements of $\overline{E}$ or all elements of $\overline{E}$ that are in $N$ are elements of $E'$. If $N$ contains no elements of $\overline{E}$, then $p$ is clearly not a limit point of $\overline{E}$, which is a contradiction. If $N$ contains a limit point of $E$ (an element of $E'$), then Theorem 2.20 states that $N$ must contain infinitely many elements of $E$, which is clearly not true. Thus, it is impossible for a point to be a limit point for $\overline{E}$ but not $E$, which shows that all limit points of $E$ are also limit points of $\overline{E}$. This concludes the proof that $E$ and $\overline{E}$ have the same limit points.
+
+Lastly, consider the set $E$ as described in Problem 5. We noted that $E$ has three limit points 0, 1, and 2. Then, $E'$ is the set $0, 1, 2$, which clearly does not have any limit points due to the Corollary of Theorem 2.20. Thus, $E$ and $E'$ do not have the same limit values.
+\end{proof}
+
+ \begin{problem}{7}
+\end{problem}
+\begin{proof}[Solution]
+First, let 
+$$B = \bigcup_{A \in E} A,$$
+where $E$ is either a finite or infinite collection of subsets. Then, assume that $p$ is some point in $\bigcup_{A \in E} \overline{A}$ but not $\overline{B}$. We know there must exist some $A_1 \in E$ such that $p \in \overline{A_1}$, thus $p$ is a limit point for $A_1$. Then, given that $p$ is not a limit point of $B$, this implies that there exists a neighborhood $N(p)$ such that $N$ contains no points in $B$. It then follows that $N$ contains no points in $A_1$ given that $A_1$ is a subset of $B$. However, this is a contradiction because we have shown that $p$ must be a limit point of $A_1$. Thus, we observe that all points in $\bigcup_{A \in E} \overline{A}$ are also in $\overline{B}$, thus
+$$\overline{B} \supseteq \bigcup_{A \in E} \overline{A}.$$
+Next, let
+$$B = \bigcup_{A \in E} A,$$
+where $E$ is specifically a finite collection subsets. Assume that $p$ is some point in $\overline{B}$ but not $\bigcup_{A \in E} \overline{A}$. Given that $p$ is not a limit point in any $A \in E$, observe that there must exist a neighborhood $N_A(p)$ for each of these subsets $A$ such that there are no points from $A$ inside $N_A(p)$ excluding maybe $p$ itself. Construct such neighborhood $N_A(p)$ for all $A \in E$, and out of all these neighborhoods, take the neighborhood $N_A'(p)$ with the smallest radius. Such a neighborhood exists given that $E$ is a finite set, and it also follows that this neighborhood contains no point from any $A \in E$ (excluding maybe $p$ itself) given $N'_A(p)$ is contained by all $N_A(p)$ for all $A \in E$ due to its smaller radius. Thus, it follows that $N_A'(p)$ contains no points from $\bigcup_{A \in E} A = B$, which shows that $p$ is not a limit point of $B$. This is a contradiction to the fact that $p \in \overline{B}$. Thus all points in $\overline{B}$ are also in $\bigcup_{A \in E} \overline{A}$ when $E$ is finite, thus
+$$\overline{B} \subseteq \bigcup_{A \in E} \overline{A}.$$
+Thus, we conclude that
+$$\overline{B} = \bigcup_{A \in E} \overline{A}$$
+when $E$ is finite, and
+$$\overline{B} \supseteq \bigcup_{A \in E} \overline{A}$$
+when $E$ is infinite. 
+
+Now, we observe that for the above equation, the inclusion can be proper by considering the infinite set of subsets $E = A_1, A_2, ...$ where $A_k$ only contains the point $1/k$. All subsets in $E$ clearly contain a finite number of points, thus the Corollary to Theorem 2.20 shows that every subset in this collection lack any limit points. This shows that $\bigcup_{A \in E} \overline{A}$ is the empty set. On the other hand, the union of all subsets in $E$ contain all points in the form $1/n$ for $n \in \mathbb{N}$. Then, consider the neighborhood $N(0)$ with radius $r$. Then, we can see that $\ceil{\frac{2}{r}} \in \mathbb{N}$, and
+$$
+0 < \frac{1}{\ceil{\frac{2}{r}}} \leq \frac{1}{\frac{2}{r}} = \frac{r}{2} < r.
+$$
+This shows that interval $(0,r) \subset N(0)$ contains an element of $B$, thus showing that any neighborhood containing $0$ also contains an element of $B$. This shows that $0$ is a limit point of $B$, thus $\overline{B}$ is non-empty, thus showing that the inclusion 
+$$\overline{B} \supseteq \bigcup_{A \in E} \overline{A}$$
+can be proper.
+\end{proof}
+
+ \begin{problem}{8}
+\end{problem}
+\begin{proof}[Solution]
+Let $p$ be some point in an open set $E \subset \mathbb{R}^2$. Let $N'(p)$ denote some neighborhood centered at $p$ where all points in $N'(p)$ are an element of $E$. Such a set must exist by definition given that $p$ is an interior point in $E$, which is an open set. For any neighborhood $N(p)$, if the radius of $N(p)$ is less than or equal to $N'(p)$ then it is clear that all points in $N'(p)$ are also members of $E$. If $N(p)$ has a radius greater than that of $N'(p)$, it is clear that $N'(p) \subset N(p)$, and given that $N'(p)$ contains points inside $E$, so does $N(p)$. Thus, all neighborhoods of $N(p)$ contains points in $E$, which shows that all $p \in E$ are limit points of $E \subset \mathbb{R}^2$.
+
+On the other hand we can easily show that not all points in a closed set are limit points. Consider subset $E \subset \mathbb{R}^2$ that contains only one point $a$. The set $E^c$ is the set of all points excluding $a$, and for any $p \in E^c$, it is easy to see that $N(p)$ with radius $d(p, a)/2$ only contains points in $E^c$. This shows that every point of $E^c$ is an interior point, thus $E^c$ is an open set, and the corollary to Theorem 2.23 shows that $E$ is closed. However, point $a$ is clearly not a limit point because $E$ has no limit points (Corollary to Theorem 2.20 notes that a finite point sets has no limits). Thus, not all points in a closed set are limit points.
+\end{proof}
+
+ \begin{problem}{9a}
+\end{problem}
+\begin{proof}[Solution]
+Let $p$ be some interior point of $E$. Then, by definition 2.18, there exists some neighborhood $N(p)$ where $N(p) \subset E$. Let the radius of $N(p)$ be $r_1$. Then, consider the neighborhood $N'(p)$ whose radius is $r_1/2$. It is clear that $N'(p) \subset N(p)$ because if $q \in N'(p)$, $d(p, q) \leq r_1/2 < r_1$, thus $q \in N(p)$. Next, we will show that all points in $N'(p)$ are also an interior point of $E$. For any $q \in N'(p)$, construct a neighborhood $N(q)$ with radius $r_1/2$. Let $x \in N(q)$. By the triangle inequality, $N(p, q) + N(q, x) = r_1 \geq N(p, x)$, thus it is clear that $x \in N(p)$, which then means that $x \in E$. This shows that all points in $N(q)$ are in $E$, thus $q$ is an interior point for any $q \in N'(p)$. Thus, observe that in $E^o$, the same neighborhood $N'(p)$ contains exclusively points in $E^o$ because all points in $N'(p)$ are interior points of $E$ and thus in $E^o$. This shows that $p$ is an interior point of $E^o$ for any interior point $p$ in $E$. Given that $E^o$ contains all interior points of $E$, all points in $E^o$ are interior points, and thus $E^o$ is open.
+\end{proof}
+
+ \begin{problem}{9b}
+\end{problem}
+\begin{proof}[Solution]
+If $E = E^o$, then $E$ is open because we have shown in problem 9a that $E^o$ is always open.
+
+If $E$ is open, then all points in $E$ are interior points as shown in Definition 2.18. Given that $E^o$ is a subset of $E$ that contains all interior points of $E$, $E^o$ contains all points in $E$, and thus $E = E^o$. We can thus conclude that $E$ is open if and only if $E = E^o.$
+\end{proof}
+
+ \begin{problem}{9c}
+\end{problem}
+\begin{proof}[Solution]
+First, let $p \in G$. $G$ is open, thus Definition 2.18 states that $p$ is an interior point of $G$, thus there exists a neighborhood $N(p)$ that is a subset of $G$. It then also follows that $p$ is an interior point of $E$ because $N(p) \subset G \subset E$. Thus, all points in $G$ are in the interior of $E$, which shows that $G \subset E^o$.
+\end{proof}
+
+ \begin{problem}{9d}
+\end{problem}
+\begin{proof}[Solution]
+We observe that $E^o \subset E$ by definition because $E^o$ contains points in $E$ that are also interior points. Next, let $B$ denote the set of all points in $E$ but not $E^o$. Any point in $p \in B$ is by definition not an interior point of $E$, which means that all neighborhoods of $p$ contain a point outside of $E$. In other words, all neighborhoods of $p$ contains at least one point in $E^c$, which means it is a limit point of $E^c$. Thus, all points in $B$ are a limit point of $E^c$ but they are not in $E^c$ itself because all points in $B$ are in $E$. Then, let $p$ denote some limit point of $E^c$ that is not in $E^c$. If $p$ is not in $E^c$, that means it is in $E$. In addition, if $p$ is a limit point of $E^c$, that means all neighborhoods containing $p$ also contain some element in $E^c$, which shows that $p$ cannot be an interior point of $E$. Thus, $p \in B$. This shows that $B$, the set of all points in $E$ but not in $E^o$, is equivalent to the set of all limit points in $E^c$ that are not in $E^c$.
+
+Next, observe that $E = E^o \cup B$ by definition. Then, note that $(E^o)^c$ contains all points not in $E$ and the points in $E$ but not in $E^o$, which shows that $(E^o)^c = E^c \cup B$. Next, let $(E^c)'$ denote all the limit points of $E^c$, then note that $(E^c)' = E_1 \cup E_2$, where $E_1$ is the set of all points in $(E^c)'$ in $E^c$ and $E_2$ is the set of all points in $(E^c)'$ outside of $E^c$. We have already shown that $B = E_2$, and we can see that $E_1 \subset E^c$. Thus, $(E^o)^c = E^c \cup B = E^c \cup E_2 = E^c \cup E_1 \cup E_2 = E^c \cup (E^c)'$, with the second to last equality holding because $E^c \cup E_1 = E^c$ given $E_1 \subset E^c$. Thus, $(E^o)^c = E^c \cup (E^c)' = \overline{E^c}$, completing the proof.
+\end{proof}
+
+ \begin{problem}{9e}
+\end{problem}
+\begin{proof}[Solution]
+Consider the set $E = (-1, 0) \cup (0, 1)$. Both $(-1, 0)$ and $(0, 1)$ are open intervals, and Theorem 2.24 shows that the union of open intervals is also open. In addition, given $(-1, 0) \cup (0, 1)$ is open, Problem 9b shows that the interior of $E$ is equal to $E$ itself.
+
+Then, observe that $0$ is a limit point of $E$ because clearly any non-empty neighborhood of $0$ contains points in the interval $(-1, 0)$ and $(0, 1)$. Thus, $0 \in E'$ and $0 \in \overline{E}$. Next, observe that $0$ is an interior point in $\overline{E}$ because any neighborhood of $0$ with a radius that is less than $1$ will contain points only within $E$. We know that $0$ is not an interior point in $E$, thus we observe that $E$ and $\overline{E}$ do not always hare interiors.
+\end{proof}
+
+ \begin{problem}{9f}
+\end{problem}
+\begin{proof}[Solution]
+Consider a set $E \in \mathbb{R}$ that only contains one point $a$. $E$ does not have any interior points because any non-zero interval containing $a$ will also contain points not in $E$. Thus, $E^o = \emptyset$, and by extension $\overline{E^o} = \emptyset$ because $E^o$ clearly cannot have any limit points. On the other hand, $\overline{E} = E \cup E'$ must contain $a$ given that $a \in E$, thus it is clear that $E$ and $E^o$ do not always have the same closures.
+\end{proof}
+
+ \begin{problem}{10}
+\end{problem}
+\begin{proof}[Solution]
+Let $d(p, q)$ denote the given distance function. First, observe that $d(p, q) = 1 > 0$ if $p \neq q$, and $d(p, p) = 0$ by definition. Next, observe that $d(p, q) = 1 = d(q, p)$ for any $p \neq q$, and $d(p, q) = 0 = d(q, p)$ if $p = q$. Lastly, observe that if $p \neq q$, $d(p, q) = 1 \leq d(p, r) + d(r, q)$ for any $r$ because both $d(p, r)$ and $d(r, q)$ equal $1$ if $r \neq p, q$, and $d(p, r) + d(r, q) = 1$ if $r = p$ or $r = q$. It is easy to see that $r$ cannot equal $p$ and $q$ simultaneously given $p \neq q$. On the other hand if $p = q$, $d(p, q) = 0 \leq d(p, r) + d(r, q)$ given that the distances $d(p, r)$ and $d(r, q)$ cannot be negative by definition. Given that $d(p, q)$ for $p, q \in X$ satisfies all three criterion outlined in Definition 2.15, we can observe that this is indeed a metric.
+
+Next, let $E$ denote some arbitrary set of $X$. If $p \in E$ and $N(p)$ is a neighborhood of $p$ with a radius of less than 1, then it is clear that the only element in $N(p)$ is $p$ itself. This shows that $N(p) \subset E$, thus all $p \in E$ is an interior point, thus showing that $E$ is open for any arbitrary subset $E$. Then, observe that $E^c$ is a set in $X$ and thus must be open as well. Theorem 2.23 shows that $E$ must be closed as well. Thus, we conclude that any arbitrary set is both open and closed in the given metric space.
+
+Lastly, let $E$ denote a compact set in the given metric space. Observe that $c \in E$ is an open set because we have shown that all subsets must be open. Thus, $\bigcup_{c \in E} c$ is an open cover of $E$, and it is also minimal because removing any of the open subsets in this union will mean some point is not being covered. $E$ is compact thus Definition $2.32$ states that all open covers of $E$ contain a finite subcover. If $E$ were to contain an infinite number of elements then the open cover $\bigcup_{c \in E} c$ could not contain a finite subcover, thus $E$ must be finite. On the other hand, if $E$ is finite, it is clear that $E$ is compact because if $A_1, A_2, ...$ is some open covering of $E$, choose for each element $c$ in $E$ one open set that covers $c$, and the resulting subcover will contain only a finite number of sets. Thus, we observe that a set $E$ in the given metric space is compact if and only if $E$ is finite.
+\end{proof}
+
+ \begin{problem}{11}
+\end{problem}
+\begin{proof}[Solution]
+For $d_1$, observe that $d_1(0, 1) = 1$, $d_1(1, 2) = 1$, and $d_1(0, 2) = 4$. This shows that $d_1(0, 1) + d_1(1, 2) < d_1(0, 2)$, which violates the third condition in Definition 2.15, which shows that this is not a metric.
+
+For $d_2$, observe that $|x - y| = 0$ iff $x = y$ and $|x - y| > 0$ if $x \neq y$, thus $d_2(x, y) = \sqrt{|x - y|} = 0$ iff $x = y$ and $d_2(x, y) = \sqrt{|x - y|} > 0$ when $x \neq y$. Next, observe that $|x - y| = |y - x|$, thus $d_2(x, y) = \sqrt{|x - y|} = \sqrt{|y - x|} = d_2(y, x)$. Then, for any $a, b \in \mathbb{R}$, if $a$ and $b$ are both non-negative or both non-positive then $|a| + |b| = a + b = |a + b|$, and if $a$ and $b$ have different signs then $|a + b| = ||a| - |b|| < ||a|+|b|| = |a| + |b|$. Lastly, for any arbitrary $r \in \mathbb{R}$, observe that
+$$
+(d(x, r)+d(r, y))^2 = |x - r| + |r - y| + \sqrt{|r - y|}\sqrt{|x - r|} \geq |x - r| + |r - y| \geq |x - y| = (d(x, y))^2
+$$
+Then, given that $d(x, r)+d(r, y) \geq 0$ and $d(x, y) \geq 0$, $(d(x, r)+d(r, y))^2 = (d(x, y))^2$ shows that $d(x, r)+d(r, y) = d(x, y)$ for any $x, y, r \in \mathbb{R}$. Thus, $d_2$ follows the three conditions outlined in Definition 2.15, which shows that it is a metric.
+
+For $d_3$, observe that $d_3(-1, 1) = 0$, which violates the condition in Definition 2.15 stating that $d(p, q) > 0$ if $p \neq q$. Thus, $d_3$ is not a metric.
+
+For $d_4$, observe that $d_3(2, 1) = 0$, which violates the condition in Definition 2.15 stating that $d(p, q) > 0$ if $p \neq q$. Thus, $d_4$ is not a metric. 
+
+For $d_5$, observe that $|x - y| = 0$ iff $x = y$ and $|x - y| > 0$ if $x \neq y$, thus $d_5(x, y) = |x - y|/(1+|x+y|) = 0$ iff $x = y$ and $d_5(x, y) = |x - y|/(1+|x+y|) > 0$ when $x \neq y$. Next, observe that $|x - y| = |y - x|$, thus $d_5(x, y) = |x - y|/(1+|x+y|) = |y - x|/(1+|y+x|) = d_5(y, x)$. Then, for any $a, b \in \mathbb{R}$, note that $|a| + |b| \geq |a+b|$ for any $a, b \in \mathbb{R}$ as we have shown during the analysis of $d_2$. Lastly, for any arbitrary $r \in mathbb{R}$, let $x - r = a$ and let $r - y = b$. Then
+$$
+d_5(x, r) + d_5(r, y) = \frac{|x - r|}{1 + |x - r|} + \frac{|r - y|}{1 + |r - y|} = \frac{|a|}{1 + |a|} + \frac{|b|}{1 + |b|} = \frac{|a|(1 + |b|)}{(1 + |a|)(1 + |b|)} + \frac{|b|(1 + |a|)}{(1 + |b|)(1 + |a|)}
+$$
+$$
+ = \frac{|a|(1 + |b|) + |b|(1 + |a|)}{(1 + |a|)(1 + |b|)} = \frac{|a| + |b| + 2|a||b|}{1 + |a| + |b| + |a||b|} = \frac{|a| + |b| + |a||b|}{1 + |a| + |b| + |a||b|} + \frac{|a||b|}{1 + |a| + |b| + |a||b|}
+$$
+$$
+\geq \frac{|a| + |b| + |a||b|}{1 + |a| + |b| + |a||b|} \geq \frac{|a + b|}{1 + |a + b|}.
+$$
+The last inequality is true because $|a| + |b| + |a||b| \geq |a| + |b| \geq |a+b|$ and if $m \geq n$, then $m/(1+m) \geq n/(1+n)$. This last claim is true because 
+$$
+\frac{m}{1+m}\frac{1+n}{n} = \frac{mn + m}{mn + n} > 1.
+$$
+Then, note that $|a+b| = |x - r + r - y| = |x - y|$, thus
+$$
+\frac{|a + b|}{1 + |a + b|} = \frac{|x - y|}{1 + |x - y|} = d_5(x, y).
+$$
+This shows that $d_5(x, r) + d_5(r, y) \geq d_5(x, y)$ for all $x, y, r \in \mathbb{R}$. Thus, $d_5$ follows the three conditions outlined in Definition 2.15, which shows that it is a metric.
+\end{proof}
+
+ \begin{problem}{12}
+\end{problem}
+\begin{proof}[Solution]
+Let $C$ denote some covering of $K$. Then, there must exist some open subset $A \subset C$ where $0 \in A$ given that $0 \in K$. Then, by definition $0$ must ben an interior point in $A$, which means there exists a neighborhood $N(0)$ centered at $0$ and with radius $r > 0$ where $N(0) \subset A$. Observe that $[0, r) \subset N(0)$, and also note that $[0, r)$ contains $1/\ceil{2/r}$ given that
+$$
+0 < \frac{1}{\ceil*{\frac{2}{r}}} \leq \frac{1}{\frac{2}{r}} = \frac{r}{2} < r.
+$$
+Thus, we can see that all elements between $0$ and $1/\ceil{2/r}$ are covered by $A$. In addition, note that the total number of elements that may not be covered by $A$ is at most $\ceil{2/r} - 1$ given there are exactly $\ceil{2/r} - 1$ elements in $K$ that are greater than $\frac{1}{\frac{2}{r}}$ and there are no elements less than $0$. Lastly, construct a subset $C'$ of $C$ that contains $A$ and for each of the $\ceil{2/r} - 1$ potentially uncovered elements, choose one subset in $C$ that covers that given element and include it in $C'$. Observe that $C'$ covers all elements in $K$ and is also finite given it has at most $\ceil{2/r}$ elements. Thus, the given set $K$ has a finite subcover for any arbitrary open cover, which shows that $K$ is compact by definition.
+\end{proof}
+
+ \begin{problem}{13}
+\end{problem}
+\begin{proof}[Solution]
+Let $A$ denote the set of all numbers that can be represented in the form $1/n + 1/m$ for $n, m \in 1, 2, 3...$.  To calculate the limit points of this set, first consider the neighborhood $N(1/n)$ for any $n \in \mathbb{N}$ with radius $r$. Observe that $0 < \frac{1}{\ceil*{\frac{2}{r}}} \leq \frac{1}{\frac{2}{r}} = r/2 < r$, thus $1/n +\frac{1}{\ceil*{\frac{2}{r}}} \in N(1/n)$ and $1/n +\frac{1}{\ceil*{\frac{2}{r}}} \in A$, thus all neighborhoods $N(1/n)$ contain a point in $K$, thus all points in the form $1/n$ are a limit point of $A$. In addition, it is easy to see that $0$ is a limit point of $K$ because for any $N(0)$ with a radius of $r$, 
+$$
+0 < \frac{1}{\ceil*{\frac{4}{r}}} + \frac{1}{\ceil*{\frac{4}{r}}} \leq \frac{1}{\frac{4}{r}} + \frac{1}{\frac{4}{r}} = \frac{r}{2} < r,
+$$
+which clearly shows that $N(0)$ contains an element in $A$ in the form of $\frac{1}{\ceil{\frac{4}{r}}} + \frac{1}{\ceil{\frac{4}{r}}}$. This shows that all neighborhoods of $0$ must contain an element of $A$, which shows that $0$ is a limit point of $A$ as well.
+
+Then, for any number $m$ not equal to $0$ or $1/n$ for $n \in \mathbb{N}$, we will show that $m$ cannot be a limit point. First, note that $0 < x \leq 2$ for all $x \in A$, so $N(m)$ for $m > 2$ with radius $(m-2)/2$ doesn't contain any element of $A$, and $N(m)$ for $m < 0$ with radius $(-m)/2$ doesn't contain any elements of $A$. This shows that all limit points must be in the interval $(0, 2)$. Then, let $m \in (0, 2)$ be not equal to $0$ or $1/n$ for $n \in \mathbb{N}$. Observe that $\frac{1}{\ceil{\frac{1}{m}}} < m < \frac{1}{\floor{\frac{1}{m}}}$, with equality with either of these values being impossible given that $m$ cannot be in the form $1/n$ for natural number $n$. Next, let $d_1 = m - \frac{1}{\ceil{\frac{1}{m}}}$, $d_2 = \frac{1}{\floor{\frac{1}{m}}} - m$, and consider the neighborhood $N(m)$ with radius $d = min(d_1/2, d_2/2)$. Observe that if $c \in 1/a + a/b$ and $c \in N(m)$, then $a, b > \ceil{\frac{1}{m}}$ because if either $a$ or $b$ were less than this value, then $c \leq \frac{1}{\ceil{\frac{1}{m}}} = m - d_1 \leq m - d$, which shows that $c \notin N(m)$. Then, observe that 
+$$
+\frac{1}{\ceil{\frac{1}{m}}} + \frac{1}{\ceil{\frac{2}{d}}} < \frac{1}{\ceil{\frac{1}{m}}} + \frac{d}{2} < m - d, 
+$$
+with the last equality being true because $d$ is at most half the difference between $\frac{1}{\ceil{\frac{1}{m}}}$ and $m$ given that $d = min(d_1/2, d_2/2)$. Thus, we see that $\frac{1}{\ceil{\frac{1}{m}}} + \frac{1}{\ceil{\frac{2}{d}}} \notin N(m)$, which then shows that if $c = 1/a + 1/b$ where $c \in N(m)$, then $a, b < \ceil{\frac{2}{d}}$. This is true because we know that $a, b > \ceil{\frac{1}{m}}$ as shown previously, and if $b \geq \ceil{\frac{2}{d}}$ for the sake of contradiction, then $c = 1/a + 1/b \leq \frac{1}{\ceil{\frac{1}{m}}} + \frac{1}{\ceil{\frac{2}{d}}} < m-d$, thus $c \notin N(m)$, yielding a contradiction. Thus, all $c \in N(m)$ have the restriction that $c = 1/a + 1/b$, where $a, b < \ceil{\frac{2}{d}}$, which shows that there are at most finite number of elements of $A$ inside $N(m)$. Theorem 2.20 states that every neighborhood of $m$ must contain infinitely many points in $A$ if $m$ were to be a limit point of $A$, thus $m$ cannot be a limit point. This then shows that any number $m$ not equal to $0$ or $1/n$ for $n \in \mathbb{N}$ cannot be a limit point.
+
+We thus see that $A'$, the set of all limit points of $A$, is a countable set because the set $0, 1/1, 1/2, 1/3, ...$ is clearly infinite, but they are also a subset to the set of all rational numbers given all numbers in $A'$ are rational. The Corollary to Theorem 2.13 states that the set of all rational numbers is countable, and Theorem 2.8 states that every infinite subset of a countable set is countable, thus $A'$ is countable. Problem 6 shows that $A \cup A'$ has the same limit points as $A$, and given that $A \cup A'$ clearly contains all the limit points of $A$ (and therefore $A \cup A'$), $A \cup A'$ is a closed set with a countably infinite set of limit points. Lastly, observe that $A \cup A'$ is also bounded because $0 \leq x \leq 2$ for any $x \in A$ or $x \in A'$. Thus, we show that $A \cup A'$ is compact due to Theorem 2.41 given that $A \cup A'$ is both closed and bounded.
+
+$A \cup A'$ is. compact of real numbers whose limit points form a countable set.
+\end{proof}
+
+ \begin{problem}{14}
+\end{problem}
+\begin{proof}[Solution]
+Let  
+$A_k = \left(\frac{1}{2^{k+2}}, \frac{1}{2^k}\right)$
+for any $k = 0, 1, 2, ...$. Observe that $A_k \cup A_{k+1} = \left(\frac{1}{2^{k+2}}, \frac{1}{2^k}\right) \cup \left(\frac{1}{2^{k+3}}, \frac{1}{2^{k+1}}\right) = \left(\frac{1}{2^{k+3}}, \frac{1}{2^k}\right)$ because $\frac{1}{2^{k+3}} < \frac{1}{2^{k+2}} < \frac{1}{2^{k+1}} < \frac{1}{2^{k}}$ for all $k \in 0, 1, 2, ...$. Then, observe that $A_0 \cup A_1 = \left(\frac{1}{2^{3}}, 1\right)$, and $A_0 \cup A_1 \cup ... \cup A_k = \left(\frac{1}{2^{k+2}}, 1\right)$. Therefore, observe that
+$$
+\bigcup_{k = 0}^{\infty} A_k = \lim_{x \rightarrow \infty}\left(\frac{1}{2^{x + 2}}, 1\right) = (0, 1).
+$$
+This shows that $A_0, A_1, ...$ is a covering of $(0, 1)$ and we can also see that this covering is open because each individual subset $A_k$ is an open interval. Then, observe that the only valid subcover of $A_0, A_1, ...$ is itself because the interval $A_k$ is the only interval covering the point $\frac{1}{2^{k+1}}$, and removing $A_k$ would make the subcover invalid. This can be seen by the fact that $A_{k+1} = (\frac{1}{2^{k+3}}, \frac{1}{2^{k+1}})$ and $A_{k-1} = (\frac{1}{2^{k+1}}, \frac{1}{2^{k-1}})$, and clearly no other $A_m \in A_0, A_1, ...$ excluding $A_k$ contains $\frac{1}{2^{k+1}}$. This proves the existence of an open cover of $(0, 1)$ with no finite subcover.
+\end{proof}
+
+ \begin{problem}{15}
+\end{problem}
+\begin{proof}[Solution]
+First, let $\{K_n\}$ denote a collection of bounded subsets in $\mathbb{R}$ where $K_n = (0, \frac{1}{n})$. It is easy to see that $K_n \subset K_m$ if $n > m$, thus the intersection of any finite subcollection in $\{K_n\}$ is equivalent to the interval in the subcollection with the highest index, which shows that the intersection is non-empty. Then, consider the intersection $K_1 \cap K_2 \cap ...$ . It is known that $K_1 = (0, 1)$, thus any element in the intersection must be within this interval. Then, for the sake of assumption, let $a \in (0, 1)$ denote a point in the intersection $K_1 \cap K_2 \cap ...$. Observe that 
+$$
+0 < \frac{1}{\ceil*{\frac{2}{r}}} \leq \frac{1}{\frac{2}{r}} = \frac{r}{2} < r,
+$$
+Thus it is clear that $r \notin A_{\ceil*{\frac{2}{r}}} = (0, 1/\ceil*{\frac{2}{r}})$, which shows that $a \notin A_1 \cap ... \cap A_{\ceil*{\frac{2}{r}}} \cap ...$ . This is a contradiction, which shows that no number in the interval $(0, 1)$ can be inside the intersection $K_1 \cap K_2 \cap ...$, which then shows that no number can be in the intersection given that any intersection must be inside $(0, 1)$. This shows that $K_1 \cap K_2 \cap ... = \emptyset$.
+
+Next, let $\{K_n\}$ denote a collection of subsets in $\mathbb{R}$ where $K_n = [n, \infty)$. For any $K_n$, it is clear that all the limit points are in $K_n$ because for any point $a \notin K_n$, in other words if $a < n$, the neighborhood $N(a)$ with radius $n - a$ clearly has no points in $K_n$. This shows that all sets. in $\{K_n\}$ are closed. In addition, it is clear that $K_n = [n, \infty) \subset [m, \infty) = K_m$ for any $n > m$, thus the intersection of any finite subcollection of $\{K_n\}$ is equivalent to the element of the subcollection with the highest index. This shows that the intersection of any finite subcollection is not empty. Then, for the sake of contradiction, assume some $a \geq 0$ is an element of the intersection of $K_1 \cap K_2 \cap ...$ . Observe that $\ceil{a} + 1$ is an integer and greater than $a$. Thus, the interval $K_{\ceil{a} + 1} = [\ceil{a} + 1, \infty)$ does not contain $a$, thus $a \notin K_1 \cap ... \cap K_{\ceil{a} + 1} \cap ...$ . However, this is a contradiction, thus no non-negative number can be in the intersection $K_1 \cap K_2 \cap ...$. It is obvious that negative numbers cannot be in this intersection, thus $K_1 \cap K_2 \cap ...  = \emptyset$.
+\end{proof}
+
+\end{document}

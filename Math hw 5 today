@@ -1,0 +1,140 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 5}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+We will first prove this problem for simple functions $\phi$. Assume $\phi = \sum_{i = 0}^n c_i \chi_{I_i}$, where $I_i$ is the region in $X$ where $\phi$ is equal to $c_i$. Next, by the definition of the integral,
+$$
+\int_X \phi \ dv = \sum_{i = 1}^n c_i \ v(I_i).
+$$
+Then, by the definition given for measure $v$, we know that
+$$
+\sum_{i = 1}^n c_i \ v(I_i) = \sum_{i = i}^n c_i \int_{I_i} f \ d\mu = \sum_{i = i}^n \int_{X} f(c_i\chi_{I_i}) \ d\mu = \int_{X} f  \sum_{i = i}^n(c_i\chi_{I_i}) \ d\mu = \int_{X} f  \phi \ d\mu,
+$$
+which completes the proof. Then, assume $\phi$ is some arbitrary measurable and nonnegative function. Then, the simple approximation Theorem states that there exists a series of simple functions $\{\phi_n\}$ such that the functions are non-decreasing and they converge pointwise to $\phi$. By the monotone convergence theorem, we see that
+$$
+\lim_{n \rightarrow \infty} \int_X \phi_n \ dv = \int_X \phi \ dv
+$$
+and
+$$
+\lim_{n \rightarrow \infty} \int_X f \phi_n \ d\mu = \int_X f \phi \ d\mu,
+$$
+and given
+$$
+\int_X f \phi_n \ d\mu = \int_X \phi_n \ dv
+$$
+for every $n \in \mathbb{N}$ as shown before, we conclude that 
+$$
+\int_X \phi \ dv = \int_X f \phi \ d\mu.
+$$
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}
+The argument regarding simple functions remains from the previous part given it did not assume $\phi$ is non-negative. Hen, note that if $\phi \in L^1(v)$, then it follows that $\phi$ is finite almost everywhere. By adding a constant to $\phi$, it is clear that this new function is greater than $\phi$ almost everywhere. Then, using the simple approximation lemma on $\phi$ and then using the dominated Lebesgue convergence theorem, it is possible to see that 
+$$
+\int_X \phi \ dv = \int_X f \phi \ d\mu.
+$$
+given the simple functions that approximate $\phi$ converge pointwise to $\phi$, and they are all dominated by $\phi + c$.
+\end{proof}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{proof}
+Let $f(x) = \min\{1, 1/|x|\}$ and let $\phi(x) = \min\{1, 1/|x|\}$ as well. Both of these functions are clearly non-negative. In addition, both of these functions are measurable because the region in which $\{f \geq c\}$ is equal to $[-1/c, 1/c]$ for any $c \in (0, 1]$, and $\{f \geq c\}$ is empty for $c > 1$ and all real values for $c \leq 0$. All of these sets are measurable, and thus $f, \phi$ are measurable. Lastly, note that $\phi f$ is measurable because $\phi f$ is equal to 1 inside the range $[-1, 1]$ and equal to $\frac{1}{x^2}$ outside of this interval, and the latter equation is known to have a finite integral due to the p-series test. Thus, $f \phi \in L^1(m)$. However, $\phi \notin L^1(m)$ because $\phi$ is equal to $\frac{1}{x}$ for $x$ greater than 1, and this function is known to have a non-converging integral within this rage also due to the p-series. Thus, this example provides an instance where $f \phi \in L^1(m)$ but $\phi$ is not a member.
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}
+By definition $\mu_f$ is absolutely continuous with respect to $m$ such that if $m(E) = 0$ implies $\mu_f(E) = 0$ for $E \in M$. First, consider a collection of intervals $\{I_n\}$ such that the length of $I_n$ is $\frac{\delta}{2^n}$ for some $\delta > 0$. Note that if $m(E) = 0$, for any $\delta > 0$, there must exist such a set $\{I_n\}$ where the union of all the elements contains $E$. Now, given $f$ is absolutely continuous, and if $I_n = [a_n, b_n]$, then there exists $\delta$ such that
+$$
+\sum_{i = 0}^n [b_n - a_n] < \delta
+$$
+implies
+$$
+\sum_{i = 0}^n [f(b_n) - f(a_n)] < \epsilon.
+$$
+Note that we have already shown that there exists a set of intervals that satisfies the antecedent statement $\sum_{i = 0}^n [b_n - a_n] < \delta$ which also covers $E$. Thus, by computing the sum as $n \rightarrow \infty$, for any $\epsilon > 0$, there exists a cover of $E$ such that the measure of the Lebesgue Stieltjes measure is less than $\epsilon$. This shows that the Lebesgue Stieltjes measure of $E$ is also 0, which proves that $\mu_f << m$.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}
+Lebesgue's Theorem states that if the function $f$ is monotone on the open interval $(a, b)$, then it is differentiable almost everywhere on that open interval. In addition, due to the definition of the derivative, note that
+$$
+f'(x) = \frac{f(x) - f(x + \epsilon)}{\epsilon} =  \frac{d\mu_f}{dm}
+$$
+where $\epsilon$ is denoted to be an infinitesimally small value. This concludes the proof that $f$ is differentiable almost everywhere and where it is differentiable, $f' = \frac{d\mu_f}{dm}$.
+\end{proof}
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}
+For the sake of contradiction, assume there is no $u$ such that $||u - x_0||^2 = \inf_{y \in L}||x_0 - y||^2$. That implies that there are $x_0$ such that $||x_0 - y||^2$ approaches  $||u - x_0||$ but never reaches the same value. First, note that the norm is continuous as a result of the triangle inequality and the constant property of norms $(||f + \epsilon|| - ||f|| \leq ||\epsilon||)$. 
+
+Next, note that $u - x_0$ is continuous due to the triangle inequality because if $u - x_0$ was not orthogonal to $L$, there must exist a representation of $u - x_0$ as the sum of a vector on $L$ and a vector that is orthogonal to $L$ in the form $v - x_0$. This contradicts the fact that $||u - x_0||$ is the shortest possible. Then, it follows that the desired $v$ is a multiple of $L$.
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+Note that if $g, f \in L^2(\mu)$, the cauchy schwartz inequality from Chapter 7 shows that
+$$
+\int_X |fg| \leq \sqrt{\int_X f^2}\sqrt{\int_X g^2}.
+$$
+Given $\int_X f^2, \int_X g^2 < \infty$, it follows that $\int_X |fg| < \infty$ and thus $fg \in L^1(\mu)$.
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+$$
+||f + g||^2 + ||f - g||^2 = \int_X (f + g)^2 d\mu + \int_X (f - g)^2 d\mu = 2\int_X f^2 d\mu + 2\int_X g^2 d\mu = 2||f||^2 + 2||g||^2.
+$$
+\end{proof}
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}
+This result follows from Problem 3, where the first part shows to find the existence of such a unique vector $u$.
+\end{proof}
+
+\begin{problem}{5-7}
+\end{problem}
+\begin{proof}
+N/A
+\end{proof}
+
+\begin{problem}{8}
+\end{problem}
+\begin{proof}
+It is first clear that $\Omega$ contains the set of points outside of the cantor set given there must exist a neighborhood such that there is no point in the cantor set that is contained within that neighborhood. Next, consider a point in the cantor set. 
+\end{proof}
+
+\begin{problem}{9}
+\end{problem}
+\begin{proof}
+To show that $M(f)_r$ is continuous, it is only necessary to show that $\int_{B_r(x)}|f| dm$ is continuous as the fraction multiplied to it is a constant. Then, consider the difference between $M(f)_r(x)$ and $M(f)_r(x + \epsilon)$ for some small vector $\epsilon$. It is easy to see that $M(f)_r(x + \epsilon)$ represents a small change in the domain of the integral component of the function. Given $f \in L^1(\mathbb{R}^k, m)$, it follows that $f$ is finite almost everywhere, and thus within the new region in which the integral is defined for in $M(f)_r(x + \epsilon)$, the value of the integral approaches 0 as $\epsilon \rightarrow 0$. The same is true for the area covered in $B_r(x)$ but not $B_r(x + \epsilon)$. Thus, the function as a whole is continuous.
+\end{proof}
+\end{document}

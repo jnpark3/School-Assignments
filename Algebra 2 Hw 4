@@ -1,0 +1,273 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Algebra Homework 4}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{proof}
+Note that for any $x \in R_f$, there is a unique representation of $x$, $\frac{a}{f^n}$, where $a$ $x \neq \frac{b}{f^{n - 1}}$ for any $b \in R$. Next, note there exists a unique representation of $b$ as $b = a_n+ fb'$, where $a$ is in the same coset as $1$ in the quotient group $R/f$. This means $x = \frac{a_n}{f^n} + \frac{b'}{f^{n - 1}}$. Repeat this process repeatedly to obtain a unique representation of $x$ as
+$$
+x = \frac{a_n}{f^n} + \frac{a_{n - 1}}{f^{n - 1}} + ... + a_0.
+$$
+Then, note that $R[X]/(fX - 1)$ contains the set of all polynomials 
+$$
+a_0 + a_1X + a_2X^2 + ...
+$$
+such that $a_0, a_1, ...$ are all in the same coset as $1$ in the quotient group $R/f$. If this were not true, it is possible to add and subtract multiples/powers of $(fX - 1)$ to make this true. Thus, it is easy to see that there exists a trivial bijection that maps the unique representation
+$$
+x = \frac{a_n}{f^n} + \frac{a_{n - 1}}{f^{n - 1}} + ... + a_0
+$$
+for any $x \in R_f$ to
+$$
+a_0 + a_1X + a_2X^2 + ...
+$$
+in $R[X]/(fX - 1)$, and this mapping works in reverse as well. This confirms the existence of a bijection between $R_f$ and $R[X]/(fX - 1)$.
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}
+First, note that $N(1) = N(1 * 1) = N(1) * N(1)$, which shows that $N(1)$ must be equal to $1$, as no over value has a cycle of 1.
+
+We are given, from the fact that $R$ is an integral domain, that for any $a, b \in R$, there exists $q, r \in R$ such that $a = qb + r$ and $N(r) < N(b)$ for some norm $N$.
+
+If $N(a) = 1$, we are aware that there exists $q, r \in R$ such that $1 = qa + r$ where $N(r) < N(a)$ or $r = 0$. Given $N(a) = 1, N(r) = 0$ and we are given that $N(r) = 0$ if and only if $r = 0$. This means that $1 = qa$ for some $q$ and any $a$ such that $N(a) = 1$. This shows that $a$ is a norm if $N(a) = 1$.
+
+Next, observe that if $a$ is a unit, and it's inverse is $a^{-1}$, $N(a)N(a^{-1}) = N(aa^{-1}) = N(1) = 1$. If $N(a) = x \neq 1$, $N(a^{-1}) = 1/a \notin \mathbb{Z}$, which is a contradiction. Thus, $N(a) = 1$, completing the proof that $a$ is a unit if and only if $N(a) = 1$.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}
+We are aware from the previous problem that $a \in \mathbb{Z}[i]$ is a norm if and only if $N(x) = 1$. $N(a + ib) = a^2 + b^2$, and the only pairs of integers in which $a^2 + b^2 = 1$ is when $x = 1, -1, i, -i$. Thus, these are the four units of $\mathbb{Z}[i]$.
+\end{proof}
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{proof}
+For the sake of contradiction, assume $Frac(\mathbb{Z}[i]) \neq \mathbb{Q}[i]$. Then there must either exist $x \in Frac(\mathbb{Z}[i])$ and $x \notin \mathbb{Q}[i]$, or $x \notin Frac(\mathbb{Z}[i])$ and $x \in \mathbb{Q}[i]$.
+
+Assume $x \in Frac(\mathbb{Z}[i])$ and $x \notin \mathbb{Q}[i]$. This means $x = \frac{a_1 + b_1i}{a_2 + b_2i}$ for some $a_1, a_2, b_1, b_2 \in \mathbb{Z}$. It follows that 
+$$
+x = \frac{(a_1 + b_1i)(a_2 - b_2i)}{(a_2 + b_2i)(a_2 - b_2i)} = \frac{a_1a_2 + ia_2b_1 - ia_1b_2 + b_1b_2}{a_1^2 + b_1^2} = \frac{a_1a_2 + b_1b_2}{a_1^2 + b_1^2} + \frac{-a_2b_1 + b_1a_2}{a_1^2 + b_1^2}i \in \mathbb{Q}[i].
+$$
+This contradiction eliminates this possibility for $x$.
+
+Assume $x \notin Frac(\mathbb{Z}[i])$ and $x \in \mathbb{Q}[i]$. This means $x = \frac{a_1}{b_1} + \frac{a_2}{b_2}i$ for some $a_1, a_2, b_1, b_2 \in \mathbb{Z}$. It follows that
+$$
+x = \frac{a_1b_2}{b_1b_2} + \frac{a_2b_1}{b_2b_1}i = \frac{a_1b_2 + a_2b_1 i}{b_1b_2} \in Frac(\mathbb{Z}[i])
+$$
+given $a_1b_2, a_2b_1, b_1b_2 \in \mathbb{Z}$. This contradictioncompletes the proof that $Frac(\mathbb{Z}[i]) = \mathbb{Q}[i]$.
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}
+Observe that $a^2 - 2b^2 = 0$ if and only if $a^2 = 2b^2$, and assuming $b \neq 0$, this is true if and only if $\left(\frac{a}{b}\right)^2 = 2$. This is true if and only if $\frac{a}{b} = \sqrt{2}$, which is not possible given $\sqrt{2}$ is irrational while $\frac{a}{b}$ is rational. Thus, $a^2 - 2b^2 = 0$ can only be satisfied when $b, a = 0$.
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}
+We are given that $\mathbb{Q}[x]/f(x)$ is a field if and only if $f(x)$ is irreducible (proposition 15, chapter 9). A polynomial of degree two over $\mathbb{Q}$ is reducible if and only if it has a root in $\mathbb{Q}$, but $X^2 - 2$ has no root in $\mathbb{Q}$ as shown in 3.a. Thus, $X^2 - 2$ is irreducible, and $\mathbb{Q}/(X^2 - 2)$ is a field.
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+In order to show that $I$ is an ideal, we will prove that $I$ is an additive subgroup in $R$ and for every $r \in R, x \in I, rx \in I$.
+
+First, observe $I$ is closed under addition because if $a, b \in I \subset J$, then $a + b \in R$ given $R$ is closed under addition, and if it were the case that $a + b \notin I$, then it must be the case that $a + b \notin J$ but this contradicts the fact that $J$ is closed under addition.
+
+The existence of additive inverses is evident as if $x \in I$, $-x \in R$ given $R$ is an additive group and $-x \in J$ given $J$ is an additive subgroup, and thus $-x \in I$. The additive identity is also in $I$ as it must be in both $R, J$ by the same reasons. Lastly, associativity of addition is evident given it is true for $J, R$. Thus, $I$ is an additive subgroup of $R$.
+
+Next, observe that if $r \in R$ and $x \in I$, $rx \in R$ first given $R$ is closed under multiplication, and $rx \in J$ as well given $J$ is an ideal and $x \in J$. Thus, $rx \in J \cap R = I$, which completes the proof that $I$ is an ideal of $R$.
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+Assume for the sake of contradiction that $I$ is not $R$ and $I \cap D \neq \emptyset$. This implies that for some $x \in D$, $x \in I$ as well. This implies that there exists $x \in D$ in $J$. Then, consider the element $x^{-1}$, which is an element in $D^{-1}R$. $x^{-1}x = 1$, and it must be contained in $J$ given $J$ is an ideal and $x \in J$. It follows that $1 \in J$, and given $1 \in R$ then $1 \in I$. For any $a \in R$, $a1 = a \in I$ given $I$ is an ideal as shown in the previous problem. This means that $I$ contains every element $a$ of $R$, which contradicts the fact that $I$ is not $R$. This proves that if $I$ is not $R$, then $I \cap D = 0$.
+\end{proof}
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}
+We are aware that any $b \in J$ must take the form $d^{-1}a$ where $d \in D$ and $a \in R$. Additionally, given $b \in J$, it follows that $bx in J$ for any $D^{-1}R$. We know $d \in D \subset R \subset D^{-1}R$, and it follows that $bd = d^{-1}ad = a \in J$. Given $a \in R$ as well, it follows that $a \in I$. Thus, for any arbitrary $b \in J$, $b = d^{-1}a$ where $a \in I$ and $d \in D$.
+\end{proof}
+
+\begin{problem}{4.d}
+\end{problem}
+\begin{proof}
+
+In order to show that $I^e$ is an ideal, we will prove that $I^e$ is an additive subgroup in $D^{-1}R$ and for every $r \in D^{-1}R, x \in I^e, rx \in I^e$. 
+
+First, for any $a_1 = d_1^{-1}i_1 \in I^e$ and $a_2 = d_2^{-1}i_2 \in I^e$, 
+$$
+a_1 + a_2 = d_1^{-1}d_2^{-1}(d_2i_1 + d_1i_2).
+$$ 
+This element is an element of $I^e$ given $d_2i_1, d_1i_2 \in I$, and thus $d_2i_1 + d_1i_2 \in I$, and $d_1^{-1}d_2^{-1} = (d_1d_2)^{-1}$, where $d_1d_2 \in D$. Next, if $a = d^{-1}i \in I^e$, $d^{-1}(-i) \in I^e$ given $-i \in I$ for being the additive inverse of $i$. By definition $a + d^{-1}(-i) = d^{-1}(0) = 0$, which proves that additive inverses are always defined. The existence of the additive inverse in $I^e$ is evident from the fact that $I$ is a subgroup of $I^e$. Lastly, associativity of addition follows from the associativity of addition from $I$. This completes the proof that $I^e$ is an ideal in $D^{-1}R$.
+
+Next, observe that if $b = d_1^{-1}a \in D^{-1}R$ where $d_1 \in D$ and $R \in R$, and $c = d_2^{-1}e \in I^e$ where $e \in I$, it follows that $cb = (d_1d_2)^{-1}(ae) \in I^e$ given $ae \in I$ and $d_1d_2 \in D$. This completes the proof that $I^e$ is an ideal.
+\end{proof}
+
+\begin{problem}{4.e}
+\end{problem}
+\begin{proof}
+Part c has shown that if $b \in J$, then $b = d^{-1}a \in I^e$ for some $d \in D$, $a \in I$. Thus, if we assume for the sake of contradiction that $J \neq I^e$, the it must be true that $J$ is a strict subset of $I^e$. This means there exists some $d^{-1}a \in I^e$ where $a \in I$, and $d^{-1}a \notin J$. However, this clearly cannot occur as $d^{-1} \in D^{-1}R$ and $a \in J$, $d^{-1}a \in J$ by definition. Thus, $J = (R \cap J)^{e}$.
+
+We know for each ideal in $R$ there is an associated ideal in $D^{-1}R$, and for each ideal in $D^{-1}R$ there is an associated ideal in $R$. This shows that this map is a bijection.
+\end{proof}
+
+\begin{problem}{4.f}
+\end{problem}
+\begin{proof}
+We are aware that $\mathbb{Z}$ is a principal integral domain as every ideal is generated by a single number. Consider $D^{-1}\mathbb{Z}$ where $D$ is the multiplicative subset of $\mathbb{Z}$ generated by $2$. It follows from the previous problem that if $J$ is an ideal in $D^{-1}\mathbb{Z}$, $J = (R \cap J)^e$, which immediately implies $R \cap J$ is not empty. If $x \in R \cap J$, it follows that $x/2, x/4, x/8, ... \in J = (R \cap J)^e$. From just this set alone, it is possible to see that $J$ cannot be generated by a single element as the set $x/2, x/4, x/8, ...$ contains arbitrarily small element, and any non-zero generator $g$ of $J$ would be unable to generate an infinite number of elements in this list. Thus, $D^{-1}R$ is not a principal integral domain.
+\end{proof}
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{proof}
+We know from 4.e that if $J$ is an ideal of $D^{-1}R$, then $J = (\mathbb{Z} \cap J)^e$, and we know from 4.a that $\mathbb{Z} \cap J$ itself must also be an ideal in $\mathbb{Z}$. Note $\mathbb{Z} \cap J$ would be an ideal in $\mathbb{Z}$ if and only if it is generated by some $a \in \mathbb{Z}$ given $\mathbb{Z}$ is a principal integral domain. Thus, this shows that $J$ is an ideal of $\mathbb{Z}_{(2)}$ only if $J = \{a/b \in \mathbb{Q} | 2$ does not divide $b$, a is a multiple of $n \}$ for any $n \in \mathbb{N}$. We will prove that every $J$ in this form is an ideal.
+
+If $J = \{a/b \in \mathbb{Q} | 2$ does not divide $b$, a is a multiple of $n \}$ for some $n \in \mathbb{N}$, we will prove that $J$ is an additive subgroup of $\mathbb{Z}_{(2)}$ and we will prove the multiplicative property of ideals for $J$.
+
+If $x = a_1/b_1, y = a_2/b_2 \in J$, 
+$$
+x + y = \frac{a_1b_2 + a_2b_1}{b_1b_2} \in J
+$$
+because $a_1b_2 + a_2b_1$ is a multiple of $n$ given $a_1, a_2$ are multiples of $n$, and $b_1b_2$ is odd given $b_1, b_2$ are not divided by 2. Next, the additive inverse of $x = a/b \in J$ is $-a/b$, which is contained in $J$ given $-a$ is necessarily a multiple of $n$. Lastly, associativity of addition comes from the associativity of addition associated with $D^{-1}R$.
+
+Next, observe that if $x = a_1/b_1, y = a_2/b_2 = \mathbb{Z}_{(2)}$, 
+$$
+xy = \frac{a_1a_2}{b_1b_2} \in J
+$$
+given $b_1b_2$ is necessarily odd and $a_1a_2$ is necessarily a multiple of $n$. This completes the proof that $J$ is an ideal of $\mathbb{Z}_{(2)}$ if and only if $J = \{a/b \in \mathbb{Q} | 2$ does not divide $b$, a is a multiple of $n \}$ for any arbitrary $n \in \mathbb{N}$ that is not 1. Additionally, note that the multiplicative identity is not contained in $J$ if and only if $n$ is even as if $n$ is odd, $1 = n/n \in J$, making $J$ a trivial ideal equal to $D^{-1}R$. $J$ is nontrivial if and only if $n$ is even.
+
+The only maximal ideal is when $n = 2$, as when $n$ is a multiple of $2$, the $J$ created by $J$ is necessarily contained in the $J$ that is formed when $n = 2$ (as every multiple of a multiple of 2 is also a multiple of 2), but the $J$ that is formed when $n$ is a multiple of $2$ will never contain $2/3$. Thus, the only maximal ideal in $\mathbb{Z}_{(2)}$ is $J = \{a/b \in \mathbb{Q} | 2$ does not divide $b$, a is a multiple of $2 \}$. 
+
+Observe that $\mathbb{Z}_{(2)}$ is divided exactly in half into elements $a/b$ in which $a$ is a multiple of $2$ or not. This means $\mathbb{Z}_{(2)}/J$ where $J$ is the maximal ideal is equal to $\mathbb{F}_2$.
+\end{proof}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{proof}
+We know from 4.e that if $J$ is an ideal of $D^{-1}R$, then $J = (\mathbb{Z} \cap J)^e$, and we know from 4.a that $\mathbb{Z} \cap J$ itself must also be an ideal in $\mathbb{Z}$. Note $\mathbb{Z} \cap J$ would be an ideal in $\mathbb{Z}$ if and only if it is generated by some $a \in \mathbb{Z}$ given $\mathbb{Z}$ is a principal integral domain. Thus, this shows that $J$ is an ideal of $R$ only if $J = \{a/b \in \mathbb{Q} | b \in D$, a is a multiple of $n \}$ for any $n \in \mathbb{N}$. We will prove that every $J$ in this form is an ideal.
+
+If $J = \{a/b \in \mathbb{Q} | b \in D$, a is a multiple of $n \}$ for some $n \in \mathbb{N}$, we will prove that $J$ is an additive subgroup of $\mathbb{Z}_{(2)}$ and we will prove the multiplicative property of ideals for $J$.
+
+If $x = a_1/b_1, y = a_2/b_2 \in J$, 
+$$
+x + y = \frac{a_1b_2 + a_2b_1}{b_1b_2} \in J
+$$
+because $a_1b_2 + a_2b_1$ is a multiple of $n$ given $a_1, a_2$ are multiples of $n$, and $b_1b_2$ is a power of 2 given $b_1, b_2$ are powers of 2. Next, the additive inverse of $x = a/b \in J$ is $-a/b$, which is contained in $J$ given $-a$ is necessarily a multiple of $n$. Lastly, associativity of addition comes from the associativity of addition associated with $D^{-1}\mathbb{Z}$.
+
+Next, observe that if $x = a_1/b_1, y = a_2/b_2 = R$, 
+$$
+xy = \frac{a_1a_2}{b_1b_2} \in J
+$$
+given $b_1b_2$ is necessarily a power of 2 and $a_1a_2$ is necessarily a multiple of $n$. This completes the proof that $J$ is an ideal of $R$ if and only if $J = \{a/b \in \mathbb{Q} | b \in D$, a is a multiple of $n \}$ for any arbitrary $n \in \mathbb{N}$ that is not 1. Additionally, note that the multiplicative identity is not contained in $J$ if and only if $n$ is not a power of 2 as if $n$ is a power of 2, $1 = n/n \in J$, making $J$ a trivial ideal equal to $D^{-1}\mathbb{Z}$. $J$ is nontrivial if and only if $n$ is not a power of 2.
+
+Note that if $n$ contains two odd prime factors $a, b$, the $J$ created using such $n$ cannot be a maximal ideal as the ideal $J$ that is generated with $a$ contains $a$ while the first $J$ cannot. Additionally, if $n_1$ contains a single odd prime factor $a$ and $n_2$ contains a single odd prime fact factor $b$, the $J$ that is generated using $n_1$ contains $a$ while the $J$ that is generated using $n_2$ contains $b$, but both $J$'s do not contain the other prime factor. Lastly, note that multiplying $n$ by any power of $2$ does not change the contents of the ideal $J$ generated using this value of $n$ as any power of 2 can be divided away or multiplied in and the resulting element would still be an element of $J$. Thus, an ideal in $D^{-1}\mathbb{Z}$ where $J = \{a/b \in \mathbb{Q} | b \in D$, a is a multiple of $n \}$ for $n$ with exactly one odd prime factor.
+\end{proof}
+
+\begin{problem}{6.a}
+\end{problem}
+\begin{proof}
+Note that a ring homomorphism from $\mathbb{Z}[X, Y, Z, W]$ to $R$ is uniquely defined by how this homomorphism maps $X, Y, Z, W$ to $R$. To show this, assume $\phi_1, \phi_2$ map $X, Y, Z, W$ to $a_1, a_2, a_3, a_4$ respectively but are different homomorphisms. Then, there must exist some
+$$
+f = \sum_{[i_1, i_2, i_3, i_4] \in \mathbb{W}^4} k_{i_1, i_2, i_3, i_4}X^{i_1}Y^{i_2}Z^{i_3}W^{i_4} \in \mathbb{Z}[X, Y, Z, W]
+$$
+in which $\phi_1(f) \neq \phi_2(f)$. Given
+$$
+\phi_1\left(\sum_{[i_1, i_2, i_3, i_4] \in \mathbb{W}^4} k_{i_1, i_2, i_3, i_4}X^{i_1}Y^{i_2}Z^{i_3}W^{i_4}\right) = \sum_{[i_1, i_2, i_3, i_4] \in \mathbb{W}^4} \phi_1\left( k_{i_1, i_2, i_3, i_4}X^{i_1}Y^{i_2}Z^{i_3}W^{i_4}\right)
+$$
+and also for $\phi_2$, there must exist some component $k_{i_1, i_2, i_3, i_4}X^{i_1}Y^{i_2}Z^{i_3}W^{i_4}$ in which 
+$$
+\phi_1\left(k_{i_1, i_2, i_3, i_4}X^{i_1}Y^{i_2}Z^{i_3}W^{i_4}\right) = k_{i_1, i_2, i_3, i_4} \phi_1\left(X^{i_1}Y^{i_2}Z^{i_3}W^{i_4}\right)
+$$
+$$
+\neq k_{i_1, i_2, i_3, i_4} \phi_2\left(X^{i_1}Y^{i_2}Z^{i_3}W^{i_4}\right) = \phi_2\left(k_{i_1, i_2, i_3, i_4}X^{i_1}Y^{i_2}Z^{i_3}W^{i_4}\right).
+$$
+However, given $\phi_1, \phi_2$ map  $X, Y, Z, W$ to the same elements, this is impossible. This contradiction proves that ring homomorphisms between $\mathbb{Z}[X, Y, Z, W]$ to $R$ are uniquely defined by how they map $X, Y, Z, W$. Next, note that the homomorphism which maps $X, Y, Z, W$ to any $a_1, a_2, a_3, a_4 \in R$ is well-defined. Thus, there is a one-to-one relationship between $S_1$ and a set of four elements $a_1, a_2, a_3, a_4 \in R$, which itself has a trivial bijection to the given set $M_2(R)$ (map $a_1$ to $a$, $a_2$ to $b$, etc.) .
+\end{proof}
+
+\begin{problem}{7}
+\end{problem}
+\begin{proof}
+A ring homomorphism $\psi : \mathbb{Q}[X] \rightarrow \mathbb{R}$ uniquely defined by how it maps $X$, we are tasked with finding the possible values to which $X$ can be mapped to such that the resulting ring homomorphism also applies to $\mathbb{Q}(X)$.
+
+First, observe that if $\phi$ maps $X$ to an algebraic number, then the ring homomorphism cannot be extended to $\mathbb{Q}(X)$. If $x$ is a value such that $f(x) = 0$ for some $f \in \mathbb{Q}[X]$, it follows that $\frac{1}{f(x)} \in \mathbb{Q}(X)$ and 
+$$
+\phi\left(\frac{1}{f(x)}\right) = \frac{\phi(1)}{\phi(f(x))} = \frac{\phi(1)}{0},
+$$
+with the last equality being true given $\phi$ map $X$ to be a zero of $f(x)$. This value is undefined, meaning that $\phi$ is undefined when $\phi$ maps $X$ to an algebraic number. However, when $\phi$ maps $X$ to a transcendental number,
+$$
+\phi\left(\frac{f(x)}{g(x)}\right) = \frac{\phi(f(x))}{\phi(g(x))}
+$$
+will be an element of $\mathbb{R}$ as $\phi(f(x)) \in \mathbb{R}$, $\phi(g(x)) \in \mathbb{R}/\{0\}$. This proves that $\phi$ extends to a ring homomorphism in $\mathbb{Q}$ if and only if it maps $X$ to a transcendental number.
+\end{proof}
+
+\begin{problem}{8.a}
+\end{problem}
+\begin{proof}
+Note that if $R$ is a ring that contains $X^2, X^3$, due to closure under multiplication, $R$ must necessarily contain $X^n$ for any $n$ that can be represented as a sum of $2, 3$, which is every natural number that is at least $2$. Additionally, given $F \subset R$, and due to closure under addition/multiplication, $R$ necessarily contains every polynomial without a component in the form $aX$ where $a \in F$. We will prove that this set is a subring of $F[X]$, and thus necessarily the smallest subring of $F[X]$ satisfying the given conditions. 
+
+First, note that $R$ is closed under addition, as the sum of no two elements in $R$ will yield a polynomial with a linear element. Next, the additive inverse of any polynomial clearly has no linear component either, and thus $R$ contains all additive inverses. Lastly, the additive identity is in $R$ as $R$ contains $F$. The associativity and commutativity of addition in $R$ follows from the associativity and commutativity of addition in $F[X]$. This completes the proof that $R$ is an additive abelian subgroup. Associativity of multiplication and the distributive properties follow also from the distributive and associative properties of $F[X]$. This completes the proof that $R$ is a subring of $F[X]$, and necessarily the smallest subring. 
+
+Note that $X^6 \in R$ can be represented as $(X^2)^3$ and $(X^3)^2$. Given $X$ is not contained in $R$, $X^2, X^3$ are prime elements of $R$ as it is impossible to decompose both as a product of smaller elements. The lack of a unique prime factorization of $X^6$ proves that $R$ is not a UFD.
+\end{proof}
+
+\begin{problem}{8.b}
+\end{problem}
+\begin{proof}
+Consider the ideal $I$ generated by $X^2, X^3$, which is the set of polynomial whose components have a minimum degree of $2$. i.e., they take the form $a_2X^2 + a_3X^3 + ...$ . First, observe that this set cannot be generated by a single element as no single element in $R$ generates $X^2, X^3 \in I$, as they are both prime as shown in 8.a. We will now prove that $I$ is indeed an ideal.
+
+$I$ is closed under addition as it is impossible to get a constant or linear factor by adding two elements of $I$. Additionally, the inverse of an element of $I$ will also have a minimum component degree of 2, and the additive identity $0$ is contained inside $I$ (being the only constant element). The associativity of addition comes from the fact that $R$ is a subring.
+
+Next, note that if $f \in F[X]$ and $g \in I$, $fg, gf \in I$ as the minimum degree of any element in $fg$ is also 2. This completes the proof that $I$ is a non-principal ideal in $R$.
+\end{proof}
+
+
+\begin{problem}{9}
+\end{problem}
+\begin{proof}
+Observe that $X$ is a prime, and $X + 1$ is a prime. Next, for the sake of contradiction let $p_1, p_2, ..., p_n$ denote the finite collection of all primes in $F[X]$. $X, X + 1$ are amongst these elements. Observe that $p_1p_2 ... p_n$ is distinct from any $p_i$ as this polynomial will have a power that is at least 1 greater than any element in the list $p_1, p_2, ..., p_n$ (this is given $X, X + 1$ are in the list). Additionally, note that if $p$ is a prime factor of $p_1p_2 ...  p_n + 1$, $p$ cannot be in $p_1, p_2, ..., p_n$ as that would imply some $p_i$ divides $1$. This contradiction shows that $p_1, p_2, ..., p_n$ do not represent the complete list of primes in $F[X]$, completing the proof that $F[X]$ has infinitely many primes.
+\end{proof}
+
+
+\begin{problem}{10}
+\end{problem}
+\begin{proof}
+First, we consider the case where $F$ is a field. We area ware that $F[X]$ is a Euclidean Domain, and if $a_1$ is a zero of $f_1$, there exists $f_2(x), r(x) \in F[x]$ such that
+$$
+f_1(x) = f_2(x)(x - a_1) + r(x),
+$$
+where $r$ has a degree of $0$ and $f_2$ has a degree of $d - 1$. Give $f_1(a_1) = 0 = f_2(a_1)(a_1 - a_1) + r(a_1) = r(a_1)$, $r(x) = 0$ and thus $f_1(x) = f_2(x)(x - a_1)$ for any $f_1(x)$ with a zero at some $a_1$. If $f_2$ has another zero $a_2$, continue factoring out these zeros, and in he end, either the resulting $f_k$ no longer has zeros, or $f_k$ has a degree of 1. In the first case, we get that
+$$
+f(x) = f_k(x)(x - a_1) ... (x - a_k),
+$$
+and given $F$ is an integral domain, $f(x) = 0$ implies either $f_k(x) = 0, (x - a_1) = 0, ... (x- a_k) = 0$. The first is impossible, and for the remaining values there is precisely one $x$ in which $(x - a_i) = 0$. Thus, there are no more than $d$ values of $x$ in which $f(x) = 0$. Similarly, if $f_k(x)$ has a degree of 1, $f_k(x) = c(x - a_{k + 1})$. In this case, similar to the previous one, the only zeros are located at $a_1, ..., a_{k + 1}$, and the number of zeros is equal to $d$. Thus, when $F$ is a field, $\{a \in F : f(a) = 0\}$ is finite for any $f \in F[X]$ with degree $d$.
+
+Next, if $R$ is an integral domain, consider the fraction field of $R$, $F$. Let $f \in R[X]$ and have degree $d$. It is true that $f \in F[X]$ given $R \subset F$. Additionally, we are aware that $f$ has finitely many zeros in $F$. Given $R \subset F$, it follows that there are finitely many zeros in $R$ as well. This shows that for any $f \in R[X]$, $\{a \in R : f(a) = 0\}$ is finite and also at most $d$.
+\end{proof}
+
+
+\end{document}

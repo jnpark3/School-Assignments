@@ -1,0 +1,559 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 4}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.1 (Book Problem 10.11)}
+\end{problem}
+\begin{proof}
+By observing the utility function, it is possible to see that $U$ is maximized when both $150h - h^2$ and $300s - 2s^2$ are maximized. The vertex of the quadratic $150h - h^2$ lies at $h = 75$ and the vertex of $300s - 2s^2$ is also at $s = 75$. Thus, Patrick consumes 75 pieces of hard candy and 75 pieces of soft candy if there is no cost restriction.
+\end{proof}
+
+\begin{problem}{1.2}
+\end{problem}
+\begin{proof}
+Diagram:
+\vspace{8 cm}
+\end{proof}
+
+\begin{problem}{1.3}
+\end{problem}
+\begin{proof}
+Patrick's gross demands can be calculated by determining the utility maximization bundle given the following constraints:
+$$
+p_hh+p_ss = p_h\omega_h + p_s\omega_s
+$$
+$$
+\max_{h, s \geq 0} U(h, s).
+$$
+Using the equations derived from the Lagrangian, we get that
+$$
+U_h(h, s) = 150 - 2h = p_h\lambda
+$$
+$$
+U_s(h, s) = 300 - 4s = p_s\lambda
+$$
+$$
+p_hh+p_ss = p_h\omega_h + p_s\omega_s.
+$$
+Using the first two equations, we get that $(150 - 2h)/4 = (150 - 2h)/p_h = (300 - 4s)/p_s = (300 - 4s)/2,$ and thus $h = 4s - 225$. Using the last equation, we get that 
+$$
+p_hh+p_ss = p_h\omega_h + p_s\omega_s
+$$
+By substituting in the known values of $\omega_h, \omega_s$ and $p_s, p_h$, we get that
+$$
+4(4s - 225) + 2(s) = 18s - 900 = 440
+$$
+and thus $s = 74.444$. Using the budget equation, we get that $h = 72.778$. These are the gross demands, and the net demands are $74.444 - 100 = -25.556$ pounds for soft candy and $72.778 - 60 = 12.778$ pounds for hard candy.
+
+See 1.2 for graph.
+\end{proof}
+
+\begin{problem}{1.4}
+\end{problem}
+\begin{proof}
+We consider this problem for two different cases. If Patrick is allowed to consume less than his full budget, observe that at 2 dollars for both hard and soft candies, he can obtain $2(60)+2(100) = 320$ dollars worth of candies. The bundle of $75$ hard and $75$ soft candies is Patrick's utility maximizing set at shown in 1.1, and this set costs $2(75) + 2(75) = 300$ dollars. Thus, Patrick can maximize his utility by selling 25 soft candies and buying 15 hard candies, which leaves him with surplus budget. In general, his demand for hard and soft candies increases from 1.3.
+
+Now for the other case where Patrick must consume his entire budget, we compute the utility maximization problem with the new price. The utility maximization problem is still
+$$
+p_hh+p_ss = p_h\omega_h + p_s\omega_s
+$$
+$$
+\max_{h, s \geq 0} U(h, s).
+$$
+Using the equations derived from the Lagrangian, we get that
+$$
+U_h(h, s) = 150 - 2h = p_h\lambda
+$$d
+$$
+U_s(h, s) = 300 - 4s = p_s\lambda
+$$
+$$
+p_hh+p_ss = p_h\omega_h + p_s\omega_s.
+$$
+Using the first two equations, we get that $(150 - 2h)/2 = (150 - 2h)/p_h = (300 - 4s)/p_s = (300 - 4s)/2,$ and thus $h = 2s - 75$. Using the last equation, we get that 
+$$
+p_hh+p_ss = p_h\omega_h + p_s\omega_s
+$$
+By substituting in the known values of $\omega_h, \omega_s$ and $p_s, p_h$, we get that
+$$
+2(2s - 75) + 2(s) = 6s - 150 = 2(60)+2(100) = 320
+$$
+and thus $s = 78.333$. Using the budget equation, we get that $h = 81.666$. This shows that his demand for both hard and soft candies increases, with soft candy increasing by $78.333 - 74.722 = 3.888$ and hard candy increasing by $8.88$.
+\end{proof}
+
+\begin{problem}{1.5}
+\end{problem}
+\begin{proof}
+First, if $x_m(p_h^o, p_s, m_o = p_h^o\omega_h + p_s\omega_s)$ is the original bundle, 
+$$
+\Delta_H^S = x_h\left(p_h^f, p_s, v_o\right) - x_m(p_h^o, p_s, m_o = p_h^o\omega_h + p_s\omega_s)
+$$
+$$
+\Delta_H^I = x_m(p_h^f, p_s, m_o = p_h^o\omega_h + p_s\omega_s) - x_h\left(p_h^f, p_s, v_o\right)
+$$
+$$ 
+\Delta_H^E = x_m(p_h^f, p_s, m_o = p_h^f\omega_h + p_s\omega_s) - x_m(p_h^f, p_s, m_o = p_h^o\omega_h + p_s\omega_s)
+$$
+We are already given that the original Marshallian bundle is $(72.777, 74.444)$ from 1.3. To calculate $x_h\left(p_h^o, p_s, v_o\right)$, we need to calculate the hicksian demand at utility $16869.4$, which is the utility derived from the original bundle. Using the Lagrangian, we get that utility is maximized when $(150 - 2h)/2 = (300 - 4s)/2$, and plugging this into the utility function with $U = 16869.4$, we get that $(x_h\left(p_h^f, p_s, v_o\right), y_h\left(p_h^f, p_s, v_o\right)) = (73.075, 74.037)$. 
+
+Next, to calculate $x_m(p_h^f, p_s, m_o = p_h^o\omega_h + p_s\omega_s)$, using the equation from 1.4, we get that $6s - 150 = 440$ instead of $6s - 150 = 320$. Plugging this into the budget equation shows that $(x_m(p_h^f, p_s, m_o = p_h^o\omega_h + p_s\omega_s), y_m(p_h^f, p_s, m_o = p_h^o\omega_h + p_s\omega_s)) = (121.667, 98.333)$.
+
+Lastly, we already know from 1.4 that $(x_m(p_h^f, p_s, m_o = p_h^f\omega_h + p_s\omega_s), y_m(p_h^f, p_s, m_o = p_h^f\omega_h + p_s\omega_s)) = (78.333, 81.666)$.
+
+Thus, we get that the substitution effects for $h$ is $\Delta_H^S = 73.075 - 72.777 = 0.298$, the substitution effects for $s$ is $\Delta_H^S = 74.037 - 74.444 = -0.407$. The income effect for $h$ is $\Delta_H^I = 121.667 - 73.075 = 48.592$ the income effect for $s$ is  $\Delta_H^I = 98.333 - 74.037 = 24.296$. Lastly, the endowment effect for $h$ is $\Delta_H^E = 78.333 - 121.667 = -43.334$ and the endowment effect for $s$ is $\Delta_H^E = 81.666 - 98.333 = -16.667$.
+
+See 1.2 for graph.
+\end{proof}
+
+\begin{problem}{1.6}
+\end{problem}
+\begin{proof}
+Assume Patrick sells his endowment. At the original price point, the entire endowment is worth $4(60) + 2(100) = 440$ dollars. Once again, as noted in 1.4, if Patrick can consume less than his full budget, then once again, he can consume the utility maximizing budget $(75, 75)$ as shown in 1.1 given it only costs 300 dollars at the new prices.
+
+Now for the other case where Patrick must consume his entire budget, we compute the utility maximization problem with the new price and with a budget of $440$. The utility maximization problem is still
+$$
+p_hh+p_ss = p_h\omega_h + p_s\omega_s
+$$
+$$
+\max_{h, s \geq 0} U(h, s).
+$$
+Using the equations derived from the Lagrangian, we get that
+$$
+U_h(h, s) = 150 - 2h = p_h\lambda
+$$d
+$$
+U_s(h, s) = 300 - 4s = p_s\lambda
+$$
+$$
+p_hh+p_ss = p_h\omega_h + p_s\omega_s.
+$$
+Using the first two equations, we get that $(150 - 2h)/2 = (150 - 2h)/p_h = (300 - 4s)/p_s = (300 - 4s)/2,$ and thus $h = 2s - 75$. Using the last equation, we get that 
+$$
+p_hh+p_ss = p_h\omega_h + p_s\omega_s
+$$
+By substituting in the known values of $\omega_h, \omega_s$ and $p_s, p_h$, we get that
+$$
+2(2s - 75) + 2(s) = 6s - 150 = 440
+$$
+and thus $s = 98.33$. Using the budget equation, we get that $h = 121.67$. This shows that his demand for both hard and soft candies increases. The optimal consumption bundle is $(121.67, 98.33)$. Note that in this scenario, $x_h\left(p_h^f, p_s, v_o\right)$ and $x_m(p_h^f, p_s, m_o = p_h^o\omega_h + p_s\omega_s)$ are the same compared to the scenario where the prices changed before selling the endowment because neither of these values incorporate the decrease in initial budget as a result of the decrease in price. Thus, we get that the substitution effects for $h$ is $\Delta_H^S = 73.075 - 72.777 = 0.298$, the substitution effects for $s$ is $\Delta_H^S = 74.037 - 74.444 = -0.407$. The income effect for $h$ is $\Delta_H^I = 121.667 - 73.075 = 48.592$ the income effect for $s$ is  $\Delta_H^I = 98.333 - 74.037 = 24.296$. Lastly, note that there is no endowment effect in this scenario because the change in the price does not induce a change in the budget, as the budget is already set before the price change occurs.
+\end{proof}
+
+\begin{problem}{1.7}
+\end{problem}
+\begin{proof}
+The timing clearly matters, and it affects the buying power of Patrick's endowment. Patrick is better off when the price decrease occurs after he sells his endowment because he gains a higher budget when he sells with the old, higher prices. Comparatively, he gets a lower budget with the new, lower prices. On the other hand, if prices had increased, selling after price changes would be more advantageous as it would give him a greater budget compared to the scenario where he had to sell at the original price and buy at the higher prices.
+\end{proof}
+
+\begin{problem}{2.1}
+\end{problem}
+\begin{proof}
+The competitive equilibrium of the endowment economy, with two individuals and two goods, consists of a relative price $p^E$, and an allocation $\{(x_i^E, y_i^E), (x_j^E, y_j^E)\}$ such that both individuals maximize their utility given the relative price $p^E$, and given that the equilibrium price $p^E$ clears the market for good $x$ and good $y$.
+\end{proof}
+
+\begin{problem}{2.2}
+\end{problem}
+\begin{proof}
+The individual utility of person $i$ is maximized by solving the utility maximization problem
+$$
+\max_{x, y} U^i(x, y) = \max_{x, y} \alpha \log(x) + (1 - \alpha) \log(y)
+$$
+$$
+px + y = p\omega_x^i + \omega_y^i.
+$$
+Similarly, the individual utility of person $j$ is maximized by solving the utility maximization problem
+$$
+\max_{x, y} U^j(x, y) = \max_{x, y} \gamma \log(x) + (1 - \gamma) \log(y)
+$$
+$$
+px + y = p\omega_x^i + \omega_y^i.
+$$
+\end{proof}
+
+\begin{problem}{2.3}
+\end{problem}
+\begin{proof}
+We solve the utility maximization problems noted in the previous section by using the Lagrangian. For individual 1, we get that utility is maximized when
+$$
+U_x^i = \frac{\alpha}{x_i^*} = p\lambda_i^*
+$$
+$$
+U_y^i = \frac{1 - \alpha}{y_i^*} = \lambda_i^*
+$$
+$$
+px_i^* + y_i^* = p\omega_x^i + \omega_y^i.
+$$
+Using the first two equations, we get that
+$$
+\frac{\alpha}{px_i^*} = \frac{1 - \alpha}{y_i^*},
+$$
+$$
+x_i^* = \frac{\alpha}{p(1 - \alpha)}y_i^*,
+$$
+and substituting this into the budget equation shows that
+$$
+p\left(\frac{\alpha}{p(1 - \alpha)}y_i^*\right) + y_i^* = \frac{1}{1 - \alpha}y_i^* = p\omega_x^i + \omega_y^i.
+$$
+$$
+y_i^* = (1 - \alpha)(p\omega_x^i + \omega_y^i).
+$$
+Substituting this into the budget equation, we get
+$$
+px_i^* + (1 - \alpha)(p\omega_x^i + \omega_y^i) = p\omega_x^i + \omega_y^i.
+$$
+$$
+x_i^* = \frac{\alpha(p\omega_x^i + \omega_y^i)}{p}.
+$$
+Lastly, using the equation for $U_x^i$, we get that 
+$$
+U_x^i = \frac{\alpha}{x_i^*} = \frac{p}{p\omega_x^i + \omega_y^i} =  p\lambda_i^*,
+$$
+$$
+\frac{1}{p\omega_x^i + \omega_y^i} =  \lambda_i^*.
+$$
+For individual 2, note that the utility function takes the same form and so does the budget equation, the only difference is that $\alpha$ is changed to $\gamma$ and $(\omega_x^i, \omega_y^i)$ is changed to $(\omega_x^j, \omega_y^j)$. Thus, 
+$$
+y_j^* = (1 - \gamma)(p\omega_x^j + \omega_y^j).
+$$
+$$
+x_j^* = \frac{\gamma(p\omega_x^j + \omega_y^j)}{p}.
+$$
+$$
+\frac{1}{p\omega_x^j + \omega_y^j} =  \lambda_j^*
+$$
+\end{proof}
+
+\begin{problem}{2.4}
+\end{problem}
+\begin{proof}
+Using the definition form 2.1, the market must ensure that first, each individual maximizes their utility given price $p$, and thus 
+$$
+y_j^* = (1 - \gamma)(p\omega_x^j + \omega_y^j)
+$$
+$$
+x_j^* = \frac{\gamma(p\omega_x^j + \omega_y^j)}{p}
+$$
+$$
+y_i^* = (1 - \alpha)(p\omega_x^i + \omega_y^i)
+$$
+$$
+x_i^* = \frac{\alpha(p\omega_x^i + \omega_y^i)}{p}.
+$$
+Next, $p$ must be chosen such that the market clears for goods $x$ and $y$. In other words, 
+$$
+x_i^* + x_j^* = \omega_x^i + \omega_x^j
+$$
+$$
+y_i^* + y_j^* = \omega_y^i + \omega_y^j.
+$$
+These are the equilibrium conditions for this market.
+\end{proof}
+
+\begin{problem}{2.5}
+\end{problem}
+\begin{proof}
+Using the equations from the previous part, we see that
+$$
+x_j^* = \frac{\gamma(p\omega_x^j + \omega_y^j)}{p}
+$$
+$$
+x_i^* = \frac{\alpha(p\omega_x^i + \omega_y^i)}{p}
+$$
+$$
+x_i^* + x_j^* = \omega_x^i + \omega_x^j.
+$$
+Substituting the first two equations into the last one shows that
+$$
+\omega_x^i + \omega_x^j = \frac{\gamma(p\omega_x^j + \omega_y^j)}{p} + \frac{\alpha(p\omega_x^i + \omega_y^i)}{p} = \frac{\gamma(p\omega_x^j + \omega_y^j) + \alpha(p\omega_x^i + \omega_y^i)}{p}
+$$
+$$
+ = (\gamma\omega_x^j + \alpha\omega_x^i) + \frac{(\gamma\omega_y^j + \alpha\omega_y^i)}{p}.
+$$
+$$
+p = \frac{\gamma\omega_y^j + \alpha\omega_y^i}{(1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i}.
+$$
+\end{proof}
+
+\begin{problem}{2.6}
+\end{problem}
+\begin{proof}
+For question a, the answer is false. Consider the relative price generated in part 2.5. Even if the endowments $(\omega_x^i, \omega_y^i) = (\omega_x^j, \omega_y^j) = (1, 1)$, if $\gamma = 0.5$ and $\alpha = 0.25$, the relative market clearing price $p = 3/5$, which shows that the rate of exchange is not necessarily one-to-one even if the endowments are identical.
+
+For question b, the question is again no. Consider the relative price generated in part 2.5. If $\gamma = \alpha = 0.5$, the two consumers have the same utility. However, if $(\omega_x^i, \omega_y^i) = (1, 3)$, $(\omega_x^j, \omega_y^j) = (2, 1)$, the relative market clearing price is $p = 4/3$. This shows that if the two consumers have identical preferences, the trade will not change at a rate of 1 to 1.
+
+For question c, note that the budget constraint for one of the individuals takes the form $px + y = p\omega_x + \omega_y$ for goods $x, y$. It follows that $p = \frac{\omega_y - y}{x - \omega_x}$. We can see that $p = 1$ if and only if $\omega_y - y^* = x^* - \omega_x$. This means that the difference between the endowment for $x$ and the equilibrium point of $x$ is the opposite of the difference between the endowment for $y$ and the equilibrium point of $y$. This condition is reasonable, as when the equilibrium point is given, checking whether the relative price is 1-1 is easy.
+
+For question d, using the equation $p = \frac{\omega_y - y}{x - \omega_x}$, it is interesting to see that the identity of the relative exchange rate is uniquely determined by the equilibrium point and endowment for one of the consumers. This is interesting because it shows that the rate of exchange $p$ is not linked to the utility function, given that the resulting equilibrium bundle is fixed.
+\end{proof}
+
+\begin{problem}{2.7}
+\end{problem}
+\begin{proof}
+We note from 2.4 that
+$$
+y_j^* = (1 - \gamma)(p\omega_x^j + \omega_y^j)
+$$
+$$
+y_i^* = (1 - \alpha)(p\omega_x^i + \omega_y^i).
+$$
+Then, observe that
+$$
+y_j^* + y_i^* = (1 - \gamma)(p\omega_x^j + \omega_y^j) + (1 - \alpha)(p\omega_x^i + \omega_y^i) = p((1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i) + ((1 - \gamma)\omega_y^j + (1 - \alpha)\omega_y^i)
+$$
+and by substituting in 
+$$
+p = \frac{\gamma\omega_y^j + \alpha\omega_y^i}{(1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i},
+$$
+we get that
+$$
+y_j^* + y_i^* = \left(\frac{\gamma\omega_y^j + \alpha\omega_y^i}{(1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i}\right)((1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i) + ((1 - \gamma)\omega_y^j + (1 - \alpha)\omega_y^i)
+$$
+$$
+= \gamma\omega_y^j + \alpha\omega_y^i + (1 - \gamma)\omega_y^j + (1 - \alpha)\omega_y^i = \omega_y^j + \omega_y^i.
+$$
+This shows that the market for good $y$ also clears. Additionally, it is clear that the ratio of consumption of good $y$ is $1 - \gamma : 1 - \alpha$ between consumer $j$ and $i$ respectively. This is given from the fact that
+$$
+y_j^* = (1 - \gamma)(p\omega_x^j + \omega_y^j),
+$$
+$$
+y_i^* = (1 - \alpha)(p\omega_x^i + \omega_y^i),
+$$
+can have $p\omega_x^i + \omega_y^i$ factored out.
+\end{proof}
+
+\begin{problem}{2.8}
+\end{problem}
+\begin{proof}
+From 2.3, we get that
+$$
+U_x^i = \frac{\alpha}{x_i^*} = p\lambda_i^*,
+$$
+and by substituting in values for $p$ and $x_i^*$, 
+$$
+\lambda_i^* = \frac{\alpha}{px_i^*} =  \frac{p\alpha}{p\alpha(p\omega_x^i + \omega_y^i)} = \frac{1}{p\omega_x^i + \omega_y^i} = \frac{1}{\left(\frac{\gamma\omega_y^j + \alpha\omega_y^i}{(1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i}\right)\omega_x^i + \omega_y^i}
+$$
+$$
+= \frac{(1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i}{\left(\gamma\omega_y^j + \alpha\omega_y^i\right)\omega_x^i + \left((1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i \right)\omega_y^i}
+$$
+$$
+= \frac{(1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i}{\gamma\omega_y^j\omega_x^i  + (1 - \gamma)\omega_x^j\omega_y^i + \omega_x^i\omega_y^i}.
+$$
+Similarly, 
+$$
+U_x^j = \frac{\alpha}{x_j^*} = p\lambda_j^*,
+$$
+and by substituting in values for $p$ and $x_j^*$, 
+$$
+\lambda_j^* = \frac{\alpha}{px_j^*} =  \frac{p\alpha}{p\alpha(p\omega_x^j + \omega_y^j)} = \frac{1}{p\omega_x^j + \omega_y^j} = \frac{1}{\left(\frac{\gamma\omega_y^j + \alpha\omega_y^i}{(1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i}\right)\omega_x^j + \omega_y^j}
+$$
+$$
+= \frac{(1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i}{\left(\gamma\omega_y^j + \alpha\omega_y^i\right)\omega_x^j + \left((1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i \right)\omega_y^j}
+$$
+$$
+= \frac{(1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i}{(1 - \alpha)\omega_y^j\omega_x^i  + \alpha\omega_x^j\omega_y^i + \omega_x^j\omega_y^j}.
+$$
+The value of $\lambda^*$ is equal to $U_y$ as noted in 2.3, and thus it can be measured in the units "utils per unit of good y".
+\end{proof}
+
+\begin{problem}{2.9}
+\end{problem}
+\begin{proof}
+Diagram:
+\vspace{8 cm}
+\end{proof}
+
+\begin{problem}{2.10}
+\end{problem}
+\begin{proof}
+Given the equilibrium point for good $y$ is
+$$
+y_j^* = (1 - \gamma)(p\omega_x^j + \omega_y^j),
+$$
+if $(1 - \gamma)(p\omega_x^j + \omega_y^j) > \omega_y^j$, then consumer $j$ buys $(1 - \gamma)(p\omega_x^j + \omega_y^j) - \omega_y^j = p(1 - \gamma)\omega_x^j - \gamma\omega_y^j$ units of $y$ from $i$. On the other hand, if $(1 - \gamma)(p\omega_x^j + \omega_y^j) < \omega_y^j$, consumer $j$ sells $\omega_y^j - (1 - \gamma)(p\omega_x^j + \omega_y^j)$ units to consumer $i$.
+
+Next, given the equilibrium point for good $x$ is
+$$
+x_j^* = \frac{\gamma(p\omega_x^j + \omega_y^j)}{p},
+$$
+if $\frac{\gamma(p\omega_x^j + \omega_y^j)}{p} > \omega_x^i$, then consumer $j$ buys $\frac{\gamma(p\omega_x^j + \omega_y^j)}{p} - \omega_x^i$ units of $x$. On the other hand, if $\frac{\gamma(p\omega_x^j + \omega_y^j)}{p} < \omega_x^i$, then consumer $j$ buys $ \omega_x^i - \frac{\gamma(p\omega_x^j + \omega_y^j)}{p}$ units of $x$.
+\end{proof}
+
+\begin{problem}{3.1}
+\end{problem}
+\begin{proof}
+The benevolent planner's optimization problem is as follows:
+$$
+\max_{x_i, x_j, y_i, y_j} \phi_iU^i(x_i, y_i) + \phi_jU^j(x_j, y_j)
+$$
+$$
+x_i + x_j = \omega_x^i + \omega_x^j
+$$
+$$
+y_i + y_j = \omega_y^i + \omega_y^j.
+$$
+\end{proof}
+
+\begin{problem}{3.2}
+\end{problem}
+\begin{proof}
+The Lagrangian in this problem is 
+$$
+L = \phi_iU^i(x_i, y_i) + \phi_jU^j(x_j, y_j) + \lambda_x(\omega_x^i + \omega_x^j - x_i - x_j) + \lambda_y(\omega_y^i + \omega_y^j - y_i - y_j).
+$$
+By taking partial derivatives for $x_i, y_i, x_j, y_j$, we get that
+$$
+\phi_iU_x^i(x_i, y_i) = \lambda_x^*
+$$
+$$
+\phi_iU_y^i(x_i, y_i) = \lambda_y^*
+$$
+$$
+\phi_jU_x^j(x_j, y_j) = \lambda_x^*
+$$
+$$
+\phi_jU_y^j(x_j, y_j) = \lambda_y^*
+$$
+Additionally, the two budget constraints give us the last two constraints:
+$$
+x_i + x_j = \omega_x^i + \omega_x^j
+$$
+$$
+y_i + y_j = \omega_y^i + \omega_y^j.
+$$
+\end{proof}
+
+\begin{problem}{3.3}
+\end{problem}
+\begin{proof}
+If there were $(x_i', y_i')$ and $(x_j', y_j')$ (within the budget) such that both of these bundles generate greater utility than those generated by the above problem ($(x_i, y_i)$ and $(x_j, y_j)$), then it immediately follows that
+$$
+\phi_iU^i(x_i', y_i') + \phi_jU^j(x_j', y_j') > \phi_iU^i(x_i, y_i) + \phi_jU^j(x_j, y_j).
+$$
+However, that would contradict the fact that the bundles $(x_i^*, y_i^*), (x_j^*, y_j^*)$ are chosen such that they satisfy both the budget constraints and maximize the equation
+$$
+\phi_iU^i(x_i, y_i) + \phi_jU^j(x_j, y_j),
+$$
+as noted in 3.1. This contradiction shows that due to the given constraints, $(x_i, y_i)$ and $(x_j, y_j)$ chosen by the social planner must be Pareto efficient.
+\end{proof}
+
+\begin{problem}{3.4}
+\end{problem}
+\begin{proof}
+Using the constraints form 3.2, we see that
+$$
+\phi_iU_x^i(x_i^*, y_i^*) = \phi_jU_x^j(x_j^*, y_j^*)
+$$
+$$
+\phi_iU_y^i(x_i^*, y_i^*) = \phi_jU_y^j(x_j^*, y_j^*)
+$$
+Then by calculating $U_x, U_y$, we get that
+$$
+\frac{\phi_i\alpha}{x_i^*} = \frac{\phi_j(1 - \gamma)}{y_j^*} \rightarrow y_j^* = \frac{\phi_j(1 - \gamma)}{\phi_i\alpha}x_i^*
+$$
+$$
+\frac{\phi_j\gamma}{x_j^*} = \frac{\phi_i(1 - \alpha)}{y_i^*} \rightarrow y_i^* = \frac{\phi_i(1 - \alpha)}{\phi_j\gamma}x_j^*
+$$
+Substituting in the two equation into the budget constraint $y_i^* + y_j^* = \omega_y^i + \omega_y^j$ gives us that
+$$
+\frac{\phi_i(1 - \alpha)}{\phi_j\gamma}x_j^* + \frac{\phi_j(1 - \gamma)}{\phi_i\alpha}x_i^* = \omega_y^i + \omega_y^j
+$$
+Substituting in the first equation into the budget constraint $x_i^* + x_j^* = \omega_x^i + \omega_x^j$ gives us that
+$$
+\frac{\phi_i(1 - \alpha)}{\phi_j\gamma}x_j^* + \frac{\phi_j(1 - \gamma)}{\phi_i\alpha}\left( \omega_x^i + \omega_x^j - x_j^*\right) = \omega_y^i + \omega_y^j
+$$
+$$
+\phi_i^2\alpha(1 - \alpha)x_j^* + \phi_j^2\gamma(1 - \gamma)\left( \omega_x^i + \omega_x^j - x_j^*\right) = \phi_i\phi_j\gamma\alpha\left(\omega_y^i + \omega_y^j\right)
+$$
+$$
+(\phi_i^2\alpha(1 - \alpha) - \phi_j^2\gamma(1 - \gamma))x_j^* = \phi_i\phi_j\gamma\alpha\left(\omega_y^i + \omega_y^j\right) - \phi_j^2\gamma(1 - \gamma)\left( \omega_x^i + \omega_x^j\right)
+$$
+$$
+x_j^* = \frac{\phi_i\phi_j\gamma\alpha\left(\omega_y^i + \omega_y^j\right) - \phi_j^2\gamma(1 - \gamma)\left( \omega_x^i + \omega_x^j\right)}{\phi_i^2\alpha(1 - \alpha) - \phi_j^2\gamma(1 - \gamma)}
+$$
+$$
+x_i^* = \omega_x^i + \omega_x^j - \frac{\phi_i\phi_j\gamma\alpha\left(\omega_y^i + \omega_y^j\right) - \phi_j^2\gamma(1 - \gamma)\left( \omega_x^i + \omega_x^j\right)}{\phi_i^2\alpha(1 - \alpha) - \phi_j^2\gamma(1 - \gamma)}
+$$
+These two values represent the solutions for $x_i^p$ and $x_j^p$. Next, observe that
+$$
+\frac{\phi_i\alpha}{\phi_j(1 - \gamma)}y_j^* = x_i^*
+$$
+$$
+\frac{\phi_j\gamma}{\phi_i(1 - \alpha)}y_i^* = x_j^*
+$$
+and by using the budget constraint 
+$x_i^* + x_j^* = \omega_x^i + \omega_x^j,$
+we get that
+$$
+\frac{\phi_i\alpha}{\phi_j(1 - \gamma)}y_j^* + \frac{\phi_j\gamma}{\phi_i(1 - \alpha)}y_i^* = \omega_x^i + \omega_x^j
+$$
+By substituting in the budget constraint $\omega_y^i + \omega_y^j = y_i^* + y_j^*$, we get that
+$$
+\frac{\phi_i\alpha}{\phi_j(1 - \gamma)}y_j^* + \frac{\phi_j\gamma}{\phi_i(1 - \alpha)}(\omega_y^i + \omega_y^j - y_j^*) = \omega_x^i + \omega_x^j
+$$
+$$
+\phi_i^2\alpha(1 - \alpha)y_j^* +\phi_j^2\gamma(1 - \gamma)(\omega_y^i + \omega_y^j - y_j^*) = \phi_j\phi_i(1 - \gamma)(1 - \alpha)(\omega_x^i + \omega_x^j)
+$$
+$$
+(\phi_i^2\alpha(1 - \alpha) - \phi_j^2\gamma(1 - \gamma))y_j^* = \phi_j\phi_i(1 - \gamma)(1 - \alpha)(\omega_x^i + \omega_x^j) - \phi_j^2\gamma(1 - \gamma)(\omega_y^i + \omega_y^j)
+$$
+$$
+y_j^* = \frac{\phi_j\phi_i(1 - \gamma)(1 - \alpha)(\omega_x^i + \omega_x^j) - \phi_j^2\gamma(1 - \gamma)(\omega_y^i + \omega_y^j)}{(\phi_i^2\alpha(1 - \alpha) - \phi_j^2\gamma(1 - \gamma))}
+$$
+$$
+y_i^* = \omega_y^i + \omega_y^j - \frac{\phi_j\phi_i(1 - \gamma)(1 - \alpha)(\omega_x^i + \omega_x^j) - \phi_j^2\gamma(1 - \gamma)(\omega_y^i + \omega_y^j)}{(\phi_i^2\alpha(1 - \alpha) - \phi_j^2\gamma(1 - \gamma))}
+$$
+These two values represent the solutions for $y_i^p$ and $y_j^p$. This completes the identification of the solution to the planner's problem.
+\end{proof}
+
+\begin{problem}{3.5}
+\end{problem}
+\begin{proof}
+We observe that the decentralized scenario is identical to the scenario as described in problem 2, in which the two consumers determine equilibrium point themselves. Note that in the general case from 2.3, the first order conditions to find the solution in the decentralized case is
+$$
+U_x^j(x_j^*, y_j^*)= pU_y^j(x_j^*, y_j^*).
+$$
+This implies that $p$ must be equal to
+$$
+p = \frac{U_y^j(x_j^*, y_j^*)}{U_x^j(x_j^*, y_j^*)} = \frac{\gamma}{1 - \gamma}\frac{y_j^*}{x_j^*}
+$$
+and by substituting values of $y_j^*, x_j^*$ as determined in the previous part, 
+$$
+p = \frac{\gamma}{1 - \gamma}\frac{\phi_j\phi_i(1 - \gamma)(1 - \alpha)(\omega_x^i + \omega_x^j) - \phi_j^2\gamma(1 - \gamma)(\omega_y^i + \omega_y^j)}{\phi_i\phi_j\gamma\alpha\left(\omega_y^i + \omega_y^j\right) - \phi_j^2\gamma(1 - \gamma)\left( \omega_x^i + \omega_x^j\right)}
+$$
+$$
+= \frac{(\phi_i/\phi_j)(1 - \alpha)(\omega_x^i + \omega_x^j) - \gamma(\omega_y^i + \omega_y^j)}{(\phi_i/\phi_j)\alpha\left(\omega_y^i + \omega_y^j\right) - (1 - \gamma)\left( \omega_x^i + \omega_x^j\right)}.
+$$
+Additionally, we are aware that
+$$
+p = \frac{\gamma\omega_y^j + \alpha\omega_y^i}{(1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i}.
+$$
+Thus, in the decentralized case, the value of $\theta_i/\theta_j$ must be chosen such that
+$$
+\frac{\gamma\omega_y^j + \alpha\omega_y^i}{(1 - \gamma)\omega_x^j + (1 - \alpha)\omega_x^i} = \frac{(\phi_i/\phi_j)(1 - \alpha)(\omega_x^i + \omega_x^j) - \gamma(\omega_y^i + \omega_y^j)}{(\phi_i/\phi_j)\alpha\left(\omega_y^i + \omega_y^j\right) - (1 - \gamma)\left( \omega_x^i + \omega_x^j\right)}.
+$$
+\end{proof}
+
+\begin{problem}{3.6}
+\end{problem}
+\begin{proof}
+These results demonstrate the first welfare theorem because as shown in 3.3, the solutions to the social planner's problem are always Pareto efficient, and as observed in 3.5, decentralizing the social planner's problem yields a competitive market equilibrium. This confirms that in general, market equilibriums are Pareto efficient.
+
+These results also show the second welfare theorem in action. The utility function for both consumers is continuous and concave. 3.3 shows that every solution to the social planner's problem in this scenario is Pareto efficient, and it is also clearly true that the allocations generated are feasible, each individual has a utility maximizing consumption bundle, and the sum of the transfer price are 0 (see 3.4).
+\end{proof}
+\end{document}

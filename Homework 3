@@ -1,0 +1,864 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 3}
+\author{Jian Park\\
+20700: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+ 
+\begin{problem}{3.2}
+\end{problem}
+\begin{proof}[Solution]
+First, observe that $(0, 1, 1)^T$ is linearly independent from $(1, 2, 3)^T, (1, 3, 1)^T$ because if $a(1, 2, 3)^T + b(1, 3, 1)^T = (0, 1, 1)^T$, then $a = b$ in order for the first element of the sum to equal 0, $a=b=-1$ for the second element to equal 1, and  $a=b=1/2$ for the third element to equal 1. All of these can't occur simultaneously, thus $(1, 2, 3)^T, (1, 3, 1)^T, (0, 1, 1)^T$ is a linearly independent system.
+
+Let $v_1 := x_1 = (1, 2, 3)^T$. Then, Gram-Schmidt orthogonalization gives that
+$$
+v_2 = x_2 - P_{span(x_1)}x_2 = x_2 - \frac{(x_2, v_1)}{||v_1||^2 }v_1 = (1, 3, 1)^T - \frac{10}{14}(1, 2, 3)^T = \frac{1}{14}(4, 22, -16).
+$$
+
+$$
+v_3 = x_3 - P_{span(x_1, x_2)}x_3 = x_3 - \frac{(x_3, v_1)}{||v_1||^2 }v_1 - \frac{(x_3, v_2)}{||v_2||^2 }v_2 = (0, 1, 1)^T - \frac{5}{14}(1, 2, 3)^T - \frac{3/7}{27/7}\frac{1}{14}(4, 22, -16)^T = \frac{1}{18}(-7, 2, 1).
+$$
+
+Thus, we observe that $(1, 2, 3)^T, \frac{1}{14}(4, 22, -16)^T, \frac{1}{18}(-7, 2, 1)^T$ form an orthogonal basis in $\mathbb{R}^3$ (we will change $v_2$ to $(4, 22, -16)^T$, observe it is still orthogonal).
+
+Next, observe that for the orthogonal projection $P_E$ onto the subspace $E$ created by $v_1 = (1, 2, 3)^T$ and $v_2 = (4, 22, -16)^T$, we can use Proposition 3.3 as follows:
+
+$$
+P_E(a, b, c)^T = \frac{((a, b, c), v_1)}{||v_1||^2}v_1 + \frac{((a, b, c), v_2)}{||v_2||^2}v_2.
+$$
+
+$$
+= \frac{a + 2b + 3c}{14}(1, 2, 3)^T + \frac{4a + 22b - 16c)}{756}(4, 22, -16).
+$$
+
+Thus, 
+$$
+P_E(a, b, c)^T = \begin{bmatrix}
+1/14 + 16/756 & 4/9 & 2/9 \\
+2/14 + 88/756 & 5/9 & -2/9 \\
+3/14 +  & -2/9 & 8/9
+\end{bmatrix}(a, b, c)^T
+$$
+\end{proof}
+
+\begin{problem}{3.5}
+\end{problem}
+\begin{proof}[Solution]
+Let $v = (1, 1, 1, 1)^T$. Given that $v_1$ and $v_2$ are orthogonal, we observe from Proposition 3.3 that
+$$
+P_{span(v_1, v_2)}v = \frac{(v, v_1)}{||v_1||^2}v_1 + \frac{(v, v_2)}{||v_2||^2}v_2 = \frac{6}{12}(1, 3, 1, 1)^T + \frac{2}{6}(2, -1, 1, 0) = \frac{1}{6}(7, 7, 5, 3)^T.
+$$
+\end{proof}
+
+\begin{problem}{3.6}
+\end{problem}
+\begin{proof}[Solution]
+Given $v = (1, 2, 3, 4)$, using Proposition 3.3, we observe that 
+$$
+P_{span(v_1, v_2)}v = \frac{(v, v_1)}{||v_1||^2}v_1 + \frac{(v, v_2)}{||v_2||^2}v_2 = \frac{2}{3}(1, -1, 1, 0)^T + \frac{12}{7}(1, 2, 1, 1) = \frac{1}{21}(50, 58, 50, 36)^T.
+$$
+Then, we observe that $||\frac{1}{21}(50, 58, 50, 36)^T|| = \frac{2\sqrt{115}}{\sqrt{21}}$
+\end{proof}
+
+\begin{problem}{3.7}
+\end{problem}
+\begin{proof}[Solution]
+True. Consider a basis $v_1, ... v_{k}$ in $E$, and consider a basis $v_{k+1}, ... , v_n$ in $E^{\perp}$. We observe that by definition, $dim(E) = k$ and $dim(E^{\perp}) = n-k$. Then, observe from from section 3.3 that if $v \in V$, then $v = a + b$, where $a \in E$ and $b \in E^{\perp}$ are unique. Given that $a = \alpha_1v_1 + ... + \alpha_kv_k$ and $b = \alpha_{k+1}v_{k+1} + ... + \alpha_nv_n$, we observe that for any $v \in V$, $v = \alpha_1v_1 + ... + \alpha_nv_n$, showing that $v_1, ..., v_n$ is spanning. In addition, given that $a$ and $b$ are unique, and given that $\{v_1, ..., v_k\}$ and $\{v_{k+1}, ..., v_n\}$ are both linearly independent systems, $\alpha_1, ..., \alpha_n$ is unique for all $v \in V$. Letting $v = 0$ shows that only the trivial solution solves the system $v = \alpha_1v_1 + ... + \alpha_nv_n$, thus $v_1,... , v_n$ is a basis in $V$. Thus, by definition, $dim(V) = n$. This shows that $dim(E) + dim(E^{\perp}) = dim(V)$.
+\end{proof}
+
+\begin{problem}{3.8}
+\end{problem}
+\begin{proof}[Solution]
+Consider a basis $v_1, ..., v_r$ in $E$, and let $v_{r+1}, ..., v_{n}$ be a basis in $E^{\perp}$ (we know the dimension of $E^{\perp}$ as a result of question 3.7). We know from 3.7 above that $v_1, ... , v_n$ is a basis in $V$. If $P$ is the projection, for all $1 \leq i \leq r$,  we observe that $Pv_i = v_i$ because as shown in Theorem 3.2, $Pv_i$ is the vector in $E$ that minimizes $||Pv_i - v_i||$. Given that $v_i \in E$, clearly $Pv_i=v_i$ minimizes $||Pv_i - v_i||$. In addition, for $r < i \leq n$, the vector $Pv_i = 0$ because according to definition 3.1, we see that $v_i - 0 \perp E$, and $0 \in E$. Thus, $v_1, ... , v_r$ are all eigenvectors with eigenvalue 1 (1 has multiplicity $r$) and $v_{r+1}, ... , v_n$ are all eigenvectors with eigenvalue 0 (0 has multiplicity $n - r$). In addition, $v_1, ... , v_r$ forms a basis in $E$ so the eigenspace corresponding to the eigenvalue 1 is $E$, and similarly, the eigenspace corresponding to the eigenvalue 0 is $E^{\perp}$. The geometric multiplicities of each eigenvalue clearly equals the algebraic multiplicity because $dim(E) = r$ and $dim(E^{\perp}) = n-r$.
+\end{proof}
+
+\begin{problem}{3.9a}
+\end{problem}
+\begin{proof}[Solution]
+Given $v = (1, 1, ..., 1)^n$, using Proposition 3.3, for any $x \in \mathbb{R}^n$, we observe that 
+$$P_Ex = \frac{(x, v)}{||v||^2}v = \frac{1}{n}\left(\sum_{i=0}^nx_i\right)(1, 1, ..., 1)^T.$$
+This shows that $P_Ex$ is just an $n$element vector where every element is the average of the elements of $x$. It can be seen that the $n \times n$ matrix $P$ where every element is $1/n$ describes the orthogonal projection onto the subspace because $Px$ is clearly a scalar multiple of $(1, 1,... , 1)$, and the value in each position of $Px$ is equal to $x_1/n + x_2/n + ... + x_n/n$, which is the average of all the elements in $x$.
+\end{proof}
+
+\begin{problem}{3.9b}
+\end{problem}
+\begin{proof}[Solution]
+We know from Problem 3.8 that an orthogonal projection onto a subspace of dimension 1 would have eigenvalues 1 with multiplicity 1 (both geometric and algebraic) and eigenvalue 0 with multiplicity $n-1$. Given that the subspace $E$ that is spanned by $(1, 1, ... , 1)^T$ clearly has a dimension of 1, we observe from the result of Problem 3.9a that the matrix $P$ for the orthogonal projection onto $E$ (the matrix where every element is $1/n$) has eigenvalues 0 (with multiplicity $n-1$) and 1. This shows that $det(P) = 0$ because Theorem 1.2 of Chapter 4 shows that the determinant of a matrix is the product of the determinants. Thus, the $n \times n$ matrix $A$ where every element is 1 can be represented as $A = nP$, thus $det(A) = det(nP) = n*det(P) = 0$.
+\end{proof}
+
+\begin{problem}{3.9c}
+\end{problem}
+\begin{proof}[Solution]
+We know from Problem 3.9b that $A$ has eigenvalue 0 has geometric multiplicity $n-1$. This implies that there exist $n-1$ linearly independent vectors $x$ such that $Ax = 0x = 0$. Through algebraic manipulation, we see that $((A - I_n) - (-1)I_n)x = 0$ has the same $n-1$ solutions for $x$, thus $A - I_n$ has the eigenvalue -1 with multiplicity $n-1$ (both geometric and algebraic). Next, we have shown in Problem 3.9b that the $n \times n$ matrix $P$ where every element is $1/n$ has an eigenvalue of 1, and the eigenvector of this value is $x = (1, 1, ..., 1)^T$. Thus,$Px = (1/n)Ax = x$. We then observe that $((1/n)Ax - x) = ((1/n)A - I_n)x= 0$, thus $(A - nI_n)x = 0$, and thus $n$, with multiplicity 1, is an eigenvector of $A - I_n$.
+\end{proof}
+
+\begin{problem}{3.9d}
+\end{problem}
+\begin{proof}[Solution]
+Utilizing Theorem 1.2 of Chapter 4 and the results from Problem 3.9c, we observe that $det(A - I_n) = (-1)^{n-1}n$.
+\end{proof}
+
+\begin{problem}{3.11a}
+\end{problem}
+\begin{proof}[Solution]
+Let $v_1$ and $v_2$ denote two arbitrary vectors in $V$. From section 3.3, we observe that for any $v \in V$, $v = P_Ev + v'$, where $P_E$ is the projection onto subspace $E$ and $v' \in E^{\perp}$. Thus, let $v_1 = P_Ev_1 + v_1'$ and $v_1 = P_Ev_1 + v_1'$. Thus, we observe that
+$$
+(P_Ev_1, v_2) = (P_Ev_1, P_Ev_2 + v_2') = (P_Ev_1, P_Ev_2) + (P_Ev_1, v_2') 
+$$
+$$
+= (P_Ev_1, P_Ev_2) = (P_Ev_1, P_Ev_2) + (v_1', P_Ev_2) = (P_Ev_1 + v_1', P_Ev_2) = (v_1, P_Ev_2)
+$$
+We obtain the second and fifth equality due to the linearity property of inner product spaces, and we obtain the third and fourth equality due to the fact that $P_Ev_1, v_2'$ and $P_Ev_2 , v_1'$ are orthogonal to each other. Then, for any $1 \leq i, j \leq n$, let $e_i, e_j$ represent the $i$-th and $j$-th standard basis. Then, observe that
+$$
+(P_E)_{ij} = (P_Ee_j, e_i) = (e_j, P_Ee_i) = \bar{(P_E)}_{ji}.
+$$
+Thus, $P_E$ is clearly self-adjoint.
+\end{proof}
+
+\begin{problem}{3.11b}
+\end{problem}
+\begin{proof}[Solution]
+We observe that if $P$ is an orthogonal projection from $V$ to subspace $E$, $Pv = v$ if $v \in E$. This is true from definition 3.1, because $v \in E$, and $v - v = 0 \perp E$. Thus, for any vector $v$, $P^2v = P(P(v))$, and given that $P(v) \in E$, $P(P(v)) = P(v)$. This property is enough to show that $P^2 = P$ because setting $v$ to be $e_1, ..., e_n$ shows that all the columns are identical.
+\end{proof}
+
+\begin{problem}{3.13a}
+\end{problem}
+\begin{proof}[Solution]
+As shown in section 3.3, $v = P_{E}v + P_{E^{\perp}}v$ for all. Thus, $v = P_{E}v + P_{E^{\perp}}v = Pv + Qv = (P+Q)v$. This shows that $(P+Q)v = v$ for all $v$, thus $P+Q = I_n$. This can be checked by setting $v$ to be $e_1, ..., e_n$, showing that all the $k$-th column of $P+Q$ to be equal to $e_k$
+Next, observe that for any $v$, $Qv \in E^{\perp}$, as stated in Definition 3.1. Then, observe that for any $x$ perpendicular to $E$, we observe that $Px = 0$ because using Definition 3.1, $0 \in E$ and $Qx - 0 \perp E$. $Qv \perp E$ because $Qv \in E^{\perp}$, thus $P(Qv) = 0$ for any $v$. This clearly shows that $PQ = 0$.
+It is also easy to see that $QP = 0$ for similar reasons: $Pv \perp E$, thus $Q(Pv) = 0$ for all $v$.
+\end{proof}
+
+\begin{problem}{3.13b}
+\end{problem}
+\begin{proof}[Solution]
+We observe that $(P - Q)(P - Q) = P^2 - QP - PQ + Q^2 = (P + Q)(P + Q) - 2QP - 2PQ$. Given that $PQ = QP = 0$ and given that $P+Q = I_n$, we see that $(P - Q)(P - Q) = I_n*I_n - 0 - 0 = I_n$. This shows that $P-Q$ is clearly invertible, with the inverse being itself.
+\end{proof}
+
+\begin{problem}{4.2}
+\end{problem}
+\begin{proof}[Solution]
+Using Gram-Schmidt orthogonalization, $v_1 = (1, 2, -2)^T$, and $v_2 = x_2 - P_{E}x_2 = (1, -1, 4)^T + (9/9)(1, 2, -2)^T = (2, 1, 2)^T$. Then, we observe from Proposition 3.3 that
+$$
+P_{Ran(A)}b = \frac{(b, v_1)}{||v_1||^2}v_1 + \frac{(b, v_2)}{||v_2||^2}v_2wf
+$$
+Substituting $b$ with $e_1, e_2, e_3$ shows that $e_1 = (1/9)(1, 2, -2)^T + (2/9)(2, 1, 2)^T = (1/9)(5, 4, 2)^T$, $e_2 = (2/9)(1, 2, -2)^T + (1/9)(2, 1, 2)^T = (1/9)(4, 5, -2)^T$, and $e_3 = (-2/9)(1, 2, -2)^T + (2/9)(2, 1, 2)^T = (1/9)(2, -2, 8)^T$. Thus, the matrix is
+$$
+P_{Ran(A)} = \begin{bmatrix}
+5/9 & 4/9 & 2/9 \\
+4/9 & 5/9 & -2/9 \\
+2/9 & -2/9 & 8/9
+\end{bmatrix}.
+$$
+
+Using the formula for a projection,
+
+\begin{equation}
+\begin{split}
+P_{Ran(A)} & = A(A*A)^{-1}A* \\
+& =  \begin{bmatrix}
+1 & 1 \\
+2 & -1 \\
+-2 & 4
+\end{bmatrix}\left(\begin{bmatrix}
+1 & 2 & -2 \\
+1 & -1 & 4
+\end{bmatrix}\begin{bmatrix}
+1 & 1 \\
+2 & -1 \\
+-2 & 4
+\end{bmatrix}\right)^{-1}
+\begin{bmatrix}
+1 & 2 & -2 \\
+1 & -1 & 4
+\end{bmatrix} \\
+& =  \begin{bmatrix}
+1 & 1 \\
+2 & -1 \\
+-2 & 4
+\end{bmatrix}\left(\begin{bmatrix}
+9 & -9 \\
+-9 & 18
+\end{bmatrix}\right)^{-1}
+\begin{bmatrix}
+1 & 2 & -2 \\
+1 & -1 & 4
+\end{bmatrix} \\
+& =  \begin{bmatrix}
+1 & 1 \\
+2 & -1 \\
+-2 & 4
+\end{bmatrix}\begin{bmatrix}
+2/9 & 1/9 \\
+1/9 & 1/9
+\end{bmatrix}
+\begin{bmatrix}
+1 & 2 & -2 \\
+1 & -1 & 4
+\end{bmatrix} \\
+& =  \begin{bmatrix}
+3/9 & 2/9 \\
+3/9 & 1/9 \\
+0 & 2/9 
+\end{bmatrix}
+\begin{bmatrix}
+1 & 2 & -2 \\
+1 & -1 & 4
+\end{bmatrix} \\
+& =  \begin{bmatrix}
+5/9 & 4/9 & 2/9\\
+4/9 & 5/9 & -2/9 \\
+2/9 & -2/9 & 8/9 \\
+\end{bmatrix}\\
+\end{split}
+\end{equation}
+
+We observe that the results from the two methods are identical.
+\end{proof}
+
+\begin{problem}{4.4a}
+\end{problem}
+\begin{proof}[Solution]
+The system of four equations with three unknowns can be written as
+$$
+\begin{bmatrix}
+1 & 1 & 1\\
+1 & 0 & 3 \\
+1 & 2 & 1 \\
+1 & 0 & 0 
+\end{bmatrix}\begin{bmatrix}
+a\\
+b\\
+c
+\end{bmatrix} = \begin{bmatrix}
+3\\
+6\\
+5\\
+0
+\end{bmatrix}.
+$$
+\end{proof}
+
+\begin{problem}{4.4b}
+\end{problem}
+\begin{proof}[Solution]
+We observe from section 4.1.1 that the normal equation $A^*Ax = A^*b$ can give a least square solution to $Ax = b$.
+$$
+A^*Ax = \begin{bmatrix}
+1 & 1 & 1 & 1\\
+1 & 0 & 2  & 0\\
+1 & 3 & 1 & 0\\
+\end{bmatrix}\begin{bmatrix}
+1 & 1 & 1\\
+1 & 0 & 3 \\
+1 & 2 & 1 \\
+1 & 0 & 0 
+\end{bmatrix}\begin{bmatrix}
+a\\
+b\\
+c
+\end{bmatrix} = \begin{bmatrix}
+4 & 3 & 5\\
+3 & 5 & 3 \\
+5 & 3 & 11 \\
+\end{bmatrix}\begin{bmatrix}
+a\\
+b\\
+c
+\end{bmatrix}
+$$
+
+$$
+A^*b = \begin{bmatrix}
+1 & 1 & 1 & 1\\
+1 & 0 & 2  & 0\\
+1 & 3 & 1 & 0\\
+\end{bmatrix}\begin{bmatrix}
+3 \\
+6 \\
+5 \\
+0 
+\end{bmatrix} = \begin{bmatrix}
+14 \\
+13 \\
+26 
+\end{bmatrix}
+$$
+
+We thus see that the least square solution can be found as follows:
+
+$$
+\begin{bmatrix}
+4 & 3 & 5\\
+3 & 5 & 3 \\
+5 & 3 & 11 \\
+\end{bmatrix}\begin{bmatrix}
+a\\
+b\\
+c
+\end{bmatrix} = \begin{bmatrix}
+14 \\
+13 \\
+26 
+\end{bmatrix}
+$$
+
+$$
+\begin{bmatrix}
+a\\
+b\\
+c
+\end{bmatrix} = \begin{bmatrix}
+4 & 3 & 5\\
+3 & 5 & 3 \\
+5 & 3 & 11 \\
+\end{bmatrix}^{-1}\begin{bmatrix}
+14 \\
+13 \\
+26 
+\end{bmatrix} = \begin{bmatrix}
+23/25 & -9/25 & -8/25\\
+-9/25 & 19/50 & 3/50 \\
+-8/25 & 3/50 & 11/50 \\
+\end{bmatrix}\begin{bmatrix}
+14 \\
+13 \\
+26 
+\end{bmatrix} = \begin{bmatrix}
+-3/25 \\
+73/50 \\
+101/50 
+\end{bmatrix}
+$$
+
+Thus, the least square solution would be $z = (-3/25) + (73/50)x + (101/50)y.$
+\end{proof}
+
+\begin{problem}{4.5a}
+\end{problem}
+\begin{proof}[Solution]
+Assume $x_0$ is a norm minimizing solution for $Ax = b$, and for the sake of contradiction assume $x_1$ is another unique solution. Then, consider the set of all vectors $V$ in $\mathbb{R}^n$ that can be represented in the form $\alpha x_0 + (1-\alpha) x_1$. We observe that $A(\alpha x_0 + (1-\alpha) x_1) = \alpha Ax_0 + (1-\alpha) Ax_1 = \alpha b + (1 - \alpha) b = b$. Thus, all vectors in $V$ are a solution to $Ax = b$. Next, note that $V$ clearly forms a single straight line in $\mathbb{R}^n$. Given that minimizing the norm is basically the equivalent to minimizing the Euclidian distance, there is only one point in $V$ such that the norm is minimized. This is a contradiction to the fact that $x_0$ and $x_1$ are both unique norm minimizing vectors on $V$, thus the norm minimizing solution is unique.
+\end{proof}
+
+\begin{problem}{4.5b}
+\end{problem}
+\begin{proof}[Solution]
+We observe that for any $x_0, x_1$ satisfying $Ax = b$, we observe that $x_0 - x_1 \in Ker(A)$ because $Ax_0 - Ax_1 = A(x_0 - x_1) = 0$. Thus, $P_{Ker(A)^{\perp}}x_0 - P_{Ker(A)^{\perp}}x_1 = P_{Ker(A)^{\perp}}(x_0 - x_1) = 0$ (this is true because projecting onto a perpendicular subspace yields the origin). This shows that $P_{Ker(A)^{\perp}}x_0 = P_{Ker(A)^{\perp}}x_1$ for any $x_0, x_1$ satisfying $Ax = b$.
+
+Given the subspace $(Ker(A))^{\perp}$, we observe from section 3.3 that $x = P_{Ker(A)^{\perp}}x + x'$, where $x' \in Ker(A)$. Observe due to the Pythagorean property from section 2.1 that $||x||^2 = ||P_{Ker(A)^{\perp}}x||^2 + ||x'||^2$. Given that $P_{Ker(A)^{\perp}}x$ is identical for all $x$ where $Ax = b$, let $P_{Ker(A)^{\perp}}x = c$. We observe that $||x||^2 = ||c||^2 + ||x'||^2$, thus $||x|| \geq ||c||$ for all $x$ satisfying $Ax = b$. In addition, if there were a vector $x$ such that $x = c$, then $||x|| = ||c||$, then it will be norm minimizing, thus it will be unique due to the result of Problem 4.5a.
+
+Finally, observe from section 3.3 that for any for any $x$ such that $Ax = b$, $x = P_{Ker(A)^{\perp}}x + x'$, where $x' \in (Ker(A)^{\perp})^{\perp} = Ker(A)$. Observe that $b = Ax = A(P_{Ker(A)^{\perp}}x + x') = A(P_{Ker(A)^{\perp}}x) + Ax' = A(P_{Ker(A)^{\perp}}x)$. Thus, we know that $P_{Ker(A)^{\perp}}x = c$ so $Ac = b$. Thus, we have shown that $P_{Ker(A)^{\perp}}x$ is the norm minimizing solution for any $x$ satisfying $Ax = b$.
+\end{proof}
+
+\begin{problem}{5.2}
+\end{problem}
+\begin{proof}[Solution]
+We observe that the first and second columns of $A$ are linearly independent from each other, but the third column is the sum of the first two columns multiplied by 1/2. Thus, $Ran(A)$ is spanned by $(1, 1, 2)^T$ and $(1, 3, 4)^T$. By setting these two vectors to be the columns of matrix $A$, we can use the formula for the orthogonal projection from section 4.2 to see that
+\begin{equation}
+\begin{split}
+P_{Ran(A)} & = A(A*A)^{-1}A* \\
+& =  \begin{bmatrix}
+1 & 1 \\
+1 & 3 \\
+2 & 4
+\end{bmatrix}\left(\begin{bmatrix}
+1 & 1 & 2 \\
+1 & 3 & 4
+\end{bmatrix}\begin{bmatrix}
+1 & 1 \\
+1 & 3 \\
+2 & 4
+\end{bmatrix}\right)^{-1}
+\begin{bmatrix}
+1 & 1 & 2 \\
+1 & 3 & 4
+\end{bmatrix} \\
+& =  \begin{bmatrix}
+1 & 1 \\
+1 & 3 \\
+2 & 4
+\end{bmatrix}\left(\begin{bmatrix}
+6 & 12 \\
+12 & 26
+\end{bmatrix}\right)^{-1}
+\begin{bmatrix}
+1 & 1 & 2 \\
+1 & 3 & 4
+\end{bmatrix} \\
+& =  \begin{bmatrix}
+1 & 1 \\
+1 & 3 \\
+2 & 4
+\end{bmatrix}
+\begin{bmatrix}
+13/6 & -1 \\
+-1 & 1/2
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1 & 2 \\
+1 & 3 & 4
+\end{bmatrix} \\
+& =  \begin{bmatrix}
+7/6 & -1/2 \\
+-5/6 & 1/2 \\
+2/6 & 0
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1 & 2 \\
+1 & 3 & 4
+\end{bmatrix}  = \begin{bmatrix}
+2/3 & -1/3 & 1/3 \\
+-1/3 & 2/3 & 1/3 \\
+1/3 & 1/3 & 2/3
+\end{bmatrix}
+\end{split}
+\end{equation}
+
+Then, we observe from section 3.3 that for any $x$, $x = Ix = P_{Ran(A)}x + P_{Ran(A)^{\perp}}x$, thus $(I - P_{Ran(A)})x = P_{Ran(A)^{\perp}}x$ and $I - P_{Ran(A)} = P_{Ran(A)^{\perp}}$. Theorem 5.1 states that $Ran(A)^{\perp} = Ker(A^*)$, thus
+$$
+P_{Ker(A^*)} = P_{Ran(A)^{\perp}} = I - P_{Ran(A)} = \begin{bmatrix}
+1/3 & 1/3 & -1/3 \\
+1/3 & 1/3 & -1/3 \\
+-1/3 & -1/3 & 1/3
+\end{bmatrix}.
+$$
+
+Next, observe that the first two rows are linearly independent from each other, but the third row is a sum of the first two rows. Therefore, $Ran(A^*)$ is spanned by $(1, 1, 1)^T$ and $(1, 3, 2)^T$. Setting these two vectors to be the columns of $A$, we can again use the formula for the orthogonal projection to see that
+
+\begin{equation}
+\begin{split}
+P_{Ran(A^*)} & = A(A*A)^{-1}A* \\
+& =  \begin{bmatrix}
+1 & 1 \\
+1 & 3 \\
+1 & 2
+\end{bmatrix}\left(\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 3 & 2
+\end{bmatrix}\begin{bmatrix}
+1 & 1 \\
+1 & 3 \\
+1 & 2
+\end{bmatrix}\right)^{-1}
+\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 3 & 2
+\end{bmatrix} \\
+& =  \begin{bmatrix}
+1 & 1 \\
+1 & 3 \\
+1 & 2
+\end{bmatrix}\left(\begin{bmatrix}
+3 & 6 \\
+6 & 14
+\end{bmatrix}\right)^{-1}
+\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 3 & 2
+\end{bmatrix} \\
+& =  \begin{bmatrix}
+1 & 1 \\
+1 & 3 \\
+1 & 2
+\end{bmatrix}
+\begin{bmatrix}
+7/3 & -1 \\
+-1 & 1/2
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 3 & 2
+\end{bmatrix} \\
+& =  \begin{bmatrix}
+4/3 & -1/2 \\
+-2/3 & 1/2 \\
+1/3 & 0
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1 & 1 \\
+1 & 3 & 2
+\end{bmatrix}  = \begin{bmatrix}
+5/6 & -1/6 & 1/3 \\
+-1/6 & 5/6 & 1/3 \\
+1/3 & 1/3 & 1/3
+\end{bmatrix}
+\end{split}
+\end{equation}
+
+Finally, as before, note that $P_{Ran(A^*)^{\perp}} = I - P_{Ran(A^*)}$ due to section 3.3, and note from Theorem 5.1 that $P_{Ran(A^*)^{\perp}} = P_{Ker(A)}$. Therefore,
+
+$$
+P_{Ker(A)} = P_{Ran(A^*)^{\perp}} = I - P_{Ran(A^*)} = \begin{bmatrix}
+1/6 & 1/6 & -1/3 \\
+1/6 & 1/6 & -1/3 \\
+-1/3 & -1/3 & 2/3
+\end{bmatrix}
+$$
+\end{proof}
+
+\begin{problem}{5.3}
+\end{problem}
+\begin{proof}[Solution]
+For any $x \in Ker(A)$, $Ax = 0$, thus $A^*(Ax) = A^*0 = 0$, thus $Ker(A^*A) \subset Ker(A)$.
+
+For the sake of contradiction, for some non-zero vector $x$, assume that $x \in Ker(A^*A)$ and $x \notin Ker(A)$. Then, observe that $(A^*Ax, x) = (0, x) = 0$. Then, observe that $(Ax, Ax) \neq 0$ because $Ax \neq 0$ and the Non-degeneracy property of inner product spaces (Section 1.3) states that $(v, v) = 0$ if and only if $v = 0$. Lastly, using the property that $(Ax, Ax) = (A^*Ax, x)$, we see that $0 \neq (Ax, Ax) = (A^*Ax, x) = 0$, which is a clear contradiction. Thus if $x \in Ker(A^*A)$, then $x \in Ker(A)$, showing that $Ker(A) \subset Ker(A^*A)$. We conclude that $Ker(A) = Ker(A^*A)$.
+\end{proof}
+
+\begin{problem}{5.4a}
+\end{problem}
+\begin{proof}[Solution]
+We observe from Theorem 7.2 of Chapter 2 that $dim(Ker(A)) + rank(A) = n$ given that $A$ is an $m \times n$ matrix. Then, observe that $A^*A$ is an $n \times n$ matrix. Thus, applying Theorem 7.2 to $A^*A$ shows that $dim(Ker(A^*A)) + rank(A^*A) = n$. We know that $Ker(A^*A) = Ker(A)$, thus $rank(A) = n - dim(Ker(A)) = n - dim(Ker(A^*A)) = rank(A^*A)$.
+\end{proof}
+
+\begin{problem}{5.4b}
+\end{problem}
+\begin{proof}[Solution]
+Given that $Ker(A) = Ker(A^*A)$, $Ker(A^*A)x = 0$ if and only if $x = 0$.
+
+Theorem 6.8 from chapter 1 states that $A^*A$ is invertible if and only if $A^*Ax = b$ has a unique solution for all $b$. We first know that all solutions are unique because if $x_0 \neq x_1$ and $A^*Ax_0 = A^*Ax_1 = b$, then $A^*Ax_0 - A^*Ax_1 = A^*A(x_0 - x_1) = 0$, thus $0 \neq x_0 - x_1 \in Ker(A^*A)$, which is a contradiction. Then, let $A^*A$ be $n \times n$, which means $A^*A:\mathbb{F}^n \rightarrow \mathbb{F}^n$. Using Theorem 7.2 from chapter 2, we observe that $dim(Ker(A^*A)) + dim(Ran(A^*A)) = 0 + dim(Ran(A^*A)) = n$, and given that $dim(\mathbb{F}^n) = n$, Theorem 5.5 from chapter 2 shows that $Ran(A^*A) = \mathbb{F}^n$, thus there exists a unique $x$ such that $A^*Ax = b$ for any $b \in \mathbb{F}^n$. Applying Theorem 6.8 shows that $A^*A$ is invertible. Then, observe that $(A^*A)^{-1}A^*A = I$, thus $(A^*A)^{-1}A^*$ is the left inverse to $A$.
+\end{proof}
+
+\begin{problem}{5.6}
+\end{problem}
+\begin{proof}[Solution]
+Let $x = x_1 + x_2$ where $x_1 \in Ran(P)$ and $x_2 \in Ran(P)^{\perp}$. First, observe that if $x_1 \in Ran(A)$, there must exist $x_1' \in A$ such that $x_1 = Px_1'$. We thus observe that $Px_1 = P(Px_1') = P^2x_1'$. If $P^2 = P$, then $Px_1 = P^2x_1' = Px_1' = x_1$. Thus, $Px_1 = x_1$.
+
+First, we observe that $Ran(P)^{\perp} = Ker(P^*)$ due to Theorem 5.1. Then, given that $P$ is self adjoint, $Ker(P^*) = Ker(P)$. Thus, if $x_2 \in Ran(P)^{\perp}$, then $x_2 \in Ker(P)$, thus $Px_2 = 0$.
+
+Thus, going back to the decomposition of $x$, $x = x_1 + x_2$, thus $Px = P(x_1 + x_2) = Px_1 + Px_2 = x_1 + 0 = x_1$. We observe from Section 3.3 that $x_1$ is the unique orthogonal component of $x$, and it is noted there that $x_1 = P_{Ran(A)}x$. Therefore, $Px = x_1 = P_{Ran(A)}x$ for all $x$, thus $P = P_{Ran(A)}$.
+\end{proof}
+
+\begin{problem}{6.1}
+\end{problem}
+\begin{proof}[Solution]
+For the first matrix $A$, we observe that the characteristic polynomial is $(1 - \lambda)^2 - 4 = (\lambda-3)(\lambda+1)$, thus 3 and -1 are the eigenvalues. $A(1, 1)^T = (3, 3)^T = 3(1, 1)^T$ and $A(1, -1)^T = (-1, 1)^T = (-1)(1, -1)^T$. Thus, the (normalized) eigenvectors are $(1/\sqrt{2}, 1/\sqrt{2})^T$ and $(1/\sqrt{2}, -1/\sqrt{2})^T$. It is also easy to see that both of these vectors are orthogonal (because inner product is 0) and they form a basis in $\mathbb{R}^2$. Thus, using Theorem 2.1 from Chapter 4, we see that 
+$$
+\begin{bmatrix}
+1 & 2 \\
+2 & 1
+\end{bmatrix} = UDU^{-1} = \begin{bmatrix}
+1/\sqrt{2} & 1/\sqrt{2} \\
+1/\sqrt{2} & -1/\sqrt{2}
+\end{bmatrix}\begin{bmatrix}
+3 & 0 \\
+0 & -1
+\end{bmatrix}\begin{bmatrix}
+1/\sqrt{2} & 1/\sqrt{2} \\
+1/\sqrt{2} & -1/\sqrt{2}
+\end{bmatrix}^{-1} = \begin{bmatrix}
+1/\sqrt{2} & 1/\sqrt{2} \\
+1/\sqrt{2} & -1/\sqrt{2}
+\end{bmatrix}\begin{bmatrix}
+3 & 0 \\
+0 & -1
+\end{bmatrix}\begin{bmatrix}
+-1/\sqrt{2} & 1/\sqrt{2} \\
+1/\sqrt{2} & 1/\sqrt{2}
+\end{bmatrix}.
+$$
+We can see that this diagnonalization is an orthogonal diagonalization because $U^{-1} = U^*$. 
+
+For the second matrix $B$, we observe that the characteristic polynomial is $\lambda^2+1$, thus $i$ and $-i$ are the eigenvalues. $A(i, 1)^T = (-1, i)^T = i(i, 1)^T$ and $B(-i, 1)^T = (-1, -i)^T = -i(-1, 1)^T$. Thus, the (normalized) eigenvectors are $(i/\sqrt{2}, 1/\sqrt{2})^T$ and $(-i/\sqrt{2}, 1/\sqrt{2})^T$. It is also easy to see that both of these vectors are orthogonal (because inner product is 0). Thus, using Theorem 2.1 from Chapter 4, we see that 
+$$
+\begin{bmatrix}
+0 & -1 \\
+1 & 0
+\end{bmatrix} = UDU^{-1} = \begin{bmatrix}
+i/\sqrt{2} & -i/\sqrt{2} \\
+1/\sqrt{2} & 1/\sqrt{2}
+\end{bmatrix}\begin{bmatrix}
+i & 0 \\
+0 & -i
+\end{bmatrix}\begin{bmatrix}
+i/\sqrt{2} & -i/\sqrt{2} \\
+1/\sqrt{2} & 1/\sqrt{2}
+\end{bmatrix}^{-1} = \begin{bmatrix}
+i/\sqrt{2} & -i/\sqrt{2} \\
+1/\sqrt{2} & 1/\sqrt{22}
+\end{bmatrix}\begin{bmatrix}
+i & 0 \\
+0 & -i
+\end{bmatrix}\begin{bmatrix}
+-i/\sqrt{2} & 1/\sqrt{2} \\
+i/\sqrt{2} & 1/\sqrt{2}
+\end{bmatrix}.
+$$
+We can see that this diagnonalization is an orthogonal diagonalization because $U^{-1} = U^*$. 
+
+For the third matrix $C$, we observe by using co-factor expansion that the characteristic polynomial is $-\lambda^3 + 12\lambda + 16 = -(\lambda + 2)^2(\lambda - 4)$, thus $-2$ (multiplicity 2) and $4$ are the eigenvalues. $C(1, 1, 1)^T = (4, 4, 4)^T = 4(1, 1, 1)^T$, $C(-1, 1, 0)^T = (2, -2, 0)^T = -2(-1, 1, 0)^T$, and $C(-1, 0, 1)^T = (2, 0, -2)^T = -2(-1, 0, 1)^T$. Thus, the eigenvectors are $(1, 1, 1)^T$, $(-1, 1, 0)^T$, and $(-1, 0, 1)^T$. However, we can see that the two eigenvectors corresponding to $-2$ are not orthogonal. Thus, using the Gram-Schmidt orthogonalization, if $v_1 = (-1, 1, 0)^T$, then $v_2 = x_2-((x_2, v_1)/||v_1||^2)v_1 = (-1, 0, 1)^T - (1/2)(-1, 1, 0)^T = (-1/2, -1/2, 1)^T$. Now, we can see that all the vectors are orthogonal, and we can create the orthonormal basis $(1/\sqrt{3}, 1/\sqrt{3}, 1/\sqrt{3}), (-1/\sqrt{2}, 1/\sqrt{2}, 0), (-1/\sqrt{6}, -1/\sqrt{6}, 2/\sqrt{6})$. Thus, using Theorem 2.1 from Chapter 4, we see that 
+$$
+\begin{bmatrix}
+0 & 2 & 2 \\
+2 & 0 & 2 \\
+2 & 2 & 0
+\end{bmatrix} = UDU^{-1} = \begin{bmatrix}
+1/\sqrt{3} & -1/\sqrt{2} & -1/\sqrt{6} \\
+1/\sqrt{3} & 1/\sqrt{2} & -1/\sqrt{6} \\
+1/\sqrt{3} & 0 & 2/\sqrt{6}
+\end{bmatrix}\begin{bmatrix}
+4 & 0 & 0 \\
+0 & -2 & 0 \\
+0 & 0 & -2 \\
+\end{bmatrix}\begin{bmatrix}
+1/\sqrt{3} & -1/\sqrt{2} & -1/\sqrt{6} \\
+1/\sqrt{3} & 1/\sqrt{2} & -1/\sqrt{6} \\
+1/\sqrt{3} & 0 & 2/\sqrt{6}
+\end{bmatrix}^{-1} 
+$$
+
+$$
+= \begin{bmatrix}
+1/\sqrt{3} & -1/\sqrt{2} & -1/\sqrt{6} \\
+1/\sqrt{3} & 1/\sqrt{2} & -1/\sqrt{6} \\
+1/\sqrt{3} & 0 & 2/\sqrt{6}
+\end{bmatrix}\begin{bmatrix}
+4 & 0 & 0 \\
+0 & -2 & 0 \\
+0 & 0 & -2 \\
+\end{bmatrix}\begin{bmatrix}
+1/\sqrt{3} & 1/\sqrt{3} & 1/\sqrt{3} \\
+-1/\sqrt{2} & 1/\sqrt{2} & 0 \\
+-1/\sqrt{6} & -1/\sqrt{6} & 2/\sqrt{6}
+\end{bmatrix}^{-1} 
+$$
+We can see that this diagnonalization is an orthogonal diagonalization because $U^{-1} = U^*$. 
+\end{proof}
+
+\begin{problem}{6.2}
+\end{problem}
+\begin{proof}[Solution]
+True. This is directly true due to Proposition 6.5.
+\end{proof}
+
+\begin{problem}{6.5a}
+\end{problem}
+\begin{proof}[Solution]
+True. We observe from Definition 6.1 that $U$ is an isometry because $||Ux|| = ||x||$ for all $x \in X$. Then Proposition 6.3 states that isometry $U$ is a unitary operator because $dim(X) = dim(X)$, showing that the domain and co-domain have the same dimension.
+\end{proof}
+
+\begin{problem}{6.5b}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the orthonormal basis in $\mathbb{R}^2$ $e_1 = (1, 0)^T$ and $e_2 = (0, 1)^T$. Then, consider the $2 \times 2$ matrix $U$ where both columns are $(1, 0)^T$. We observe that $||Ue_1|| = ||(1, 0)^T|| = ||e_1|| = 1$, and $||Ue_2|| = ||(1, 0)^T|| = ||e_2|| = 1$. However, $U$ cannot be unitary because $U$ is not invertible (Definition of unitary operator). We know $U$ is not invertible because because Theorem 6.8 from Chapter 1 notes that $Ux = b$ must have a unique solution for all $b$ if $U$ is to be invertible. However, when $b = 0$, $x = (1, -1)^T$ and $x = (-1, 1)^T$ both satisfy $Ux = 0$, thus the uniqueness condition is not true, showing that $U$ is not invertible.
+\end{proof}
+
+\begin{problem}{6.6a}
+\end{problem}
+\begin{proof}[Solution]
+Using the properties of the adjoint, we observe that $A^*A = (UBU^*)^*(UBU^*) = U(UB)^*UBU^* = UB^*U^*UBU^*$. Then, $U^*U = I$ due to lemma 1, thus $A^*A = UB^*U^*UBU^* = UB^*BU^*$. Then, we observe that $trace(A^*A) = trace(UB^*BU^*)$. Then, given that $trace(XY) = trace(YX)$ due to Theorem 5.1 from Chapter 1, $trace(A^*A) = trace((UB^*B)U^*) = trace(U^*UB^*B) = trace(B^*B)$. This completes the proof.
+\end{proof}
+
+\begin{problem}{6.6b}
+\end{problem}
+\begin{proof}[Solution]
+We observe that for any $n \times n$ matrix $X$,
+$$
+trace(X^*X) = \sum_{i = 0}^n (X^*X)_{ii} = \sum_{i = 0}^n \sum_{j = 0}^n (X^*)_{ij}(X)_{ji} = \sum_{i = 0}^n \sum_{j = 0}^n \bar{(X)_{ji}}(X)_{ji} = \sum_{i, j = 0}^n |(X)_{ji}|^2.
+$$
+Thus, we observe that 
+$$
+\sum_{i, j = 0}^n |A_{ji}|^2 = trace(A^*A) = trace(B^*B) = \sum_{i, j = 0}^n |B_{ji}|^2.
+$$
+\end{proof}
+
+\begin{problem}{6.6c}
+\end{problem}
+\begin{proof}[Solution]
+For the left matrix, we observe that
+$$
+\sum_{i, j = 0}^n |(A)_{ji}|^2 = 1^2 + 2^2 + 2^2 + i^2 = 8
+$$
+For the right matrix, we observe that
+$$
+\sum_{i, j = 0}^n |(B)_{ji}|^2 = i^2 + 4^2 + 1^2 + 1^2 = 17
+$$
+If the two given matrices were unitarily equivalent, then Problem 6.6b shows that these two values must be equal. However, the fact that they are unequal shows that the two matrices are not unitarily equivalent.
+\end{proof}
+
+\begin{problem}{6.7a}
+\end{problem}
+\begin{proof}[Solution]
+If the left matrix is $A$ and the right matrix is $B$, assume for the sake of contradiction that $B$ is similar to $A$. Then, there must exist some unitary matrix $U$ such that $B = UAU^*$. Note that $A = I_2$, and note that $U^* = U^{-1}$ from property 2 of section 6.1. Thus, $B = UAU^* = UI_2U^{-1} = UU^{-1} = I_2$. This equality is clearly not true, thus $A$ and $B$ are not similar matrices. Section 6.4 notes that if two matrices are unitarily equivalent then they are also similar. Thus, $A$ and $B$ are not unitarily equivalent matrices.
+\end{proof}
+
+\begin{problem}{6.7b}
+\end{problem}
+\begin{proof}[Solution]
+If the left matrix is $A$ and the right matrix is $B$, we observe that
+$$
+\sum_{i, j = 0}^n |(A)_{ji}|^2 = 1^2 + 1^2 = 2
+$$
+
+$$
+\sum_{i, j = 0}^n |(B)_{ji}|^2 = (1/2)^2 + (1/2)^2 = 1/2
+$$
+
+Problem 6.6b shows that if $A$ and $B$ were to be similar, then these two values must equal each other. However, this is not the case, so the two given matrices are not unitarily equivalent.
+\end{proof}
+
+\begin{problem}{6.7c}
+\end{problem}
+\begin{proof}[Solution]
+If the left matrix is $A$ and the right matrix is $B$, we observe that
+$$
+\sum_{i, j = 0}^n |(A)_{ji}|^2 = 1^2 + |-1|^2 + 1^2 = 3
+$$
+
+$$
+\sum_{i, j = 0}^n |(B)_{ji}|^2 = 2^2 + |-1|^2 = 5
+$$
+
+Problem 6.6b shows that if $A$ and $B$ were to be similar, then these two values must equal each other. However, this is not the case, so the two given matrices are not unitarily equivalent.
+\end{proof}
+
+\begin{problem}{6.7d}
+\end{problem}
+\begin{proof}[Solution]
+If the left matrix is $A$, using co-factor expansion we can see that the characteristic polynomial is equal to $-\lambda(-\lambda)(1-\lambda) - 1(-1)(1-\lambda) = -\lambda^3 + \lambda^2 - \lambda + 1 = (1 - \lambda)(\lambda^2+1)$. Thus, the eigenvalues of $A$ are $1, i, -1$. For eigenvalue 1, observe that $A(0, 0, 1)^T = (0, 0, 1)^T$, thus it is an eigenvector (let this eigenvector be $v_1$). For eigenvalue i, observe that $A(i, 1, 0)^T = (-1, i, 0)^T = i(i, 1, 0)^T$, thus $(i, 1, 0)^T$ is an eigenvector (let this eigenvector be $v_2$). Lastly, for eigenvalue -i, observe that $A(-i, 1, 0)^T = (-1, -i, 0)^T = -i(-i, 1, 0)^T$, thus $(-i, 1, 0)^T$ is an eigenvector (let this eigenvector be $v_3$). Observe that $v_1$ is orthogonal to the two other eigenvectors because the inner products $(v_1, v_2) = (v_1, v_3) = 0$. This is true because $v_1$ has all zeros except for the last element, and $v_2, v_3$ have a zero in the last element. Then, observe that $(v_2, v_3) = -1 + 1 + 0 = 0$, thus $v_2$ and $v_3$ are orthogonal. Given that $v_1, v_2, v_3$ is an orthogonal system, and given that $dim(\mathbb{C}^3) = 3$, Section 2.1 notes that $v_1, v_2, v_3$ is clearly an orthogonal basis. Thus, Proposition 6.5 shows that $A$ is unitarily equivalent to a diagonal matrix given that it has an orthogonal basis of eigenvectors.
+
+If $A$ is unitarily equivalent to a diagonal matrix, Section 6.4 states that it is also diagonalizable. Thus, using the eigenvalues and (normalized) eigenvectors, we observe that as a result of Theorem 2.1 from Chapter 4,
+
+$$
+A = SDS^{-1} = \begin{bmatrix}
+0 & -i/\sqrt{2} & i/\sqrt{2} \\
+0 & 1/\sqrt{2} & 1/\sqrt{2} \\
+1 & 0 & 0
+\end{bmatrix}\begin{bmatrix}
+1 & 0 & 0 \\
+0 & -i & 0 \\
+0 & 0 & i
+\end{bmatrix}\begin{bmatrix}
+0 & -i/\sqrt{2} & i/\sqrt{2} \\
+0 & 1/\sqrt{2} & 1/\sqrt{2} \\
+1 & 0 & 0
+\end{bmatrix}^{-1} 
+$$
+$$
+= \begin{bmatrix}
+0 & -i/\sqrt{2} & i/\sqrt{2} \\
+0 & 1/\sqrt{2} & 1/\sqrt{2} \\
+1 & 0 & 0
+\end{bmatrix}\begin{bmatrix}
+1 & 0 & 0 \\
+0 & -i & 0 \\
+0 & 0 & i
+\end{bmatrix}\begin{bmatrix}
+0 & 0 & 1 \\
+-i/\sqrt{2} & 1/\sqrt{2} & 0 \\
+i/\sqrt{2} & 1/\sqrt{2} & 0
+\end{bmatrix}.
+$$
+
+We can immediately see that $S^{-1} = S^*$, which means that $S$ is unitary because $S^*S = I$, Lemma 6.2 shows that $S$ is an isometry, and Proposition 6.3 shows it is unitary. In addition, note that the diagonal matrix is the second matrix given in the problem statement. Thus, we can see that $A = SBS^*$, which shows that the two given matrices are unitarily equivalent.
+
+\end{proof}
+
+\begin{problem}{6.7e}
+\end{problem}
+\begin{proof}[Solution]
+If the left matrix is $A$ and the right matrix is $B$, we observe that
+$$
+\sum_{i, j = 0}^n |(A)_{ji}|^2 = 1^2 + 2^2 + 3^2 + 1^2 + 2^2 = 19
+$$
+
+$$
+\sum_{i, j = 0}^n |(B)_{ji}|^2 = 1^2 + 2^2 + 3^2 = 14
+$$
+
+Problem 6.6b shows that if $A$ and $B$ were to be similar, then these two values must equal each other. However, this is not the case, so the two given matrices are not unitarily equivalent.
+\end{proof}
+
+\begin{problem}{6.9a}
+\end{problem}
+\begin{proof}[Solution]
+By definition, an orthogonal matrix is a unitary operator, and we know from Proposition 6.4 that all eigenvalues of $U$ are either $-1$ or $1$. Given that there are three eigenvalues (counting multiplicities), all three of them cannot be $-1$ because that would mean the determinant is $-1$ due to Theorem 1.2 of Chapter 4. This is a contradiction with the fact that $det(U) = 1$, thus at least one eigenvalue must be 1.
+\end{proof}
+
+\begin{problem}{6.9b}
+\end{problem}
+\begin{proof}[Solution]
+We know that $U(1v_1 + 0v_2 + 0v_3) = 1v_1 + 0v_2 + 0v_3$. Thus, if $A$ is the matrix $U$ in the basis $v_1, v_2, v_3$, $A(1, 0, 0)^T = (1, 0, 0)^T$. Therefore, $A_{11}$ is $1$ and all entries below that are 0.
+
+Next, given that $U$ is unitary, $U^*U = I$. Observe that $U^*Uv_1 = U^*(Uv_1) = U^*v_1 = Iv_1 = v_1$. Thus, $v_1$ is an eigenvector of $U^*$. Thus, $U^*(1v_1 + 0v_2 + 0v_3) = 1v_1 + 0v_2 + 0v_3$, and $A^*(1, 0, 0)^T = (1, 0, 0)^T$, therefore all entries to the right of $A_{11}$ are 0.
+
+We can now write $A$ as 
+$$
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & a & b \\
+0 & c & d
+\end{bmatrix}.
+$$
+
+Using co-factor expansion, we can see that
+
+$$
+1 = det(A) = 1*det\left(\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}\right).
+$$
+
+Thus, the determinant of the bottom right $2 \times 2$ matrix is 1. This also shows that $ad - bc = 1$.
+
+Next, we will show that $A$ is unitary. For any $v$, let $v = \alpha_1v_1 + \alpha_2v_2 + \alpha_3v_3$. If $U(\alpha_1v_1 + \alpha_2v_2 + \alpha_3v_3) = \beta_1v_1 + \beta_2v_2 + \beta_3v_3$, then $A$ is the matrix such that $A(\beta_1, \beta_2, \beta_3)^T = (\alpha_1, \alpha_2, \alpha_3)^T$. We know that $U$ is unitary, thus by definition, $||\alpha_1v_1 + \alpha_2v_2 + \alpha_3v_3|| = ||\beta_1v_1 + \beta_2v_2 + \beta_3v_3||$. Using Lemma 2.5, we observe that $||\alpha_1v_1 + \alpha_2v_2 + \alpha_3v_3|| = |\alpha_1|^2||v_1||^2 + |\alpha_2|^2||v_2||^2 + |\alpha_3|^2||v_3||^2$. Given that $v_1, v_2, v_3$ are orthonormal, $||\alpha_1v_1 + \alpha_2v_2 + \alpha_3v_3|| = |\alpha_1|^2 + |\alpha_2|^2 + |\alpha_3|^2$. Similarly, $||\beta_1v_1 + \beta_2v_2 + \beta_3v_3|| = |\beta_1|^2 + |\beta_2|^2 + |\beta_3|^2$. Thus, $||(\alpha_1, \alpha_2, \alpha_3)^T|| = |\alpha_1|^2 + |\alpha_2|^2 + |\alpha_3|^2 = |\beta_1|^2 + |\beta_2|^2 + |\beta_3|^2 = ||(\beta_1, \beta_2, \beta_3)^T||$. Thus, we see that if $Ax = b$ for any $x$, then $||x|| = ||b|| = ||Ax||$, thus $A$ is unitary by definition.
+
+Given that $A$ is unitary, $A*A = I$, thus
+$$
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & a & b \\
+0 & c & d
+\end{bmatrix}^2 = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & a^2+c^2 & ab+cd \\
+0 & ab+cd & b^2+d^2
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}.
+$$
+We observe that $a^2+c^2 = 1$, thus $(a, c)$ is a point on the unit circle so $(a, c) = (cos(\alpha), sin(\alpha))$. Similarly, $(d, b) = (cos(\beta), sin(\beta))$. We also see from this equation that $ab+cd = 0$, thus $cos(\alpha)sin(\beta) + cos(\beta)sin(\alpha) = sin(\alpha + \beta) = 0$. From the determinant we know that $ad - bc = 1$, thus $cos(\alpha)cos(\beta) - sin(\alpha)sin(\beta) = cos(\alpha + \beta) = 1$. This shows that $\beta + \alpha$ is a multiple of $2\pi$, thus $b = sin(\beta) = sin((\beta + \alpha) - \alpha) = sin(2\pi k - \alpha) = -sin(\alpha)$. Similarly, $d = cos(\beta) = cos((\beta + \alpha) - \alpha) = cos(2\pi k - \alpha) = cos(\alpha)$. Thus, we observe that
+
+$$
+A = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & cos(\alpha) & -sin(\alpha) \\
+0 & sin(\alpha) & cos(\alpha)
+\end{bmatrix}.
+$$
+
+\end{proof}
+
+\begin{problem}{8.1}
+\end{problem}
+\begin{proof}[Solution]
+\begin{equation}
+\begin{split}
+Re\left(\sum_{k=1}^n z_k\bar{w}_k\right) & = Re\left(\sum_{k=1}^n (x_k + iy_k)(u_k - iv_k) \right) \\
+& = Re\left(\sum_{k=1}^n x_ku_k + y_kv_k + iy_ku_k - iv_kx_k \right) \\
+& = Re\left(\sum_{k=1}^n (x_ku_k + y_kv_k) + i\sum_{k=1}^n (y_ku_k - v_kx_k) \right) \\
+& = \sum_{k=1}^n (x_ku_k + y_kv_k)
+\end{split}
+\end{equation}
+\end{proof}
+
+\begin{problem}{8.4}
+\end{problem}
+\begin{proof}[Solution]
+First, we observe that if $U^2 = -I$, $-U^2 = I$, $(-U)U = I$, thus $U$ is invertible and $U^{-1} = -U$. Next, we observe from Lemma 7.2 that $(Ux, Uy) = (x, y)$ because we are given that $U$ is an orthogonal transformation. We observe from Theorem 6.1 that $U$ is also an isometry, and  Proposition 6.3 shows that $U$ is then unitary. Thus, Lemma 6.2 shows that $U^*U = I$ and we know $U$ is invertible due to the definition of unitary matrices, therefore $U^*$ is the inverse of $U$. Thus, $-U = U^{-1} = U^*$.
+\end{proof}
+
+\end{document}

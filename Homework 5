@@ -1,0 +1,256 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 5}
+\author{Jian Park\\
+20700: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+
+ \begin{problem}{4.1}
+\end{problem}
+\begin{proof}[Solution]
+Let
+$$
+A_1 = \begin{bmatrix}
+4 \\
+\end{bmatrix},
+A_2 = \begin{bmatrix}
+4 & 2 \\
+2 & 3 \\
+\end{bmatrix},
+A_3 = \begin{bmatrix}
+4 & 2 & 1 \\
+2 & 3 & -1 \\
+1 & -1 & 2 \\
+\end{bmatrix}
+$$
+Observe that $det(A_1) = 4$, $det(A_2) = 12-4 = 8$, and $det(A_3) = 4(5)-2(-5)+1(-5) = 5$. Given that all of these values are positive, Silvester's criterion of positivity states that $A$ is positive definite. Next, let
+$$
+B_1 = \begin{bmatrix}
+3 \\
+\end{bmatrix},
+B_2 = \begin{bmatrix}
+3 & -1 \\
+-1 & 4 \\
+\end{bmatrix},
+B_3 = \begin{bmatrix}
+3 & -1 & 2\\
+-1 & 4 & -2\\
+2 & -2 & 2 \\
+\end{bmatrix}
+$$
+Observe that $det(B_1) = 3$, $det(B_2) = 12 + 1 = 13$, and $det(B_3) = 3(4)+1(2)+2(-6) = 2$. Again, given that all of these values are positive, Sylvester's criterion of positivity states that $B$ is positive definite. Applying Theorem 4.1 to both $A$ and $B$ shows that all eigenvalues of $A$ and $B$ are positive. 
+
+Next, we can see that $-A$ is negative definite because $(Ax, x) > 0$, and thus $(-Ax, x) = -(Ax, x) < 0$. 
+
+To show $A^3$ is positive definite, Theorem 2.1 of Chapter 6 states that self-adjoint matrices have an orthonormal basis of eigenvectors. If $v$ and $\lambda$ are some eigenvector and eigenvalue of $A$, $A^3v = A^2(\lambda v) = A(\lambda^2 v) = \lambda^3 v$. Thus, given that $A$ has linearly independent eigenvectors due to the orthogonality, the eigenvectors of $A$ correspond to those of $A^3$, and the cube of the eigenvalues of $A$ correspond to the eigenvalues of $A^3$. This shows that all eigenvalues of $A^3$ are positive, and Theorem 4.1 shows that $A^3$ is positive definite.
+
+Similarly, to show that $A^{-1}$ is positive definite, observe that if $Av = \lambda v$, $A^{-1}Av = A^{-1} \lambda v$, and $(1/\lambda)v = A^{-1}v$. This again shows that $A^{-1}$ shares all eigenvectors with $A$, which we know are orthonormal (and thus linearly independent). Thus, the inverse of the eigenvalues of $A$ correspond to the eigenvalues of $A^{-1}$, and given all eigenvalues of $A$ are positive, all eigenvalues of $A^{-1}$ are positive, and $A^{-1}$ is positive definite.
+
+Using the same argument as above, given that $B$ is also self-adjoint and positive-definite, $B^{-1}$ is also positive definite. Next, observe that $((A+B^{-1})x, x) = (Ax, x) + (B^{-1}x, x)$, and by definition $(Ax, x) > 0$ and $(B^{-1}x, x) > 0$, thus $((A+B^{-1})x, x) > 0$. We observe that $A + B^{-1}$ is positive definite.
+
+Next, given that $A$ and $B$ are positive definite, $((A+B)x, x) = (Ax, x) + (Bx, x)$, which is clearly positive. Thus $(A + B)$ is positive definite.
+
+Lastly, observe that
+$$
+A - B = \begin{bmatrix}
+4 & 2 & 1 \\
+2 & 3 & -1 \\
+1 & -1 & 2 \\
+\end{bmatrix} - \begin{bmatrix}
+3 & -1 & 2\\
+-1 & 4 & -2\\
+2 & -2 & 2 \\
+\end{bmatrix} = \begin{bmatrix}
+1 & 3 & -1\\
+3 & -1 & 1\\
+-1 & 1 & 0 \\
+\end{bmatrix}.
+$$
+Observe that $((A-B)e_2, e_2) = ((3, -1, 1)^T, e_2) = -1$, thus $A-B$ is not positive definite.
+\end{proof}
+
+ \begin{problem}{4.2a}
+\end{problem}
+\begin{proof}[Solution]
+True. Given that $A$ is self-adjoint (which is true because $A$ is a matrix for a quadratic form), Theorem 2.2 from Chapter 6 states that $A = UDU^*$, where $U$ is unitary and $D$ is a diagonal matrix containing the eigenvalues of $A$. Then, $A^5 = (UDU^*) ... (UDU^*) = UD^5U^*$. Observe that $D^5$ contains all of the eigenvalues of $A^5$, and all values in $D^5$ are equivalent to the corresponding elements in $D$ taken to the power of $5$. In other words, if $\lambda_1, ..., \lambda_n$ were the eigenvalues of $A$, $\lambda_1^5, ..., \lambda_n^5$ must be the eigenvalues of $A^5$. Theorem 4.1 states that $\lambda_1, ..., \lambda_n > 0$ because $A$ is positive definite, and we can see that $\lambda_1^5, ..., \lambda_n^5 > 0$. Applying Theorem 4.1 again shows that $A^5$ must also be positive definite.
+\end{proof}
+
+ \begin{problem}{4.2b}
+\end{problem}
+\begin{proof}[Solution]
+False. Observe that due to Theorem 4.1, all eigenvalues of $A$ are negative. Thus, if $Av = \lambda v$, $A^8v = A^7(\lambda v) = ... = \lambda^8 v$. Given that $\lambda < 0$, $\lambda^8 > 0$, thus $A^8$ has non-negative eigenvalues. Theorem 4.1 shows that $A^8$ cannot be negative definite.
+\end{proof}
+
+ \begin{problem}{4.2c}
+\end{problem}
+\begin{proof}[Solution]
+True. Given that $A$ is self-adjoint, Theorem 2.2 from Chapter 6 states that $A = UDU^*$, where $U$ is unitary and $D$ is a diagonal matrix containing the eigenvalues of $A$. Then, $A^{12} = (UDU^*) ... (UDU^*) = UD^{12}U^*$. Observe that $D^{12}$ contains all of the eigenvalues of $A^12$, and all values in $D^{12}$ are equivalent to the corresponding elements in $D$ taken to the power of $12$. In other words, if $\lambda_1, ..., \lambda_n$ were the eigenvalues of $A$, $\lambda_1^{12}, ..., \lambda_n^{12}$ must be the eigenvalues of $A^{12}$. Theorem 4.1 states that $\lambda_1, ..., \lambda_n < 0$ because $A$ is negative definite, and we can see that $\lambda_1^{12}, ..., \lambda_n^{12} > 0$ because for any $a$, $a^{12} = (a^6)^2 > 0$. Applying Theorem 4.1 again shows that $A^{12}$ must also be positive definite.
+\end{proof}
+
+ \begin{problem}{4.2d}
+\end{problem}
+\begin{proof}[Solution]
+True. Observe that due to Theorem 4.1, $(Ax, x) > 0$ and $(Bx, x) \leq 0$ for all $x$. Thus, $(-Bx, x) = -(Bx, x) \geq 0$, and $((A-B)x, x) = (Ax, x) - (Bx, x) = (Ax, x) + (-Bx, x) > 0$, showing that $(A-B)$ is positive definite.
+\end{proof}
+
+ \begin{problem}{4.2e}
+\end{problem}
+\begin{proof}[Solution]
+False. Let $A$ denote the $2 \times 2$ matrix where the elements on the diagonal are 0 and the other two elements are 1. Let $B$ denote the $2 \times 2$ matrix equivalent to two times the identity matrix ($2I_2$). Observe that the characteristic polynomial of $A$ is $det(A - \lambda I) = (\lambda)^2-1$, thus the eigenvalues are $-1$ and $1$. Theorem 4.1 shows that $A$ is indefinite. Then, note that $det(B - \lambda I) = (2 - \lambda)^2$, thus the eigenvalue of $B$ is $2$ multiplicity $2$. Theorem 4.1 shows that $B$ is positive definite. Then, observe that $det((A+B) - \lambda I) = (2 - \lambda)^2 - 1 = (\lambda - 3)(\lambda - 1)$, thus the eigenvalues of $A+B$ are $3$ and $1$. This shows from Theorem 4.1 that $A+B$ is positive definite.
+\end{proof}
+
+ \begin{problem}{4.3}
+\end{problem}
+\begin{proof}[Solution]
+If $det(A)>0$, we are already given that $a_{1, 1}>0$ so Silvester's Criterion of Positivity shows that $A$ is positive definite.
+
+If $det(A) = 0$, that implies that $a_{1, 1}a_{2, 2} - a_{1, 2}a_{2, 1} = 0$. Then, given that $A$ is Hermitian, $a_{1, 2} = \overline{a_{2, 1}}$. Lastly, given that $a_{1, 1}>0$ and $a_{1, 1}a_{2, 2} = a_{1, 2}a_{2, 1}$, $a_{2, 2} = \frac{|a_{1, 2}|^2}{a_{1,1}}$. Thus, if $a = a_{1, 2}$ and $b = a_{1, 1}$, then
+$$
+A = \begin{bmatrix}
+b & a \\
+\overline{a} & |a|^2/b
+\end{bmatrix}
+$$
+Observe that $det(A - \lambda I) = (\lambda - b)(\lambda - |a|^2/b) - |a|^2 = (\lambda)(\lambda - b - |a|^2/b)$. Thus, $0$ and $b + |a|^2/b$ are the eigenvalues of $A$, where $b > 0$ by definition, $|a|^2/b > 0$ given $|a|^2>0$, and $b > 0$. By Theorem 4.1, this shows that $A$ is always semidefinite positive in the case of $det(A) = 0$.
+\end{proof}
+
+ \begin{problem}{4.4}
+\end{problem}
+\begin{proof}[Solution]
+Consider the matrix and submatrices
+$$
+A_3 = \begin{bmatrix}
+1 & -1 & 1 \\
+-1 & 1 & -1 \\
+1 & -1 & 0
+\end{bmatrix}, A_2 = \begin{bmatrix}
+1 & -1 \\
+-1 & 1 \\
+\end{bmatrix}, A_1 = \begin{bmatrix}
+1 \\
+\end{bmatrix} 
+$$
+Observe that $det(A_1) = 1$, $det(A_2) = 1 - 1 = 0$, and $det(A_3) = 1(-1) - (-1)(1) + (0)(1) = 0$. Then, observe that $det(A - \lambda I) = \lambda((-\lambda)(1 - \lambda) - 1) - (-1)(-1 - (-1)\lambda) + (1 - (1-\lambda)(1)) = -\lambda^3+2\lambda^2+2\lambda = \lambda(\lambda - 1 + \sqrt{3})(\lambda - 1 - \sqrt{3})$. This shows that the eigenvalues of $A$ are $0$, $1 - \sqrt{3}$, and $1 + \sqrt{3}$. Given that $1 - \sqrt{3} < 0$ and $1 + \sqrt{3} > 0$, Theorem 4.1 shows that $A_3$ is indefinite despite $det(A_1), det(A_2), det(A_3) \geq 0$.
+
+Section 4.3 suggests that Silvester's Criterion of Positivity fails to classify semi-definite matrices for $n \geq 3$, thus the given matrix $A_3$ is a minimal example where this trend fails.
+\end{proof}
+
+ \begin{problem}{4.5}
+\end{problem}
+\begin{proof}[Solution]
+Given that $A_1, ..., A_{n-1}$ all have a positive determinant, Silvester's Criterion of Positivity states that $A_{n-1}$ is positive definite, and Theorem 4.1 states that all eigenvalues $\mu_1, ..., \mu_{n-1}$ of $A_{n-1}$ are positive. Next, if $\lambda_1, ..., \lambda_n$ are the eigenvalues of $A$ in order, Corollary 4.4 states that $\lambda_1 \leq \mu_1 \leq \lambda_2 \leq ...\leq \lambda_n$ (given that $\mu_1, ..., \mu_{n-1}$ are ordered). Given that $\mu_1 > 0$, we observe that $A$ has at most 1 non-positive eigenvalue $\lambda_1$. Then, given that $det(A) = det(A - (0)I) = 0$, we observe that 0 must be an eigenvalue of $A$, and it is clear that this must be the smallest eigenvalue. Thus, all eigenvalues of $A$ are non-negative, and Theorem 4.1 states that $A$ is semi-definite.
+\end{proof}
+
+ \begin{problem}{4.6}
+\end{problem}
+\begin{proof}[Solution]
+Consider the real symmetric matrix
+$$
+A = \begin{bmatrix}
+1 & -1 & 1 \\
+-1 & 1 & -1 \\
+1 & -1 & 0
+\end{bmatrix}
+$$
+Observe that $a_{1, 1} = 1 > 0$ and note that we have already shown in Problem 4.4 that $det(A_2) = 0 \geq 0$ and $det(A, 3) = 0 \geq 0$. However, we also noted in Problem 4.4 that the eigenvalues of $A$ are $0$, $1 - \sqrt{3}$ (negative), and $1 + \sqrt{3}$ (positive), thus Theorem 4.1 shows that $A$ is indefinite.
+\end{proof}
+
+ \begin{problem}{1.1a}
+\end{problem}
+\begin{proof}[Solution]
+For the sake of contradiction, assume that $v_1, ..., v_n$ was not linearly independent. Then, there must exist some $v_k$ in this system such that $v_k$ can be expressed as a non-trivial linear combination of every other element in the set. Then, observe that 
+$$v'_k(v_k) = v'_k\left(\sum_{i = 0, i \neq k}^n a_iv_i \right)= 1.$$
+Linear functional $v'_k$ is by definition a linear transformation, thus
+$$v'_k\left(\sum_{i = 0, i \neq k}^n a_iv_i \right) = \sum_{i = 0, i \neq k}^n a_iv'_k\left(v_i \right) = 1.$$
+However, we are given that $v'_k\left(v_i \right) = 0$ for all $i \neq k$, thus the left side of the equation above must equal 0. This yields a contradiction, thus $v_1, ..., v_n$ is a linearly independent system.
+\end{proof}
+
+ \begin{problem}{1.1b}
+\end{problem}
+\begin{proof}[Solution]
+As noted in Proposition 5.4 of Chapter 2, if linearly independent system $v_1, ..., v_r$ is not generating, then there must exist a set of linearly independent vectors $v_{r+1}, ..., v_n$ such that $v_1, ..., v_n$ is a basis. Then, let $v'_1, ..., v'_n$ be the biorthogonal basis of this system as described in Definition 4.1. Then, observe that $v'_1, ..., v'_r$ is a biorthogonal system of $v_1, ..., v_r$ because $v'_i(v_j) = \delta_{i, j}$ by definition. Then, consider the system $v''_1, ..., v''_r$ where $v''_i = v'_i + v'_{r+1}$. Observe that $v''_i(v_j) = (v'_i + v'_{r+1})(v_j) = v'_i(v_j) + v'_{r+1}(v_j) = \delta_{i, j} + 0 = \delta_{i, j}$. This shows that $v''_1, ..., v''_r$ is a valid biorthogonal system for $v_1, ..., v_r$. We also know that $v''_1, ..., v''_r$ is distinct from $v'_1, ..., v'_r$ because $v'_{r+1}$ is non-trivial given that $v'_{r+1}(v_{r+1}) = 1$. Thus, it is clear that the biorthogonal system of functionals is not unique for any non-generating linearly independent system.
+\end{proof}
+
+ \begin{problem}{3.1}
+\end{problem}
+\begin{proof}[Solution]
+As stated in Lemma 1.3, If $L(v_1) = L(v_2)$ for all $L \in V'$, then $v_1 = v_2$. If $\langle Tx, y'\rangle = \langle T_1x, y'\rangle$ for all $y' \in Y'$, then $y'(Tx) = y'(T_1x)$, and applying the Lemma shows that $Tx = T_1x$ for all $x \in X$. Letting $x$ be the elements in the standard basis shows that $T$ and $T_1$ must have identical columns, thus $T$ is equivalent to $T_1$.
+\end{proof}
+
+ \begin{problem}{3.2}
+\end{problem}
+\begin{proof}[Solution]
+Let $y \in Y'$, and let $y = y_v$ for some vector $v$ where $y_v(x) = (x, v)$ (we know this vector exists and is unique due to Riesz's Representation theorem). Let $f_z = y_v \circ A$, where $f_z$ is also unique doe to Reisz's Representation theorem. Then, define transformation $A'$ such that $A'(y_v) = f_z$. First, we will show that $A'(y_v + y_w) = A'(y_v) + A'(y_w)$. Observe that $A'(y_v + y_w) = (y_v + y_w) \circ A = y_v \circ A + y_w \circ A$ due to the distributive property of matrix multiplication. Then, $y_v \circ A + y_w \circ A = A'(y_v) + A'(y_w)$ by the definition of $A'$, thus we observe $A'(y_v + y_w) = A'(y_v) + A'(y_w)$ for any arbitrary $y_v$ and $y_w$. Then, observe that $A'(\alpha y_v) = f_{\overline{\alpha} a} = \alpha f_a = \alpha A'(y_v)$. These two conditions show that $A'$ is a linear transformation, and let $A'$ represent the matrix of this transformation. Lastly, observe that $f_z(x) = A' \circ y_v(x) = \langle x, A'(y_v) \rangle$ by definition and $f_z(x) = y_v \circ A(x) = \langle Ax, y_v \rangle$. This shows that $ \langle x, A'(y_v) \rangle =  \langle Ax, y_v \rangle$ for all $x, y_v$.
+
+Then, observe that the Riesz Representation theorem states that $\langle x, y_v \rangle = y_v(x) = (x, v)$ for some $v$. Thus, $\langle Ax, y_v \rangle = (Ax, v)$, and $\langle x, A'y_v \rangle = (A' \circ y_v) (x) = (x, A'v)$. Given that $\langle Ax, y_v \rangle = \langle x, A'y_v \rangle$, we know hat $(x, A'v) = (Ax, v)$ for any $x, v$. We also know that $(x, A^*v) = (Ax, v)$ for any $x, v$. Thus, we observe that $A'$, the dual transformation of $A$, is equivalent to $A^*$, the transpose and conjugate of $A$.
+\end{proof}
+
+ \begin{problem}{3.3}
+\end{problem}
+\begin{proof}[Solution]
+First, we will prove that $E^{\perp} \subseteq span\{v'_{r+1}, ..., v'_{n}\}$. For the sake of contradiction, assume $E^{\perp}$ is not a subset of the space spanned by $v'_{r+1}, ..., v'_n$. Given that $v'_1, ..., v'_n$ spans all of $X'$, this assumption implies that there must exist a functional $v' \in E^{\perp}$ such that $v'$ cannot be represented as a linear combination of $v'_{r+1}, ..., v'_n$ but can be represented as a linear combination of $v'_1, ..., v'_n$ as
+$$
+v' = \sum_{i = 0}^n a_i v'_i
+$$
+Next, consider $v'(v_k)$. If $k \leq r$, then by definition $v_k \in E$, and given that $v' \in E^{\perp}$, $v'(v_k) = 0$. When expanding out $v'$, we observe that 
+$$
+v'(v_k) = \left(\sum_{i = 0}^n a_i v'_i\right)(v_k) = \sum_{i = 0}^n a_i v'_i(v_k)
+$$
+with the last equality holding due to the linear nature of functionals. Then, given that $v'_i(v_k) = 0$ if $i \neq k$,
+$$
+\sum_{i = 0}^n a_i v'_i(v_k) = a_k v'_k(v_k)
+$$
+We know that $v'(v_k) = 0$, $v'_k(v_k) = 1$, and $a_k v'_k(v_k) = 0$. This shows that $a_k = 0$, and this can be generalized for all $k \leq r$. This shows that $v'$ can be represented as a linear combination of $v_{r+1}, ..., v_n$, which is contradiction to the original assumption, thus showing that $E^{\perp} \subseteq span\{v'_{r+1}, ..., v'_{n}\}$.
+
+Next, we will prove that $E^{\perp} \subseteq span\{v'_{r+1}, ..., v'_{n}\}$. Observe that if $v' = a_{r+1}v'_{r+1} + ... + a_nv'_n$, then 
+$$
+\langle x, v' \rangle = v'(x) = \left(\sum_{i = r+1}^n a_iv'_i\right)(x).
+$$
+If $x \in E$, then $x = \sum_{j = 1}^r b_jv_j$, thus
+$$
+\langle x, v' \rangle = \sum_{i = r+1}^n a_iv'_i(\sum_{j = 1}^r b_jv_j) = \sum_{j = 1}^r\sum_{i = r+1}^n a_ib_jv'_i(v_j).
+$$
+The last equality holds due to the linear nature of functional equations. Observe that in the right hand side of the equation above, $v'_j(v_i) = 1$ only if $i = j$, which never occurs. Thus, $v'_i(v_j)$ is always 0, and thus $\langle x, v' \rangle = 0$ for any $x \in E$, which shows that $v' \in E^{\perp}$. This proves that $E^{\perp} \subseteq span\{v'_{r+1}, ..., v'_{n}\}$, and thus showing that $E^{\perp} = span\{v'_{r+1}, ..., v'_{n}\}$
+\end{proof}
+
+ \begin{problem}{1.1}
+\end{problem}
+\begin{proof}[Solution]
+First, we will show that $p(D) = 0$. First, note that $D^k$ is also a diagonal matrix because multiplying diagonal matrices together does not affect the diagonality of the matrix. More specifically, observe that $(D^k)_{i, i} = (D_{i, i})^k$, and $(D^k)_{i, j} = 0$ when $i \neq j$. Thus, we can observe that 
+$$
+\left(p(D)\right)_{i, i} = \sum_{k = 0}^n c_kD_{i, i}^k,
+$$
+thus it is easy to see that $\left(p(A)\right)_{i, i} = p(D_{i, i}) = det(D - D_{i, i} I)$. Then, observe from Section 1.7 of Chapter 4 that the elements on the diagonal of $D$ correspond exactly with the eigenvalues of $D$. Thus, $\left(p(A))\right)_{i, i} = det(D - D_{i, i} I) = 0$ for all $1 \leq i \leq n$. We can also easily see that if $i \neq j$,
+$$
+\left(p(D)\right)_{i, j} = \sum_{k = 0}^n c_kD_{i, j}^k = \sum_{k = 0}^n c_k (0) = 0.
+$$
+Thus, $p(D)) = 0$.
+
+Lastly, let $A = SDS^{-1}$ where $S$ is some invertible matrix. Then, observe that $p(A) = p(SDS^{-1}) = Sp(D)S^{-1}$. The last equality holds because $(SDS^{-1})^k = (SDS^{-1})...(SDS^{-1}) = SD^kS^{-1}$, thus
+$$
+p(SDS^{-1}) = a_n(SDS^{-1})^n + ... + a_0(SDS^{-1})^0 = a_nS(D^{n})S^{-1} + ... + a_0S(D^{0})S^{-1}
+$$
+$$
+= S(a_nD^n + ... + a_0D^{0})S^{-1} = Sp(D)S^{-1}
+$$
+Because we have shown that $p(D) = 0$ for any diagonal matrix, $p(A) = Sp(D)S^{-1} = 0$, showing that any matrix $A$ similar to a diagonal matrix has the property that $p(A) = 0$.
+\end{proof}
+
+ \begin{problem}{2.1}
+\end{problem}
+\begin{proof}[Solution]
+For some $A$, assume $A^k = 0$. For the sake of contradiction, assume that $\lambda$ is a non-zero eigenvalue, and let $v$ be a non-zero eigenvector with that eigenvalue. Then, observe that $Av = \lambda v$, and $A^k = A^{k-1}(\lambda v) = ... = \lambda^k v$. Observe that $\lambda^k$ cannot be zero and note that $v$ is non-zero by definition. Thus, $\lambda^k v$ is a non-zero vector. However, this is a contradiction because $A^k = 0$. Thus, this contradiction shows that non-zero eigenvalues cannot exist for nilpotent matrices.
+\end{proof}
+
+\end{document}

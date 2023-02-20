@@ -1,0 +1,436 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Economics Midterm Study Guide}
+\author{Jian Park}
+\maketitle
+
+\
+
+\noindent\textbf{Section 2}
+
+\
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Technology):} The choice of production given inputs is constrained by production technology.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Production Possibility):} If $X$ is the set of all input choices and $Y$ is the set of all output choices, the production possibility set $F \subset X \times Y$ is the set such that $f \in F$ is a valid production plan.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Example:} A Cobb-Douglas production possibility curve is $F = \{(x_1, x_2, y) \in \mathbb{R}_+^3 | y \leq Ax_1^{\alpha}x_2^{1 - \alpha}\}$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Production Function):} The production function is defined by 
+$$
+f(x_1, x_2, ..., x_m) = \sup\{y \in \mathbb{R}_+ | (x_1, x_2, ..., x_m, y) \in F\}.
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Strictly/Strongly Increasing):} For any two vectors $x, y \in \mathbb{R}^n$, we write $x \geq y$ if $x_i \geq y_i$ for all $i$, $x >>y$ if $x_i > y_i$ for all $i$, and $x > y$ if $x \geq y$ and $x \neq y$.
+
+$f$ is strictly increasing if $f(x) > f(y)$ for any $x >> y$, it is strongly increasing if $f(x) > f(y)$ for all $x > y$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Note:} We assume production functions are continuous, strictly increasing, strictly quasiconcave on $\mathbb{R}$, and $f(0) = 0$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Marginal Product):} With the assumption of differentiability, we define the marginal product of input $i$ at input vector $x$ to be
+$$
+MP_i(x) = \frac{\partial f(x)}{\partial x_i}.
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Marginal Rate of [Technical] Substitution):} At input vector $x$, the marginal rate of technical substitution between inputs $i$ and $j$ is
+$$
+MRTS_{ij}(x) = \frac{MP_i(x)}{MP_j(x)}.
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Theorem (Slope of Isoquant):} We get that at input vector $x$, the slope of the isoquant is
+$$
+\frac{dx_2}{dx_1} = -\frac{f_1(x)}{f_2(x)} = -MRTS_{12}(x).
+$$
+Given $f$ is always strictly increasing, $f_1, f_2 > 0$ and thus isoquants are always downwards sloping. Additionally, given $f$ is strictly quasiconcave, our isoquants bend towards the origin and thus $MRTS_{12}$ is decreasing in $x_1$ and increasing in $x_2$, i.e. we have diminishing MRTS.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Return to Scale):} Production function $f$ exhibits constant return to scale if $f(tx) = tf(x)$ for all $x \in R_+^{m}$ and all $t > 0$. $f$ exhibits increasing return to scale if $f(tx) > tf(x)$, decreasing return to scale if $f(tx) < tf(x)$.
+
+$f(x)$ is homogeneous of degree one if and only if it is constant return to scale. It follows that Cobb-Douglas is constant returns to scale.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Elasticity of Substitution):} Elasticity f Substitution between $i, j$ at $x$ is
+$$
+\sigma_{ij}(x) = \frac{d \ ln(x_j/x_i)}{d \ \ln(MRTS_{ij}(x))} = \frac{d(x_j/x_i)}{x_j/x_i}\frac{f_i(x)/f_j(x)}{d(f_i(x)/f_j(x))}.
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Example:} Larger $\sigma_{ij}$ means it is easier to substitute $i$ for $j$. The constant elasticity of Substitution production function 
+$$
+f(x_1, x_2) = \left(\alpha x_1^{\frac{\omega - 1}{\omega}} + (1 - \alpha)x_2^{\frac{\omega - 1}{\omega}}\right)^{\frac{\omega}{\omega - 1}}
+$$
+has an elasticity f substitution of $\omega$.
+    }%
+}
+
+\
+
+\noindent\textbf{Section 3}
+
+\
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Perfectly Competitive):} We assume that the product market and the input markets are perfectly competitive, which means that the firms are price takers.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Firm Profit Maximizing Problem):} A profit-maximizing firm solves the problem
+$$
+\max_{(x_1, x_2, ..., x_m)} pf(x_1, ..., x_m) - \sum_{i = 1}^m \omega_ix_i.
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Note (Solving Firm Profit Maximizing)):} First, solve, for every potential output level $y$, a cost-minimization problem, and, then choose the profit-maximizing output level $y$ taking the minimized cost for every $y$ as given.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Firm Cost Minimization Problem):} A firm's cost-minimization problem states that for some given $y$,
+$$
+\min_{(x_1, ..., x_m)} \sum_{i = 1}^m \omega_ix_i
+$$
+such that
+$$
+f(x_1, ..., x_m) \geq y.
+$$
+The Lagrangian of the cost-minimization problem is
+$$
+L(x_1, ..., x_m, \lambda) = \sum_{i = 1}^m \omega_ix_i + \lambda(y - f(x_1, ..., x_m)).
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Note (Solving Firm Cost Minimization):} Assuming interior solution and $f(x) = y$ is required, we get
+$$
+\omega_1 = \lambda(MP_1), ..., \omega_m = \lambda(MP_m), f(x_1, ..., x_m) = y
+$$
+and as a note $\frac{\omega_i}{\omega_j} = \frac{MP_i}{MP_j} = MRTS_{ij}$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Example:} A 2-variable Cobb-Douglas production possibility curve has the cost-minimizing bundle of $x_1^* = \frac{y}{A}\left(\frac{\omega_2}{\omega+1}\frac{\alpha}{1 - \alpha}\right)$, $x_2^* = \frac{y}{A}\left(\frac{\omega_1}{\omega_2}\frac{1 - \alpha}{\alpha}\right)^{\alpha}$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Note:} Continuity of production function guarantees the existence of a solution to cost-minimization, strict quasiconcavity guarantees that the solution is unique.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Conditional Input Demand):} The cost-minimizing vector given a set of prices and a minimum production quantity $y$ yields the conditional input demand. It can be expressed as $x_i(\omega_1, ..., \omega_m, y)$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Cost function):} Given a minimum production $y$ and prices $\omega$, the price function is the minimized value of the total production such that the given requirements are satisfied. This function can be expressed as
+$$
+c(\omega_1, ..., \omega_m, y) = \sum_{i = 1}^m \omega_ix_i^*
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Example:} A 2-variable Cobb-Douglas production cost function
+$$
+c(\omega_1, \omega_2, y) = \frac{y}{A}\left(\frac{\omega_1^{\alpha}\omega_2^{1 - \alpha}}{\alpha^{\alpha}(1 - \alpha)^{1 - \alpha}}\right).
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Iso-costs):} Similar to isoquants, isocosts describe input bundles that cost the same. isocosts are straight lines.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Theorem (Slope of Cost Function):} If $f$ is continuous and strictly increasing and $\omega >> 0$, then $c(\omega, y)$ is strictly increasing in $y$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Marginal/Average cost):} The marginal cost of production is
+$$
+MC(\omega, y) = \frac{\partial c(\omega, y)}{\partial y},
+$$
+and the average cost is
+$$
+AC(\omega, y) = \frac{c(\omega, y)}{y}.
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Note:} It follows from this definition that constant (increasing, decreasing) return to scale production function leads to constant (decreasing, increasing) marginal revenues.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Theorem (Homogeneity of cost/demand functions):} Given a change in prices $\omega$ to $k\omega$ does not change the relative prices between inputs, the conditional demand functions are homogeneous of degree zero in $\omega$. Additionally, the cost function is homogeneous of degree one in $\omega$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Theorem (Shephard's Lemma):} If $f$ is strictly quasiconcave, then
+$$
+\frac{\partial c(\omega, y)}{\partial \omega_i} = x_i^*(\omega, y).
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Corollary (Cost function property):} $c(\omega, y)$ is increasing and concave in $\omega$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Short-Run Cost Minimization):} The short-run cost minimization problem is the original problem with a few fixed variables,
+$$
+\min_{x_1', ..., x_N'} \sum_{i = 1}^N \omega_i'x_i' + \sum_{i = 1}^M \omega_ix_i
+$$
+such that $f(x_1', ..., x_N', x_1, ..., x_M) \geq y$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Note:} It follows that the short-run minimized cost cannot be lower than the long-run minimized cost; thus, $sc(\omega, y, x') \geq c(\omega, y)$. However, if $x'$ corresponds to the long run conditional input ($x'(\omega, y)$), $sc(\omega, y; x'(\omega, y)) = c(\omega, y)$. Additionally,
+$$
+\frac{dc(\omega, y)}{dy} = \frac{\partial sc(\omega, y; x'(\omega, y))}{\partial y}.
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Note (Solving Profit-Maximizing Problem):} 
+If $c(\omega, y)$ is the cost function, the profit-maximization problem can be written as
+$$
+\max_y py - c(\omega, y),
+$$
+with a first order condition
+$$
+p = \frac{\partial c(\omega, y)}{\partial y}.
+$$
+It is also possible to solve it in one as well. Observe that with the profit-maximizing problem
+$$
+\max_{x_1, ..., x_m} pf(x_1, ..., x_m) - \sum_{i = 1}^m \omega_ix_i,
+$$
+and for interior solutions the first order conditions are
+$$
+p\frac{\partial f(x)}{\partial x_i} = \omega_i.
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Marginal Revenue Product):} The Marginal revenue product of input $i$ is
+$$
+MRP_i = p\frac{\partial f(x)}{\partial x_i}
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Note (Profit-Maximizing for Cobb-Douglas):} 
+First order conditions give that
+$$
+p = \frac{1}{A}\left(\frac{\omega_1^{\alpha}\omega_2^{1 - \alpha}}{\alpha^{\alpha}(1 - \alpha)^{1 - \alpha}}\right).
+$$
+Observe that this equation holds only if $p$ is such that this equation holds. If $p$ were greater the firm can make infinite profit as marginal cost is always less than marginal revenue, and vice versa. Additionally, in this case the first order case is not helpful because there is no information on the production level $y$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Profit Function):} 
+Whenever the profit-maximization solution exists, the profit function is
+$$
+\pi(p, \omega) = \max_{x_1, ..., x_m} py - \sum_{i = 1}^m \omega_ix_i
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Theorem (Properties of profit function):} 
+If $f$ is continuous, strictly increasing, and strictly quasi-concave, then, for all $p \geq 0$ and $\omega \geq 0$, the profit function $\pi(p, \omega)$, if well defined (over an open interval of parameters), is continuous and: (1) increasing in $p$, (2) decreasing in $\omega$, homogeneous of degree one in $(p, \omega)$, convex in $(p, \omega)$, and differentiable in $(p, \omega) >> 0$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Theorem (Input Demand/Output Supply):} 
+If the optimal output and input choices are $(y^*(p, \omega), x^*(p, \omega))$ where $y^*(p, \omega) = f(x^*(p, \omega))$, $y^*(p, \omega)$ is the Output supply function and $x^*(p, \omega)$ is its input demand function.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Note:} 
+The conditional and unconditional input demand functions relate because $x^*(p, \omega) = x(\omega, y^*(p, \omega))$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Theorem (Hotelling's Lemma):} Assuming the output supply, input demand functions are well defined, they relate to the profit function as
+$$
+\frac{\partial \pi(p, \omega)}{\partial p} = y^*(p, \omega), \frac{\partial \pi(p, \omega)}{\partial \omega_i} = -x_i^*(p, \omega)
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Theorem (Homogeneity of Output Supply, Input Demand):} Assuming the output supply, input demand functions are well defined, they are both homogeneous of degree zero.
+    }%
+}
+
+\
+
+\noindent\textbf{Section 4}
+
+\
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Market Demand Function):} If $I$ is the set of all consumers and $x^i(p, p', m^I)$ is the Marshallian demand for consumer $i$ given market price $p$, price $p'$ for all other goods, and income $m^i$, then the market demand function is
+$$
+q^d(p) = \sum_{i = 1}^I x^i(p, p', m^i)
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Market Supply Function):} If $J$ is the set of all firms and $y^j(p, p', m^I)$ is the supply of goods produced by firm $i$ given market price $p$ and input prices $\omega$, then the market supply function is
+$$
+q^s(p) = \sum_{j = 1}^J y^j(p, \omega)
+$$
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Competitive (partial) equilibrium):} Assume the prices in other markets $p', \omega$ and consumer incomes are fixed. A competitive equilibrium is achieved at price $p^*$ where
+
+(i) Each consumer $i$ chooses $x^i(p^*)$ that maximizes her utility,
+
+(ii) Each firm $j$ chooses $y^i(p^*)$ that maximizes its profit,
+
+(iii) $q^d(p^*) = q^s(p^*)$.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Notes (Solving Competitive Equilibrium):} In general, computing a competitive equilibrium involes deriving the individual consumers' Marshallian demand and the individual firms' supply functions and then finding a market prices that equates aggregate demand and aggregate supply.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Notes (Long Run Competitive Equilibrium):} Given firms can freely enter if there is a positive profit, in the long run we need to impose a zero-profit condition on the firms. In other words, market price $p$ must be chosen such that no firm is profiting. Additionally, use Hotelling's lemma to determine the production of each firm, and determine the total number of firms given market demand.
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Compensating Variation):} A consumer is always worse off when $p$ increases. Thus, compensating variation quantifies the harm from a given action, and
+$$
+v^i(p^1, m^i + CV) = v^i(p^0, m^i).
+$$
+The $CV$ is the area to the left of the Hicksian demand curve $x_j^h(p, u^0)$ between the prices $p_j^0, p_j^1$ (price on y, quantity on x).
+    }%
+}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Definition (Consumer Surplus):} The area under the Marshallian demand curve between $0, q$ minus the total cost of the consumption bundle is called the consumer surplus given price $p$.
+    }%
+}
+\end{document}

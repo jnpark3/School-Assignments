@@ -1,0 +1,231 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Algebra Homework 2}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{Problem 9, page 231}
+\end{problem}
+\begin{proof}
+To prove that $C(a)$ is a subring of $R$ containing $a$, we prove that $C(a)$ is closed under addition and multiplication, $0_R \in C(a)$, and every element in $C(a)$ has an additive inverse. First observe that for any $b, c \in C(a)$,
+$$
+(b + c)a = (b*a) + (c*a) = (a*b) + (a*c) = a(b + c).
+$$
+This shows that $(b + c) * a = a * (b + c)$ ,and thus $b + c \in C(a)$. Next, note that
+$$
+(bc)a = b(ca) = b(ac) = (ba)c = a(bc),
+$$
+which similarly proves that $bc \in C(a)$. Next, $0_R \in C(a)$ because $(0_R)a = a(0_R) = 0$ by definition. Lastly, if $b \in C(a)$, $(-b)a + ba = (b - b) * a = 0$, and $ab + a(-b) = a * (b - b) = 0$. This shows that $a(-b)$ must necessarily equal $(-b)a$ as they are both the additive inverse of $ab$, which then proves that $-b \in C(a)$.
+
+To prove that the center of $R$ is the intersection of the substrings $C(a)$ over all $a \in R$, first assume $b$ is an element of the center of $R$. It then follows that $ba = ab$ for any $a \in R$, which means $b \in C(a)$ for any $a \in R$. This confirms that $b$ is an element of the intersection of all $C(a)$. Now, if $b$ is an element of the intersection of all $C(a)$, there cannot exist $a \in R$ such that $ba \neq ab$ as that would imply $b \notin C(a)$. This means that $ba = ab$ is true for any $a \in R$, which then means $b$ is in the center of $R$.
+\end{proof}
+
+\begin{problem}{Problem 3b, page 238}
+\end{problem}
+\begin{proof}
+To prove that $1 - x$ is a unit in $R[[x]]$ with inverse $1 + x + x^2 + ...$, first observe that due to the left distributive property of rings,
+$$
+(1 - x)(1 + x + x^2 + ...) = (1 - x) + (x - x^2) + (x^2 + x^3) + ...
+$$
+In the above element, $a_0 = 1$, wheras for every $a_n$ where $n \neq 0$, the telescoping sum cancels out elements such that $a_n$ is always 0. This shows that $(1 - x)(1 + x + x^2 + ... ) = 1$, which is indeed the multiplicative identity for $R[[x]]$. Similarly, due to the right distributive property of rings, 
+$$
+(1 + x + x^2 + ...)(1 - x) = (1 - x) + (x - x^2) + (x^2 + x^3) + ... = 1,
+$$
+which completes the proof that $1 - x$ is a unit in $R[[x]]$ with inverse $1 + x + x^2 + ...$ .
+\end{proof}
+
+\begin{problem}{Problem 3c, page 238}
+\end{problem}
+\begin{proof}
+To prove that $\sum_{n = 0}^{\infty} a_nx^n$ is a unit in $R[[x]]$ if and only if $a_0$ is a unit in $R$, we first assume that $\sum_{n = 0}^{\infty} a_nx^{n}$ is a polynomial where $a_0$ is a unit in $R$.
+
+Let $\sum_{n = 0}^{\infty} b_nx^{n}$ be a polynomial such that $b_0$ is the inverse of $a_0$ (which exists given $a_0$ is a unit in $R$), and $b_n$ is defined as follows:
+$$
+b_n = - \left((a_0)^{-1} * \left(\sum_{k = 1}^{n} a_kb_{n - k} \right)\right).
+$$
+Then, note that because
+$$
+\sum_{n = 0}^{\infty}a_nx^n \times \sum_{n = 0}^{\infty}b_nx^n = \sum_{n = 0}^{\infty}\left(\sum_{k = 0}^n a_kb_{n - k} \right)x_n,
+$$
+the coefficient $c_n$ of the polynomial $\sum_{n = 0}^{\infty}a_nx^n \times \sum_{n = 0}^{\infty}b_nx^n$ is equal to $\sum_{k = 0}^n a_kb_{n - k}$. $c_0 = 1$ because $b_0 = a_0^{-1}$. For $n > 0$,
+$$
+c_n = \sum_{k = 0}^n a_kb_{n - k} = a_0b_{n} + \sum_{k = 1}^{n} a_kb_{n - k} = - \left(a_0 * (a_0)^{-1} * \left(\sum_{k = 1}^{n} a_kb_{n - k} \right)\right) + \sum_{k = 1}^{n} a_kb_{n - k}
+$$
+$$
+= - \left(\sum_{k = 1}^{n} a_kb_{n - k} \right) + \sum_{k = 1}^{n} a_kb_{n - k} = 0_R.
+$$
+This proves that given an arbitrary polynomial where $a_0$ is a unit in $R$, there exists a polynomial $ \sum_{n = 0}^{\infty}b_nx^n$ such that the product is equal to $1_{R[[x]]}$. The proof for when the order of the two polynomials is swapped follows a similar pattern.This proves that a polynomial is a unit in $R[[x]]$ if $a_0$ is a unit in $R$.
+
+Next, assume $a_0$ of some polynomial is not a unit in $R$. For any polynomial $ \sum_{n = 0}^{\infty}b_nx^n$, 
+$$
+\sum_{n = 0}^{\infty}a_nx^n \times \sum_{n = 0}^{\infty}b_nx^n = \sum_{n = 0}^{\infty}\left(\sum_{k = 0}^n a_kb_{n - k} \right)x_n,
+$$
+which means this product is only equal to $1_{R[[x]]}$ when $b_0a_0 = 1_R$. However, this is not possible, as that would imply $a_0$ is a unit in $R$ with inverse $b_0$. This contradiction completes the proof that $\sum_{n = 0}^{\infty} a_nx^n$ is a unit in $R[[x]]$ if and only if $a_0$ is a unit in $R$.
+\end{proof}
+
+\begin{problem}{Problem 24a, page 249}
+\end{problem}
+\begin{proof}
+If $J$ is an ideal of $S$, to prove that $\phi^{-1}(J)$ is a ideal of $R$, we must prove that $\phi^{-1}(J)$ is a subgroup under the additive group of $R$, and for every $r \in R$ and $x \in \phi^{-1}(J)$, $rx \in \phi^{-1}(J)$ and $xr \in \phi^{-1}(J)$.
+
+First, observe that if $x, y \in \phi^{-1}(J)$, $f(x), f(y) \in J$, and due to the properties of ring homomorphisms $\phi(x) + \phi(y) = \phi(x + y)$. This implies that $\phi(x + y) \in J$, which means $x + y \in \phi^{-1}(J)$. Next, we know that $0_R \in \phi^{-1}(J)$ because $\phi(0_R) = 0_S \in J$, as $\phi$ is a ring homomorphism. Lastly, for any $a \in \phi^{-1}(J)$, $-a \in \phi^{-1}(J)$ because $\phi(a), \phi(-a) \in J$, which is a result of the fact that $\phi(a) + \phi(-a) = \phi(a - a) = \phi(0)$. $J$ is an ideal, so the inverse of $\phi(a)$, which is shown here to be $\phi(-a)$, is contained inside $J$. This completes the proof that $\phi^{-1}(J)$ is a subgroup under the additive group of $R$.
+
+Next, if $x \in \phi^{-1}(J)$ and $y \in R$, assume for the sake of contradiction that $yx \notin \phi^{-1}(J)$. We know that $yx \in R$ and thus $\phi(yx)  = \phi(y) * \phi(x) \in S$. $\phi(x) \in J$, and thus $z * \phi(x) \in J$ for any $z \in S$. This implies $\phi(yx) \in J$, and thus $yx \in \phi^{-1}(J)$. This contradiction proves that $yx \notin \phi^{-1}(J)$. Repeating this proof for when $x, y$ are swapped completes the proof that $\phi^{-1}(J)$ is an ideal of $R$.
+
+Due to the proof shown above, if $\phi$ is the inclusion homomorphism, $\phi^{-1}(J)$ is an ideal of $S$. Then, note that $\phi^{-1}(J) = J \cap S$ because $\phi^{-1}(J)$ contains an element of $J$ if and only if it is also an element of $S$.
+\end{proof}
+
+\begin{problem}{Problem 24b, page 249}
+\end{problem}
+\begin{proof}
+To prove that $\phi(I)$ is an ideal of $S$, we prove that $\phi(I)$ is a subgroup under the additive group of $S$, and we prove that for every $s \in S$ and $x \in \phi(I)$, $xs \in \phi(I)$ and $sx \in \phi(I)$.
+
+First, note that $\phi(I)$ is a subgroup under the additive group of $S$ because first for any $\phi(x), \phi(y) \in \phi(I)$, $\phi(x) + \phi(y) = \phi(x + y)$. We know that $x, y \in I$, and thus $x + y \in I$, and $\phi(x + y) \in \phi(I)$. This proves closure under addition, as $\phi(x) + \phi(y) \in \phi(I)$. Next, we know $0_S \in \phi(0_R) \in I$ given $\phi$ is a homomorphism. Lastly, the additive inverse must exist because $\phi(x) + \phi(-x) = \phi(x - x) = \phi(0) = 0$, which shows that $\phi(-x)$ is the additive inverse of $\phi(x)$ for any $x$ and $-x \in R$.
+
+Next, note that if $x \in \phi(I)$ and $y \in S$, $xy \in S$. We want to show $xy \in \phi(I)$. There exists $z, a \in R$ such that $\phi(z) = x$, $\phi(a) = y$ given $\phi$ is surjective, and thus $xy = \phi(z)\phi(a) = \phi(za)$. GIven $\phi(z) = x \in \phi(I)$, it follows that $z \in I$. This then shows that $za \in I$ given $a \in R$. This concludes that $xy = \phi(za) \in \phi(I)$. The proof is identical for when the orders of $x, y$ are swapped. This completes the proof that $\phi(I)$ is an ideal of $S$ when $\phi$ is surjective.
+å
+For a counterexample, let $S$ denote the ring of polynomials with integer coefficients, and let $R$ denote the ring of polynomials where each factor has a power divisible by 2 (i.e. $a_0 + a_1x^2 + a_2x^4 ...$) and where the coefficients are integers. Both of these sets constitute a ring via polynomial addition and multiplication, and specifically note that $R$ is closed under both operations. Additionally, given $R \subset S$, let $\phi: R \rightarrow S$ denote the inclusion homomorphism, which is clearly not surjective. Next, consider the ideal in $R$ consisting of every polynomial divisible by $x^4 + 1$. This property of divisibility is closed under multiplication and addition, the additive identity is divisible by $x^4 + 1$, and the additive inverse of each element is also necessarily divisible by $x^4 + 1$. Additionally, the product of any polynomial in $R$ with an element in $I$ yields a polynomial that is divisible by $x^4 + 1$, thus completing the proof that $I$ is an ideal. $\phi(I)$ is not an ideal however because $x \in R$ and $x$ times any element of $\phi(I)$ is a polynomial only consisting of odd degree, which cannot be in $\phi(I)$.
+\end{proof}
+
+\begin{problem}{Problem 27, page 258}
+\end{problem}
+\begin{proof}
+Assume $a^n = 0$ given $a$ is a nilpotent. Then, for any arbitrary $b \in R$, 
+$$
+(1 - ab)(1 + ab + (ab)^2 + ... (ab)^{n - 1}) = (1 - ab) + (ab - (ab)^2) + ((ab)^2 - (ab)^3) + ... ((ab)^{n - 1} - (ab)^n).
+$$
+Telescoping sum simplifies the above expression to $1 - (ab)^n = 1 - a^nb^n$. We know $a^n = 0$, and thus
+$$
+(1 - ab)(1 + ab + (ab)^2 + ... (ab)^{n - 1}) = 1,
+$$
+This is also true in the reverse order given the ring is commutative. Thus, $1 - ab$ is a unit for any $b \in R$ as long as $a$ is a nilpotent.
+\end{proof}
+
+\begin{problem}{Problem 33a, page 259}
+\end{problem}
+\begin{proof}
+Let $M$ be a maximal ideal of $R$ that is distinct from $R$. First, assume there does not exist $c \in [0, 1]$ such that $f(c) = 0$ for every $f \in M$. For any arbitrary $c$, there exists a function where $f(c) \neq 0$, and in this function there exists a neighborhood $N(c)$ around $c$ such that $f(x) > 0$ for $x \in N(c)$ given $f$ is continuous. $N(c)$ across all $c \in [0, 1]$ denotes an open cover of the interval, and given $[0, 1]$ is compact, there exists a finite subset of this set of these intervals which cover $[0, 1]$. Let $f_1, f_2, ..., f_n$ denote the functions which these intervals are associated with. It follows that $h(x) = f_1^2(x) + f_2^2(x) + ... + f_n^2(x) > 0$ for all $x$. This function is an element of $M$, and given $1/h(x)$ exists and is in $R$, $h(x)/h(x) = 1 \in M$. Then, note that for any $f(x) \in R$, $f(x) = f(x)h(x)(1/h(x)) \in M$ because $f(x)h(x) \in M$ and $(1/h(x)) \in M$. This concludes that $M$ is equal to $R$. This contradiction proves that any maximal ideal $M$ must be of the form $M_c$ fo some $c$.
+\end{proof}
+
+\begin{problem}{Problem 33b, page 259}
+\end{problem}
+\begin{proof}
+For $M_b$ where $b$ is some arbitrary number, there in $M_b$ a function where $f(c) = 1$ for any $c \neq b$ (consider a linear function that crosses these two points). This proves that $M_b$ contains at least one function where $f(c) \neq 0$ for any $c$, thus $M_b \neq M_c$ when $b \neq c.$
+\end{proof}
+
+\begin{problem}{Problem 33c, page 259}
+\end{problem}
+\begin{proof}
+It is evident that the principal ideal generated by $x - c$ is contained in $M_c$, as every function in the principal ideal has a zero at $c$. However, note that $|x - c| \in M_c$ given it is continuous, but $|x - c|/(x - c)$ is discontinuous at $c$, which means that $|x - c|$ cannot be contained in the principal ideal generated by $x - c$.
+\end{proof}
+
+\begin{problem}{Problem 33d, page 259}
+\end{problem}
+\begin{proof}
+Assume for the sake of contradiction that $M_c$ is finitely generated. Let $f_1, ..., f_n$ denote the functions that generate $M_c$. Let 
+$$
+f(x) = \sum_{i = 0}^n \sqrt{|f_i(x)|}.
+$$
+Observe that $f(x)$ must necessarily be continuous and also $f(c) = 0$ and thus $f \in M_c$. Next, observe that there must exist $\alpha$ such that
+$$
+|f(x)| \leq \alpha \sum_{i = 0}^n |f_i(x)|.
+$$
+because if no such $\alpha$ existed, that would imply $f(x)/\left(\sum f_i(x)\right)$ is unbounded, which violates the property that $f(x) \in M_c$.
+
+Now, observe that there exists a ball around $c$ such that $\sqrt{|f_i(x)|} < 1/2\alpha$. Thus,
+$$
+|f(x)| \leq \alpha \sum_{i = 0}^n |f_i(x)| = (1/2)\sum_{i = 0}^n \mathbb{|f_i(x)|} = |f(x)|/2,
+$$
+which implies $f(x) = 0$ for every $x$ inside the given ball. This then implies $f_i(x) = 0$ for every $x$ in the given ball because that is the only way in which $\alpha \sum_{i = 0}^n |f_i(x)| = 0$. However, this means that the continuous function $x - c$ cannot be contained in $M_c$ because $x - c$ only equals 0 at $c$ and no product/sum of $f_1, ..., f_n$ could yield a function that is not 0 within the given ball. This contradiction proves that $M_c$ is not finitely generated.
+\end{proof}
+
+\begin{problem}{Problem 34a, page 259}
+\end{problem}
+\begin{proof}
+First, it is very clear that if two functions have a compact support the sum has a compact support because the union of two compact regions is compact. Similarly, the additive inverse of a function with compact support has the same support, and the additive identity has a compact support (the support is empty). Lastly, addition of such functions is associative given function addition is associative.
+
+Next, to prove that for every $r \in R$ and $x \in I$ the product $rx$ is in $I$, note that $rx$ has a support that is equal to the intersection of the supports for $r$ and $x$. This means that if the support for $x$ is contained within an interval $[a, -a]$, so is the support for $rx$. This proves that $rx \in I$.
+
+$I$ is not a prime ideal because $f$ is $min(x, 0)$ and $g$ is $max(x, 0)$, neither functions have compact supports because $f, g$ have non-zero values towards negative infinity and infinity respectively. However, $fg = 0 \in I$ as shown previously. Thus, $I$ cannot be a prime ideal.
+\end{proof}
+
+\begin{problem}{Problem 34b, page 259}
+\end{problem}
+\begin{proof}
+We are given in the previous section that $M_c$ is not a prime ideal. We will now prove that all maximal ideals are prime, which would complete the proof that $M_c$ is never a maximal ideal.
+
+Assume for the sake of contradiction that $M_c$ is maximal. Let $a \notin M_c$, while $ax \in M_c$. Given $M_c$ is maximal, the ideal generated by $a$ and $M_c$ is all of $R$, which means the multiplicative identity $1$ is equal to some linear combination of $a$ and an element of $M$. In other words, there exists $c \in R$ and $d \in M_c$ such that $d + ca = 1$. However, this means $(d + ca)x = x$ by multiplying both sides by $x$, and given $d \in M_c, ax \in M_c$, it follows that $dx + cax = x \in M_c$. This proves that if $M_c$ were to be maximal, it must necessarily be prime as $a \notin M_c$ and $ax \in M_c$ implies $x \in M_c$ for an arbitrary $a \in R$. This contradicts the previous example which showed that $M_c$ is not prime, which completes the proof.
+\end{proof}
+
+\begin{problem}{Problem 2.1}
+\end{problem}
+\begin{proof}
+In this problem, we are interested in showing that if $R$ is an integral domain, then each nonzero element has a multiplicative inverse. For some arbitrary non-zero $x \in R$, let $\phi : R \rightarrow R$ map $y \in R$ to $xy$. Observe if that for some $a, b \in R$ $f(a) = f(b)$, that implies $xa = xb$, and due to the existence of the additive inverse and distributive property, we get $0_R = x(a - b)$. Given $x$ is non-zero and given $R$ is an integral domain, it necessarily follows that $a - b = 0$, $a - b$ (if $a - b \neq 0$, the fact that $R$ is an integral domain dictates that $x(a - b) \neq 0$). This proves that $f$ is injective. 
+
+Now, assume for the sake of contradiction that $x \in R$ has no inverse. This implies that there does not exist $a \in R$ such that $f(a) = xa = I$. Observe that given $R$ is a finite dimensional vector space, there exists a finite basis for $R$, $r_1, r_2, ..., r_n$. Thus, $x = x_1r_1 + ... + x_nr_n$, where $x_1, ..., x_n \in F$. Combined with the fact that $f$ is injective, this implies that the image of $f$ contains every element of $R$, which then implies surjectivitiy. This contradicts the fact that $x$ has no inverse because there must exist $y$ such that $f(y) = xy = 1_R$. This contradiction proves that $R$ must be a field.
+\end{proof}
+
+\begin{problem}{Problem 2.2}
+\end{problem}
+\begin{proof}
+Let $R$ denote the commutative ring of all polynomials with rational coefficients, and let $F$ denote the field of rational numbers. $F$ is a subring of $R$, and thus it is clear that $R$ acquires the structure of an infinite dimensional vector space over $F$. Additionally, $R$ is an integral domain because all non-zero polynomials are equal to zero at a finite number of points, and thus a product of any two non-zero polynomials is still a non-zero polynomial. However, the polynomial $x$ does not have an inverse because the necessary inverse $1/x$ is not a polynomial. This provides a counter example that the finite dimension condition is necessary.
+\end{proof}
+
+\begin{problem}{Problem 2.3a}
+\end{problem}
+\begin{proof}
+First, note that $A = \{T \in End_F(V) : T(W) = 0\}$ is closed under addition given $(T_1 + T_2)(W) = T_1(W) + T_2(W) = 0$, the additive inverse linear transformation of $T$ exists as $-T$, the additive identity is the zero map $Z$ and it certainly maps $W$ to $0$. Associativity follows from the fact that linear transformation addition is associative.
+
+Next, to prove that $yx \in A$ for $x \in A$ and $y \in End_F(V)$, note that for any linear transformation $T$, $T(0) = 0$. This means that $y(x(W)) = y(0) = 0$, which completes the proof that $yx \in A$ and thus $A$ is a left ideal of $End_F(V)$.
+\end{proof}
+
+\begin{problem}{Problem 2.3b}
+\end{problem}
+\begin{proof}
+The left ideal generated by $T$ is $A = \{XT : X \in End_F(V)\}$. First, for the sake of contradiction assume $Y \in A$ and $Y(W) \neq 0$. This implies that there exists $X \in End_F(V)$ such that $X(T(x)) = Y(x)$. Then, $Y(W) = X(T(W)) = X(0) = 0$, with the last equality being true given $X$ is a linear transformation. This contradiction shows that if $Y \in A$, then $Y \in \{\S \in End_F(V) : S(W) = 0\}$. 
+
+Next, assume for the sake of contradiction that $Y(W) = 0$ and $Y \notin A$. Due to the rank nullity theorem, the rank of $Y$ is equal to the rank of $T$, and if $y_1, ..., y_n$ and $t_1, ..., t_n$ are the basis for the images of $Y$ and $T$ respectively, it is easy to find a linear transformation $P$ that maps each of these bases $t_i$ to $y_i$. It then follows that $P(T(x)) = Y(x)$, which contradicts the fact that $Y \notin \{XT : X \in End_F(V)\}$. This completes the proof for both directions.
+\end{proof}
+
+\begin{problem}{Problem 2.3c}
+\end{problem}
+\begin{proof}
+It is clear that $A = \{T \in End(V) : T(V) \subset W\}$ is a subgroup because $T_1(V) + T_2(V) \subset W$ given $W$ is closed under addition. The additive inverse of $T \in A$ is equal to $-T$, which is in $W$ given $W$ contains all additive inverses. The identity, the zero map, is clearly contained in $A$ given $0 \in W$. Finally, associativity of addition is clear from the fact that the addition of linear transformations is associative.
+
+Next, to prove that $xy \in A$ for $x \in A$ and $y \in End_F(V)$, note that $y(V)$ is contained inside $V$, and thus $x(y(V))$ is contained inside $x(V)$ which is contained inside $W$. This completes the proof that $xy \in A$ for any $x \in A$ and $y \in End_F(V)$, thus completing the proof.
+\end{proof}
+
+\begin{problem}{Problem 2.3d}
+\end{problem}
+\begin{proof}
+The left ideal generated by $T$ is $A = \{TX : X \in End_F(V)\}$. First, for the sake of contradiction assume $Y \in A$ and $Y(V)$ is not a subset of $W$. For any $X \in End_F(V)$, $X(V) \subset V$, and thus $Y(V) = T(X(V)) \subset W$. This contradiction proves that if $Y \in A$, then $Y(V) \subset W$.
+
+Next, for the sake of contradiction assume $Y(V) \subset W$ and $Y \notin A$. Given $Y(V) \subset W$ the range of $Y$ is at most the range of $T$, and thus assume $y_1, ..., y_m$ and $t_1, ..., t_n$ are the basis for $Y$ and $T$ respectively, where $m \leq n$. It is easy to find a linear transformation $P$ that maps $y_1, ..., y_m$ to some subset of $t_1, ..., t_n$. It follows that $TP(x) = Y(x)$ for all $x \in V$, thus showing a contradiction with the fact that $Y \notin A$. This contradiction completes the proof for both directions.
+\end{proof}
+
+\begin{problem}{Problem 2.4}
+\end{problem}
+\begin{proof}
+If $Tv = cv$ for some $c \in F$, that means $T$ dilates every vector in $V$ by some factor $c$. We will prove that this occurs if and only if $T$ takes the form of a diagonal matrix with identical elements.
+
+If $T$ is $cI$ for some $c \in F$, it is clear that $X(cI) = cX = (cI)X$ for any linear transformation $X$, which completes the proof in one direction. For the other direction, observe that if $T \neq cI$ for any $c \in F$, it is clear that there exists at least one $x \in V$ such that $Tx$ is not colinear to $x$. Consider a linear transformation $P$ that maps $Tx$ to $x$ and $x$ to $2Tx$. Such a linear transformation can be found using change of basis, and we can see that $P(Tx) = T(Px)$ only when $Tx = 0$. This cannot occur, as that would imply $Tx$ is colinear to $x$. Thus, this completes the proof that if $T$ is in the center of $End_F(V)$, then there must exist $c \in F$ such that $Tv = cv$ for all $v \in V$.
+\end{proof}
+
+
+
+\end{document}

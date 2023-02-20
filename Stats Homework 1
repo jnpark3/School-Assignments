@@ -1,0 +1,188 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 1}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{proof}[Solution]
+The probability of getting a king from a set of 52 cards is $\frac{4}{52}$, or $\frac{1}{13}$, given there are four cards that are kings. The probability of getting a spade from a set of 52 cards is $\frac{13}{52}$ or $\frac{1}{4}$, given there are 13 cards that are spades. The probability of getting a card that is both a king and a spade is $\frac{1}{52}$ given there is one king of spades card. If $A$ is the condition that a randomly chosen card is a king and if $B$ is the condition that a card is a spade, the general addition rule states that $P(A \cup B) = P(A) + P(B) - P(A \cap B)$. We are aware $P(A) = \frac{1}{13}$, $P(B) = \frac{1}{4}$, and $P(A \cap B) = \frac{1}{52}$. Thus, the probability that a card is a king or a spade, $P(A \cup B)$, is $ \frac{1}{13} +  \frac{1}{4} -  \frac{1}{52} =  \frac{4}{13}$.
+
+Using the same definition as previously, note that $A^c$ is the condition that a randomly chosen card is not a spade. The probability that a randomly chosen card is a king and not a spade, $P(B \cap A^c)$, is $\frac{3}{52}$ given that there are three king cards that are also not spades, while the entire deck has 54 cards. In addition, $P(A^c) = 1 - P(A) = 1 - \frac{13}{52} = \frac{3}{4}$ due to the complement rule. The probability that a card is a king given it is not a spade is $P(B | A^c)$. Then, using the definition of conditional probability, we can see that $P(B | A^c) = \frac{P(B \cap A^c)}{P(A^c)} = \frac{3/54}{3/4} = \frac{1}{13}$. Thus, the probability of getting a king given that it is not a spade is $\frac{1}{13}$.
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}[Solution]
+The probability that an individual likes peanut butter or jelly is $P(B \cup J)$. According to the general addition rule, $P(B \cup J) = P(B) + P(J) - P(B \cap J)$. We are given that $P(B) = .8$, $P(J) = .89$, and $P(B \cap J) = .78$. Thus, $P(B \cup J) = P(B) + P(J) - P(B \cap J) = .8 + .89 - .78 = .91$. Thus, the probability that an individual likes peanut butter or jelly is $.91$ or 91 percent.
+
+The probability that an individual likes neither peanut butter nor jelly is $P(B^c \cap J^c)$ given $B^c \cap J^c$ denotes the condition that a chosen person does not like peanut butter and does not like Jelly. According to de Morgan's laws, $B^c \cap J^c = (B \cup J)^c$. By the compliment rule, $P((B \cup J)^c) = 1 - P(B \cap J) = 1 - .91 = .09$. Thus, $P(B^c \cap J^c)$, the probability that a randomly selected individual likes neither peanut butter nor jelly, is $.09$, or $9$ percent.
+
+The probability that an individual likes peanut butter, $P(B)$, is $.89$, and the probability that an individual likes peanut butter and jelly, $P(B \cap J)$ is $.78$. The probability someone likes peanut butter but not jelly is equal to the probability $P(B \cap J^c)$. Due to the partition rule, $P(B) = P(B \cap J) + P(B \cap J^c)$, and thus via algebra $P(B \cap J^c) = .11$. The probability that the randomly selected individual likes jelly but not peanut butter is 11 percent.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}[Solution]
+Events $B^c$ and $J^c$ are disjoint if $P(B^c \cap J^c) = 0$. Due to the de Morgan's laws, $P(B^c \cap J^c) = P((B \cup J)^c)$. As shown in 2.a.ii, $P((B \cup J)^c) = 1 - P(B \cap J) = 1 - .91 = .09$. This thus shows that $P(B^c \cap J^c) \neq 0$, and thus $B^c$ and $J^c$ are not disjoint.
+\end{proof}
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{proof}[Solution]
+Note that $P(B \cap J) = .78$, and $P(B^c \cap J) = .11$ due to the partition rule. This is true because we already know that $P(B \cap J) = .78$ and $P(J) = .89$, and $P(J) = P(B \cap J) + P(B^c \cap J)$. Next, note that $P(B) = .8$ and $P(B^c) = .2$ due to the complement rule. Using the definition of conditional probability, $P(J | B) = \frac{P(J \cap B)}{P(B)} = \frac{.78}{.8} = .975$ and $P(J | B^c) = \frac{P(J \cap B^c)}{P(B^c)} = \frac{.11}{.2} = .55$.
+\end{proof}
+
+\begin{problem}{2.d}
+\end{problem}
+\begin{proof}[Solution]
+We are aware that $P(B) = .8$, $P(J) = .89$, and $P(B) * P(J) = .712$. $P(B \cap J) = .78$ as given in the problem. The definition of independence states that if $B$ and $J$ are to be independent, $P(B) * P(J) = P(B \cap J)$, but this is clearly not true. Thus, $B$ and $J$ are not independent.
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}[Solution]
+The event that all 5 rolls have aces is equivalent to the event where $A_1, ..., A_5$ are all true. Thus, this event can be represented as $A_1 \cap A_2 \cap A_3 \cap A_4 \cap A_5$. Each of the events $A_1, ..., A_5$ are independent to each other because the result of one dice roll does not affect the result of another roll. Through repeated applications of the definition of independence, $P(A_1 \cap A... \cap A_5) = P(A_1 \cap A_2 \cap ... \cap A_4) * P(A_5) = P(A_1 \cap A_2 \cap A_3) * P(A_4) * P(A_5) = ... = P(A_1) * ... * P(A_5)$. Each event $A_1, ..., A_5$ has a probability of $\frac{1}{6}$ of occurring given one of the six sides is the ace in any given roll, and all of the six sides are equally likely to be chosen. Thus, $P(A_1 \cap A_2 \cap ... \cap A_5) = P(A_1) * ... * P(A_5) = \frac{1}{6^5}$.
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}[Solution]
+The event that all 5 rolls have no aces is equivalent to the event where $A_1^c, ..., A_5^c$ are all true. Thus, this event can be represented as $A_1^c \cap A_2^c \cap A_3^c \cap A_4^c \cap A_5^c$. Each of the events $A_1^c, ..., A_5^c$ are independent to each other because the result of one dice roll does not affect the result of another roll. Through repeated applications of the definition of independence, $P(A_1^c \cap A_2^c \cap ... \cap A_5^c) = P(A_1^c \cap A_2^c \cap ... \cap A_4^c) * P(A_5^c) = P(A_1^c \cap A_2^c \cap A_3^c) * P(A_4^c) * P(A_5^c) = ... = P(A_1^c) * ... * P(A_5^c)$. Each event $A_1^c, ..., A_5^c$ has a probability of $\frac{5}{6}$ of occurring given five of the six sides is not the ace in any given roll, and each of the six sides are equally likely to be chosen. Thus, $P(A_1^c \cap A_2^c \cap ... \cap A_5^c) = P(A_1^c) * ... * P(A_5^c) = \frac{5^5}{6^5} = .40188...$ .
+\end{proof}
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{proof}[Solution]
+The event that at least one ace occurs is equivalent to the event that the first dice rolls an ace or the event that the second dice rolls an ace or etc., with each or being inclusive. If any of the five events are true, then at least one ace occurs. If none of the five events are true, then no ace has occurred. Thus, the event that at least one ace occurs is equivalent to the event $A_1 \cup ... \cup A_5$. As noted in the previous part, $P(A_i) = \frac{1}{6}$ for any $i \in 1, ..., 5$, and $A_1, ..., A_5$ are all independent. We now construct a recursive function. Given $P(A_1 \cup ... \cup A_i)$, we wish to determine $P(A_1 \cup ... \cup A_i \cup A_{i+1})$. Using the addition rule, $P(A_1 \cup ... \cup A_i \cup A_{i+1}) = P(A_1 \cup ... \cup A_i) + P(A_{i+1}) - P((A_1 \cup ... \cup A_i) \cap A_{i+1})$. Given $A_1 \cup ... \cup A_i$ and $A_{i+1}$ are independent because dice rolls $1, ..., i$ do not affect the result of roll $i+1$, the definition of independence states that $P((A_1 \cup ... \cup A_i) \cap A_{i+1}) = P(A_1 \cup ... \cup A_i) * P(A_{i+1})$. We are aware that $P(A_{i+1}) = \frac{1}{6}$ regardless of what $i$ is, and thus
+$$P(A_1 \cup ... \cup A_i \cup A_{i+1}) = P(A_1 \cup ... \cup A_i) + P(A_{i+1}) - P((A_1 \cup ... \cup A_i) \cap A_{i+1}) = \frac{1}{6} + \frac{5}{6}P(A_1 \cup ... \cup A_i)$$.
+Using this recursive function, we first observe that $P(A_1 \cup A_2) = \frac{1}{6} + \frac{5}{6}P(A_1) = \frac{11}{36}$. Then, $P(A_1 \cup A_2 \cup A_3) = \frac{1}{6} + \frac{5}{6}P(A_1 \cup A_2) = \frac{91}{216}$. $P(A_1 \cup A_2 \cup A_3 \cup A_4) = \frac{1}{6} + \frac{5}{6}P(A_1 \cup A_2 \cup A_3) = \frac{671}{1296}$. Finally, $P(A_1 \cup ... \cup A_5) = \frac{1}{6} + \frac{5}{6}P(A_1 \cup ... \cup A_4) = \frac{4651}{7776} = .5981...$ .
+\end{proof}
+
+\begin{problem}{3.d}
+\end{problem}
+\begin{proof}[Solution]
+The event that at most four aces occurs is the compliment of the event that five aces occur. Thus, using the result of 3.a, we can see that the event that at most four aces occurs can be represented as $(A_1 \cap A_2 \cap A_3 \cap A_4 \cap A_5)^c$. We have shown in 3.a that $P(A_1 \cap A_2 \cap ... \cap A_5) = \frac{1}{6^5}$, and the compliment rule shows that $P((A_1 \cap A_2 \cap A_3 \cap A_4 \cap A_5)^c) = 1 - P(A_1 \cap A_2 \cap A_3 \cap A_4 \cap A_5) = \frac{6^5 - 1}{6^5} = .99987...$ .
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}[Solution]
+
+Table with marginal sums:
+
+\begin{center}
+\begin{tabular}{ | m{5em} | m{1cm} | m{2cm} | m{1cm} | } 
+  \hline
+   & Usable & Not Usable & Total \\ 
+  \hline
+  Low & 627 & 112 & 739 \\ 
+  \hline
+  High & 87 & 174 & 261 \\ 
+  \hline
+  Total & 714 & 286 & 1000 \\ 
+  \hline
+\end{tabular}
+\end{center}
+
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}[Solution]
+Of the 1000 batches, 627 of the batches are both low in impurities and usable. Thus, given this sample is representative of the process, the percentage of batches that are low in impurities and usable is $\frac{627}{1000} = .627$.
+
+Of the 1000 batches, 714 of the batches are usable as shown in the table above. Thus, given this sample is representative of the process, the percentage of batches that are usable is $\frac{714}{1000} = .714$.
+
+Of the 1000 batches, 261 of the batches are high in impurities as shown in the table above. Thus, given this sample is representative of the process, the percentage of batches that are high in impurities is $\frac{261}{1000} = .261$.
+
+The batches are categorized into four groups, low-usable, low-unusable, high-usable, high-unusable. Of these four, low-usable, low-unusable, and high-usable batches fit into the category of low impurities or usable. The last group high-unsable does not. The groups low-usable, low-unusable, and high-usable contain 627, 112, 87 of the 1000 batches respectively, and they are cumulatively 826 of the 1000 batches. Thus, given this sample is representative of the process, the percentage of batches that are low in impurities or usable is $\frac{826}{1000} = .826$.
+
+By definition, the two events low in impurities and usable are mutually exclusive only if there are no occurrences of the condition "low in impurities and usable". This is clearly not true, as over a majority of the batches fall into the category of "low in impurities and usable". Thus, these two conditions are not mutually exclusive. In addition, these two events are not independent, as the amount of impurities does affect the usability. Of the 739 low impurity batches, 627 were usable, which means well over half of low impurity batches are usable. Of the 261 high impurity batches, 87 were usable, which means well under half of half impurity batches are usable. The purity of the batch does impact the probability that the batch is usable, and thus the two events are not independent.
+\end{proof}
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{proof}[Solution]
+Tree diagram for experiment A:
+
+\begin{forest}
+  [
+    [H
+     [H[H H]]
+     [T[H T]]
+    ]
+    [T
+     [H[T H]]
+     [T[T T]]
+    ]
+  ]
+\end{forest}
+
+Tree diagram for experiment B:
+
+\begin{forest}
+  [
+    [H[H]]
+    [T[H[T H]][T[H [T T H]][T[$\vdots$]]]]
+  ]
+\end{forest}
+
+It is possible to observe that the sample space of experiments A and B are different because while there are four possible outcomes from experiment A, there are an infinite number of outcomes possible for experiment B.
+\end{proof}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{proof}[Solution]
+Let $H_i$ be the condition that the $i$-th flip is a head. In order for a set of two flips to be one head and one tail, either the first flip is heads and the second is tails, or vice versa. For the first event, the probability can be expressed as $P(H_1 \cap H_2^c)$. $H_1$ and $H_2^c$ are independent because the result of one flip does not affect the result of another flip. Thus, using the definition of independence, $P(H_1 \cap H_2^c) = P(H_1) * P(H_2^c)$. $P(H_1)$ and $P(H_2^c)$ are both clearly $\frac{1}{2}$ given that the coin is fair, and thus $P(H_1 \cap H_2^c) = P(H_1) * P(H_2^c) = \frac{1}{4}$. For the other case where the first flip is tails and the second is heads, the probability of this occurring is $P(H_1^c \cap H_2)$. Again, using the definition of independence, $P(H_1^c \cap H_2) = P(H_1^c) * P(H_2)$, and $P(H_1^c), P(H_2)$ are both $\frac{1}{2}$ due to the fairness of the coin. Thus, $P(H_1^c \cap H_2) = P(H_1^c) * P(H_2) = \frac{1}{4}$. Note that these two cases account for every possible occurrence of one head and one tail as shown in the tree diagram in 5.a. Thus, the probability that there is one head and one tail in experiment A is equal to the probability $P((H_1 \cap H_2^c) \cup (H_1^c \cap H_2))$. Given that $H_1 \cap H_2^c$ and $H_1^c \cap H_2$ are clearly mutually exclusive events (it is impossible for both $H_1$ and $H_1^c$ to occur), the special addition rule for mutually exclusive events states that $P((H_1 \cap H_2^c) \cup (H_1^c \cap H_2)) = P(H_1^c \cap H_2) + P(H_1 \cap H_2^c) \frac{1}{2}$. Thus, the probability of getting one head and one tail in experiment A is $.5$.
+\end{proof}
+
+\begin{problem}{5.c}
+\end{problem}
+\begin{proof}[Solution]
+For experiment B, it is evident that the experiment will end in at most 2 steps if and only if the experiment ends on the first step or the second step. As shown in the tree diagram in 5.a, the experiment ends on the first step if and only if a head is flipped for the first flip. This probability, $P(H_1)$, is known to be $\frac{1}{2}$ as shown in 5.b. The experiment ends on the second step if and only if a tails is flipped for the first flip, and a heads is flipped for the second flip. This probability, $P(H_1^c \cap H_2)$, is known to be $\frac{1}{4}$ as shown again in 5.b. Given these are the only two possible events where experiment B will end in at most 2 turns, the probability that the experiment will end in at most two turns is equal to $P(H_1 \cup (H_1^c \cap H_2))$. The events $H_1$ and $H_1^c \cap H_2$ are clearly independent because it is impossible for both $H_1$ and $H_1^c$ to occur. Thus, using the special addition rule for mutually exclusive events, $P(H_1 \cup (H_1^c \cap H_2)) = P(H_1) + P(H_1^c + H_2) = \frac{1}{2} + \frac{1}{4} = \frac{3}{4}$. Thus, the probability that the experiment will last in at most two turns is $.75$.
+\end{proof}
+
+\begin{problem}{6}
+\end{problem}
+\begin{proof}[Solution]
+Tree diagram:
+
+\begin{forest}
+  [
+    [Identical
+     [Both Male]
+     [Both Female]
+    ]
+    [Paternal
+     [Both Male]
+     [Both Female]
+     [Male-Female]
+    ]
+  ]
+\end{forest}
+
+Let $G$ denote the event that both babies are girls and let $A$ denote the event that the twins are identical. This problem is asking us to determine $P(A | G)$, the probability that the twins are identical given they are both girls. First, note that the probability $P(G | A)$ is $\frac{1}{2}$ because given a pair of twins are identical, there is a .5 chance that they are both girls. Next, note that $P(G | A^c)$ is $\frac{1}{4}$ because given a pair of twins are not identical (fraternal), there is a .25 chance that they are both girls. In addition, $P(A) = .3$ as given in the problem, and $P(A^c) = 1 - P(A) = .7$ due to the compliment rule. Thus, Bayes theorem shows that
+$$
+P(A | G) = \frac{P(G | A)*P(A)}{P(G | A)*P(A) + P(G | A^c)*P(A^c)} = \frac{.5*.3}{.5*.3 + .25*.7} = \frac{6}{13} = .4615...
+$$
+Thus, there is a $\frac{6}{13}$ chance that the twins are identical given that they are both girls.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,506 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Economics Homework 3}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+The firm's profit maximization problem is
+$$
+\max_{x_1, x_2} px_1^{1/3}x_2^{1/3} - \omega_1 x_1 - \omega_2 x_2
+$$
+where $x_1, x_2 \geq 0$. The interior solutions occur when
+$$
+p\frac{\partial f(x_1, x_2)}{\partial x_i} = \omega_i
+$$
+for $i = 1, 2$. We get that
+$$
+p\left(\frac{x_2^{1/3}}{3 x_1^{2/3}}\right) = \omega_1
+$$
+$$
+p\left(\frac{x_1^{1/3}}{3 x_2^{2/3}}\right) = \omega_2,
+$$
+$$
+x_2 = \frac{27\omega_1^3 x_1^{2}}{p^3}
+$$
+$$
+x_1 = \frac{27\omega_2^3 x_2^{2}}{p^3}.
+$$
+Substitution yields that
+$$
+x_1 = \frac{27\omega_2^3 \left(\frac{27\omega_1^3 x_1^{2}}{p^3}\right)^{2}}{p^3}.
+$$
+$$
+x_1 = \frac{3^9 \omega_2^3 \omega_1^6 x_1^{4}}{p^9}.
+$$
+$$
+x_1^3 = \frac{p^9}{3^9 \omega_2^3 \omega_1^6}.
+$$
+$$
+x_1 = \frac{p^3}{3^3 \omega_2 \omega_1^2}.
+$$
+Substituting this into one of the original equations then gives that
+$$
+x_2 = \frac{p^3}{3^3 \omega_1 \omega_2^2}.
+$$
+These two functions represent the input demand functions for $x_1, x_2$ respectively. Next, to determine the output supply function,
+$$
+f(x_1^*, x_2^*) = (x_1^*)^{1/3}(x_2^*)^{1/3} = \left(\frac{p^3}{3^3 \omega_2 \omega_1^2}\right)^{1/3}\left(\frac{p^3}{3^3 \omega_1 \omega_2^2}\right)^{1/3} = \frac{p^2}{9\omega_1\omega_2}.
+$$
+Lastly, through substitution, the profit function is
+$$
+p(x_1^*)^{1/3}(x_2^*)^{1/3} - \omega_1 x_1^* - \omega_2 x_2^* = \frac{p^3}{9\omega_1\omega_2} - \frac{p^3}{3^3 \omega_2 \omega_1} - \frac{p^3}{3^3 \omega_1 \omega_2} = \frac{p^3}{27 \omega_1 \omega_2}
+$$
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}
+From the previous problem, we know that the input demand function for $x_1, x_2$ are
+$$
+x_1(p, \omega_1, \omega_2) = \frac{p^3}{3^3 \omega_2 \omega_1^2},
+$$
+$$
+x_2(p, \omega_1, \omega_2) = \frac{p^3}{3^3 \omega_1 \omega_2^2}
+$$
+respectively. Given $\omega_1, \omega_2$ are both in the denominator of the fractions for $x_1, x_2$, as they increase the output of the input demand functions must decrease.
+
+Next, from the previous problem we know the output supply function is
+$$
+y(p, \omega_1, \omega_2) = \frac{p^2}{9\omega_1\omega_2},
+$$
+and as $p$ is squared in the numerator of this function, as $p$ increases clearly the value of the expression increases. Lastly, we know that the profit function is 
+$$
+\pi(p, \omega_1, \omega_2) = \frac{p^3}{27 \omega_1 \omega_2},
+$$
+and given $p$ is cubed in the numerator and $\omega_1, \omega_2$ are in the denominator, the value of this expression must increase as $p$ increases and decrease as $\omega_1, \omega_2$ increase.
+\end{proof}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{proof}
+From the first problem, we know that the input demand function for $x_1, x_2$ are
+$$
+x_1(p, \omega_1, \omega_2) = \frac{p^3}{3^3 \omega_2 \omega_1^2},
+$$
+$$
+x_2(p, \omega_1, \omega_2) = \frac{p^3}{3^3 \omega_1 \omega_2^2}.
+$$
+Note that
+$$
+x_1(\lambda p, \lambda \omega_1, \lambda \omega_2) = \frac{\lambda^3p^3}{3^3 \lambda \omega_2 \lambda^2 \omega_1^2} = \frac{p^3}{3^3 \omega_2 \omega_1^2} = x_1(p, \omega_1, \omega_2),
+$$
+$$
+x_2(\lambda p, \lambda \omega_1, \lambda \omega_2) = \frac{\lambda^3p^3}{3^3 \lambda \omega_1 \lambda^2 \omega_2^2} =  \frac{p^3}{3^3 \omega_1 \omega_2^2} = x_2(p, \omega_1, \omega_2).
+$$
+This shows that the input demand functions are homogeneous of degree zero. Additionally, we know that the output supply function is 
+$$
+y(p, \omega_1, \omega_2) = \frac{p^2}{9\omega_1\omega_2},
+$$
+
+and observe that
+$$
+y(\lambda p, \lambda \omega_1, \lambda \omega_2) = \frac{\lambda^2 p^2}{9\lambda \omega_1\lambda \omega_2} = \frac{p^2}{9\omega_1\omega_2} = f(p, \omega_1, \omega_2),
+$$
+showing that the output supply function is homogeneous of degree zero. Lastly, we know that the profit function is
+$$
+\pi(p, \omega_1, \omega_2) = \frac{p^3}{27 \omega_1 \omega_2},
+$$
+and observe that
+$$
+\pi(\lambda p, \lambda \omega_1, \lambda \omega_2) = \frac{\lambda^3p^3}{27 \lambda \omega_1 \lambda \omega_2} = \lambda\frac{p^3}{27 \omega_1 \omega_2} = \lambda \pi(p, \omega_1, \omega_2),
+$$
+which shows that the profit function is homogeneous of degree one.
+\end{proof}
+
+\begin{problem}{1.d}
+\end{problem}
+\begin{proof}
+We have previously shown that
+$$
+\pi(p, \omega_1, \omega_2) = \frac{p^3}{27 \omega_1 \omega_2}.
+$$
+Observe that
+$$
+\frac{\partial \pi(p, \omega_1, \omega_2)}{\partial p} = \frac{3p^2}{27 \omega_1 \omega_2} = \frac{p^2}{9 \omega_1 \omega_2} = y(p, \omega_1, \omega_2),
+$$
+which proves that $\frac{\partial \pi(p, \omega_1, \omega_2)}{\partial p} = y(p, \omega_1, \omega_2)$. Similarly, note that
+$$
+\frac{\partial \pi(p, \omega_1, \omega_2)}{\partial \omega_1} = -\frac{p^3}{27 \omega_1^2 \omega_2} = -x_1(p, \omega_1, \omega_2),
+$$
+$$
+\frac{\partial \pi(p, \omega_1, \omega_2)}{\partial \omega_2} = -\frac{p^3}{27 \omega_1 \omega_2^2} = -x_2(p, \omega_1, \omega_2).
+$$
+This proves that $\frac{\partial \pi(p, \omega_1, \omega_2)}{\partial \omega_i} = -x_i(p, \omega_1, \omega_2)$, thus completing the proof that Hotelling's Lemma holds.
+\end{proof}
+
+\begin{problem}{1.e}
+\end{problem}
+\begin{proof}
+The firm's profit maximization problem is
+$$
+\max_{x_1, x_2} px_1^{1/2}x_2^{1/2} - x_1 - x_2
+$$
+where $x_1, x_2 \geq 0$. The interior solutions occur when
+$$
+p\frac{\partial f(x_1, x_2)}{\partial x_i} = 1
+$$
+for $i = 1, 2$. We get that
+$$
+p\left(\frac{x_2^{1/2}}{2 x_1^{1/2}}\right) = 1
+$$
+$$
+p\left(\frac{x_1^{1/2}}{2 x_2^{1/2}}\right) = 1,
+$$
+$$
+x_2 = \frac{4 x_1}{p^2}
+$$
+$$
+x_1 = \frac{4 x_2}{p^2}
+$$
+Substitution yields that
+$$
+x_1 = \frac{4 \left(\frac{4 x_1}{p^2}\right)}{p^2} = \frac{16 x_1}{p^4}.
+$$
+This gives us the equation that
+$$
+16 = p^4, 2 = p.
+$$
+This suggests that an interior solution to the profit maximization problem only exists when $p = 2$. Indeed, we analyze the cases of $p < 2$, $p = 2$, and $p > 2$ to see when a solution is defined and if it is, what they are.
+
+When $p > 2$, consider the case where $x_1 = x_2$. The profit function is thus
+$$
+\pi(p, 1, 1) = px_1^{1/2}x_1^{1/2} - x_1 - x_1 = px_1 - 2x_1 = (p - 2)x_1.
+$$
+Given $p > 2$, we see that there is no profit maximizing solution as for any profit level $a$, producing at the bundle $\frac{a}{p - 2} = x_1 = x_2$ will yield profit $a$. $a$ can be arbitrarily big, meaning there is no maximum profit level.
+
+When $p \leq 2$, note that the arithmetic mean-geometric mean inequality states that for any two $x_1, x_2$,
+$$
+\frac{x_1 + x_2}{2} \leq x_1^{1/2}x_2^{1/2}, x_1 + x_2 \leq 2x_1^{1/2}x_2^{1/2}, 0 \leq 2x_1^{1/2}x_2^{1/2} - x_1 - x_2
+$$
+with equality occurring if and only if $x_1 = x_2$. Note that the profit function is 
+$$
+\pi(p, 1, 1) = px_1^{1/2}x_2^{1/2} - x_1 - x_2,
+$$
+and thus when $p = 2$, profit maximization occurs at profit level 0 and it occurs if and only if $x_1 = x_2$. When $p < 2$, it is evident that $0 \geq 2x_1^{1/2}x_2^{1/2} - x_1 - x_2 > px_1^{1/2}x_2^{1/2} - x_1 - x_2$ when $x_1, x_2 > 0$. Thus, profit maximization occurs at profit level 0, and this occurs if and only if $x_1 = x_2 = 0$.
+\end{proof}
+
+\begin{problem}{1.f}
+\end{problem}
+\begin{proof}
+When $\alpha + \beta > 1$, consider the case where $x_1 = x_2$. The profit function becomes
+$$
+\pi(p, \omega_1, \omega_2) = px_1^{\alpha + \beta} - (\omega_1 + \omega_2)x_1.
+$$
+As $x_1$ increases, the $px_1^{\alpha + \beta}$ component increases at a rate faster than $(\omega_1 + \omega_2)x_1$, and thus $\pi(p, \omega_1, \omega_2)$ can be arbitrarily large. This shows that a profit maximizing solution does not exist when $\alpha + \beta > 1$, given it is possible to find a bundle that produces an arbitrarily large bundle.
+
+When $\alpha + \beta = 1$, the case analysis from the previous problem where $p > 2, p = 2, p < 2$ applies, and we can see a non-trivial interior solution occurs only when $p = 2$.
+
+Lastly, when $\alpha + \beta < 1$, note that a solution should generally exist as the profit function
+$$
+px_1^{\alpha}x_2^{\beta} - \omega_1 x_1 - \omega_2 x_2
+$$
+decreases when either $x_1, x_2$ get arbitrarily large, as the linear components of $\omega_1 x_1, \omega_2 x_2$ increase faster than the $px_1^{\alpha}x_2^{\beta}$ component. This suggests that the function has an upper bound, as the function does not get arbitrarily large as $x_1, x_2$ increases (in fact it gets arbitrarily small) nor does it get arbitrarily large as $x_1, x_2$ approach 0. There is some finite region in $\mathbb{R}^2$ in which this function can be positive, and within his range a maximum should be observable as the derivative is continuous. If the function is never positive, the bundle $x_1, x_2 = 0$ will be the maximum.
+\end{proof}
+
+\begin{problem}{2}
+\end{problem}
+\begin{proof}
+The firm's profit maximization problem is
+$$
+\max_{x_1, x_2} pf(x_1, x_2) - x_1 - x_2 = \max_{x_1, x_2} \left(p\max(\alpha x_1, \beta x_2) - x_1 - x_2\right)
+$$
+When $\alpha p > 1$, the case where $x_2 = 0$ yields the profit function
+$$
+p\alpha x_1 - x_1 = (p \alpha - 1)x_1,
+$$
+which shows that $x_1$ can be chosen to make the profit arbitrarily large (given $(p \alpha - 1) > 0$). The lack of a maximum profit shows that there is no profit maximizing bundle. Similarly, when $\beta p > 1$, considering the case where $x_1 = 0$ yields a similar conclusion that there is no profit maximizing bundle. When $p \alpha > 1$ or $p \beta > 1$, the problem is not well defined.
+
+If $p \alpha, p \beta \leq 1$, 
+$$
+\max_{x_1, x_2} \left(p\max(\alpha x_1, \beta x_2) - x_1 - x_2\right) = \max_{x_1, x_2} \left(\max( p \alpha x_1, p \beta x_2) - x_1 - x_2\right) \leq \max_{x_1, x_2} \left(\max( x_1, x_2) - x_1 - x_2\right) 
+$$
+$$
+= \max_{x_1, x_2} \left(-\min(x_1, x_2)\right) \leq 0.
+$$
+This shows that the maximum profit is always at most $0$. Given the bundle $x_1, x_2 = 0$ always yields a profit of $0$, the maximum profit is always equal to $0$. Additionally, we can see from the second to last component of this equation that the profit maximizing bundle only occurs if $\min(x_1, x_2) = 0$. Thus, we will only analyze these cases in future analysis.
+
+If $p \alpha, p \beta < 1$, 
+$$
+\max_{x_1, x_2} \left(\max( p \alpha x_1, p \beta x_2) - x_1 - x_2\right) \leq \max_{x_1, x_2} \left(\max( x_1, x_2) - x_1 - x_2\right) 
+$$
+achieves equality if and only if $x_1 = x_2 = 0$, which shows that if $p \alpha, p \beta < 1$ the profit-maximizing bundle is always $x_1, x_2 = 0$.
+
+$p \alpha = 1, p \beta < 1$, note that the optimal bundle is $x_2 = 0$ and where $x_1$ is any value, and similarly when $p \beta = 1, p \alpha < 1$ the optimal bundle is $x_1 = 0$ and where $x_2$ is any value. Lastly when $p \alpha = p \beta = 1$, the bundle can be anything as long as $\min(x_1, x_2) = 0$.
+
+We can thus see that when $p \alpha, p \beta < 1$ the input demand functions are both $0$ as $x_1 = x_2 = 0$ is the only optimal bundle, the output supply function is $0$, and the profit function is $0$.
+
+When $p \alpha$ or $p \beta$ is $1$, there is no well-defined input demand function as there are infinitely many profit maximizing bundles. Similarly, there is no well-defined output supply function. The profit function is always $0$ as that is the maximum profit.
+\end{proof}
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}
+The firm's profit maximization problem is
+$$
+\max_{x_1, x_2} pf(x_1, x_2) - x_1 - x_2 = \max_{x_1, x_2} p \alpha x_1 + p \beta x_2 - \omega_1 x_1 - \omega_2 x_2 = \max_{x_1, x_2} (p \alpha - \omega_1)x_1 + (p \beta - \omega_2)x_2.
+$$
+We can thus see that when $p \alpha - \omega_1 > 0$, increasing $x_1$ to be arbitrarily large yields an arbitrarily large profit, and thus in this case there is no maximum profit. Similarly when $p \beta - \omega_2 > 0$, increasing $x_2$ to be arbitrarily large profit, and thus in this case there is no maximum profit. We conclude that if $p \alpha - \omega_1 > 0$ or $p \beta - \omega_2 > 0$, the problem is not well-defined.
+
+When $p \alpha - \omega_1 = 0$, the profit becomes $(p \beta - \omega_2)x_2$, and thus if $(p \beta - \omega_2) < 0$ the maximum profit level is 0 and the optimal bundle occurs at $x_2 = 0$ and $x_1$ is any value. Similarly, when $p \beta - \omega_2 = 0$, the profit becomes $(p \alpha - \omega_1)x_1$, and thus if $(p \alpha - \omega_1) < 0$ the maximum profit level is 0 and the optimal bundle occurs at $x_1 = 0$ and $x_1$ is any value. When $p \alpha - \omega_1 = p \beta - \omega_2 = 0$, the profit is always $0$.
+
+When $p \alpha - \omega_1, p \beta - \omega_2< 0$, increasing $x_1, x_2$ will always decrease the profit, and thus the profit maximizing bundle is $x_1 = x_2 = 0$.
+
+When $p \alpha - \omega_1, p \beta - \omega_2< 0$ the input demand functions are $x_1 = 0, x_2 = 0$, the output supply function is similarly $y(p, \omega_1, \omega_2) = 0$ given there is no production. Lastly, the profit function is $\pi(p, \omega_1, \omega_2) = 0$. 
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+When $x_2 = 1$ is fixed, the production function simplifies to 
+$$
+f(x_1, x_2) = x_1^{\alpha},
+$$
+and the profit function becomes
+$$
+px_1^{\alpha} - \omega_1 x_1 - \omega_2.
+$$
+this value is maximized when
+$$
+0 = \frac{\partial \left(px_1^{\alpha} - \omega_1 x_1 - \omega_2\right)}{\partial x_1} = -\omega_1 + p \alpha x_1^{\alpha - 1}, \left(\frac{\omega_1}{p \alpha}\right)^{1/(\alpha - 1)} = x_1.
+$$
+Thus, plugging this back into the production function shows that
+$$
+f(x_1^*, x_2 = 1) = \left(\frac{\omega_1}{p \alpha}\right)^{\alpha/(\alpha - 1)}
+$$
+This supply function decreases as $\alpha$ increases assuming $\omega_1/p \geq 1$.
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+Given each firm produces at
+$$
+f(x_1^*, x_2 = 1) = \left(\frac{\omega_1}{p \alpha}\right)^{\alpha/(\alpha - 1)},
+$$
+the total market produces
+$$
+2\left(\frac{\omega_1}{p \alpha}\right)^{\alpha/(\alpha - 1)}
+$$
+supply, and in order for the market to clear,
+$$
+p = 10 - q = 10 - 2\left(\frac{\omega_1}{p \alpha}\right)^{\alpha/(\alpha - 1)},
+$$
+$$
+5 - p/2 = \left(\frac{\omega_1}{p \alpha}\right)^{\alpha/(\alpha - 1)}.
+$$
+This equation describes the market equilibrium price. At this price, the equilibrium supply is
+$$
+2\left(\frac{\omega_1}{p \alpha}\right)^{\alpha/(\alpha - 1)},
+$$
+and the firms' profits are described by
+$$
+\left(\frac{\omega_1}{p \alpha}\right)^{\alpha/(\alpha - 1)} - \omega_1 x_1 - \omega_2.
+$$
+\end{proof}
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}
+Given each firm has a production function of
+$$
+f(x_1, x_2) = x_1^{\alpha}x_2^{\beta},
+$$
+the profit maximization problem is
+$$
+\max_{x_1, x_2} px_1^{\alpha}x_2^{\beta} - x_1 - x_2,
+$$
+and the solution is found when 
+$$
+0 = \frac{\partial px_1^{\alpha}x_2^{\beta} - x_1 - x_2}{\partial x_1} = p\alpha x_1^{\alpha - 1}x_2^{\beta} - 1,
+$$
+$$
+x_2 = \left(\frac{1}{p\alpha} x_1^{1 - \alpha}\right)^{1/\beta}
+$$
+$$
+0 = \frac{\partial px_1^{\alpha}x_2^{\beta} - x_1 - x_2}{\partial x_2} = p\beta x_1^{\alpha}x_2^{\beta - 1} - 1,
+$$
+$$
+x_1 = \left(\frac{1}{p\beta} x_2^{1 - \beta}\right)^{1/\alpha}.
+$$
+Thus, substitution shows that
+$$
+x_1 = \left(\frac{1}{p\beta} \left(\left(\frac{1}{p\alpha} x_1^{1 - \alpha}\right)^{1/\beta}\right)^{1 - \beta}\right)^{1/\alpha}, x_1 = \left((p\beta)^{-\beta}(p\alpha)^{\beta - 1}\right)^{1/(\alpha + \beta - 1)}
+$$
+and similarly,
+$$
+x_2 = ((p\alpha)^{-\alpha}(p\beta)^{\alpha - 1})^{1/(\alpha + \beta - 1)}.
+$$
+We thus get that the output supply function is
+$$
+\left((p\beta)^{-\beta}(p\alpha)^{\beta - 1}\right)^{\alpha/(\alpha + \beta - 1)}((p\alpha)^{-\alpha}(p\beta)^{\alpha - 1})^{\beta/(\alpha + \beta - 1)}.
+$$
+$$
+= \left((p\beta)^{-\alpha\beta}(p\alpha)^{\alpha\beta - \alpha}\right)^{1/(\alpha + \beta - 1)}((p\alpha)^{-\alpha\beta}(p\beta)^{\beta\alpha - \beta})^{1/(\alpha + \beta - 1)}.
+$$
+$$
+= \left((p\beta)^{-\beta}(p\alpha)^{-\alpha}\right)^{1/(\alpha + \beta - 1)} = p^{-\frac{\alpha + \beta}{\alpha + \beta - 1}}\left(\beta^{-\beta}\alpha^{-\alpha}\right)^{1/(\alpha + \beta - 1)}.
+$$
+We thus get that firm produces
+$$
+p^{-\frac{\alpha + \beta}{\alpha + \beta - 1}}\left(\beta^{-\beta}\alpha^{-\alpha}\right)^{1/(\alpha + \beta - 1)},
+$$
+which means that the firm's profit is
+$$
+p^{-\frac{1}{\alpha + \beta - 1}}\left(\beta^{-\beta}\alpha^{-\alpha}\right)^{1/(\alpha + \beta - 1)} - \left((p\beta)^{-\beta}(p\alpha)^{\beta - 1}\right)^{1/(\alpha + \beta - 1)} - ((p\alpha)^{-\alpha}(p\beta)^{\alpha - 1})^{1/(\alpha + \beta - 1)}.
+$$
+For the long-run equilibrium, the production price $p$ that makes this function equal $0$ is the long-run equilibrium price. We thus get that the market equilibrium supply is $10 - p = q$. Lastly, each firm thus produces 
+$$
+p^{-\frac{\alpha + \beta}{\alpha + \beta - 1}}\left(\beta^{-\beta}\alpha^{-\alpha}\right)^{1/(\alpha + \beta - 1)},
+$$
+and thus the number of firms in the market is
+$$
+\frac{10 - q}{p^{-\frac{\alpha + \beta}{\alpha + \beta - 1}}\left(\beta^{-\beta}\alpha^{-\alpha}\right)^{1/(\alpha + \beta - 1)}}.
+$$
+\end{proof}
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{proof}
+In the short run, type 1 firms have a profit maximization problem of
+$$
+\max_{x_1} \left(p\min(\alpha, \alpha x_1) - x_1 - 1\right).
+$$
+Observe that when $x_1 > 1$, 
+$$
+\left(\min(p\alpha, p\alpha x_1) - x_1 - 1\right) = (p \alpha - x_1 - 1),
+$$
+and thus the profit decreases as $x_1$ increases. Then, if $x_1 < 1$
+$$
+\left(\min(p \alpha, p \alpha x_1) - x_1 - 1\right) = (p \alpha - 1)x_1 - 1.
+$$
+When $p \alpha > 1$, the profit increases as $x_1$ increases to $1$, and thus the profit maximization occurs at $x_1 = 1$. When $p \alpha = 1$, the profit is equal to $1$ at all $x_1 < 1$, which means there are multiple profit maximizing bundles. When $p \alpha < 1$, the profit decreases as $x_1$ increases to $1$, and thus the profit maximization occurs at $x_1 = 0$. Thus, when $p \alpha \leq 1$, the output supply is $0$, and when $p \alpha \geq 1$, the output supply is $\min(p \alpha, p \alpha(1)) = p \alpha$.
+
+This is similar for firms of type 2 without loss to generality. When $p \beta \leq 1$ the output supply is 0, and when $p \beta \geq 1$ the output supply is $p \beta$. 
+
+When there is one firm of each type, the possible output supply of the two companies combined is $0, p \beta, p(\alpha + \beta)$. Additionally, market demand shows that 
+$$
+p = A - p(\alpha + \beta), p = \frac{A}{\alpha + \beta + 1}
+$$
+if $p \geq 1/\beta$, 
+$$
+p = A - p(\alpha), p = \frac{A}{\alpha + 1}
+$$
+if $1/\beta > p \geq 1/\alpha$, and
+$$
+p = A
+$$
+if $p < 1/\alpha$. In other words, if $A < 1/\alpha$ then there is an equilibrium at $p = A$ where neither firm produces anything, else if  $\frac{A}{\alpha + 1} < 1/\beta$ there is an equilibrium at $p = \frac{A}{\alpha + 1}$ where only the firm of type 2 produces $p \beta$, and else there is an equilibrium at $p = \frac{A}{\alpha + \beta + 1}$, in which case he market demand/supply is $p(\beta + \alpha)$.
+\end{proof}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{proof}
+The long-run profit maximizing problem of firms of type 1 is
+$$
+\max_{x_1, x_2}  \min(p \alpha x_1, p \alpha x_2) - x_1 - x_2.
+$$
+Observe that if $x_1 < x_2$ for some $y > 0$, 
+$$
+\min(p \alpha x_1, p \alpha x_2) - x_1 - x_2 = \min(p \alpha x_1, p \alpha x_1) - x_1 - x_2 \leq \min(p \alpha x_1, p \alpha x_1) - x_1 - x_1,
+$$
+which shows that the profit maximizing bundle can never have $x_1 < x_2$ because changing $x_2$ to $x_1$ will yield a strictly better bundle. This is identical for the case when $x_1 > x_2$. Thus, the profit maximizing bundle occur only if $x_1 = x_2$. Next, when we consider the case where $x_1 = x_2$, the profit function becomes 
+$$
+\min(p \alpha x_1, p \alpha x_1) - x_1 - x_1 = (p \alpha - 2)x_1
+$$
+We thus see that if $p < 2/\alpha$ the firm will never produce anything, and when $p > 2/\alpha$ the firm can make arbitrarily large profits. The profit is zero if and only if $p = 2/\alpha$.
+
+These conclusions are identical for firms of type 2 due to symmetry. If $p < 2/\beta$ the firm will never produce anything, and when $p > 2/\beta$ the firm can make arbitrarily large profits. The profit is zero if and only if $p = 2/\beta$.
+
+We can see that in the long term, the profits of all firms must be zero. This can potentially occur only when $p = 2/\beta$ or $p = 2/\alpha$. If  $p = 2/\beta$, given $\beta < \alpha$, $p \geq 2/\alpha$, and thus firms of type 1 can make arbitrarily large profits. This is not possible, and thus $p = 2/\alpha$ is the long-run market equilibrium price. At this price, every firm of type 2 cease to produce and only firms of type 1 remain. Using the market demand equation, we get
+$$
+p = 2/\alpha = A - q, q = A - 2/\alpha.
+$$
+The total market supply/demand is $A - 2/\alpha$. 
+\end{proof}
+
+\begin{problem}{6.a}
+\end{problem}
+\begin{proof}
+Given $x_1 = f$, a firm's profit maximization problem is
+$$
+\max_{x_2} p2x_2 - x_2 - f = \max_{x_2} (2p - 1)x_2 - f.
+$$
+If each firm in the market produces some quantity $x_2$, we know that $p = 10 - 2x_2$. Thus, we are interested in finding $x_2$ such that
+$$
+\max_{x_2} (2(10 - 2x_2) - 1)x_2 - f = \max_{x_2} (19 - 4x_2)x_2 - f.
+$$
+We can see that this polynomial is maximized when $x_2 = 19/8$, and thus the market price is $10 - 2(19/8) = 5.25$. The short-run equilibrium supply/demand is $10 - 5.25 = 4.75$, and each firm generates a profit of $22.563 - f$.
+\end{proof}
+
+\begin{problem}{6.b}
+\end{problem}
+\begin{proof}
+We have observed that in the previous problem each firm yields a profit of $22.563 - f$. In the event that $f < 22.563$ each firm can maximize their profit by choosing to produce, meaning the equilibrium is identical to the one presented previously.
+
+In the event that $45.125 > f \geq 22.563$, it would be in the interest of both firms to not produce simultaneously as they would both yield negative profit. However, in the event that neither firms are producing, if one firm chooses to produce, their profit would be
+$$
+\max_{x_2} (2(10 - x_2) - 1)x_2 - f = \max_{x_2} (19 - 2x_2)x_2 - f,
+$$
+and profit maximization occurs at $x_2 = 4.75$. The total profit would be $45.125 - f$, which would be positive and therefore better than not producing. In this case, there is no market equilibrium as one firm maximizing their profit is mutually exclusive with another firm maximizing its profits, and any middleground is strictly worse than when either firm is a monopoly.
+
+In the event that $45.125 \leq f$, no firm should produce as production always yields losses.
+\end{proof}
+
+\begin{problem}{6.c}
+\end{problem}
+\begin{proof}
+Observe that if the market is to have $n$ firms that produce, and if each firm produces $x_2^*$, we get that $10 - nx_2^* = p$, and given that each firms' profit maximizing problem is 
+$$
+\max_{x_2} 2px_2 - x_2 - f = \max_{x_2} (2p - 1)x_2 - f,
+$$
+substituting this relationship yields the profit maximization occurs when 
+$$
+\max_{x_2} (2(10 - nx_2) - 1)x_2 - f = \max_{x_2} (19 - 2nx_2)x_2 - f
+$$
+The firms produce at $x_2 = 19/4n$. We are given that a firm's maximum profit is 0 in the long run, and thus
+$$
+(19 - 2nx_2)x_2 - f = 0, (19 - 2nx_2)x_2 = f, n = \frac{19 - (f/x_2)}{2x_2}.
+$$
+Substitution shows that
+$$
+n = \frac{19 - (f/(19/4n))}{2(19/4n)}, 38n =  76n - 16n^2f/19, 0 =  38n - 16n^2f/19 = n\left(38 - \frac{16fn}{19}\right).
+$$
+This means either $n = 0$, or $n = 45.125/f$. In this latter situation, we can see that each firm produces $x_2 = 19/(4(45.125/f)) = \frac{38f}{361}$, the market demand/supply is $4.75$, and the market price is $10 - 4.75 = 5.25$.
+
+The problem is that when $f$ is arbitrarily large, $n$ cannot be greater than 1, meaning that no firm can enter the market. This prevents the creation of an equilibrium as the market does not clear.
+\end{proof}
+
+\begin{problem}{6.d}
+\end{problem}
+\begin{proof}
+A floor price would not resolve the non-existence issue of the short-run equilibrium nor the long-run equilibrium, as the issues relate to the possibility that the cost of entry $f$ is too large. When this is the case, the existence of a price floor does not resolve the fact that the barrier to entry may be prohibitively too large for entry.
+
+On the other hand, the subsidy for firms who produce would assist in the non-existence issue for the short-run equilibrium. If $s$ is set to be at least $f - 22.563$, it becomes advantageous for both firms to enter the market, resolving the issue related to the unstable equilibrium and the issue when $f > 45.125$ (where no firm will ever enter the market). When such a subsidy is applied, the market equilibrium demand/supply is still $4.75$ as the optimal production bundle is not changed by the identity of $f$ given it is now less than $22.563$, and as a result the equilibrium price is also unchanged from the standard equilibrium case where is $5.25$. Each firm's profit is from $22.563 - f + s$.
+
+A subsidy would also resolve the non-existence issue for the long-run equilibrium, as it resolves the possibility that $f$ is so low to the point that no firm can enter the market (when $45.125 \leq f$). As long as this threshold is met, the equilibrium case would be as described in 6.c where all $f$ are replaced by $f - s$.
+\end{proof}
+
+\end{document}

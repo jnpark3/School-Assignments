@@ -1,0 +1,351 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 1}
+\author{Jian Park\\
+20800: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+
+\begin{problem}{1a}
+\end{problem}
+\begin{proof}[Solution]
+Subset $U \subset V$ is open with respect to $|| \ ||$ if for every $v \in U$ there exists $\epsilon > 0$ such that for every $w \in V$ where $||v - w|| < \epsilon$, $w \in U$.
+
+Let $C_1||v||_2 \leq ||v||_1 \leq C_2||v||_2$, and for the sake of contradiction, assume that $U$ is open with respect to $|| \ ||_1$ but not $|| \ ||_2$ (without loss to generality this would also prove the case when $|| \ ||_1$ and $|| \ ||_2$ are swapped). This implies that there exists $\epsilon > 0$ where for all $v \in U$, if  $w \in V$ and $||v - w||_1 < \epsilon$, then $w \in U$. In addition, for any $\epsilon' > 0$, there must exist $v \in U$ and $w \in V$ where $||v - w||_2 < \epsilon'$ but $w \notin U$. If we set $\epsilon'$ to be $(1/C_2) \epsilon$, then it is clear that there must exist $v \in U$ and $w \in V$ where $||v - w||_2 < (1/C_2)\epsilon$. However, this shows that $C_2||v - w||_2 < \epsilon$ and by definition $||v-w||_1 < C_2||v - w||_2$, thus $||v-w||_1 < \epsilon$. Given $v \in U$ this implies $w \in U$, which contradicts the fact that $w \notin U$.
+
+This proves that a subset $U$ is open with respect to $|| \ ||_1$ if and only if it is open with respect to $|| \ ||_2$.
+\end{proof}
+
+\begin{problem}{1b}
+\end{problem}
+\begin{proof}[Solution]
+We will show the given function adheres to the three properties of a norm.
+
+For any arbitrary vector $v \in V$. Given $e_1, ..., e_n$ is a basis of V, there exists exactly one sequence $a_1, ..., a_n$ such that $a_1e_1 + ... + a_ne_n = v$.
+
+To show the first property that $||\lambda v||_1 = |\lambda| \ ||v||_1$ for all $\lambda \in \mathbb{R}$ and $v \in V$, let $v$ denote an arbitrary vector and let $v = a_1e_1 + ... + a_ne_n$. Observe that
+$$
+||\lambda v||_1 = || \lambda (a_1e_1 + ... + a_ne_n) ||_1 = || (\lambda a_1)e_1 + ... + (\lambda a_n)e_n) ||_1 = \sum_{i = 0}^n |\lambda a_i| = |\lambda| \sum_{i = 0}^n |a_i| = |\lambda| ||v||_1
+$$
+
+Next, to show the second property that $||v||_1 + ||w||_1 \geq ||v + w||_1$, let $v, w \in V$ where $v = a_1e_1 + ... + a_ne_n$ and $w = b_1e_1 + ... + b_ne_n$.Then, observe that
+$$
+||v + w||_1 = || (a_1e_1 + ... + a_ne_n) + (b_1e_1 + ... + b_ne_n)||_1 = ||(a_1+b_1)e_1 + ... + (a_n+b_n)e_n||_1 = \sum_{i = 0}^n |a_i + b_i|.
+$$
+For any $a_i, b_i \in \mathbb{R}$, it is known that $|a_i + b_i| \leq |a_i| + |b_i|$, thus it is possible to see that
+$$
+||v + w||_1 = \sum_{i = 0}^n |a_i + b_i| \leq \sum_{i = 0}^n |a_i| + |b_i| = \sum_{i = 0}^n |a_i| + \sum_{i = 0}^n |b_i| = ||v||_1 + ||w||_1.
+$$
+
+Lastly, to show the last property that $||v|| = 0$ if and only if $v = 0$, note that if $v = 0$, then $v = (0)e_1 + ... + (0)e_n$ and
+$$
+||v||_1 = ||(0)e_1 + ... + (0)e_n||_1 \sum_{i = 0}^n |0| = 0.
+$$
+On the other hand, it is clear that if $||v||_1 = \sum_{i = 0}^n |a_i| = 0$, then $a_1, ..., a_n = 0$ because if any of these values were non-zero, then the overall sum would be positive. $a_1, ..., a_n = 0$ implies that $v = 0$, thus $v = 0$ if and only if $||v||_1 = 0$.
+
+These three conditions fully show that $|| \ ||_1$ is a norm.
+
+\end{proof}
+
+\begin{problem}{1c}
+\end{problem}
+\begin{proof}[Solution]
+We will first show that $|| \ ||$ is continuous under $|| \ ||_1$. This entails showing that for any $\epsilon > 0$, there exists a $\lambda > 0$ such that $|(||x|| - ||y||)| < \epsilon$ if $||x - y||_1 < \lambda$ for any $x, y \in V$.
+
+First, note that $ ||x|| - ||y|| = ||y - y + x|| - ||x|| $. The triangle inequality property of the norm shows that $||y|| + ||x - y|| \geq ||y - y + x||$, and rearranging this inequality shows that $||y - y + x|| - ||x|| \leq ||x - y||$. Substituting this inequality into $ ||x|| - ||y|| = ||y - y + x|| - ||x|| $ shows that $ ||x|| - ||y|| \leq ||x - y ||$. Similarly, note that $||y|| - ||x|| = ||x - x + y|| - ||x||$. The triangle inequality shows that $||x - x + y|| - ||x|| \leq ||x - y||$. Given $ ||x|| - ||y|| \leq ||x - y ||$ and $ ||y|| - ||x|| \leq ||x - y ||$, we can see that $|(||x|| - ||y||)| \leq ||x - y||$.
+
+Next, let $x = a_1e_1 + ... + a_ne_n$ and $y = b_1e_1 + ... + b_ne_n$. Due to the properties of the norm,
+$$
+||x - y|| = || (a_1e_1 + ... + a_ne_n) - (b_1e_1 + ... + b_ne_n)|| = ||(a_1 - b_1)e_1 + ... + (a_n - b_n)e_n|| = \sum_{i = 1}^n||(a_i - b_i)e_i|| = \sum_{i = 1}^n (a_i - b_i) ||e_i||
+$$
+
+Observe that $max_i ||e_i||$ exists given that the basis contains finitely many vectors. Thus,
+$$
+||x - y|| = \sum_{i = 1}^n (a_i - b_i) ||e_i|| \leq \sum_{i = 1}^n (a_i - b_i) (max_i ||e_i||) = ||x - y||_1 (max_i ||e_i||).
+$$
+
+This shows that if $\lambda = \frac{\epsilon}{max_i ||e_i||}$ and if $||x - y||_1 < \lambda$, then $|(||x|| - ||y||)| \leq ||x - y|| < \epsilon$. This proves that $|| \ ||$ is continuous with respect to the metric defined by $|| \ ||_1$.
+
+Next, observe that the unit sphere with respect to $|| \ ||_1$ (centered at some $v \in V$) is bounded because no two points on this unit sphere are more than two units apart. Also, observe that the unit sphere is closed in $V$ because if $w \in V$ and $||w - v||_1 \neq 1$, then  for any point $u$ on the unit sphere, the triangle inequality shows that $||w - u|| \geq \epsilon$ where $\epsilon = |(||w - v||_1 - 1)|$. This shows that $w$ is some distance away from any point on the unit circle, which then shows that it is not a limit point. Thus, all limit points of the unit circle are contained in the unit circle, and thus it is closed. By theorem 4.9, we can see the unit circle is compact given it is bounded and closed.
+
+Lastly, note that $||v||$ is defined and continuous for all points on the unit circle with respect to $|| \ ||_1$, and this unit circle is also compact. The extreme-value theorem (Theorem 4.5) shows that $||v||$ has a maximum and minimum for all $v$ where $||v||_1 = 1$. If we let the minimum be $C_1$ and the maximum be $C_2$, then we can see that $C_1 \leq ||v|| \leq C_2$ for all $v \in V$ with $||v||_1 = 1$, which completes the proof.
+\end{proof}
+
+
+\begin{problem}{1d}
+\end{problem}
+\begin{proof}[Solution]
+Using the results from the previous question, let $|| \ ||_1$ and $|| \ ||_2$ be two norms in $V$, and let $C_1, C_2, C_1', C_2'$ be constants such that $C_1 \leq ||v||_1 \leq C_2$ and $C_1' \leq ||v||_2 \leq C_2'$ for all $v \in V$. 
+
+We know $||v||_2 \leq C_2'$ and thus $\frac{1}{C_2'}||v||_2 \leq 1$ given that $C_2' > 0$. Similarly, we know $C_1 \leq ||v||_1$ and thus $\frac{1}{C_1}||v||_1 \geq 1$. Combining these two inequalities shows that $\frac{1}{C_2'}||v||_2 \leq 1 \leq \frac{1}{C_1}||v||_1$ and thus $\frac{C_1}{C_2'}||v||_2 \leq ||v||_1$.
+
+Similarly, we know $||v||_2 \geq C_1'$ and thus $\frac{1}{C_1'}||v||_2 \geq 1$ given that $C_1' > 0$. Similarly, we know $C_2 \geq ||v||_1$ and thus $\frac{1}{C_2}||v||_1 \leq 1$. Combining these two inequalities shows that $\frac{1}{C_1'}||v||_2 \geq 1 \geq \frac{1}{C_2}||v||_1$ and thus $\frac{C_2}{C_1'}||v||_2 \geq ||v||_1$.
+
+This shows that $\frac{C_1}{C_2'}||v||_2 \leq ||v||_1 \leq \frac{C_2}{C_1'}||v||_2$, which completes the proof showing that any two norms on a finite dimensional vector space are equivalent.
+\end{proof}
+
+\begin{problem}{2}
+\end{problem}
+\begin{proof}[Solution]
+First, given that $U$ is open, there exists a neighborhood $N(x_0)$ of radius $r$ such that every point inside $N(x_0)$ is inside $U$. Then, we are given that $f$ is continuous at $x_0$, thus
+$$
+\left|\frac{f(x_0 + h) - f(x_0) - Df(x_0)h}{|h|}\right| \rightarrow 0
+$$
+as $h \rightarrow 0$. This implies that for any $\epsilon > 0$, there exists a neighborhood $N(0)$ of radius $r'$ such that for every point $h \in N(0)$, $\left|\frac{f(x_0 + h) - f(x_0) - Df(x_0)h}{|h|}\right| < \epsilon$. If there existed some $\epsilon > 0$ such that no such neighborhood exists, then that implies that $\frac{f(x_0 + h) - f(x_0) - Df(x_0)h}{|h|}$ does not converge to $0$ as $h \rightarrow 0$, which is a contradiction to the fact that $f$ is differentiable at $x_0$.
+
+Next, let $K$ denote some compact region in $\mathbb{R}^n$ and let $\epsilon$ denote some fixed positive constant. Let $m$ denote some finite upper bound to $|x_0 - x|$ where $x$ can be any element of $K$. We know such an upper bound must exist because if it did not exist, that implies there are points of $K$ that are arbitrarily far away from $x_0$, which implies that $K$ is not bounded. That would contradict Theorem 4.3.
+
+Let $N(0)$ denote the the neighborhood with radius $r$ such that $\frac{f(x_0 + h) - f(x_0) - Df(x_0)h}{|h|} < \frac{\epsilon}{m}$ for all $h \in N(0)$. Then, consider the function 
+$$\frac{f(x_0 + \lambda(x - x_0)) - f(x_0) - Df(x_0)\lambda(x - x_0)}{\lambda|(x - x_0)|}$$
+where $x$ is any element in $K$. Let $\lambda = \frac{r}{m}$. It is clear that $\lambda(x - x_0) = \frac{r}{m}(x - x_0) \in N(0)$ because the length of vector $x - x_0$ is by definition less than $m$, and thus the length of vector $\frac{r}{m}(x - x_0)$ is less than $r$. This shows that
+$$\left|\frac{f(x_0 + \lambda(x - x_0)) - f(x_0) - Df(x_0)\lambda(x - x_0)}{\lambda|(x - x_0)|}\right| < \frac{\epsilon}{m}$$
+$$\left|\frac{f(x_0 + \lambda(x - x_0)) - f(x_0)}{\lambda|(x - x_0)|} - \frac{Df(x_0)(x - x_0)}{|(x - x_0)|}\right| <  \frac{\epsilon}{m}$$
+$$\frac{1}{|(x - x_0)|} \ \left|\frac{f(x_0 + \lambda(x - x_0)) - f(x_0)}{\lambda} - Df(x_0)(x - x_0)\right| < \frac{\epsilon}{m}$$
+$$\left|\frac{f(x_0 + \lambda(x - x_0)) - f(x_0)}{\lambda} - Df(x_0)(x - x_0)\right| < \frac{\epsilon}{m}|(x - x_0)| \leq \epsilon,$$
+with the last inequality being true because $m \geq |x - x_0| > 0$. This inequality works for any $x \in K$, and $\epsilon$ can be chosen to be any arbitrarily small positive number. Thus, it is clear that $(g_{\lambda})_{|K} = \frac{f(x_0 + \lambda(x - x_0)) - f(x_0)}{\lambda}$ converges uniformly to $g_{|K} = Df(x_0)(x - x_0)$.
+\end{proof}
+
+\begin{problem}{3a}
+\end{problem}
+\begin{proof}[Solution]
+To calculate the directional derivative of $f$ for some vector $(a, b)$, observe that
+$$
+f((0, 0);(a, b)) = \lim_{t \rightarrow 0}\frac{(ta)^2(tb)}{(ta)^4 + (tb)^2} = \lim_{t \rightarrow 0}\frac{ta^2b}{t^2a^4 + b^2}.
+$$
+Note that if $b \neq 0$ the numerator approaches $0$ as $t \rightarrow 0$, but the denominator approaches $b^2$. This shows that the limit approaches 0. If $b = 0$, the numerator is zero but the denominator is not zero for $t > 0$, thus once again the limit approaches 0. Thus we can see that $D_vf(0)$ exists for all vectors $v \in \mathbb{R}^2$.
+
+To show that $f$ is not continuous at $(0, 0)$, consider the set of points in the form $(x, x^2)$. Observe that
+$$
+f(x, x^2) = \frac{x^2(x^2)}{x^4 + (x^2)^2} = \frac{1}{2}.
+$$
+for all $x \neq 0$. It is evident that points in the form $(x, x^2)$ can be located arbitrarily close to $(0, 0)$ when $x \rightarrow 0$. This shows that there will always exist a point $(x, y)$ in any neighborhood of $(0, 0)$ where $|f(x, y) - f(0, 0)| \geq 1/2$. This shows that $f$ is not continuous at $(0, 0)$. Theorem 5.2 states that if $f$ is to be differentiable at $(0, 0)$ it must be continuous at $(0, 0)$, thus we can see that $f$ is also not differentiable at $(0, 0)$.
+\end{proof}
+
+\begin{problem}{3b}
+\end{problem}
+\begin{proof}[Solution]
+Consider the absolute value of the derivative as such
+$$
+\lim_{(x, y) \rightarrow 0} \left|\frac{f(x, y) - f(0)}{|(x, y)|}\right|.
+$$
+This value is clearly greater than or equal to 0 due to the absolute value. Next, through algebraic expansion, observe that
+$$
+\lim_{(x, y) \rightarrow 0} \left|\frac{f(x, y) - f(0)}{|(x, y)|}\right| = \lim_{(x, y) \rightarrow 0} \left|\frac{(x^2 + y^2)sin\left(\frac{1}{\sqrt{x^2 + y^2}}\right) - 0}{\sqrt{x^2+y^2}}\right| \leq \lim_{(x, y) \rightarrow 0} \left|\frac{(x^2 + y^2) - 0}{\sqrt{x^2+y^2}}\right|
+$$
+$$
+= \lim_{(x, y) \rightarrow 0} \left|\sqrt{x^2+y^2}\right| = \lim_{(x, y) \rightarrow 0} \left|(x, y)\right| = 0.
+$$
+This shows that $0 \leq \lim_{(x, y) \rightarrow 0} \left|\frac{f(x, y) - f(0)}{|(x, y)|}\right| \leq 0$, and thus the derivative at $(0, 0)$ exists and is the zero vector.
+
+To show that both partial derivatives are not continuous at $(0, 0)$, it suffices to show that only one of the partial derivatives are not continuous at $(0, 0)$ because the function is symmetric. 
+
+Then, observe that for the partial derivative for $x$, set $y$ to be zero, and then we get the function $\frac{x^2}sin\left(1/x\right)$. The derivative of this function can then be calculated as
+$$
+2x(sin(1/x)) - cos(1/x).
+$$
+This function clearly does not converge as $x \rightarrow 0$ due to the $cos(1/x)$ factor. Thus, the partial derivative cannot be continuous at $(x, y) = 0$.
+\end{proof}
+
+\begin{problem}{4}
+\end{problem}
+\begin{proof}[Solution]
+For the sake of contradiction, assume $f$ is not continuous at $a$. Then there exists $\epsilon > 0$ such that for any neighborhood of $a$, there exists at least one point $b$ such that $|f(a) - f(b)| \geq \epsilon$. 
+
+We are given that $U$ is an open subset, and thus $a$ is an interior point. Also, we are given that the partial derivative exists and is bounded inside some neighborhood of $a$. Thus, let every point in neighborhood $N(a)$ with radius $r$ lie inside $U$, and let the partial derivative be defined inside $N(a)$ as well. Given that each partial derivative is bounded in this neighborhood, let $m$ denote the largest bound. $\left|\frac{\partial f}{\partial x_i}\right| < m$ for all $i \in 1, ..., n$ for points within $N(a)$.
+
+Let $b = (b_1, b_2, ..., b_n)$ be a point such that $b$ lies inside the neighborhood $N'(a)$ with radius $min(r, (\epsilon)/(2(n-1)m))$. If $a = (a_1, a_2, ..., a_n)$, then consider the sequence of points $V$ where $v_i = (b_1, ... b_i, a_{i+1}, ..., a_n)$. Now, note that $(f(v_0) - f(v_1)) + (f(v_1) - f(v_2)) + ... + (f(v_n) - f(v_{n-1})) = f(v_n) - f(v_0) = f(a) - f(b) \geq \epsilon$. Due to the pigeonhole principle, there must exist at least one pair $v_i, v_{i+1}$ where $|f(v_i) - f(v_{i+1})| \geq \epsilon/(n-1)$. Then, note that $|v_i - v_{i+1}|$ is less than double the radius of $N'(a)$ because if $|v_i - v_{i+1}|$ were greater than double the radius, it is clear that at least one point lies outside of the neighborhood. This is not possible because all points in $V$ are inside $N'(a)$; every consecutive pair of points in $V$ represent a movement directly in the direction of $b$. Thus, $|v_i - v_{i + 1}| < (\epsilon)/((n-1)m)$. Thus, 
+$$
+\frac{|f(v_i) - f(v_{i+1})|}{|v_i - v_{i+1}|} > \left|\frac{\epsilon/(n-1)}{\epsilon/((n-1)m)}\right| = |m|.
+$$
+Given that $v_i$ and $v_{i+1}$ are both on the same $x_{i+1}$ axis and given that the partial derivative is defined in this neighborhood, applying the mean value theorem to the above inequality shows that here must exist a point between $v_i$ and $v_{i+1}$ such that the value of $\left|\frac{\partial f}{\partial x_{i+1}}\right| > |m|$. However, this contradicts the fact that $m$ is an upper bound for the values that the partial derivatives can take within $N(a)$. This contradiction shows that if the partial derivatives exist and are bounded in a neighborhood of $a$, then $f$ must be continuous at $a$.
+\end{proof}
+
+
+\begin{problem}{5a}
+\end{problem}
+\begin{proof}[Solution]
+Theorem 6.2 shows that $f$ is of class $C^1$ if the partial derivatives $D_if(x, y)$ exist and are continuous for all $(x, y) \in \mathbb{R}^2$.
+
+First, using the quotient rule, it is possible to compute the partial derivatives as follows:
+$$
+\frac{\partial}{\partial x} \frac{xy(x^2-y^2)}{x^2+y^2} = y\frac{\frac{\partial}{\partial x}[x(x^2-y^2)](x^2+y^2) - \frac{\partial}{\partial x}[(x^2+y^2)]x(x^2-y^2)}{(x^2+y^2)^2}
+$$
+$$
+= y\frac{(3x^2-y^2)(x^2+y^2) - 2x^2(x^2-y^2)}{(x^2+y^2)^2} = \frac{y(x^4+4y^2x^2 - y^4)}{(x^2+y^2)^2}
+$$
+
+Given $x$ and $y$ are clearly continuous, and given that adding, multiplying, and dividing continuous functions yields another continuous function, it is easy to see that this partial derivative is continuous everywhere with the exception of $(x, y) = (0, 0)$ because the denominator would be zero.
+
+Similarly, it is possible to compute the other partial derivatives as follows:
+$$
+\frac{\partial}{\partial y} \frac{xy(x^2-y^2)}{x^2+y^2} = x\frac{\frac{\partial}{\partial x}[y(x^2-y^2)](x^2+y^2) - \frac{\partial}{\partial x}[(x^2+y^2)]y(x^2-y^2)}{(x^2+y^2)^2}
+$$
+$$
+= x\frac{(3y^2-x^2)(x^2+y^2) - 2y^2(x^2-y^2)}{(x^2+y^2)^2} = \frac{x(- x^4 - 4y^2x^2 + y^4)}{(x^2+y^2)^2}
+$$
+
+Similar to the previous partial derivative, it is clear that this function above is also continuous except for at $(x, y) = (0, 0)$.
+
+For $(x, y) = (0, 0)$, note that
+$$
+\frac{\partial f}{\partial x}(0, 0) = \lim_{h \rightarrow 0}\frac{f(h, 0) - f(0, 0)}{h} = \frac{(0)h(h^2)}{(h^2)h} = 0
+$$
+
+Similarly, 
+$$
+\frac{\partial f}{\partial y}(0, 0) = \lim_{h \rightarrow 0}\frac{f(0, h) - f(0, 0)}{h} = \frac{(0)h(-h^2)}{(h^2)h} = 0
+$$
+
+Lastly, to show continuity of these partial derivatives at $(0, 0)$, we will show that the limit of both partial derivative functions approach $0$ as $(x, y) \rightarrow (0, 0)$. Given that $\frac{\partial f}{\partial x} = -\frac{\partial f}{\partial y}$, it is sufficient to just prove that $\frac{\partial f}{\partial x}$ converges to $0$ at $(0, 0)$.
+
+First consider the case when $y \neq 0$. Then, let $r = y/x$, and rewrite $\frac{\partial f}{\partial x}$ as
+$$
+\frac{y(x^4+4y^2x^2 - y^4)}{(x^2+y^2)^2} = \frac{rx(x^4+4(rx)^2x^2 - (rx)^4)}{(x^2+(rx)^2)^2} = \frac{rx(x^4+4r^2x^4 - r^4x^4)}{(1+r^2)^2x^4} = xr \frac{(1+4r^2 - r^4)}{(1+r^2)^2} = y \frac{(1+4r^2 - r^4)}{(1+r^2)^2}.
+$$
+
+Next, observe that $1+4r^2 - r^4 > -2(1+r^2)^2$ for all $r \in \mathbb{R}$ because
+
+$$(1+4r^2 - r^4) -2 (1+r^2)^2 = 1 + 4r^2 - r^4 - 2 - 2r^4 - 4r^2 = -1 - 3r^4 < 0$$
+
+with the last inequality being true due to the trivial inequality. Similarly, $1+4r^2 - r^4 < 2(1+r^2)^2$ for all $r \in \mathbb{R}$ because
+
+$$(1+4r^2 - r^4) + 2 (1+r^2)^2 = 1 + 4r^2 - r^4 + 2 + 2r^4 + 4r^2 = 3 + 8r^2 + r^4 > 0$$
+
+with the last inequality being true due to the trivial inequality. These two inequalities show that $\left|\frac{(1+4r^2 - r^4)}{(1+r^2)^2}\right| < 2$ for all $r \in \mathbb{R}$. Thus, when calculating the limit of $\frac{\partial f}{\partial x}$ as $(x, y) \rightarrow (0, 0)$, we can see that
+
+$$
+\lim_{(x, y) \rightarrow 0} \frac{y(x^4+4y^2x^2 - y^4)}{(x^2+y^2)^2} = \lim_{(x, y) \rightarrow 0} y \frac{(1+4r^2 - r^4)}{(1+r^2)^2} = 0.
+$$
+
+Lastly, we consider the case when $y = 0$. Observe that $\frac{\partial f}{\partial x}(x, 0) = \frac{0}{x^4} = 0$, thus it is clear that 
+$$
+\lim_{(x, y) \rightarrow 0} \frac{\partial f}{\partial x}(x, y) = 0,
+$$
+which completes the proof that the partial derivatives $\frac{\partial f}{\partial x}$ and $\frac{\partial f}{\partial y}$ are continuous for all $\mathbb{R}^2$.
+\end{proof}
+
+\begin{problem}{5b}
+\end{problem}
+\begin{proof}[Solution]
+Using partial derivative results from the previous problem, observe that
+
+$$
+\frac{\partial f^2}{\partial y \partial x} = \lim_{h \rightarrow 0}\frac{\frac{\partial f}{\partial x}(0, h) - \frac{\partial f}{\partial x}(0, 0)}{h} = \lim_{h \rightarrow 0} \frac{-h}{h} = -1.
+$$
+
+Similarly, observe that
+
+$$
+\frac{\partial f^2}{\partial x \partial y} = \lim_{h \rightarrow 0}\frac{\frac{\partial f}{\partial y}(h, o) - \frac{\partial f}{\partial y}(0, 0)}{h} = \lim_{h \rightarrow 0} \frac{h}{h} = 1.
+$$
+
+This shows that
+$$
+\frac{\partial f^2}{\partial y \partial x} = -1 \neq 1 = \frac{\partial f^2}{\partial x \partial y} 
+$$
+\end{proof}
+
+\begin{problem}{6a}
+\end{problem}
+\begin{proof}[Solution]
+Assume for the sake of contradiction that $(I + H)v = 0$, where $||v|| = 1$. We see that $v + Hv = 0$, thus $Hv = -v$. The operator norm of H is defined as $\sup\{||Hv|| : ||v|| \leq 1, v \in \}$. Given that $||v|| = 1$, it is clear that, $||Hv|| = ||-v|| = 1 \leq \sup\{||Hv|| : ||v|| \leq 1, v \in \} = ||H||_{op}$. However, this contradicts the fact that the operator norm of $H$ is less than 1. Thus, there does not exist any vector where $||v|| = 1$ and $(I + H)v = 0$. Then for the sake of contradiction assume $v$ is non-zero and $(I + H)v = 0$. Then, consider the unit vector $v/||v||$. It is evident that $(I + H)(v/||v||) = 0/||v|| = 0$, but this yields a contradiction because there are no unit vectors in the Kernel of $H$. Thus, we conclude that $Ker(H) = \{0\}$. It is known that a matrix is invertible iff $Ker(H) = \{0\}$ (Problem 3.8 Treil), which shows that $(I + H)$ is invertible.
+
+Next, let $A$ denote an invertible matrix and let $B$ denote an arbitrary square matrix such that $||B - A|| < \frac{1}{||A^{-1}||}$. Multiply $||A^{-1}||$ to both sides to yield $||B - A||\ ||A^{-1}|| < 1$. Submultiplicativity states that $||X||\ ||Y|| \geq ||XY||$. Thus, $1 > ||B - A||\ ||A^{-1}|| \geq ||BA^{-1} - I||$. We have shown previously that if $||H|| < 1$, then $(H + I)$ is invertible. Substituting $H$ with $BA^{-1} - I$ shows that $BA^{-1}$ is invertible. Note that $B(A^{-1}(BA^{1})^{-1}) = (BA^{-1})(BA^{1})^{-1} = I$, which shows that $B$ has a right inverse. Given that $B$ is a square matrix, it is known that $B$ is invertible (Proposition 3.8 Treil). This shows that every invertible matrix $A$ is surrounded by a ball of radius $\frac{1}{||A^{-1}||}$ where every matrix in the ball is also invertible. This shows that every element of $GL_n$ is an interior point of $GL_n$, and therefore $GL_n \subset M_n$ is open.
+\end{proof}
+
+\begin{problem}{6b}
+\end{problem}
+\begin{proof}[Solution]
+First, observe that for any matrix $H$ where $||H|| < 1$, we have previously shown that $(I+H)$ is invertible. Next, observe that
+$$
+H^2 = (H + I)H - H = (H + I)H - H - I + I = (H + I)H - (H + I) + I = (H + I)H - (H + I) + (H + I)(H + I)^{-1} 
+$$
+$$
+= (H + I)(H - I + (H + I)^{-1}).
+$$
+By multiplying both sides by $(H + I)^{-1}$, we can see that $H^2(H + I)^{-1} = (H + I)^{-1} - I + H$.
+
+Next, we claim that $Dinv(I)(X) = -X$. Consider the following limit:
+$$
+\lim_{H \rightarrow 0} \frac{||inv(I + H) - inv(I) - Dinv(I)(H)||}{||H||}.
+$$
+
+If this limit is equal to zero, for some $Dinv(I)(H)$, the definition of the derivative states that $Dinv(I)(H)$ is indeed the derivative. Thus, we will try to show that 
+$$
+\lim_{H \rightarrow 0} \frac{||inv(I + H) - inv(I) - (-H)||}{||H||}.
+$$
+in order to show that $Dinv(I)(X) = -X$. By substituting with the equality derived at the beginning of this problem, we can see that
+$$
+\lim_{H \rightarrow 0} \frac{||inv(I + H) - inv(I) - (-H)||}{||H||} = \lim_{H \rightarrow 0} \frac{||(I + H)^{-1} - I + H)||}{||H||} = \lim_{H \rightarrow 0} \frac{||(I + H)^{-1}H^2||}{||H||}.
+$$
+Here, we assumed $||H|| < 1$ to ensure the equality works. First, observe that the properties of the operator norm, the above limit cannot be negative because the norm is always positive. Next, due to sub-multiplicativity, we can see that $||H|| \ ||H|| \ ||(I + H)^{-1}|| \geq ||(I + H)^{-1}H^2||$, and thus
+$$
+\lim_{H \rightarrow 0} \frac{||(I + H)^{-1}H^2||}{||H||} \leq \lim_{H \rightarrow 0} ||(I + H)^{-1}|| \ ||H||.
+$$
+Due to the continuity of all norms as shown previously, $||(I + H)^{-1}||$ approaches $1$ as $H \rightarrow 0$, thus we can see that this limit approaches $0$ as $H \rightarrow 0$. We thus prove that $Dinv(I)(X) = -X$.
+\end{proof}
+
+\begin{problem}{6c}
+\end{problem}
+\begin{proof}[Solution]
+For the duration of this proof, we will use the supremum norm, which has the property that $||(H_1, H_2)|| = max(||H_1||, ||H_2||)$.
+
+First, assume that $Dmult((A_1, A_2))(H_1, H_2) = A_1H_2 + H_1A_2$. According to the definition of the derivative, if
+$$
+\lim_{||(H_1, H_2)|| \rightarrow 0} \frac{||mult(A_1 + H_1, A_2 + H_2) - mult(A_1, A_2) - (A_1H_2 + H_1A_2)||}{||(H_1, H_2)||} = 0,
+$$
+Then $Dmult((A_1, A_2))(H_1, H_2)$ is indeed equal to $A_1H_2 + H_1A_2$. By expanding this limit out, we get
+$$
+\lim_{||(H_1, H_2)|| \rightarrow 0} \frac{||A_1A_2 + A_1H_2 + H_1A_2 + H_1H_2 - A_1A_2 - A_1H_2 - H_1A_2||}{||(H_1, H_2)||}
+$$
+$$
+= \lim_{||(H_1, H_2)|| \rightarrow 0} \frac{||H_1H_2||}{||(H_1, H_2)||}
+$$
+
+Using sub-multiplicativity and the property that $||(H_1, H_2)|| = max(||H_1||, ||H_2||)$, we can see that 
+$$
+\lim_{||(H_1, H_2)|| \rightarrow 0} \frac{||H_1H_2||}{||(H_1, H_2)||} \leq \lim_{||(H_1, H_2)|| \rightarrow 0} \frac{||H_1|| \ ||H_2||}{max(||H_1||, ||H_2||)}.
+$$
+Observe that between $||H_1||$ and $||H_2||$, the larger of the two will cancel out $max(||H_1||, ||H_2||)$, and thus we get that
+$$
+\lim_{||(H_1, H_2)|| \rightarrow 0} \frac{||H_1|| \ ||H_2||}{max(||H_1||, ||H_2||)}. = \lim_{||(H_1, H_2)|| \rightarrow 0} min(||H_1||, ||H_2||).
+$$
+This limit clearly goes towards $0$ as $||(H_1, H_2)|| \rightarrow 0$, which then completes the proof that $Dmult((A_1, A_2))(H_1, H_2) = A_1H_2 + H_1A_2$.
+
+Next, note that $D^2mult(A_1, A_2)(H_1, ..., H_4) = Dmult(A_1, H_2)(H_3, H_4) + Dmult(A_2, H_1)(H_3, H_4)$, which can then be expanded using the $Dmult$ function defined above. By repeating this process iteratively, it is possible to generate every order of derivative for mult. One important observation to make is that at each iteration, the $n$-th order derivative is created from a sum of the $n-1$-th order derivative. Given that $mult$ itself is clearly a linear transformation, and given that the sum of linear transformations is also a linear transformation, every order derivative of $mult$ is a linear transformation. All linear transformations are have continuous partial derivatives because linear transformations are a collection of polynomials of matrix entries, and all polynomials are continuous. Thus, we can see that $mult$ is smooth given every order derivative has continuous partial derivatives.
+\end{proof}
+
+\begin{problem}{6d}
+\end{problem}
+\begin{proof}[Solution]
+First, assume that $Dinv(A)(X) = -A^{-1}XA^{-1}$. According to the definition of the derivative, if
+$$
+\lim_{||X|| \rightarrow 0} \frac{||inv(A + X) - inv(A) - (-A^{-1}XA^{-1})||}{||X||} = 0,
+$$
+Then $Dinv(A)(X)$ is indeed $-A^{-1}XA^{-1}$. Observe that
+$$
+\lim_{||X|| \rightarrow 0} \frac{||(A + X)^{-1} - A^{-1} + A^{-1}XA^{-1}||}{||X||},
+$$
+
+First, note that for any $A \in GL_n$, $AA^{-1} = I$. This means that $mult(f(A)) = I$ where $A, inv(A)$. Assume some derivative exists for $inv(A)$. Then, by applying the chain rule, we can see that
+$$
+D(mult(f(A))) = (Dmult(f(A))(X))Df(A) ...
+$$
+
+[Incomplete]
+\end{proof}
+
+\end{document}

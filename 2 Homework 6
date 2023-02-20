@@ -1,0 +1,181 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 6}
+\author{Jian Park\\
+20800: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+
+\begin{problem}{1a}
+\end{problem}
+\begin{proof}[Solution]
+First, observe that $S^{n-1}$ is a manifold as shown in Corollary 24.5 in Munkers. Next, note from problem $3$ of homework $2$ that
+$$
+\lim_{\epsilon \rightarrow 0} \sup_{y \in B_{\epsilon} \cap S^{n-1}} \frac{d(y, H)}{h} = 0
+$$
+where $H$ is the tangent space of $S^{n-1}$ at $y$ translated by $y$ for any arbitrary $y \in S^{n-1}$. Let $P_{\epsilon}(y)$ denote the coordinate patch on $S^{n-1}$ formed by $S^{n-1} \cap N_{\epsilon}(y)$. Let $g : \mathbb{R}^n \rightarrow \mathbb{R}^{n-1}$ denote the function which maps every point on $P_{\epsilon}(y)$ onto the closest point on $H$. This function is smooth because as $\epsilon \rightarrow 0$, the equation shows that $H$ approaches $S_{n - 1}$ arbitrarily closely. This shows that as $\epsilon \rightarrow 0$, the mapping from $P_{\epsilon}(y)$ onto the closest point on $H$ approaches the identity transformation. It follows that $S^{n-1}$ has a bijection with its output space. In addition, this function is smooth given $I_n$ is smooth.
+
+Next, consider a function $h$ which maps every point on this point $(x_1, ..., x_n)$ in $P_{\epsilon}(y)$ onto $(y_1^2, y_1y_2, ..., y_n^2)$ where $(y_1, ..., y_n) = g^{-1}(x_1, ..., x_n)$. It is clear that $h$ is injective, and thus the composite function is also injective. Also, it is clear that $h(g(P_{\epsilon}(y)))$ is a coordinate patch on $M$ containing $y$. In addition, the derivative of this function is injective for every point in the coordinate patch given that the kernel of the total derivative is trivial. This can be seen by the fact that the row representing the value for $x_ix_j$ in this total matrix will yield a value of 0 only when $x_i = -x_j$. This relationship must be true for every pair $x_i, x_j$ in order for a vector to be in the kernel, and this relationship is only true for the zero vector. Thus, using problem 4 of homework 2, we conclude that $M$ is a manifold.
+\end{proof}
+
+\begin{problem}{1b}
+\end{problem}
+\begin{proof}[Solution]
+First, observe that $f(-x_1, ..., -x_n) = (x_1^2, x_1x_2, ..., x_n^2) = f(x_1, ..., x_n)$ for any $(x_1, ..., x_n) \in \mathbb{R}^n$. 
+
+For the sake of contradiction, assume that $M$ is orientable and $n > 1$ is odd. Then, it follows that there exists a cover of coordinate patches on $M$ such that every intersecting pair overlaps positively. Next, define a subset of $S^{n-1}$ formed by the parametric definition $g(t) = (t, \sqrt{t^2 - 1}, 0, 0, ..., 0)$. It is clear that every point in the form $(t, \sqrt{t^2 - 1}, 0, 0, ..., 0)$ for $-1 \leq t \leq 1$ is on $S^{n-1}$ given the distance between $g(t)$ and the origin is always 1. Next, observe that $g(t)$ is clearly continuous, and thus $f(g(t))$ is also continuous for $-1 \leq t \leq 1$. Then, given there is a cover of $M$ using coordinate patches, let $A_1, A_2, ..., A_m$ denote all coordinate patches which intersect the line formed by $f(g(t))$, ordered by at what value $t$ the patch begins to intersect the line, and with duplicates if $g(t)$ enters a patch multiple times. We know that this sequence contains more than one distinct coordinate patch because all diffeomorphisms are by definition one-to-one, and thus a single coordinate patch cannot represent both $g(1)$ and $g(-1)$.  Let $\alpha_i$ be the function that forms coordinate patch $A_i$. Then, observe that $A_1$ must intersect $A_m$, and if $x$ is a point in this intersection, $\alpha_1(x) = f(x)$ and $\alpha_m(-x) = f(x)$. Thus, $\alpha_m^{-1} \circ \alpha_1 (x) = -x$ for all points in the intersection. This thus shows that $\alpha_m^{-1} \circ \alpha_1$ is equivalent to the linear transformation defined by the matrix where every number in the diagonal is $-1$. The product of the elements on the diagonal is $-1$ given $n$ is odd, and thus $\alpha_m^{-1} \circ \alpha_1$ has a determinant of -1. However, this contradicts the definition of an orientable manifold as presented in Chapter 34 of Munkers, which states that this composite function must have a determinant greater than 1. Due to this contradiction, we conclude that $M$ cannot be orientable if $n$ is odd.
+\end{proof}
+
+\begin{problem}{2a}
+\end{problem}
+\begin{proof}[Solution]
+First, observe that $(x, y, \sqrt{1 - x^2 - y^2})$ is a parametrization of $S$ that is positively oriented. This is evident because the entirety of $S$ can be covered by a single coordinate patch that maps any element $(x, y)$ onto $(x, y, \sqrt{1 - x^2 - y^2})$.
+
+Let $f(x) = dx \land dy (v_x^1, v_x^2) = dx(v_x^1)dy(v_x^2) - dx(v_x^2)dy(v_x^1) = 1$. Next, let $B$ denote the unit ball, including the interior, and excluding points with $x_1 < 0$. Then, it follows that
+$$
+\int_S dx \land dy = \int_B 1.
+$$
+Using the results from the previous homework, we conclude that
+$$
+\int_S dx \land dy = \pi.
+$$
+\end{proof}
+
+\begin{problem}{2b}
+\end{problem}
+\begin{proof}[Solution]
+We use the same parametrization as the previous section
+
+Let $f(x) = dy \land dz (v_x^1, v_x^2) = dy(v_x^1)dz(v_x^2) - dy(v_x^2)dz(v_x^1) = \frac{x}{\sqrt{1 - x^2 - y^2}}$. Next, let $B$ denote the unit ball, including the interior, and excluding points with $x_1 < 0$. Then, it follows that
+$$
+\int_S dy \land dz = \int_B \frac{x}{\sqrt{1 - x^2 - y^2}}
+$$
+It is clear that this fraction is symmetric about the $x = 0$ axis, given that the numerator is independent of the sign for either x or y. Then, given $B$ is also symmetric about the $x = 0$ axis, it follows that the value of this integral is 0. Thus,
+$$
+\int_S dy \land dz = \int_B \frac{x}{\sqrt{1 - x^2 - y^2}} = 0.
+$$
+\end{proof}
+
+\begin{problem}{2c}
+\end{problem}
+\begin{proof}[Solution]
+We use the same parametrization as the previous section
+
+Let $f(x) = dz \land dx (v_x^1, v_x^2) = dz(v_x^1)dx(v_x^2) - dz(v_x^2)dx(v_x^1) = \frac{y}{\sqrt{1 - x^2 - y^2}}$. Next, let $B$ denote the unit ball, including the interior, and excluding points with $x_1 < 0$. Then, it follows that
+$$
+\int_S dz \land dx = \int_B \frac{y}{\sqrt{1 - x^2 - y^2}}
+$$
+It is clear that this fraction is symmetric about the $y = 0$ axis, given that the numerator is independent of the sign for either x or y. Then, given $B$ is also symmetric about the $y = 0$ axis, it follows that the value of this integral is 0. Thus,
+$$
+\int_S dz \land dx = \int_B \frac{y}{\sqrt{1 - x^2 - y^2}} = 0.
+$$
+\end{proof}
+
+\begin{problem}{2d}
+\end{problem}
+\begin{proof}[Solution]
+We use the same parametrization as the previous section
+
+Let $f(x) = \sqrt{1 - x^2 - y^2} dx \land dy (v_x^1, v_x^2) = dx(v_x^1)dy(v_x^2) - dx(v_x^2)dy(v_x^1) = \sqrt{1 - x^2 - y^2}$. Next, let $B$ denote the unit ball, including the interior, and excluding points with $x_1 < 0$. Then, it follows that
+$$
+\int_S dx \land dy = \int_B \sqrt{1 - x^2 - y^2}
+$$
+To calculate this integral, apply the change of coordinates theorem, polar coordinates, and Fubini's Theorem to show that
+$$
+\int_S dx \land dy = \int_B \frac{y}{\sqrt{1 - x^2 - y^2}} = \int_0^{2 \pi} \int_0^1 \sqrt{1 - r^2} dr \ d\theta
+$$
+$$
+= \int_0^{2 \pi} \frac{-(\sqrt{1 - r^2})^3}{3} \big|_0^1 d\theta = \int_0^{2\pi} \frac{1}{3} d\theta = \frac{2\pi}{3}
+$$
+Thus, we see that
+$$
+\int_S dx \land dy = \frac{2\pi}{3}
+$$
+
+\end{proof}
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}[Solution]
+We are asked to show that
+$$
+\omega(x)(v_1, ..., v_k) = \lim_{h \rightarrow 0} \frac{1}{h^k} \int_Q \omega
+$$
+where $Q$ is the parallelepiped given in the problem statement. Observe that the volume of $Q$ is proportional to $h^k$ given that the volume is equal to the determinant of $hv_1, hv_2, ..., hv_k$, which is equal to $h^k$ times the volume of the parallelepiped formed by $v_1, ..., v_k$. Then, observe that $\omega$ is continuous by definition, which means that $\omega \approx \omega(x)$ for points in $\mathbb{R}^n$ close to $x$. It then follows that as $h \rightarrow 0$, the value of $\omega$ within $Q$ will approach the value of $\omega$ at $x$. Thus, 
+$$
+\lim_{h \rightarrow 0} \frac{1}{h^k} \int_Q \omega = \lim_{h \rightarrow 0} \frac{1}{h^k} \int_Q \omega(x) = \omega(x)(V)
+$$
+where $V$ is the volume of the parallelepiped formed by $v_1, ..., v_k$. Thus, we see that
+$$
+\lim_{h \rightarrow 0} \frac{1}{h^k} \int_Q \omega = \omega(x)(v_1, ..., v_k).
+$$
+\end{proof}
+
+\begin{problem}{4}
+\end{problem}
+\begin{proof}[Solution]
+First, observe that
+$$
+\omega(c) = \sum^k_{I \in P} \phi_i(c) dx_{n_1} \land ... \land dx_{n_{k-1}}
+$$
+where $P$ is the set of all sets $(n_1, ..., n_{k-1})$ where every value is a number from the set $1, ..., k$ and all the numbers are increasing. Then, note that
+$$
+\omega(c) = \sum^k_{I \in P} d\phi_i(c) \land dx_{n_1} \land ... \land dx_{n_{k-1}}
+$$
+where
+$$
+d\phi_i(c) = \sum_{I \in P} \frac{\partial \phi_i(c)}{x_I} dx_i.
+$$
+Now, note that
+$$
+d\phi_i(c) \land dx_{n_1} \land ... \land dx_{n_{k-1}} = \left(\sum_{I \in P} \frac{\partial \phi_i(c)}{x_I} dx_i\right) \land dx_{n_1} \land ... \land dx_{n_{k-1}}
+$$
+$$
+ =  \frac{\partial \phi_i(c)}{x_I} dx_i \land dx_{n_1} \land ... \land dx_{n_{k-1}},
+$$
+with the last equality being true because all the elements in the summation where the $dx_i$ is present twice will equal zero. Then, by rearranging the wedge product such that the numbers are in order, it follows that
+$$
+\frac{\partial \phi_I(c)}{x_i} dx_i \land dx_{n_1} \land ... \land dx_{n_{k-1}} = (-1)^{i-1} \frac{\partial \phi_I(c)}{x_i} dx_1 \land dx_{2} \land ... \land dx_{k}.
+$$
+By then going through a few steps, this equation turns into the desired
+$$
+\int_Q d\omega = \sum_{i = 1}^n (-1)^{i - 1} \left(\int_{Q^+_i} \omega - \int_{Q_i^-} \omega \right).
+$$
+This question can also be alternatively proved by applying Stokes Theorem from Munkers.
+\end{proof}
+
+\begin{problem}{5a}
+\end{problem}
+\begin{proof}[Solution]
+For some $b \in U$, let
+$$
+g(x) = \int^x_b \omega.
+$$
+This function is well-defined despite the fact that any path from $b$ to $x$ would yield a result as a result of the property noted in the problem statement. Next, let $h(t)$ denote the parametrically defined straight line between $b$ and $x$, which is a valid path because $U$ is given to be convex. Next, observe that $\omega = \sum_i r_idx^i$ given $\omega$ is a 1-form. Next, we wish to show that $df = \omega$.
+\end{proof}
+
+\begin{problem}{5b}
+\end{problem}
+\begin{proof}[Solution]
+Incomplete
+\end{proof}
+
+\begin{problem}{6}
+\end{problem}
+\begin{proof}[Solution]
+Incomplete
+\end{proof}
+\end{document}

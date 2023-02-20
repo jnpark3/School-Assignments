@@ -1,0 +1,258 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 2}
+\author{Jian Park\\
+20700: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+
+\begin{problem}{1a}
+\end{problem}
+\begin{proof}[Solution]
+First we prove that there is at least one fixed point in $f$. Choose one point $a_1 \in X$. Assume $a_1 \neq f(a_1)$ because that would trivially show that $f$ has a fixed point. Then, set $a_2$ to be $f(a_1)$. We know $a_2 \in X$ because $f(a_1) \in X$. Set $a_3$ to be $f(a_2)$. Continue to repeat this process to generate the infinite sequence $a_1, a_2, ...$. We are given that $d(f(a_i), f(a_{i+1})) \leq r d(a_i, a_{i+1})$. By definition $d(f(a_i), f(a_{i+1})) = d(a_{i+1}, a_{i+2})$, thus we see that $d(a_{i+1}, a_{i+2}) \leq r d(a_i, a_{i+1})$ where $r < 1$. It also follws that $d(a_{i+2}, a_{i+3}) \leq r d(a_{i+1}, a_{i+2})$ where $r < 1$, thus $d(a_{i+2}, a_{i+3}) \leq r^2 d(a_i, a_{i+1})$. By repeating this process, it is possible to see that $d(a_i, a_{i+1}) \leq r^{i-1} d(a_1, a_2)$ for any $i \in \mathbb{N}$. Then, observe that for any $n \leq i, j$, 
+$$
+d(a_i, d_j) = \sum_{k = min(i, j)}^{|j - i| - 1} d(a_k, a_{k+1}) \leq \sum_{k = min(i, j)}^{\infty} d(a_k, a_{k+1}) = \sum_{k = min(i, j)}^{\infty} r^{k-min(i, j)} d(a_{min(i, j)}, a_{min(i, j)+1})
+$$
+$$
+= d(a_{min(i, j)}, a_{min(i, j)+1}) \sum_{k = 0}^{\infty} r^{k} = \frac{d(a_{min(i, j)}, a_{min(i, j)+1})}{1 - r}  = (r^{min(i, j)-1})\frac{d(a_1, a_2)}{1 - r} \leq r^{n-1}\frac{d(a_1, a_2)}{1 - r},
+$$
+with the last step being true because $min(i, j) \geq n$. This shows that $d(a_i, d_j) \leq r^{n-1}\frac{d(a_1, a_2)}{1 - r}$. Then, note that $\frac{d(a_1, a_2)}{1 - r}$ is a fixed positive constant, and $r^{n-1}$ converges to $0$ as $n$ increases. This means that for any $\epsilon > 0$, there exists an $n$ where $r^{n-1}\frac{d(a_1, a_2)}{1 - r} < \epsilon$. It then follows that for any $\epsilon > 0$, there exists an $n$ where $d(a_i, a_j) < \epsilon$ for all $i, j \geq n$. This shows that $a_1, a_2, ...$ is a Cauchy sequence, and given that $X$ is complete, $a_1, a_2, ...$ has a limit point $a$ in $X$.
+
+Assume for the sake of contradiction that $a \neq f(a)$, and let $d(a, f(a)) = \epsilon$. Given that $f$ is continuous, we know that there exists $\delta > 0$ such that $d(f(a) - f(a')) < \frac{\epsilon}{3}$ for all $a'$ where $d(a, a') < \delta$. We have previously shown that $d(a_i, a_{i+1}) \leq r^{i-1} d(a_1, a_2)$, and it is clear that $r^{i-1} d(a_1, a_2)$ converges to $0$ as $i$ increases. Choose a sufficiently large natural number $n$ such that $r^{n-1} d(a_1, a_2) < \frac{\epsilon}{3}$. It then follows that for any $i \geq n$, $d(a_i, a_{i+1}) < \frac{\epsilon}{3}$, and by definition $a_{i+1} = f(a_i)$, thus $d(a_i, f(a_i)) < \frac{\epsilon}{3}$ for all $i \geq n$. Given $a_1, a_2, ...$ is Cauchy and $X$ is complete, $a_1, a_2, ...$ converges to $a$. That means that there is clearly at least one element of $a_n, a_{n+1}, ...$ in the neighborhood $N(a)$ with radius $min(\delta, \frac{\epsilon}{3})$ (if no such element existed, that would imply there are at most $n-1$ elements in $N(a)$, which would then show that $a$ is not a limit point of $a_1, a_2, ...$). Let that element of $a_n, a_{n+1}, ...$ be $a_j$. We know that $d(a, a_j) < \frac{\epsilon}{3}$ given $a_j \in N(a)$ with radius $min(\delta, \frac{\epsilon}{3})$, we know that $d(a_j, f(a_j)) < \frac{\epsilon}{3}$ given $j \neq n$, and $d(f(a_j), f(a)) < \frac{\epsilon}{3}$ given $d(a, a_j) < \delta$. The triangle inequality then shows that $d(f(a), a) \leq d(f(a), f(a_j)) + d(f(a_j), a_j) + d(a_j, a)$, but substituting all of these values with known information shows that $d(f(a), a) = \epsilon < \frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3} = \epsilon$. This contradiction shows that $a = f(a)$, which proves the existence of at least one fixed point.
+
+To prove that only one fixed point exists, assume for the sake of contradiction that $a$ and $b$ are both unique fixed points of contraction mapping $f$, which means $f(a) = a$ and $f(b) = b$. Then, $d(f(a), f(b)) = d(a, b)$, which shows that $d(f(a), f(b)) > rd(a, b)$ for any $0 < r < 1$. This contradicts the fact that $f$ is a contraction mapping, and thus all contraction mappings have exactly one fixed point.
+\end{proof}
+
+\begin{problem}{1b}
+\end{problem}
+\begin{proof}[Solution]
+For the sake of contradiction, assume that $\Phi: \Lambda \rightarrow X$ is not continuous at some point $a \in \Lambda$. This implies that there exists some $\epsilon > 0$ such that for any neighborhood $N(a)$ contains a point $a'$ where $d(\Phi(a), \Phi(a')) > \epsilon$. For $N(a)$ with radius $1$, choose a point $a'$ where $d(\Phi(a), \Phi(a')) > \epsilon$, and let this point be $a_1$. Then, for $N(a)$ with radius $min(\frac{1}{2}, d(a, a_1))$, choose a point $a'$ where $d(\Phi(a), \Phi(a')) > \epsilon$, and let this point be $a_2$. Continue to repeat this process where at the $n$-th step, $a_n$ is chosen from neighborhood $N(a)$ with radius $min(\frac{1}{2^n}, d(a, a_1))$. It is known that $\frac{1}{2^n}$ converges to $0$ as $n \rightarrow \infty$, and thus $a_1, a_2, ...$ converges to $a$.
+
+Let $b \in X$ be the fixed point of $f_a$. Given that $ev_b$ is continuous at $a$, it is clear that $ev_b(a_1), ev_b(a_2), ...$ converges to $ev_b(a)$. Let $r$ be the scaling factor for every function in the family $\{f_{\lambda}\}_{\lambda \in \Lambda}$. Next, note that this scaling factor $r$ is between $0$ and $1$, thus the value $(1-r)\epsilon$ is positive. Choose $a_j$ such that $d(ev_b(a_j), ev_b(a)) < (1-r)\epsilon$. (we know $a_j$ exists due to the continuity of $ev_b$) Note that $ev_b(a_j) = f_{a_j}(b)$ and $ev_b(a)=f_{a}(b)$, thus $d(f_{a}(b), f_{a_j}(b)) < (1-r)\epsilon$. In addition, $f_a(b) = b$ given $b$ is the fixed point of $f_a$, thus $d(b, f_{a_j}(b)) < (1-r)\epsilon$
+
+if $b'$ is the fixed point of $f_{a_j}$, then note that $d(f_{a_j}(b), f_{a_j}(b')) \leq rd(b, b')$ due to the fact that $f_{a_j}$ is a contraction mapping. The triangle inequality states that $d(b, b') \leq d(b, f_{a_j}(b)) + d(f_{a_j}(b), f_{a_j}(b')) + d(f_{a_j}(b'), b')$. We know that $d(b, f_{a_j}(b)) < (1-r)\epsilon$, $d(f_{a_j}(b), f_{a_j}(b')) < rd(b, b')$, and $d(f_{a_j}(b'), b') = 0$ (because $b'$ is the fixed point), thus we can see that 
+$$
+d(b, b') < (1-r)\epsilon + rd(b, b')
+$$
+$$
+(1-r)d(b, b') < (1-r)\epsilon
+$$
+$$
+d(b, b') < \epsilon.
+$$
+However, this contradicts the fact that $d(\Phi(a), \Phi(a_j)) > \epsilon$, which is true given $a_j \in a_1, a_2, ...$. This contradiction shows that $\Phi$ is continuous for any arbitrary $a \in \Lambda$, and thus $\Phi$ is continuous.
+\end{proof}
+
+\begin{problem}{2a}
+\end{problem}
+\begin{proof}[Solution]
+First, consider a fixed non-zero vector $v \in \mathbb{R}^n$ and let $u \in \mathbb{R}^n$ denote any arbitrary unit vector. Let $u = (a_1, ..., a_n)$ and let $v = (b_1, ..., b_n)$. Note that $v \cdot u = \sum_{i = 1}^n a_ib_i$. Next, note the Cauchy-Schwarz inequality states that
+$$
+\left(\sum_{i = 1}^n a_i^2\right)\left(\sum_{i = 1}^n b_i^2\right) \geq \left(\sum_{i = 1}^n a_ib_i \right)^2.
+$$
+The value $\left(\sum_{i = 1}^n a_i^2\right)$ is fixed given $v$ is fixed, and $\left(\sum_{i = 1}^n b_i^2\right)$ is $1$ given $v$ is a unit vector. Thus, we can see that the left side of the inequality is a constant. Next, note that the equality condition of Cauchy-Schwarz only occurs when $\frac{a_i}{b_i}$ is equal for all $i \in 1, ..., n$. This condition is met only when $u$ is a multiple of $v$. In this case, 
+$$
+\left(\sum_{i = 1}^n a_i^2\right)\left(\sum_{i = 1}^n b_i^2\right) = \left(\sum_{i = 1}^n a_ib_i \right)^2 = (v \cdot u)^2,
+$$
+and for any other vector $u$,
+$$
+\left(\sum_{i = 1}^n a_i^2\right)\left(\sum_{i = 1}^n b_i^2\right) > \left(\sum_{i = 1}^n a_ib_i \right)^2 = (v \cdot u)^2.
+$$
+This shows that $(v \cdot u)^2$ is maximized when $u$ is a unit vector that is multiple of $v$. This then implies that $|v \cdot u|$ is maximized when $u$ is a unit vector that is a multiple of $v$. Two such multiples exist: $u = \frac{v}{||v||}$ and $u = \frac{-v}{||v||}$. $v \cdot \left(\frac{v}{||v||}\right) > 0$ and $v \cdot \left(\frac{-v}{||v||}\right) < 0$, thus we can see that $v \cdot u$ is maximized when $v = \frac{v}{||v||}$
+
+Theorem 5.1 of Munkers shows that the directional derivative of $f$ at $a$ with respect to $v \in \mathbb{R}^n$ is $Df(a) \cdot v$. In addition, Theorem 5.3 of Munkers states that $Df(a) = \left[\frac{\partial f}{\partial x_1}(a), ..., \frac{\partial f}{\partial x_n}(a)\right]$. Thus, the goal of finding $v_0$ is equivalent to finding the unit vector $v$ such that the dot product $\left[\frac{\partial f}{\partial x_1}(a), ..., \frac{\partial f}{\partial x_n}(a)\right] \cdot v$ is maximized. We have already shown that this value is maximized when $v$ is equal to $\frac{\left[\frac{\partial f}{\partial x_1}(a), ..., \frac{\partial f}{\partial x_n}(a)\right]}{\left|\left|\left[\frac{\partial f}{\partial x_1}(a), ..., \frac{\partial f}{\partial x_n}(a)\right]\right|\right|}$. This proves that $v_0$ is the unit vector in the direction of the vector of partial derivatives. In addition, observe that
+$$
+|D_{v_0}(f)(a)| = |Df(a) \cdot v_0| = \left|\left[\frac{\partial f}{\partial x_1}(a), ..., \frac{\partial f}{\partial x_n}(a)\right] \cdot \frac{\left[\frac{\partial f}{\partial x_1}(a), ..., \frac{\partial f}{\partial x_n}(a)\right]}{\left|\left|\left[\frac{\partial f}{\partial x_1}(a), ..., \frac{\partial f}{\partial x_n}(a)\right]\right|\right|}\right| = \left|grad(f)(a) \cdot \frac{grad(f)(a)}{||grad(f)(a)||}\right|
+$$
+$$
+= \frac{||grad(f)(a)||^2}{||grad(f)(a)||} = ||grad(f)(a)||,
+$$
+thus completing the proof.
+\end{proof}
+
+\begin{problem}{2b}
+\end{problem}
+\begin{proof}[Solution]
+Assume $a$ is a local maximum or local minimum, and assume for the sake of contradiction that $a$ is not a critical point. If $a$ is not a critical point, that implies $D(f)(a) \neq 0$. If we let $D(f)(a) = (a_1, ..., a_n)$, that implies that there exists $1 \leq i \leq n$ where $a_i$ is not $0$. Assume without loss to generality that $a_i$ is positive (if $a_i$ is negative, swap all occurrences of $e_i$ and $-e_i$ later in the proof). Let $e_i \in \mathbb{R}^n$ denote the $i$-th element of the standard basis. Given that $f$ is differentiable at $a$, Theorem 5.2 of Munkers shows that all directional derivatives exist at $a$, and $D_v(f)(a) = D(f)(a) \cdot v$. Thus, $D_{e_1}(f)(a) = D(f)(a) \cdot e_1 = a_1 > 0$. By the definition of directional derivative,
+$$
+D_{e_1}(f)(a) = lim_{t \rightarrow 0} \frac{f(a + te_1) - f(a)}{t},
+$$
+which then implies that there exists $\delta > 0$ where $\left|\frac{f(a + te_1) - f(a)}{t} - D_{e_1}(f)(a)\right| < \frac{a_1}{2}$ for all $|t| < \delta$. This implies that $\frac{f(a + te_1) - f(a)}{t} - D_{e_1}(f)(a) > -\frac{a_1}{2}$, and given $D_{e_1}(f)(a) = a_1$, $\frac{f(a + te_1) - f(a)}{t} > \frac{a_1}{2}$ for all $|t| < \delta$. For any positive $t$ less than $\delta$, this inequality shows that $f(a + te_1) - f(a) > 0$, which means that any neighborhood of $a$ will contain some point $a + te_1$ where $f(a + te_1) > f(a)$. This shows that $a$ cannot be a local maximum. For any negative number $t$ greater than $-\delta$, $\frac{f(a + te_1) - f(a)}{t} > \frac{a_1}{2}$ shows that $f(a + te_1) - f(a) < 0$. This means that any neighborhood of $a$ will contain some point $a + te_1$ where $f(a + te_1) < f(a)$. This shows that $a$ cannot be a local minimum. We can observe that $a$ is neither a local maximum nor local minimum, but this contradicts the fact that $a$ is either a local minimum or local maximum for $f$. This contradiction shows that if a point is a local maximum or a local maximum, then it is a critical point of $f$.
+\end{proof}
+
+\begin{problem}{2c}
+\end{problem}
+\begin{proof}[Solution]
+Given $a$ is a critical point, the second order Taylor formula at $a$ can be expressed as
+$$
+f(a + x) - f(a) = \frac{x^T \cdot H \cdot x}{2} + ||x||^2E_2(a, x)
+$$
+where $E_2(a, x)$ is some function that approaches $0$ as $x$ approaches $0$. Choose some $j > 0$ such that $|E_2(a, x)| < \frac{1}{2} \lambda$ for all $||x|| < j$ ($\lambda$ can be any positive variable, will be defined later). Next, we are given that $H$ is a real, symmetric matrix, which means it is self-adjoint. According to the Spectral Theorem (Theorem 2.2, Lin. Alg. Done Wrong), there exists a diagonal matrix $D$ composed composed of the eigenvalues of $H$ and a unitary matrix $U$ where $A = UDU^*$. This then shows that $x^T \cdot H \cdot x\ = x^T \cdot UDU^* \cdot x = x'^T \cdot D \cdot x'$ where $x'$ is some vector with the same norm as $x$.
+
+Next, observe that 
+$$
+\frac{x^T \cdot H \cdot x}{2} = \frac{x'^T \cdot D \cdot x'}{2} = \frac{1}{2}\sum_{i=1}^n \lambda_ix_i'^2
+$$
+where $\lambda_1, ..., \lambda_n$ are the eigenvalues of $H/D$. Now, assume $H$ is positive definite. This means that all eigenvalues are positive, and if $\lambda$ is the largest eignevalue,
+$$
+\frac{1}{2}\sum_{i=1}^n \lambda_ix_i'^2 \leq \frac{1}{2}\lambda ||x'||^2 = \frac{1}{2}\lambda ||x||^2.
+$$
+Now, given $|E_2(a, x)| < \frac{1}{2} \lambda$ and $\frac{x^T \cdot H \cdot x}{2} \leq \frac{1}{2}\lambda ||x||^2$ for all $x$ where $||x|| < j$, we can see that
+$$
+f(a + x) - f(a) = \frac{x^T \cdot H \cdot x}{2} + ||x||^2E_2(a, x) \geq \frac{1}{2}\lambda ||x||^2 - \frac{1}{2}\lambda ||x||^2 = 0.
+$$
+This shows that $a$ is a local minimum within the neighborhood of radius $j$.
+
+On the other hand, assume $H$ is negative definite. This means that all eigenvalues are negative, and if $\lambda$ is the smallest eignevalue,
+$$
+\frac{1}{2}\sum_{i=1}^n \lambda_ix_i'^2 \geq \frac{1}{2}\lambda ||x'||^2 = \frac{1}{2}\lambda ||x||^2.
+$$
+Now, given $|E_2(a, x)| < \frac{1}{2} (-\lambda)$ and $\frac{x^T \cdot H \cdot x}{2} \geq \frac{1}{2}\lambda ||x||^2$ for all $x$ where $||x|| < j$, we can see that
+$$
+f(a + x) - f(a) = \frac{x^T \cdot H \cdot x}{2} + ||x||^2E_2(a, x) \leq \frac{1}{2}\lambda ||x||^2 - \frac{1}{2}\lambda ||x||^2 = 0.
+$$
+This shows that $a$ is a local maximum within the neighborhood of radius $j$.
+
+This completes the proof that if $H$ is positive definite (resp. negative definite), then the value of $f$ at $a$ is a local minimum (resp. maximum).
+\end{proof}
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}[Solution]
+If $p = (a_0, ..., a_n) \in P_n$, let $g: \mathbb{R}^{n+1} x \mathbb{R} \rightarrow \mathbb{R}$ denote a function such that $g(p, x) = a_0 + a_1x + ... + a_nx^n$. $g$ is in class $C^{\infty}$ because the output of $g$ is a polynomial of the inputs, and partial derivatives of any order are clearly continuous for polynomials (this is true because the derivative of a polynomial is another polynomial, and all polynomials are continuous).
+
+Suppose $x_0$ is a simple root of some $p_0 \in P_n$. We know by definition $f(p_0, x_0) = p_0(x_0) = 0$. In addition, we know that $p_0$ is a simple root, which means $p_0(x_0) = (x - x_0)q(x)$, where $q(x)$ is a polynomial and $q(x_0) \neq 0$. Observe that
+$$
+\frac{\partial f}{\partial x}(p_0, x) = \frac{\partial f}{\partial x}p_0(x) = \frac{\partial f}{\partial x}((x - x_0)q(x)) = q(x) + (x - x_0)q'(x),
+$$
+with the last step being true due to the product rule. Observe that by replacing $x$ with $x_0$, we see that $\frac{\partial f}{\partial x}(p_0, x_0) = q(x_0) \neq 0$. 
+
+Now, we can apply the implicit function theorem to show that there exists a neighborhood $B$ of $p_0$ in $P_n$ and a unique function $r : P_n \rightarrow \mathbb{R}$ such that $g(x, r(x)) = 0$ for all $x \in B$. Additionally $r$ is a function of class $C^{\infty}$ given $g$ is of class $C^{infty}$. This function $r$ satisfies all the necessary properties outlined in the problem, and thus the proof is complete.
+\end{proof}
+
+\begin{problem}{4(i $\rightarrow$ ii)}
+\end{problem}
+\begin{proof}[Solution]
+Assume there exists a $C^k$ function $\phi$ on an open neighborhood of $0$ in $\mathbb{R}^n$ such that $\phi(0) = x$, $D\phi(y)$ is invertible for all $y \in U$, and $\phi(U \cap \mathbb{R}^m) = \Phi(U) \cap A$. The inverse function theorem proves that $\phi^{-1}(x)$ exists for all $x \in \phi(U)$ given $D\phi(x)$ is nonsingular for all $x \in U$.
+
+Consider the function $F : \phi(U) \rightarrow \mathbb{R}^{n-m}$ where $F(x) = g(\phi^{-1}(x))$ where $x \in \phi(U)$ and $g : \mathbb{R}^n \rightarrow \mathbb{R}^{n - m}$ is the function such that if $x = (x_1, ..., x_n)$, then $g(x) = (x_{m+1}, ..., x_n)$. 
+
+First, note that for any $x \in A \cap \phi(U)$, $\phi^{-1}(x) =y \in U \cap \mathbb{R}^m$ given $\phi(U \cap \mathbb{R}^m) = \phi(U) \cap A$. Then, note that $g(y) = 0$ because $y \in U \cap \mathbb{R}^m$, which means that the last $(n-m)$-coordinates are zero. This shows that $F(x) = g(\phi^{-1}(x)) = 0$ for any $x \in A \cap \phi(U)$, and thus $A \cap \phi(U) \subset F^{-1}(0)$.
+
+Next, assume that $x \in F^{-1}(0)$. That means $x \in \phi(U)$ and the last $n-m$ coordinates of $x$ are 0. This shows that $x$ is in the subspace $\mathbb{R}^m$ as well as $\phi(U)$, thus $x \in A \cap \phi(U)$. This shows that $F^{-1}(0) \subset A \cap \phi(U)$, and therefore $A \cap \phi(U) = F^{-1}(0)$.
+
+Next, given $\phi$ is of class $C^k$ and $D\phi(x)$ is non-singular for every point $x \in U$, the inverse function theorem shows that $\phi^{-1}$ is also of class $C^k$. $g$ is also of class $C^k$ because $g$ is a linear transformation (the matrix for linear transformation $g$ is the $n \ x \  n$ identity matrix with the bottom $n-m$ rows cut off). Note that this is true because the first order partial derivatives of $g$ are identical at every point in the domain, and every higher order partial derivative is 0 everywhere (which trivially shows the partial derivatives are all continuous.) Corollary 7.2 of Munkers thus shows that the composition $F(x) = g(\phi^{-1}(x))$ is of class $C^k$. Lastly, we know that $\phi(U)$ is open due to Theorem 8.2 of Munkers given $U$ is open, $\phi$ is one-to-one, and $D\phi(x)$ is non-singular for all $x \in U$. This completes the proof on the existence of $F : U' \rightarrow \mathbb{R}^{n-m}$ such that $Df(x)$ is surjective for all $y \in U$ and $A \cap U = F^{-1}(0)$.
+\end{proof}
+
+\begin{problem}{4(ii $\rightarrow$ iii)}
+\end{problem}
+\begin{proof}[Solution]
+Assume there exists an open neighborhood $U$ of $x$ in $\mathbb{R}^n$ and a $C^k$ function $F : U \rightarrow \mathbb{R}^{n-m}$ such that $DF(y)$ is surjective for all $y \in U$ and $A \cap U = F^{-1}(0)$.
+
+To solve this problem we simply apply the Implicit function theorem to $F$, which can by expressed in the form $F(a, b)$ where $a \in \mathbb{R}^m$ and $b \in \mathbb{R}^{n-m}$. We are given $F$ is of class $C^k$, and we are given that $(y, z) = x \in U$ thus $F(y, z) = 0$. In addition, we know $det\frac{\partial f}{\partial y}(y, z) \neq 0$ because we are given that $DF(a)$ is non-singular for all $a \in U$. The implicit function theorem states that there is a neighborhood $U_1 \in \mathbb{R}^m$ of $y$ and a unique function of class $C^k$ $g: U_1 \rightarrow \mathbb{R}^{n-m}$ such that $g(y) = z$ and $F(x, g(x)) = 0$ for all $x \in U_1$. Next, note that if $0 = F(x, g(x))$, $0 \neq F(x, a)$ for any other $a$ in $g(U_1)$ due to the uniqueness of $g$. By definition $F(x, g(x)) = 0$ is equivalent to $(x, g(x)) \in A \cap U$. This implies that for any $x \in U_1$, there exists one $y \in g(U_1)$ such that $(x, y) \in A \cap U$. This shows that $(A \cap U) \cap (U_1 \ x \ g(U_1))$ defines the graph of $g$ because there is only one element $y$ in $g(U_1)$ such that $(x, y) \in A \cap U$. Lemma 8.1 then shows that $g(U_1)$ must be an open set, and it is clear that for a sufficiently small $U_1$, $(U_1 \ x \ g(U_1)) \subset U$, in which case $A \cap (U_1 \ x \ g(U_1))$ defines the graph of $g$. This completes the proof.
+\end{proof}
+
+\begin{problem}{4(iii $\rightarrow$ iv)}
+\end{problem}
+\begin{proof}[Solution]
+Assume there exists neighborhoods $U_1$ of $y$ and $U_2$ of $z$ and a $C^k$ function $g:U_1 \rightarrow U_2$ such that the intersection $A \cap (U_1 \ x \ U_2)$ is the graph of $g$.
+
+Define $U'$ as the set $U_1$ that is translated from $y$ to $0$. Define the function $h: U' \rightarrow \mathbb{R}^n$ such that $h(a) = (a + y, g(a + y))$. First, observe that $h(0) = (y, g(y)) = x$. Next, observe that the identity function is clearly of class $C^k$ and we are given that $g$ is of class $C^k$ for all $U_1$, the function $h$ is clearly also of class $C^k$ (all the partial derivatives are clearly continuous). Next, observe that for any arbitrary $V' \subset U'$, $h(V')$ represents a subset of $A$ given $h(U') = (U_1, g(U_1))$. In addition, Theorem 8.2 shows that $h(U')$ must be open given $U'$ is open, thus there exists a $U$ such that $h(V') = U \cap A$. Lastly, to prove that $Dh(a)$ is injective for all $a \in U'$, observe that the top $m$ rows of $Df(a)$ are taken from $I$ and the bottom $n-m$ rows of $Df(a)$ are taken from $Dg(a)$. The matrix is injective given the number of columns is equal to the number of linearly independent columns. This completes the proof.
+\end{proof}
+
+\begin{problem}{4(iv $\rightarrow$ i)}
+\end{problem}
+\begin{proof}[Solution]
+Assume there exists an open neighborhood $V \subset \mathbb{R}^m$ of 0 and an injective $C^k$ function $h : V \rightarrow \mathbb(R)^n$ such that $h(0) = x$, $Dh(a)$ is injective for all $y \in V$ and for every open subset $V' \subset V$ there exists an open subset $U \subset \mathbb{R}^n$ such that $h(V') = U \cap A$. 
+
+Let $X$ denote a subspace of $\mathbb{R}^n$  such that $h(V) \subset X$ and $dim(X)$ is minimized. Let $v_1, ..., v_m$ denote the basis of $X$, which we assume is orthonormal due to the Gram-Schmidt process. Similarly, let $v_{m+1}, ... v_n$ denote the orthonormal basis of $X^{\perp}$. It is easy to see that $v_1, .., v_n$ is basis of $\mathbb{R}^n$. Let this basis be called $C$, and let the standard basis be $S$. Then, let $\phi : V \rightarrow \mathbb{R}^n$ such that $\phi(x) = h( f_1(I_{S \rightarrow I} x))$ where $f_1$ is the function that changes $(x_1, ..., x_n)$ into $(x_1, ..., x_m)$. Observe that Observe that $\phi(0) = h( f_1(I_{S \rightarrow I} 0)) = h(0) = x$. Next, observe that the change of base operation is clearly of $C^k$ given it is a linear transformation, and so is $f_1$. $h$ is given to be of class $C^k$ for $x \in V$, Corollary 7.2 of Munkers shows that $\phi$ is of class $C^k$. In addition, the change of base is injective, $h$ is injective, and $f_i$ is injective given $h(V) \subset X$. This shows $\phi$ is injective. Lastly, observe that $f_1(I_{S \rightarrow I}(V \cap \mathbb{R}^m)) = V$ in basis $S$ because $h(V) \subset X$. Thus then shows that $\phi(V \cap \mathbb{R}^m) = h( f_1(I_{S \rightarrow I} (V \cap \mathbb{R}^m))) = V \cap A$. Lastly, note that $\phi(V) = V \cap A$, thus $\phi(V \cap \mathbb{R}^m) = V \cap A = (V \cap A) \cap A = \phi(V) \cap A.$ This completes the proof.
+ \end{proof}
+
+\begin{problem}{5a}
+\end{problem}
+\begin{proof}[Solution]
+First, note that that $w_1 + w_2 \in W$ for any $w_1, w_2 \in W$ due to the addition property of subspaces. Then, we know that $aw \in W$ for any $a \neq 0$ and $w \in W$ due to the scalar multiple property of subspaces. Lastly, we know $\pi(x + w) = \pi(x)$ because $\pi$ is a projection onto $V/W$ and every vector component in $W$ is mapped to 0 in this projection.
+
+To prove that $\pi$ is a linear transformation, it is sufficient to prove that $\pi(\alpha_1(v_1 + w_1) + \alpha_2(v_2 + w_2)) = \alpha_1 \pi(v_1 + w_1) + \alpha_2 \pi(v_2 + w_2)$, where $v_1, v_2 \in V/W$ and $w_1, w_2 \in W$. Note that $v_1 + w_1$ and $v_2 + w_2$ can represent any arbitrary vector in $V$. First, observe that
+$$
+\pi(\alpha_1(v_1 + w_1) + \alpha_2(v_2 + w_2)) = \pi(\alpha_1v_1 + \alpha_2v_2 + \alpha_1 w_1 + \alpha_2 w_2) = \pi(\alpha_1v_1 + \alpha_2v_2) = \alpha_1\pi(v_1) + \alpha_2\pi(v_2).
+$$
+The last step is ture because $\pi$ $v_1$ and $v_2$ are already elements of $V/W$, and the projection $\pi$ merely acts as an identity transformation for these two variables. Then, observe that
+$$
+\alpha_1\pi(v_1) + \alpha_2\pi(v_2) = \alpha_1\pi(v_1 + w_1) + \alpha_2\pi(v_2 + w_1),
+$$
+and this completes the proof.
+
+Given $\pi$ is a projection map, we know $\pi(x) = 0$ if and only if $x \perp V/W$ (Definition 3.1 Lin. Alg. Done Wrong). Observe that if $x \in V$, $x \perp V/W$ if and only if $x \in W$ (for example, if $x$ cannot be expressed as a linear sum of of the basis of $W$, then it is clearly not perpendicular to $V/W$). This means that $ker(\pi) = W$. Lastly, observe that $dim(V/W) = rank(\pi)$, $dim(V) = dim(\pi)$, and $dim(W) = dim(Ker(\pi))$, and thus by the rank-nullity theorem, we can see that $dim(V/W) + dim(W) = dim(V)$, which then shows that $dim(V/W) = dim(V) - dim(W)$.
+\end{proof}
+
+\begin{problem}{5b}
+\end{problem}
+\begin{proof}[Solution]
+In this question, we aim to show that for each linear $T : V \rightarrow V'$ such that $T(w) = 0$ for all $w \in W$, there exists exactly one linear $T' : V/W \rightarrow V$. Consider a basis $v_1, ..., v_k$ of $W$ and a basis $v_{k+1}, ..., v_n$ of $W ^{\perp}$. As stated in the previous part, it is clear that $v_1, ..., v_n$ is a basis of $V$ (Section 3.3 Lin. Alg. Done Wrong). Then, observe that the basis of $V/W$ is equal to $v_{k+1}, ..., v_n$ because $v_1, ..., v_k \notin V/W$ and no vector in $V/W$ can be represented as a sum of bases in which at least one of $v_1, ..., v_k$ is present. This shows that every linear transformation in $Maps(V/W, V')$ uniquely defined by how it maps $v_{k+1}, ..., v_n$ onto some $V'$ (no two linear transformations can map the basis in exactly the same way by definition). Then, observe that if $T(w) = 0$ for all $w \in W$, that shows that every linear transformation in $T(V, V')$ transforms the bases $v_1, ..., v_k$ to $0$, and the bases $v_{k+1}, ..., v_n$ are mapped to vectors in $V'$. Again, given no two linear transformations can map the bases in the same way, the number of linear transformations $T(V, V')$ is equivalent to the number of ways $v_{k+1}, ..., v_n$ is mapped onto some $V'$. This shows that the number of linear transformations in $T(V, V')$ and $T(V/W, V')$ are the same, which completes the proof.
+\end{proof}
+
+\begin{problem}{5c}
+\end{problem}
+\begin{proof}[Solution]
+We know from the rank-nullity theorem that $dim(T) = dim(im(T)) - rank(T)$, and we have shown in part $a$ that $dim(T/ker(T)) = dim(T) - dim(ker(T))$. These two show that $dim(T/ker(T)) = rank(T)$, which is equal to $im(T)$. Given these two sets have the same dimension, that means that they have the same number of vectors in their basis. Thus, there the change of bases matrix between these two spaces will define an isomorphism between $im(T)$ and $V/ker(T)$. This shows that $im(V)$ and $V/ker(T)$ are isomorphic.
+
+Going further, let $v_1, ..., v_m$ denote the basis of $ker(T)$, and let $v_{m+1}, ..., v_n$ denote the basis of $im(T)$. We know that $v_1, ..., v_n$ is a basis of $V$ (Section 3.3 Lin. Alg. Done Wrong). Then, we have previously shown in part $b$ that the basis of $V/ker(T)$ is equal to $v_{m+1}, ..., v_n$. Thus, $im(T)$ and $V/ker(T)$ have the same basis, which means that the change of basis function is the identity relationship. This shows that there is a very natural isomorphism exists.
+\end{proof}
+
+\begin{problem}{5d}
+\end{problem}
+\begin{proof}[Solution]
+We are given that $W \subset V$ and $i$ is an injective mapping of $W$ onto $V$ given it is the linear transformation given by the inclusion of a subspace. This means that the dual space $V^{v}$ is either equal to $W^{v}$ or is a superset of $W^{v}$. It is impossible for $W^v$ to be larger than $V^v$. Next, note that the adjoint linear transformation $i^v$ is surjective because we know that $i$ is injective (which means the columns are linearly independent), and the adjoint of this linear transformation clearly has linearly independent rows, which shows surjectivity. 
+
+Lastly, observe that the kernel of $i^v$ depends entirely on the difference between the number of rows and columns $i^v$ has because $i^v$ is surjective. For example if $i^v$ was square, the difference between the number of rows and columns is zero and also the kernel is trivial. The dimensions of this matrix is dependent on the difference between $dim(V^v)$ and $dim(W^v)$, because these are the sizes of the inputs and outputs of $i^v$. As shown in part $a$, this difference can be expressed as $dim(V^v/W^v)$. Observe that $V^v/W^v = (V/W)^v$, and thus $dim(V/W)^v = dim(ker(i^v))$. This shows the existence of an isomorphism between these two sets.
+\end{proof}
+
+\begin{problem}{6a}
+\end{problem}
+\begin{proof}[Solution]
+Assume $a$ is a local maximum or local minimum, and assume for the sake of contradiction that $a$ is not a critical point of $\phi$. If $a$ is not a critical point, that implies $D(f)(a)_{|V} \neq 0$. If we let $D(\phi)(a)= (a_1, ..., a_n)$, that implies that there exists $1 \leq i \leq n$ where $a_i$ is not $0$. Assume without loss to generality that $a_i$ is positive (if $a_i$ is negative, swap all occurrences of $e_i$ and $-e_i$ later in the proof). Let $e_i \in \mathbb{R}^n$ denote the $i$-th element of the standard basis. Given that $\phi = f_{|\{F = 0\}}$ is differentiable, Theorem 5.2 of Munkers shows that all directional derivatives exist at $a$, and $D_v(\phi)(a) = D(\phi)(a) \cdot v$. Thus, $D_{e_1}(\phi)(a) = D(\phi)(a) \cdot e_1 = a_1 > 0$. By the definition of directional derivative,
+$$
+D_{e_1}(\phi)(a) = lim_{t \rightarrow 0} \frac{\phi(a + te_1) - f(a)}{t},
+$$
+which then implies that there exists $\delta > 0$ where $\left|\frac{\phi(a + te_1) - \phi(a)}{t} - D_{e_1}(\phi)(a)\right| < \frac{a_1}{2}$ for all $|t| < \delta$. This implies that $\frac{\phi(a + te_1) - \phi(a)}{t} - D_{e_1}(\phi)(a) > -\frac{a_1}{2}$, and given $D_{e_1}(\phi)(a) = a_1$, $\frac{\phi(a + te_1) - \phi(a)}{t} > \frac{a_1}{2}$ for all $|t| < \delta$. For any positive $t$ less than $\delta$, this inequality shows that $\phi(a + te_1) - \phi(a) > 0$, which means that any neighborhood of $a$ within he given contrstraints will contain some point $a + te_1$ where $\phi(a + te_1) > f(a)$. This shows that $a$ cannot be a local maximum. For any negative number $t$ greater than $-\delta$, $\frac{\phi(a + te_1) - \phi(a)}{t} > \frac{a_1}{2}$ shows that $\phi(a + te_1) - \phi(a) < 0$. This means that any neighborhood of $a$ within the constraints will contain some point $a + te_1$ where $\phi(a + te_1) < \phi(a)$. This shows that $a$ cannot be a local minimum. We can observe that $a$ is neither a local maximum nor local minimum, but this contradicts the fact that $a$ is either a local minimum or local maximum for $\phi$. This contradiction shows that if a point is a local maximum or a local maximum, then it is a critical point of $\phi$.
+\end{proof}
+
+\begin{problem}{6b}
+\end{problem}
+\begin{proof}[Solution]
+Part b of the previous problem shows that there is an isomorphism between the set of all linear transformations between $V/W \rightarrow V'$ and $V \rightarrow V'$. 
+[Incomplete]
+\end{proof}
+
+\begin{problem}{6c}
+\end{problem}
+\begin{proof}[Solution]
+Given some point $(x, y)$, the distance between this point and the given line is 
+$$
+f(x, y) = \frac{(-mx + y - k)^2}{m^2 + 1}.
+$$
+We will try to minimize this function while staying within the constraints
+$$
+g(x, y) = \frac{x^2}{a^2} + \frac{y^2}{b^2} - 1 = 0.
+$$
+Observe that $\nabla g = (\frac{2x}{a^2}, \frac{2y}{b^2})$ and $\nabla f = (\frac{2xm^2 + 2(y - k)}{m^2 + 1}, \frac{2x + 2(-m - k)}{m^2 + 1})$. The minimum distance is reached when $\nabla f = \lambda g$ due to the Lagrange multiplier method.
+
+
+\end{proof}
+
+
+\end{document}

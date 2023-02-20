@@ -1,0 +1,330 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 3}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}[Solution]
+Given there are five questions, there are $\binom{5}{3} = 10$ possible arrangements out of the five problems where the student gets three correct. For any given arrangement of getting three questions correct, the probability of this arrangement occurring is $\frac{1}{4} * \frac{1}{4} * \frac{1}{4} * (1 - \frac{1}{4}) * (1 - \frac{1}{4}) = \frac{9}{1024}$. Given that each of the ten arrangements have the same probability of occurring (because getting one problem correct is independent to the correctness of any other problem), the probability of getting three of the five questions correct is $10 * \frac{9}{1024} = \frac{90}{1024} = \frac{45}{512} = 0.08789 ...$ .
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}[Solution]
+The probability that the student gets at least a three is equivalent to the probability that they get either three, four, or five problems correct. Given that these events are clearly disjoint, the rule regarding addition of probabilities for disjoint events states that $P(X \geq 3) = P(X = 3) + P(X = 4) + P(X = 5)$, where $X$ is the variable denoting the number of questions the student gets correct. We have already determined in the previous section that $P(X = 3) =\frac{45}{256} = 0.1758 ...$ . 
+
+For $P(X = 4)$, note that there are five questions, and there are $\binom{5}{4} = 5$ possible arrangements out of the five problems where the student gets four correct. For any given arrangement of getting four questions correct, the probability of this arrangement occurring is $\frac{1}{4} * \frac{1}{4} * \frac{1}{4} * \frac{1}{4} * (1 - \frac{1}{4}) = \frac{3}{1024}$. Given that each of the five arrangements have the same probability of occuring (because getting one problem correct is independent to the correctness of any other problem), the probability of getting four of the five questions correct is $5 * \frac{3}{1024} = \frac{15}{1024} = 0.0146...$ .
+
+For $P(X = 5)$, note that there are five questions, and there are $\binom{5}{5} = 1$ possible arrangements out of the five problems where the student gets all five correct. The probability of this arrangement occurring is $\frac{1}{4} * \frac{1}{4} * \frac{1}{4} * \frac{1}{4} * \frac{1}{4} = \frac{1}{1024}$. Thus, probability of getting all five questions correct is $\frac{1}{1024} = 0.00097...$ .
+
+Thus, the probability that the student passes is
+$$
+P(X \geq 3) = P(X = 3) + P(X = 4) + P(X = 5) = \frac{90}{1024} + \frac{15}{1024} + \frac{1}{1024} = \frac{3}{32} = 0.09375...
+$$
+\end{proof}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{proof}[Solution]
+First, we calculate the values of $P(X = 2), P(X = 1), $ and $P(X = 0).$ For $P(X = 2)$, note that there are five questions, and there are $\binom{5}{2} = 10$ possible arrangements out of the five problems where the student gets two correct. For any given arrangement of getting two questions correct, the probability of this arrangement occurring is $\frac{1}{4} * \frac{1}{4} *(1 - \frac{1}{4}) * (1 - \frac{1}{4}) * (1 - \frac{1}{4}) = \frac{27}{1024}$. Given that each of the ten arrangements have the same probability of occurring (because getting one problem correct is independent to the correctness of any other problem), the probability of getting two of the five questions correct is $10 * \frac{27}{1024} = \frac{135}{512} = 0.2637...$ .
+
+For $P(X = 1)$, note that there are five questions, and there are $\binom{5}{1} = 5$ possible arrangements out of the five problems where the student gets one correct. For any given arrangement of getting one question correct, the probability of this arrangement occurring is $\frac{1}{4} * (1 - \frac{1}{4}) *(1 - \frac{1}{4}) * (1 - \frac{1}{4}) * (1 - \frac{1}{4}) = \frac{81}{1024}$. Given that each of the five arrangements have the same probability of occurring (because getting one problem correct is independent to the correctness of any other problem), the probability of getting one of the five questions correct is $5 * \frac{81}{1024} = \frac{405}{1024} = 0.3955...$ .
+
+For $P(X = 0)$, note that there are five questions, and there are $\binom{5}{0} = 1$ possible arrangements out of the five problems where the student gets no questions correct. The probability of this arrangement occurring is $(1 - \frac{1}{4}) * (1 - \frac{1}{4}) * (1 - \frac{1}{4}) * (1 - \frac{1}{4}) * (1 - \frac{1}{4}) = \frac{243}{1024}$. Thus, probability of getting no questions correct is $\frac{243}{1024} = 0.2373...$ .
+
+Next, using the summation formula for the expected value of a discreet random variable as well as the probability values determined in parts a, b, and c, we see that
+$$
+E[X] = \sum_{x \in X} x(p(x)) = (0)\frac{243}{1024} + (1)\frac{405}{1024} + (2)\frac{270}{1024} + (3)\frac{90}{1024} + (4)\frac{15}{1024} + (5)\frac{1}{1024}= \frac{1280}{1024} = 1.25.
+$$
+Thus, the expected value of the number of questions that the student will get correct is 1.25.
+\end{proof}
+
+\begin{problem}{1.d}
+\end{problem}
+\begin{proof}[Solution]
+First, note that the standard deviation is by definition of the square root of the variance, and the variance of $X$ can be determined by the equation $Var(X) = E[X^2] - (E[X])^2$. We are aware from part c that $E[X] = \frac{5}{4} = 1.25$, thus we will first solve for the value of $E[X^2]$.
+
+According to the formula for the expected value of functions of discreet random variables,
+$$
+E[X^2] = \sum_{x \in X} x^2(p_X(x)) = (0^2)\frac{243}{1024} + (1^2)\frac{405}{1024} + (2^2)\frac{270}{1024} + (3^2)\frac{90}{1024} + (4^2)\frac{15}{1024} + (5^2)\frac{1}{1024}= \frac{2560}{1024} = 2.5.
+$$
+Thus, we observe that $Var(X) = E[X^2] - (E[X])^2 = 2.5 - (1.25)^2 = 0.9375$, and the standard deviation of the number of questions that the student gets correct is $SD(X) = \sqrt{Var(X)} = \sqrt{0.9375} = 0.96825...$ .
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}[Solution]
+It is reasonable to assume that $X$ has an approximate binomial distribution. In this case, a Bernoulli trial would be the process of randomly choosing one individual from the pool of 100,000 individuals and checking if they are Hispanic. There are only two possible outcomes, with the success condition being that the individual is indeed Hispanic and the failure condition being that the individual is not Hispanic. 
+
+Next, to verify the binomial conditions, note that a finite number of Bernoulli trials (12 trials to be exact) is occurring where the trials are independent, the sum of the failure and success probabilities are one, and the probabilities for success and failure are the same for every trial. First, note that the each trial is (almost nearly) independent because the failure or success of each trial does not impact the failure or success of the next trial given that the next individual is chosen randomly. It is true that removing a Hispanic or non-Hispanic individual will change the probability of choosing a Hispanic person in the next, trial, but this change in probability is so minuscule that the trials are essentially independent. Second, we are given that the probability of choosing a Hispanic person is 40 percent, and it necessarily follows that the probability of choosing a non-Hispanic person is 60 percent. It is clear that the sum of the failure and success conditions are 1 Hispanic and non-Hispanic are compliment conditions of each other. Lastly, as noted before, although the probability for failure and success are not necessarily the same for each trial, the difference is so minuscule that any differences are negligible. Thus, the binomial conditions are satisfied.
+
+As noted previously, given that 12 people are being chosen, the number of Bernoulli trials occurring is 12 and thus $n = 12$. In addition, the probability of success, choosing a Hispanic person, is 40 percent as given in the problem, and thus $p = .40$.
+\end{proof}
+
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}[Solution]
+Given that the random variable $X$ has an approximate binomial distribution, the function for the probability density function of binomial distributions states that
+$$
+P(X = x) = \binom{n}{x}(p^x)(1- p)^{n - x}.
+$$
+We have determined that $n = 12$ and $p = .40$. Substituting these values into the above equation shows that the probability that no Hispanic jurors are chosen is
+$$
+P(X = 0) = \binom{12}{0}(0.4^0)(1- 0.4)^{12 - 0} = (0.6)^{12} = 0.002177...
+$$
+\end{proof}
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{proof}[Solution]
+The probability that at most two Hispanic jurors are chosen is equivalent to the probability that they get either zero, one, or two Hispanic jurors. Given that these events are clearly disjoint, the rule regarding addition of probabilities for disjoint events states that $P(X \leq 2) = P(X = 0) + P(X = 1) + P(X = 2)$. We have already determined in the previous section that $P(X = 0) = 0.002177...$ . 
+
+Using the probability distribution function for the binomial distribution as done in the previous section,
+$$
+P(X = 1) = \binom{12}{1}(0.4^1)(1- 0.4)^{12 - 1} = 12(0.4)(0.6)^{11} = 0.0174 ...
+$$
+and
+$$
+P(X = 2) = \binom{12}{2}(0.4^2)(1- 0.4)^{12 - 2} = 66(0.4^2)(0.6)^{10} = 0.06385 ...
+$$
+
+Thus, the probability that at most two Hispanic jurors are chosen is 
+$$
+P(X \leq 2) = P(X = 0) + P(X = 1) + P(X = 2) = 0.002177... + 0.0174... + 0.06385... = 0.08343...
+$$
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}[Solution]
+We are given that $P(0 \leq X \leq 2) = 1$ given that the professor never finishes his lecture before the end of the hour and always finishes within two minutes of the end of the hour. Given that $f(x)$ is the probability distribution function for the continuous random variable $X$, it is necessarily true that 
+$$
+P(a \leq X \leq b) = \int_a^b f(x) \ dx.
+$$
+Thus, combining this equation with the fact that $P(0 \leq X \leq 2) = 1$, we can see that
+$$
+1 = P(0 \leq X \leq 2) = \int_0^2 f(x) \ dx = \int_0^2 kx^2 \ dx = \frac{k}{3}x^3 \Big|_0^2 = \frac{8k}{3}.
+$$
+This equation above shows that $1 = \frac{8k}{3}$, and thus $k = \frac{3}{8}$.
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}[Solution]
+The probability that the lecture ends within 1 minute of the end of the hour is equivalent to the probability value $P(0 \leq X \leq 1)$. Given $f(x)$ is the continuous pdf, $P(a \leq X \leq b) = \int_a^b f(x) \ dx.$ Thus, using the value of $k$ derived in the previous section,
+$$
+P(0 \leq X \leq 1) = \int_0^1 f(x) \ dx = \int_0^1 \frac{3}{8}x^2 \ dx =  \frac{1}{8}x^3 \Big|_0^1 = \frac{1}{8} = 0.125.
+$$
+Thus, the probability that the lecture ends within 1 minute of the end of the hour is $\frac{1}{8}$ or $0.125$.
+\end{proof}
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{proof}[Solution]
+The probability that the lecture continues beyond the hour for between 60 and 90 s is equivalent to the probability value $P(1 \leq X \leq 1.5)$ (given 90 seconds is 1.5 minutes). Using the same $P(a \leq X \leq b) = \int_a^b f(x) \ dx$ equation as used in the previous section, we can see that
+$$
+P(1 \leq X \leq 1.5) = \int_1^{1.5} f(x) \ dx = \int_1^{1.5} \frac{3}{8}x^2 \ dx =  \frac{1}{8}x^3 \Big|_1^{1.5} = \frac{1.5^3}{8} - \frac{1}{8} = \frac{2.375}{8} = 0.2969...
+$$
+Thus, the probability that the lecture ends between 60s and 90s of the end of the hour is $\frac{2.375}{8}$ or $0.2969...$ .
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}[Solution]
+We are aware that the cumulative distribution function for a continuous random variable is
+$$
+F(x) = \int_{-\infty}^{x} f(x) \ dx.
+$$
+First, note that the given probability distribution function $f(x)$ is equal to 0 within the interval $(\infty, 0)$, and thus
+$$
+F(x) = \int_{-\infty}^{x} f(x) \ dx = \int_{0}^{x} f(x) \ dx + \int_{-\infty}^{0} f(x) \ dx =  \int_{0}^{x} f(x) \ dx + 0 =  \int_{0}^{x} f(x) \ dx.
+$$
+Thus, substituting in the pdf $f(x)$ into the above equation, we see that
+$$
+F(x) = \int_{0}^{x} f(x) \ dx = \int_{0}^{x} \frac{3}{8}x^2 \ dx = \frac{1}{8}x^3 \Big|_0^x = \frac{x^3}{8}
+$$
+for $x$ between 0 and 2. For $x \leq 0$, as shown previously, $F(x) = 0$. In addition, given that the professor always ends class before two minutes after the hour, $F(x) = 1$ for all $x \geq 2$.
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}[Solution]
+The equation for the expected value of a continuous random variable states that
+$$
+E(X) = \int_{-\infty}^{\infty}x(f(x)) \ dx.
+$$
+Given that $f(x) = 0$ for $x \leq 0$ and $x > 2$, it follows that
+$$
+E(X) = \int_{-\infty}^{\infty}x(f(x)) \ dx = \int_{-\infty}^{0}x(f(x)) \ dx + \int_{0}^{2}x(f(x)) \ dx + \int_{2}^{\infty}x(f(x)) \ dx 
+$$
+$$
+= \int_{-\infty}^{0}0 \ dx + \int_{0}^{2}x(f(x)) \ dx + \int_{2}^{\infty}0 \ dx = \int_{0}^{2}x(f(x)).
+$$
+Then, substituting in the given pdf $f(x)$ into the above equation shows that
+$$
+E(X) =\int_{0}^{2}x(f(x)) \ dx =\int_{0}^{2}x\left(\frac{3}{8}x^2\right) \ dx =\int_{0}^{2}\left(\frac{3}{8}x^3\right) \ dx = \frac{3}{32}x^4 \Big|_0^2 = \frac{48}{32} = 1.5.
+$$
+Thus, the expected value of the random variable $X$ is $1.5$.
+\end{proof}
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}[Solution]
+The equation for the expected value of a function of a continuous random variable states that
+$$
+E(X^2) = \int_{-\infty}^{\infty}x^2(f_X(x)) \ dx.
+$$
+Given that $f_X(x) = 0$ for $x \leq 0$ and $x > 2$, it follows that
+$$
+E(X^2) = \int_{-\infty}^{\infty}x^2(f_X(x)) \ dx = \int_{-\infty}^{0}x^2(f_X(x)) \ dx + \int_{0}^{2}x^2(f_X(x)) \ dx + \int_{2}^{\infty}x^2(f_X(x)) \ dx 
+$$
+$$
+= \int_{-\infty}^{0}0 \ dx + \int_{0}^{2}x^2(f_X(x)) \ dx + \int_{2}^{\infty}0 \ dx =\int_{0}^{2}x^2(f_X(x)).
+$$
+Then, substituting in the given pdf $f(x)$ into the above equation shows that
+$$
+E(X) =\int_{0}^{2}x^2(f_X(x)) \ dx =\int_{0}^{2}x^2\left(\frac{3}{8}x^2\right) \ dx =\int_{0}^{2}\left(\frac{3}{8}x^4\right) \ dx = \frac{3}{40}x^5 \Big|_0^2 = \frac{96}{40} = 2.4.
+$$
+Thus, the expected value of the random variable $X^2$ is $E[X^2] =2.4$.
+
+We are aware that $Var(X) = E[X^2] - (E[X])^2$. We just showed that $E[X^2] =2.4$ and $E[X] = 1.5$ as showed in 4.b. Thus, $Var(X) = 2.4 - 1.5^2 = 0.15$.
+\end{proof}
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{proof}[Solution]
+By definition, the cumulative density function $F(X) = P(X \leq x)$. Thus, the probability that a box of cereal is under 15 oz. is equal to the probability $P(X \leq 15)$, and $P(X \leq 15) = F(15) = \frac{1}{2} + \frac{3(15 - 16)}{8} - \frac{(15 - 16)^3}{32} = \frac{5}{32} = 0.15625$. Thus, the probability that a box of cereal weighs under 15 oz. is $0.15625$.
+\end{proof}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{proof}[Solution]
+First, observe that $P(15 \leq X \leq 17) = P(X \leq 17) - P(X < 15)$ because $X < 15$ is a subset to the condition that $X \leq 17$, and a box is between 15 and 17 ounces only if $X \leq 17$ but not $X < 15$. Next, we are a aware that $P(X = 15) = 0$ given $X$ is a continuous random variable. Thus, $P(X \leq 15) = P(X < 15) + P(X = 15) = P(X < 15)$, and $P(15 \leq X \leq 17) = P(X \leq 17) - P(X \leq 15)$. We have solved for $P(X \leq 15)$ in the previous part, and we will now solve for $P(X \leq 17)$ by computing $F(17)$ as follows
+$$
+P(X \leq 17) = F(17) = \frac{1}{2} + \frac{3(17 - 16)}{8} - \frac{(17 - 16)^3}{32} = \frac{27}{32}.
+$$
+Given that $P(X \leq 15) = \frac{5}{32}$, $P(15 \leq X \leq 17) = P(X \leq 17) - P(X \leq 15) = \frac{27}{32} - \frac{5}{32} = {22}{32} = 0.6875.$ Thus, the probability that a box of cereal weighs between 15 oz. and 17 oz. is $0.6875$.
+\end{proof}
+
+\begin{problem}{5.c}
+\end{problem}
+\begin{proof}[Solution]
+It is possible to find the probability density function of a random variable by taking the derivative of the cumulative density function. Thus, for $0 \leq x \leq 2$,
+$$
+f(x) = \frac{d}{dx}F(x) = \frac{d}{dx} \left(\frac{1}{2} + \frac{3(x - 16)}{8} - \frac{(x - 16)^3}{32}\right) = \frac{3}{8} - \frac{3(x - 16)^2}{32}.
+$$
+Thus, the probability distribution function $f(x) = \frac{3}{8} - \frac{3(x - 16)^2}{32}$ for $0 \leq x \leq 2$. For $x > 2$ and $x < 0$, $F(x)$ is a constant and thus the derivative is 0. This means $f(x) = 0$ for all $x > 2$ and $x < 0$.
+\end{proof}
+
+\begin{problem}{6.a}
+\end{problem}
+\begin{proof}[Solution]
+The equation for the expected value of a continuous random variable states that
+$$
+E(X) = \int_{-\infty}^{\infty}x(f(x)) \ dx.
+$$
+Given that $f(x) = 0$ for $x \leq 0$ and $x \leq 0.5$, it follows that
+$$
+E(X) = \int_{-\infty}^{\infty}x(f(x)) \ dx = \int_{-\infty}^{0.5}x(f(x)) \ dx + \int_{0.5}^{\infty}x(f(x)) \ dx  = \int_{-\infty}^{0.5} 0 \ dx + \int_{0.5}^{\infty}x(f(x)) \ dx = \int_{0.5}^{\infty}x(f(x)) \ dx.
+$$
+Then, substituting in the given pdf $f(x)$ into the above equation shows that
+$$
+E(X) = \int_{0.5}^{\infty}x(f(x)) \ dx =\int_{0.5}^{\infty}x\left(0.15e^{-0.15(x - 0.5)}\right) \ dx = -(x + \frac{20}{3})e^{-0.15(x - 0.5)} \Big|_{0.5}^{\infty}
+$$
+First, note that $-(x + \frac{20}{3})e^{-0.15(x - 0.5)}$ when $x = 0.5$ is equal to $\frac{-43}{6}$. Then, note that as $x \rightarrow \infty$, $-(x + \frac{20}{3})e^{-0.15(x - 0.5)} \rightarrow 0$ because $e^{-0.15(x - 0.5)}$ approaches 0 at a greater order compared to the rate at which $(x + \frac{20}{3})$ diverges away from $0$ $(O(1/e^x) vs. O(x))$. Thus,
+$$
+E(X) = -(x + \frac{20}{3})e^{-0.15(x - 0.5)} \Big|_{0.5}^{\infty} = 0 - \frac{-43}{6} = \frac{43}{6},
+$$
+and thus the expected value of the headway $E(X)$ is $\frac{43}{6} = 7.1666...$.
+\end{proof}
+
+\begin{problem}{6.b}
+\end{problem}
+\begin{proof}[Solution]
+The equation for the expected value of a function of a continuous random variable states that
+$$
+E(X^2) = \int_{-\infty}^{\infty}x^2(f(x)) \ dx.
+$$
+Given that $f(x) = 0$ for $x \leq 0$ and $x \leq 0.5$, it follows that
+$$
+E(X^2) = \int_{-\infty}^{\infty}x^2(f(x)) \ dx = \int_{-\infty}^{0.5}x^2(f(x)) \ dx + \int_{0.5}^{\infty}x^2(f(x)) \ dx  = \int_{-\infty}^{0.5} 0 \ dx + \int_{0.5}^{\infty}x^2(f(x)) \ dx = \int_{0.5}^{\infty}x^2(f(x)) \ dx.
+$$
+Then, substituting in the given pdf $f(x)$ into the above equation shows that
+$$
+E(X^2) = \int_{0.5}^{\infty}x^2(f(x)) \ dx =\int_{0.5}^{\infty}x^2\left(0.15e^{-0.15(x - 0.5)}\right) \ dx = -(x^2 + \frac{40x}{3} + \frac{800}{9})e^{-0.15(x - 0.5)} \Big|_{0.5}^{\infty}
+$$
+First, note that $-(x^2 + \frac{40x}{3} + \frac{800}{9})e^{-0.15(x - 0.5)}$ when $x = 0.5$ is equal to $\frac{-3349}{36} = -95.8055...$ . Then, note that as $x \rightarrow \infty$, $-(x^2 + \frac{40x}{3} + \frac{800}{9})e^{-0.15(x - 0.5)} \rightarrow 0$ because $e^{-0.15(x - 0.5)}$ approaches 0 at a greater order compared to the rate at which $(x^2 + \frac{40x}{3} + \frac{800}{9})$ diverges away from $0$ $(O(1/e^x) vs. O(x^2))$. Thus,
+$$
+E(X^2) = -(x^2 + \frac{40x}{3} + \frac{800}{9})e^{-0.15(x - 0.5)} \Big|_{0.5}^{\infty}= 0 - \frac{-3349}{36} = \frac{3349}{36},
+$$
+and thus $E(X^2)$ is $\frac{3349}{36} = 95.80555... $.
+
+We are aware that $Var(X) = E(X^2) - (E(X))^2$, and substituting in values derived in 6.a and 6.b shows that
+$$Var(X) = E(X^2) - (E(X))^2 = 95.80555 - 7.1666^2 = 44.444...$$
+Then, note that the standard deviation $SD(X) = \sqrt{Var(X)}$, and thus $SD(X) = \sqrt{44.444} = 6.666...$.
+\end{proof}
+
+\begin{problem}{6.c}
+\end{problem}
+\begin{proof}[Solution]
+We are given that for continuous random variables,
+$$
+M_X(t) = E[e^{tx}] = \int_{-\infty}^{\infty}e^{tx}f_X(x) \ dx.
+$$
+Given that $f(x) = 0$ for $x \leq 0$ and $x \leq 0.5$, it follows that
+$$
+M_X(t) = E[e^{tx}] = \int_{-\infty}^{\infty}e^{tx}(f(x)) \ dx = \int_{-\infty}^{0.5}e^{tx}(f(x)) \ dx + \int_{0.5}^{\infty}e^{tx}(f(x)) \ dx  
+$$
+$$
+= \int_{-\infty}^{0.5} 0 \ dx + \int_{0.5}^{\infty}e^{tx}(f(x)) \ dx = \int_{0.5}^{\infty}e^{tx}(f(x)) \ dx.
+$$
+Then, substituting in the given pdf $f(x)$ into the above equation shows that
+$$
+M_X(t) = \int_{0.5}^{\infty}e^{tx}(f(x)) \ dx = \int_{0.5}^{\infty}e^{tx}\left(0.15e^{-0.15(x - 0.5)}\right) \ dx = \int_{0.5}^{\infty}\left(0.15e^{-0.15(x - 0.5) + tx}\right) \ dx 
+$$
+$$
+= \frac{-0.15}{t - 0.15}e^{-0.15(x - 0.5) + tx} \Big|_{0.5}^{\infty}.
+$$
+First, note that $\frac{-0.15}{t - 0.15}e^{-0.15(x - 0.5) + tx}$ when $x = 0.5$ is equal to $\frac{-0.15}{t - 0.15}$. Then, note that as if $t < 0.15$ the moment generating function approaches $0$ as $x \rightarrow \infty$, the function is undefined for $x = 0.15$, and the function approaches negative infinity for $t > 0.15$ and $x \rightarrow \infty$. Thus, the moment generating function is $\frac{-0.15}{t - 0.15}$ for $t < 0.15$, and undefined for all $t > 0.15$.
+\end{proof}
+
+\begin{problem}{6.d}
+\end{problem}
+\begin{proof}[Solution]
+Using the moment generating function defined in the previous part,
+$$
+M_X(0) = \frac{-0.15}{0 - 0.15} = 1.
+$$
+Thus, the solution is yes.
+\end{proof}
+
+\begin{problem}{6.e}
+\end{problem}
+\begin{proof}[Solution]
+The expected value of $X$ can be determined by finding the value of $M'_X(t)$ at $t = 0$. This value should match the value derived in 6.a, which is 7.1666.
+\end{proof}
+
+\begin{problem}{6.f}
+\end{problem}
+\begin{proof}[Solution]
+The expected value of $X$ can be determined by finding the value of $M''_X(t)$ at $t = 0$. This value should match the value derived in 6.b, which is 95.80555.
+\end{proof}
+\end{document}

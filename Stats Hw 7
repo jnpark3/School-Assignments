@@ -1,0 +1,150 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 7}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+It is known that the 95 percent confidence interval is $(\bar{X} - 1.96 \frac{\sigma}{\sqrt{n}}, \bar{X} + 1.96 \frac{\sigma}{\sqrt{n}})$, and given that $\bar{X} = 58.3$, $\sigma = 3.0$, and $n = 25$, it follows that the 95 percent confidence interval is $(57.12, 59.48)$. For the 99 percent confidence interval, the $z$-score is 2.576. Thus, the confidence interval is $(\bar{X} - 2.576 \frac{\sigma}{\sqrt{n}}, \bar{X} + 2.576 \frac{\sigma}{\sqrt{n}})$, and plugging in the numbers yields the interval $(56.75, 59.85)$.
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}
+It is known that the 95 percent confidence interval is $(\bar{X} - 1.96 \frac{\sigma}{\sqrt{n}}, \bar{X} + 1.96 \frac{\sigma}{\sqrt{n}})$, and given that $\bar{X} = 58.3$, $\sigma = 3.0$, and $n = 10$, it follows that the 95 percent confidence interval is $(56.44, 60.16)$. For the 99 percent confidence interval, the $z$-score is 2.576. Thus, the confidence interval is $(\bar{X} - 2.576 \frac{\sigma}{\sqrt{n}}, \bar{X} + 2.576 \frac{\sigma}{\sqrt{n}})$, and plugging in the numbers yields the interval $(55.86, 60.74)$.
+\end{proof}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{proof}
+It is known that, when the standard deviation is not known, the 95 percent confidence interval is $(\bar{X} - t_{25 - 1, 0.025} \frac{S}{\sqrt{n}}, \bar{X} + t_{25 - 1, 0.025} \frac{S}{\sqrt{n}})$, and given that $\bar{X} = 58.3$, $S = 4.3$, $t_{24, 0.025} = 2.0639$, and $n = 25$, it follows that the 95 percent confidence interval is $(56.52, 60.07)$. For the 99 percent confidence interval and 24 degrees of freedom, the $t$ value is 2.767. Thus, the confidence interval is $(\bar{X} - 2.767 \frac{\sigma}{\sqrt{n}}, \bar{X} + 2.767 \frac{\sigma}{\sqrt{n}})$, and plugging in the numbers yields the interval $(55.92, 60.67)$.
+\end{proof}
+
+\begin{problem}{1.d}
+\end{problem}
+\begin{proof}
+It is known that, when the standard deviation is not known, the 95 percent confidence interval is $(\bar{X} - t_{10 - 1, 0.025} \frac{S}{\sqrt{n}}, \bar{X} + t_{10 - 1, 0.025} \frac{S}{\sqrt{n}})$, and given that $\bar{X} = 58.3$, $S = 4.3$, $t_{10, 0.025} = 2.228$, and $n = 10$, it follows that the 95 percent confidence interval is $(55.27, 61.32)$. For the 99 percent confidence interval and 9 degrees of freedom, the $t$ value is 3.249. Thus, the confidence interval is $(\bar{X} - 3.249 \frac{\sigma}{\sqrt{n}}, \bar{X} + 3.249 \frac{\sigma}{\sqrt{n}})$, and plugging in the numbers yields the interval $(53.88, 62.71)$.
+
+It is possible to observe from these results that when $n$ is fixed, a larger confidence level always correlates with a larger confidence interval. When the confidence level is fixed, a larger $n$ correlates with smaller confidence intervals. In addition, when $\sigma$ is unknown, the confidence interval is likely larger because the t-distribution generates larger numbers for fixed confidence levels, no matter what $n$ is.
+\end{proof}
+
+\begin{problem}{2.a, 2.b, 2.c, 2.d}
+\end{problem}
+\begin{proof}
+A 90 percent confidence interval has a z value of 1.645. Given $\sigma$ is known, and given $n = 25$, the confidence interval can be represented in the form $(\bar{X} - 1.645 \frac{\sigma}{\sqrt{25}}, \bar{X} + 1.645 \frac{\sigma}{\sqrt{25}})$. Given this interval is $(65, 77)$, we can see that $\bar{X} = 71$ as it is the midpoint of the interval $65, 77$, and $1.645 \frac{\sigma}{\sqrt{25}} = 6$ as that is the distance between $\bar{X}$ and the bounds of the interval. Doing the algebra shows us that $\sigma = 18.23$. Thus, the sample mean $\bar{X}$ is $71$, the margin of error is $6$, the population standard deviation is $\sigma = 18.23$, standard deviation of the standard mean is $\frac{\sigma}{\sqrt{25}} = 3.647$.
+\end{proof}
+
+\begin{problem}{2.e, 2.f, 2.g, 2.h}
+\end{problem}
+\begin{proof}
+A 90 percent confidence interval with 8 degrees of freedom has a t score of 1.833. Given $\sigma$ is unknown, and given $n = 9$, the confidence interval can be represented in the form $(\bar{X} - 1.833 \frac{\sigma}{\sqrt{9}}, \bar{X} + 1.833 \frac{\sigma}{\sqrt{9}})$. Given this interval is $(65, 77)$, we can see that $\bar{X} = 71$ as it is the midpoint of the interval $65, 77$, and $1.833 \frac{\sigma}{\sqrt{9}} = 6$ as that is the distance between $\bar{X}$ and the bounds of the interval. Doing the algebra shows us that $\sigma = 9.819$. Thus, the sample mean $\bar{X}$ is $71$, the margin of error is $6$, the population standard deviation is $\sigma = 10.94$, standard deviation of the standard mean is $\frac{\sigma}{\sqrt{9}} = 3.273$.
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}
+This statement is false because the population mean is already determined and it is either definitely between 7.8 and 9.4 or definitely not between 7.8 and 9.4.
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}
+This statement is false. For example, it is possible that the distribution of the population is evenly spread bewteen 0 and 17.2 percent alcohol content. In this case, it is certainly not true that 95 percent of all bottles are between the interval 7.8 and 9.4. However, given the sample is sufficiently large, it is possible that the confidence interval can be shrunk such that the generated confidence interval is between 7.8 and 9.4. 
+\end{proof}
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{proof}
+This interpretation is correct, as by definition 95 percent of intervals constructed following this procedure will cover the true population mean.
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+Given the population standard deviation is 250, and given the 90 percent confidence level z score is 1.645, the confidence interval can be represented in the form $(\mu - 1.645\frac{250}{n}, \mu + 1.645\frac{250}{n})$. The margin of error for this interval is $1.645\frac{250}{n}$. In order for $1.645\frac{250}{\sqrt{n}} < 25$, $\sqrt{n} > 16.45$ and thus $n > 270.60$. This means that Riana must collect a sample of at least 271 scores.
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+Luke's sample should be larger than Raina's sample. This is because the margin of error is proportional to the z-score and standard deviation and inversely proportional to sample size. Given z-score is clearly greater for a 99 percent confidence interval compared to a 90 percent confidence interval and given the standard deviation is fixed, it is clear that the population must be larger in order for the margin of error to stay below 25.
+\end{proof}
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}
+Given the population standard deviation is 250, and given the 99 percent confidence level z score is 2.576, the confidence interval can be represented in the form $(\mu - 2.576\frac{250}{n}, \mu + 2.576\frac{250}{n})$. The margin of error for this interval is $2.576\frac{250}{n}$. In order for $2.576\frac{250}{\sqrt{n}} < 25$, $\sqrt{n} > 25.76$ and thus $n > 663.58$. This means that Luke must collect a sample of at least 664 scores.
+\end{proof}
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{proof}
+The t-score for a 99 percent confidence interval with 15 degrees of freedom is 2.9467. Thus, the interval can be represented in the form $(\bar{X} - 2.9467 \frac{s}{\sqrt{n}}, \bar{X} + 2.9467 \frac{s}{\sqrt{n}})$. Given $s = 2.4$, $\bar{X} = 16.3$, and $n = 16$, we see that the 99 percent confidence interval is $(14.53, 18.07)$.
+\end{proof}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{proof}
+The  k percent confidence interval can be represented in the form $(\bar{X} - t \frac{s}{\sqrt{n}}, \bar{X} + t \frac{s}{\sqrt{n}})$. Given $\bar{X} = 16.3$, and assuming $s$ stays at $2.4$, we see that the 99 percent confidence interval is $(16.3 - t \frac{2.4}{\sqrt{n}}, 16.3 + t \frac{2.4}{\sqrt{n}})$. Thus, in order for $\bar{x}$ and $\mu$ to not differ by more than 1 mg, $t \frac{2.4}{\sqrt{n}} < 1$. By trying out multiple values of $n$ and plugging in the value of $n$ and the respective $t$ score for each $n$, it is possible to see that $n = 42$ is the first value where $t \frac{2.4}{\sqrt{n}} < 1$. Thus, the sample size needed is at least 42.
+\end{proof}
+
+\begin{problem}{5.c}
+\end{problem}
+\begin{proof}
+The 90 percent confidence interval will have a smaller t-score compared to the 99 percent confidence interval. Given the margin of error is proportional to t-score and standard deviation (which stays constant) while it is inverse to sample size, it is possible to see that a reduction in t-score enables one to decrease the sample size while staying within some fixed margin of error. This means that a smaller sample size is needed so that $\bar{x}$ and $\mu$ differ by no more than 1 mg.
+\end{proof}
+
+\begin{problem}{6.a}
+\end{problem}
+\begin{proof}
+Statement 1 is false as we are certain that 46 percent of Americans in the sample support the decision. Statement 2 is correct as $(43, 49)$ represents the confidence interval that is centered at 46 percent and with a margin of error of 3 percent. Statement 3 is correct as that is the definition of the confidence interval given the interval is $(43, 49)$. Statement 4 is false. For example, it is possible that this sample was an unusually one-sided group of individuals and the proportion of support in the population is actually far lower than what is indicated in the confidence interval. In that case, it is possible that less than 95 percent of sample proportions will fall within the interval. Statement 5 is false as the margin of error is proportional to the t-score, and the t-score decreases as the confidence level decreases. This means that the margin of error at a 90 percent confidence level should be lower than 3 percent.
+\end{proof}
+
+\begin{problem}{6.b}
+\end{problem}
+\begin{proof}
+In this experiment, the null hypothesis would be that less than 50 percent of Americans think the 2010 healthcare law is unconstitutional. On the other hand, the alternative hypothesis would be that more than 50 percent of Americans think the 2010 healthcare law is unconstitutional. Supporting the alternative hypothesis would support the given claim.
+\end{proof}
+
+\begin{problem}{6.c}
+\end{problem}
+\begin{proof}
+The sampling distribution for $X = np$ under the null hypothesis is that we assume $X$ is normal with a mean of $(1012)(0.5) = 506$, and the standard deviation is $\sqrt{np(1-p)} = \sqrt{(1012(0.25))} = 15.91$. 
+\end{proof}
+
+\begin{problem}{6.d}
+\end{problem}
+\begin{proof}
+Given 46 percent of 1012 respondents agreed with the decision, that means 465.52 people agreed with the decision in the sample. This value is $\frac{506-465.52}{15.91} = 2.544$ standard deviations below the mean, the p-score is the probability that a sample is less than 2.544 standard deviations below the mean. This value is approximately $0.0055$. 
+\end{proof}
+
+\begin{problem}{6.e}
+\end{problem}
+\begin{proof}
+We are able to approximate the distribution of $X$ under the null hypothesis using normal approximation due to the law of large numbers.
+\end{proof}
+
+\begin{problem}{6.f}
+\end{problem}
+\begin{proof}
+Based on the results from d, we are able to reject the null hypothesis because $0.0055 < 0.01$.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,195 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 5}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+First, by definition observe that 
+$$
+\psi(\{c\}) = \{\psi(gcg^{-1}) | g \in G)\} = \{\psi(g)\psi(c)\psi(g^{-1}) | g \in G)\},
+$$
+given $\{gcg^{-1} | g \in G)\}$ denotes the conjugacy class $\{c\}$ and given $\psi$ is an isomorphism. Similarly, observe that $\{\psi(c)\} = \{g\psi(c)g^{-1} | g \in G)\}$. Then, $\psi$ is by definition a bijection, and for any $g \in G$, there exists $g' \in G$ such that $\psi(g') = g$. In general, the set $\psi(G)$ must equal $G$. It then follows that 
+$$
+\{\psi(c)\} = \{g\psi(c)g^{-1} | g \in G)\} = \{\psi(g)\psi(c)\psi(g^{-1}) | g \in G)\},
+$$
+which concludes the proof that $\{\psi(c)\} = \psi(\{c\})$.
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}
+We have shown in the previous problem that $\psi(\{c\}) = \{\psi(c)\}$. It is clear that $|\psi(\{c\})| \geq |\{\psi(c)\}|$, as $|\psi(\{c\})| < |\{\psi(c)\}|$ would imply that $\psi$ maps at least one element in $\{c\}$ onto two elements in $\{\psi(c)\}$, which would make $\psi$ not well-defined. On the other hand, we know that $|\psi(\{c\})| \leq |\{\psi(c)\}|$ because $\psi$ is by definition one-to-one, and $\psi$ will not two elements in $\{c\}$ onto the same value in $\{\psi(c)\}$. It thus follows that $|\psi(\{c\})| = |\{\psi(c)\}|$.
+\end{proof}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{proof}
+First observe that if $a \in \{(1 2)\}$, $g(1 2)g^{-1} = a$ for some $g \in G$, and it follows that $a^2 = g(1 2)g^{-1}g(1 2)g^{-1} = g(1 2)(1 2)g^{-1} = gg^{-1} = I$, and thus $a$ must have order 2. Also, for the sake of contradiction, assume that $a \in \{(1 2)\}$ is not a $2$-cycle. It then follows that for any ordering $a_1, a_2, ..., a_n$, applying the permutation $a$ must change the position of at least $3$ elements in this ordering. Assume $a_i, a_j, a_k$ all end up in different locations after applying permutation $a = g(1 2)g^{-1}$ for some $g \in G$. Without loss to generality, assume permutation $g$ does not map $a_k$ to position $1$ or $2$. Then, applying permutation $g$ onto the ordering would move $a_k$ to some position, $(1 2)$ would not change the location of $a_k$, and finally applying permutation $g^{-1}$ will move $a_k$ back to its original position. This contradicts the fact that $a_k$ is moved to a different position by $a$, and thus $a$ must be a 2-cycle. Thus, any elements in $\{(1 2)\}$ must be a 2-cycle.
+
+Next, to show that every 2-cycle is in the conjugacy class of $\{(1 2)\}$, let $(a b)$ be some arbitrary 2-cycle. Then, consider the permutation $g = (1...b)(2...a)$ (if $a = 1$ then simply remove the second cycle). We will show that $g(12)g^{-1} = (ab)$. First, for any element that is not at position $a, b$, note that $g$ maps that element to some position, $(12)$ does nothing given only elements from $a, b$ are mapped to positions $1, 2$, and $g^{-1}$ sends the element back to its original position. However, for the element at position $b$, $(1...b)(2...a)$ sends it to position $1$, $(12)$ sends it to position $2$, and $g^{-1}$ sends it to position $a$. Using a similar process, $g(12)g^{-1}$ also sends the element at position $a$ to position $b$. Thus, we can see that for any $(ab)$, there exists $g \in G$ such that $g(12)g^{-1} = (ab)$. This proves that every 2-cycle is in $\{(12)\}$. There are $\binom{n}{2}$ ways to choose $a, b$ for $(ab)$, and thus there are exactly $\binom{n}{2} = (n)(n - 1)/2$ elements in the conjugacy class $\{(1 2)\}$.
+\end{proof}
+
+\begin{problem}{1.d}
+\end{problem}
+\begin{proof}
+We have shown in our proof of 1.c that $\sigma$ is a conjugate of $(12)$ if and only if it is a 2-cycle, and thus if $\sigma$ is a 2-cycle, $\{\sigma\} = \{(12)\}$, which directly implies $|\{\sigma\}| = |\{(12)\}|$.
+
+First, we will show that $\sigma' \in \{\sigma\}$ if and only if the cycle decomposition of $\sigma'$ is the same as $\sigma$. Observe that if $\sigma = (a_1^1 ... a_1^{n_1})(a_2^1 ... a_2^{n_2}) ... (a_k^1 ... a_k^{n_k})$, consider a permutation $g$ that maps to position $a_i^j$ the element originally from some position $b_i^j$ (for every $i \leq k, j \leq n$). For any element in position $c$ where $c \neq b_i^j$ for any $i, j$, it then follows that $g$ maps $c$ to some position, $\sigma$ then does nothing to that element, and $g^{-1}$ maps $c$ back to its original position. This shows that for any element at position $c$ not in the form $b_i^j$, $c$ is a fixed point in $g\sigma g^{-1}$. On the other hand, for an element in position $b_i^j$, $g$ maps it to position $a_i^j$, $\sigma$ maps this element to position $a_i^{j + 1}$, and $g^{-1}$ maps that element to position $b_i^{j + 1}$. This shows that $g\sigma g^{-1}$ maps any element at position $b_i^{j}$ to position $b_i^{j + 1}$. Doing this for every element at position $b_i^{j}$ for every $i, j$ shows us that $g\sigma g^{-1} = (b_1^1 ... b_1^{n_1})(b_2^1 ... b_2^{n_2}) ... (b_k^1 ... b_k^{n_k})$. This proves that for any $g \in G$, $g\sigma g^{-1}$ has the same cycle decomposition as $\sigma$, which then shows that $\sigma' \in \{\sigma\}$ if and only if the cycle decomposition of $\sigma'$ is the same as $\sigma$.
+
+Next, observe that if there are $c_j$ cycles of length $j$ in the cycle decomposition of some permutation $\sigma \in S_n$,
+$$
+|\{\sigma\}| = \frac{n!}{\prod_{a =12}^n (a)^{c_a}(c_a!)}
+$$
+because there are $n!$ total permutations in $n!$, but there are $a^{c_a}(c_a!)$ different ways to embed $c_a$ cycles of length $a$ for each $a$.
+
+We have proven in 1.c that 
+$$
+|\{(12)\}| = \frac{n!}{2(n - 2)!}.
+$$
+We claim that for any non-identity $\sigma$, $|\{(12)\}| \leq |\{\sigma\}|$, with equality only being reached when $\sigma$ is a transposition.
+
+First, observe that if $\sigma$ is a permutation with multiple different cycle lengths, then consider $f(\sigma)$ which removes the cycle(s) of the largest length from $\sigma$. This map $f$ surjectively maps $\{\sigma\}$ onto $\{f(\sigma)\}$. Thus, if we prove that $|\{(12)\}| \leq |\{f(\sigma)\}|$, then $|\{(12)\}| \leq |\{\sigma\}|$. Repeat this process of removing the largest cycles until only one cycle length is left; if we can prove that $|\{(12)\}| \leq |\{\sigma\}|$ where $\sigma$ only has one cycle length, then we prove $|\{(12)\}| \leq |\{\sigma\}|$ in the general case.
+
+Next, use the formula we derived to show that when $\sigma$ contains $k$ cycle of length $m$,
+$$
+|\{\sigma\}| = \frac{n!}{m^k(k!)((mk)!)}
+$$
+$$
+|\{\sigma\}| = \frac{1}{k!}\frac{n(n-1)(n-2)...(n-mk+1)}{m^k}.
+$$
+Note that decreasing $m$ to $2$ would eliminate the last $(m - 2)k$ elements from the numerator and divide he denominator by $(m/2)^k$. We can see that the when $n > 6$, dividing the denominator by $(m/2)^k$ is more substantial than dividing the $(m-2)k$ elements from the numerator. Thus
+$$
+\frac{1}{k!}\frac{n(n-1)(n-2)...(n-2k+1)}{2^k} \leq \frac{1}{k!}\frac{n(n-1)(n-2)...(n-mk+1)}{m^k}.
+$$
+This proves that if we can show $|\{(12)\}| \leq |\{\sigma\}|$ for $\sigma$ that is only composed of disjoint 2-cycles, then that proves the general case. Now, observe that
+$$
+\binom{n}{2k} = \frac{n(n-1)(n-2)...(n-2k+1)}{2k!} \leq \frac{n(n-1)(n-2)...(n-2k+1)}{2^kk!} 
+$$
+Using binomial properties, the values for $k$ that minimizes $\binom{n}{2k}$ when $k = 1$, $k = n/2$, or $k = n/2 - 1$. However, we see that out of these three values (and any other $k$ for that matter), $\frac{n(n-1)(n-2)...(n-2k+1)}{2^kk!} = \binom{n}{2k}$ only when $k = 1$; in other cases, the later is significantly greater. Thus, we show that $|\{\sigma\}|$ is optimized when there is exactly one transposition in $\sigma$, which proves that for any $\sigma$, $|\{(12)\}| \leq |\{\sigma\}|$ for any $\sigma \neq I$ and $n > 6$. This then proves that $|\{(12)\}| = |\{\sigma\}|$ if and only if $\sigma$ is a transposition given $n > 6$.
+
+For the cases when $n = 2, 3, 4$, in $n = 2$ the set of transpositions is the only non-identity conjugate class, in $n = 3$ the set of transpositions is the only conjugate class of order 3, and in $n = 4$, the set of transpositions is the only conjugate class of order 6. This completes the proof.
+\end{proof}
+
+\begin{problem}{1.e}
+\end{problem}
+\begin{proof}
+In 1.d, we have shown that $|\{\sigma\}| = |\{(12)\}|$ if and only if $\sigma$ is a $2$-cycle and $n \neq 6$. We have shown in our proof of 1.c that $\{(12)\}$ consists of every $2$-cycle, and thus $\{(12)\} = \{\sigma\}$ for any 2-cycle $\sigma$. Given that $|\{(12)\}| = |\{\psi((12))\}|$ as a consequence of 1.b, it immediately follows that when $n \neq 6$, $\{\psi((12))\} = \{\sigma\}$ for some $2$-cycle $\sigma$, which then shows that $\{\psi((12))\} = \{(12)\}$. We have shown in $1.a$ that $\{\psi((12))\} = \psi(\{(12)\})$, and thus for any $2$-cycle $\sigma$, $\sigma \in \{(12)\}$, and because $\psi(\{(12)\}) = \{\psi((12))\} = \{(12)\}$ $\psi(\sigma) \in \{(12)\}$ which means it is a 2-cycle given $\{(12)\}$ only contains 2-cycles.
+\end{proof}
+
+\begin{problem}{1.f}
+\end{problem}
+\begin{proof}
+Given $\psi$ is an isomorphism, $\psi(12)\psi(13) = \psi((12)(23)) = \psi(132)$. It then follows that $\psi(12)\psi(13)$ has the same order as $\psi(132)$, which is $3$ ($\psi(132)^3 = \psi((132)^3) = \psi(I) = I$).
+
+Assume for the sake of contradiction that $\psi(13) = (ak)$ where $a, k \neq i, j$. Then, it is clear that $\psi(12)\psi(13) = (ij)(ak)$, which has an order of 2. On the other hand, assume for the sake of contradiction that $\{i, j\} = {a, k}$. Then $\psi(12)\psi(13) = (ij)(ak) = I$, which has an order of 1. Thus, given $\psi(12) = (ij)$, the decomposed 2-cycle $\psi(13)$ must contain exactly one of $i$ or $j$ but not both. In other word, $\psi(13) = (ik)$ with perhaps $i, j$ being swapped.
+\end{proof}
+
+\begin{problem}{1.g}
+\end{problem}
+\begin{proof}
+Observe that if $\sigma \in S_n$, $(\phi_g \circ \psi)(\sigma) = g^{-1}(\psi(\sigma))g$. Then, observe that
+$$
+(\phi_g \circ \psi)(12) = g^{-1}(\psi(\sigma))g = g^{-1}(ij)g.
+$$
+For any element in position $c$ that is not $1, 2$, $g^{-1}$ maps that element to some location, $(ij)$ does nothing to it given positions $i, j$ are occupied by elements from positions $1, 2$ originally, and then $g$ maps the element to its original location. Thus, the permutation $g^{-1}(ij)g$ does not change the location of any element other than those at positions 1, 2. On the other hand, for the element at position 1, $g^{-1}$ maps it to position $i$, $(ij)$ maps it to position $j$, $g$ maps that to position 2. Similarly, the element at position $2$ is mapped to position $1$. Thus, 
+$$
+(\phi_g \circ \psi)(12) = g^{-1}(\psi(\sigma))g = g^{-1}(ij)g = (12).
+$$
+Then, observe that
+$$
+(\phi_g \circ \psi)(13) = g^{-1}(\psi(\sigma))g = g^{-1}(ik)g.
+$$
+For any element in position $c$ that is not $1, 3$, $g^{-1}$ maps that element to some location, $(ik)$ does nothing to it given positions $i, k$ are occupied by elements from positions $1, 3$ originally, and then $g$ maps the element to its original location. Thus, the permutation $g^{-1}(ik)g$ does not change the location of any element other than those at positions 1, 3. On the other hand, for the element at position 1, $g^{-1}$ maps it to position $i$, $(ik)$ maps it to position $k$, $g$ maps that to position 3. Similarly, the element at position $3$ is mapped to position $1$. Thus, 
+$$
+(\phi_g \circ \psi)(13) = g^{-1}(\psi(\sigma))g = g^{-1}(ik)g = (13).
+$$
+\end{proof}
+
+\begin{problem}{1.h}
+\end{problem}
+\begin{proof}
+For the sake of contradiction, assume $\psi(1k) = (aj)$ where $a, j > 1$ and $(aj) \neq (23)$. Choose the lowest number $n$ that is not $a, j, 1$. Such a number must exist, and it must be at most $3$. We are given that $\psi(1n) = (1n)$ (given $k > 3$). It then follows that $\psi((1k)(1n)) = \psi(1k)\psi(1n) = (aj)(1n)$. Observe that $(1k)(1n)$ is a $3$-cycle given $k > 3$ and $n \leq 3$, and it follows that $\psi((1k)(1n))$ is a $3$-cycle given $\psi$ is an isomorphism. However, $(aj)(1n)$ consists of two disjoint 2-cycles and thus has an order of $2$. This contradicts the fact that $\psi((1k)(1n)) = \psi(1k)\psi(1n) = (aj)(1n)$.
+
+Now, we for the sake of contradiction, assume $\psi(1k) = (23)$. If $k = 4$, note that 
+$$
+\psi((23)(14)) = \psi(23)\psi(14) = \psi((13)(12)(13))\psi(14)= \psi(13)\psi(12)\psi(13)\psi(14) = (13)(12)(13)(23) = I.
+$$
+Observe that $(23)(14)$ has an order of 2, and thus $\psi((23)(14))$ has an order of $2$. However, $I$ has an order of 1. This contradiction eliminates the case where $k = 4$. If $k > 4$, note that
+$$
+\psi((1k)(14)) = \psi(1k)\psi(14) = (23)(14).
+$$
+Observe that $(1k)(14)$ is a $3$-cycle, while $(23)(14)$ has an order of $2$. This contradiction eliminates the case where $k \geq 4$, and thus we complete the proof that $\psi(1k) \neq (aj)$ where $a, j > 1$.
+
+We know that $\psi(1k) = \psi(1j)$ for some $j \geq k$ (we know $j$ cannot be less than $k$ or else $\psi(1k) = \psi(1j) = (1j)$, implying $\psi$ is not one-to-one).
+
+Now, let $h$ be a permutation such that $h(j) = k$. Then, as done in the previous part, $\phi_h \circ \psi$ maps $(1k)$ onto $(1k)$.
+\end{proof}
+
+\begin{problem}{1.i}
+\end{problem}
+\begin{proof}
+Using $1.g$ as the base case and $1.h$ as the inductive step, we can show that $\psi(1k) = (1k)$ for every $k \leq n$. Observe that for any $(ab)$, $(1a)(1b)(1a) = (ab)$, and thus $\psi(ab) = \psi(1a)\psi(1b)\psi(1a) = (1a)(1b)(1a) = (ab)$. This shows that $\psi$ preserves every $2$-cycle. We have shown in multiple previous homeworks that every element in $S_n$ is a composition of $2$-cycles. This shows that for any $\sigma \in S_n$, if $a_1, a_2, ..., a_k$ is the 2-cycle decomposition of $\sigma$, $\psi(\sigma) = \psi(a_1)...\psi(a_k) = a_1 ... a_k = \sigma$. This proves that $\psi$ is the identity, and hence any automorphism of $S_n$ is given by conjugation.
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}
+We prove that the kernel of $\phi : G \rightarrow S_{G/H}$ is a subgroup. First, observe that $\phi(a) = \phi(aI) = \phi(a)\phi(I)$ for any $a \in G$, and thus $\phi(I)$ must be the identity. It immediately follows that the identity is in the Kernel of $\phi$. Next if $\phi(a) = I$ and $\phi(b) = I$ for any $a, b \in G$, $\phi(ab) = \phi(a)\phi(b) = I$, and thus the kernel is closed. Next, if $\phi(a) = I$, $\phi(aa^{-1}) = \phi(a)\phi(a^{-1}) = I$, and thus $\phi(a^{-1}) = \phi(a)^{-1} = I$. This shows that the kernel contains an inverse for every element. Lastly, the associativity property is implied from the fact that $G$ is a group. This completes the proof that the kernel of the map from $G \rightarrow S_{G/H}$ is a subgroup of $G$. We even know the kernel is a normal subgroup, as $\phi(gkg^{-1}) = \phi(g)\phi(k)\phi(g^{-1}) = \phi(g)\phi(g^{-1}) = \phi(I) = I$ for any $k$ in the kernel and $g \in G$.
+
+Now, for the sake of contradiction, assume an element $g$ in the kernel is not in $H$. That implies that $g$ is an element such that $g(aH) = aH$ for every coset $aH$, and thus $gH = H$. However, given $g \notin H$, it is clear that the elements of $gH$ are different from the elements of $H$ (for example, $I \in H$, $I \notin gH$). This contradicts the fact that $gH = H$, and thus the kernel is a subgroup that is entirely inside $H$.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}
+We have proved in the previous part that the Kernel is a normal subgroup of $G$ contained in $H$. Due to Lagrange's theorem, given the kernel $N$ is a subgroup of $H$, the order of $N$ is a factor of $H$. Thus, given $|G/H| = n$, it follows that $|G/N|$ is a multiple of $n$, and thus the index of $N$ is divisible by $n$. In addition, we can see that $|G/N|$ divides $n!$ because $|G/N|$ is $|G/H| = n$ times the cycle lengths of $|G/N|$, which is definitely a factor of $(n - 1)!$.
+\end{proof}
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}
+
+{\bf{Cube:}} $|X| = 5$, Faithful (yes), $S \cong A_4$, $|S| = 12$.
+
+We have shown in homework 2 that there are 5 inscribed cubes in a dodecahedron. This group action is faithful because no matter what the group action on the dodecahedron is, if it is not the identity, then the cube must not map to itself. The stabilizer group is $A_4$ because the symmetries of a cube are represented by $S_4$, but every other rotation of the cube misaligns the dodecahedron. Thus, the stabilizer group is isomorphic to $A_4$. $|S| = |A_4| = 12$.
+
+{\bf{Pairs of opposite faces:}} $|X| = 6$, Faithful (Yes), $S \cong D_10$, $|S| = 10$.
+
+There are six pairs of opposite faces on a dodecahedron. This group action is faithful because if a group action is not the identity, then the opposite pairs must not map to itself. The stabilizer group is $D_10$ because there are two orientations of the two faces, and there are 5 rotations that can be done. The change in orientation is the two-cycle and the rotation is the 5-cycle in the group $D_10$. $|S| = |D_10| = 10$.
+
+{\bf{Faces:}} $|X| = 12$, Faithful (Yes), $S \cong C_5 = \mathbb{Z}/5\mathbb{Z}$, $|S| = 5$.
+
+There are twelve faces on a dodecahedron. This group action is faithful because if a group action is not the identity, then a face must not map to itself. The stabilizer group is $C_5$ because there are five ways to rotate a face, and that rotation is generated by the single $72$ degree rotation. $|S| = |C_5| = 5$.
+
+{\bf{Vertices:}} $|X| = 20$, Not Faithful (No), $S \cong C_3 = \mathbb{Z}/3\mathbb{Z}$, $|S| = 3$.
+
+There are twenty vertices on a dodecahedron. This group action is not faithful because a rotation about the axis that goes straight through a vertex preserves the location of that vertex, yet this rotation would not be an identity map. The stabilizer group is $C_3$ because there are three ways to rotate about a vertex, and that rotation is generated by the single $120$ degree rotation. $|S| = |C_3| = 3$.
+
+{\bf{Vertices:}} $|X| = 30$, Faithful (Yes), $S \cong C_2 = \mathbb{Z}/2\mathbb{Z}$, $|S| = 2$.
+
+There are thirty edges on a dodecahedron. This group action is faithful because the only non-identity map is reflecting the dodecahedron about the plane formed by the edge and the center, and this map is injective. The stabilizer group is $C_2$ because a reflection about a plane is a 2-cycle. $|S| = |C_2| = 2$.
+\end{proof}
+
+
+
+
+
+\end{document}

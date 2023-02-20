@@ -1,0 +1,206 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 1}
+\author{Jian Park\\
+20900: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+
+\begin{problem}{1}
+\end{problem}
+\begin{proof}[Solution]
+First, we observe that a measurable function multiplied by a constant is still measurable. If $f$ is a measurable function, we are aware from Proposition 1 of 18.1 that for any $c$, the set $\{x \in X | f(x) < c\}$ is measurable. Then, for any constant $\alpha$, consider the function $\alpha f$. Note that the set $\{x \in X | \alpha f(x) < c\}$ is equivalent to the set $\{x \in X | \alpha f(x) < c/\alpha\}$ for any $c \in \mathbb{R}$. The set $\{x \in X | f(x) < c/\alpha\}$ is measurable given $c/\alpha \in \mathbb{R}$, and by extension $\{x \in X | \alpha f(x) < c\}$ is measurable for any $c \in \mathbb{R}$ (given $f(x) < c/\alpha$ is equivalent to $\alpha f(x) < c$). Thus, we can see that $\alpha f$ is measurable given $f$ is measurable and $\alpha$ is a constant. Next, to show that the sum of two measurable functions is also measurable, consider two measurable functions $f$ and $g$. Consider the set $\{x \in X | (f + g)(x) < c\}$. The condition that $(f + g)(x) < c$ is equivalent to the condition that $f(x) < c - g(x)$, and this implies that there exists a rational number $a$ between $f(x)$ and $c - g(x)$. This then implies that $ \{x \in X | (f + g)(x) < c\} = \bigcup_{r \in \mathbb{Q}}(f^{-1}((-\infty, r))\cap g^{-1}((-\infty, a - r)))$ because for any $(f + g)(x) < c, x \in f^{-1}((-\infty, r))\cap g^{-1}((-\infty, a - r))$ for some $r \in \mathbb{Q}$. In addition, if $x \in f^{-1}((-\infty, r))\cap g^{-1}((-\infty, a - r))$, that directly implies $(f + g)(x) < c$. Now, given $f, g$ are measurable, $f^{-1}((-\infty, r))$ and $g^{-1}((-\infty, a - r))$ are measurable sets. We also are given that the union of measurable sets are measurable. It thus follows that $\{x \in X | (f + g)(x) < c\}$ is measurable for any $c \in \mathbb{R}$, and thus addition preserves measurability. Combining the results of scalar multiplication and addition shows that $\alpha f + \beta g$ is measurable.
+
+First, given measurable function $f$, we will show that $f^2$ is also measurable. First, note that the set $\{x \in X | f^2(x) > c\}$ is equivalent to the set $\{x \in X | f(x) > \sqrt{c}\} \cup \{x \in X | f(x) < -\sqrt{c}\}$. Note that $f(x) < -\sqrt{c}$ and $f(x) > \sqrt{c}$ cannot both be true for $x \in X$ when $c \geq 0$ (when $c < 0$ the set $\{x \in X | f^2(x) > c\}$ and is empty and trivially measurable). This shows that $\{x \in X | f^2(x) > c\} = \{x \in X | f(x) > \sqrt{c}\} \cap \{x \in X | f(x) < -\sqrt{c}\}$, and $\{x \in X | f(x) > \sqrt{c}\}, \{x \in X | f(x) < -\sqrt{c}\}$ are both measurable given $f$ is measurable. We know that the union of measurable sets is also measurable as shown in Prop. 1 of 17.1, and thus $\{x \in X | f^2(x) > c\} = \{x \in X | f(x) > \sqrt{c}\} \cap \{x \in X | f(x) < -\sqrt{c}\}$ is measurable for any $c \in \mathbb{R}$. This then shows that $f^2$ is measurable for any measurable $f$. Next, for any measurable functions $f, g$, consider the function $(f + g)^2 + (-1)f^2 + (-1)g^2$. $f + g$ is measurable as addition is previously shown to preserve measurability, and thus $(f + g)^2$ is measurable. $(-1)f^2$ and $(-1)g^2$ are also measurable given $f^2, g^2$ are measurable, and multiplication by a constant preserves measurability. Lastly, given addition preserves measurability, $(f + g)^2 + (-1)f^2 + (-1)g^2$ is measurable. By expanding out this expression, this function is equivalent to $2(f * g)$. Multiplying this function by $1/2$ proves that $f * g$ is measurable for any measurable $f, g$.
+
+First, let $f, g$ be measurable functions. The set $\{x \in X | max\{f, g\}(x) > c\} = \{x \in X | f(x) > c\} \cup \{x \in X | g(x) > c\}$ because $max\{f, g\}(x) > c$ for some $x \in X$ if and only if $f(x) > c$ or $g(x) > c$. Since the union of two measurable sets is measurable and $\{x \in X | f(x) > c\}$, $\{x \in X | g(x) > c\}$ are both measurable, $max\{f, g\}$ is measurable. Next, note that $min\{f, g\} = -max\{-f, -g\}$ for any $f, g$. Given $f, g$ are measurable, $-f, -g$ are also measurable due to scalar multiplication. Then, it follows that $max\{-f, -g\}$ is measurable, and again because scalar multiplication preserves measurability, $min\{f, g\} = -max\{-f, -g\}$ is measurable.
+\end{proof}
+
+\begin{problem}{2.i}
+\end{problem}
+\begin{proof}[Solution]
+Note that the set $\{\cap_{i \geq n} E_i\}_{n \in \mathbb{N}}$ is an ascending sequence because $\cap_{i \geq n} E_i \subset \cap_{i \geq n + 1} E_i$. The continuity of measure shows that
+$$
+\mu\left(\bigcup_{n \in \mathbb{N}} \bigcap_{i \geq n} E_i \right) = \lim_{n \rightarrow \infty} \mu\left(\bigcap_{i \geq n} E_i\right).
+$$
+Then, note that $\bigcap_{i \geq n} E_i = E_n \cap ...\cap E_k \cap ... \subset E_k$ for any $k \geq n$. Monotonicity then shows that $\mu\left(\bigcap_{i \geq n} E_i\right) \leq \mu(E_k)$ for any $k \geq n$. Thus, when considering this relationship as $n \rightarrow \infty$, it is clear that
+$$\lim_{n \rightarrow \infty} \mu\left(\bigcap_{i \geq n} E_i\right) \leq \liminf_{n \rightarrow \infty} \mu(E_n),$$
+And thus the proof of the problem is complete.
+\end{proof}
+
+\begin{problem}{2.ii}
+\end{problem}
+\begin{proof}[Solution]
+Note that the set $\{\cup_{i \geq n} E_i\}_{n \in \mathbb{N}}$ is a descending sequence because $\cup_{i \geq n + 1} E_i \subset \cup_{i \geq n} E_i$. The continuity of measure shows, when $\mu(E_1) < \infty$ (which is given since $\mu(X) < \infty$),
+$$
+\mu\left(\bigcap_{n \in \mathbb{N}} \bigcup_{i \geq n} E_i \right) = \lim_{n \rightarrow \infty} \mu\left(\bigcup_{i \geq n} E_i\right).
+$$
+Then, note that $\bigcup_{i \geq n} E_i = E_n \cup ...\cup E_k \cup ... \supset E_k$ for any $k \geq n$. Monotonicity then shows that $\mu\left(\bigcup_{i \geq n} E_i\right) \geq \mu(E_k)$ for any $k \geq n$. Thus, when considering this relationship as $n \rightarrow \infty$, it is clear that
+$$\lim_{n \rightarrow \infty} \mu\left(\bigcup_{i \geq n} E_i\right) \geq \limsup_{n \rightarrow \infty} \mu(E_n),$$
+And thus the proof of the problem is complete.
+\end{proof}
+
+\begin{problem}{2.iii}
+\end{problem}
+\begin{proof}[Solution]
+Consider the sequence where $E_n = \{n\}$. $\mu(E_n) = 1$ for every $E_n$ given each set has exactly one element, and thus $\liminf_{n \rightarrow \infty} \mu(E_n) = 1$. However, note that the intersection of any two $E_i, E_j$ for $i \neq j$ is empty. And thus, $\cap_{i \geq n} E_i$ is empty for any $n \in \mathbb{N}$, and $\bigcup_{n \in \mathbb{N}} \bigcap_{i \geq n} E_i$ is empty as a result. This shows
+$$
+\bigcup_{n \in \mathbb{N}} \bigcap_{i \geq n} E_i = 0 < 1 = \liminf_{n \rightarrow \infty} \mu(E_n).
+$$
+\end{proof}
+
+\begin{problem}{2.iv}
+\end{problem}
+\begin{proof}[Solution]
+Let $E_n$ denote the set of all natural numbers that are greater than $n$. It is clear that $\cup_{i \geq n} E_i = E_n$ because $E_n$ contains every set $E_{n+1}, E_{n+2}, ...$ . Thus, 
+$$\mu\left(\bigcap_{n \in \mathbb{N}} \bigcup_{i \geq n} E_n\right) = \mu\left(\bigcap_{n \in \mathbb{N}} E_n\right) = 0,$$
+with the last equality being true because no single natural number is contained in every $E_n$, and thus $\bigcap_{n \in \mathbb{N}} E_n$ is empty. However, note that $\mu(E_n) = + \infty$ for every $n \in \mathbb{n}$ because $E_n$ contains a countably infinite set of natural numbers. As a result, $\limsup_{n \rightarrow \infty} \mu(E_n) = +\infty$. This provides an example of where
+$$
+\bigcap_{n \in \mathbb{N}} \bigcup_{i \geq n} E_i < \limsup_{n \rightarrow \infty} \mu(E_n).
+$$
+\end{proof}
+
+\begin{problem}{3}
+\end{problem}
+\begin{proof}[Solution]
+First, consider the simple function $f_k : \mathbb{N} \rightarrow \left[0, \infty \right]$ where $f_k(x) = f(x)$ for $x \leq k$ and $f_k(x) = 0$ for $x > k$. It is clear that $f_k(x)$ can yield a finite number of outputs (at most $k + 1$). In addition, note that $0 \leq f_k \leq f$ for every $k \in \mathbb{N}$, and as a result $f_k$ is simple for every $k \in \mathbb{N}$. Next, if $f_k$ takes on the values $c_1, ..., c_j$ and $f^{-1}(c_i) = E_i$, the definition in 18.1 shows that
+$$
+\int_{\mathbb{N}} f_k \ d\mu_{\#} = \sum_{i = 1}^j c_i \mu_{\#}(E_i) = \sum_{i = 1}^k f_k(i).
+$$
+The last equality is derived by re-indexing the summation. Note that $c_i \mu_{\#}(E_i) = f(x_1) + ... + f(x_m)$ where $E_i = x_1, ..., x_m$. The set $E_1, ..., E_j$ cover the entirety of $\{1, 2, ..., k\}$, and thus $c_1 \mu_{\#}(E_1) + ... + c_j \mu_{\#}(E_j)= f(x_{1, 1}) + ... + f(x_{1, m}) + ... + f(x_{j, m'}) = \sum_{i = 1}^k f_k(i)$. Next, observe that 
+$$
+\int_{\mathbb{N}} f_k \ d\mu_{\#} = \sum_{i = 1}^k f_k(i) \leq \sum_{i = 1}^{k+1} f_{k+1}(i) = \int_{\mathbb{N}} f_{k+1} \ d\mu_{\#}.
+$$
+Thus, $\int_{\mathbb{N}} f_k \ d\mu_{\#}$ increases as $k$ increases. As $k \rightarrow \infty$, it is clear that $\int_{\mathbb{N}} f_k \ d\mu_{\#}$ approaches the supremum of $\int_{\mathbb{N}} \phi \ d\mu_{\#}$ for every simple function $\phi$. This thus suggests that
+$$
+\lim_{k \rightarrow \infty} \int_{\mathbb{N}} f_k \ d\mu_{\#} = \int_{\mathbb{N}} f \ d\mu_{\#} = \lim_{k \rightarrow \infty} \sum_{i = 1}^k f_k(i) =  \sum_{n \in \mathbb{N}} f(n).
+$$
+This proves the first part of the question.
+
+If $\int_{\mathbb{N}} f^p d\mu < \infty$, we have just proved that this is equivalent to $\sum_{n \in \mathbb{N}} f^p(n) = \sum_{n \in \mathbb{N}} |a_n|^p < \infty$. This by definition shows that $\{a_n\}_{n \in \mathbb{N}} \in l_p{\mathbb{N}}$. If $\{a_n\}_{n \in \mathbb{N}} \in l_p{\mathbb{N}}$, then $\sum_{n \in \mathbb{N}} f^p(n) = \sum_{n \in \mathbb{N}} |a_n|^p < \infty$. We have just proved that this is equivalent to the statement $\int_{\mathbb{N}} f^p d\mu < \infty$, which completes the proof for both directions.
+\end{proof}
+
+\begin{problem}{4}
+\end{problem}
+\begin{proof}[Solution]
+Let $E_n$ denote the subset of $X$ containing every $x \in X$ where $n > f(x) \geq n-1$. Note that $E_1, ...$ partitions the domain of $f$. Then, note that 
+$$
+\sum_{n \in \mathbb{N}}\mu(\{f \geq n\}) = \sum_{n \in \mathbb{N}} \mu\left(\bigcup_{i = 1}^{\infty} \{\chi_{E_i} f \geq n\}\right) = \sum_{n \in \mathbb{N}} \sum_{i \in \mathbb{N}} \mu(\{\chi_{E_i} f \geq n\}) = \sum_{n \in \mathbb{N}} \sum_{i \in \mathbb{N}} k(i, n),
+$$
+where $k(i, n) = \mu(E_i)$ if $i \leq n$, and 0 otherwise. By changing the indices of the summation above, it is possible to see that
+$$
+\sum_{n \in \mathbb{N}} \sum_{i \in \mathbb{N}} k(i, n) = \sum_{i \in \mathbb{N}} (i - 1)\mu(E_i).
+$$
+Next, we consider the value of $\int_X f d\mu - \sum_{i \in \mathbb{N}} (i - 1)\mu(E_i)$. Given $E_1, E_2, ...$ are disjoint, 
+$$
+\int_X f d\mu = \int_{E_1} f d\mu + \int_{E_2} f d\mu + ...
+$$
+Thus,
+$$
+\int_X f d\mu - \sum_{i \in \mathbb{N}} i\mu(E_i) = \left(\int_{E_1} f d\mu - (0)\mu(E_1)\right) + \left(\int_{E_2} f d\mu - (1)\mu(E_2)\right) + ... = \sum_{n \in \mathbb{N}} \left(\int_{E_n} f d\mu - (n-1)\mu(E_n)\right)
+$$
+$$
+= \sum_{n \in \mathbb{N}} \left(\int_{E_n} f - (n-1) d\mu\right).
+$$
+Note that $n > f(x) \geq n-1$ and thus $1 > f(x) - (n-1) \geq 0$. Proposition 8 states that
+$$
+0 = \int_{E_n} 0 d\mu \leq \int_{E_n} f - (n-1) d\mu \leq \int_{E_n} 1 d\mu = \mu(E_n)
+$$
+and therefore
+$$
+0 \leq \sum_{n \in \mathbb{N}} \left(\int_{E_n} f - (n-1) d\mu\right) \leq \sum_{n \in \mathbb{N}} \mu(E_n) = \mu(X).
+$$
+Given $\mu(X) < \infty$, 
+$$\int_X f d\mu - \sum_{i \in \mathbb{N}} (i - 1)\mu(E_i) = \int_X f d\mu - \sum_{n \in \mathbb{N}}\mu(\{f \geq n\}) < \infty$$
+and thus $\int_X f d\mu < \infty$ if and only if $\sum_{n \in \mathbb{N}}\mu(\{f \geq n\}) < \infty$. This completes the proof.
+\end{proof}
+
+\begin{problem}{5}
+\end{problem}
+\begin{proof}[Solution]
+Let $\eta_n = \#\{j \geq n : x \in E_j\}$. Note that $\eta(x) - \eta_2(x) = 1$ when $x \in E_1$ and $0$ otherwise. Thus, $\eta = \chi_{E_1} + \eta_2$. Repeat this process with $\eta_2$ to see that $\eta = \chi_{E_1} + \chi_{E_2} + \eta_3$. Repeat this process to show that $\eta = \sum_{i}\chi_{E_i}$. Thus, 
+$$
+\int_X \eta = \int_X \left(\chi_{E_1} + ...\right).
+$$
+$\chi_{E_i}$ is clearly a simple function because it only takes on two values, and Proposition 8 of 18.1 shows that
+$$
+\int_X \left(\chi_{E_1} + ...\right) = \int_X \chi_{E_1} + \int_X \chi_{E_2} + ... = \mu(E_1) + \mu(E_2) ... = \sum_{n} \mu(E_n).
+$$
+The second to last inequality follows from the definition of the integral for simple functions, $\int_X \phi d\mu = \sum_{k = 1}^n c_k \mu(E_k)$. The summation is simple because the values that $\chi_{E_i}$ can take are only 1 and 0. Thus, this completes the proof that
+$$
+\int_X \eta =\sum_{n} \mu(E_n).
+$$
+\end{proof}
+
+\begin{problem}{6.a}
+\end{problem}
+\begin{proof}[Solution]
+To show that $M$ is a $\sigma$-algebra, it is necessary to show that $M$ is closed under complement, countable union, and countable intersection. First, for closure under complement, consider the two types of elements in M: the countable elements and the elements $E$ where $X - E$ is countable. Closure under complement is easy to see because if $E$ is countable, then the complement, $X - E$, has the property that $X - (X - E) = E$ is countable, which means that $E$ is an element of $M$. If $E$ is an element such that $X - E$ is countable, then the complement of E, $X - E$ is by definition countable and therefore in $M$. Thus, $M$ is closed under complement.
+
+Next, to prove closure under countable union, consider a set of subsets $E_1, E_2, ... \in M$ . If at least one element $E_i$ in this set has the property that $X - E_i$ is countable, then $E_1 \cup E_2 \cup ... \in M$ because $E_1 \cup E_2 \cup ... \supset E_i$, and thus $X - (E_1 \cup E_2 \cup ...) \subset X - E_i$, which shows that $X - (E_1 \cup E_2 \cup ...)$ is definitely countable. On the other hand, if every element in this set is countable, then it is known that a countable union of countable sets is still countable, and thus $E_1 \cup E_2 \cup ... \in M$. This shows that $M$ is closed under countable union.
+
+Lastly, to prove closure under countable intersection, consider a set of subsets $E_1, E_2, ... \in M$ . If at least one element $E_i$ in this set is countable, then $E_1 \cap E_2 \cap ... \subset E_i$ and $E_1 \cap E_2 \cap ...$ is countable and in $M$. On the other hand, if every element $E_i$ in this set follows the property that $E_i^c$ is countable, then there exist $E_1', E_2', ...$ where $E_i' = E_i^c$ and $E_i'$ is by definition countable. Then the de Morgan's laws state that $E_1 \cap E_2 \cap ... = E_1'^c \cap E_2'^c \cap ... = (E_1' \cup E_2' \cup ...)^c$. Given that a countable union of countable sets is countable, $E_1' \cup E_2' \cup ...$ is countable and thus $(E_1' \cup E_2' \cup ...)^c$ is the compliment of an element in $M$. Closure under compliment thus completes the proof that $M$ is closed under countable intersection.
+\end{proof}
+
+\begin{problem}{6.b}
+\end{problem}
+\begin{proof}[Solution]
+If $f$ is measurable, then Proposition 1 of 18.1 states that the set $\{x \in X : f(x) = c\}$ is measurable for every $c \in \mathbb{R}$. In other words, the set $f^{-1}(c)$ is either countable or has the property that the compliment is countable. For the sake of contradiction, assume the number of values $c$ where $\{f^{-1}(c)\}^c$ is countable is not one. If the number is 0, that means $f^{-1}(c)$ is countable for every $\mathbb{R}$. Given $f$ is measurable, Proposition 1 shows that $\{x \in X | f(x) > c\}$ and $\{x \in X | f(x) \leq c\}$ are both measurable. Given that $X$ is uncountable, that implies that at least one of these two sets are uncountable. In addition, both sets cannot be uncountable because they are neither countable nor follow the property that $X - E$ is countable. Thus, exactly one of $\{x \in X | f(x) > c\}$ and $\{x \in X | f(x) \leq c\}$ are uncountable. Without loss to generality, assume $\{x \in X | f(x) \leq c\}$ is uncountable. Then, by increasing $c$, this set will remain uncountable because if it ever changes from uncountable to countable, that implies that the value of $c$ at the moment of change will have the property that $\{x \in X | f(x) = c\}$ is uncountable. This would be a contradiction to the assumption. $c$ can be increased arbitrarily, and this implies that $f$ is infinity for an uncountably large portion of the domain, whereas the function is finite for a countable portion. This case can thus be discarded. Next, consider the scenario where the number of values $c$ where $\{f^{-1}(c)\}^c$ is countable is greater than one. Let two such values be $c_1, c_2$. Then, it follows that $\{x \in X : f(x) = c_1\}$ and $\{x \in X : f(x) = c_2\}$ are uncountable, and they are also disjoint. Thus, both the compliments of $\{x \in X : f(x) = c_1\}$ and $\{x \in X : f(x) = c_2\}$ are still uncountable. This implies that $\{x \in X : f(x) = c_1\}$ and $\{x \in X : f(x) = c_2\}$ are neither countable nor follow the property that $X - E$ is countable, and thus they are not measurable. This contradicts the fact that $f$ is measurable, and the case where the number is greater than 1 can also be discarded. Thus, there exists exactly one value $c \in \mathbb{R}$ such that $X - f^{-1}(c)$ is countable and $f^{-1}(a)$ is countable for every $a \neq c$.
+\end{proof}
+
+\begin{problem}{6.c}
+\end{problem}
+\begin{proof}[Solution]
+We know that $f$ is a function where $X - f^{-1}(c)$ is countable. Given $X$ is uncountable, that directly implies $f^{-1}(c)$ is uncountable. Next, eq. 9 of 18.1 notes that
+$$
+\int_X g d\mu = \int_{X_0} g d\mu
+$$
+if $\mu(X - X_0) = 0$. We know that $\mu(X - f^{-1}(c)) = 0$, and thus
+$$
+\int_X f d\mu = \int_{f^{-1}(c)} f d\mu.
+$$
+In $f^{-1}(c)$, $f$ only holds the value $f$, and thus it is a simple function. Using the definition of an integral for a simple function,
+$$
+\int_{f^{-1}(c)} f d\mu = c (\mu(f^{-1}(c))) = c.
+$$
+Thus, $\int_X f d\mu= c$
+\end{proof}
+
+\begin{problem}{7}
+\end{problem}
+\begin{proof}[Solution]
+Let $A_n$ denote the set of all $x \in X$ such that $T^n(x) \in E_n$. Given $E_n \in M$, $\mu(T^{-1}(E_n)) = \mu(E_n)$, and since $T^{-1}(E_n) \in M$, repeating this process again shows that $\mu(T^{-1}(T^{-1}(E_n))) = \mu(E_n)$. Repeating this process $n$ times shows that $\mu(T^{-n}(E_n)) = \mu(E_n)$. Observe that $T^{-n}(E_n) = A_n$ because $T^n(A_n) = E_n$ by definition and more specifically $A_n$ encompasses every possible value $x$ where $T^n(x) = E_n$. This shows that $\mu(E_n) = \mu(A_n)$.
+
+Let $B_n$ denote the set of all points $x \in X$ where $T^k(x) \in E_k$ for at least one $k \geq n$. The problem asks us to show that $\lim_{n \rightarrow \infty}\mu(B_n) = 0$. It is easy to see that $\mu(B_n) \leq \sum_{i = n}^{\infty} \mu(A_n)$, and $\sum_{i = n}^{\infty} \mu(A_n) = \sum_{i = n}^{\infty} \mu(E_n)$. We are given that $\sum \mu(E_n)$ is a converging sum, thus $\sum_{i = n}^{\infty} \mu(E_n) \rightarrow 0$ as $n \rightarrow \infty$. This thus proves that $\lim_{n \rightarrow \infty} \mu(B_n) = 0$. This proves that the set of points $x$ where there does not exist $k \in \mathbb{N}$ such that $T^n(x) \notin E_n$ for all $n \geq k$ has a measure of zero. This completes the proof.
+\end{proof}
+
+\begin{problem}{8}
+\end{problem}
+\begin{proof}[Solution]
+For this problem we apply the Simple Approximation Lemma as derived in class. Given $f$ is measurable, positive function, there exists a sequence of increasing rational functions that converge pointwise to $f$. If $c_1, ..., c_n$ are the values that $f_n$ take and if $E_i$ is the region where $f(x) = c_i$, it follows that 
+$$
+f(x) = \sum_{i = 1}^{n} c_n \chi_{E_n}(x)
+$$
+where $c_1, ..., c_n$ are all rational. This completes the proof.
+\end{proof}
+
+\begin{problem}{9}
+\end{problem}
+\begin{proof}[Solution]
+We are asked to prove that $\{f_n\}$ is pointwise convergent almost everywhere on $X$, given $\mu\{x \in X ||f_n(x) - f_{n + 1}(x)| > 1/2^n\} < 1/2^n$. Let $E_n$ denote the set of points $x$ such that $|f_n(x) - f_{n + 1}(x)| > 1/2^n$. If there exists a number $k$ such that $x \notin E_n$ for all $n \geq k$, then it is clear that $\{f_n\}$ is pointwise convergent at $x$. This is true because $f_k(x)$ is clearly finite, and $f_{k + 1}(x) \leq f_{k}(x) + 1/2^k$, $f_{k + 2}(x) \leq f_{k}(x) + 1/2^k + 1/2^{k + 1}$, $\lim_{i \rightarrow \infty} f_{i}(x) \leq f_{k}(x) + 1/2^k + 1/2^{k + 1} + ... = f_{k}(x) + 1/2^{k - 1}$. Thus, $\lim_{i \rightarrow \infty} f_{i}(x) \leq f_{k}(x)$ is bounded by $f_{k}(x) + 1/2^{k - 1}$. Also note that $\mu(E_n) < 1/2^n$. Next, consider the set $A_n$, the set of all points $x \in X$ such that $x \in E_k$ for at least one $k \geq n$. If $A$ is the set of all points $x$ where $\{f_n\}$ is not pointwise convergent, then $A \subset A_k$ for any $k$ because in order for a point $x$ to diverge, we have already shown that for any $r \in \mathbb{N}$, $x \in E_n$ where $n \geq r$. Next, note that $A_k = E_k \cup E_{k+1} \cup ...$ . Countable monotonicity shows that $\mu(A_k) \leq \sum_{i = k}^{\infty} \mu(E_i) \leq \sum_{i = k}^{\infty} \frac{1}{2}^i = \frac{1}{2}^{k-1}$. Note that as $k$ increases, $\mu(A_k)$ gets arbitrarily close to 0. Then, monotonicity shows that $\mu(A) \leq \mu(A_k)$ for any $k \in \mathbb{N}$, and as a result $\mu(A)$ is clearly equal to zero. This proves that $\{f_n\}$ is pointwise convergent almost everywhere on $X$.
+\end{proof}
+
+\end{document}

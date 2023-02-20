@@ -1,0 +1,39 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 7}
+\author{Jian Park\\
+20800: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+
+\begin{problem}{1a}
+\end{problem}
+\begin{proof}[Solution]
+We first claim that any orientation $o$ is uniquely defined by the value of $o(e_1, ..., e_n)$ where $e_1, .., e_n$ is the standard basis. Let $v_1, ..., v_n$ denote some arbitrary set of vectors such that they are all linearly independent. It then follows that the matrix formed by $A = [v_1, ..., v_n]$ is an invertible matrix. We are aware from Treil that if a matrix is invertible, then the transpose of that matrix is also invertible. In addition, we have shown in homework 4 that any invertible matrix can transformed into the identity matrix through the three basic row operations. It thus follows that any two invertible matrices can be transformed into each other, where Thus, define a function $f_{S'}$ which takes a square matrix $S$ and outputs a real value as follows: start with the value $a$, and in the transformation from $A$ to $I_n$, for each row multiplication operation multiply $o(S')$ by the sign the scalar that is multiplied, and multiply $-1$ for every row swap that occurs. When $a$ is set to 1, this $f_{S'}(S)$ generates the value of $o(v_1, ..., v_n)$ given $o(v_1', ..., v_n')$, where $S' = [v_1', ..., v_n']$. This shows that if $o(v_1', ..., v_n')$ is defined for some $v_1', ..., v_n' \in B$, that means that there is exactly on orientation function $o$ where $o(v_1', ..., v_n')$ holds the value it currently holds. The value of $o$ for any other n-tuple in $B$ can be calculated using the value of $o(v_1', ..., v_n')$ using the function $f$ described above. Given any $o(v_1', ..., v_n')$ can be -1 or 1, that means that there are exactly two orientation functions in existence. In addition, note that if $o(e_1, ..., e_n) = 1$, then combined with the three given property of orientation functions, it can be seen that $o(v_1, ..., v_n) = sign(det(v_1, ..., v_n))$, and if $o(e_1, ..., e_n) = -1$, then $o(v_1, ..., v_n) = sign(-det(v_1, ..., v_n))$. Given that the determinant operation is a $n$-form in $Alt^n(V)$, and given there are only two orientation functions as shown, it follows that every orientation function $o$ can be expressed in the form $sign(\alpha(v_1, ..., v_n))$.
+\end{proof}
+
+\begin{problem}{1b}
+\end{problem}
+\begin{proof}[Solution]
+We have previously shown in the previous part that there are only two distinct orientation functions in $\mathbb{R}^n$, and thus it follows that $o_{\mathbb{R}^n}(v_1, ..., v_n)$ is either equal to either $sign(-det(v_1, ..., v_n))$ or $sign(det(v_1, ..., v_n))$. We are given that the orientation is the latter. We claim that the product of $o_{\mathbb{R}^n}(w_1, ..., w_{n-m}, v_1, ..., v_m)o_{V}(v_1, ..., v_m)$ yields an orientation for the perpendicular space $V^{\perp}$. This can be observed by the fact that any swap between $v_i, v_j$ will be cancelled out, yielding the same value. In addition, a scalar multiplication of any $v_i$ will lead to the above value not having a sign change. Thus, This product would operate like an orientation.
+\end{proof}
+
+\begin{problem}{2, 3, 4, 5, 6}
+\end{problem}
+\begin{proof}[Solution]
+Incomplete
+\end{proof}
+\end{document}

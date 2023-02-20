@@ -1,0 +1,269 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 2}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}[Solution]
+It is clear that $(P(X = 4))^c = p(0) + p(1) + p(2) + p(3)$ given each of the five events are disjoint and these five are given to be the only possible values for $X$. Using the compliment rule, it is possible to see that $p(4) = 1 - (P(X = 4))^c = 1 - (p(0) + p(1) + p(2) + p(3)) = 1 - 0.9 = 0.1$.
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}[Solution]
+The probability that at least two students come to office hour is equivalent to the probability that either two, three, or four students come to office hours. Given these conditions are disjoint, the probability that at least two students come is equal to $p(2) + p(3) + p(4) = 0.2 + 0.15 + 0.1 = 0.45$, or 45 percent.
+
+The probability that at more than two students come to office hour is equivalent to the probability that either three, or four students come to office hours. Given these conditions are disjoint, the probability that more than two students come is equal to $p(3) + p(4) = 0.15 + 0.1 = 0.25$, or 25 percent.
+\end{proof}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{proof}[Solution]
+Using the summation formula for the expected value of a discreet random variable,
+$$
+E[X] = \sum_{x \in X} x(p(x)) = 0(0.3) + 1(0.25) + 2(0.2) + 3(0.15) + 4(.1) = 1.5.
+$$
+Thus, the expected value of the number of students who come to office hours is 1.5.
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}[Solution]
+Using the summation formula for the expected value of a discreet random variable,
+$$
+E[X] = \sum_{x \in X} x(p_X(x)) = (-1)(0.3) + (0)(0.20) + 1(0.20) + 2(0.30) = 0.5
+$$
+Thus, the expected value is $\mu = E[X] = 0.5$.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}[Solution]
+Observe that $(X - \mu)^2$ is a random variable such that $p_{(X - \mu)^2}((x - \mu)^2) = p_X(x)$. In other words, $(X - \mu)^2$ can be the values $(-1 - \mu)^2$, $(0 - \mu)^2$, $(1 - \mu^2$, and $(2 - \mu)^2$, and $(X - \mu)^2$ is the value $(-1 - \mu)^2$ with probability $p_X(-1) = 0.3$, $(0 - \mu)^2$ with the probability $p_X(0) = 0.2$, etc. Thus, using the summation formula for the expected value of a discreet random variable, we see that
+$$
+Var(X) = E[(X - \mu)^2] = \sum_{x \in X} (x - \mu)^2(p_X(x)) = \sum_{x \in X} (x - 0.5)^2(p_X(x)) 
+$$
+$$
+= (2.25)(0.3) + (0.25)(0.20) + (0.25)(0.20) + (2.25)(0.30) = 1.45.
+$$
+Thus, we see that the variance $Var(X) = 1.45$.
+\end{proof}
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{proof}[Solution]
+The random variable $X^2$ is a random variable that can be the values $0, 1, 4$. It is 0 with probability $0.2$ (same as $X$). It is 1 with probability $0.5$ given $1^2 = (-1)^2 = 1$, and $p_X(-1) + p_X(1) = 0.5$. Lastly, it is 4 with probability $0.3$ given $X$ can be 2 with probability $0.3$ and $2^2 = 4$. Using the summation formula for the expected value of a discreet random variable,
+$$
+E[X^2] = \sum_{x \in X} x^2(p(x)) = (0)(0.20) + 1(0.50) + (4)(0.30) = 1.7
+$$
+Next, note that $Var(X) = E[X^2] - \mu^2 = 1.7 - 0.5^2 = 1.45$. This matches the result from 2.b.
+\end{proof}
+
+\begin{problem}{2.d}
+\end{problem}
+\begin{proof}[Solution]
+Note that for a discreet random variable, due the expected value function, the moment generating function is given as
+$$
+M_X(t) = E[e^{tX}] = \sum_{x \in X}e^{tx}p(x).
+$$
+Thus, by substituting the values of $X$ into this summation expression, we see that the moment generating function for $X$ is
+$$
+M_X(t) = \sum_{x \in X}e^{xt}p(x) = e^{(-1)t}(0.3) + e^{(0)t}(0.2) + e^{(1)t}(0.2) + e^{(2)t}(0.3) = (0.3)e^{-t} + (0.2) + (0.2)e^{t} + (0.3)e^{2t}.
+$$
+\end{proof}
+
+\begin{problem}{2.e}
+\end{problem}
+\begin{proof}[Solution]
+Using the results from the previous part,
+$$
+M_X(0) = (0.3)e^{0} + (0.2e) + (0.2)e^{0} + (0.3)e^{0} = 0.3 + 0.2 + 0.2 + 0.3 = 1.
+$$
+Thus, we see that $M_X(0)$ is indeed 1.
+\end{proof}
+
+\begin{problem}{2.f}
+\end{problem}
+\begin{proof}[Solution]
+Using the results from 2.d, the derivative of $M_X$ can be calculated as follows
+$$
+\frac{d}{dt}M_X(t) = \frac{d}{dt}\left((0.3)e^{-t}\right) + \frac{d}{dt}\left((0.2)\right) + \frac{d}{dt}\left((0.2)e^{t}\right) + \frac{d}{dt}\left((0.3)e^{2t}\right).
+$$
+$$
+= (-0.3)e^{-t} + (0.2)e^{t} + (0.6)e^{2t}.
+$$
+Next, note that
+$$
+\frac{d}{dt}M_X(0) = (-0.3)e^{0} + (0.2)e^{0} + (0.6)e^{0} = (-0.3) + (0.2) + (0.6) = 0.5.
+$$
+Thus, $\frac{d}{dt}M_X(0) = 0.5$, which is indeed equal to the value of $E(X)$ found in part 2.a.
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}[Solution]
+The variable $X$ can be the values -1, 0, 1, and 2. The variable $Y = X^2$ can be the square of the values of $X$. Note that $-1^2 = 1^2 = 1$, $0^2 = 0$, and $2^2 = 4$. Thus, the possible values that $Y$ can take are $0, 1, $ and $4$.
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}[Solution]
+Observe that $Y$ generating a $0$ directly corresponds to a $0$ being generated by $X$. The probability of the latter event occurring is $0.2$, and thus $p_Y(0) = 0.2$ as well. Similarly, $Y$ generating a $4$ directly corresponds to a $2$ being generated by $X$. The probability of the latter event occurring is $0.3$, and thus $p_Y(4) = 0.3$ as well. Next, observe that $Y$ generating a $1$ corresponds to a $1$ or $-1$ being generated by $X$. The probability of the latter event occuring is $p_X(1) + p_X(-1) = 0.3 + 0.2 = 0.5$ (given the two events are clearly disjoint). Thus, $p_Y(1) = 0.5$. The following table shows the probability mass function of $Y$ that reflects these probability values.
+
+\
+
+\begin{tabular}{|l|l|l|l|}
+\hline
+Y Value & 0   & 1   & 4   \\ \hline
+Prob. & 0.2 & 0.5 & 0.3 \\ \hline
+\end{tabular}
+\end{proof}
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{proof}[Solution]
+Using the summation formula for the expected value of a discreet random variable as well as the pmf given in the previous part,
+$$
+E[Y] = \sum_{y \in Y} y(p_Y(y)) = (0)(0.20) + 1(0.50) + (4)(0.30) = 1.7
+$$
+Thus, the expected value is $E[Y] = 1.7$.
+\end{proof}
+
+\begin{problem}{3.d}
+\end{problem}
+\begin{proof}[Solution]
+Using the equation given and the pmf from question 2,
+$$
+E[Y] = E[X^2] = \sum_{x \in X} x^2(p_X(x)) = (-1)^2(0.30) + (0)^2(0.20)+ (1)^2(0.20) + (2)^2(0.30) = 1.7
+$$
+Thus, the expected value is $E[Y] = 1.7$. The values for $E[Y]$ from problems 3.c and 3.d match.
+\end{proof}
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}[Solution]
+$W = 4X - 2$ takes on the values of $X$ that are multiplied by $4$ and subtracted by $2$. Thus, the possible values of $W$ are $4(-1) - 2 = -6$, $4(0) - 2 = -2$, $4(1) - 2 = 2$, and $4(2) - 2 = 6$. 
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}[Solution]
+Observe that $W$ generating a $-6$ directly corresponds to a $-1$ being generated by $X$. The probability of the latter event occurring is $0.3$, and thus $p_W(-6) = 0.3$ as well. Next, $W$ generating a $-2$ directly corresponds to a $0$ being generated by $X$. The probability of the latter event occurring is $0.2$, and thus $p_W(-2) = 0.2$ as well. Next, $W$ generating a $2$ directly corresponds to a $1$ being generated by $X$. The probability of the latter event occurring is $0.2$, and thus $p_W(2) = 0.2$ as well. Lastly, $W$ generating a $6$ directly corresponds to a $2$ being generated by $X$. The probability of the latter event occurring is $0.3$, and thus $p_W(6) = 0.3$ as well. The following table shows the probability mass function of $Y$ that reflects these probability values.
+
+\
+
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Value & -6  & -2  & 2   & 6   \\ \hline
+Prob. & 0.3 & 0.2 & 0.2 & 0.3 \\ \hline
+\end{tabular}
+
+\end{proof}
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}[Solution]
+
+Using the summation formula for the expected value of a discreet random variable,
+$$
+E[W] = \sum_{w \in W} w(p_W(w)) = (-6)(0.3) + (-2)(0.20) + 2(0.20) + 6(0.30) = 0
+$$
+Thus, the expected value is $E[W] = 0$. In addition, using the results from 2.a, note that $4(E[X]) - 2 = 4(0.5) - 2 = 0$, which shows that $E[W] = 4(E[W]) - 2$.
+\end{proof}
+
+\begin{problem}{4.d}
+\end{problem}
+\begin{proof}[Solution]
+
+Let $\mu = E[W]$. Observe that $(W - \mu)^2$ is a random variable such that $p_{(W - \mu)^2}((w - \mu)^2) = p_W(w)$. In other words, $(W - \mu)^2$ can be the values $(-6 - \mu)^2$, $(-2 - \mu)^2$, $(2 - \mu^2$, and $(6 - \mu)^2$, and $(X - \mu)^2$ is the value $(-6 - \mu)^2$ with probability $p_X(-6) = 0.3$, $(-2 - \mu)^2$ with the probability $p_X(-2) = 0.2$, etc. Thus, using the summation formula for the expected value of a discreet random variable, we see that
+$$
+Var(W) = E[(W - \mu)^2] = \sum_{w \in W} (w - \mu)^2(p_W(w)) = \sum_{x \in X} (w - 0)^2(p_W(w)) 
+$$
+$$
+= (36)(0.3) + (4)(0.20) + (4)(0.20) + (36)(0.30) = 23.2.
+$$
+Thus, we see that the variance $Var(W) = 23.2$. In addition, observe that $Var(W) = 23.2 = 4^2Var(X)$, given $Var(X) = 1.45$ as shown in 2.b.
+
+\end{proof}
+
+\begin{problem}{5.a}
+\end{problem}
+\begin{proof}[Solution]
+Note that
+$$
+\sum_{x = 1}^{\infty} p(x) = \sum_{x = 1}^{\infty} (1 - p)^{x - 1}p = p\sum_{x = 1}^{\infty} (1 - p)^{x - 1} = p\sum_{x = 0}^{\infty} (1 - p)^{x},
+$$
+with the last equality being derived by merely shifting the index $x$ down by 1. Then, by applying identity 1,
+$$
+p\sum_{x = 0}^{\infty} (1 - p)^{x} = p\frac{1}{1-(1 - p)} = p\frac{1}{p} = 1.
+$$
+This confirms that $\sum_{x = 1}^{\infty} p(x) = 1$, and thus $p(x)$ is a legitimate probability mass function.
+\end{proof}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{proof}[Solution]
+Using the summation formula for the expected value of a discreet random variable, we see that
+$$
+E[X] = \sum_{x \in X} x(p_X(x)) = \sum_{x \in X} xp(1 - p)^{x - 1} = p\sum_{x \in X} x(1 - p)^{x - 1}
+$$
+Then, by applying identity 2,
+$$
+p\sum_{x \in X} x(1 - p)^{x - 1} = p\frac{1}{(1-(1 - p))^2} = p\frac{1}{p^2} = \frac{1}{p}.
+$$
+This shows that $E[X] = \frac{1}{p}$.
+
+\end{proof}
+
+\begin{problem}{5.c}
+\end{problem}
+\begin{proof}[Solution]
+Let $g(x) = x^2 - x = x(x - 1)$. Using the summation formula for the expected value of a function of a discrete random variable, note that
+$$
+E[X(X - 1)] = E[g(X)] = \sum_{x \in X} g(x)p_X(x) =  \sum_{x \in X} (x)(x - 1)p(1 - p)^{x - 1} = p(1 - p)\sum_{x \in X} (x)(x - 1)(1 - p)^{x - 2}.
+$$
+The last equality is derived by factoring out $(1 - p)$ from every element of the summation and then placing it outside of the summation. Then, by applying identity 3,
+$$
+p(1 - p)\sum_{x \in X} (x)(x - 1)(1 - p)^{x - 2} = \frac{2p(1 - p)}{(1 - (1 - p))^3} = \frac{2p(1 - p)}{p^3} = \frac{2(1 - p)}{p^2}
+$$
+This shows that $E[X(X - 1)] = \frac{2(1 - p)}{p^2}$.
+\end{proof}
+
+\begin{problem}{5.d}
+\end{problem}
+\begin{proof}[Solution]
+We are given that $E[X(X - 1)] = E[X^2] - E[X]$. It follows that $E[X(X - 1)] + E[X] = E[X^2]$. We know $E[X] = \frac{1}{p}$ from 5.b and $E[X(X - 1)] = \frac{2(1 - p)}{p^2}$ from 5.c, and thus
+$$
+E[X^2] = E[X(X - 1)] + E[X] = \frac{2(1 - p)}{p^2} + \frac{1}{p} = \frac{2(1 - p) + p}{p^2} = \frac{2 - p}{p^2}.
+$$
+Thus, we observe that $E[X^2] = \frac{2 - p}{p^2}$.
+\end{proof}
+
+\begin{problem}{5.e}
+\end{problem}
+\begin{proof}[Solution]
+The definition of variance states that $Var(X) = E[X^2] - (E[X])^2$. Thus, using $E[X^2] = \frac{2 - p}{p^2}$ from 5.d and $E[X] = \frac{1}{p}$ from 5.b, observe that
+$$
+Var(X) = E[X^2] - (E[X])^2 = \frac{2 - p}{p^2} - \frac{1}{p^2} = \frac{1 - p}{p^2}.
+$$
+Thus, the variance $Var(X) = \frac{1 - p}{p^2}$.
+\end{proof}
+
+\end{document}

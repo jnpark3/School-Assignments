@@ -1,0 +1,384 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 4}
+\author{Jian Park\\
+20800: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+
+\begin{problem}{1a}
+\end{problem}
+\begin{proof}[Solution]
+Proposition 3.6 of Treil shows that a matrix is invertible if and only if its echelon form contains a pivot in every row and every column. This shows that for any invertible $A$, it is possible to apply a series of row operations to obtain an echelon form where every column and row has a pivot. Then, starting with column two and moving right, use row addition operations to eliminate all numbers above the pivot in that column. This process will yield a diagonal matrix. Lastly, apply a scalar multiple to each row in order to make every pivot equal to 1. This resulting diagonal matrix is the identity matrix. Thus, there exists a sequence of row operations to obtain the identity matrix.
+\end{proof}
+
+\begin{problem}{1b}
+\end{problem}
+\begin{proof}[Solution]
+We first deduce the three types of elementary matrices that exist, each of which correspond to a specific type of row operation. The first operation of row summation has an elementary matrix of the form
+$$
+\begin{bmatrix}
+1 & \cdots & \cdots & \cdots & 0 \\
+\vdots & \ddots &  & n & \vdots \\
+\vdots &  & 1 &  & \vdots \\
+\vdots &  &  & \ddots & \vdots \\
+0 & \cdots & \cdots & \cdots & 1 
+\end{bmatrix} .
+$$
+The matrix consists of an identity matrix with one element outside of the elementary matrix being a non-zero number. This number represents the location and amount of the row summation. Observe that this matrix is invertible as shown in problem 1a, and the inverse is identical as the original matrix except the non-zero number's sign is switched. The inverse for the above matrix would be
+$$
+\begin{bmatrix}
+1 & \cdots & \cdots & \cdots & 0 \\
+\vdots & \ddots &  & -n & \vdots \\
+\vdots &  & 1 &  & \vdots \\
+\vdots &  &  & \ddots & \vdots \\
+0 & \cdots & \cdots & \cdots & 1 
+\end{bmatrix} .
+$$
+Next, the second operation of row multiplication has an elementary matrix of the form 
+$$
+\begin{bmatrix}
+1 & \cdots & \cdots & \cdots & 0 \\
+\vdots & \ddots &  &  & \vdots \\
+\vdots &  & n &  & \vdots \\
+\vdots &  &  & \ddots & \vdots \\
+0 & \cdots & \cdots & \cdots & 1 
+\end{bmatrix} .
+$$
+The matrix is an identity matrix except for one element on the diagonal which is not 1. The location and size of the non-one element represents the row and scalar of the multiplication operation. This matrix is also invertible, given that the inverse matrix is
+$$
+\begin{bmatrix}
+1 & \cdots & \cdots & \cdots & 0 \\
+\vdots & \ddots &  &  & \vdots \\
+\vdots &  & 1/n &  & \vdots \\
+\vdots &  &  & \ddots & \vdots \\
+0 & \cdots & \cdots & \cdots & 1 
+\end{bmatrix} .
+$$
+Lastly, the operation of row replacement has an elementary matrix of the form
+$$
+\begin{bmatrix}
+1 & \cdots & \cdots & \cdots & 0 \\
+\vdots & 0 &  & 1 & \vdots \\
+\vdots &  & \ddots &  & \vdots \\
+\vdots & 1 &  & 0 & \vdots \\
+0 & \cdots & \cdots & \cdots & 1 
+\end{bmatrix}.
+$$
+This matrix is the identity matrix but with two of the columns being swapped. The inverse of this matrix is itself, which shows that all elementary matrices are invertible. In addition, observe that the inverse of any elementary matrix is also an elementary matrix.
+
+Now, we know from problem 1a that there exists a sequence $E_1, ...$ of elementary matrices such that $AE_1 ... E_n = I_n$, given any invertible matrix can be converted into the identity matrix with row operations. Then, multiply $E_n^{-1} ... E_1^{-1}$ to both sides of this equation to show that $AE_1 ... E_nE_n^{-1} ... E_1^{-1} = A = E_n^{-1} ... E_1^{-1}$. We have shown that the inverse of any elementary matrix is also an elementary matrix, thus this shows that any invertible $A$ can be represented as the product of invertible matrices.
+\end{proof}
+
+\begin{problem}{2a}
+\end{problem}
+\begin{proof}[Solution]
+We will use the universal property for the first portion of the proof. Let $A_z : X \times Y \rightarrow X \otimes (Y \otimes Z)$ define a function where $A(x, y) = x \otimes (y \otimes z)$. We aware that this function is a bilinear map because if $y$ is fixed, $A(x, y) = x \otimes a$ where $a = y \otimes z$, a constant. We know from the definition of the Tensor product that $A(x_1+x_2, y) = (x_1 + x_2) \otimes a = (x_1 \otimes a) + (x_2 \otimes a) = A(x_1, a) + A(x_2, a)$. Similarly, $\alpha A(x, y) = \alpha(x \otimes a) = (\alpha x) \otimes a = A(\alpha x, y)$. When $x$ is fixed the function $y \otimes z$ as $y$ changes is clearly a linear map as shown previously with $x \otimes a$, and as a result $x \otimes (y \otimes z)$ is also a linear map. This shows that $A_z$ is a multilinear map. Then, use the universal property to show that there exists a bilinear map $A'_z : X \otimes Y \rightarrow X \otimes (Y \otimes Z)$ where $A'_z(x \otimes y) = x \otimes (y \otimes z)$. Then, let $B : (X \otimes Y) \times Z \rightarrow X \otimes (Y \otimes Z)$ be a map such that $B(x \otimes y, z) = A'_z(x \otimes y)$. We are already aware that the mapping is linear when $z$ is fixed. When $x \otimes y$ is fixed, $B(x \otimes y, z) = x \otimes (y \otimes z)$, and we know that the map is linear because this case is identical to the time when we previously showed that $x$ is fixed for the $(x \otimes y) \otimes z$. Applying the universal property to $B$ shows that there exists a linear map $B' : (X \otimes Y) \otimes Z \rightarrow X \otimes (Y \otimes Z)$. This mapping is one to one and onto given the uniqueness condition of the universal property, and as a result we show there is a natural isomorphism between $(X \otimes Y) \otimes Z$ and $X \otimes (Y \otimes Z)$.
+\end{proof}
+
+\begin{problem}{2b}
+\end{problem}
+\begin{proof}[Solution]
+We can first see that $\phi : V_1 \times V_2 \rightarrow V_1 \otimes V_2$ where $\phi(x, y) = x \otimes y$ is multilinear because when $y$ is fixed, $(x_1 + x_2) \otimes y = x_1 \otimes y + x_2 \otimes y$ and $\lambda(x \otimes y) = (\lambda x) \otimes y$ due to the definition of the tensor product. When $x$ is fixed the same properties apply due to symmetry. Then, if $\phi'(x, y, z) = \phi(\phi(x, y), z) = (x \otimes y) \otimes z$, we can see that $\phi(\phi(x_1 + x_2, y), z) = \phi(\phi(x_1, y) + \phi(x_2, y), z) = \phi(\phi(x_1, y), z) + \phi(\phi(x_2, y), z)$, and $\phi(\phi(\lambda x, y), z) = \phi(\lambda \phi(x, y), z) = \lambda \phi(\phi(x, y), z)$. Observe that this can apply to any number of nested $\phi$ functions, and thus the function $\phi : V_1 \times ... \times V_n \rightarrow V_1 \otimes ... \otimes V_n$ where $\phi(v_1, ..., v_n) = v_1 \otimes ... \otimes v_n$ is a multilinear mapping.
+
+We are given in the problem that every element of $V_1 \otimes ... \otimes V_n$ is the sum of pure sums $v_1 \otimes ... \otimes v_n$. This implies that any linear map $A : V_1 \otimes ... \otimes V_n$ is uniquely defined by the $w \in W$ for which $v_1 \otimes ... \otimes v_n$ for every $v_i \in V_i$. Similarly, each linear transformation in $Maps({V_1, ..., V_n}, W)$ is uniquely defined by the $w \in W$ for which $v_1, ..., v_n$ maps onto. This shows that there is an isomorphism between $Maps(V_1 \otimes ... \otimes V_n, W)$ and $Maps({V_1, ..., V_n}, W)$.
+\end{proof}
+
+\begin{problem}{3a}
+\end{problem}
+\begin{proof}[Solution]
+Let $v_1, ..., v_m$ denote the basis of $V$ and let $w_1, ..., w_n$ denote the basis of $W$. We first show that the set $v_i \otimes w_j$ is linearly independent. Let $\alpha_i : V \rightarrow \mathbb{R}$ denote a function such that if $v = a_1v_1 + ... + a_nv_n$, $\alpha_i(v) = a_i$. Let $\beta_i : W \rightarrow \mathbb{R}$ denote a similar function such that if $w = a_1w_1 + ... + a_nw_n$, $\beta_i(w) = a_i$. Note that both of these equations are linear maps because $\alpha_i(... (a_i + a'_i)v_i ...) = \alpha_i(... a_iv_i ...) + \alpha_i(... a'_iv_i ...) = a_i + a'_i$ and $\alpha_i(... \lambda a_iv_i ...) = \lambda \alpha_i(... v_i ...) = \lambda$. The same applies to $\beta$ Then, let $\phi : V \times W \rightarrow \mathbb{R}$ denote a multilinear map where $\phi_{ij}(v, w) = \alpha_i(v)\beta_j(w)$. The universal property then states that there exists a bilinear map $\phi'_{ij} : V \otimes W \rightarrow \mathbb{R}$ such that $\phi'_{ij}(v \otimes w) = \phi_{ij}(v, w)$. It then follows that $\phi'_{ij}(v_i \otimes w_j) = 1$ and $\phi'_{ij}(v_k \otimes w_l) = 0$ for any $(k, l) \neq (i, j)$. For the sake of contradiction, assume that $v_i \otimes w_j$ can be represented as a linear sum of other $v_k \otimes w_l$. That means $(v_i \otimes w_j) = \alpha_1(v_1 \otimes w_1) + ... + \alpha_{nm}(v_m \otimes w_n)$. Given $\phi'_{ij}$ is a linear map, that implies $\phi'_ij(v_i \otimes w_j) = \alpha_1\phi'_ij(v_1 \otimes w_1) + ... + \alpha_{nm}\phi'_ij(v_m \otimes w_n)$. However, $\phi'_ij(v_i \otimes w_j) = 1$ and $\alpha_1\phi'_ij(v_1 \otimes w_1) + ... + \alpha_{nm}\phi'_ij(v_m \otimes w_n) = 0$. This contradiction shows that $v_i \otimes w_j$ is linearly independent from all other elements in the form $v_k \otimes w_k$.
+
+Then, we show that the set $v_i \otimes w_j$ for all $v_i \in v_1, ..., v_m$ and $w \in w_1, ..., w_n$. is spanning. We are given in the problem statement of 2b that $V \otimes W$ is spanned by the set of pure tensors. Thus, it is sufficient to show that the set $v_i \otimes w_j$ spans the set of pure tensors. We are given from the definition of the tensor space that $(v_1 + v_2) \otimes w = v_1 \otimes y + v_2 \otimes y$ and $(\alpha v) \otimes w = \alpha (v \otimes w)$. Thus, for any $v \in V$ and $w \in W$, if $v = a_1v_1 + ... + a_mv_m$, then 
+$$v \otimes w = a_1(v_1 \otimes w) + ... + a_m(v_m \otimes w).$$
+Next, observe that if $w = b_1w_1 + ... + b_nw_n$,
+$$v \otimes w = a_1b_1(v_1 \otimes w_1) + ... a_1b_n(v_1 \otimes w_n) + a_2b_1(v_2 \otimes w_1) + ... + a_m(v_m \otimes w).$$
+This shows that any pure tensor can be represented as a linear sum of $v_i \otimes w_j$, and thus the set $v_i \otimes w_j$ spans all of $V \otimes W$. This completes the proof that the set $v_i \otimes w_j$ for $1 \leq i \leq m$ and $1 \leq j \leq n$ forms a basis in $V \otimes W$.
+
+We can easily conclude that $dim(V \otimes W) = dim(V)dim(W)$. The dimension of a vector space is the number of elements in its vector, and thus $dim(V) = m$, $dim(W) = n$, and $dim(V)dim(W) = mn$. Similarly, the basis of $V \otimes W$ is the set $v_i \otimes w_j$ for all $v_i \in v_1, ..., v_m$ and $w \in w_1, ..., w_n$. There are exactly $mn$ possible combinations of $v_i$ and $v_j$, and therefore $dim(V \otimes W) = mn$ as well. 
+\end{proof}
+
+\begin{problem}{3b}
+\end{problem}
+\begin{proof}[Solution]
+Let $v^*_1, ..., v^*_n$ denote the basis of dual space $V^*$, and let $w_1, ..., w_m$ denote the basis of $W$. We are aware that $n, m$ exist because we are given that $V$ and $W$ are both finite vector spaces, and Section 8.1 of Treil notes that $V^*$ and $V$ are isomorphic. Next, we have already shown in 3a that the set $v^*_i \otimes w_j$ forms a basis on $V^* \otimes W$. To show that $E$ is an isomorphism, we must show that this set $v^*_i \otimes w_j$ also forms a basis on $Maps(V, W)$. 
+
+First, let $E'(v, w) : V^* \times W \rightarrow Maps(V, W)$ denote the map where $(v^*, w) \rightarrow (v \rightarrow v^*(v)w)$. Next, let $v'_1, ..., v'_n$ denote the basis of $V$ such that $v_1, ..., v_n$ is the dual basis. We will first show that $E'(v_i, w_j)(v)$ is linearly independent from all maps of the form $E'(v_k, w_l)(v)$ where $(k, l) \neq (i, j)$. For the sake of contradiction, assume that 
+$$
+E'(v_i, w_j)(v) = a_1E'(v_1, w_1)(v) + ... + a_{nm}E'(v_n, w_m)(v).
+$$
+When $v$ is replaced with $v'_i$, $E'(v_i, w_j)(v'_i) = v_i(v'_i)w_j = w_j$, $E'(v_i, w_k)(v'_i) = v_i(v'_i)w_k = w_k$ for any $k \neq j$, and $E'(v_l, w_k)(v'_i) = v_l(v'_i)w_k = 0(w_k) = 0$ for any $l \neq i$. Thus, the above equation turns into
+$$
+E'(v_i, w_j)(v'_i) = w_j = a_{ni + 1}w_1 + ... + a_{ni + n-1}w_m.
+$$
+This implies that $w_j$ can be represented as a linear combination of $w_1, ..., w_m$, but this cannot be true given this set is a basis. Thus, we show linear independence.
+
+Now, to show that the set of maps $E'(v_i, w_j)(v')$ span the set of all maps $E'(v, w)(v')$ for $v \in V^*$, $w \in W$, let $E'(v, w)$ denote a map where $v \in V^*$, $w \in W$. If $v = a_1v_1 + ... + a_nv_n$, it follows that 
+$$
+E'(v, w)(v') = v(v')w = a_1v_1(v')w + ... + a_nv_n(v')w = a_1E'(v_1, w)(v') + ... + a_nE'(v_n, w)(v').
+$$
+Then, if $w = b_1w_1 + ... + b_nw_n$, it follows that
+$$
+E'(v_i, w)(v') = v_i(v')w = b_1v_i(v')w_1 + ... + b_mv_i(v')w_m = b_1E'(v_i, w_1)(v') + ... + b_nE'(v_i, w_m)(v')
+$$
+for any $v_i \in v_1, ..., v_n$. Combining these two equations together, we get that
+$$
+E'(v, w)(v') = v(v')w = a_1b_1E'(v_1, w_1)(v') + ... + a_nb_mE'(v_n, w_m)(v').
+$$
+This shows that the set of maps $E'(v_i, w_j)(v')$ span the set of all maps $E'(v, w)$. This shows that the set of maps $E'(v_i, w_j)(v')$ is a basis of the set of all maps $E'(v, w)$. 
+
+We know from the universal property that there exists $E : V^* \otimes W \rightarrow Maps(V, W)$ such that $E(v \otimes w) = E'(v, w)$. We have already shown that $E' : V^* \times W \rightarrow Maps(V, W)$ is an isomorphism, and thus $E : V^* \otimes W \rightarrow Maps(V, W)$ is an isomorphism between the two vector spaces.
+\end{proof}
+
+\begin{problem}{3c}
+\end{problem}
+\begin{proof}[Solution]
+Assume $T$ can be represented as a linear combination of the pure tensors $(v_1 \otimes w_1), ..., (v_r \otimes w_r)$, where $r$ is minimized. We first know that none of $v_1, ..., v_r$ are trivial mappings because if $v_i(v) = 0$ for all $v \in V$ for some $v_i$, that would imply that $v_i$ is the zero element. Thus we know that $v_i \otimes w_i = (0v_i) \otimes w_i = (v_i) \otimes (0w_i) = 0 \otimes 0$, which would then imply $v_i \otimes w_i$ is not necessary in the summation of the elements $(v_1 \otimes w_1), ..., (v_r \otimes w_r)$. Next, we show that $w_1, ..., w_r$ are linearly independent elements. For the sake of contradiction assume $w_i = a_1w_1 + ... + a_rw_r$. The distributive and scalar properties of the tensor product show that 
+$$
+v_i \otimes w_i = (a_1v_i) \otimes w_1 + ... + (a_rv_i) \otimes w_r.
+$$
+Then, add these elements to $(v_1 \otimes w_1) + ... + (v_{i-1} \otimes w_{i-1}) + (v_{i+1} \otimes w_{i+1}) + ... + (v_r \otimes w_r)$ using the reverse of the distributive property to show that
+$$
+T = (v_1 + a_1v_i) \otimes w_1 + ... + (v_{i-1} + a_{i-1}v_i) \otimes w_{i-1} + (v_{i+1} + a_{i+1}v_i )\otimes w_{i+1} + ... + (v_r + a_rv_i) \otimes w_r.
+$$
+Each element in the form $(v_j + a_jv_i)$ is an element of $V^*$ given $v_j, v_i \in V^*$. Thus, this shows that $T$ can be represented as the sum of $r - 1$ pure tensors, which contradicts the fact that $r$ is minimized. Thus, $w_1, ..., w_n$ are all linearly independent.
+
+Now, observe that $E(T)(v) = v_1(v) w_1 + ... + v_r(v) w_r$. We can easily see that $w_1, ..., w_r$ spans the range of $E(T)(v)$ because every element $E(T)(v)$ is a linear combination of $w_1, ..., w_r$. We additionally know that $w_1, ..., w_r$ forms a linearly independent as shown previously. We conclude that $w_1, ..., w_r$ is the basis of $E(T)$ given $v_i(v) \neq 0$ for at least one $v \in V$. Thus, we conclude that $dim(Im(E(T))) = r$, which concludes the proof.
+\end{proof}
+
+\begin{problem}{3d}
+\end{problem}
+\begin{proof}[Solution]
+We are asked to find whether the map
+$$
+M_n{\mathbb{R}} \rightarrow Maps(V, V) \rightarrow V^* \otimes V \rightarrow \mathbb{R}
+$$
+is equal to the trace of the matrix. The main point here is that this linear transformation is independent of the choice of basis, and dependent on the transformation itself. This independence form the choice of basis comes from the transformation $Maps(V, V) \rightarrow V^* \otimes $.
+\end{proof}
+
+\begin{problem}{4a}
+\end{problem}
+\begin{proof}[Solution]
+We know that $Maps({V, ..., V}, W)$ contains multi-linear maps $T : V \times ... \times V \rightarrow W$. Thus, all we need to show is that al multi-linear maps in $Maps({V, ..., V}, W)$ that are an image of $Maps(Sym^m(V), W)$ is also symmetric. 
+
+Problem 5b of homework 2 shows that there is an Isomorphism between the set $Maps(V^{\otimes m}/A, W)$ and the set of maps $B \subset Maps(V^{\otimes m}, W)$ where $T(a) = 0$ for any $a \in A$ and $T \in B$. Note that in this case $A$ consists of every element in the form $v_1 \otimes ... \otimes v_m - v_{\sigma(1)} \otimes ... \otimes v_{\sigma(m)}$ for any $v_1, ..., v_m \in V$ and permutation $\sigma$. Next, using the universal property, there is a natural isomorphism between $B$ and $C \subset Maps({V, ..., V}, M)$ where $T(x) = T'(x')$ for any $T \in B$, $T'$ is the map resulting from the reverse of the universal property on $T$, and $x = v_1 \otimes ... \otimes v_m$ and $x' = {v_1, ..., v_m}$. $C$ is the image as desired in the problem statement, and for any $T' \in C$. In addition, the universal property shows that each $T \in B$ is related to a $T' \in C$ such that $T(v_1 \otimes ... \otimes v_n) = T'(v_1, ..., v_n)$. We know that $T(v_1 \otimes ... \otimes v_n - v_{\sigma(1)} \otimes ... \otimes v_{\sigma(m)}) = 0$ given $v_1 \otimes ... \otimes v_m - v_{\sigma(1)} \otimes ... \otimes v_{\sigma(m)} \in A$, and the addition property of linear maps shows that $T(v_1 \otimes ... \otimes v_n) - T(v_{\sigma(1)} \otimes ... \otimes v_{\sigma(m)}) = 0$. It then follows that $T'(v_1, ..., v_n) - T'(v_{\sigma(1)}, ..., v_{\sigma(n)}) = 0$. This is true for any $T' \in C$ and any permutation $\sigma$, and thus we complete the proof.
+\end{proof}
+
+\begin{problem}{4b}
+\end{problem}
+\begin{proof}[Solution]
+First, observe from problem 2a that the set of all $v_i \otimes v_j$ for any $v_i, v_j \in v_1, ..., v_n$ is a basis of $V \otimes V$. Then, it follows that $v_k \otimes (v_i \otimes v_j)$ for any $v_i, v_j, v_k \in v_1, ..., v_n$ is a basis of $V \otimes V \otimes V$. It thus follows that the set $v_{i_1} \otimes ... \otimes v_{i_m}$ for any $v_{i_1}, ..., v_{i_m} \in v_1, ..., v_n$ forms a basis of $V^{\otimes m}$. 
+
+Given $Sym^m(V)$ is a quotient space of $V^{\otimes m}$, it follows that the set $v_{i_1} \otimes ... \otimes v_{i_m}$ for any $v_{i_1}, ..., v_{i_m} \in v_1, ..., v_n$ spans $Sym^m(V)$. This is true because if $v \in Sym^m(V)$ is not a linear combination of elements in this set, it immediately implies that $v \in V^{\otimes m}$ is not a linear combination of this same set. This would be a contradiction. In addition, we know from the definition of the symmetric tensor space that $v_{i_1} \otimes ... \otimes v_{i_m} = v_{\sigma(i_1)} \otimes ... \otimes v_{\sigma(i_m)}$ for any permutation $\sigma$. Thus, for $v_{i_1} \otimes ... \otimes v_{i_m}$, it is equal to $v_{\sigma(i_1)} \otimes ... \otimes v_{\sigma(i_m)}$ where $\sigma$ rearranges $i_1, ..., i_m$ from least to greatest. Thus, we see that the set  $v_{i_1} \otimes ... \otimes v_{i_m}$where $1 \leq i_1 ... i_m \leq n$ spans all of $Sym^m(V)$. In addition, we know that the change from $V^{\otimes m}$ to $Sym^m(V)$ only eliminates the existance of pairs $v_{i_1} \otimes ... \otimes v_{i_m}, v_{\sigma(i_1)} \otimes ... \otimes v_{\sigma(i_m)}$. Thus, $v_{i_1} \otimes ... \otimes v_{i_m}$ where $1 \leq i_1 ... i_m \leq n$ does not contain any symmetric tensor products, and thus all elements in this set would retain their linear independence from each other. This proves that this set forms a basis in $Sym^m(V)$.
+
+Now, in order to find $Sym^m(V)$, all we need to do is find the number of ways $1, ..., n$ can be arranged into sets of size $m$, with order not mattering given we assume the indices are in increasing order. For any given set of $m$, let $x_i$ denote the number of times $i$ exists inside this set. It then follows that $x_1 + ... x_n = m$. The $n$-tuple $(x_1, ..., x_n)$ uniquely defines every possible set of size $m$ based on how many times each number is found inside the set. Using stars and bars, the number of possible $n$-tuples is 
+$$
+\binom{n + m - 1}{m},
+$$
+Which is equal to $dim(Sym^m(V))$. This completes the proof.
+\end{proof}
+
+\begin{problem}{5a}
+\end{problem}
+\begin{proof}[Solution]
+We know that $Maps({V, ..., V}, W)$ contains multi-linear maps $T : V \times ... \times V \rightarrow W$. Thus, all we need to show is that al multi-linear maps in $Maps({V, ..., V}, W)$ that are an image of $Maps(\land^m(V), W)$ is also anti-symmetric. 
+
+Problem 5b of homework 2 shows that there is an Isomorphism between the set $Maps(V^{\otimes m}/A, W) = Maps(\land^m, W)$ and the set of maps $B \subset Maps(V^{\otimes m}, W)$ where $T(a) = 0$ for any $a \in A$ and $T \in B$. Note that in this case $A$ consists of every element in the form $v_1 \otimes ... \otimes v_m$ for any $v_1, ..., v_m \in V$ and where $v_i = v_j$ for some $i \neq j$. Next, using the universal property, there is a natural isomorphism between $B$ and $C \subset Maps({V, ..., V}, M)$ where $T(x) = T'(x')$ for any $T \in B$, $T'$ is the map resulting from the reverse of the universal property on $T$, and $x = v_1 \otimes ... \otimes v_m$ and $x' = {v_1, ..., v_m}$. $C$ is the image as desired in the problem statement, and for any $T' \in C$. In addition, the universal property shows that each $T \in B$ is related to a $T' \in C$ such that $T(v_1 \otimes ... \otimes v_n) = T'(v_1, ..., v_n)$. We know that $T(v_1 \otimes ... \otimes v_n) = 0$ given $v_1 \otimes ... \otimes v_m \in A$. It then follows that $T'(v_1, ..., v_n) = T(v_1 \otimes ... \otimes v_n) = 0$. This is true for any $T' \in C$ and any permutation $v_1, ..., v_n \in A$, and thus we complete the proof that all multilinear maps in the image are anti-symmetric.
+\end{proof}
+
+\begin{problem}{5b}
+\end{problem}
+\begin{proof}[Solution]
+For some $v = v_1 \land ... \land v_n,$ assume $v_i$ is linearly independent. Then, $v_i = \alpha_1v_1 + ... + \alpha_mv_m$. Let $A$ denote the subspace of all elements $v_1 \otimes ... \otimes v_m$ where $v_i = v_j$ for some $i \neq j$.
+
+First, note that 
+$$
+v' = v_1 \otimes ... \otimes v_i \otimes ... \otimes v_m = v_1 \otimes ... \otimes (\alpha_1v_1 + ... + \alpha_mv_m) \otimes ... \otimes v_m.
+$$
+Due to the addition property of tensor products,
+$$
+v_1 \otimes ... \otimes (\alpha_1v_1 + ... + \alpha_mv_m) \otimes ... \otimes v_m = (v_1 \otimes ... \otimes \alpha_1v_1 \otimes ... \otimes v_m) + ... + (v_1 \otimes ... \otimes \alpha_mv_m \otimes ... \otimes v_m).
+$$
+Applying the scalar property of tensor products, we see that
+$$
+(v_1 \otimes ... \otimes \alpha_1v_1 \otimes ... \otimes v_m) + ... + (v_1 \otimes ... \otimes \alpha_mv_m \otimes ... \otimes v_m) = \alpha_1(v_1 \otimes ... \otimes v_1 \otimes ... \otimes v_m) + ... + \alpha_m (v_1 \otimes ... \otimes v_m \otimes ... \otimes v_m).
+$$
+Note that for each element in the form $(v_1 \otimes ... \otimes v_j \otimes ... \otimes v_m)$ in this final sum, the element in the $i$-th and $j$-th position are equal, and $i \neq j$. Thus, we can conclude that this sum and by extension $v'$ is a sum of elements in $A$. $A$ is a subspace, and therefore $v' \in A$. This then immediately shows that $v_1 \land ... \land v_n = 0$ given $v_1 \land ... \land v_m \in \land^m$, $v' = v_1 \otimes ... \otimes v_m \in A, V^{\otimes m}$, and $\land^m = V^{\otimes m}/A$. This completes the proof.
+\end{proof}
+
+\begin{problem}{5c}
+\end{problem}
+\begin{proof}[Solution]
+First, we show that the map $\iota'(\phi, v_1 \land ... \land v_m) = \phi(v_1)v_2 \land ... \land v_m ...$ is a bilinear map. It is relatively easy to show that when $v_1 \land ... \land v_m$ is fixed, $\iota$ behaves like a linear function. For any $\phi_1, \phi_2 \in V^*$ and any scalars $\alpha_1, \alpha_2$, 
+$$
+\iota'(\alpha_1\phi_1+\alpha_2\phi_2, v_1 \land ... \land v_m) = (\alpha_1\phi_1(v_1) + \alpha_2\phi_2(v_1))v_2 \land ... \land v_m ... = \alpha_1(\phi_1(v_1))v_2 \land ... \land v_m ... + \alpha_2(\phi_2(v_1))v_2 \land ... \land v_m ... = 
+$$
+$$
+\alpha_1\iota'(\phi_1, v_1 \land ... \land v_m) + \alpha_2\iota'(\phi_2, v_1 \land ... \land v_m).
+$$
+
+Next, observe that when $\phi$ is fixed, $\iota'$ similarly behaves like a linear function. Just apply the test above except where $\phi_1, v_1 \land ... \land v_m$ is replaced by $\alpha_1(\phi_1, v_1 \land ... \land v_m) + \alpha_2(\phi_1, v_1 \land ... \land v_m)$. This completes the proof that $\iota'$ is a bilinear map.
+
+Finally, given $\iota' : V^* \times \land^m \rightarrow \land^{m-1}$ is a bilinear map, the universal property states that there exists a linear map $\iota : V^* \otimes \land^m \rightarrow \land^{m-1}$ such that $\iota(\phi \otimes v_1 \land ... \land v_m) = \iota'(\phi, v_1 \land ... \land v_m)$. This concludes the proof on the existence of a well defined linear map $\iota$.
+\end{proof}
+
+\begin{problem}{5d}
+\end{problem}
+\begin{proof}[Solution]
+If $v \in V$ and $v = a_1v_1 + ... + a_mv_m$, let $\phi_i(v) = a_i$. If this is the case, then using a similar process as outlined in part b of this problem, it is possible to deduce the opposite conclusion that $\land^mV \neq 0$.
+\end{proof}
+
+\begin{problem}{5e}
+\end{problem}
+\begin{proof}[Solution]
+We are aware that if the set $v_1, ..., v_n$ is a basis of $V$, then the set of all possible $v_i \otimes ... \otimes v_j$ is the basis of $V^{\otimes m}$. Then, we are aware that $\land^n(V)$ is a subset of this set. Given the dimension of $V$ is equal to $m$, it follows that every basis $v_i \otimes ... \otimes v_j$ is a permutation of the basis of $V$. Given the anti-symmetry property of $V$, it follows that each of these vectors are equivalent in $\land^n(V)$. Thus, the single vector $v_1 \land ... \land v_n$ spans all of $\land^n(V)$. It is also clearly linearly independent, thus it is the basis.
+
+This shows that if $dim(V) = n$, then $din(\land^nV) = 1$. Thus, there exists a unique anti-symmetric $n$-variable multilinear map
+$$
+det : \mathbb{R}^n \times ... \times \mathbb{R}^n \rightarrow \mathbb{R}
+$$
+such that $det(I_n) = 1$. The uniqueness is a result of $det(I_n) = 1$, there exists one anti-symmetric $n$-variable multilinear map for each value of $det(I_n)$.
+\end{proof}
+
+\begin{problem}{6a}
+\end{problem}
+\begin{proof}[Solution]
+The fact that $\land^m(T)$ is well defined is already given since $T(v_1) \land ... \land T(v_m)$ is clearly defined.
+
+Next, to show that $\land^m(T)$ is a linear transformation, first consider the mapping $T''(v_1, ..., v_m) = (T(v_1), ..., T(v_m))$. This is clearly a multilinear map. Then, consider the mapping $\otimes(T(v_1), ..., T(v_m)) = T(v_1) \otimes ... \otimes T(v_m)$. This map is also clearly multilinear as shown in problem 2b. Finally, the universal property shows that given $T''(v_1, ..., v_m) = (T(v_1), ..., T(v_m))$, there exists linear map $T'(v_1 \otimes ...\otimes v_m) = (T(v_1), ..., T(v_m))$. Composing this with the mapping $\otimes$ shows that there exists a linear map $T^*(v_1 \otimes ... \otimes v_m) = T(v_1) \otimes ... \otimes T(v_m)$. Then, by taking the quotient of the entire vector space, we observe that $T^*(v_1 \land ... \land ) = T(v_1) \land ... \land T(v_m)$. This proves the existence of a linear transformation.
+\end{proof}
+
+\begin{problem}{6b}
+\end{problem}
+\begin{proof}[Solution]
+We have shown in problem 5e that $v_1 \land ... \land v_n$ is the basis of $\land^nV$. We are given that $\land^n(T)(w) \in \land^n(V)$, and thus $\land^n(T)(w) = \alpha w$ for some $\alpha \in \mathbb{R}$. Let $f(T) = \alpha$ when $\land^n(T)(w) = \alpha w$
+
+In addition, we know that if $T$ is the identity operation, $\land^n(T)(w) = (w)$, and we are given from the definition of the determinant that $det(I_n) = 1$, and thus $\land^n(T)(w) = det(I_n)(w)$. We are directly given in 5e that the definition of $det$ is a multiple attached to $v_1 \land ... \land v_n$ when it goes through $\land^m(T)$. Given that $det(I_n) = 1$. These two pieces of information are sufficient to show that the constant $\alpha$ we have shown previously is by definition the determinant.
+\end{proof}
+
+\begin{problem}{6c}
+\end{problem}
+\begin{proof}[Solution]
+For the sake of contradiction assume that $det(T) = 0$. Then $\land^n(T)(w) = 0$ as shown in the equation derived in the previous part. This is true for multiple nonzero $w \in \land^n(V)$. Thus, it is clear that there at least nonzero two values $a, b \in \land^m(V)$ such that if $a = a_1 \land ... \land a_n$ and $b = b_1 \land ... \land b_n$, $T(a_1) \land ... \land T(a_n) = T(b_1) \land ... \land T(b_n)$. We know that $a_i \neq b_i$ for some $i \in 1, ..., n$ given $a \neq b$, and it is immediately clear that $T(a_i) = T(b_i)$ where $a_i \neq b_i$. This implies that $T$ is not one to one, and therefore $T$ is not invertible.
+
+Next, assume $T$ is invertible. This means that $T$ is one-to-one from $V$ to $V$. Given $T(a) \neq T(b)$ for any $a \neq b$ in $V$, it follows that $\land^m(T)(a) = T(a_1) \land ... \land T(a_n) \neq T(b_1) \land ... \land T(b_n) = \land^m(T)(b)$ for any $b \neq a$. If $det(A)$ were to equal 0, that would imply that $\land^n(T)(w) = det(A)w = 0$, and this shows that $\land^n(T)(a) = 0 = \land^n(T)(b)$ for at least one pair $a \neq b$. This contradiction thus shows that if $T$ is invertible, then $det(A) = 0$.
+
+We prove both directions, and the proof is finished.
+\end{proof}
+
+\begin{problem}{6d}
+\end{problem}
+\begin{proof}[Solution]
+We are aware from 6b that $\land^n(T)(w) = det(T)(w)$. It follows that when linear equation $T$ is replaced with linear equation $S \circ T$, $\land^n(S \circ T)(w) = det(S \circ T)(w)$. Next, observe that if $a = a_1 \land ... \land a_n$,
+$$
+\land^n(S \circ T)(a) = (S \circ T)(a_1) \land ... \land (S \circ T)(a_n) = \land^n(S)(T(a_1) \land ... \land T(a_n)) = det(S)(T(a_1) \land ... \land T(a_n)).
+$$
+In addition, we are aware that
+$$
+T(a_1) \land ... \land T(a_n) = det(S)(a).
+$$
+It thus follows that
+$$
+\land^n(S \circ T)(a) = det(T)det(S)(a),
+$$
+and
+$$
+det(S \circ T)(a) = det(T)det(S)(a)
+$$
+as shown previously. This is true for any $a \in \land^n(V)$, thus
+$$
+det(S \circ T) = det(S)det(T).
+$$
+\end{proof}
+
+\begin{problem}{7a}
+\end{problem}
+\begin{proof}[Solution]
+First, observe that applying the transposition two times to a vector will yield the identity same vector, given the items $v_i$ and $v_j$ are swapped, and then they are swapped back with the second transposition. This shows that $sgn(\sigma_{i,j} \circ \sigma_{i,j}) = sgn(\sigma_{i,j})sgn(\sigma_{i,j}) = sgn(I_n) = 1$ because we are given that $det(I_n) = 1$ by definition. This thus shows that $sgn(\sigma_{i,j})^2 = 1$, which means $sgn(\sigma_{i,j}) = 1$ or $sgn(\sigma_{i,j}) = -1$. We are aware that $sgn(\sigma_{i,j}) \neq 1$ because using 6b, that would imply $\land^n(\sigma_{ij})(a) = \sigma_{ij}(a_1) \land ... \sigma_{ij}(a_i) ... \sigma_{ij}(a_j) \land \sigma_{ij}(a_n) = a_1 \land ... a_j ... a_i \land a_n = a_1 \land ... a_i ... a_j \land a_n = \land^n(I_n)(a)$ for any $a$, including those where $v_i \neq v_j$. This is not true due to the anti-symmetry of the $\land$ operation. Thus, the only option is that $sgn(\sigma_{ij}) = -1$.
+\end{proof}
+
+\begin{problem}{7b}
+\end{problem}
+\begin{proof}[Solution]
+First, consider the transformation of $1, ..., n$ to $\sigma(1), ..., \sigma(n)$ for some permutation $\sigma$. First, swap whatever element is in the 1st space of $1, ..., n$ with the location of element $\sigma(1)$. This is a transposition between two positions. Next, take the 2nd element of this new set and the swap its element with $\sigma(2)$ in this list. This is another transposition. Repeat this process for each element in $1, ..., n$, going all the way to the end. Some of the transpositions done during this period may move one element to the same location, in which case the transposition is the identity transformation and ignored. The key point is that whenever an element $\sigma(a)$ is placed in the $a$-th spot, it is never swapped going forward because there will be no need to take the element $\sigma(a)$ and put it in some other location. Thus, at the end of this series of transpositions, the sequences will look like $\sigma(1), ..., \sigma(n)$. This transformation is achieved through a composition of transpositions. 
+
+Next, observe that applying the transposition two times to a vector will yield the identity same vector, given the items $v_i$ and $v_j$ are swapped, and then they are swapped back with the second transposition. This shows that $sgn(\sigma_{i,j} \circ \sigma_{i,j}) = sgn(\sigma_{i,j})sgn(\sigma_{i,j}) = sgn(I_n) = 1$ because we are given that $det(I_n) = 1$ by definition. This thus shows that $sgn(\sigma_{i,j})^2 = 1$, which means $sgn(\sigma_{i,j}) = 1$ or $sgn(\sigma_{i,j}) = -1$. We know that $\sigma$ is a composition of transpositions and $sgn(\sigma_1 \circ ... \circ \sigma_n) = sgn(\sigma_1) ... sgn(\sigma_n)$. Each $sgn(\sigma_i) = 1$ or $-1$, and thus $sgn(\sigma) = 1$ or $-1$.
+
+Lastly, using the equation $\land^n(T)(w) = det(A)(w)$ from question 6b, applying the universal property to both sides, we conclude that
+$$
+T(v_1, ..., v_n) = sgn(\sigma)T(v_{\sigma(1)}, ..., v_{\sigma(n)})
+$$
+\end{proof}
+
+\begin{problem}{7c}
+\end{problem}
+\begin{proof}[Solution]
+We can deduce that 
+$$
+det(A) = \sum_{\sigma \in S_n} sgn(\sigma)a_{1, \sigma(1)} ... a_{n, \sigma(n)}
+$$
+because first, $det(I) = 1$. This is true because the only term in this sum that is non-zero is when $i = \sigma(i)$ for all $i$, and this identity permutation clearly has determinant 1, and thus
+$$
+det(I_n) = \sum_{\sigma \in S_n} sgn(\sigma)a_{1, \sigma(1)} ... a_{n, \sigma(n)} = a_{1, 1}...a_{n, n} = 1
+$$
+The other quality of the determinant of problem 5e is that the function is multilinear, which is clearly true. Fix all rows except for row $i$, and add some new vector $(b_1, ..., b_n)$. In addition, multiply that row by $\alpha$. It thus follows that
+$$
+\sum_{\sigma \in S_n} sgn(\sigma)a_{1, \sigma(1)} ... \alpha(a_{i, \sigma(i)} + b_i) ... a_{n, \sigma(n)} 
+$$
+can be split up into two summations where the elements in the middle are $a_{i, \sigma(i)}$ and $b_i$ respectively, and both sums are multiplied by $\alpha$. This proves that the function is multilinear, and thus it is the determinant.
+
+If $A$ is a lower or upper triangular, the product $a_{1, \sigma(1)}a_{2, \sigma(2)} ... a_{n, \sigma(n)}$ usually contains at least one element where $i > \sigma(i)$ or $i < \sigma(i)$. When this occurs, $a_{i, \sigma(i)} = 0$ by definition. Thus, $a_{1, \sigma(1)}a_{2, \sigma(2)} ... a_{n, \sigma(n)}$ is non-zero only when $\sigma(i) = i$, or when $\sigma$ is the identity permutation. This permutation has determinant $1$, and thus $sign(\sigma) = 1$.
+
+Using the equation previously derived, we can see that
+$$
+det(A) = \sum_{\sigma \in S_n} sgn(\sigma)a_{\sigma(1)} ... a_{\sigma(n)} = a_{1, 1}a_{2, 2}... a_{n, n}
+$$
+as desired.
+\end{proof}
+
+\begin{problem}{8a}
+\end{problem}
+\begin{proof}[Solution]
+First, observe from problem 2a that the set of all $v_i \otimes v_j$ for any $v_i, v_j \in v_1, ..., v_n$ is a basis of $V \otimes V$. Then, it follows that $v_k \otimes (v_i \otimes v_j)$ for any $v_i, v_j, v_k \in v_1, ..., v_n$ is a basis of $V \otimes V \otimes V$. It thus follows that the set $v_{i_1} \otimes ... \otimes v_{i_m}$ for any $v_{i_1}, ..., v_{i_m} \in v_1, ..., v_n$ forms a basis of $V^{\otimes m}$. 
+
+Given $\land^m(V)$ is a quotient space of $V^{\otimes m}$, it follows that the set $v_{i_1} \otimes ... \otimes v_{i_m}$ for any $v_{i_1}, ..., v_{i_m} \in v_1, ..., v_n$ spans $\land^m(V)$. This is true because if $v \in \land^m(V)$ is not a linear combination of elements in this set, it immediately implies that $v \in V^{\otimes m}$ is not a linear combination of this same set. This would be a contradiction. In addition, we know from the definition of the anti-symmetric tensor space that $v_{i_1} \land ... \land v_{i_m} = 0$ if any of the two elements are the same. Thus, elements in the form $v_{i_1} \land ... \land v_{i_m}$ where $i_i = i_j$ for some $i \neq j$. Excluding this, all other vectors should form a spanning set of the vector space. Thus, the set of all elements $v_{i_1} \land ... \land v_{i_m}$ where no two elements are equal forms the basis of $\land^m(V)$
+
+The number of elements in this basis is equal to the dimension of the space $\land^m(V)$. The number of elements in this basis is the number of combinations of $m$ distinct elements from the set $v_1, ..., v_n$. This number is simply
+$$
+\binom{n}{m},
+$$
+which completes the proof.
+\end{proof}
+
+\begin{problem}{8b}
+\end{problem}
+\begin{proof}[Solution]
+We aim to show that
+$$
+\omega(\phi_1 \land .. \land \phi_m)(v_1, ..., v_m) = \sum_{\sigma \in S_m} sgn(\sigma) \phi_1(v_{\sigma(1)}) ... \phi_m(v_{\sigma(m)}) = det(\phi_i(v_j)).
+$$
+In order to do this, simply use the equation derived in part c of problem 7:
+$$
+det(A) = \sum_{\sigma \in S_n} sgn(\sigma)a_{1, \sigma(1)} ... a_{n, \sigma(n)}
+$$
+Apply the linear transformation $\phi_i \in V^*$ to row $i$ of the matrix formed by the elements $v_{i, j}$, and you get the desired result that
+$$
+\omega(\phi_1 \land .. \land \phi_m)(v_1, ..., v_m) = \sum_{\sigma \in S_m} sgn(\sigma) \phi_1(v_{\sigma(1)}) ... \phi_m(v_{\sigma(m)}) = det(\phi_i(v_j)).
+$$
+This operation can be done due to the multilinear nature of this function as shown in the proof of 7c. This completes the proof that there exists a natural isomorphism of vector spaces $\omega : \land^m(V^*) \rightarrow Alt^m(V)$.
+\end{proof}
+
+\end{document}

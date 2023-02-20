@@ -1,0 +1,380 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Economics Homework 2}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.a}
+\end{problem}
+\begin{proof}
+Given the function for production $x_1^{1/2}x_2^{1/2}$, the production possibility set that describes Firm 1's technology is
+$$
+F = \{(x_1, x_2, y) \in \mathbb{R}_{+}^3 \ | \ y \leq x_1^{1/2}x_2^{1/2} \}.
+$$
+\end{proof}
+
+\begin{problem}{1.b}
+\end{problem}
+\begin{proof}
+Given the function for production $y_1^{1/2}$, the production possibility set that describes Firm 2's technology is
+$$
+F = \{(y_1, z) \in \mathbb{R}_{+}^2 \ | \ z \leq y_1^{1/2} \}.
+$$
+\end{proof}
+
+\begin{problem}{1.c}
+\end{problem}
+\begin{proof}
+Firm 3 requires labor and raw cotton as inputs, and can output a combination of cotton threads and pillows. Given $x_1$ cotton and $x_2$ labor, we are aware that the company can make up to $x_1^{1/2}x_2^{1/2}$ cotton threads. Additionally, a portion of this cotton thread can be used to create pillow cases. If $\alpha \in [0, 1]$ represents the portion of thread that goes to making pillow cases, the total number of pillow cases created by Firm 3 is at most $\sqrt{\alpha x_1^{1/2}x_2^{1/2}}$ and $(1 - \alpha)x_1^{1/2}x_2^{1/2} $ thread will remain. Thus, the production possibility set is
+$$
+F = \left\{(x_1, x_2, y, z) \in \mathbb{R}_{+}^4 \ | y \leq \sqrt{\alpha x_1^{1/2}x_2^{1/2}}, z \leq (1-\alpha)x_1^{1/2}x_2^{1/2}, \alpha \in [0, 1] \right\}.
+$$
+\end{proof}
+
+\begin{problem}{2.a}
+\end{problem}
+\begin{proof}
+
+The cost-minimization problem is
+$$
+\min_{x_1, x_2} \omega_1 x_1 + \omega_2 x_2
+$$
+$$
+Ax_1^{\alpha}x_2^{\beta} \geq y.
+$$
+The Lagrangian would be different, taking the form 
+$$
+L(x_1, x_2, \lambda) = \omega_1 x_1 + \omega_2 x_2 + \lambda (y - Ax_1^{\alpha}x_2^{\beta}),
+$$
+and the associated first order conditions are
+$$
+\omega_1 = \lambda A(\alpha x_1^{\alpha - 1}x_2^{\beta})
+$$
+
+$$
+\omega_2 = \lambda A(\beta x_2^{\beta - 1}x_1^{\alpha})
+$$
+$$
+y = Ax_1^{\alpha}x_2^{\beta}.
+$$
+Thus,
+$$
+\frac{\omega_1}{\omega_2} = \frac{\alpha x_2}{\beta x_1}, x_1 = \frac{\alpha \omega_2}{\beta \omega_1}x_2. 
+$$
+We get the optimal bundle by letting
+$$
+y = A\left(\frac{\alpha \omega_2}{\beta \omega_1}\right)^{\alpha}x_2^{\beta + \alpha}, 
+$$
+$$
+x_2 = \left(\frac{y}{A}\left(\frac{\alpha \omega_2}{\beta \omega_1}\right)^{-\alpha}\right)^{\frac{1}{\beta + \alpha}},
+$$
+and similarly, given
+$$
+ x_2 = \frac{\beta \omega_1}{\alpha \omega_2}x_1,
+$$
+$$
+x_1 = \left(\frac{y}{A}\left(\frac{\beta \omega_1}{\alpha \omega_2}\right)^{-\beta}\right)^{\frac{1}{\beta + \alpha}}.
+$$
+We can see that in both functions, when $\beta = 1 - \alpha$, the optimal bundle is identical to that of the normal cobb-douglas distribution. The only major change compared to the original case is the existence of the $1/(\alpha + \beta)$ power which exists on both quantities $x_1, x_2$.
+\end{proof}
+
+\begin{problem}{2.b}
+\end{problem}
+\begin{proof}
+Observe that 
+$$
+f(tx_1, tx_2) = A(tx_1)^{\alpha}(tx_2)^{\beta} = t^{\alpha + \beta}Ax_1^{\alpha}x_2^{\beta} = t^{\beta + \alpha}f(x_1, x_2).
+$$
+We can see that $f(tx_1, tx_2) = tf(x_1, x_2)$ if and only if $\beta + \alpha = 1$, which occurs when $\beta = 1 - \alpha$. This is exactly the normal Cobb-Douglas equation. When $\beta + \alpha > 1$, there is an increasing return to scale because in this case $t^{\beta + \alpha}f(x_1, x_2) > tf(x_1, x_2)$, and similarly when $\beta + \alpha < 1$ there is a decreasing return to scale.
+\end{proof}
+
+\begin{problem}{2.c}
+\end{problem}
+\begin{proof}
+We note from 2.a that
+$$
+MP_1 = A(\alpha x_1^{\alpha - 1}x_2^{\beta}),
+$$
+and
+$$
+MP_2 = A(\beta x_2^{\beta - 1}x_1^{\alpha}).
+$$
+As $\alpha$ increases, it is clear that both functions increase as long as $x_1 > 1$. Similarly as $\beta$ increases, both functions increase. For both functions, if $\alpha$ and $\beta$ both increase by the same factor, every non-constant factor in each variable increases as long as $x_1, x_2 > 1$. Thus increasing both factors by a constant also increases each marginal production. Lastly,
+$$
+\frac{MP_1}{MP_2} = \frac{A(\alpha x_1^{\alpha - 1}x_2^{\beta})}{A(\beta x_2^{\beta - 1}x_1^{\alpha})} = \frac{\alpha x_2}{\beta x_1}.
+$$
+When $\alpha$ increases the fraction increases linearly, while when $\beta$ increases the function decreases. When both $\alpha, \beta$ are multiplied by a constant, that constant will get canceled out due to the fraction, and the resulting marginal rate of technical substitution will remain he same.
+\end{proof}
+
+\begin{problem}{2.d}
+\end{problem}
+\begin{proof}
+Note that the value for the elasticity of substitution is
+$$
+\frac{\partial x_2/ \partial x_1}{x_2/x_1}\frac{\omega_1/\omega_2}{\partial \omega_1/\partial \omega_2}.
+$$
+Given from 2.a that
+$$
+\frac{\omega_1}{\omega_2} = \frac{\alpha x_2}{\beta x_1},
+$$
+ we get that
+ $$
+\frac{\partial x_2/ \partial x_1}{x_2/x_1}\frac{\omega_1/\omega_2}{\partial \omega_1/\partial \omega_2} = \frac{x_1}{x_2}\frac{\omega_1}{\omega_2}\frac{\beta}{\alpha}\frac{\alpha x_2}{\beta x_1} = 1,
+$$
+which shows that elasticity of substitution does not change as $\alpha, \beta$ change. It is identical to the elasticity of substitution of the normal Cobb-Douglas function.
+\end{proof}
+
+\begin{problem}{3.a}
+\end{problem}
+\begin{proof}
+Note that 
+$$
+f(tx_1, tx_2) = \min(\alpha tx_1, \beta tx_2) = t\min(\alpha x_1, \beta x_2) = tf(x_1, x_2).
+$$
+this shows that the production function exhibits constant returns to scale.
+\end{proof}
+
+\begin{problem}{3.b}
+\end{problem}
+\begin{proof}
+Note that the cost-minimization problem is
+$$
+\min_{x_1, x_2} \omega_1 x_1 + \omega_2 x_2,
+$$
+$$
+\min(\alpha x_1, \beta x_2) = y.
+$$
+Note that the if $\alpha x_1 > \beta x_2$, it is possible to reduce $x_1$ by some amount without decreasing the production function. Thus it is impossible for $\alpha x_1 > \beta x_2$ if $(x_1, x_2)$ is an optimal bundle. Similarly, it is impossible for $\alpha x_1 < \beta x_2$ because it is possible to sell some $x_2$ and reduce costs. From this we see that in order for $(x_1, x_2)$ to represent the optimal bundle, $\alpha x_1 = \beta x_2 = y$, or $(\alpha/\beta) x_1 = x_2$.
+
+We now get that $x_1 = y/\alpha$, $x_2 = y/\beta$. Specifically, the conditional input demand functions are
+$$
+x_1^*(\omega_1, \omega_2, y) = y/\alpha
+$$
+$$
+x_2^*(\omega_1, \omega_2, y) = y/\beta.
+$$
+\end{proof}
+
+\begin{problem}{3.c}
+\end{problem}
+\begin{proof}
+Given that 
+$$
+x_1^*(\omega_1, \omega_2, y) = y/\alpha
+$$
+$$
+x_2^*(\omega_1, \omega_2, y) = y/\beta,
+$$
+the cost function is
+$$
+C(y) = \omega_1 x_1^*(\omega_1, \omega_2, y) + \omega_2 x_2^*(\omega_1, \omega_2, y) = \frac{\omega_1y}{\alpha} + \frac{\omega_2y}{\beta}.
+$$
+\end{proof}
+
+\begin{problem}{3.d}
+\end{problem}
+\begin{proof}
+Given that
+$$
+C(y) = \frac{\omega_1y}{\alpha} + \frac{\omega_2y}{\beta},
+$$
+the marginal cost function is
+$$
+C'(y) = \frac{\omega_1}{\alpha} + \frac{\omega_2}{\beta},
+$$
+which shows that marginal cost is always a constant under this production function.
+\end{proof}
+
+\begin{problem}{3.e}
+\end{problem}
+\begin{proof}
+Given that
+$$
+C(y) = \frac{\omega_1y}{\alpha} + \frac{\omega_2y}{\beta},
+$$
+we get that
+$$
+\frac{\partial c(\omega_1, \omega_2, y)}{\partial \omega_1} = \frac{y}{\alpha} = x_1^*(\omega_1, \omega_2, y)
+$$
+and
+$$
+\frac{\partial c(\omega_1, \omega_2, y)}{\partial \omega_2} = \frac{y}{\beta} = x_2^*(\omega_1, \omega_2, y).
+$$
+This precisely adheres to Shepard's lemma because we see that the demand for each good equals the derivative of the cost function relative to the price of that good.
+\end{proof}
+
+\begin{problem}{3.f}
+\end{problem}
+\begin{proof}
+We are aware that
+$$
+\frac{\partial c(\omega_1, \omega_2, y)}{\partial \omega_1} = \frac{y}{\alpha} = x_1^*(\omega_1, \omega_2, y)
+$$
+and
+$$
+\frac{\partial c(\omega_1, \omega_2, y)}{\partial \omega_2} = \frac{y}{\beta} = x_2^*(\omega_1, \omega_2, y),
+$$
+we get that
+$$
+\frac{\partial^2 c(\omega_1, \omega_2, y)}{(\partial \omega_1)^2} = 0
+$$
+and
+$$
+\frac{\partial^2 c(\omega_1, \omega_2, y)}{(\partial \omega_2)^2} = 0,
+$$
+which reflects the fact that the demand for each good is independent to the price of that good for the Leontief production function.
+\end{proof}
+
+
+\begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+The firm's long run cost-minimization problem is 
+$$
+\min_{x_1, x_2} \omega_1 x_1 + \omega_2 x_2
+$$
+$$
+x_1^{1/3} x_2^{2/3} = y.
+$$
+By applying the derivations associated with the Cobb-Douglas function from class, we can apply that 
+$$
+L(x_1, x_2, \lambda) = \omega_1 x_1 + \omega_2 x_2 + \lambda(y - x_1^{1/3} x_2^{2/3}),
+$$
+and we get that
+$$
+x_1 = (y)\left(\frac{\omega_2}{2\omega_1}\right)^{2/3}
+$$
+$$
+x_2 = (y)\left(\frac{2\omega_1}{\omega_2}\right)^{1/3},
+$$
+and additionally the cost function is
+$$
+\omega_1 (y)\left(\frac{\omega_2}{2\omega_1}\right)^{2/3} + \omega_2 (y)\left(\frac{2\omega_1}{\omega_2}\right)^{1/3} = y\left((1/2)^{2/3}\omega_2^{2/3}\omega_1^{1/3} + (2)^{1/3}\omega_2^{2/3}\omega_1^{1/3}\right)
+$$
+$$
+ = y\omega_2^{2/3}\omega_1^{1/3}(2^{1/3} + (1/2)^{2/3})
+$$
+
+\end{proof}
+
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+Given $x_1 = 1$, it follows that the production function is $x_2^{2/3} = y$. $x_2 = y^{3/2}$ is the unique solution to this equation, and thus the only possible bundle that satisfies the production requirement is the bundle where $x_2 = y^{3/2}$. The short-run cost function is
+$$
+\omega_2 y^{3/2} + \omega_1
+$$
+\end{proof}
+
+\begin{problem}{4.c}
+\end{problem}
+\begin{proof}
+We know that $sc(\omega_1, \omega_2, y; x_1 = 1) = \omega_2 y^{3/2} + \omega_1$ and $c(\omega_1, \omega_2, y) = y\omega_2^{2/3}\omega_1^{1/3}(2^{1/3} + (1/2)^{2/3})$. Given $\omega_1 = \omega_2$, we see that 
+$$
+sc(\omega_1, \omega_2, y; x_1 = 1) = \omega_2 y^{3/2} + \omega_1 = \omega_2(y^{3/2} + 1),
+$$ 
+and
+$$
+c(\omega_1, \omega_2, y) = y\omega_2^{2/3}\omega_1^{1/3}(2^{1/3} + (1/2)^{2/3}) = \omega_2y(2^{1/3} + (1/2)^{2/3}).
+$$
+Then, note that $y(2^{1/3} + (1/2)^{2/3}) \leq (y^{3/2} + 1)$ at any value of $y$ because observe that at 
+$$y = (4/9)\left(2^{1/3} + 2^{-2/3}\right)^2,$$
+the derivative of $(y^{3/2} + 1)$ is equal to $(2^{1/3} + (1/2)^{2/3})$, and additionally observe that the value of $(y^{3/2} + 1)$ at $y = (4/9)\left(2^{1/3} + 2^{-2/3}\right)$ is equal to $(4/9)\left(2^{1/3} + 2^{-2/3}\right)^3$. This verifies that $y(2^{1/3} + (1/2)^{2/3})$ is a tangent line to $(y^{3/2} + 1)$ at $y = (4/9)\left(2^{1/3} + 2^{-2/3}\right)^2$. Then, note that the second derivative of $y^{3/2} + 1$ is $(3/4)y^{-1/2}$, which is strictly positive for positive $y$. This shows that the function is concave up, which means that the function can never take a value lower than any of its tangent lines, namely $y(2^{1/3} + (1/2)^{2/3})$. Given that $(4/9)\left(2^{1/3} + 2^{-2/3}\right) = 1.587 > 1$, we conclude that 
+$y(2^{1/3} + (1/2)^{2/3}) > (y^{3/2} + 1)$, which proves that for any $y \in [0, 1]$, 
+$$
+c(\omega_1, \omega_2, y) > sc(\omega_1, \omega_2, y; x_1 = 1).
+$$
+\end{proof}
+
+\begin{problem}{4.d}
+\end{problem}
+\begin{proof}
+In the process of solving 4.c, we found that 
+$$
+c(\omega_1, \omega_2, y) = sc(\omega_1, \omega_2, y; x_1 = 1).
+$$
+if and only if $y = (4/9)\left(2^{1/3} + 2^{-2/3}\right)^2$.
+\end{proof}
+
+\begin{problem}{4.e}
+\end{problem}
+\begin{proof}
+Observe that at $y = \left((2/3)( 2^{1/3} + 2^{-2/3})\right)^2$ and at any arbitrary value of $x_1$ (instead of $x_1 = 1$), the production function states
+$$
+x_2 = \left((x_1^{-1/3})\left((2/3) 2^{1/3} + 2^{-2/3}\right)^2\right)^{3/2}
+$$
+and thus
+$$
+sc(\omega_1, \omega_2, y) = \frac{\omega_2}{x_1^{1/3}} (4/9)\left(2^{1/3} + 2^{-2/3}\right)^2 + \omega_2 x_1^{1/3}
+$$
+$$
+\frac{\partial sc(\omega_1, \omega_2, y)}{\partial x_1} = \frac{\omega_2}{3 x^{2/3}} - \frac{\omega_2 (4/9)\left(2^{1/3} + 2^{-2/3}\right)^2}{3x^{4/3}}.
+$$
+Next, when $y = \left((2/3) 2^{1/3} + 2^{-2/3}\right)^2$ and $x_1 = 1$, we know that
+$$
+sc(\omega_1, \omega_2, y; x_1 = 1) = \omega_2 y^{3/2} + \omega_1 = \omega_2(y^{3/2} + 1),
+$$ 
+and thus
+$$
+\frac{\partial sc(\omega_1, \omega_2, y)}{\partial y} = \omega_2((3/2)y^{1/2} + 1),
+$$
+and at $y = \left((2/3) 2^{1/3} + 2^{-2/3}\right)^2$, we get that
+$$
+\frac{\partial sc(\omega_1, \omega_2, y)}{\partial y} = \omega_2(2^{1/3} + 2^{-2/3} + 1).
+$$
+\end{proof}
+
+\begin{problem}{4.f}
+\end{problem}
+\begin{proof}
+Note that when $y = 1$, 4.a shows that the cost function is
+$$
+\omega_2^{2/3}\omega_1^{1/3}(2^{1/3} + (1/2)^{2/3}).
+$$
+Additionally, when $y = 1$, $x_1^{1/3}x_2^{2/3} = 1$, and thus $x_1^{-1/2} = x_2$, and thus the short run cost function is
+$$
+\omega_1 (x_1) + \omega_2 (x_1^{-1/2}).
+$$
+we are interested in finding $x_1$ such that
+$$
+\omega_1 (x_1) + \omega_2 (x_1^{-1/2}) = \omega_2^{2/3}\omega_1^{1/3}(2^{1/3} + (1/2)^{2/3}).
+$$
+Observe that when $x_1 = \left(\frac{\omega_2}{2\omega_1}\right)^{2/3},$
+$$
+\omega_1 (x_1) + \omega_2 (x_1^{-1/2}) = \omega_1\left(\frac{\omega_2}{2\omega_1}\right)^{2/3} + \omega_2\left(\frac{2\omega_1}{\omega_2}\right)^{1/3} = \omega^{1/3}\omega_2^{2/3}(1/2)^{2/3} + \omega^{1/3}\omega_2^{2/3}(2)^{1/3}
+$$
+$$
+\omega_2^{2/3}\omega_1^{1/3}(2^{1/3} + (1/2)^{2/3}).
+$$
+This shows that when $x_1 = \left(\frac{\omega_2}{2\omega_1}\right)^{2/3},$ $sc(\omega_1, \omega_2, y = 1; x_1 = x_1) = c(\omega_1, \omega_2, y=1)$.
+\end{proof}
+
+\begin{problem}{5}
+\end{problem}
+\begin{proof}
+Given some production function $f(x_1, x_2, ...)$, a firm's production function is homogeneous when $f(\lambda x_1, \lambda x_2, ...) = \lambda^n f(x_1, x_2, ...)$ for some $n \geq 0$.
+
+Now, assume $f(\lambda x_1, \lambda x_2, ...) = y$ and $\omega_1, \omega_2, ...$ are prices for $x_1, x_2, ...$ . Assume the total cost associated with the optimal bundle $(x_1^*, x_2^*, ...)$ is $c$. If $y$ is replaced with $a^ny$ for some constant $a$ and degree of homogeneity $n$, the optimal bundle must be $(ax_1^*, ax_2^*, ...)$. This is true because if this were not the case and the optimal bundle was some $(ax_1', ax_2', ...)$ such that $f(ax_1', ax_2', ...) = a^ny$ and $\omega_1ax_1' + \omega_2ax_2' + ... < a^nc$, that implies $(x_1', x_2', ...)$ is a bundle that can produce $y$ but cost less than $c$ due to homogeneity. This is by definition impossible given $(x_1^*, x_2^*, ...)$ is optimal. Given the optimal bundle is $(ax_1^*, ax_2^*, ...)$, the cost of this bundle is $a(\omega_1ax_1^* + \omega_2ax_2^* + ... ) = ac$. This shows that when $y$ increases by some factor $a^n$, the cost increases by a factor of $a$. In other words, when $y$ increases by some factor $a$, the cost increases by a factor of $a^{1/n}$. It follows that the average cost is
+$$
+\frac{c(\omega_1, \omega_2, ... , ay)}{ay} = \frac{a^nc(\omega_1, \omega_2, ... , y)}{ay} = a^{n - 1}\frac{c(\omega_1, \omega_2, ... , y)}{y}
+$$
+
+Given $f(\lambda x_1, \lambda x_2, ...) = \lambda^n f(x_1, x_2, ...)$, if the function has constant returns to scale, $n = 1$ necessarily. The above equation shows average cost is independent of $a$, and thus it is a constant as the value of $y$ changes. If the function has decreasing returns to scale, $n < 1$ necessarily. The above function shows that the average cost is proportional to $a^{n - 1}$ as $a$ changes, which means that the average cost decreases as $y$ increases. Lastly, if the function has increasing returns to scale, $n > 1$ necessarily. The above equation shows that the average cost is proportional to $a^{n - 1}$ as $a$ changes, which means that the average cost increases as $y$ increases.
+\end{proof}
+
+\end{document}

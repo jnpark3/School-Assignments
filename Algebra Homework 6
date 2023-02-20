@@ -1,0 +1,175 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 6}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{Book 4.1 7.a}
+\end{problem}
+\begin{proof}
+We prove first directly that $G_B$ is a subgroup of $G$. First, to show closure, observe that if $\sigma_1, \sigma_2 \in G_B$, that means $\sigma_1(B) = B$ and $\sigma_2(B) = B$, thus $(\sigma_1 \circ \sigma_2)(B) = \sigma_1(B) = B$, which proves closure. To prove the existence of an inverse, observe that if $\sigma \in G_B \subset G$, that means $\sigma^{-1}$ exists in $G$ given it is a group. Given $\sigma^{-1}(B) = B$, $\sigma^{-1} \in G$ has the property that $\sigma^{-1}(B) = B$, and thus $\sigma^{-1} \in G_B$. Lastly, the identity permutation $I \in G_B$ because $I(B) = B$. Associativitiy follows from the fact that $G$ is a group, and all permutations in $G$ (and by extension $G_B$ must be associative). This completes the proof that $G_B$ is a subgroup of $G$.
+
+To prove that $G_B$ contains $G_a$, first observe that $G_a$ is the subset of all $G$ such that for any $g \in G$, $g(a) = a$. For the sake of contradiction, assume for some $\sigma \in G_a$, $\sigma \notin G_B$. This implies that $\sigma(a) = a$, but $\sigma(B) \neq B$. Given $a \in B$, this implies that there exists $\sigma \in G$ such that $\sigma(B) \neq B$ and $a \in \sigma(B) \cap B \neq \emptyset$. This contradicts the fact that $B$ is a block, and thus $G_a \subset G_B$.
+\end{proof}
+
+\begin{problem}{Book 4.1 7.b}
+\end{problem}
+\begin{proof}
+First, for the sake of contradiction, assume that for any two $\sigma_i, \sigma_j \in G$, $\sigma_i(B) \neq \sigma_j(B)$ but $\sigma_i(B) \cap \sigma_j(B) \neq \emptyset$. This implies that there exists $a, b \in B$ such that $\sigma_j(a) = \sigma_i(b)$. Due to the existence of an inverse, this implies that $a = \sigma_j^{-1}(\sigma_i(b))$. This shows that $a \in \sigma_j^{-1} \circ \sigma_i(B) \cap B \neq 0$, and due to the definition of the block, $ (\sigma_j^{-1} \circ \sigma_i)(B) = B$. However, given $\sigma_i(B) \neq \sigma_j(B)$, it follows from taking the inverse that $B \neq (\sigma_j^{-1} \circ \sigma_i)(B)$, which is a direct contradiction. This proves that for each of the given $\sigma_1, \sigma_2, ..., \sigma_n$, given that their images of $B$ are unique, $\sigma_i(B) \cap \sigma_j(B) = \emptyset$ for any $\sigma_i, \sigma_j \in \sigma_1, \sigma_2, ..., \sigma_n$.
+
+To prove that $\sigma_1(B), \sigma_2(B), ..., \sigma_n(B)$ is a partition of $A$, all that is left is to prove that for any $a \in A$, $a \in \sigma_i(B)$ for some $i \in 1, ..., n$. For the sake of contradiction, assume $a \notin \sigma_1(B), \sigma_2(B), ..., \sigma_n(B)$ for some $a \in A$. Given $G$ acts transitively on $A$, there exists $\sigma \in G$ such that $\sigma(a) \in B$. Due to the existence of inverses, it follows that $a \in \sigma^{-1}(B)$. Given $\sigma_1(B), \sigma_2(B), ..., \sigma_n(B)$ contains every possible distinct image of $B$, either $\sigma^{-1}(B)$ is not in this set (in which case a contradiction arises because the set would not contain every possible distinct image of $B$), or $\sigma^{-1}(B)$ is in the set (in which case a contradiction arises because some element in the set already contains $a$). This contradiction shows that $\sigma_1(B), \sigma_2(B), ..., \sigma_n(B)$ contains every element of $A$ while also being all disjoint, which proves that this set is a partition of $A$.
+\end{proof}
+
+\begin{problem}{Book 4.1 7.c}
+\end{problem}
+\begin{proof}
+We will first show that blocks of order $2$ cannot exist in $S_4$. If $B = \{1, 2\}$ without loss to generality, consider the permutation $\sigma = (1, 3)$. $\sigma(B)$ contains half of $B$ but not the other half, and thus $B$ cannot be a valid block. Similarly, without loss to generality, assume $B = \{1, 2, 3\}$ is a block; the permutation $\sigma = (1, 4)$ similarly shows that $B$ cannot be a block, showing blocks of order $3$ cannot exist. This proves that the only valid blocks in $S_4$ are either of order 4 or 1, which shows that it is trivial.
+
+We will show that $B = \{1, 3\}$, a pair of opposite corners on a square, is a valid block under $S_8$. If a permutation $\sigma$ maps $\sigma(1)$ to $1$, it immediately follows that $\sigma(3) = 3$ as opposite corners cannot become adjacent corners. Similarly, if $\sigma(1) = 3$, then $\sigma(3) = 1$. On the other hand, if $\sigma(1) = 2$ then $\sigma(3) = 4$ and if $\sigma(1) = 4$ then $\sigma(3) = 2$. This shows that for any $\sigma \in D_8$, either $\sigma(\{1, 3\}) = \{1, 3\}$ or $\sigma(\{1, 3\}) = \{2, 4\}$, which proves that $\{1, 3\}$ is a block. This completes the proof that $D_8$ is not trivial.
+\end{proof}
+
+\begin{problem}{Book 4.1 7.d}
+\end{problem}
+\begin{proof}
+If there exists a non-trivial block $B$, assume $a \in B$. We have shown in $7.a$ that $G_B$ is a group of $G$, and $G_a$ is a subgroup of $G_B$. First, observe that $G \neq G_B$ because if $G = G_B$, that would imply $\sigma(B) = B$ for every $\sigma \in G$, which would then imply $G$ is not transitive (it is impossible to permute an element of $B$ outside of $B$). Similarly, given $B$ is non-trivial, there must exist $b \in B$ that is not equal to $a$, and given $G$ is transitive, there must exist $\sigma \in G$ such that $\sigma(a) = b$. This shows that $\sigma \in G_B$ given $B$ is a block, but $\sigma \notin G_a$ given $\sigma(a) \neq a$, this proves that $G_B$ is a strict subgroup of $G$ and $G_a$ is a strict subgroup of $G_a$. Thus, if the transitive group $G$ is not primitive, then for some $a \in G$ there does exist $G_a$ that is contained in a strict subgroup $G_B$ of $G$.
+
+Assume $G$ is primitive. Next, for the sake of contradiction, assume $H$ is a proper subgroup of $G$ that strictly contains $G_a$. Let $B = \{ha : h \in H\}$. We will show that $B$ must be a block. Let $g \in G$ be an element such that $(gB) \cap B \neq \emptyset$. It follows that for some $h, h^* \in H$, $gha = h^*a$, which implies that $h^{*(-1)}gha = a$, which suggests that $h^{*(-1)}gh \in G_a \subset H$. Due to the closure property of groups, $h^*(h^{*(-1)}gh)h^{-1} = g \in H$, and thus $gB = B$. This is true for any $g \in G$ in which $(gB) \cap B \neq \emptyset$, and thus this proves that $B$ is a block. This contradicts the fact that $G$ is primitive, and this completes the proof in both directions.
+ \end{proof}
+ 
+ \begin{problem}{Book 4.1 8.a}
+\end{problem}
+\begin{proof}
+Let $a \in \{1, 2, ..., n\}$. The subgroup $G_a$ contains every permutation in which $a$ is a fixed point. It is clear that for any $b, c \neq a$, there must exist $\sigma \in G_a$ such that $\sigma(b) = c$ because a permutation that maps $\sigma(b) = c$ and $\sigma(a) = a$ must exist in $S_n$. This completes the proof that $S_n$ is doubly transitive, given $a$ is arbitrary.
+ \end{proof}
+ 
+ 
+  \begin{problem}{Book 4.1 8.b}
+\end{problem}
+\begin{proof}
+Assume $G$ is doubly transitive, and for the sake of contradiction, assume $B$ is a non-trivial block in $X$. Assume $a, b \in B$. For any $c \in B^c$, given $G$ is doubly transitive, there must exist $\sigma \in G$ such that $\sigma(a) = a, \sigma(b) = c$. This shows that $\sigma(B) \cap B \neq \emptyset$ given $a \in \sigma(B) \cap B$. This directly implies that $\sigma(B) = B$, and thus $c \in B$. This contradicts the fact that $c \in B^c$, completing the proof that any doubly transitive group $G$ is primitive.
+ \end{proof}
+ 
+   \begin{problem}{Book 4.2 9}
+\end{problem}
+\begin{proof}
+For the sake of contradiction, assume a subgroup $H$ of index $p$ is not normal. We are already ware that $G$ acts on the sets of left cosets of $H$. If $\phi : G \rightarrow H_p$ denotes the homomorphism from each element of $G$ to each of the $p$ cosets formed by $H$, we have shown in a previous homework that the kernel of this homomorphism, $N$, is contained in $H$. $G/N$ is isomorphic to subgroups of $S_p$, which has an order of $p!$. This shows that $G/N$ has an order that divides $p!$. However, due to Lagrange's theorem, $G/N$ must have an order dividing $|G| = p^{\alpha - 1}$. Given $p$ is prime, the only value that divides both $p!$ and $p^{\alpha - 1}$ is $p$. This shows that $|G/N| = p$, and given $|G/N| = [G : H][H : N] = p[H : N]$, we can see that $[H : N] = 1$, which then shows that $N = H$. Given the kernel must be normal by definition, $H = N$ must also be normal. This completes that any subgroup of index $p$ is normal in $G$.
+
+We have already proved that if a subgroup $H$ of order $p$ exists in a group $G$ of order $p^2$, then $H$ is normal, as the index of $H$ would be $p$. Thus, all that remains is to prove that a subgroup of order $p$ does in fact exist. Let $x$ be an element of $G$. Given $x$ is not the identity, $x$ either has an order of $p, p^2$, given the order of elements have to divide the order of the group. If $x$ has an order of $p$, the subgroup generated by $x$ provides a solution. If $x$ has an order of $p^2$, it follows that the element $x^p$ has an order of $p$, and thus the subgroup generated by $x^p$ provides a solution. Thus, in any group of order $p^2$, there exists a normal subgroup of order $p$.
+\end{proof}
+ 
+ \begin{problem}{3}
+\end{problem}
+\begin{proof}
+First, observe that given $G$ acts transitively on a set $\{a_1, ..., a_n\} = X$, for some $a \in X$, there must exist $g_1, ..., g_n \in G$ such that $g_1(a) = a_1, ..., g_n(a) = a_n$. $g_1, ..., g_n$ are all unique actions on $X$ given they map $a$ to different locations, and thus $|G| \geq |X|$. We now strive to prove that $g_1, ..., g_n$ are the only actions in $G$ given it is abelian.
+
+First, for the sake of contradiction, assume $g' \in G$ such that $g' \notin \{g_1, ..., g_n\}$. It follows that for some $g_i \in \{g_1, ..., g_n\}$, $g'(a) = g_i(a)$. Additionally, given $g' \neq g_i$, there must exist $b \in X$ such that $g'(b) \neq g_i(b)$. GIven $G$ acts transitively, there must exist some $h \in G$ such that $h(b) = a$. Then, it follows that
+$$
+g'(b) = h^{-1}(h(g'(b))) = h^{-1}(g'(h(b))) = h^{-1}(g'(a)) = h^{-1}(g_i(a)) = h^{-1}(g_i(h(b))) = ^{-1}(h(g_i(b))) = g_i(b).
+$$
+This shows that $g'(b) = g_i(b)$, contradicting the fact that $g'(b) \neq g_i(b)$. This completes the proof that $G = \{g_1, ..., g_n\}$, which then proves that $|G| = |X|$ when $G$ is abelian and transitive on $X$.
+
+If $G$ is not abelian, the it still holds that $|G| \geq |X|$. However, one example is $D_8$ on the corners of a square. $D_8$ is not Abelian, but it is transitive (any arrangement of the square can be mapped to any other with some element of $D_8$) and it is also faithful ($\sigma(x) = x$ for all $x$ only if $\sigma = I$). However, it is clear that $8 = |D_8| \neq |X| = 4$.
+ \end{proof}
+ 
+  \begin{problem}{4.a}
+\end{problem}
+\begin{proof}
+First, note that in order for $a \in G$ to be an element of the kernel of this set of actions, it must satisfy the property that $a(xH) = xH$ for any $x \in G$. This is true if and only if $ax \in xH$ for every $x \in G$. This occurs if and only if $a \in xHx^{-1}$ for every $x \in G$. Thus, $a \in G$ is in the kernel if and only if $a \in \bigcap_{g \in G} gHg^{-1}$, and thus $N = \bigcap_{g \in G} gHg^{-1}$.
+ \end{proof}
+ 
+\begin{problem}{4.b}
+\end{problem}
+\begin{proof}
+For the sake of contradiction, assume that $H$ contains a normal subgroup $H'$ that is larger than $N$. This implies that for at least one value $g \in G$, there exists $h \in H'$ such that $h \notin N$. Given $N = \bigcap_{g \in G} gHg^{-1}$, there must exist $g \in G$ $h \notin gHg^{-1}$. This directly implies that $g^{-1}hg \notin H$, and by extension $g^{-1}hg \notin H'$. This directly contradicts the fact that $H'$ is a normal subgroup, and thus the largest normal subgroup in $G$ contained inside $H$ is $N$.
+ \end{proof}
+
+\begin{problem}{5.b}
+\end{problem}
+\begin{proof}
+$$
+N(q) = q\bar{q} = (a + bi + cj + dk)(a - bi - cj - dk) 
+$$
+$$
+= a^2 - ab(i) - ac(j) - ad(k) + ab(i) - b^2(i^2) - bc(ij) - bd(ik) + ac(j) - bc(ij) - c^2(j^2) - cd(jk) + ad(k) - bd(ik) - cd(kj) - d^2(k^2)
+$$
+$$
+= a^2 - ab(i) - ac(j) - ad(k) + ab(i) + b^2 - bc(k) + bd(j) + ac(j) + bc(k) + c^2 + cd(i) + ad(k) - bd(j) - cd(i) + d^2
+$$
+$$
+= a^2 + b^2 + c^2 + d^2.
+$$
+ \end{proof}
+ 
+ \begin{problem}{5.c}
+\end{problem}
+\begin{proof}
+To prove that $H^x$ forms a group under multiplication, first observe that $H^x$ is closed under multiplication because the product of any two quaternions can be expressed as the sum of singleton quaternions multiplied to a constant (demonstrated in 5b). This sum is clearly another quaternion, and thus $H^x$ is closed under multiplication. The identity is also defined to be $1$, as it is clear that $1$ multiplied to any quaternion is itself. Then, note that for any quaternion $q$, the inverse of $q$ is $\frac{1}{a^2 + b^2 + c^2 + d^2}\bar{q}$. This quaternion is always well defined given $q \neq 0$. The fact that this is the inverse can be shown from the fact that $q\bar{q} = a^2 + b^2 + c^2 + d^2$ (see 5.b), and thus $\frac{1}{a^2 + b^2 + c^2 + d^2}q\bar{q} = 1$. Lastly, to show that associativity holds, first observe that associativity holds for the four basis of quaternions, $1, i, j, k$, and given associativity also holds for general multiplication and addition, the set of all quaternions is associative under multiplication. This completes the proof that $H^x$ is a group under multiplication.
+ \end{proof}
+ 
+  \begin{problem}{5.d}
+\end{problem}
+\begin{proof}
+Note that $ij = k$, and thus $k \in Q$. It follows that $k^3 = -k$, $i^3 = -i$, $j^3 = -j$ are in $Q$. Lastly, $i^2 = -1$, $i^4 = 1$ are both in $Q$ as well. Thus, $\{i, j, k, -i, -j, -k, 1, -1\} \in Q$. To prove that these eight elements are the only elements in $Q$, first observe that $i, j, k$ are 4-cycles, and all elements in these cycles are contained in $\{i, j, k, -i, -j, -k, 1, -1\}$. Similarly, $-1$ is a 2-cycle, thus all the cycle elements are contained as well. Then, for any product of multiple elements from $\{i, j, k, -1\}$, observe that by the definition of quaternions, the product of any two of $\{i, j, k\}$ is equal to exactly one of $\{i, j, k\}$ (perhaps with signs switched). Thus, any product of multiple elements from $\{i, j, k, -1\}$ can be collapsed into exactly one element in $\{i, j, k, -i, -j, -k, 1, -1\}$. This proves that $Q$ has exactly eight elements.
+ \end{proof}
+ 
+  \begin{problem}{5.e}
+\end{problem}
+\begin{proof}
+If a subgroup has two of $\{i, j, k\}$, then it is clear that the third quaternion can be expressed as a product of the other two, and the set that is generated by all three quaternions is equal to $Q$ (as shown in 5.d). Thus, any non-trivial subgroup of $Q$ contains at most one of $\{i, j, k\}$. Looking at the elements of $5.d$, we can see that the possible subgroups of $Q$ are those that are generated by $-1$, $i$, $j$, $k$. The sets generated by $-i, -j, -k$ are equivalent to the sets generated by $i, j, k$ respectively. The subgroup generated by $-1$ is normal because for any $g \in Q$, $g(-1)g^{-1} = -gg^{-1} = -1$, and $g(1)g^{-1} = 1$. This shows $gHg^{-1} = H$, thus showing $H = \{-1, 1\}$ is normal. Next, if we prove that the subgroup generated by $i$ is normal, the subgroups generated by $j, k$ are also normal because there is no loss to generality; the relationships between these three quaternion elements are symmetric. The group generated by $i$ is $\{i, -i, 1, -1\}$. We have already shown that $g(-1)g^{-1} = -gg^{-1} = -1$, and $g(1)(1)g^{-1} = 1$ for all $g \in G$. $(-j)i(-j)^{-1} = (j)i(j)^{-1} = -jk = -i$; $(-k)i(-k)^{-1} = (k)i(k)^{-1} = -jk = -i$; $(-i)i(-i)^{-1} = -iii = i$, $(-1)i(-1)^{-1} = (1)i(1)^{-1} = i$. This shows that $gig^{-1} \in \{1, -1, i, -i\}$ for every $g \in Q$. It is easy to see that $g(-i)g^{-1} = -(gig^{-1}) \in \{1, -1, i, -i\}$ for any $g \in G$ as well. Thus, we prove that the group generated by $i$ is normal, and thus every subgroup in $Q$ is normal.
+ \end{proof}
+ 
+  
+  \begin{problem}{5.f}
+\end{problem}
+\begin{proof}
+The quotient group $Q/N$ divides $Q = \{i, j, k, -i, -j, -k, 1, -1\}$ into cosets based on whether or not an element is negative or not. Thus, $Q/N = \{i, j, k, 1\}$. To observe that $Q/N$ is isomorphic to $(Z/2Z)^2$, observe that $i$ is a $2$-cycle, and observe that $j$ is a $2$-cycle. The element $k$ can be represented as a product of $i, j$. Given $k$ is also a $2$-cycle, it is clear that $Q/N$ is isomorphic to $(Z/2Z)^2$.
+
+It is easy to see that $Q/N$ is not isomorphic to a subgroup of $Q$; we have shown in 5.e that all subgroups of $Q$ are either a $2$-cycle or $4$-cycle, neither of which is equal to $(Z/2Z)^2$.
+ \end{proof}
+ 
+\begin{problem}{5.h}
+\end{problem}
+\begin{proof}
+First, observe that $\Gamma$ has a 6-cycle. Observe that $\left(\frac{1 + i + j + k}{2}\right)^2 = \frac{-1 + i + j + k}{2}$, and $\frac{-1 + i + j + k}{2}\frac{1 + i + j + k}{2} = -1$. This shows that $\left(\frac{1 + i + j + k}{2}\right)^3 = -1$, and thus $\left(\frac{1 + i + j + k}{2}\right)^6 = 1$. No 6-cycle exists in $S_4$, and thus it is clear that $\Gamma$ is not isomorphic to $S_4$. 
+
+To shows that $Q$ is not isomorphic to $D_8$, first observe $D_8$ corresponds to the permutations of the vertices of a square. If $r$ is a rotation by 90 degrees and $f$ flips the square about an axis, any element in $D_8$ can be written as the composition of these two actions. $(rf)^2 = (fr)^2 = f^2 = r^4 = I$. If $Q$ were isomorphic to $D_8$, there must be some elements in $Q$ that correspond to $r$, $f$. The only two-cycle in $Q$ is $-1$, and thus we assign $f$ to be $-1$. It then follows that $-1 = rf = fr$ as well, given they too are $2$-cycles. This yields the conclusion that $f = rf$, $1 = r$, which contradicts the fact that $r$ is a 4-cycle. This contradiction proves that $Q$ is not isomorphic to $D_8$.
+ \end{proof}
+ 
+ \begin{problem}{5.j}
+\end{problem}
+\begin{proof}
+First, observe that $H^1$ is closed under multiplication because if $a, b \in H^{1}$ and $a = a_1 + a_2i + a_3j + a_4k$, $b = b_1 + b_2i + b_3j + b_4k$, then
+$$
+ab = (a_1b_1 - a_2b_2 - a_3b_3 - a_4b_4) + (a_1b_2 + a_2b_1 + a_3b_4 + a_4b_3)i 
+$$
+$$
++ (a_1b_3 - a_2b_4 + a_3b_1 + a_4b_2)j + (a_1b_4 + a_2b_3 - a_3b_2 + a_4b_1)k.
+$$
+Then, using 5.b,
+$$
+N(ab) = a^2 + b^2 + c^2 + d^2,
+$$
+and by substituting all of the factors from the previous equation we get that $N(ab) = 1$. This proves closure. The identity exists, it is simply $1$ given $N(1) = 1$. The inverse for any $q \in H^1$ is $\bar{q}$, as $N(q) = q\bar{q} = 1$, and thus $q^{-1} = \bar{q}$. Lastly, associativity follows as a result of the associativity of quaternions proved previously.
+
+The set $H^1$ is directly isomorphic to $S^3$, note the map $\phi : H^1 \rightarrow S^3$ where $\phi(a + bi + cj + dk) = (a, b, c, d)$. The properties of the subgroup proven for $H^1$ work in $S^3$; in $\mathbb{R}^4$, multiplying by any of $i, j, k$ represents rotating the sphere in a specific orientation by 90 degrees, and $-1$ denotes inverting the sphere. Thus, the operation between two quaternions can be naturally interpreted as a rotation of a sphere undergoing some rotation.
+ \end{proof}
+ 
+ 
+
+
+\end{document}

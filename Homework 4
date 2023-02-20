@@ -1,0 +1,855 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Problem Set 4}
+\author{Jian Park\\
+20700: Honors Analysis in $\mathbb{R}^n$}
+\maketitle
+
+ \begin{problem}{1.1}
+\end{problem}
+\begin{proof}[Solution]
+We observe from Chapter 4 section 1.7 that the eigenvalues of a triangular matrix are exactly the diagonal entries $a_{1, 1}, a_{2, 2, } ...$. We then observe that $\det(T) = a_{1, 1}a_{2, 2} ... a_{n, n}$ if $T$ is triangular, thus $det(T) = \lambda_{1}\lambda_{2} ... \lambda_{n}$. Then, Theorem 3.5 of chapter 3 states that $\det(AB) = \det(A)\det(B)$. Thus, if $A$ is any arbitrary operator, then Theorem 1.1 shows that $A = UTU^*$ where $U$ is unitary and $T$ is triangular. Then, $\det(A - nI) = \det(UTU^* - nI) = \det(UTU^* - nUU^*)$, with the last equality being true due to Property 1 of section 6.1 in chapter 6. Then, $\det(UTU^* - nUU^*) = \det(U(T - nI)U^*) = \det(U)\det(T - nI)\det(U^*) = \det(U^*)\det(U)\det(T - nI) = \det(U^*U)\det(T - nI)$. Lemma 6.2 of Chapter 5 states that $U^*U = I$, and thus $\det(A - nI) = \det(I)\det(T - nI) = \det(T - nI)$. This shows that $A$ and $T$ share the same characteristic polynomial, thus $A$ and $T$ share the same eigenvalues. We have also previously shown that $\det(T - (0)I) = \det(T) = \lambda_1\lambda_2 ... \lambda_n$, thus $\det(A - (0)I) = \det(A) = \lambda_1\lambda_2 ... \lambda_n$, therefore showing that the determinant of $A$ is the product of its eigenvalues.
+
+Theorem 5.1 of section 1 notes that $trace(AB) = trace(BA)$, thus if $A = UTU^*$, then $trace(A) = trace(UTU^*) = trace(U^*UT) = trace(T)$, with the last equality being true due to Lemma 6.2. We have also previously shown that the diagonals of $T$ are the eigenvalues of $T$, thus $trace(T) = \lambda_1 + \lambda_2 ... \lambda_n$. In addition, we have previously shown that $A$ and $T$ share the same eigenvalues, thus $trace(A) = trace(T) = \lambda_1 + \lambda_2 ... \lambda_n$. This shows that the trace of any matrix $A$ is the sum of its eigenvalues.
+\end{proof}
+
+ \begin{problem}{2.1a}
+\end{problem}
+\begin{proof}[Solution]
+True. We know from Lemma 6.2 of Chapter 5 that if $U$ is an isometry, then $U^*U = I = UU^*$. Then observe that all unitary matrices are isometries. In addition, a normal operator is an operator acting in one space, so a unitary matrix would be normal if and only if $U:X \rightarrow X$. Thus, a unitary matrix $U:X \rightarrow X$ is always normal.
+\end{proof}
+
+ \begin{problem}{2.1b}
+\end{problem}
+\begin{proof}[Solution]
+False. We observe that $2I_2$ is an invertible matrix, because $(2I_2)^{-1} = (1/2)I_2$. In addition, $det(2I_2) = 2det(I_2) = 2$. Proposition 6.4 from chapter 5 that if $U$ is unitary, then $| \det(U) | = 1$. This clearly shows that $2I_2$ is not unitary, thus not all invertible matrices are unitary.
+\end{proof}
+
+ \begin{problem}{2.1c}
+\end{problem}
+\begin{proof}[Solution]
+True. First, observe that $A$ is unitarily equivalent to $B$ if $A = UBU^*$ where $U$ is some unitary matrix. Then, observe from Lemma 6.2 of Chapter 6 that $U^*U = I$, thus $U^{-1} = U^*$.  Section 1.3 of chapter 4 notes that $A$ is similar to $B$ if there exists an invertible matrix $S$ such that $A = SBS^{-1}$. Let $U = S$, and we can immediately see that $A$ and $B$ are similar. Thus, any two unitarily equivalent matrices are also similar.
+\end{proof}
+
+ \begin{problem}{2.1d}
+\end{problem}
+\begin{proof}[Solution]
+True. Consider two self adjoint operators $A$ and $B$. $A+B$ is self-adjoint if and only if $(A + B)_{ij} = \overline{(A+B)_{ji}}$. Let $A_{ij} = a_1+ib_1$, $A_{ji} = a_1-ib_1$, $B_{ij} = a_2+ib_2$, and $B_{ji} = a_2-ib_2$. We observe that $(A + B)_{ij} = A_{ij} + B_{ij} = (a_1 + a_2) + i(b_1 + b_2)$, and $(A + B)_{ji} = A_{ji}+B_{ji} = (a_1 + a_2) - i(b_1 + b_2)$, thus $(A + B)_{ij} = (a_1+a_2) + i(b_1 + b_2) =  \overline{(A+B)_{ji}}$. Thus, $A+B$ is self-adjoint.
+\end{proof}
+
+ \begin{problem}{2.1e}
+\end{problem}
+\begin{proof}[Solution]
+True. This is stated in property 2 in section 6.1 of chapter 5. This is also trivial to show because if $U$ is unitary, $U^*U = I$, thus $U^* = U^{-1}$. Thus, $I = UU^{-1} = UU^* = (U^*)^*(U^*)$, and proposition 6.2 shows that $U^*$ is an isometry. Lastly, given $U$ is unitary, Proposition 6.3 shows it is square, thus $U^*$ is square, and Proposition 6.3 then shows that $U^*$ is unitary.
+\end{proof}
+
+ \begin{problem}{2.1f}
+\end{problem}
+\begin{proof}[Solution]
+True. If $N$ is normal, we are given that $N^*N = NN^*$. In addition, we know that $(N^*)^* = N$, thus $(N^*)(N^*)^* = (N^*)^*(N^*)$, which shows that $(N^*)$ is normal by definition.
+\end{proof}
+
+ \begin{problem}{2.1g}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the matrix 
+$$
+A = \begin{bmatrix}
+1 & 1 \\
+0 & 1
+\end{bmatrix}.
+$$
+Observe that $det(A - \lambda I) = (1-\lambda)^2$, thus all eigenvalues of $A$ are 1. Then, observe that
+$$
+A^*A = \begin{bmatrix}
+1 & 0 \\
+1 & 1
+\end{bmatrix}\begin{bmatrix}
+1 & 1 \\
+0 & 1
+\end{bmatrix} = \begin{bmatrix}
+1 & 1 \\
+1 & 2
+\end{bmatrix}.
+$$
+Lemma 6.4 shows that $A$ can only be an isometry if $A^*A = I$, which is clearly not the case. Thus, $A$ is not an isometry, and therefore $A$ is not unitary or orthogonal.
+\end{proof}
+
+ \begin{problem}{2.1h}
+\end{problem}
+\begin{proof}[Solution]
+True. Observe from Theorem 2.4 that if $N$ is normal, then $N = UDU^*$ where $D$ is diagonal and $U$ is unitary. Theorem 2.1 of Chapter 4 notes that the elements of the diagonal correspond to the eigenvalues of $N$, thus $D = I$ and $N = UIU^* = UU^*$. Given that $U$ is unitary, we know that $U^* = U^{-1}$ due to property 2 in Section 6.1 of Chapter 5, thus $N = UU^* = I$.
+\end{proof}
+
+ \begin{problem}{2.1I}
+\end{problem}
+\begin{proof}[Solution]
+False. We know from the definition of an isometry if $U$ preserves the norm. In addition, Theorem 6.1 shows that all isometries preserves the inner product because $(x, y) = (Ux, Uy)$. Thus, if a matrix preserves the norm, it must be an isometry, and all isometries preserve the inner product.
+\end{proof}
+
+ \begin{problem}{2.2}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the two matrices
+$$
+A = \begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}, B = \begin{bmatrix}
+0 & 1 \\
+-1 & 0
+\end{bmatrix}.
+$$
+$A$ is clearly normal because $A = A^*$, thus $A^*A = AA = AA^*$. Similarly, $B = -B^*$, thus $B^*B = -BB = BB^*$. However, observe that  
+$$
+(A+B)^*(A+B) = \begin{bmatrix}
+0 & 0 \\
+2 & 0
+\end{bmatrix}\begin{bmatrix}
+0 & 2 \\
+0 & 0
+\end{bmatrix} = \begin{bmatrix}
+0 & 0 \\
+0 & 4
+\end{bmatrix}
+$$
+And
+$$
+(A+B)(A+B)^* = \begin{bmatrix}
+0 & 2 \\
+0 & 0
+\end{bmatrix}\begin{bmatrix}
+0 & 0 \\
+2 & 0
+\end{bmatrix} = \begin{bmatrix}
+0 & 0 \\
+0 & 4 
+\end{bmatrix}.
+$$
+Thus, $A+B$ is clearly not normal despite both $A$ and $B$ being normal.
+\end{proof}
+
+ \begin{problem}{2.3}
+\end{problem}
+\begin{proof}[Solution]
+Let $A = UDU^*$, where $D$ is a diagonal and $U$ is unitary. Due to the properties of the adjoint outlined in Section 5.1 of Chapter 5, we observe that $A^* = (UDU^*)^* = (U^*)^*(UD)^*. = U(UD)^* = UD^*U^*$. Thus $A^* = UD^*U^*$. Given that $DD^* = D^*D$, we can clearly see that $A^*A = UD^*U^*UDU^* = UD^*DU^* = UDD^*U^* = UDU^*UD^*U^* = AA^*$, thus $A$ is normal.
+\end{proof}
+
+ \begin{problem}{2.5}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the $1 \times 1$ matrix 
+$$A = \begin{bmatrix}
+-1
+\end{bmatrix}.$$
+It is clear that the only square roots of $A$ are 
+$$A = \begin{bmatrix}
+\pm i
+\end{bmatrix}.$$
+Clearly neither of these matrices are self adjoint, thus not all self-adjoint matrices have a self-adjoint square root.
+\end{proof}
+
+ \begin{problem}{2.6}
+\end{problem}
+\begin{proof}[Solution]
+Using the given matrix $A$, $\det(A - \lambda I) = (7 - \lambda)(4 - \lambda) - 4 = (\lambda - 8)(\lambda - 3)$, thus 8 and 3 are the eigenvalues for $A$. We observe that $A(2, 1)^T = (16, 8)^T = 8(2, 1)^T$, thus $(2, 1)^T$ is the eigenvector corresponding to eigenvalue 8. In addition, $A(-1, 2)^T = (-3, 6)^T = 3(-1, 2)^T$, thus $(-1, 2)^T$ is the eigenvector corresponding to the eigenvalue 3. We observe that $(-1/\sqrt{5}, 2/\sqrt{5})$ and $(2/\sqrt{5}, -1/\sqrt{5})$ constitute an orthonormal system of eigenvectors because both vectors are normal and the dot product of these two vectors is 0. Thus, we observe that the following is an orthogonal diagonalization of $A$:
+$$
+SDS^{-1} = \begin{bmatrix}
+-1/\sqrt{5} & 2/\sqrt{5} \\
+2/\sqrt{5} & 1/\sqrt{5}
+\end{bmatrix}\begin{bmatrix}
+3 & 0 \\
+0 & 8
+\end{bmatrix}\begin{bmatrix}
+-1/\sqrt{5} & 2/\sqrt{5} \\
+2/\sqrt{5} & 1/\sqrt{5}
+\end{bmatrix}^{-1} = \begin{bmatrix}
+-1/\sqrt{5} & 2/\sqrt{5} \\
+2/\sqrt{5} & 1/\sqrt{5}
+\end{bmatrix}\begin{bmatrix}
+3 & 0 \\
+0 & 8
+\end{bmatrix}\begin{bmatrix}
+-1/\sqrt{5} & 2/\sqrt{5} \\
+2/\sqrt{5} & 1/\sqrt{5}
+\end{bmatrix}.
+$$
+Next, to find the square root of $A$, let $D'$ denote the diagonal matrix whose elements are the square root of the elements of $D$. Observe that $(SD'S^{-1})(SD'S^{-1}) = SD'D'S^{-1} = SDS^{-1}$, thus $SD'S^{-1}$ is the diagonalization of the square root of $A$. The elements on the diagonal of $D'$ are the eigenvalues of $SD'S^{-1}$, thus the square root with positive eigenvalues must have positive elements in $D'$. Thus, we see that
+$$
+\begin{bmatrix}
+-1/\sqrt{5} & 2/\sqrt{5} \\
+2/\sqrt{5} & 1/\sqrt{5}
+\end{bmatrix}\begin{bmatrix}
+\sqrt{3} & 0 \\
+0 & \sqrt{8}
+\end{bmatrix}\begin{bmatrix}
+-1/\sqrt{5} & 2/\sqrt{5} \\
+2/\sqrt{5} & 1/\sqrt{5}
+\end{bmatrix},
+$$
+would be a square root of $A$, and its eigenvalues are positive ($\sqrt{3}$ and $\sqrt{8}$).
+\end{proof}
+
+\begin{problem}{2.7a}
+\end{problem}
+\begin{proof}[Solution]
+False. We know from the property of the adjoint that $(AB)^* = B^*A^*$. Thus, if $A$ and $B$ are self adjoint, then $(AB)^* = B^*A^* = BA$. Thus, $(AB)^* = AB$ if and only if $AB = BA$. Below, we show an example of two matrices $A$ and $B$ where $AB \neq BA$:
+$$
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}\begin{bmatrix}
+3 & 1 \\
+1 & 2
+\end{bmatrix} = \begin{bmatrix}
+1 & 2 \\
+3 & 1
+\end{bmatrix}
+$$
+$$
+\begin{bmatrix}
+3 & 1 \\
+1 & 2
+\end{bmatrix}\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix} = \begin{bmatrix}
+1 & 3 \\
+2 & 1
+\end{bmatrix}.
+$$
+Thus, the product of two self-adjoint matrices are not necessarily self-adjoint.
+\end{proof}
+
+\begin{problem}{2.7b}
+\end{problem}
+\begin{proof}[Solution]
+True. We will show this with induction. First, observe that $A^1 = A$ is clearly self-adjoint. Then, if $A^k$ is self adjoint, then observe that $(A^{k+1})^* = (A*A^{k})^* = (A^{k})^*(A)^* = A^kA = A^{k+1}$, thus $A^{k+1}$ is also self-adjoint. Thus, $A^k$ is self-adjoint for all $k \in \mathbb{N}$
+\end{proof}
+
+\begin{problem}{2.8a}
+\end{problem}
+\begin{proof}[Solution]
+Section 5.1.3 of Chapter 5 notes that $(AB)^* = B^*A^*$. Thus, $(A^*A)^* = A^*(A^*)^* = A^*A$. Thus, $A^*A$ is self-adjoint.
+\end{proof}
+
+\begin{problem}{2.8b}
+\end{problem}
+\begin{proof}[Solution]
+If $\lambda$ is an eigenvalue of $A^*A$, then let $A^*Ax = \lambda x$. Then,
+$$
+\lambda ||x||^2 = (\lambda x, x) = (A^*Ax, x) = (Ax, Ax) = ||Ax||^2 \geq 0.
+$$
+We know that $||x||^2$ is clearly greater than 0, thus $\lambda$ must be non-negative.
+\end{proof}
+
+\begin{problem}{2.8c}
+\end{problem}
+\begin{proof}[Solution]
+Proposition 3.1 of Chapter 3 notes that if $B$ is not invertible, then $\det{B} = 0$. Thus, if $\det{B} \neq 0$, then $B$ must be invertible. 
+
+For the matrix $A^*A + I$, observe that if $A^*Ax = \lambda x$, then $(A^*A + I)x = A^*Ax + x = (\lambda + 1)x$. Thus, if $\lambda$ is an eigenvalue of $A^*A$, then $\lambda + 1$ is an eigenvalue of $A^*A + I$. Using the result from problem 2.8b, we thus see that all eigenvalues of $A^*A + I$ are greater than are equal to 1. Theorem 1.2 of Chapter 4 notes that $det(A^*A) = \lambda_1\lambda_2 ... \lambda_n$, and we clearly know that $\lambda_1\lambda_2 ... \lambda_n$ is positive. Thus, $det(A^*A) > 0$, thus $A^*A$ is invertible.
+\end{proof}
+
+\begin{problem}{2.10}
+\end{problem}
+\begin{proof}[Solution]
+For the rotation matrix $R$, we observe that $det(R - \lambda I) = (cos(\alpha) - \lambda)^2 + sin^2(x) = \lambda^2 - \lambda(cos(\alpha)) + cos^2(\alpha) +sin^2(\alpha) = \lambda^2 - \lambda(cos(\alpha)) + 1$. We observe that $\lambda^2 - \lambda(cos(\alpha)) + 1 = 0$ when $\lambda = cos(\alpha) \pm \sqrt{cos^2(\alpha) - 1} = cos(\alpha) \pm i(sin(\alpha))$. For eigenvalue $cos(\alpha) - i(sin(\alpha))$, observe that $R(1, i)^T = (cos(\alpha) - i(sin(\alpha)), sin(\alpha) + i(cos(\alpha))) = (cos(\alpha) - i(sin(\alpha)))(1, i)^T$, thus $(1, i)^T$ is the corresponding eigenvector. Similarly, for the eigenvalue $cos(\alpha) + i(sin(\alpha))$, observe that $R(1, -i)^T = (cos(\alpha) + i(sin(\alpha)), sin(\alpha) - i(cos(\alpha))) = (cos(\alpha) + i(sin(\alpha)))(1, -i)^T$, thus $(1, -1)^T$ is the corresponding eigenvector. We observe that $(1/\sqrt{2}, i/\sqrt{2})$ and $(1/\sqrt{2}, -i/\sqrt{2})$ are an orthonormal system of eigenvectors because the norms of both vectors are 1 and the inner product of these two matrices is 0. Thus, we observe that the following is the orthogonal diagonalization of the rotation matrix $R$:
+$$
+R = \begin{bmatrix}
+1/\sqrt{2} & 1/\sqrt{2} \\
+i/\sqrt{2} & -i/\sqrt{2}
+\end{bmatrix}\begin{bmatrix}
+cos(\alpha) - i(sin(\alpha)) & 0 \\
+0 & cos(\alpha) + i(sin(\alpha))
+\end{bmatrix}\begin{bmatrix}
+1/\sqrt{2} & 1/\sqrt{2} \\
+i/\sqrt{2} & -i/\sqrt{2}
+\end{bmatrix}^{-1} 
+$$
+$$
+= \begin{bmatrix}
+1/\sqrt{2} & 1/\sqrt{2} \\
+i/\sqrt{2} & -i/\sqrt{2}
+\end{bmatrix}\begin{bmatrix}
+cos(\alpha) - i(sin(\alpha)) & 0 \\
+0 & cos(\alpha) + i(sin(\alpha))
+\end{bmatrix}\begin{bmatrix}
+1/\sqrt{2} & -i/\sqrt{2} \\
+1/\sqrt{2} & i/\sqrt{2}
+\end{bmatrix}
+$$
+\end{proof}
+
+\begin{problem}{2.13}
+\end{problem}
+\begin{proof}[Solution]
+Due to the definition of an isometry, a matrix $A$ is is an isometry if $||Ax|| = ||x||$. Then, given some normal matrix $A$ where the eigenvalues are $1, -1$, note from Theorem 2.4 that $A = UDU^*$, where $U$ is unitary and $D$ is a diagonal matrix only containing $1$ or $-1$ in the diagonal positions. First, observe that $U^*$ is unitary due to property 2 in Section 6.1 of Chapter 5, and by definition $||Ux|| = ||x||$ for all $x$, and $||UDU^*x|| = ||UDx||$. Next, observe that $||Dx|| = ||x||$ because the operation $D$ only changes the signs of some elements in $x$, and this would not change the value of the norm. Thus, $||UDx|| = ||Ux||$. Lastly, $U$ is unitary so by definition so $||Ux|| = ||x||$. We thus observe that $||Ax|| = ||UDU^*x|| = ||x||$ for all $x$, thus $A$ is by definition an isometry. Then, for all normal matrices $N$, $N: V \rightarrow V$, thus we see from Proposition 6.3 of Chapter 5 that all normal matrices which are also isometries are unitary. Thus, given that $A$ is normal and an isometry, $A$ is unitary.
+\end{proof}
+
+\begin{problem}{2.14}
+\end{problem}
+\begin{proof}[Solution]
+Given that $N$ is normal, Theorem 2.4 states that $N = UDU^*$ where $D$ is diagonal and $U$ is unitary. We know that the elements in $D$ are real because the values correspond to the eigenvalues of $N$. Then, using the properties of the adjoint, we observe that $N^* = (UDU^*)^* = (DU^*)^*U^* = (U^*)^*DU^* = UD^*U^*$. Then. given that $D$ is a real diagonal, $D = D^*$, thus $UD^*U^* = UDU^* = N$, thus $N^* = N$. This shows that $N$ is self-adjoint.
+\end{proof}
+
+\begin{problem}{2.15a}
+\end{problem}
+\begin{proof}[Solution]
+Consider the symmetric complex matrix
+$$
+A = \begin{bmatrix}
+2i & 1 \\
+1 & i \\
+\end{bmatrix}.
+$$
+Observe that $det(A - \lambda I) = (2i - \lambda)(i - \lambda) - 1 = -2 + 3i\lambda + \lambda^2 - 1 = \lambda^2 + 3i\lambda + -3 = (\lambda - \sqrt{3}/2 - 3i/2)(\lambda + \sqrt{3}/2 - 3i/2)$. Thus, $\pm \sqrt{3}/2 + 3i/2$ are the eigenvalues of $A$. Corollary 2.3 of Chapter 4 states that $A$ is therefore diagonalizable. Next, observe that $A(\sqrt{3} + i, 2)^T = (2\sqrt{3}i, \sqrt{3} + 3i)^T = (\sqrt{3}/2 + 3i/2)(\sqrt{3} + i, 2)^T$, thus $(\sqrt{3} + i, 2)$ is an eigenvector. Similarly, $A(-\sqrt{3} + i, 2)^T = (-2\sqrt{3}i, -\sqrt{3} + 3i)^T = (-\sqrt{3}/2 + 3i/2)(-\sqrt{3} + i, 2)^T$, thus $(-\sqrt{3} + i, 2)^T$ is another eigenvector. Thus, $(\sqrt{3} + i, 2)^T$ and $(-\sqrt{3} + i, 2)^T$ are the two eigenvectors of $A$ corresponding to each of the eigenvalues. However, observe that $(\sqrt{3} + i, 2)^T$ and $(-\sqrt{3} + i, 2)^T$ does not form a basis in $\mathbb{C}^2$ because no linear combination of these two vectors equals $(0, 4)$. We can see this by showing that $a(\sqrt{3} + i, 2)^T+b(-\sqrt{3} + i, 2)^T = (0, 2)^T$. We observe that $a = 1-b$ in order for the bottom element to be equal to two. Then, observe that the top element can be expressed as $a(\sqrt{3}+i) + (1-a)(-\sqrt{3}+i).$ Observe that the real portion of this element always $\sqrt{3}$, thus $(0, 2)^T$ cannot be written as a linear sum of these two eigenvectors. Thus, despite $A$ being diagonalizable and symmetric, the eigenvectors do not form an orthogonal basis of the vector space.
+\end{proof}
+
+\begin{problem}{2.15b}
+\end{problem}
+\begin{proof}[Solution]
+Consider the symmetric complex matrix
+$$
+A = \begin{bmatrix}
+2i & 1 \\
+1 & 0 \\
+\end{bmatrix}.
+$$
+Observe that $det(A - \lambda I) = (2i - \lambda)(\lambda) - 1 = (\lambda - i)^2$, thus $i$ is the eigenvalue of $A$ with algebraic multiplicity 2. Then, observe that
+$$
+A - i\lambda = \begin{bmatrix}
+i & 1 \\
+1 & -i \\
+\end{bmatrix}.
+$$
+Observe that $(A - i\lambda)$ does not have a trivial range because $(A - i\lambda)(1, 1)^T = (1 + i, 1 + -1)$. This shows that $dim(Ran(A - i \lambda)) \geq 1$, and Theorem 7.2 of Chapter 2 states that $rank(A - i\lambda) + dim(ker(A - i\lambda)) = dim(\mathbb{C}^2) = 2,$ thus $dim(ker(A - i\lambda)) \leq 1$. This shows that the geometric multiplicity of $i$ is not equal to the algebraic multiplicity, thus Theorem 2.8 states that $A$ is not diagnolizable. 
+\end{proof}
+
+\begin{problem}{3.1}
+\end{problem}
+\begin{proof}[Solution]
+Using the Gram-Schmidt decomposition, if $r$ is the number of non-zero singular values we observe that 
+$$
+Ax = \sum_{i = 0}^r \sigma_i(x, v_1)w_i
+$$
+for any $x$. Thus, it is clear that $Ax = a_1w_1 + a_2w_2 + ... + a_rw_r$ for some constants $a_1, ..., a_r$. This shows that $w_1, w_2, ... w_r$ is generating in $Ran(A)$. Next, we know due to Proposition 3.6 that by definition $w_1, w_2, ..., w_r \in Ran(A)$, and $w_1, w_2, ..., w_r$ is an orthonormal system. Corollary 2.6 of Chapter 5 shows that all orthogonal systems are linearly independent, thus $w_1, w_2, ..., w_r$ is linearly independent. Given that $w_1, w_2, ..., w_r$ is both linearly independent and generating in $Ran(A)$, it is a basis in $Ran(A)$, thus $rank(A) = r$.
+\end{proof}
+
+\begin{problem}{3.2}
+\end{problem}
+\begin{proof}[Solution]
+For the first matrix $A$, we observe that
+$$
+A^*A = \begin{bmatrix}
+2 & 0 \\
+3 & 2
+\end{bmatrix}\begin{bmatrix}
+2 & 3 \\
+0 & 2
+\end{bmatrix} = \begin{bmatrix}
+4 & 6 \\
+6 & 13
+\end{bmatrix}.
+$$
+The characteristic polynomial for $A^*A$ is $det(A^*A - \lambda I) = (13 - \lambda)(4 - \lambda) - 36 = (16 - \lambda)(1-\lambda)$, thus the eigenvalues of $A^*A$ are 16 and 1, thus the singular values of $A$ are $\sigma_1 = 4$ and $\sigma_2 = 1$. In addition, we observe that $A^*A(1, 2)^T = 16(1, 2)^T = \sigma_1^2(1, 2)^T$ and $A^*A(-2, 1)^T = (-2, 1)^T = \sigma_2^2(-2, 1)^T$. Thus, $v_2 = (-2/\sqrt{5}, 1/\sqrt{5})^T$ and $v_1 = (1/\sqrt{5}, 2\sqrt{5})^T$ forms an orthonormal basis of eigenvectors. Using Proposition 3.6, we also get that $w_1 = (1/\sigma_1)Av_1 = (1/4)A(1/\sqrt{5}, 2/\sqrt{5})^T = (2/\sqrt{5}, 1/\sqrt{5})^T$ and $w_2 = (1/\sigma_2)Av_2 = A(-2/\sqrt{5}, 1/\sqrt{5})^T = (-1/\sqrt{5}, 2/\sqrt{5})^T$. Using equation 3.1, we observe that 
+$$
+A = \sum_{k=1}^r \sigma_kw_kv_k^* = (4)(1/\sqrt{5}, 2/\sqrt{5})^T(2/\sqrt{5}, 1/\sqrt{5}) + (-2/\sqrt{5}, 1/\sqrt{5})^T(-1/\sqrt{5}, 2/\sqrt{5})
+$$
+Is the Schmidt decomposition of $A$.
+
+For the second matrix $B$, we observe that
+$$
+B^*B = \begin{bmatrix}
+7 & 0 & 5 \\
+1 & 0 & 5
+\end{bmatrix}\begin{bmatrix}
+7 & 1 \\
+0 & 0 \\
+5 & 5
+\end{bmatrix} = \begin{bmatrix}
+74 & 32 \\
+32 & 26
+\end{bmatrix}.
+$$
+The characteristic polynomial for $B^*B$ is $det(B^*B - \lambda I) = (74 - \lambda)(26 - \lambda) - 32^2 = (90 - \lambda)(10-\lambda)$, thus the eigenvalues of $B^*B$ are 90 and 10, thus the singular values of $B$ are $\sigma_1 = \sqrt{90}$ and $\sigma_2 = \sqrt{10}$. In addition, we observe that $B^*B(2, 1)^T = (180, 90)^T = \sigma_1^2(2, 2)^T$ and $B^*B(-1, 2)^T = (-10, 20)^T = \sigma_2^2(-1, 2)^T$. Thus, $v_2 = (-1/\sqrt{5}, 2/\sqrt{5})^T$ and $v_1 = (2/\sqrt{5}, 1\sqrt{5})^T$ forms an orthonormal basis of eigenvectors. Using Proposition 3.6, we also get that $w_1 = (1/\sigma_1)Bv_1 = (1/\sqrt{90})B(2/\sqrt{5}, 1/\sqrt{5})^T = (1/\sqrt{2}, 0, 1/\sqrt{2})^T$ and $w_2 = (1/\sigma_2)Bv_2 = (1/\sqrt{10})B(-1/\sqrt{5}, 2/\sqrt{5})^T = (-1/\sqrt{2}, 0, 1/\sqrt{2})^T$. Using equation 3.1, we observe that 
+$$
+B = \sum_{k=1}^r \sigma_kw_kv_k^* = \sqrt{90}(1/\sqrt{5}, 0, 1/\sqrt{5})^T(2/\sqrt{5}, 1/\sqrt{5})^ + \sqrt{10}(-1/\sqrt{5}, 0, 1/\sqrt{5})^T(-1/\sqrt{5}, 2/\sqrt{5})
+$$
+Is the Schmidt decomposition of $B$.
+
+For the Third matrix $C$, we observe that
+$$
+C^*C = \begin{bmatrix}
+1 & 0 & -1 \\
+1 & 1 & 1
+\end{bmatrix}\begin{bmatrix}
+1 & 1 \\
+0 & 1 \\
+-1 & 1
+\end{bmatrix} = \begin{bmatrix}
+2 & 0 \\
+0 & 3
+\end{bmatrix}.
+$$
+The characteristic polynomial for $C^*C$ is $det(C^*C - \lambda I) = (3 - \lambda)(2 - \lambda)$, thus the eigenvalues of $C^*C$ are 3 and 2, thus the singular values of $C$ are $\sigma_1 = \sqrt{3}$ and $\sigma_2 = \sqrt{2}$. In addition, we observe that $C^*C(0, 1)^T = (0, 3)^T = \sigma_1^2(0, 1)^T$ and $C^*C(1, 0)^T = (2, 0)^T = \sigma_2^2(1, 0)^T$. Thus, $v_2 = (1, 0)^T$ and $v_1 = (0, 1)^T$ form an orthonormal basis of eigenvectors. Using Proposition 3.6, we also get that $w_1 = (1/\sigma_1)Cv_1 = (1/\sqrt{3})C(0, 1)^T = (1/\sqrt{3}, 1/\sqrt{3}, 1/\sqrt{3})^T$ and $w_2 = (1/\sigma_2)Cv_2 = (1/\sqrt{2})C(1, 0)^T = (1/\sqrt{2}, 0, -1/\sqrt{2})^T$. Using equation 3.1, we observe that 
+$$
+C = \sum_{k=1}^r \sigma_kw_kv_k^* = \sqrt{3}(1/\sqrt{3}, 1/\sqrt{3}, 1/\sqrt{3})^T(0, 1) + \sqrt{2}(1/\sqrt{2}, 0, -1/\sqrt{0})^T(1, 0)
+$$
+Is the Schmidt decomposition of $C$.
+\end{proof}
+
+\begin{problem}{3.3}
+\end{problem}
+\begin{proof}[Solution]
+If $A = W\Sigma V^*$, then by Definition 3.9 $W$ and $V$ are square unitary matrices, and $\Sigma$ is an $m \times n$ diagonal matrix. Using the property of the adjoint, we observe that $A^* = (W\Sigma V^*)^* = (V^*)^*(W\Sigma)^* = V(W\Sigma)^* = V\Sigma^*W^*$. We observe that this is a singular value decomposition of $A^*$ as described in Definition 3.9 because $V$ and $W$ are unitary by definition and $\Sigma^*$ is an $m \times n$ diagonal matrix.
+
+Next, observe that if $A$ is invertible, then $A$ must be a square due to Remark 6.2 of Chapter 1. Thus, $m = n$, and if $A = W\Sigma V^*$, then $\Sigma$ must be a square $n \times n$ matrix. Next, note that by definition, $W$ and $V$ are invertible, and $\Sigma$ is also invertible because it is square and diagonal ($\Sigma^{-1}$ is just the diagonal matrix where the entries in the diagonal are the multiplicative inverse of the elements of $\Sigma$). Lastly, note that $U^* = U^{-1}$ for any unitary matrix $U$ due to property 1 in section 6.1 of Chapter 5. Then, using property and Theorem 6.3 of Chapter 1, we observe that $A^{-1} = (W\Sigma V^*)^{-1} = (W\Sigma V^{-1})^{-1} = (V^{-1})^{-1}(W\Sigma)^{-1} = V(W\Sigma)^{-1} = V\Sigma^{-1}W^{-1} = V\Sigma^{-1}W^*$. We observe that this is a singular value decomposition of $A^{-1}$ as described in Definition 3.9 because $V$ and $W$ are by definition unitary and $\Sigma^{-1}$ is a square diagonal matrix.
+
+\end{proof}
+
+\begin{problem}{3.5a}
+\end{problem}
+\begin{proof}[Solution]
+Using the results from the first part of problem 3.2, we can derive the singular value decomposition of the given matrix $A$ to be
+$$
+A = W\Sigma V^* = \begin{bmatrix}
+1/\sqrt{5} & -2/\sqrt{5} \\
+2/\sqrt{5} & 1/\sqrt{5} 
+\end{bmatrix}\begin{bmatrix}
+4 & 0 \\
+0 & 1
+\end{bmatrix}\begin{bmatrix}
+2/\sqrt{5} & 1/\sqrt{5} \\
+-1/\sqrt{5} & 2/\sqrt{5} 
+\end{bmatrix}.
+$$
+We know that $W$ and $V$ are unitary because the columns of $W$ and the rows of $V^*$ are orthogonal, normal, and form a basis in $\mathbb{R}^2$. Thus, Section 6.2 of Chapter 5 shows that $W$ and $V$ are isometries, and given they are both square, Proposition 6.3 shows that they are unitary. In addition, given that $\Sigma$ is a non-negative diagonal matrix, Definition 3.9 shows this product above is indeed the single value decomposition of $A$.
+
+Next, observe that $||Ax|| = ||W\Sigma V^*x||$. We know that $W$ and $V^*$ are unitary ($V^*$ is unitary due to property 2 in Section 6.1 of Chapter 2), thus $||Wa|| = ||a||$ and $||V*a|| = ||a||$ for all vectors $a \in \mathbb{R}^2$ by definition. Thus, $||W(\Sigma V^*x)|| = ||\Sigma V^*x||$, and $||\Sigma V^*x|| = ||\Sigma y||$ where $y = V^*x$ and $||y|| = ||V^*x|| = ||x|| \leq 1$.
+
+If $y$ is the vector where $||\Sigma y||$ is maximized and $||y|| \leq 1$, then $||y|| = 1$ because if $0 < ||y|| = \alpha < 1$, then $||(1/\alpha)y|| \leq 1$ and $||\Sigma ((1/\alpha)y)|| = (1/\alpha)||\Sigma y|| > ||\Sigma y||$, which is clearly a contradiction. Thus, if $y = (y_1, y_2)$, then $y_1^2 + y_2^2 = 1^2 = 1$, and $y_2 = \pm \sqrt{1 - y_1^2}$. Next, we observe that if $y$ maximizes $||\Sigma y||$, then $||\Sigma y|| = \sqrt{16y_1^2 + y_2^2} = \sqrt{16y_1^2 + (1 - y_1^2)} = \sqrt{15y_1^2  + 1)^2}$. We know that $y_1 \leq 1$ because $y \in \mathbb{R}^2$ and $||y|| \leq 1$. Thus, we can see that $||\Sigma y||$ is maximized when $y_1 = 1$ or $y_1 = -1$. Given that $||y|| = 1$, we also know that $y_2 = 0$. Then, $||Ax|| = ||\Sigma y|| = \sqrt{16} = 4$ is the maximum value of $||Ax||$. To find the vector $x$ such that $||Ax|| = 4$, remember that $y = V^*x$, thus $(V^*)^{-1}y = Vy = x$. Substituting $(1, 0)^{T}$ and $(-1, 0)^{T}$ into $y$ shows that $x = (-2/\sqrt{5}, -1/\sqrt{5})$ or $(2/\sqrt{5}, 1/\sqrt{5})$.
+\end{proof}
+
+\begin{problem}{3.5b}
+\end{problem}
+\begin{proof}[Solution]
+First, given $A = W\Sigma V^*$, observe that $||Ax|| = ||W\Sigma V^*x||$. We know that $W$ and $V^*$ are unitary, thus $||Wa|| = ||a||$ and $||V*a|| = ||a||$ for all vectors $a \in \mathbb{R}^2$ by definition. Thus, $||W(\Sigma V^*x)|| = ||\Sigma V^*x||$, and $||\Sigma V^*x|| = ||\Sigma y||$ where $y = V^*x$ and $||y|| = ||V^*x|| = ||x|| = 1$.
+
+If $y = (y_1, y_2)$ and $||y|| = 1$, then $1 = \sqrt{y_1^2 + y_2^2}$, thus $y_2 = \sqrt{1 - y_1^2}$. To find vector $y$ where $||y|| = 1$ and $||\Sigma y||$ is minimized, note that $||\Sigma y|| = \sqrt{16y_1^2 + y^2} = \sqrt{16y_1^2 + 1 - y_1^2} = \sqrt{15y_1^2 + 1}$. This value is clearly minimized when $y_1^2$ is minimized, which occurs when $y_1 = 0$. Thus, $||Ax|| = ||\Sigma y|| = \sqrt{15y_1^2+1} = 1$ is the minimum value for $||Ax||$. Then, given that $y_1^2 + y_2^2 = 1$, we know that $y_2 = 1$ or $y_2 = -1$, thus $y = (0, 1)$ or $y = (0, -1)$. To find the vector $x$ such that $||Ax|| = 1$, remember that $y = V^*x$, thus $(V^*)^{-1}y = Vy = x$. Substituting $(0, 1)^{T}$ and $(0, -1)^{T}$ into $y$ shows that $x = (1/\sqrt{5}, 2/\sqrt{5})$ or $(-1/\sqrt{5}, -2/\sqrt{5})$.
+\end{proof}
+
+\begin{problem}{3.5c}
+\end{problem}
+\begin{proof}[Solution]
+Observe that $A(B) = W(\Sigma(V^*(B)))$ due to the singular decomposition of $A$. We have previously shown that $V^*$ is unitary, thus $B = V^*(B)$ because $V^*$ preserves the norm by definition. More rigorously, for any $x \in B$, $||V^*x|| = ||x|| \leq 1$ thus $V^*x \in B$, and if $x \notin B$, $||x|| = ||V^*x|| \geq 1$ thus $V^*x \notin B$. Next, observe that $\Sigma(V^*(B)) = \Sigma(B)$ expands the circle $B$ in the $x$-axis by a factor of four because for any $(x, y)^T \in B$, $\Sigma (x, y)^T = (4x, y)$. We can see that $\Sigma(V^*(B))$ is an ellipse. Lastly, observe that $W$ is a rotation matrix where $\alpha = sin^{-1}(1/\sqrt{5}) \approx 0.4636$ radians. Thus, $W(\Sigma(V^*(B))) = A(B)$ is the ellipse centered at $(0, 0)$ where the major axis is 4, the minor axis is 1, and the major axis line is rotated clockwise by $sin^{-1}(1/\sqrt{5})$ radians from the horizontal.
+\end{proof}
+
+\begin{problem}{3.7a}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the matrix 
+$$
+A = \begin{bmatrix}
+0 & 1 \\
+0 & 1
+\end{bmatrix}.
+$$
+We observe that $det(A - \lambda I) = \lambda(1 - \lambda)$, thus the eigenvalues of $A$ are 1 and 0. Then, observe that
+$$
+A^*A = \begin{bmatrix}
+0 & 0 \\
+1 & 1
+\end{bmatrix}\begin{bmatrix}
+0 & 1 \\
+0 & 1
+\end{bmatrix} = \begin{bmatrix}
+0 & 0 \\
+0 & 2
+\end{bmatrix}.
+$$
+We observe that $det(A^*A - \lambda I) = \lambda(2 - \lambda)$, thus the eigenvalues of $A^*A$ are 2 and 0 and therefore the singular values of $A$ are $\sqrt{2}$ and 0. Clearly the singular values are not the eigenvalues of $A$.
+\end{proof}
+
+\begin{problem}{3.7b}
+\end{problem}
+\begin{proof}[Solution]
+False. We observe from the definition of singular values that the square roots of the eigenvalues of $A^*A$ are equal to the singular values. The eigenvalues of $A^*A$ represent the square of the singular values of $A$, but they are not equivalent to the singular values of $A$.
+\end{proof}
+
+\begin{problem}{3.7c}
+\end{problem}
+\begin{proof}[Solution]
+True. Consider the matrix $(cA)^*(cA) = c(A)^*c(A) = c^2(A^*A)$. Thus, the singular values of $cA$ are equal to the square root of the eigenvalues of $c^2(A^*A)$. If $s$ is a singular value of $A$, then $s^2$ is an eigenvalue of $A^*A$ by definition, and thus $c^2s^2$ is an eigenvalue of $(cA)^*(cA)$, and thus $|c|s$ is a singular value of $cA$. We choose $|c|$ instead of $\pm(c)$ because if $c$ were negative, then $cs$ would be negitive given $s$ is a singular value which is positive by definition. $cs$ then cannot be a singular value because it would be negative.
+\end{proof}
+
+\begin{problem}{3.7d}
+\end{problem}
+\begin{proof}[Solution]
+True. Observe that $A^*A = A^*(A^*)^* = (A^*A)^*$, thus $A^*A$ is self-adjoint. Due to Theorem 2.1, all self-adjoint operators have real eigenvalues. In addition, we have shown in problem 2.8b that all eigenvalues of $A^*A$ are non-negative. The definition provided in section 3.3 shows that if $\lambda_1, \lambda_2, ... \lambda_n$ are the eigenvalues of $A^*A$, then $\sqrt{\lambda_1}, \sqrt{\lambda_2}, ... \sqrt{\lambda_n}$ are the singular values. We can clearly see that the singular values are non-negative given that the eigenvalues are real and non-negative.
+\end{proof}
+
+\begin{problem}{3.7e}
+\end{problem}
+\begin{proof}[Solution]
+False. Consider the self-adjoint matrix
+$$
+A = \begin{bmatrix}
+0 & i \\
+-i & 0
+\end{bmatrix}.
+$$
+Observe that $det(A - \lambda I) = \lambda^2 - 1 = (\lambda - 1)(\lambda +1)$, thus the eigenvalues are $\pm 1$. Next, observe that
+$$
+A^*A = AA = \begin{bmatrix}
+0 & i \\
+-i & 0
+\end{bmatrix}\begin{bmatrix}
+0 & i \\
+-i & 0
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}.
+$$
+The eigenvalues for the identity matrix are only 1, thus we see that the singular values are both $\sqrt{1} = 1$. Thus, the eigenvalues of $A$ do not match the singular values of $A$.
+\end{proof}
+
+\begin{problem}{3.8}
+\end{problem}
+\begin{proof}[Solution]
+Let $A = W\Sigma V^*$. Then, using the singular value decomposition of $A^*$ derived in problem 3.3, we observe that $A^*A = V\Sigma^*W^*W\Sigma V^* = V\Sigma^* \Sigma V^*$. Given that $\Sigma$ is a diagonal $m \times n$ matrix, it is quite clear that $\Sigma^* \Sigma$ is a square matrix that is also diagonal. Thus, Theorem 2.1 of Chapter 4 shows that $V(\Sigma^* \Sigma) V^{-1}$ is a diagonalization of $A^*A$, thus the values in the diagonal of $\Sigma^*\Sigma$ are equal to the eigenvalues of $A^*A$. In addition, $(\Sigma^*\Sigma)_{kk} = \Sigma_{kk}^2$ for $k \leq min(m, n)$, and $(\Sigma^*\Sigma)_{kk} = 0$ for all $k > r$. 
+
+Next, we observe that $AA^* = W\Sigma V^*V\Sigma^*W^* = V\Sigma \Sigma^* V^*$. It is quite clear that $\Sigma \Sigma^*$ is a square matrix that is also diagonal. Thus, Theorem 2.1 of Chapter 4 shows that $V(\Sigma \Sigma^*) V^{-1}$ is a diagonalization of $AA^*$, thus the values in the diagonal of $\Sigma\Sigma^*$ are equal to the eigenvalues of $AA^*$. In addition, $(\Sigma\Sigma^*)_{kk} = \Sigma_{kk}^2$ for $k \leq min(m, n)$, and $(\Sigma\Sigma^*)_{kk} = 0$ for all $k > r$. Thus, we observe that if $\lambda$ is a non-zero eigenvalue of $AA^*$, then there exists some $k \leq min(m, n)$ such that $(\Sigma\Sigma^*)_{kk} = \lambda$ (we know $k \leq min(m, n)$ because $k > min(m, n)$ means $(\Sigma\Sigma^*)_{kk} = 0$). Then, observe that $(\Sigma\Sigma^*)_{kk} = \Sigma_{kk}^2 = (\Sigma^*\Sigma)_{kk}$, thus $\lambda$ is also an element of $\Sigma^*\Sigma$. Thus, all non-zero diagonal elements of $\Sigma\Sigma^*$ are in the diagonal of $\Sigma^*\Sigma$ with the preservation of multiplicity, and we can use the same process to show that the non-zero diagonal elements of $\Sigma^*\Sigma$ are also in the diagonal of $\Sigma \Sigma^*$ with multiplicity being preserved as well. Thus, the non-zero eigenvalues of $A^*A$ correspond to the non-zero eigenvalues of $AA^*$ including multiplicities.
+
+We observe that the zero eigenvalue of $A^*A$ does not always have the same multiplicity as the zero eigenvalue of $AA^*$ because if $A$ is $n \times m$, then $A^*A$ is $n \times n$ and $AA^*$ is $m \times m$. Given that an $k \times k$ matrix has $k$ eigenvalues including multiplicities and given that $A^*A$ and $AA^*$ both have non-zero eigenvalues $\lambda_1, \lambda_2, ... \lambda_r$ including multiplicities, the multiplicity for the zero eigenvalue for $A^*A$ is $n - r$ and the multiplicity for $AA^*$ is $m - r$. Clearly these multiplicities are not equal if $A$ is not a square matrix.
+\end{proof}
+
+\begin{problem}{3.9}
+\end{problem}
+\begin{proof}[Solution]
+For any $A$, let $A = U\Sigma V^*$. Then,
+$$
+||Ax|| = ||U\Sigma V^*x|| = ||\Sigma V^*x||.
+$$
+The last equality is true by definition because $U$ is unitary. Then, we note that
+$$
+||\Sigma V^*x|| \leq \sigma_{max}||V^Tx||
+$$
+because if $V^*x = (a_1, a_2, ... a_n)^T$ and $\Sigma = diag(\sigma_1, \sigma_2, ..., \sigma_n)$, then 
+$$
+||\Sigma V^*x|| = \sqrt{(\sigma_1a_1)^2 + (\sigma_2a_2)^2 ... (\sigma_na_n)^2} \leq \sqrt{(\sigma_{max}a_1)^2 + (\sigma_{max}a_2)^2 ... (\sigma_{max}a_n)^2} 
+$$
+$$
+= \sigma_{max}\sqrt{a_1^2 + a_2^2 ... a_n} = \sigma_{max}||V^*x||.
+$$
+Then, because $V$ is unitary, Property 2 of Section 6.1 in Chapter 5 shows that $V^*$ is also unitary, thus by definition $\sigma_{max}||V^*x|| = \sigma_{max}||x||$. Therefore, $||Ax|| \leq \sigma_{max}||x||$ for all $||x||$. If $\lambda$ is some eigenvalue of $A$ and $v$ is the corresponding eigenvector, then $||Av|| = |\lambda| ||x|| \leq \sigma_{max} ||x||$, thus $\sigma_{max} \geq |\lambda|$ for all eigenvalues $\lambda$,
+\end{proof}
+
+\begin{problem}{3.11}
+\end{problem}
+\begin{proof}[Solution]
+Let the operative norm be defined as the maximal singular value $\sigma_{max}$ of $A$. 
+
+Let the Frobenius norm of $A$ be $||A||_2 = \sqrt{trace(A^*A)}$. If $\sigma_1, \sigma_2, ..., \sigma_r$ are the non-zero singular values of $A$, then $\sigma_1^2, \sigma_2^2, ..., \sigma_r^2$ are the eigenvalues of $A*A$, and Theorem 1.2 of Chapter 4 shows that $trace(A^*A) = \sum_{i =0}^r \sigma_i^2$. Therefore, $||A||_2 = \sqrt{\sum_{i = 0}^r \sigma_i^2} = \sqrt{\sigma_{max}^2 + \sum_{i = 0, i \neq max}^r \sigma_i^2}$. Clearly we can see if $||A|| = ||A||_2$, then $\sigma_{max} = \sqrt{\sigma_{max}^2 + \sum_{i = 0, i \neq max}^r \sigma_i^2}$, thus $\sum_{i = 0, i \neq max}^r \sigma_i^2 = 0$ and therefore $\sigma_{max}$ is the only non-zero singular value. In addition, if $\sigma_{max}$ is the only non-zero singular value, $||A|| = \sigma_{max}$ and $||A||_2 = \sigma_{max}$ thus $||A|| = ||A||_2$. Thus, the Frobenius norm coincides with the operator norm if and only if there is only one non-zero singular value (counting multiplicities).
+
+We will next show that $A$ has only one non-zero singular value if and only if $A$ has a range of 1. First, if $A$ has one non-zero singular value, the Schmidt decomposition in equation 3.2 shows that $Ax = \sigma_{1}(x, v_1)w_1$. We can clearly see that $Ax$ for all $x$ is a scalar multiple of $w_1$, thus the range of $A$ has a dimension of 1. 
+
+Then, assume $A$ is a matrix with rank 1 and more than 1 non-zero singular values $\sigma_1, \sigma_2, ..., \sigma_r$. Then, the Schmidt decomposition shows that $Ax = \sigma_1(x, v_1)w_1 + \sigma_2(x, v_2)w_2 + ... + \sigma_r(x, v_r)w_r$ for any $x$. In this form, we can easily see that $A(\sigma_1v_1) = w_1$, $A(\sigma_2v_2) = w_2$, etc. thus $w_1, w_2, ..., w_r$ are in the range. of $A$. This set is by definition orthonormal, thus Corollary 2.5 of Chapter 5 states that this set is linearly independent, and Proposition 5.2 of Chapter 2 shows that $dim(Ran(A)) \geq r > 1$. This is clearly a contradiction, thus a matrix with rank 1 has either 0 or 1 non-zero singular values. We can discard the case with 0 non-zero singular values as well because that implies that in the singular value expansion of $A$, $A = W\Sigma V^*$, and $\Sigma$ would be a zero matrix thus $A = 0$. Note that the zero matrix has a rank of zero. Thus, if $rank(A) = 1$, then there is one non-zero singular value.
+
+The Frobenius norm coincides with the operator norm if and only if there is only one non-zero singular value, and there is only one non-zero singular value if and only if $rank(A) = 1$. Thus, the Frobenius norm coincides with the operator norm if and only if $rank(A) = 1$.
+\end{proof}
+
+\begin{problem}{3.12}
+\end{problem}
+\begin{proof}[Solution]
+For the given matrix $A$,
+$$
+A^*A = \begin{bmatrix}
+2 & 0 \\
+-3 & 2
+\end{bmatrix}\begin{bmatrix}
+2 & -3 \\
+0 & 2
+\end{bmatrix} = \begin{bmatrix}
+4 & -6 \\
+-6 & 13
+\end{bmatrix},
+$$
+we observe that $det(A - \lambda I) = (4 - \lambda)(13 - \lambda)+36 = (16 - \lambda)(1 - \lambda)$, thus $\lambda = 16, 1$ are the eigenvalue of $A^*A$. This shows that 4 and 1 are the singular values of $A$. Next, observe that $A^*A(-1, 2)^T = (-16, 32)^T = 16(-1, 2)^T$ and $A^*A(2, 1)^T = (2, 1)^T$, thus $(-1/\sqrt{5}, 2/\sqrt{5})$ and $(2/\sqrt{5}, 1/\sqrt{5})$ forms an orthonormal basis of eigenvalues. Then, using Proposition 3.6, observe that $w_1 = (1/4)A(-1/\sqrt{5}, 2/\sqrt{5})^T = (-2/\sqrt{5}, 1/\sqrt{5})$ and $w_2 = (1/1)A(2/\sqrt{5}, 1/\sqrt{5})^T = (1/\sqrt{5}, 2/\sqrt{5})$. We can derive the following singular value decomposition using Equation 3.4, and we see that
+$$
+A = \begin{bmatrix}
+1/\sqrt{5} & -2/\sqrt{5} \\
+2/\sqrt{5} & 1/\sqrt{5}
+\end{bmatrix}\begin{bmatrix}
+1 & 0 \\
+0 & 4
+\end{bmatrix}\begin{bmatrix}
+2/\sqrt{5} & 1/\sqrt{5} \\
+-1/\sqrt{5} & 2/\sqrt{5}
+\end{bmatrix}.
+$$
+Next, to find the inverse ball, we want to find the region $R$ where $A(R) = B$. Observe that using the singular value decomposition, $W(\Sigma(V^*(R))) = B$. We know that $W$ and $V^*$ are invertible because they are unitary matrices and they are invertible by definition; we also know that $\Sigma$ is invertible because it is a diagonal matrix. Thus, $R = (V^{*})^-1(\Sigma^{-1}(W^{-1}(B)))$, which can be expressed as
+$$
+(V^{*})^{-1}\Sigma^{-1} W^{-1} = \begin{bmatrix}
+2/\sqrt{5} & -1/\sqrt{5} \\
+1/\sqrt{5} & 2/\sqrt{5}
+\end{bmatrix}\begin{bmatrix}
+1 & 0 \\
+0 & 1/4
+\end{bmatrix}\begin{bmatrix}
+1/\sqrt{5} & 2/\sqrt{5} \\
+-2/\sqrt{5} & 1/\sqrt{5}
+\end{bmatrix}.
+$$
+
+First, observe that $W^{-1}$ is the rotation matrix where $\alpha = \cos^{-1}(1/\sqrt{5}) = -\sin^{-1}(2/\sqrt{5}) \approx 5.176$ radians. Thus, $W^{-1}(B) = B$ because it is obvious that rotating the ball will yield the ball. Then, observe that $\Sigma^{-1}(W^{-1}(B)) = \Sigma^{-1}(B)$ is just the ball $B$ with a dilation in the y-axis by a factor of 1/4. Thus, $\Sigma^{-1}(W^{-1})$ is an ellipse centered at 0 with major axis 1 on the horizontal and minor axis 1/4 on the vertical. Lastly, observe that $(V^*)^{-1}$ is the rotation matrix where $\alpha = \cos^{-1}(1/\sqrt{5}) = \sin^{-1}(2/\sqrt{5}) = \approx 1.107$ radians. Thus, $R = A(B) = (V^{*})^{-1}(\Sigma^{-1} (W^{-1}(B)))$ is the region on and inside the ellipse centered at $(0, 0)$ with major axis 1, minor axis 1/4, and the major axis rotated $1.107$ radians clockwise.
+\end{proof}
+
+\begin{problem}{4.2}
+\end{problem}
+\begin{proof}[Solution]
+First, let $\lambda \in \{\lambda_1, \lambda_2, ..., \lambda_n\}$ be some eigenvalue of $A$ and let $v \in {v_1, v_2, ..., v_n}$ be the corresponding eigenvector. We note that ${v_1, v_2, ..., v_n}$ is a basis of orthonormal matrices due to Theorem 2.4.
+
+To see that $(A - \lambda I_n)$ is a normal matrix, first observe that 
+$$(A - \lambda I_n)(A-\lambda I_n)^* = (A - \lambda I_n)(A^*-(\lambda I_n)^*)$$
+due to Property 1 of Section 5.1.3 in Chapter 5. Then, note that 
+$$(A - \lambda I_n)(A^*-(\lambda I_n)^*) = (A - \lambda I_n)(A^*-\bar{\lambda} I_n) = AA^* - \lambda A^* - \bar{\lambda} A + |\lambda|^2I_n.$$ Similarly, observe that 
+$$(A - \lambda I_n)^*(A-\lambda I_n) = (A^*-\bar{\lambda} I_n)(A - \lambda I_n) = A^*A - \lambda A^* - \bar{\lambda} A + |\lambda|^2I_n.$$ 
+Given that $A^*A = AA^*$ because $A$ is normal, we see that 
+$$(A - \lambda I_n)(A-\lambda I_n)^* = AA^* - \lambda A^* - \bar{\lambda} A + |\lambda|^2I_n = A^*A - \lambda A^* - \bar{\lambda} A + |\lambda|^2I_n = (A - \lambda I_n)^*(A-\lambda I_n).$$
+Thus, $(A-\lambda I_n)$ is normal.
+
+Next, observe that $(v, (A - \lambda I_n)^*(A - \lambda I_n)v) = 0$ because $(A - \lambda I_n)v$ by definition. Then, given that $A - \lambda I_n$ is normal, 
+$$(v, (A - \lambda I_n)^*(A - \lambda I_n)v) = (v, (A - \lambda I_n)(A - \lambda I_n)^*v) = ((A - \lambda I_n)^*v, (A - \lambda I_n)^*v) = ||(A - \lambda I_n)^*v||^2$$
+$$
+||(A^* - \bar{\lambda} I_n)v||^2.
+$$
+Thus, we see that $v$ is also an eigenvector of $A^*$ with the eigenvalue $\bar{\lambda}$.
+$$
+A^*A(v) = A^*(\lambda v) = \bar{\lambda}\lambda v = |\lambda|^2v_1,
+$$
+thus $|\lambda|$ is a singular value of $A$. In addition, observe that multiplicity is preserved because every $v \in {v_1, v_2, ..., v_n}$ (note that this set is orthonormal) is an eigenvector of $A^*A$, and its corresponding eigenvalue $\lambda$ corresponds to a distinct singular value $|\lambda|$.
+
+Then, observe that $A^*A = AA^*$, so $A$ must be square ($n \times n$), and thus $A^*A$ is also $n \times n$ . This means that $A$ and $A^*A$ both have $n$ eigenvalues (counting multiplicities). We have just shown that all $n$ eigenvalues of $A$ (with absolute value and square) correspond to $n$ eigenvalues of $A^*A$. This represents all the eigenvalues of $A^*A$, thus all $n$ eigenvalues of $A$ (with absolute value) correspond to all $n$ singular values of $A$.
+\end{proof}
+
+\begin{problem}{4.3}
+\end{problem}
+\begin{proof}[Solution]
+First, observe that $P_Ev \in E$ by definition, and $P_Ex$ for $x \in E$ is $x$ due to Definition 3.1. Thus, $P_E^2v = P_E(P_Ev) = P_Ev$ for any $v$. Then, if $\lambda$ is an eigenvalue of $P_E$ with the corresponding eigenvector $v$, then $\lambda^2v = P_E^2v = P_Ev = \lambda v$. This shows that $\lambda^2 = \lambda$ because $v \neq 0$, which means that $\lambda = 0, 1$. These are the only eigenvalues that a projection matrix can have. In addition, $P_Ev = v$ for any $v \in E$, thus $1$ is an eigenvalue as long as $E$ is non-trivial.
+
+Next, consider the $3 \times 3$ matrix $T$ where every element is $1/3$. If $E = span\{(1, 1, 1)^T\}$ we show that $T = P_E$ due to definition 3.1 because first, for any $v = (v_1, v_2, v_3)^T$, $T(v_1, v_2, v_3)^T = (v_1/3 + v_2/3 + v_3/3)(1, 1, 1) \in E$. Then, observe that $((1, 1, 1)^T, v - Tv) = (1)(v_1 - (v_1/3 + v_2/3 + v_3/3)) + (1)(v_2 - (v_1/3 + v_2/3 + v_3/3)) + (1)(v_2 - (v_1/3 + v_2/3 + v_3/3)) = 0$. Thus, $v - Tv \perp E$. Thus, we see that $T = P_E$.
+
+Next, if $\lambda$ is an eigenvalue of $A$ with eigenvector $v$, then $Tv = \lambda v$. Thus, $aTv = a \lambda v$ and $(aT+bI)v = aTv + bv = a \lambda v + bv = (a \lambda + b)v$. Thus, $a \lambda + b$ is an eigenvalue for $aT+bI$. In addition, observe that multiplicity is preserved if each eigenvalue in $A$ is associated with a unique (not linearly dependent) eigenvector.
+
+We know that each of the three eigenvalues for $T = P_E$ are one of 1 or 0 as shown previously. In addition, observe that $(1, 0, -1)^T$ and $(1/2, -1, 1/2)$ are both orthogonal to each other and orthogonal to $E$. Thus, we observe that $P_Ev = 0$ for both of these vectors, thus the geometric multiplicity of eigenvalue $0$ is 2. It follows that the algebraic multiplicity of eigenvalue 0 is also 2 because a) Proposition 1.1 of Chapter 4 states that algebraic multiplicity is at least the geometric multiplicity, b) we know that the algebraic multiplicity is at least 1 because $E$ is non-trivial, and c) the total number of eigenvalues in $T$ (including algebraic multiplicities) is 3 given $T$ is a $3 \times 3$ matrix. Thus, the eigenvalues for $T$ are $1, 0, 0$.
+
+Then, observe that $A^* = A$. Note that $A = 3T + 1I$, thus $A^*A = AA = (3T + I)(3T + I) = (9T^2 + 6T + I)$. We have previously shown that $T^2 = T$ because $T$ is a projection, thus $A^*A = 15T + I$. Given the eigenvalues of $T$, we see that the eigenvalues of $A^*A$ are $15(1)+1 = 16$ and $15(0)+1 = 1$. In addition, observe that all the eigenvectors of $T$ are orthogonal ($(1, 0, -1)^T, (1/2, -1, 1/2)^T, (1, 1, 1)^T$), therefore multiplicity is preserved as noted before. It thus follows that the singular values are $\sigma = 4, 1, 1$ and the conditional number is $\sigma_{max}/\sigma_{min} = 4/1 = 4$ by definition. The operator norm is defined as the maximal singular value of $A$, thus the operator norm is 4. Section 4.2 also shows that 
+$$
+||A||_2 = \sqrt{\sum_{k = 1}^r \sigma_k^2} = \sqrt{16 + 1 + 1} = \sqrt{18},
+$$
+thus the Frobenius norm is $\sqrt{18}$.
+\end{proof}
+
+\begin{problem}{6.1}
+\end{problem}
+\begin{proof}[Solution]
+Let $\mathcal{B}$ denote the new basis, and let $\mathcal{S}$ denote the standard basis. We see from Section 8.5 of Chapter 2 that
+$$
+[R_{\alpha}]_{\mathcal{BB}} = [I]_{\mathcal{BS}}[R_{\alpha}]_{\mathcal{SS}}[I]_{\mathcal{SB}} = [I]_{\mathcal{SB}}^{-1}[R_{\alpha}]_{\mathcal{SS}}[I]_{\mathcal{SB}}.
+$$
+The last equality holds because $[I]_{\mathcal{AB}} = [I]_{\mathcal{BA}}^{-1}$ as shown in section 8.3 of Chapter 2. Then, note that
+$$
+[I]_{SB} = \begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
+$$
+as shown in section 8.3. Thus, 
+$$
+[R_{\alpha}]_{\mathcal{BB}} =  \begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}^{-1}\begin{bmatrix}
+cos(\alpha) & -sin(\alpha) \\
+sin(\alpha) & cos(\alpha)
+\end{bmatrix}\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix} = \begin{bmatrix}
+cos(\alpha) & sin(\alpha) \\
+-sin(\alpha) & cos(\alpha)
+\end{bmatrix}.
+$$
+\end{proof}
+
+\begin{problem}{6.2}
+\end{problem}
+\begin{proof}[Solution]
+Consider the family of 2 vectors (or alternatively a $2 \times 2$ matrix)
+$$
+V(t) = \left((\sqrt{1 - t^2}, t)^T, (-t, \sqrt{1 - t^2})^T\right).
+$$
+Observe that $V(0) = I_2$ and $V(sin(\alpha)) = R_{\alpha}$. In order for $V(t)$ to qualify as a continuous family of bases, $V(t)$ must be a basis for all $t \in (0, sin(\alpha))$ and $V(t)$ is continuous for all $t \in (0, sin(\alpha))$. Given that $-1 \leq sin(\alpha) \leq 1$, the interval $[-1, 1]$ must contain the interval between $0$ and $sin(\alpha)$, thus it is sufficient to show that $V(t)$ is continuous and a basis for all $t \in [-1, 1]$. First, note that for any $-1 \leq t \leq 1$, $(v_1(t), v_2(t)) = t\sqrt{1 - t^2} - t\sqrt{1 - t^2} = 0$, thus $v_1(t)$ and $v_2(t)$ are always orthogonal. Corollary 2.6 from Chapter 5 shows that this system is linearly independent. We can also see that $v_1(t)$ and $v_2(t)$ are also generating because if this set weren't generating, then it is possible to add more linearly independent vectors to this set to create a basis. However, a linearly independent set of vectors can have a size of at most 2 in $\mathbb{R}^2$, thus $v_1(t)$ and $v_2(t)$ are generating, and therefore they are a basis for all valid values of $t$.
+
+For all $t \in [-1, 1]$, we observe that $V(t)$ is continuous because all the functions $t$, $-t$, and $\sqrt{1 - t^2}$ is continuous in this range (the last function represents a semicircle with radius 1).
+
+Lastly, observe that $det(V(t)) =  (\sqrt{1 - t^2})^2 + t^2 = 1 - t^2 + t^2 = 1$, thus $det(V(t)) \neq 0$ for all $t \in [-1, 1]$. Proposition 3.1 of Chapter 3 states that if $A$ is not invertible then $det(A) = 0$, thus $V(t)$ is always invertible for $t \in [-1, 1]$. We see it is possible to continuously transform $I_2$ into $R_{\alpha}$ with invertible matrices.
+\end{proof}
+
+\begin{problem}{6.3}
+\end{problem}
+\begin{proof}[Solution]
+First, let $A(t)$ be a family of matrices defined for $t \in [a, b]$ where $A(t)$ changes continuously when $t$ increases or decreases in the range. Let $B(t)$ be a similarly continuous family of matrices defined for $t \in [b, c]$. Then, consider the family of matrices $C(t)$ where $C(t) = A(t)$ for $t \in [a, b]$ and $C(t) = B(t)$ for $t \in [b, c]$. Then, if $B(b) = A(b)$, then $C(t)$ is continuous for all $t \in [a, c]$ because $\lim_{t \rightarrow b^+}C(t) = C(b) = \lim_{t \rightarrow b^-}C(t)$, and $C(t)$ is continuous for all other $t \neq b$ by definition. Thus, in order to show that there exists a continuous transformation of invertible matrices from $I$ to $U$, it is sufficient to show that there is a continuous transformation of invertible matrices from $I$ to a block diagonal form matrix $V$ and then a continuous transformation of invertible matrices from $R$ to $U$.
+
+To show the existence of the first continuous transformation, consider the matrix
+$$
+T_{a}(t) = \begin{bmatrix}
+\sqrt{1 - at^2} & -at \\
+at & \sqrt{1 - at^2}
+\end{bmatrix}
+$$
+Observe that $T_{sin(\alpha)}(0) = I_2$ and $T_{sin(\alpha)}(1) = R_{\alpha}$. Thus, consider the block diagonal matrix in the form 
+$$D(t) = diag(T_{sin(\phi_1)}(t), T_{sin(\phi_2)}(t), ..., T_{sin(\phi_k)}(t), I_{n-2k}).$$
+Observe that $D(0) = I_n$ and
+$$D(1) = diag(R_{\phi_1}, R_{\phi_2}, ..., R_{\phi_k}, I_{n-2k}),$$
+which is exactly the block diagonal form showed in Theorem 5.1. Next, to show that this transformation is continuous and invertible, observe that the question of whether $D(t)$ is continuous is equivalent to asking whether $T_{a}(t)$ is invertible, and we have shown in the Problem 6.2 that this is the case. Thus, $D(t)$ is continuous for all $t \in [0, 1]$. Next, observe that for any $v = (v_1, v_2, ..., v_n)^T$, $(D(t))v = (v'_1, v'_2, ..., v'_n)$. Observe that if $0$ were to be an eigenvalue of this matrix $D(t)$, then there must exist a non-zero $v$ such that $v'_1, v'_2, ..., v'_n = 0$. Assume $v_i \neq 0$ for $i > 2k$. Then $v_i = v'_i \neq 0$, which is a contradiction. Then, assume $v_i \neq 0$ for $i \leq 2k$. That implies that there is some $T_{a}$ such that 0 is an eigenvalue of $R_{\phi}$. However, we have previously shown in problem 6.2 that this is not possible. Thus, we see that $0$ cannot be an eigenvalue of $D(t)$ for any $t \in [0, 1]$. Theorem 1.2 of Chapter 4 shows that $det(D(t))$ is the product of its eigenvalues, thus $det(D(t)) \neq$ and Proposition 3.1 of Chapter 3 states that $D(t)$ is always invertible. Thus, there exists a continuous, invertible transformation from $I$ to $R$. (It is also possible to see that $R$ has orthonormal columns, thus $R$ is an orthogonal matrix).
+
+Then, given that $det(U) > 0$, we can say $det(U) = 1$ because the determinant of an orthogonal matrix can be $\pm 1$ (Proposition 6.4, Chapter 5). Observe from Theorem 5.1 that $U$ can be represented as $R$ in some orthonormal basis $v_1, v_2, ..., v_n$. If $V = \{v_1, v_2, ..., v_n\}$, then $V$ is an orthogonal matrix by definition. Using the change of basis formula,
+$$
+U = V^{-1}RV.
+$$
+$V$ is unitary by definition, thus $V^{-1} = V^*,$ thus $U = V^*RV$.
+
+Consider the following family of matrices:
+$$
+E(t) = (t-1)(V^*RV) + (2-t)R = (t-1)U + (2-t)R
+$$
+Observe that $E(2) = V^*RV = U$ and $E(1) = R$. In addition, it is easy to see that this is a continuous transformation because intuitively, a small change in $t$ yields a small change in both $(t-1)(V^*RV)$ and $(2-t)R$, thus there is a small change in $E(t)$. We also know that $E(t)$ is invertible because both $U$ and $R$ are orthogonal matrices. 
+
+We see that $D(t)$ for $t \in [0, 1]$ continuously transforms $I$ into $R$ with invertible matrices. We see that $E(t)$ for $t \in [1, 2]$ continuously transforms $R$ into $U$ with invertible matrices. Thus, $I_n$ can be continuously transformed through invertible matrices into $U$. 
+\end{proof}
+
+\begin{problem}{1.1}
+\end{problem}
+\begin{proof}[Solution]
+$$
+L(x, y) = x_1y_1 + 2x_1y_2 + 14x_1y_3 - 5x_2y_1 + 2x_2y_2 - 3x_2y_3 + 8x_3y_1 + 19x_3y_2 - 2x_3y_3
+$$
+$$
+= y_1(x_1 - 5x_2 +8x_3) + y_2(2x_1 + 2x_2 + 19x_3) + y_3(14x_1 - 3x_2 - 2x_3)
+$$
+$$
+= \left(\begin{bmatrix}
+1 & -5 & 8 \\
+2 & 2 & 19 \\
+14 & -3 & -2
+\end{bmatrix}(x_1, x_2, x_3)^T\right)(y_1, y_2, y_3)^T
+$$
+\end{proof}
+
+\begin{problem}{1.2}
+\end{problem}
+\begin{proof}[Solution]
+$$
+det[x, y] = x_1y_2 - x_2y_1 = y_1(0 + x_2) + y_2(x_1 + 0)
+$$
+$$
+= \left(\begin{bmatrix}
+0 & 1 \\
+1 & 0 
+\end{bmatrix}(x_1, x_2)^T\right)(y_1, y_2)^T = L(x, y).
+$$
+\end{proof}
+
+\begin{problem}{1.3}
+\end{problem}
+\begin{proof}[Solution]
+$$
+Q[x] = (Ax, x) = a_{11}x_1^2 + a_{22}x_2^2 + a_{33}x_3^2 + (a_{12} + a_{21})x_1x_2 + (a_{13} + a_{31})x_1x_3 + (a_{23} + a_{32})x_2x_3.
+$$
+Given that $A$ is symmetric by definition, $a_{12} = a_{21}, a_{13} = a_{31} = a_{32} = a_{23}$. Thus, by matching values in the given quadratic form to the coefficients above, $a_{11} = 1$, $a_{22} = -9$, $a_{33} = 13$, $a_{12} = 1$, $a_{13} = -3/2$, and $a_{23} = 3$. Thus, we see that the quadratic form can be expressed as
+$$
+Q[x] = \left(\begin{bmatrix}
+1 & 1 & -3/2 \\
+1 &-9 & 3 \\
+-3/2 & 3 & 13 
+\end{bmatrix}(x_1, x_2, x_3)^T\right)(x_1, x_2, x_3)^T.
+$$
+\end{proof}
+
+\begin{problem}{2.1}
+\end{problem}
+\begin{proof}[Solution]
+First using row operations,
+$$
+\begin{bmatrix}
+1 & 2 & 1 & | & 1 & 0 & 0\\
+2 & 3 & 2 & | & 0 & 1 & 0\\
+1 & 2 & 1 & | & 0 & 0 & 1
+\end{bmatrix} \thicksim \begin{bmatrix}
+1 & 2 & 1 & | & 1 & 0 & 0\\
+2 & 3 & 2 & | & 0 & 1 & 0\\
+0 & 0 & 0 & | & -1 & 0 & 1
+\end{bmatrix} \thicksim \begin{bmatrix}
+1 & 2 & 0 & | & 1 & 0 & 0\\
+2 & 3 & 0 & | & 0 & 1 & 0\\
+0 & 0 & 0 & | & -1 & 0 & 1
+\end{bmatrix} 
+$$
+$$
+\thicksim \begin{bmatrix}
+1 & 2 & 0 & | & 1 & 0 & 0\\
+0 & -1 & 0 & | & -2 & 1 & 0\\
+0 & 0 & 0 & | & -1 & 0 & 1
+\end{bmatrix} \thicksim \begin{bmatrix}
+1 & 0 & 0 & | & 1 & 0 & 0\\
+0 & -1 & 0 & | & -2 & 1 & 0\\
+0 & 0 & 0 & | & -1 & 0 & 1
+\end{bmatrix}
+$$
+The second matrix subtracts $R_1$ from $R_3$, and the third matrix does the equivalent column operation. Then the fourth matrix subtracts $2R_1$ from $R_3$ and the last matrix does the equivalent column operation. Thus, we see that
+$$
+\begin{bmatrix}
+ 1 & 0 & 0\\
+ -2 & 1 & 0\\
+ -1 & 0 & 1
+\end{bmatrix}\begin{bmatrix}
+1 & 2 & 1 \\
+2 & 3 & 2\\
+1 & 2 & 1 
+\end{bmatrix}\begin{bmatrix}
+ 1 & -2 & -1\\
+ 0 & 1 & 0\\
+ 0 & 0 & 1
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & -1 & 0\\
+0 & 0 & 0 
+\end{bmatrix}.
+$$
+Is the diagonalization for quadratic form $A$. 
+
+Next, using completion of squares, observe that
+$$
+Q[x] = x_1^2 + 3x_2 ^2 + x_3^3 + 4x_1x_2 + 4x_2x_3 + 2x_1x_3 = (x_1 + 2x_2 + x_3)^2 - x_2^2 = y_1^2 - y_2^2.
+$$
+Where $y_1 = x_1 + 2x_2 + x_3$ and $y_2 = x_2$. 
+
+In terms of whether or not $A$ is positive definite, observe from the completion of squares that when $x_1 = -x_3$ and $x_2 = 0$, then $(Ax, x) = Q[x] = (x_1 - x_1)^2 = 0$, thus there exists non-zero $x$ such that $(Ax, x) = 0$. This by definition shows that $A$ is not positive definite.
+\end{proof}
+
+
+\end{document}

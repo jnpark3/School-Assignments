@@ -1,0 +1,482 @@
+\documentclass[10pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb, graphicx, multicol, array}
+\usepackage[linguistics]{forest}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ \usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+\title{Homework 6}
+\author{Jian Park}
+\maketitle
+
+\begin{problem}{1.1}
+\end{problem}
+\begin{proof}
+We treat the individual's utility as a lottery. There is a probability $p$ that the individual lives for the period $t+1$, in which case they receive a utility of $\log(c_t) + \beta \log(c_{t+1})$. There is a probability $1 - p$ that the individual lives until period $t$, in which case they receive a utility of $\log(c_t) + \beta B$. The formula for the expected values shows that the expected utility is
+$$
+U(c_t, c_{t + 1}) = p(\log(c_t) + \beta \log(c_{t+1})) + (1 - p)(\log(c_t) + \beta B) = \log(c_t) + \beta(p\log(c_{t+1}) + (1 - p)B).
+$$
+Observe that the probability of survival $p$ influences the utility function of a bundle $(c_t, c_{t + 1})$ due to the $p\log(c_{t+1}) + (1 - p)B$ component of the equation. When $p$ is higher, $\log(c_{t+1})$ is weighted more compared to $B$, and when $p$ is lower, $\log(c_{t+1})$ is weighted less compared to $B$. One thing this suggests is that if $(c_t^*, c_{t + 1}^*)$ is the optimal bundle generated using this utility function and the constraints to be presented soon, it would be reasonable to assume that $\log(c_{t+1}) > B$. If $B \geq \log(c_{t+1})$, that would mean that the total utility gained by the individual is greater when they die compare to when they live; in other words, it would be more favorable for the individual that they die. 
+
+Given the endowment of $(\omega_t, \omega_{t + 1})$ and if $b_t$ notes the quantity borrowed by the individual at time $t$, we get the constraints
+$$
+c_t + b_t = \omega_t
+$$
+$$
+c_{t + 1} = (1 + r)b_t + \omega_{t + 1}.
+$$
+where $r$ is the interest rate for savings. Note that $b_t$ can be positive or negative. Thus, we get the utility maximization problem
+$$
+\max_{c_t, c_{t + 1}} U(c_t, c_{t + 1}) = \log(c_t) + \beta(p\log(c_{t+1}) + (1 - p)B)
+$$
+$$
+c_t + b_t = \omega_t
+$$
+$$
+c_{t + 1} = (1 + r) b_t + \omega_{t + 1}.
+$$
+Note that via substitution, the last two equations can be represented using the single equation
+$$
+c_{t + 1} + (1 + r) c_{t} = \omega_{t + 1} + (1 + r) \omega_t
+$$
+\end{proof}
+
+\begin{problem}{1.2}
+\end{problem}
+\begin{proof}
+Using the utility maximization problem above, we generate the Lagrangian function
+$$
+L(c_t, c_{t+1}, \lambda) = \log(c_t) + \beta(p\log(c_{t+1}) + (1 - p)B) + \lambda(\omega_{t + 1} + (1 + r)\omega_t - c_{t + 1} - (1 + r)c_{t}).
+$$
+From this, we get the first order conditions
+$$
+\frac{1}{c_t} = (1 + r) \lambda^*
+$$
+$$
+\frac{p \beta}{c_{t +1}} = \lambda^*
+$$
+$$
+c_{t + 1} + (1 + r) c_{t} = \omega_{t + 1} + (1 + r) \omega_t.
+$$
+From the first two equations, we get that
+$$
+\frac{p \beta (1 + r)}{c_{t + 1}} = \frac{1}{c_t}
+$$
+$$
+c_t p \beta (1 + r) =c_{t + 1}.
+$$
+Substituting this into the budget constraint gives us that
+$$
+c_t p \beta (1 + r) + (1 + r) c_{t} = \omega_{t + 1} + (1 + r) \omega_t.
+$$
+$$
+c_{t} = \frac{\omega_{t + 1} + (1 + r) \omega_t}{(1 + r)(p \beta + 1)}
+$$
+$$
+c_{t + 1} = \frac{p\beta(\omega_{t + 1} + (1 + r) \omega_t)}{p \beta + 1}.
+$$
+Lastly, given 
+$$
+c_t + b_t = \omega_t
+$$
+from the constraint we get that the amount saved is,
+$$
+b_t = \omega_t - \frac{\omega_{t + 1} + (1 + r) \omega_t}{(1 + r)(p \beta + 1)} = \frac{(1 + r)(p\beta)\omega_t - \omega_{t + 1}}{(1 + r)(p \beta + 1)}.
+$$
+\end{proof}
+
+\begin{problem}{1.3}
+\end{problem}
+\begin{proof}
+We are given from the previous part that
+$$
+b_t = \omega_t - \frac{\omega_{t + 1} + (1 + r) \omega_t}{(1 + r)(p \beta + 1)}.
+$$
+From this, we can see that the amount saved increases as $p$ increases, given $\frac{\omega_{t + 1} + (1 + r) \omega_t}{(1 + r)(p \beta + 1)}$ decreases as $p$ increases. This intuitively makes sense, as saving for the future is more valuable when you are more likely to experience the benefits of that future by staying alive.
+\end{proof}
+
+\begin{problem}{1.4}
+\end{problem}
+\begin{proof}
+One way to measure the benefit of such a technology is to compute the quantity of $c_{t + 1}$ that must be taken away from the user's original optimal such that the utility of the new bundle is equal to the utility of the old bundle with the old $p$. If $f$ is the fine and $p'$ is the new survival rate, this can be expressed using the equation
+$$
+\log(c_t) + \beta(p\log(c_{t+1}) + (1 - p)B) = \log(c_t) + \beta(p'\log(c_{t+1} - f) + (1 - p')B)
+$$
+$$
+p'\log(c_{t+1} - f) - p\log(c_{t+1}) = (p' - p)B
+$$
+$$
+\log\left(\frac{(c_{t+1} - f)^{p'}}{c_{t + 1}^p}\right) = (p' - p)B
+$$
+$$
+(c_{t+1} - f)^{p'} = c_{t + 1}^pe^{(p' - p)B}
+$$
+$$
+(c_{t+1} - f) = c_{t + 1}^{\frac{p}{p'}}e^{\frac{(p' - p)B}{p'}}
+$$
+$$
+f = c_{t+1} - c_{t + 1}^{\frac{p}{p'}}e^{\frac{(p' - p)B}{p'}}.
+$$
+From this equation, we can see that in general, when $c_{t + 1}$ increases, $f$ increases, which indicates that people with greater endowments tend to see greater benefits from a technology that improves he probability of living (they have to pay a greater fine to make the two utilities equal). Applying this equation for every individual yields the aggregate social value of a technological improvement in life expectancy.
+\end{proof}
+
+\begin{problem}{1.5}
+\end{problem}
+\begin{proof}
+If $U(c_t, c_{t + 1})$ is the utility function with the original life probability $p$ and $U^*(c_t, c_{t + 1})$ is the new utility function with the new life probability $p + \Delta$, we hope to find $f$ such that
+$$
+U(c_t, c_{t + 1}) = U^*(c_t - f, c_{t + 1}).
+$$
+This equation translates to
+$$
+\log(c_t) + \beta(p\log(c_{t+1}) + (1 - p)B) = \log(c_t - f) + \beta((p + \Delta)\log(c_{t+1}) + (1 - p - \Delta)B)
+$$
+$$
+\beta (\Delta)(B - \log(c_{t+1}) ) = \log(c_t - f) - \log(c_t)
+$$
+$$
+e^{\beta (\Delta)(B) - \beta (\Delta)\log(c_{t+1})} = \frac{c_t - f}{c_t}
+$$
+$$
+\frac{e^{\beta (\Delta)(B)}}{c_{t+1}^{\beta (\Delta)}} = \frac{c_t - f}{c_t}
+$$
+$$
+c_te^{\beta (\Delta)(B)} = c_{t+1}^{\beta (\Delta)}(c_t - f)
+$$
+$$
+f = c_t - \frac{c_te^{\beta (\Delta)(B)}}{c_{t+1}^{\beta (\Delta)}}
+$$
+Substitute $c_t, c_{t + 1}$ with previously computed values.
+\end{proof}
+
+\begin{problem}{1.6}
+\end{problem}
+\begin{proof}
+If $U(c_t, c_{t + 1})$ is the utility function with the original life probability $p$ and $U^*(c_t, c_{t + 1})$ is the new utility function with the new life probability $p + \Delta$, we hope to find $f$ such that
+$$
+U(c_t, c_{t + 1}) = U^*(c_t, c_{t + 1} - f).
+$$
+This equation translates to
+$$
+\log(c_t) + \beta(p\log(c_{t+1}) + (1 - p)B) = \log(c_t) + \beta((p + \Delta)\log(c_{t+1} - f) + (1 - p - \Delta)B)
+$$
+$$
+p\log(c_{t+1}) + (1 - p)B = (p + \Delta)\log(c_{t+1} - f) + (1 - p - \Delta)B
+$$
+$$
+\Delta B = (p + \Delta)\log(c_{t+1} - f) - p\log(c_{t+1})
+$$
+$$
+\Delta B = \log\left(\frac{(c_{t+1} - f)^{p + \Delta}}{c_{t+1}^p}\right)
+$$
+$$
+e^{\Delta B} = \frac{(c_{t+1} - f)^{p + \Delta}}{c_{t+1}^p}
+$$
+$$
+c_{t+1} - c_{t+1}^{\frac{p}{p + \Delta}}e^{\frac{\Delta B}{p + \Delta}} = f
+$$
+Substitute $c_t, c_{t + 1}$ with previously computed values.
+\end{proof}
+
+\begin{problem}{1.7}
+\end{problem}
+\begin{proof}
+The total current income forgone by the individual should be equivalent to the total future income forgone in terms of current income. This means that the current income forgone is $1 + r$ times greater than the future income forgone. The reason for this is that capital markets are perfect.
+\end{proof}
+
+\begin{problem}{1.8}
+\end{problem}
+\begin{proof}
+First, we observe that the indirect utility function is 
+$$
+v(x(p, \omega_{t + 1} + (1 + r)\omega_t)) = U(x^*, y^*) = \log\left(\frac{\omega_{t + 1} + (1 + r) \omega_t}{(1 + r)(p \beta + 1)}\right) + \beta \left(p\log\left(\frac{p\beta(\omega_{t + 1} + (1 + r) \omega_t)}{p \beta + 1}\right) + (1 - p)B\right)
+$$
+Thus, to find the marginal rate of substitution between, we take the partial derivative between the indirect utility function and probability $p$.
+$$
+\frac{\partial v}{\partial p} = -\frac{\beta}{p\beta + 1} + \beta\log\left(\frac{p\beta(\omega_{t + 1} + (1 + r) \omega_t)}{p \beta + 1}\right) + \beta - \frac{\beta^2 p}{\beta p + 1} - \beta B
+$$
+$$
+\frac{\partial v}{\partial p} =\beta\log\left(\frac{p\beta(\omega_{t + 1} + (1 + r) \omega_t)}{p \beta + 1}\right) + \frac{1}{\beta p + 1} - \beta B
+$$
+
+\end{proof}
+
+\begin{problem}{1.9}
+\end{problem}
+\begin{proof}
+First, observe that the utility function is
+$$
+U(c_t, c_{t + 1}) = p(e^{-\gamma c_t} + \beta e^{-\gamma c_{t + 1}}) + (1 - p)(e^{-\gamma c_t} + \beta B) = e^{-\gamma c_t} + \beta(pe^{-\gamma c_{t + 1}} + (1 - p)B).
+$$
+Using the same constraints from 1.2, we get the first order constraints
+$$
+-\gamma e^{-\gamma c_{t}} = (1 + r)\lambda^*
+$$
+$$
+-\beta p\gamma e^{-\gamma c_{t + 1}} = \lambda^*
+$$
+$$
+c_{t + 1} + (1 + r) c_{t} = \omega_{t + 1} + (1 + r) \omega_t.
+$$
+From the first two equations, we get that 
+$$
+ e^{-\gamma c_{t}} = (1 + r)\beta p e^{-\gamma c_{t + 1}}
+$$
+$$
+-\gamma c_{t} = \log\left((1 + r)\beta p e^{-\gamma c_{t + 1}}\right) = \log\left((1 + r)\beta p\right) - \gamma c_{t + 1}
+$$
+$$
+c_{t + 1} = c_{t} + \frac{\log\left((1 + r)\beta p\right)}{\gamma}
+$$
+Substituting this into the budget constraint shows that
+$$
+\frac{\log\left((1 + r)\beta p\right)}{\gamma} + (2 + r) c_{t} = \omega_{t + 1} + (1 + r) \omega_t.
+$$
+$$
+c_{t} = \frac{\gamma(\omega_{t + 1} + (1 + r) \omega_t) - \log\left((1 + r)\beta p\right)}{(2 + r)\gamma}
+$$
+$$
+c_{t + 1} = \frac{\gamma(\omega_{t + 1} + (1 + r) \omega_t) - \log\left((1 + r)\beta p\right)}{(2 + r)\gamma} + \frac{\log\left((1 + r)\beta p\right)}{\gamma}
+$$
+$$
+c_{t + 1} = \frac{\gamma(\omega_{t + 1} + (1 + r) \omega_t) + (1 + r)\log\left((1 + r)\beta p\right)}{(2 + r)\gamma}.
+$$
+We thus get that the utility maximization problem is $U(c_t^*, c_{t + 1}^*)$, and the marginal utility of substitution using price is
+$$
+\frac{\partial v}{\partial p} = -\frac{e^{\frac{\gamma(\omega_{t + 1} + (1 + r) \omega_t) + (1 + r)\log\left((1 + r)\beta p\right)}{(2 + r)\gamma}}}{p(2 + r)\gamma} + \frac{\beta (1 + r) e^{ \frac{\gamma(\omega_{t + 1} + (1 + r) \omega_t) - \log\left((1 + r)\beta p\right)}{(2 + r)\gamma}}}{p(2 + r)\gamma}
+$$
+\end{proof}
+
+\begin{problem}{1.10}
+\end{problem}
+\begin{proof}
+For the interest rate to yield an equilibrium between the utility associated with dying and living, it follows that $e^{c_{t + 1}} = B$ as noted in 1.1. For this new utility function, we see that the equilibrium is achieved when
+$$
+B = e^{\frac{\gamma(\omega_{t + 1} + (1 + r) \omega_t) + (1 + r)\log\left((1 + r)\beta p\right)}{(2 + r)\gamma}}.
+$$
+Solving for $r$ yields the solution.
+\end{proof}
+
+\begin{problem}{2.1}
+\end{problem}
+\begin{proof}
+Observe that
+$$
+u(I) = -\frac{1}{\gamma}e^{-\gamma I}
+$$
+$$
+u'(I) = e^{-\gamma I}
+$$
+$$
+u"(I) = -\gamma e^{-\gamma I}.
+$$
+Thus,
+$$
+ARA(I) = -\frac{u"(I)}{u'(I)} = \gamma.
+$$
+We can see that this utility function has the property that risk aversion is constant.
+\end{proof}
+
+\begin{problem}{2.2}
+\end{problem}
+\begin{proof}
+Expected utility can be found by multiplying he payouts with their respective probability and summing them. Thus,
+$$
+U(L_F) = (1 - \pi)u(I) + \pi u(I - F) = -\frac{1 - \pi}{\gamma}e^{-\gamma I}-\frac{\pi}{\gamma}e^{-\gamma (I - F)}
+$$
+To calculate the equivalent utility, we find an income $I^*$ such that
+$$
+U(I^*) = U(L_F)
+$$
+$$
+-\frac{1}{\gamma}e^{-\gamma I^*} = -\frac{1 - \pi}{\gamma}e^{-\gamma I}-\frac{\pi}{\gamma}e^{-\gamma (I - F)}
+$$
+$$
+e^{-\gamma I^*} = (1 - \pi)e^{-\gamma I} + \pi e^{-\gamma (I - F)}
+$$
+$$
+I^* = \frac{\log\left((1 - \pi)e^{-\gamma I} + \pi e^{-\gamma (I - F)}\right)}{-\gamma}
+$$
+\end{proof}
+
+\begin{problem}{2.3}
+\end{problem}
+\begin{proof}
+To calculate the deterrence effect, observe that
+$$
+\frac{dU(L_F)}{dF} = -\pi e^{-\gamma (I - F)}.
+$$
+Thus,
+$$
+DE_F(I) = \left.\frac{dU(L_F)}{|U(L_F)|} \right\vert_{F = 0} dF = \frac{- \pi e^{-\gamma (I - 0)}}{\frac {1}{\gamma}e^{-\gamma I}} dF = - \pi \gamma \ dF
+ $$
+\end{proof}
+
+\begin{problem}{2.4}
+\end{problem}
+\begin{proof}
+We are given in the previous part that $DE_F(I) = \pi \gamma \ dF$, which is independent of income $I$. In other words, personal income does not affect deterrence effect. On he other hand, we see that the deterrence effect is directly proportional to the risk aversion, which we calculated to be $\tau$ in 2.1.
+\end{proof}
+
+\begin{problem}{2.5}
+\end{problem}
+\begin{proof}
+Expected utility can be found by multiplying he payouts with their respective probability and summing them. Thus,
+$$
+U(L_F) = (1 - \pi)u(I) + \pi u(I - F) = -\frac{1 - \pi}{\gamma}e^{-\gamma I}-\frac{\pi}{\gamma}e^{-\gamma(1 - \tau)I}
+$$
+To calculate the equivalent utility, we find an income $I^*$ such that
+$$
+U(I^*) = U(L_F)
+$$
+$$
+-\frac{1}{\gamma}e^{-\gamma I^*} = -\frac{1 - \pi}{\gamma}e^{-\gamma I}-\frac{\pi}{\gamma}e^{-\gamma(1 - \tau)I}
+$$
+$$
+e^{-\gamma I^*} = (1 - \pi)e^{-\gamma I} + \pi e^{-\gamma (1 - \tau)I}
+$$
+$$
+I^* = \frac{\log\left((1 - \pi)e^{-\gamma I} + \pi e^{-\gamma (1 - \tau)I}\right)}{-\gamma}
+$$
+\end{proof}
+
+\begin{problem}{2.6}
+\end{problem}
+\begin{proof}
+To calculate the deterrence effect, observe that
+$$
+\frac{dU(L_F)}{d\tau} = - \pi \gamma I e^{-\gamma (1 - \tau)I}.
+$$
+Thus,
+$$
+DE_F(I) = \left.\frac{dU(L_F)}{|U(L_F)|} \right\vert_{\tau = 0} d\tau = \frac{ - \pi I e^{-\gamma (1 - 0)I}}{\frac{1}{\gamma}e^{-\gamma I}} dF = - \pi \gamma I \ dF.
+ $$
+\end{proof}
+
+\begin{problem}{2.7}
+\end{problem}
+\begin{proof}
+Given $DE_F(I) = - \pi \gamma I \ dF$, and this we see the deterrence effect is proportional to income $I$. Similarly, we see that the deterrence effect is proportional to the risk aversion, which we have previously calculated to be $\gamma$.
+\end{proof}
+
+\begin{problem}{2.8}
+\end{problem}
+\begin{proof}
+Observe that
+$$
+u'(I) = I^{-\alpha}
+$$
+and
+$$
+u"(I) = (-\alpha)I^{-\alpha-1}.
+$$
+It thus follows that
+$$
+RRA(I) = - \frac{I \ u"(I)}{u'(I)} = - \frac{(-\alpha)I^{-\alpha}}{ I^{-\alpha}} = \alpha.
+$$
+We observe that this utility function has the property that the relative risk aversion is constant.
+\end{proof}
+
+\begin{problem}{2.9}
+\end{problem}
+\begin{proof}
+Expected utility can be found by multiplying he payouts with their respective probability and summing them. Thus,
+$$
+U(L_F) = (1 - \pi)u(I) + \pi u(I - F) = \frac{(1 - \pi)I^{1 - \alpha}}{1 - \alpha} + \frac{\pi (I - F)^{1 - \alpha}}{1 - \alpha}
+$$
+To calculate the equivalent utility, we find an income $I^*$ such that
+$$
+U(I^*) = U(L_F)
+$$
+$$
+\frac{\pi (I^*)^{1 - \alpha}}{1 - \alpha} = \frac{(1 - \pi)I^{1 - \alpha}}{1 - \alpha} + \frac{\pi (I - F)^{1 - \alpha}}{1 - \alpha}
+$$
+$$
+(I^*)^{1 - \alpha} = \frac{(1 - \pi)I^{1 - \alpha}}{\pi} + (I - F)^{1 - \alpha}
+$$
+$$
+I^* = \left(\frac{(1 - \pi)I^{1 - \alpha}}{\pi} + (I - F)^{1 - \alpha}\right)^{\frac{1}{1 - \alpha}}
+$$
+\end{proof}
+
+\begin{problem}{2.10}
+\end{problem}
+\begin{proof}
+To calculate the deterrence effect, observe that
+$$
+\frac{dU(L_F)}{dF} = - \pi (I - F)^{ - \alpha}
+$$
+Thus,
+$$
+DE_F(I) = \left.\frac{dU(L_F)}{|U(L_F)|} \right\vert_{F = 0} dF = \frac{- \pi (I - 0)^{ - \alpha}}{\frac{I^{1 - \alpha}}{1 - \alpha}} dF = -\frac{\pi (1 - \alpha)}{I} \ dF
+ $$
+\end{proof}
+
+\begin{problem}{2.11}
+\end{problem}
+\begin{proof}
+We have shown that the deterrence effect is $-\frac{\pi (1 - \alpha)}{I}$, whose magnitude is inversely proportional to $I$. In other words, this value approaches 0 as $I$ increases. Additionally, as $\alpha$, the relative risk aversion, increases, the relative risk aversion value increases.
+\end{proof}
+
+\begin{problem}{2.12}
+\end{problem}
+\begin{proof}
+Expected utility can be found by multiplying he payouts with their respective probability and summing them. Thus,
+$$
+U(L_F) = (1 - \pi)u(I) + \pi u((1 - \tau)I) = \frac{(1 - \pi)I^{1 - \alpha}}{1 - \alpha} + \frac{\pi ((1 - \tau)I)^{1 - \alpha}}{1 - \alpha}
+$$
+To calculate the equivalent utility, we find an income $I^*$ such that
+$$
+U(I^*) = U(L_F)
+$$
+$$
+\frac{\pi (I^*)^{1 - \alpha}}{1 - \alpha} = \frac{(1 - \pi)I^{1 - \alpha}}{1 - \alpha} + \frac{\pi ((1 - \tau)I)^{1 - \alpha}}{1 - \alpha}
+$$
+$$
+(I^*)^{1 - \alpha} = \frac{(1 - \pi)I^{1 - \alpha}}{\pi} + ((1 - \tau)I)^{1 - \alpha}
+$$
+$$
+I^* = \left(\frac{(1 - \pi)I^{1 - \alpha}}{\pi} + ((1 - \tau)I)^{1 - \alpha}\right)^{\frac{1}{1 - \alpha}}
+$$
+\end{proof}
+
+\begin{problem}{2.13}
+\end{problem}
+\begin{proof}
+To calculate the deterrence effect, observe that
+$$
+\frac{dU(L_F)}{d\tau} = -\pi \frac{I}{((1 - \tau)I)^{\alpha}}
+$$
+Thus,
+$$
+DE_F(I) = \left.\frac{dU(L_F)}{|U(L_F)|} \right\vert_{\tau = 0} d\tau = -\frac{ \pi \frac{I}{((1 - 0)I)^{\alpha}}}{\frac{((1 - 0)I)^{1 - \alpha}}{1 - \alpha}} d\tau = -\pi (1 - \alpha) \ d\tau
+ $$
+\end{proof}
+
+\begin{problem}{2.14}
+\end{problem}
+\begin{proof}
+As we can see, the deterrence effect $DE_P(I) = -\pi(1 - \alpha) \ d\tau$ is independent of income $I$. On the other hand, we can see that the deterrence effect is directly correlated with the relative risk aversion, which we previously calculated to be $\alpha$.
+\end{proof}
+
+\begin{problem}{2.15}
+\end{problem}
+\begin{proof}
+In order to make risk deterrence uniform by income level, it should be true that the risk aversion resultant from a fine is independent of income. For the certain countries that did choose to adopt a proportional fine structure, we can assume that the drivers in those countries have a utility function closer to function 2, as for that function the risk aversion is constant relative to income. Function 1 had a risk aversion that is only constant when the fine structure is fine.
+
+It is likely that equation 1 is called constant absolute risk aversion because the risk aversion yielded as a result of a constant change in the income is independent of the income itself. On the other hand, equation 2 is likely called constant relative risk aversion because the relative risk aversion yielded as a result of a constant change of income is independent of the income itself.
+
+Marginal utility of income at high income levels decrease, as there are fewer and fewer good places to spend additional units of income. This is reflected in this question, with for equation 2, the fine needs to be greater for wealthier people in order to yield the same detriment to utility.
+\end{proof}
+
+\end{document}
